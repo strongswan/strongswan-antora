@@ -1,0 +1,30 @@
+site:
+  title: strongSwan Documentation
+  url: https://docs.strongswan.org
+  start_page: 5.9@strongswan-docs::index.adoc
+  robots: allow
+content:
+  sources:
+  - url: https://github.com/strongswan/strongswan-docs.git
+    branches: [antora]
+    start_path: docs
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files:
+  - path: css/site.css
+    contents: ./supplemental-ui/css/site.css
+  - path: partials/footer-content.hbs
+    contents: ./supplemental-ui/partials/footer-content.hbs
+  - path: img/strongswan.png
+    contents: ./supplemental-ui/img/strongswan.png
+  - path: favicon.ico
+    contents: ./supplemental-ui/favicon.ico
+  - path: ui.yml
+    contents: |
+      static_files:
+      - favicon.ico
+asciidoc:
+  attributes:
+    page-pagination: true
