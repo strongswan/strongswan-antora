@@ -1,4 +1,6 @@
 build
 node_modules
 key.der
+local-antora-playbook.yml
 site.css.ori
+workspace
