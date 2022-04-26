@@ -13,8 +13,10 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files:
-  - path: css/site.css
-    contents: ./supplemental-ui/css/site.css
+  - path: css/site-extra.css
+    contents: ./supplemental-ui/css/site-extra.css
+  - path: partials/head-meta.hbs
+    contents: ./supplemental-ui/partials/head-meta.hbs
   - path: partials/header-content.hbs
     contents: ./supplemental-ui/partials/header-content.hbs
   - path: partials/footer-content.hbs
