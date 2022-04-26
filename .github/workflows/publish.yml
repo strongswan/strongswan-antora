@@ -1,0 +1,28 @@
+name: Publish docs.strongswan.org
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      msg:
+        description: 'Optional full commit message'
+        required: false
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'npm'
+    - run: npm install
+    - run: npx antora antora-playbook.yml
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build/site
+        full_commit_message: ${{ github.event.inputs.msg }}
+        commit_message: ${{ github.event.head_commit.message }}
+        cname: docs.strongswan.org
