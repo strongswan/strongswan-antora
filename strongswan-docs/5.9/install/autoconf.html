@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Autoconf Options :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/strongswan-docs/5.9/install/autoconf.html">
+    <link rel="prev" href="install.html">
+    <link rel="next" href="kernelModules.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="strongswan-docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Installation</li>
+    <li><a href="autoconf.html">Autoconf Options</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/antora/docs/modules/ROOT/pages/install/autoconf.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Autoconf Options</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Please note:</strong> This page documents the <code><strong>./configure</strong></code> options for the latest
+strongSwan release. Therefore, you should always use</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>./configure --help</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to check which options are actually available for the release you are using.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dir_options"><a class="anchor" href="#_dir_options"></a>--dir options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some directories can be configure through <a href="#_with_options">--with options</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--prefix=PREFIX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/usr/local</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">where to put installation. Most Linux distributions use <code>/usr</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--libexecdir=LIBEXECDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PREFIX/libexec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">program executables</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--libdir=LIBDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PREFIX/lib</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shared libraries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--sysconfdir=SYSCONFDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PREFIX/etc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">where to put configuration files. We strongly recommend <code>/etc</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enable_options"><a class="anchor" href="#_enable_options"></a>--enable Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../plugins/plugins.html" class="xref page">plugin list</a> provides more information on specific
+plugins.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 30.7692%;">
+<col style="width: 7.6923%;">
+<col style="width: 61.5385%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Since<sup class="footnote" id="_footnote_SINCE">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-acert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable X.509 attribute certificate checking plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/addrblock.html" class="xref page">--enable-addrblock</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="https://datatracker.ietf.org/doc/html/rfc3779">RFC 3779</a> address block constraint support plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-aesni</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Intel AES-NI crypto plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-af-alg</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable AF_ALG crypto interface to Linux Crypto API</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-agent</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable ssh-agent signing plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-aikgen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable AIK generator for TPM 1.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable all optional plugins and features
+ (they can be disabled with their respective --disable options)
+ Mainly intended for testing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-android</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Android specific plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-android-log</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Android specific logger plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/attr-sql.html" class="xref page">--enable-attr-sql</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SQL-based configuration attributes. This is a plugin for VPN gateways
+ only, serving virtual IP addresses</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-bfd-backtraces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use binutil&#8217;s libbfd to resolve backtraces for memory leaks and segfaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-bliss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated Bimodal Lattice Signature Scheme (BLISS) software
+ implementation plugin. Since a <a href="https://eprint.iacr.org/2017/490.pdf">side-channel attack</a> on our BLISS
+ implementation has been reported, please use the <a href="https://csrc.nist.gov/projects/post-quantum-cryptography/round-3-submissions">NIST PQC Round 3</a>
+ signature algorithms offered by the post-quantum <a href="https://github.com/strongX509/docker/tree/master/pq-strongswan">strongSwan 6.0</a> version
+ instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-blowfish</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Blowfish software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-botan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Botan crypto plugin. Requires <a href="https://botan.randombit.net/">Botan</a> 2.8.0 or newer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/bypass-lan.html" class="xref page">--enable-bypass-lan</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to automatically install bypass policies for local subnets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ccm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable CCM AEAD wrapper crypto plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-chapoly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enables the ChaCha20/Poly1305 AEAD plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/certexpire.html" class="xref page">--enable-certexpire</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable CSV export of expiration dates of used certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-cmd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable command line IKE client charon-cmd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-conftest</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable IKE conformance test framework</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/connmark.html" class="xref page">--enable-connmark</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable conntrack based marks to select return path SA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/counters.html" class="xref page">--enable-counters</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin that collects several performance counters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/coupling.html" class="xref page">--enable-coupling</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable IKEv2 plugin to couple peer certificates permanently to authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-coverage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable lcov coverage report generation<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ctr</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable counter mode wrapper crypto plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/curl.html" class="xref page">--enable-curl</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to fetch files (CRL/OCSP) via <code>libcurl</code>.
+ Requires the <code>libcurl</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-dbghelp-backtraces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use dbghlp.dll on Windows to create and print backtraces for memory leaks and
+ segfaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/dhcp.html" class="xref page">--enable-dhcp</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable DHCP based attribute provider plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-dnscert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin authenticating peers based on DNS CERT resource records protected
+ by DNSSEC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/duplicheck.html" class="xref page">--enable-duplicheck</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable advanced duplicate checking plugin using liveness checks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-aka</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP AKA authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-aka-3gpp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP AKA backend plugin implementing 3GPP MILENAGE algorithms in software</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-aka-3gpp2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP AKA backend plugin implementing 3GPP2 algorithms in software.
+ Requires <code>libgmp</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/eap-dynamic.html" class="xref page">--enable-eap-dynamic</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable dynamic EAP proxy plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/eap-gtc.html" class="xref page">--enable-eap-gtc</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP GTC authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-identity</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP plugin providing EAP-Identity helper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-md5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build EAP MD5 (CHAP) authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-mschapv2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP MS-CHAPv2 authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-peap</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP PEAP authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/eap-radius.html" class="xref page">--enable-eap-radius</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable RADIUS proxy authentication plugin for EAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-sim</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP-SIM authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-sim-file</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP-SIM backend based on a triplets file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-sim-pcsc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP-SIM backend based on a smartcard reader.
+ Requires <code>libpcsclite</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-simaka-pseudonym</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP-SIM/AKA pseudonym storage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-simaka-reauth</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP-SIM/AKA reauthentication data storage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#plugins/eap-simaka-sql">--enable-eap-simaka-sql</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP-SIM/AKA backend based on a triplet/quintuplet SQL database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/eap-tls.html" class="xref page">--enable-eap-tls</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP TLS authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-tnc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP TNC trusted network connect plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-ttls</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable EAP TTLS authentication plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/error-notify.html" class="xref page">--enable-error-notify</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable error notification plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/ext-auth.html" class="xref page">--enable-ext-auth</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin calling an external authorization script</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/farp.html" class="xref page">--enable-farp</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable ARP faking plugin that responds to ARP requests for virtual IPs
+ assigned to peers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-fast</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build <code>libfast</code> (FastCGI Application Server w/ templates)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable simple <code>file://</code> URI fetcher</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/forecast.html" class="xref page">--enable-forecast</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin that forwards broadcast/multicast messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../devs/fuzzing.html" class="xref page">--enable-fuzzing</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable fuzzing scripts (found in directory <code>fuzz</code> and intended for use on the
+ OSS-Fuzz infrastructure)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable GCM AEAD wrapper crypto plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcrypt</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable gcrypt plugin. Requires the GNU <strong>libgcrypt</strong> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-git-version</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use output of <code>git describe</code> as version information in executables</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/ha.html" class="xref page">--enable-ha</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../features/highAvailability.html" class="xref page">high availability</a> cluster plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-attestation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Attestation IMC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-hcd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Hardcopy Device Integrity (HCD) IMC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-os</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Operating System (OS) IMC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-scanner</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Port Scanner IMC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-swima</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> SWIMA IMC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-test</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Test IMC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imv-attestation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Attestation IMV and the
+ <a href="../tnc/attest.html" class="xref page"><code><strong>attest</strong></code></a> management tool.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imv-hcd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Hardcopy Device Integrity (HCD) IMV</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imv-os</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Operating System (OS) IMV</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imv-scanner</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Port Scanner IMV</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imv-swima</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> SWIMA IMV</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imv-test</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Test IMV</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-integrity-test</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../features/integrityTests.html" class="xref page">integrity testing</a> of the daemon,
+ libraries and loaded plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ipseckey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable authentication plugin authenticatomg peers based on IPSECKEY DNS
+ resource records protected by DNSSEC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/kernel-iph.html" class="xref page">--enable-kernel-iph</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Windows IP Helper based networking backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/kernel-libipsec.html" class="xref page">--enable-kernel-libipsec</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <code>libipsec</code>-based user-space "kernel" interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-kernel-pfkey</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable PF_KEYv2 NETKEY kernel interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-kernel-pfroute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable PF_ROUTE kernel interface. Required for FreeBSD and Mac OSX</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--<a href="../plugins/kernel-wfp.html" class="xref page">--kernel-wfp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Windows Filtering Platform IPsec backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-keychain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable macOS Keychain Services credential set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-libipsec</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable user space IPsec implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ldap</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable LDAP fetcher to fetch files (CRLs) from an LDAP server.
+ Requires OpenLDAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-leak-detective</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable malloc hooks to find memory leaks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-led</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to control LEDs on IKEv2 activity using the Linux kernel LED
+ subsystem</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/load-tester.html" class="xref page">--enable-load-tester</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable load testing plugin for IKEv2 daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-lock-profiler</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable lock/mutex profiling code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-log-thread-ids</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use thread ID if available instead of an incremented value starting from 1
+ to identify threads</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/lookip.html" class="xref page">--enable-lookip</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable fast <a href="../features/vip.html" class="xref page">virtual IP</a> lookup and notification plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-manager</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build the deprecated strongSwan manager web application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-md4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable MD4 software implementation plugin. Required for <code>eap-mschapv2</code> plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-medcli</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated mediation client web front end and daemon plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-mediation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable IKEv2 Mediation Extension</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-medsrv</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated mediation server web front end and daemon plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-mgf1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable MGF1 software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-monolithic</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build monolithic versions of <code>libstrongswan</code> and <code>libcharon</code> that include
+ all enabled plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-mysql</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable MySQL database support. Requires <code>libmysqlclient_r</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-newhope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated NewHope post-quantum key exchange plugin.
+ Use the post-quantum <a href="https://github.com/strongX509/docker/tree/master/pq-strongswan">strongSwan 6.0</a> version instead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-nm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../features/networkManager.html" class="xref page">NetworkManager</a> backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ntru</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated <code>NTRUEncrypt</code> key exchange plugin.
+ Use the post-quantum <a href="https://github.com/strongX509/docker/tree/master/pq-strongswan">strongSwan 6.0</a> version instead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-openssl</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable [OpenSSL] crypto plugin. Requires <code>libcrypto</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-osx-attr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable macOS SystemConfiguration attribute handler</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-p-cscf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to request P-CSCF server addresses from an ePDG
+ (<a href="https://datatracker.ietf.org/doc/html/rfc7651">RFC 7651</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-padlock</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable padlock crypto plugin. Requires a VIA Padlock crypto engine</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-perl-cpan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable build of provided perl CPAN modules e.g. for the
+ <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-perl-cpan-install</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable installation of provided CPAN modules</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/pkcs11.html" class="xref page">--enable-pkcs11</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable PKCS#11 crypto token support plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-python-eggs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable build of provided python eggs e.g. for the
+ <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-python-eggs-install</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable local installation of provided python eggs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/radattr.html" class="xref page">--enable-radattr</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to inject and process custom RADIUS attributes as IKEv2 client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-rdrand</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Intel RDRAND random generator plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ruby-gems</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable build of provided ruby gems e.g. for the
+ <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ruby-gems-install</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable local installation of provided ruby gems</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-save-keys</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.6.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable development/debugging plugin that saves IKE and ESP keys in
+ <a href="https://www.wireshark.org/">Wireshark</a> format</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/selinux.html" class="xref page">--enable-selinux</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SELinux support for labeled IPsec and the
+ <a href="../plugins/selinux.html" class="xref page">selinux</a> plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-sha3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SHA3 and SHAKE software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-smp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated XML configuration and control interface. Requires
+ <code>libxml</code> library.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-socket-dynamic</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable dynamic socket implementation for charon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/socket-win.html" class="xref page">--enable-socket-win</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Winsock2 based socket implementation for
+ <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-soup</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable fetcher plugin to fetch from HTTP URIs. Requires <code>libsoup</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/sql.html" class="xref page">--enable-sql</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SQL database configuration backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-sqlite</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SQLite database support. Requires <code>libsqlite3</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-svc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../daemons/charon-svc.html" class="xref page">charon Windows service</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-systemd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <code>systemd</code> specific IKE daemon
+ <a href="../daemons/charon-systemd.html" class="xref page">charon-systemd</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/systime-fix.html" class="xref page">--enable-systime-fix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to handle cert lifetimes with invalid system time gracefully</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/test-vectors.html" class="xref page">--enable-test-vectors</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable crypto test vectors plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tkm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <code>charon-tkm</code> an IKEv2 daemon that is backed by a
+ <a href="https://www.codelabs.ch/tkm/">Trusted Key Manager</a> (TKM).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnccs-11</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Client Server (TNCCS) 1.1 protocol plugin.
+ Requires <code>libxml2</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnccs-20</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Client Server (TNCCS) 2.0 protocol plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnccs-dynamic</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Client Server (TNCCS) dynamic protocol discovery
+ plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnc-ifmap</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> IF-MAP 2.0 client plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnc-imc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Integrity Measurement Collector (IMC) manager
+ plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnc-imv</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Integrity Measurement Validator (IMV) manager
+ plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnc-pdp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Policy Decision Point plugin
+ plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/tpm.html" class="xref page">--enable-tpm</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to access persistent RSA and ECDSA private keys bound to
+ <a href="../tpm/tpm2.html" class="xref page">Trusted Platform Module 2.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tss-trousers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable TPM 1.2 TrouSerS library. Requires <code>libtspi</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tss-tss2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable TPM 2.0 TSS2 library. Requires <code>libtss2</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-uci</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable OpenWRT UCI configuration plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-unbound</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNSSEC-enabled resolver plugin based on <a href="https://www.nlnetlabs.nl/documentation/unbound/libunbound/">libunbound</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/unity.html" class="xref page">--enable-unity</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable Cisco Unity extension plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-unwind-backtraces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use libunwind to create backtraces for memory leaks and segfaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/whitelist.html" class="xref page">--enable-whitelist</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable peer identity whitelisting plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/winhttp.html" class="xref page">--enable-winhttp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable WinHTTP based HTTP/HTTPS fetching plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-wolfssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="https://github.com/wolfSSL/wolfssl">wolfSSL</a> crypto plugin. Requires <code>libwolfssl</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/xauth-eap.html" class="xref page">--enable-xauth-eap</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable XAuth backend using EAP methods to verify password</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/xauth-noauth.html" class="xref page">--enable-xauth-noauth</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable XAuth pseudo-backend that does not actually verify or even request
+ any credentials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/xauth-pam.html" class="xref page">--enable-xauth-pam</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable XAuth backend using PAM to verify passwords</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_disable_options"><a class="anchor" href="#_disable_options"></a>--disable Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../plugins/plugins.html" class="xref page">plugin list</a> provides more information on
+specific plugins.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 30.7692%;">
+<col style="width: 7.6923%;">
+<col style="width: 61.5385%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Since<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-aes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default AES software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/attr.html" class="xref page">--disable-attr</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> based
+ configuration of DNS and WINS server attributes<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-charon</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable the build of the IKEv1/IKEv2 keying <code>charon</code> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-cmac</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable CMAC crypto implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/constraints.html" class="xref page">--disable-constraints</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable advanced X.509 constraint checking plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-curve25519</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable plugin providing X25519 DH group and Ed25519 public key authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-defaults</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable all features that are enabled by default. Basically it&#8217;s short for
+ removing all options listed in this section.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-des</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default DES/3DES software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-dnskey</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable <a href="https://datatracker.ietf.org/doc/html/rfc4034">DNS Resource Records</a> key decoding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-drgb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.8.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable the NIST Deterministic Random Bit Generator plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-fips-prf</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default FIPS PRF software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-gmp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default <a href="https://gmplib.org/">GNU Multi Precision</a> based public key cryptography
+ implementation plugin. Requires <code>libgmp</code> library.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-hmac</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default HMAC crypto implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-ikev1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable IKEv1 protocol support in <code>charon</code> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-ikev2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable IKEv2 protocol support in <code>charon</code> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-kdf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default KDF (prf+) implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-kernel-netlink</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default Netlink kernel interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-load-warning</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable the <code>charon</code> plugin load option warning in starter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-md5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default MD5 software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-nonce</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable nonce generation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pem</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable PEM decoding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pgp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable PGP key decoding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pkcs1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable PKCS#1 key decoding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pkcs7</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable PKCS#7 container support plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pkcs8</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable PKCS#8 private key decoding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pkcs12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable PKCS#12 container support plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pki.html" class="xref page">--disable-pki</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> public key and certificate utility</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pubkey</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default RAW public key support plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-random</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default RNG implementation using the raw <code>/dev/[u]random</code> devices</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-rc2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable RC2 software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/resolve.html" class="xref page">--disable-resolve</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable writing DNS information received via configuration payload to
+ <code>/etc/resolv.conf</code>. This is a plugin for VPN clients only</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-revocation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable X.509 CRL/OCSP revocation check plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-scepclient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable tools/scepClient.adoc[SCEP client] tool</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-scripts</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable the build of additional utilities found in <code>scripts</code> directory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-sha1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default SHA-1 software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-sha2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default SHA-256/SHA-384/SHA-512 software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-socket-default</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default socket implementation for <code>charon</code> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-sshkey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable SSH key decoding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-stroke</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable legacy <code>stroke</code> configuration backend for <code>charon</code> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../swanctl/swanctl.html" class="xref page">--disable-swanctl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable <a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> configuration and control tool</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/updown.html" class="xref page">--disable-updown</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable updown firewall script plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/vici.html" class="xref page">--disable-vici</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable the <a href="../plugins/vici.html" class="xref page">Versatile IKE Control Interface</a> (VICI)
+ plugin for <code>charon</code> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-x509</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default X.509 certificate implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-xauth-generic</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable generic XAauth backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-xcbc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default XCBC crypto implementation plugin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_with_options"><a class="anchor" href="#_with_options"></a>--with Options</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description [Default]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-capabilities=LIBCAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set capability dropping library. Currently supported values are <code>libcap</code> and
+ <code>native</code> [no]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-charon-udp-port=PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UDP port used by <code>charon</code> daemon locally. Set to <code>0</code> to allocate randomly.
+ [<code>500</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-charon-natt-port=PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UDP port used by <code>charon</code> daemon locally in case a NAT situation is detected
+ (must be different from <code>charon-udp-port</code>). Set to <code>0</code> to allocate randomly.
+ [<code>4500</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-dbuspolicydir=DIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">directory for D-Bus policies for the
+ <a href="../features/networkManager.html" class="xref page">NetworkManager</a> backend <code>charon-nm</code>.
+ [<code>/usr/share/dbus-1/system.d</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-dev-headers=DIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">install strongSwan development headers to <code>DIR</code> []</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-fips-mode=MODE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set OpenSSL FIPS mode: disabled (<code>0</code>), enabled (<code>1</code>), Suite B enabled (<code>2</code>).
+ [<code>0</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-libfuzzer=FILE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-fsanitize=fuzzer</code> or path to <code>libFuzzer.a</code>. A local driver is used if not
+ specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-group=GROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="reducedPrivileges.html" class="xref page">change group</a> of <code>charon</code> daemon to <code>GROUP</code>
+ after startup. [<code>root</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-imcvdir=IMCVDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set the installation path of <code>IMC</code> and <code>IMV</code> dynamic libraries.
+ [<code>IPSECLIBDIR/imcvs</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-ipsecdir=IPSECDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">installation path for ipsec tools. [<code>LIBEXECDIR/ipsec</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-ipseclibdir=IPSECLIBDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">installation path for ipsec libraries <code>libstrongswan</code>, <code>libcharon</code>, etc.
+ [<code>LIBDIR/ipsec</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-ipsec-script=NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the name of the ipsec script. [<code>ipsec</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-linux-headers=DIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">linux header files to be used. [<code>../include</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-mpz_powm_sec= YES|NO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use the more side-channel resistant <code>mpz_powm_sec</code> in <code>libgmp</code> if available.
+ [yes]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-nm-ca-dir=NMCADIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">directory the NetworkManager backend uses to look up trusted root certificates.
+ [<code>/usr/share/ca-certificates</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-piddir=DIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path for PID and UNIX socket files. [<code>/var/run</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-plugindir=PLUGINDIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">installation path for plugins. [<code>IPSECLIBDIR/plugins</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-printf-hooks=IMPL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">force the use of a specific printf()-hook implementation
+ (auto, builtin, glibc, vstr). [<code>auto</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-pythoneggdir=ARG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path to install python eggs to. [<code>main site-packages directory</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-random-device=DEV</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set the device for true random data. [<code>/dev/random</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-resolv-conf=FILE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set the file to store DNS server information. [<code>SYSCONFDIR/resolv.conf</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-routing-table=NUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">routing table for IPsec source routes (set to <code>0</code> to use default routing table).
+ [<code>220</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-routing-table-prio=PRIO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">priority for IPsec routing table [<code>220</code>].</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-rubygemdir=ARG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path to install ruby gems to. [<code>gem environment gemdir</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-strongswan-conf=FILE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set the <code>strongswan.conf</code> file location. [<code>SYSCONFDIR/strongswan.conf</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-systemdsystemunitdir=ARG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">directory for systemd service files.
+ [<code>pkg-config --variable=systemdsystemunitdir systemd</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-swanctldir=ARG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../swanctl/swanctlDir.html" class="xref page"><code>swanctl</code> directory</a> for
+ <a href="../swanctl/swanctlConf.html" class="xref page"><code>swanctl.conf</code></a> configuration files and
+ credentials. [<code>SYSCONFDIR/swanctl</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-urandom-device=DEV</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set the device for pseudo random data. [<code>/dev/urandom</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-user=USER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="reducedPrivileges.html" class="xref page">change user</a> of <code>charon</code> daemon to USER
+ after startup. [<code>root</code>]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example"><a class="anchor" href="#_example"></a>Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following configuration example builds a strongSwan IKEv2
+<a href="#daemons/charon-systemd"><code><strong>charon-systemd</strong></code></a> daemon supporting the
+authentication methods <code><strong>pubkey</strong></code>, <code><strong>psk</strong></code>, <code><strong>eap-md5</strong></code> and <code><strong>eap-tls</strong></code>.
+All crypto functions are based on the <code><strong>openssl</strong></code> plugin. Private keys and
+X.509 certificates can be securely stored in a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>
+device. Additionally the <a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> and
+<a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> tools are built. Also support for the
+<a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> firewall script support is enabled.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./configure --prefix=/usr --sysconfdir=/etc --disable-defaults --enable-silent-rules  \
+    --enable-charon --enable-systemd --enable-ikev2 --enable-vici --enable-swanctl    \
+    --enable-nonce --enable-random --enable-drbg --enable-openssl --enable-curl       \
+    --enable-pem --enable-x509 --enable-constraints --enable-revocation --enable-pki  \
+    --enable-pubkey --enable-socket-default --enable-kernel-netlink --enable-resolve  \
+    --enable-eap-identity --enable-eap-md5 --enable-eap-dynamic --enable-eap-tls      \
+    --enable-updown --enable-tss-tss2 --enable-tpm</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. First strongSwan version to support this option
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. This disables any optimization, so it shouldn&#8217;t be enabled when building  production releases
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. This is a plugin for VPN gateways only, serving internal DNS and WINS  nameserver information
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="install.html">Installation Documentation</a></span>
+  <span class="next"><a href="kernelModules.html">Required Kernel Modules</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

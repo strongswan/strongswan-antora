@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Plugin List :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/strongswan-docs/5.9/plugins/plugins.html">
+    <link rel="prev" href="../tools/conftest.html">
+    <link rel="next" href="addrblock.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="strongswan-docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Plugins</li>
+    <li><a href="plugins.html">Plugin List</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/antora/docs/modules/ROOT/pages/plugins/plugins.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Plugin List</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The strongSwan distribution ships with an ever growing list of plugins. This
+allows us to add extended and specialized features, but keep the core as small
+as possible.</p>
+</div>
+<div class="paragraph">
+<p>Many strongSwan component libraries come with a set of plugins. The plugins for
+<code><strong>libstrongswan</strong></code> e.g. provide cryptographic backends, URI fetchers and database
+layers whereas <code><strong>libcharon</strong></code> comes with a large set of very specialized plugins
+for specific needs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_libstrongswan_plugins"><a class="anchor" href="#_libstrongswan_plugins"></a>libstrongswan Plugins</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.5185%;">
+<col style="width: 3.7037%;">
+<col style="width: 3.7037%;">
+<col style="width: 74.0741%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">E<sup class="footnote" id="_footnote_E">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">S<sup class="footnote" id="_footnote_S">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acert</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support of X.509 attribute certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AES-128/192/256 cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aesni</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel AES-NI crypto plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">af-alg</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AF_ALG Linux kernel crypto API</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">agent</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RSA/ECDSA private key backend connecting to ssh-agent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bliss</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bimodal Lattice Signature Scheme (BLISS) post-quantum computer signature scheme</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blowfish</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blowfish cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">botan</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on the <a href="https://botan.randombit.net/">Botan</a> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ccm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CCM cipher mode wrapper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chapoly</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChaCha20/Poly1305 AEAD implementation and ChaCha20 XOF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cmac</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CMAC cipher mode wrapper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="constraints.html" class="xref page">constraints</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X.509 certificate advanced constraint checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ctr</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CTR cipher mode wrapper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="curl.html" class="xref page">curl</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libcurl based HTTP/FTP fetcher</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">curve25519</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X25519 DH group and Ed25519 public key authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">des</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DES/3DES cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dnskey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parse <a href="https://datatracker.ietf.org/doc/html/rfc4034">DNS</a> public keys</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drbg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NIST Deterministic Random Bit Generator based on AES-CTR and HMAC-SHA2 modes.
+ Required by the ntru plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">files</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fetcher for local file:// URIs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fips-prf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PRF specified by FIPS, used by EAP-SIM/AKA algorithms</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gcm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GCM cipher mode wrapper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gcrypt</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on <a href="https://gnupg.org/software/libgcrypt/">libgcrypt</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RSA/DH crypto backend based on <a href="https://gmplib.org/">libgmp</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hmac</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HMAC wrapper using various hashers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kdf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IKEv2 key derivation wrapper using various PRFs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keychain</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">macOS Keychain Services credential set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ldap</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP fetching plugin based on libldap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">md4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MD4 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">md5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MD5 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mgf1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MGF1 mask generation function</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MySQL database backend based on libmysqlclient</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">newhope</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Key exchange based on post-quantum computer New Hope algorithm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nonce</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default nonce generation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ntru</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Key exchange based on post-quantum computer NTRU encryption</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openssl</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on the <a href="https://openssl.org/">OpenSSL</a> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">padlock</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VIA padlock crypto backend, provides AES128/SHA1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PEM encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pgp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PGP encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#1 encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#7 encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#8 decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkcs11.html" class="xref page">pkcs11</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#11 smart card backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#12 decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pubkey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wrapper to handle raw public keys as trusted certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">random</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RNG reading from /dev/[u]random</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rc2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC2 cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rdrand</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High quality / high performance random source using the Intel <em>rdrand</em> instruction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">revocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X.509 CRL/OCSP revocation checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sha1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SHA1 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sha2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sha3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SHA-3 hasher and SHAKE128/SHAKE256 XOF software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">soup</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libsoup based HTTP fetcher</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sqlite</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SQLite database backend based on libsqlite3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sshkey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH key decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="test-vectors.html" class="xref page">test-vectors</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of test vectors for various algorithms</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unbound</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNSSEC enabled resolver using <a href="https://www.nlnetlabs.nl/documentation/unbound/libunbound/">libunbound</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="winhttp.html" class="xref page">winhttp</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WinHTTP based HTTP/HTTPS fetcher for Windows platform</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wolfssl</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on the <a href="https://github.com/wolfSSL/wolfssl">wolfSSL</a> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x509</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Advanced X.509 plugin for parsing/generating X.509 certificates/CRLs and OCSP messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xcbc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XCBC wrapper using various ciphers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_libcharon_plugins"><a class="anchor" href="#_libcharon_plugins"></a>libcharon Plugins</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.5185%;">
+<col style="width: 3.7037%;">
+<col style="width: 3.7037%;">
+<col style="width: 74.0741%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">E<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">S<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="addrblock.html" class="xref page">addrblock</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Narrow traffic selectors to <a href="https://datatracker.ietf.org/doc/html/rfc3779">RFC 3779</a> address blocks in X.509 certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">android-dns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/android.html" class="xref page">Android</a>-specific DNS handler plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">android-log</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/android.html" class="xref page">Android</a>-specific logger plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="attr.html" class="xref page">attr</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides IKE attributes configured in strongswan.conf</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="attr-sql.html" class="xref page">attr-sql</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides IKE attributes read from a database to peers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="bypass-lan.html" class="xref page">bypass-lan</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automatically installs and updates bypass policies for locally attached subnets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="certexpire.html" class="xref page">certexpire</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export expiration dates of used certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="connmark.html" class="xref page">connmark</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plugin using Netfilter conntrack marks to handle multiple transport mode
+ clients (for L2TP)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="counters.html" class="xref page">counters</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides IKE performance counters (queryable via <a href="vici.html" class="xref page">vici</a> and
+ e.g. the <a href="../swanctl/swanctlCounters.html" class="xref page"><code><strong>swanctl --counters</strong></code></a> command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="coupling.html" class="xref page">coupling</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permanent peer certificate coupling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="dhcp.html" class="xref page">dhcp</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request <a href="../features/vip.html" class="xref page">virtual IP</a> address from a DHCP server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dnscert</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides authentication via CERT RRs protected by DNSSEC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="duplicheck.html" class="xref page">duplicheck</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Advanced duplicate checking with liveness test and notifications</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-aka</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic EAP-AKA protocol handler using different backends</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-aka-3gpp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-AKA backend implementing 3GPP MILENAGE algorithms in software</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-aka-3gpp2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-AKA backend implementing 3GPP2 algorithms in software</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="eap-dynamic.html" class="xref page">eap-dynamic</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP proxy plugin that dynamically selects an EAP method requested/supported by the client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="eap-gtc.html" class="xref page">eap-gtc</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-GTC protocol handler authenticating with XAuth backends</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-identity</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-Identity identity exchange algorithm, to use with other EAP protocols</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-md5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-MD5 protocol handler using passwords</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-mschapv2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-MSCHAPv2 protocol handler using passwords/NT hashes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-peap</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-PEAP protocol handler, wraps other EAP methods securely</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="eap-radius.html" class="xref page">eap-radius</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP server proxy plugin forwarding EAP conversations to a RADIUS server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-sim</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic EAP-SIM protocol handler using different backends</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-sim-file</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-SIM backend reading triplets from a file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-sim-pcsc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-SIM backend based on a PC/SC smartcard reader</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-simaka-pseudonym</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-SIM/AKA in-memory pseudonym identity database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-simaka-reauth</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-SIM/AKA in-memory reauthentication identity database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="eap-simaka-sql.html" class="xref page">eap-simaka-sql</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-SIM/AKA backend reading triplets/quintuplets from a SQL database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="eap-tls.html" class="xref page">eap-tls</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-TLS protocol handler, to authenticate with certificates in EAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-tnc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-TNC protocol handler, Trusted Network Connect in a TLS tunnel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eap-ttls</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EAP-TTLS protocol handler, wraps other EAP methods securely</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="error-notify.html" class="xref page">error-notify</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification about errors via UNIX socket</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="ext-auth.html" class="xref page">ext-auth</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invokes an external script for custom authorization rules</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="farp.html" class="xref page">farp</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fakes ARP responses for requests to a <a href="../features/vip.html" class="xref page">virtual IP</a>
+ assigned to a peer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="forecast.html" class="xref page">forecast</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multicast and broadcast forwarding plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="ha.html" class="xref page">ha</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/highAvailability.html" class="xref page">High Availability</a> clustering</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ipseckey</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides authentication via IPSECKEY RRs protected by DNSSEC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="kernel-libipsec.html" class="xref page">kernel-libipsec</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec "kernel" interface in user-space using libipsec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kernel-netlink</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec/Networking kernel interface using Linux Netlink</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="kernel-iph.html" class="xref page">kernel-iph</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Networking backend for the Windows platform, based on IPHelper APIs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kernel-pfkey</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec kernel interface using PF_KEY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kernel-pfroute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Networking kernel interface using PF_ROUTE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="kernel-wfp.html" class="xref page">kernel-wfp</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec backend for the Windows platform, using the Windows Filtering Platform</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">led</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Let Linux LED subsystem LEDs blink on IKE activity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="load-tester.html" class="xref page">load-tester</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perform IKE load tests against self or a gateway</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="lookip.html" class="xref page">lookip</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Virtual IP lookup facility using a UNIX socket</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">medcli</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web interface based mediation client interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">medsrv</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web interface based mediation server interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">osx-attr</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">macOS SystemConfiguration attribute handler</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">p-cscf</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plugin that requests P-CSCF server addresses from an ePDG (<a href="https://datatracker.ietf.org/doc/html/rfc7651">RFC 7651</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="radattr.html" class="xref page">radattr</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plugin to inject and process custom RADIUS attributes as IKEv2 client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="resolve.html" class="xref page">resolve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Writes name servers received via IKE to a resolv.conf file or installs them via resolvconf(8)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save-keys</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Development/Debugging plugin that saves IKE and/or ESP keys to files compatible with <a href="https://www.wireshark.org/">Wireshark</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="selinux.html" class="xref page">selinux</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SELinux support plugin for labeled IPsec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XML based strongSwan Management Protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">socket-default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default socket implementation for IKE messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">socket-dynamic</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dynamic binding socket implementation, capable of sending IKE messages on any port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="socket-win.html" class="xref page">socket-win</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Socket implementation for IKE messages on Windows, based on Winsock2 APIs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="sql.html" class="xref page">sql</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SQL configuration backend reading configurations/credentials from a database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stroke</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated stroke configuration/control backend, to use with ipsec script and starter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="tnc-ifmap.html" class="xref page">tnc-ifmap</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> IF-MAP 2.0 client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnc-pdp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Policy Decision Point with RADIUS server interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="systime-fix.html" class="xref page">systime-fix</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Handle invalid system time when checking certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uci</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenWRT UCI configuration backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="unity.html" class="xref page">unity</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cisco Unity extensions for IKEv1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="updown.html" class="xref page">updown</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shell script invocation during tunnel up/down events</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="vici.html" class="xref page">vici</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Versatile IKE Control Interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="whitelist.html" class="xref page">whitelist</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check authenticated identities against a whitelist</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="xauth-eap.html" class="xref page">xauth-eap</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XAuth backend that uses EAP methods to verify passwords</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xauth-generic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic XAuth backend that provides passwords from credential sets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="xauth-noauth.html" class="xref page">xauth-noauth</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XAuth backend that does not do any authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="xauth-pam.html" class="xref page">xauth-pam</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XAuth backend that uses PAM modules to verify passwords</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_libtpmtss_plugins"><a class="anchor" href="#_libtpmtss_plugins"></a>libtpmtss Plugins</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.5185%;">
+<col style="width: 3.7037%;">
+<col style="width: 3.7037%;">
+<col style="width: 74.0741%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">E<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">S<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="tpm.html" class="xref page">tpm</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access persistent RSA and ECDSA private keys bound to a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>.
+ Optionally use the <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> as a true random number source.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_libtnccs_plugins"><a class="anchor" href="#_libtnccs_plugins"></a>libtnccs Plugins</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.5185%;">
+<col style="width: 3.7037%;">
+<col style="width: 3.7037%;">
+<col style="width: 74.0741%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">E<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">S<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-11</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) protocol version 1.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-20</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) protocol version 2.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-dynamic</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) dynamic protocol discovery</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnc-tnccs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manages the <a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) connection layer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnc-imc</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manages <a href="../tnc/tnc.html" class="xref page">TNC</a> Integrity Measurement Collectors (IMCs)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnc-imv</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manages <a href="../tnc/tnc.html" class="xref page">TNC</a> Integrity Measurement Validators (IMVs)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_default_plugins"><a class="anchor" href="#_default_plugins"></a>Default Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following 36 plugins are built and loaded by default:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.5185%;">
+<col style="width: 3.7037%;">
+<col style="width: 3.7037%;">
+<col style="width: 74.0741%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">E<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+<th class="tableblock halign-left valign-top">S<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AES-128/192/256 cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cmac</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CMAC cipher mode wrapper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="constraints.html" class="xref page">constraints</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X.509 certificate advanced constraint checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">curve25519</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X25519 DH group and Ed25519 public key authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">des</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DES/3DES cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dnskey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parse <a href="https://datatracker.ietf.org/doc/html/rfc4034">RFC 4034</a> public keys</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drbg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NIST Deterministic Random Bit Generator based on AES-CTR and HMAC-SHA2 modes.
+ Required by the <code><strong>gmp</strong></code> and <code><strong>ntru</strong></code> plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fips-prf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PRF specified by FIPS, used by EAP-SIM/AKA algorithms</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RSA/DH crypto backend based on <a href="https://gmplib.org/">libgmp</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hmac</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HMAC wrapper using various hashers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kdf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IKEv2 key derivation wrapper using various PRFs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">md5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MD5 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nonce</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default nonce generation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PEM encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pgp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PGP encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#1 encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#7 encoding/decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#8 decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#12 decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pubkey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wrapper to handle raw public keys as trusted certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">random</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RNG reading from /dev/[u]random</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rc2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC2 cipher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">revocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X.509 CRL/OCSP revocation checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sha1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SHA1 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sha2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 hasher software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sshkey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH key decoding routines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x509</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Advanced X.509 plugin for parsing/generating X.509 certificates/CRLs and OCSP messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xcbc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XCBC wrapper using various ciphers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>libstrongswan</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="attr.html" class="xref page">attr</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides IKE attributes configured in strongswan.conf</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kernel-netlink</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec/Networking kernel interface using Linux Netlink</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="resolve.html" class="xref page">resolve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Writes name servers received via IKE to a resolv.conf file or installs them via resolvconf(8)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">socket-default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default socket implementation for IKE messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stroke</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated stroke configuration/control backend, to use with ipsec script and starter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="updown.html" class="xref page">updown</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shell script invocation during tunnel up/down events</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="vici.html" class="xref page">vici</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Versatile IKE Control Interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xauth-generic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic XAuth backend that provides passwords from credential sets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>libcharon</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. E = Enabled by default (plugins can be enabled/disabled using their respective <a href="../install/autoconf.html" class="xref page">./configure</a> options)
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. S = Plugin status: s = stable, e = experimental, d = under development/incomplete
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../tools/conftest.html">ipsec conftest Tool</a></span>
+  <span class="next"><a href="addrblock.html">addrblock Plugin</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

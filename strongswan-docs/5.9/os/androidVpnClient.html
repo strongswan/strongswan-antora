@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>strongSwan VPN Client for Android :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/strongswan-docs/5.9/os/androidVpnClient.html">
+    <link rel="prev" href="android.html">
+    <link rel="next" href="androidVpnClientProfiles.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="strongswan-docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>OS</li>
+    <li><a href="android.html">Android</a></li>
+    <li><a href="androidVpnClient.html">Android VPN Client</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/antora/docs/modules/ROOT/pages/os/androidVpnClient.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">strongSwan VPN Client for Android</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://play.google.com//store/apps/details?id=org.strongswan.android">strongSwan VPN Client for Android</a> is an app that can be installed
+directly from <a href="https://play.google.com//store/apps/details?id=org.strongswan.android">Google Play</a>. The app is also available via
+<a href="https://f-droid.org/en&lt;/packages/org.strongswan.android/">F-Droid</a> and the APKs are also on our <a href="https://download.strongswan.org/Android/">download server</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_client_configuration"><a class="anchor" href="#_client_configuration"></a>Client Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since version <a href="#_1_8_0_2017_01_20">1.8.0</a> of the app it is possible to import
+<a href="androidVpnClientProfiles.html" class="xref page">VPN profiles</a> from files.</p>
+</div>
+<div class="paragraph">
+<p>Client certificates and keys, and CA certificates may be added by bundling them
+into a <a href="../pki/pkiQuickstart.html#_pkcs12_container" class="xref page">PKCS#12 file</a> and then
+importing that file into the Android system keystore. CA certificates and server
+certificates may also be imported directly into the app since
+<a href="#_1_4_0_2014_07_22">1.4.0</a>.
+Importing CA certificates into the Android system keystore may trigger a warning
+since Android 4.4 (<a href="https://code.google.com/p/android/issues/detail?id=62644">Network may be monitored by an unknown third party</a>)
+whereas importing CA certificates directly into the app will work fine.</p>
+</div>
+<div class="paragraph">
+<p>Since <a href="#_1_9_0_2017_07_03">1.9.0</a> split tunneling may be configured on the
+client (i.e. to only route specific traffic via VPN and/or to exclude certain
+traffic from the VPN). The client always proposes <code><strong>0.0.0.0/0</strong></code> as remote traffic
+selector and narrowing performed by the server still applies.
+Since <a href="#_1_5_0_2015_07_28">1.5.0</a> the user may opt to block all traffic not
+destined for the VPN if the server does narrow the traffic selector or split
+tunneling is configured on the client.</p>
+</div>
+<div class="paragraph">
+<p>Since <a href="#_1_9_0_2017_07_03">1.9.0</a> it is possible to limit a VPN connection to
+specific apps or exclude certain apps from using the VPN (to them it will seem as
+if no VPN is present).</p>
+</div>
+<div class="paragraph">
+<p>Since <a href="#_2_0_0_2018_07_03">2.0.0</a> an optional Quick Settings tile (Android 7+)
+shows the current connection status and allows connecting/terminating the current
+VPN connection easily. The same version brought support for the Always-on VPN
+feature that may be enabled in the system&#8217;s VPN settings on Android 7+ and will
+start the VPN profile after a reboot (refer to the
+<a href="#_2_0_0_2018_07_03">[changelog</a> for potential caveats). The default VPN profile
+used for these two features may be configured in the app&#8217;s global settings (the
+default is to initiate the most recently used profile).</p>
+</div>
+<div class="paragraph">
+<p>The app allows creating shortcuts on the Android Launcher to quickly initiate
+specific VPN profiles.</p>
+</div>
+<div class="paragraph">
+<p>Since <a href="#_2_0_0_2018_07_03">2.0.0</a> it&#8217;s possible to use <strong>Intents</strong> and a VPN
+profile&#8217;s UUID to connect/terminate it with automation apps such as Llama or
+Tasker e.g. based on location, WiFi hotspots or other events.</p>
+</div>
+<div class="paragraph">
+<p>How-to use <strong>Intents</strong> to connect or terminate VPN profiles:</p>
+</div>
+<details>
+<summary class="title">Details</summary>
+<div class="content">
+<div class="paragraph">
+<p>The UUID required for this can be found at the bottom of the advanced settings
+when editing a profile and may be copied from there.</p>
+</div>
+<div class="paragraph">
+<p>To connect a profile use the following information in the Intent:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>Package</strong>: org.strongswan.android</code></p>
+</li>
+<li>
+<p><code><strong>Action</strong> : org.strongswan.android.action.START_PROFILE</code></p>
+</li>
+<li>
+<p><code><strong>Extras</strong></code> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>org.strongswan.android.VPN_PROFILE_ID</strong></code>: UUID of the profile to start<br>
+(a string that looks like this: <code>7b21d354-52ed-4c14-803a-a3370f575405</code>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To disconnect the profile use the following information in the Intent:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>Package</strong>: org.strongswan.android</code></p>
+</li>
+<li>
+<p><code><strong>Action</strong>: org.strongswan.android.action.DISCONNECT</code></p>
+</li>
+<li>
+<p><code><strong>Extras</strong></code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>org.strongswan.android.VPN_PROFILE_ID</strong></code>: UUID of the profile to disconnect</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If no profile ID is passed or it doesn&#8217;t match the ID of the currently
+      connected profile, a dialog is shown that asks confirmation from the user
+      to disconnect the currently connected profile.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_server_configuration"><a class="anchor" href="#_server_configuration"></a>Server Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since strongSwan version 5.2.1 and version <a href="#_1_4_5_2014_11_06">1.4.5</a> of the
+app, <code><strong>connections.&lt;conn&gt;.fragmentation = yes</strong></code> may be added to the server
+<a href="../swanctl/swanctlConf.html" class="xref page">configuration</a> to use IKEv2 fragmentation which
+avoids problems with IP fragmentation during connection establishment (mainly due
+to large certificates or a lot of certificate requests).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The hostname/IP of the VPN server as configured in the VPN profile has to
+      be contained as a <code><strong>subjectAltName</strong></code> extension in the VPN server&#8217;s
+      certificate. Since <a href="#_1_6_0_2016_05_02">1.6.0</a> the server identity may
+      also be configured explicitly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_known_limitationsissues"><a class="anchor" href="#_known_limitationsissues"></a>Known Limitations/Issues</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Only IKEv2 is supported</p>
+</li>
+<li>
+<p>Client authentication is limited to:</p>
+</li>
+<li>
+<p>EAP authentication based on username/password (EAP-MSCHAPv2, EAP-MD5, EAP-GTC)</p>
+</li>
+<li>
+<p>RSA/ECDSA authentication with private key/certificate</p>
+</li>
+<li>
+<p>EAP-TLS with private key/certificate, see <a href="#_1_4_5_2014_11_06">1.4.5</a>
+for limitations</p>
+</li>
+<li>
+<p>The server always has to be authenticated with RSA/ECDSA (even when using
+EAP-TLS, see <a href="#_1_4_5_2014_11_06">1.4.5</a></p>
+</li>
+<li>
+<p>PSK authentication is <strong>not</strong> supported, as it is potentially very dangerous
+because the client might send the hash of a weak password to a rogue VPN server.
+Thus we prefer EAP authentication where the server is first authenticated by
+an X.509 certificate and only afterwards the client uses its password.</p>
+</li>
+<li>
+<p>Only a single tunnel can be established at a time</p>
+</li>
+<li>
+<p>The IPsec default proposals are limited to AES encryption with SHA2/SHA1 data
+integrity or AES-GCM authenticated encryption. Optionally, using PFS with one
+of a number of proposed ECP/MODP DH groups. Since <a href="#_1_7_0_2016_12_08">1.7.0</a>
+<code><strong>ChaCha20/Poly1305</strong></code> authenticated encryption and <code><strong>Curve25519</strong></code>-based DH is
+also supported and proposed. And since <a href="#_1_9_5_2017_11_17">1.9.5</a> a custom
+ESP proposal may be configured.</p>
+</li>
+<li>
+<p>Since the app runs with reduced privileges (it can&#8217;t open <code>RAW/PACKET</code> sockets),
+it is limited to use UDP-encapsulated ESP, which it sends/receives via the UDP
+sockets used for IKE. So UDP-encapsulation is
+<a href="../features/natTraversal.html#_udp_encapsulation_of_esp" class="xref page">always enforced</a> even
+if there is no NAT between client and server, by sending a random NAT-D payload.</p>
+</li>
+<li>
+<p>The app is not compatible with Google&#8217;s <a href="https://fi.google.com">Project Fi</a> which provides
+its own always-on VPN connection. To use the app, the <a href="https://fi.google.com">Project Fi</a>'s
+always-on VPN has to be disabled first using the following procedure:</p>
+<details>
+<summary class="title">Details</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>Settings</code> click <code>Google</code></p>
+</li>
+<li>
+<p>Click <code>Network</code></p>
+</li>
+<li>
+<p>Turn off the <code>Wi-Fi Assistant</code> setting</p>
+</li>
+<li>
+<p>Restart the device</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Then turn off the always-on VPN connection:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>Settings</code> click <code>More</code> under <code>Wireless &amp; Networks</code></p>
+</li>
+<li>
+<p>Click <code>VPN</code></p>
+</li>
+<li>
+<p>Click the gear next to the <code>Wi-Fi Assistant</code></p>
+</li>
+<li>
+<p>Make sure <code>Always On</code> is not active</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>If you don&#8217;t get a list of installed apps to exclude/include from the VPN you
+might have to explicitly allow the strongSwan app to get this list. For instance
+on the Huawei Mate 9 via <code>Phone Manager &gt; Permissions</code>.</p>
+</li>
+<li>
+<p>It might be necessary to exclude the app from any battery saver feature on the
+system (e.g. on the Xiaomi MIUI8).</p>
+</li>
+<li>
+<p>Apps that create a screen overlay such as <code>Twilight</code> or <code>Night Mode</code> might
+interfere with the dialog to grant the app permission to create a VPN connection
+(unable to tap <code>OK/Grant</code>). If that&#8217;s the case, temporarily disable any such app
+or if possible, whitelist/exclude the <code>VPNDialogs</code> system app from this feature.</p>
+</li>
+<li>
+<p>If you have problems with the app, find bugs or have feature requests you may
+open a new <a href="https://github.com/strongswan/strongswan/issues">issue report</a> (please use the search function first
+to avoid duplicates). You may also send us the log file via email directly from
+within the app.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_further_information"><a class="anchor" href="#_further_information"></a>Further Information</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="androidVpnClientProfiles.html" class="xref page">File format for VPN profiles</a></p>
+</li>
+<li>
+<p><a href="androidVpnClientPrivacyPolicy.html" class="xref page">Privacy Policy</a></p>
+</li>
+<li>
+<p><a href="androidVpnClientBuild.html" class="xref page">How to build the app from sources</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_beta_testing"><a class="anchor" href="#_beta_testing"></a>Beta Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes we publish beta versions of our app on Google Play. If you&#8217;d like to try
+new features and provide us with valuable feedback, please <a href="https://play.google.com///apps/testing/org.strongswan.android">opt-in here</a>
+or directly from the app&#8217;s page in the Play store.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog"><a class="anchor" href="#_changelog"></a>Changelog</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_3_3_2021_07_13"><a class="anchor" href="#_2_3_3_2021_07_13"></a>2.3.3 (2021-07-13)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a button to install user certificates (newer Android releases don&#8217;t provide
+one in the selection dialog anymore - if no certs are installed, the dialog
+doesn&#8217;t even show up).</p>
+</li>
+<li>
+<p>DNS servers are now explicitly applied whenever a TUN device is created (instead
+of only when the IKE_SA is established), this ensures that the correct DNS servers
+are used if the CHILD_SA gets explicitly deleted by the server and recreated by
+the client.</p>
+</li>
+<li>
+<p>Requests a new permission on Android 11 to get a list of all installed apps in
+order to exclude/include them from VPNs (and for the EAP-TNC use case).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_2_2020_12_02"><a class="anchor" href="#_2_3_2_2020_12_02"></a>2.3.2 (2020-12-02)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don&#8217;t mark VPN connections as metered. The default changed when targeting Android
+10 with the last release.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_1_2020_10_29"><a class="anchor" href="#_2_3_1_2020_10_29"></a>2.3.1 (2020-10-29)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds support to use IPv6 transport addresses for IKE and ESP. This can only be
+enabled if UDP encapsulation for IPv6 is supported by the server. Note that the
+Linux kernel only supports this since version 5.8, so many servers will not
+support it yet.</p>
+</li>
+<li>
+<p>Shows a proper error message if the UUID in a
+<a href="androidVpnClientProfiles.html" class="xref page">profile</a> is invalid (e.g. contains no
+dashes).</p>
+</li>
+<li>
+<p>Fixes a potential crash with the power whitelist dialog and handles rotation and
+other Activity restarts better if the information dialog is shown</p>
+</li>
+<li>
+<p>Fixes the port scanning IMC (was broken since about
+<a href="#_1_6_1_2016_05_04">1.6.1</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_0_2020_06_02"><a class="anchor" href="#_2_3_0_2020_06_02"></a>2.3.0 (2020-06-02)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Several changes try to improve reachability even in Android&#8217;s deep sleep phases.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>An Android-specific scheduler (based on AlarmManager) and whitelisting from
+the system&#8217;s battery optimization (the user is automatically asked to do so)
+ensures the app is woken at the scheduled times, which ensure that events (in
+particular for NAT keepalives) are triggered accurately.</p>
+</li>
+<li>
+<p>DPDs are sent if no NAT keepalive has been sent for a while.</p>
+</li>
+<li>
+<p>DPDs are sent after address/routing changes even if the path to the peer stays
+the same.</p>
+</li>
+<li>
+<p>Lifetimes are slightly increased to avoid conflicts even with inaccurate
+scheduling (IKE_SA overtime is now 30m instead of 10m, CHILD_SA lifetime is 2.5h
+instead of 1h, rekeyings are initiated ~30m before that).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Fixes the app icon on Android &lt; 5.0.</p>
+</li>
+<li>
+<p>Fixes a possible crash via QuickSettings tile on some devices</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_1_2019_11_19"><a class="anchor" href="#_2_2_1_2019_11_19"></a>2.2.1 (2019-11-19)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes loading CRL/OCSP via HTTP on Android 9, which defaults to HTTPs only.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_0_2019_10_15"><a class="anchor" href="#_2_2_0_2019_10_15"></a>2.2.0 (2019-10-15)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Makes the client identity configurable (via advanced settings and
+<a href="androidVpnClientProfiles.html" class="xref page">profiles</a>) also when using EAP authentication.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The certificate identity is now configured using the same text field (with
+auto-completion for SANs) instead of a drop-down field (just leave it empty to
+use the certificate&#8217;s subject DN as identity).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Fixes an issue with ECDSA certificate selection on Android 10.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that Android 10 doesn&#8217;t show the dialog (with a button to install certs)
+if no certificates are found. Installation has to happen via
+<a href="androidVpnClientProfiles.html" class="xref page">profile</a> or externally.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Fixes an issue with break-before-make reauthentication (used if MOBIKE is not
+supported) if the server concurrently deletes the IKE_SA.</p>
+</li>
+<li>
+<p>Uses a different API (<code><strong>ConnectivityManager.registerNetworkCallback</strong></code> instead
+of the deprecated <code><strong>ConnectivityManager.CONNECTIVITY_ACTION</strong></code>) to detect network
+changes on Android 7 and newer.</p>
+</li>
+<li>
+<p>Fixes a potential crash on Huawei devices</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_1_1_2019_04_24"><a class="anchor" href="#_2_1_1_2019_04_24"></a>2.1.1 (2019-04-24)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Authentication via EAP-MSCHPv2 now supports UTF-8 encoded passwords.</p>
+</li>
+<li>
+<p>Fixes an issue with upgrades from older versions.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_1_0_2019_03_14"><a class="anchor" href="#_2_1_0_2019_03_14"></a>2.1.0 (2019-03-14)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a copy command to duplicate an existing VPN profile.</p>
+</li>
+<li>
+<p>Allows configuring custom DNS servers for each VPN profile.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_0_2_2018_10_17"><a class="anchor" href="#_2_0_2_2018_10_17"></a>2.0.2 (2018-10-17)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes potential DNS leaks caused by a <a href="https://issuetracker.google.com/issues/116257079">bug</a> in Android 9.</p>
+</li>
+<li>
+<p>Fixes clicking some buttons (certificate selection, app selection) with keyboard
+navigation (also affects e.g. Fire TV sticks) when running on Android &lt; 8.</p>
+</li>
+<li>
+<p>Fixes an issue with the QuickSettings tile on some devices where the callback
+is called even if no tile is available.</p>
+</li>
+<li>
+<p>Fixes profile selection/edit when the device is rotated.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_0_1_2018_07_04"><a class="anchor" href="#_2_0_1_2018_07_04"></a>2.0.1 (2018-07-04)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Removes support for EAP-PEAP/TTLS as it caused major issues with commercial VPN
+services (one issue was that the server identity was initially enforced as AAA
+identity, but changing that revealed that some providers use self-signed AAA
+server certificates - not sure what clients accept that), hopefully proper
+support can be added in a future version.</p>
+</li>
+<li>
+<p>Fixes a possible crash related to Android 8&#8217;s optional Autofill feature
+(the <a href="https://issuetracker.google.com/issues/67675432">bug</a> that causes it was apparently fixed with Android
+8.1 but has not been backported).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_0_0_2018_07_03"><a class="anchor" href="#_2_0_0_2018_07_03"></a>2.0.0 (2018-07-03)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Supports the Always-on VPN feature on Android 7+.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Android 8 only starts the VPN service after the user has unlocked the device
+after a reboot.</p>
+</li>
+<li>
+<p>Android 7 immediately starts the VPN service after booting, but that means the
+app has no access to the KeyChain yet (if certificates are used), so no VPN
+connection can be established until the user unlocks the device.</p>
+</li>
+<li>
+<p>If password authentication is used and the password is not stored in the profile,
+the connection is aborted and the user has to manually retry connecting to enter
+the password.</p>
+</li>
+<li>
+<p>The "Block connections without VPN" system option on Android 8+ blocks all
+traffic not sent via VPN without considering any subnets/apps that are excluded
+from a VPN (i.e. that feature is not compatible with split-tunneling).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Adds a Quick Settings tile on Android 7+ to quickly initiate/terminate the VPN
+connection.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the Always-on feature, Android 8 doesn&#8217;t enable the Quick Settings
+tile until the user unlocked the device after a reboot.</p>
+</li>
+<li>
+<p>Disconnecting via tile from the lock screen requires the user to unlock the
+device, connecting is possible without (unless a password has to be entered).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The new settings activity allows specifying a default VPN profile used for the
+two features above (the default is to initiate the most recently used profile).</p>
+</li>
+<li>
+<p>The app automatically tries to reconnect the VPN profile if fatal errors occur
+(e.g. authentication failures). The retries are delayed by an exponential backoff
+which is currently capped at 2 minutes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The status screen in the main activity as well as the notification show a
+countdown until the next automatic retry, manually retrying is possible from
+both locations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>On Android 5+ a dummy VPN interface is installed while connecting to a VPN profile
+or recovering from errors, to block unencrypted traffic while taking excluded
+subnets/apps configured in the profile into account.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that this VPN interface is removed when the VPN is disconnected.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Errors are not shown in a modal dialog anymore in the main activity but in a
+banner directly above the status information (with buttons to view the log and
+retry connecting).</p>
+</li>
+<li>
+<p>Uses a separate activity to initiate/terminate/retry VPN profiles which avoids
+having to bring the main Activity to the foreground for these actions.</p>
+</li>
+<li>
+<p>Adds options to disable OCSP/CRL fetching (e.g. if it&#8217;s known the server is not
+available, or if CRLs are too large).</p>
+</li>
+<li>
+<p>Adds an option to enable strict revocation checking via OCSP/CRL. If enabled,
+the authentication will fail if the revocation status of the server certificate
+is unknown (e.g. because no valid CRL is available).</p>
+</li>
+<li>
+<p>Fetching OCSP/CRL can now be aborted immediately (e.g. to cancel connecting if
+an OCSP server is not reachable).</p>
+</li>
+<li>
+<p>Basic support for EAP-TTLS/EAP-PEAP has been added but had to be removed again
+with <a href="#_2_0_1_2018_07_04">2.0.1</a>.</p>
+</li>
+<li>
+<p>Adds an option to use PSS encoding for RSA signatures instead of the classic
+PKCS#1 encoding.</p>
+</li>
+<li>
+<p>The explicit ESP proposals for the deprecated Suite B have been removed.</p>
+</li>
+<li>
+<p>Adds more clear error messages if permission for VPNs can&#8217;t be acquired (e.g.
+because another app has the Always-on VPN feature enabled).</p>
+</li>
+<li>
+<p>The date/time/thread is shown in the log view if enough space is available (e.g.
+on tablets or even in landscape orientation on phones). It should also be more
+efficient when displaying large logs.</p>
+</li>
+<li>
+<p>Removes the MIME-type filter when importing trusted certificates, allowing the
+import of certificates even if they don&#8217;t have an X.509 related MIME-type set.</p>
+</li>
+<li>
+<p>All VPN profiles now have a random UUID assigned (its value may be copied from
+the profile editor e.g. to initiate/terminate a VPN profile via explicit
+<code><strong>Intent</strong></code>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_6_2018_02_08"><a class="anchor" href="#_1_9_6_2018_02_08"></a>1.9.6 (2018-02-08)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Always sends the client certificate (if applicable) instead of only after
+receiving a certificate request (allows servers that accept certificates from a
+lot of CAs to avoid sending certificate requests).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_5_2017_11_17"><a class="anchor" href="#_1_9_5_2017_11_17"></a>1.9.5 (2017-11-17)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Makes the IKE and/or ESP algorithms configurable.</p>
+</li>
+<li>
+<p>Removes <code><strong>modp1024</strong></code> from the default IKEv2 proposal. If the server only allows
+this DH group, a custom IKE proposal has to be configured in the VPN profile.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_4_2017_09_18"><a class="anchor" href="#_1_9_4_2017_09_18"></a>1.9.4 (2017-09-18)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds support for delta CRLs.</p>
+</li>
+<li>
+<p>Fixes issues with fragmented IP packets (<a href="https://github.com/strongswan/strongswan/pull/80">pull request #80</a>).</p>
+</li>
+<li>
+<p>Ensures expires are triggered for the correct IPsec SA.</p>
+</li>
+<li>
+<p>Fixes an issue with multicast addresses when using split tunneling on older
+Android releases.</p>
+</li>
+<li>
+<p>Does not consider a DH group mismatch as failure anymore as responder of a
+CHILD_SA rekeying
+(<a href="https://github.com/strongswan/strongswan/commit/e7276f78aae95905d9dfe7ded485d6771c4fcaa0">commit e7276f78aa</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_3_2017_09_04"><a class="anchor" href="#_1_9_3_2017_09_04"></a>1.9.3 (2017-09-04)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds support to verify server certificates via OCSP (Online Certificate Status
+Protocol).</p>
+</li>
+<li>
+<p>Caches CRLs in the app directory.</p>
+</li>
+<li>
+<p>The CRL cache may be cleared via main menu.</p>
+</li>
+<li>
+<p>Adds a button to reconnect the VPN profile to the "currently connected" dialog.</p>
+</li>
+<li>
+<p>Don&#8217;t apply/configure app selection on Android &lt; 5 (the API is not supported
+there).</p>
+</li>
+<li>
+<p>Initiator SPIs are reset when retrying while reconnecting which might avoid
+issues with <code><strong>INVALID_KE_PAYLOAD</strong></code> notifies.</p>
+</li>
+<li>
+<p>Catches some random exceptions (as seen in Play Console)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_2_2017_07_04"><a class="anchor" href="#_1_9_2_2017_07_04"></a>1.9.2 (2017-07-04)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes a crash on Android &#8656; 5.</p>
+</li>
+<li>
+<p>Fixes database update when updating from app versions &lt; 1.8.0.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_1_2017_07_03"><a class="anchor" href="#_1_9_1_2017_07_03"></a>1.9.1 (2017-07-03)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes a crash with pre-existing profiles.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_9_0_2017_07_03"><a class="anchor" href="#_1_9_0_2017_07_03"></a>1.9.0 (2017-07-03)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds support for split-tunneling on the client (only route specific traffic via
+VPN and/or exclude specific traffic from the VPN).</p>
+</li>
+<li>
+<p>Adds support for per-app VPN (either allow only specific apps to use the VPN or
+exclude certain apps from using it).</p>
+</li>
+<li>
+<p>Sending of certificate requests may be disabled (while this allows reducing the
+size of the IKE_AUTH message, e.g. if fragmentation is not supported. It only
+works if the server also sends its certificate if it didn&#8217;t receive any
+certificate requests).</p>
+</li>
+<li>
+<p>NAT-T keepalive interval is now configurable.</p>
+</li>
+<li>
+<p><a href="androidVpnClientProfiles.html" class="xref page">VPN profiles</a> may be imported via SAF
+(Storage Access Framework) and allow the configuration of the new settings.</p>
+</li>
+<li>
+<p>CRLs are now fetched with a simple Android-specific HTTP[S] fetcher.</p>
+</li>
+<li>
+<p>Adds a disconnect button in the permanent notification.</p>
+</li>
+<li>
+<p>The log view should now be more efficient.</p>
+</li>
+<li>
+<p>Fixes the handling of backslashes in usernames.</p>
+</li>
+<li>
+<p>Adds a Traditional Chinese translation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_8_2_2017_02_20"><a class="anchor" href="#_1_8_2_2017_02_20"></a>1.8.2 (2017-02-20)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes an issue while disconnecting on certain devices.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_8_1_2017_02_07"><a class="anchor" href="#_1_8_1_2017_02_07"></a>1.8.1 (2017-02-07)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds Simplified Chinese translation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_8_0_2017_01_20"><a class="anchor" href="#_1_8_0_2017_01_20"></a>1.8.0 (2017-01-20)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds support to import <a href="androidVpnClientProfiles.html" class="xref page">VPN profiles</a> from
+JSON-encoded files.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_7_2_2016_12_10"><a class="anchor" href="#_1_7_2_2016_12_10"></a>1.7.2 (2016-12-10)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Re-adds support for the ECC Brainpool DH groups (BoringSSL doesn&#8217;t provide these).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_7_1_2016_12_09"><a class="anchor" href="#_1_7_1_2016_12_09"></a>1.7.1 (2016-12-09)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes a crash (regarding <code><strong>libtpmtss.so</strong></code>) on older Android systems.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_7_0_2016_12_08"><a class="anchor" href="#_1_7_0_2016_12_08"></a>1.7.0 (2016-12-08)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a permanent notification while connected (or connecting) that shows the
+current status and which allows running the VpnService instance as foreground
+service. This in turn should prevent Android from terminating it when low on
+memory.</p>
+</li>
+<li>
+<p>Supports the <code><strong>ChaCha20/Poly1305</strong></code> AEAD and <code><strong>Curve25519</strong></code> DH algorithms.</p>
+</li>
+<li>
+<p>Properly validates entered server port and MTU values in the GUI.</p>
+</li>
+<li>
+<p>Logs the installed DNS servers.</p>
+</li>
+<li>
+<p>Uses BoringSSL instead of OpenSSL.</p>
+</li>
+<li>
+<p>Based on strongSwan version 5.5.1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_6_2_2016_05_06"><a class="anchor" href="#_1_6_2_2016_05_06"></a>1.6.2 (2016-05-06)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes a crash when importing CA/server certificates via SAF (Storage Access
+Framework).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_6_1_2016_05_04"><a class="anchor" href="#_1_6_1_2016_05_04"></a>1.6.1 (2016-05-04)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes an interoperability issue with Windows Server. strongSwan version 5.4.0
+ changed the order of the algorithms in the default IKE proposal.  Algorithms
+ that provide a security of less than 128-bit were moved to the end of the list.
+ Now Windows Server 2012 R2 (in its default configuration at least) only supports
+ <code><strong>modp1024</strong></code>. The problem is that Microsoft&#8217;s IKEv2 implementation only seems to
+ consider the first fifteen algorithms of a specific transform type in the
+ proposal. Because strongSwan supports quite a lot of DH groups and due to the
+ reordering, <code><strong>modp1024</strong></code> was now at position 17 in the proposal. This meant
+ that Microsoft Server rejected the IKE_SA_INIT message with a
+ <code>NO_PROPOSAL_CHOSEN</code> error. This has been fixed by removing some of the weaker
+ and rarely used DH groups from the default proposal
+(<a href="https://github.com/strongswan/strongswan/commit/fae18fd201eb0b2e9a437a9e1b6faf52afd784f8">commit fae18fd201</a>).</p>
+</li>
+<li>
+<p>Also corrects the label for the password field in the login dialog.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_6_0_2016_05_02"><a class="anchor" href="#_1_6_0_2016_05_02"></a>1.6.0 (2016-05-02)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Based on version:5.4.0, which e.g. adds support for IKEv2 redirection.</p>
+</li>
+<li>
+<p>Configuration of the server identity. If it is set the identity is sent as <code><strong>IDr</strong></code>
+during authentication and must match the server&#8217;s identity exactly (i.e. it
+disables loose identity matching against all <code><strong>subjectAltNames</strong></code>).</p>
+</li>
+<li>
+<p>Selection of the client identity if certificate authentication is used.</p>
+</li>
+<li>
+<p>GUI changes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Removed the progress dialogs during connecting/disconnecting.</p>
+</li>
+<li>
+<p>Redesign of the profile editor (reordered, floating labels, helper texts
+"gateway"&#8594;"server").</p>
+</li>
+<li>
+<p>Tabs in CA certificate manager have been updated (sliding tabs with ViewPager).</p>
+</li>
+<li>
+<p>Switched to the AppCompat theme (Material-like).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Increases the NAT-T keepalive interval to 45s. No attempt to send keepalives is
+made anymore if there is no connectivity.</p>
+</li>
+<li>
+<p>Fixed the font in the log view on Android 5+.</p>
+</li>
+<li>
+<p>Native 64-bit build.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_5_0_2015_07_28"><a class="anchor" href="#_1_5_0_2015_07_28"></a>1.5.0 (2015-07-28)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Based on version 5.3.2.</p>
+</li>
+<li>
+<p>Roaming between networks on Android 5 and newer has been fixed.</p>
+</li>
+<li>
+<p>Adds new advanced profile settings:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A custom MTU can be specified (currently between 1280 and 1500).</p>
+</li>
+<li>
+<p>The server port can be changed (default is 500, with a switch to 4500 - there
+is no switch if a custom port is set).</p>
+</li>
+<li>
+<p>Split tunneling can be disabled by blocking all traffic that is not destined
+for the VPN.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Only on Android 5 and newer will split tunneling fully work if only one address
+family is tunneled via VPN.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Sets the preferred language for remediation instructions to the system language.</p>
+</li>
+<li>
+<p>EAP-TNC does not require a client certificate anymore.</p>
+</li>
+<li>
+<p>Fixes a linker issue on Android M.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_4_6_2015_06_08"><a class="anchor" href="#_1_4_6_2015_06_08"></a>1.4.6 (2015-06-08)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix for
+<a href="https://strongswan.org/blog/2015/06/08/strongswan-vulnerability-(cve-2015-4171).html">CVE-2015-4171</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_4_5_2014_11_06"><a class="anchor" href="#_1_4_5_2014_11_06"></a>1.4.5 (2014-11-06)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Based on version 5.2.1 including improved MOBIKE handling and support for IKEv2
+fragmentation.</p>
+</li>
+<li>
+<p>Enables optional PFS (Perfect Forward Secrecy) for IPsec SAs. Proposed are cipher
+suites with and without DH groups, so it&#8217;s up to the VPN server whether PFS is
+used or not.</p>
+</li>
+<li>
+<p>Adds basic support for EAP-TLS. Limitations are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>EAP-only authentication is not allowed because the AAA identity is not
+configurable. So to prevent anyone with a valid certificate from impersonating
+the AAA server and thus the VPN server, the server is authenticated with a
+certificate (like we do with other authentication methods).</p>
+</li>
+<li>
+<p>It&#8217;s currently not possible to select a specific CA certificate to authenticate
+the AAA server certificate, so it either must be issued by the same CA as that
+of the VPN server or automatic CA certificate selection must be enabled in the
+VPN profile.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_4_0_2014_07_22"><a class="anchor" href="#_1_4_0_2014_07_22"></a>1.4.0 (2014-07-22)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds the ability to import CA and server certificates directly into the app. On
+Android 4.4+ the <a href="https://developer.android.com/guide/topics/providers/document-provider.html">SAF</a> (Storage Access Framework) is used to allow users to
+browse for certificate files (if the MIME-type is not set properly the advanced
+view has to be used to see all files). On older systems the files may be opened
+from third-party file managers.</p>
+</li>
+<li>
+<p>The GUI indicates if the connection is being reestablished.</p>
+</li>
+<li>
+<p>A DNS proxy resolves the VPN server&#8217;s hostname while reestablishing (plaintext
+is blocked otherwise).</p>
+</li>
+<li>
+<p>Supports ECDSA private keys on recent Android systems (tested on Android 4.4.4)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_4_2014_04_25"><a class="anchor" href="#_1_3_4_2014_04_25"></a>1.3.4 (2014-04-25)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Based on version 5.1.3 (fixes a security vulnerability).</p>
+</li>
+<li>
+<p>Links <code><strong>libcrypto</strong></code> (OpenSSL) statically.</p>
+</li>
+<li>
+<p>Doesn&#8217;t limit the number of packets during EAP-TTLS.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_3_2013_11_13"><a class="anchor" href="#_1_3_3_2013_11_13"></a>1.3.3 (2013-11-13)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Based on version 5.1.1.</p>
+</li>
+<li>
+<p>Fixed issues with IV generation and padding length calculation for AES-GCM.</p>
+</li>
+<li>
+<p>Removes the <code><strong>Vstr</strong></code> dependency.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_2_2013_09_26"><a class="anchor" href="#_1_3_2_2013_09_26"></a>1.3.2 (2013-09-26)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed a regression causing remediation instructions to pile up (EAP-TNC).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_1_2013_09_23"><a class="anchor" href="#_1_3_1_2013_09_23"></a>1.3.1 (2013-09-23)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Improved recovery after certain connectivity changes.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_0_2013_07_08"><a class="anchor" href="#_1_3_0_2013_07_08"></a>1.3.0 (2013-07-08)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added support for EAP-TNC.</p>
+</li>
+<li>
+<p>Disabled listening on IPv6 because the Linux kernel currently does not support
+UDP encapsulation of ESP packets for IPv6.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_3_2013_05_03"><a class="anchor" href="#_1_2_3_2013_05_03"></a>1.2.3 (2013-05-03)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added support for AES-GCM.</p>
+</li>
+<li>
+<p>Support for IPv6-in-IPv4 tunnels.</p>
+</li>
+<li>
+<p>Uses <code><strong>kernel-netlink</strong></code> to handle interface/IP address enumeration.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_2_2013_03_07"><a class="anchor" href="#_1_2_2_2013_03_07"></a>1.2.2 (2013-03-07)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added support for multiple authentication, e.g. based on an X.509 certificate
+followed by EAP (<a href="https://datatracker.ietf.org/doc/html/rfc4739">RFC 4739</a>).</p>
+</li>
+<li>
+<p>Added Polish, Ukrainian, and Russian translations.</p>
+</li>
+<li>
+<p>Fixed a race condition during reauthentication and a potential freeze while
+disconnecting.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_1_2012_11_21"><a class="anchor" href="#_1_2_1_2012_11_21"></a>1.2.1 (2012-11-21)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added shortcuts to VPN profiles to quickly start specific connections from the
+launcher.</p>
+</li>
+<li>
+<p>Added a confirmation dialog if a connection is started but one is already
+established.</p>
+</li>
+<li>
+<p>Fixed a few Android 4.2 specific issues.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_0_2012_10_18"><a class="anchor" href="#_1_2_0_2012_10_18"></a>1.2.0 (2012-10-18)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added support for MOBIKE e.g. allows switching between different interfaces
+(e.g. Wifi and 3G/4G).</p>
+</li>
+<li>
+<p>The app tries to keep the connection established until the user disconnects
+manually.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_1_3_2012_09_24"><a class="anchor" href="#_1_1_3_2012_09_24"></a>1.1.3 (2012-09-24)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Workaround for a private key issue on Android 4.1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_1_2_2012_09_18"><a class="anchor" href="#_1_1_2_2012_09_18"></a>1.1.2 (2012-09-18)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added loose ID matching: While the client expects the hostname/IP of the VPN
+server to be contained as <code><strong>subjectAltName</strong></code> in the certificate this allows the
+responder to use a different IDr than that, as long as it is confirmed by the
+certificate (the client does not send an IDr anymore).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_1_1_2012_09_17"><a class="anchor" href="#_1_1_1_2012_09_17"></a>1.1.1 (2012-09-17)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed a Unicode issue when converting Java to C strings.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_1_0_2012_09_06"><a class="anchor" href="#_1_1_0_2012_09_06"></a>1.1.0 (2012-09-06)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Added certificate authentication and fixed reauthentication.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="android.html">Android</a></span>
+  <span class="next"><a href="androidVpnClientProfiles.html">Android VPN Client Profiles</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
