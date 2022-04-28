@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>High Availability :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/features/highAvailability.html">
+    <link rel="prev" href="routeBasedVpn.html">
+    <link rel="next" href="hashAndUrl.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Features</li>
+    <li><a href="highAvailability.html">High Availability</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/features/highAvailability.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">High Availability</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The IKEv2 daemon experimentally supports pseudo active/active High Availability
+and Load Sharing capabilities using a cluster of [initially] two nodes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>Problem Statement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The IKEv2/IPsec protocol is not well suited for operation in an active/active
+cluster. While it is possible to share the state of IKE_SAs over high-speed links
+in a cluster, sharing the kernel-maintained IPsec ESP SAs is very difficult. Due
+to the strict sequence numbering of ESP packets, the overhead for synchronizing
+ESP sequence numbers would be very high.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="https://datatracker.ietf.org/doc/html/rfc6027">RFC 6027</a> the The IETF IP Security and Maintenance and Extensions
+(<a href="https://datatracker.ietf.org/wg/ipsecme/about/">ipsecme)</a> working group describes the problems in more details. The
+working group then produced with <a href="https://datatracker.ietf.org/doc/html/rfc6311">RF6311</a> a standard for a solution that
+relies on the client for state synchronization. This however required an extension
+to the IKEv2 protocol. Clients connecting to a highly available cluster will
+benefit from this features only if they support this extension. Existing clients
+(such as the one shipped with Windows 7) will not be able to take advantage of
+this efforts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_possible_approaches"><a class="anchor" href="#_possible_approaches"></a>Possible Approaches</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_node_to_node_synchronization"><a class="anchor" href="#_node_to_node_synchronization"></a>Node-to-Node Synchronization</h3>
+<div class="paragraph">
+<p>While the synchronization of IKE state including sequence numbers is realistic
+between two nodes, exchanging state information of an ESP security association is
+difficult.</p>
+</div>
+<div class="paragraph">
+<p>Synchronizing the state for each processed IPsec packet will put a high load on
+the nodes. Synchronization after a certain amount of packets and/or after a certain
+timeout can reduce the load, but will make fail-over handling much more difficult,
+as we have to guess on the taking-over node how many packets the failing node has
+processed but could not synchronize before it failed.</p>
+</div>
+<div class="paragraph">
+<p>Another problem with such an approach is that there is no way of doing load sharing
+between nodes. An SA is strictly bound to a single node until the event of a failure.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_to_cluster_synchronization"><a class="anchor" href="#_client_to_cluster_synchronization"></a>Client-to-Cluster Synchronization</h3>
+<div class="paragraph">
+<p>Another approach to consider is requesting state information from the client. In
+the event of a failure, the taking-over node can request sequence numbers from the
+client. But this approach has the same deficiencies as previously discussed. Further,
+it requires extensions to the IKE protocol between client and gateway, making
+existing implementations incompatible with this approach.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_functional_specification"><a class="anchor" href="#_functional_specification"></a>Functional Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>strongSwan uses a slightly different approach. Our solution should provide:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Failure Detection</dt>
+<dd>
+<p>If a node fails due to power loss, hardware failures, kernel oops or daemon crashes,
+the node will be removed from the cluster.</p>
+</dd>
+<dt class="hdlist1">State Synchronization</dt>
+<dd>
+<p>If a node is removed due to failure or administrative purposes, the cluster
+should already have an up-to-date copy of the nodes state to take over.</p>
+</dd>
+<dt class="hdlist1">Takeover</dt>
+<dd>
+<p>Node failure detection and state takeover should happen within 1-3 seconds.</p>
+</dd>
+<dt class="hdlist1">Transparent Migration</dt>
+<dd>
+<p>TCP or application sessions should not be interrupted during take-over.</p>
+</dd>
+<dt class="hdlist1">Load Sharing</dt>
+<dd>
+<p>Load should be shared across all actives nodes in a cluster.</p>
+</dd>
+<dt class="hdlist1">Reintegration</dt>
+<dd>
+<p>A repaired node can be (re-)added to an existing cluster, taking over a part
+of the load.</p>
+</dd>
+<dt class="hdlist1">Legacy Clients</dt>
+<dd>
+<p>No protocol extension, any IKEv2 client should be able to benefit from High
+Availability if connected to a cluster.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Migration of clients to another node does not affect the connection. A client usually
+does not detect a takeover. This allows a gateway administrator to e.g. remove a
+node from the load sharing cluster, apply security updates, reboot and reintegrate
+the node.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_selected_solution"><a class="anchor" href="#_selected_solution"></a>Selected Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The selected solution is based on the idea of <a href="https://lwn.net/Articles/108078/">ClusterIP</a>, a Linux kernel
+module allowing a set of nodes to provide a service under a single virtual IP.</p>
+</div>
+<div class="sect2">
+<h3 id="_how_clusterip_works"><a class="anchor" href="#_how_clusterip_works"></a>How ClusterIP works</h3>
+<div class="paragraph">
+<p>All nodes in a ClusterIP-based setup act under a single virtual IP address. The
+nodes spoof ARP requests with a multicast MAC address. This will make the switch
+forward the packet to each node in the cluster.</p>
+</div>
+<div class="paragraph">
+<p>The received packet is associated to a segment by calculating a hash value of it.
+In the simplest setup, the source address is hashed and the hash value modulo the
+number of segments results in the responsible segment number. Each segment is
+handled by exactly one node in the cluster.</p>
+</div>
+<div class="paragraph">
+<p>The node responsible for the packet will pass it to upper layers, whereas all others
+just drop the packet in the netfilter code. Depending on the hash value, e.g. TCP
+connections are kept on the same node. If a node fails, a remaining node will take
+over the segment and process packets for it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ipsec_with_clusterip"><a class="anchor" href="#_ipsec_with_clusterip"></a>IPsec with ClusterIP</h3>
+<div class="paragraph">
+<p>While the ClusterIP module itself is not designed to handle IPsec traffic or even
+act as a forwarding router, the principle of ClusterIP is. If the IKE daemons in
+the cluster can synchronize the IKE state and the basic IPsec SA state without
+sequence numbers, a modified ClusterIP module can do the rest:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For traffic to decrypt, the SPI of the ESP packet is included in the hash
+calculation, resulting in a spread of the SAs across all nodes. For SAs the local
+node is not responsible. It picks a packet from time to time and uses it to advance
+the replay window. Sequence numbers are not mangled if a packet is not verified
+using the IPsec authentication algorithm. Only the selectively chosen and verified
+packets mangle the replay window state.</p>
+</li>
+<li>
+<p>Earlier patches included the sequence number of the packet into the segment hash
+calculation. This helped to spread multiple packets in a single SA to multiple
+nodes thus automatically updating the replay window. But the method had the
+drawback of reordering packets in a flow.</p>
+</li>
+<li>
+<p>For traffic to encrypt on the cluster, the SA is looked up and the hash value is
+fed with the SPI of the found SA. If the segment matches, the packet is further
+processed. If not, only the sequence number is incremented. To avoid assigning
+the same sequence number to different packets on multiple nodes, we currently keep
+the outbound flow on a single node. One could spread the outgoing packets and
+assign unique sequence numbers on each node but this will introduce other problems
+such as a shortened replay window.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kernel_implementation"><a class="anchor" href="#_kernel_implementation"></a>Kernel Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The ClusterIP Netfilter module uses an additional <code>PREROUTING</code> hook to mark received
+packets for forwarding. Two new Netfilter hooks are included in the IPsec processing,
+exactly before the decryption/encryption process (<code>XFRM_IN</code> and <code>XFRM_OUT</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>                 v        PLAIN        ^
+    +------------------------------------------------+
+    |            |                     |             |
+    |     +--------------+      +--------------+     |
+    |  4. |  PREROUTING  |      |   DECRYPT    |  3. |
+    |     +--------------+      +--------------+     |
+    |            |                     ^             |
+    |            v                     |             |
+    |     +--------------+      +--------------+     |
+    |  5. |   XFRM_OUT   |      |   XFRM_IN    |  2. |
+    |     +--------------+      +--------------+     |
+    |            |                     ^             |
+    |            v           ^         | ESP/AH      |
+    |     +--------------+   |  +--------------+     |
+    |  6. |   ENCRYPT    |   +--|    INPUT     |  1. |
+    |     +--------------+      +--------------+     |
+    |            |                     |             |
+    +------------------------------------------------+
+                 v       CRYPTED       ^</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>AH, ESP and UDP-Encapsulated ESP packets are all accepted. Other traffic is
+subject to the ClusterIP selection algorithm based on the source IP address
+(e.g. IKE traffic).</p>
+</li>
+<li>
+<p>Undecrypted IPsec traffic gets dropped using a ClusterIP algorithm, based on
+the IPsec SA.</p>
+</li>
+<li>
+<p>Decryption process is done on the responsible node only. Non-responsible nodes
+pick every n-th packet and verify it to update the replay window state.</p>
+</li>
+<li>
+<p>Traffic is received on ClusterIP multicast MAC and must be tagged as unicast
+traffic to advance through IP forwarding.</p>
+</li>
+<li>
+<p>After IPsec policy lookup, unencrypted traffic gets dropped using a ClusterIP
+algorithm, based on IPsec SA. Outgoing sequence numbers are assigned before the
+packed drop, this will keep outgoing sequence numbers in sync on all nodes.</p>
+</li>
+<li>
+<p>Encryption process is done on the responsible node only.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The strongSwan <a href="https://download.strongswan.org/testing/">download site</a> offers HA patches for many Linux kernel
+versions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ike_daemon_implementation"><a class="anchor" href="#_ike_daemon_implementation"></a>IKE daemon implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A separate high availability plugin implemented for the IKEv2 daemon charon is
+responsible for state synchronization between the nodes in a cluster and simple
+monitoring functionality. It is currently designed for two nodes, but will be
+extended to synchronize larger clusters in the future.</p>
+</div>
+<div class="paragraph">
+<p>To enable the high availability <a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin, build
+strongSwan with the <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> option</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-ha</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_daemon_hooks"><a class="anchor" href="#_daemon_hooks"></a>Daemon Hooks</h3>
+<div class="paragraph">
+<p>The plugin registers itself at several hooks in the daemon. These hooks are used
+for notifications about SA state changes and push information to the plugin. The
+following hooks are used:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>ike_keys()</code></dt>
+<dd>
+<p>Receives IKE key material (DH, nonces, proposals)</p>
+</dd>
+<dt class="hdlist1"><code>ike_updown() / ike_rekey()</code></dt>
+<dd>
+<p>Monitor state changes of IKE SAs</p>
+</dd>
+<dt class="hdlist1"><code>message()</code></dt>
+<dd>
+<p>Used to update IKE message IDs</p>
+</dd>
+<dt class="hdlist1"><code>child_keys()</code></dt>
+<dd>
+<p>Receives CHILD key material</p>
+</dd>
+<dt class="hdlist1"><code>child_state_change()</code></dt>
+<dd>
+<p>Monitor state changes of CHILD SAs</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The plugin registers its hook functions at the daemon bus. These hooks are sufficient
+to synchronize all IKE and CHILD SAs with all the state required to do a fail-over
+of IKE and ESP SAs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synchronization_messages"><a class="anchor" href="#_synchronization_messages"></a>Synchronization Messages</h3>
+<div class="paragraph">
+<p>The hook functions collect the required synchronization data and prepare messages
+to be sent to other nodes in the cluster. Messages are sent in unencrypted UDP
+datagrams, sent and received on port <code><strong>4510</strong></code>. As these messages contain sensitive
+key material, securing the messages by IPsec is recommended.</p>
+</div>
+<div class="paragraph">
+<p>No packet acknowledge/retransmit scheme is currently implemented. The cluster needs
+a reliable network with very few packet losses. It might be necessary to use a more
+reliable transport protocol in the future, especially if nodes start to drop packets
+due to an overloaded CPU.</p>
+</div>
+<div class="paragraph">
+<p>Messages contain a protocol version, a message type and different attributes. The
+following synchronization message types are currently defined:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>IKE_ADD</code></dt>
+<dd>
+<p>A new IKE_SA has been established. This message contains all information to derive
+key material. If the message contains a <code>REKEY</code> attribute, the IKE_SA inherits all
+required parameters from the old SA.</p>
+</dd>
+<dt class="hdlist1"><code>IKE_UPDATE</code></dt>
+<dd>
+<p>Update IKE_SA with newer information (e.g. Identities when authentication is
+complete).</p>
+</dd>
+<dt class="hdlist1"><code>IKE_MID_INITIATOR</code></dt>
+<dd>
+<p>Update the initiators IKE message ID.</p>
+</dd>
+<dt class="hdlist1"><code>IKE_MID_RESPONDER</code></dt>
+<dd>
+<p>Update the responders IKE message ID.</p>
+</dd>
+<dt class="hdlist1"><code>IKE_DELETE</code></dt>
+<dd>
+<p>Delete an established IKE_SA.</p>
+</dd>
+<dt class="hdlist1"><code>CHILD_ADD</code></dt>
+<dd>
+<p>CHILD_SA has been established, contains keying material.</p>
+</dd>
+<dt class="hdlist1"><code>CHILD_DELETE</code></dt>
+<dd>
+<p>CHILD_SA has been deleted.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_state_synchronization"><a class="anchor" href="#_state_synchronization"></a>State Synchronization</h3>
+<div class="paragraph">
+<p>Received synchronization messages are parsed, mirrored IKE and CHILD_SAs are created
+from this information. Mirrored CHILD_SAs do not differ from normally exchanged ones.
+They are installed in the kernel and handle packets if ClusterIP feels responsible
+for it.</p>
+</div>
+<div class="paragraph">
+<p>IKE_SAs are installed in a special <code>PASSIVE</code> state. They do not handle traffic but
+accept state changes from sync messages only. <code>PASSIVE</code> IKE_SAs are managed in the
+IKE_SA manager as any other SA and are accessible e.g. through
+<a href="../swanctl/swanctlListSas.html" class="xref page"><code><strong>swanctl --list-sas</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>Key derivation is repeated on mirrored SAs the same way as it is done on the real
+SAs. This allows the reuse of existing installation routines and the
+<a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin to be very unobtrusive.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_control_messages"><a class="anchor" href="#_control_messages"></a>Control messages</h3>
+<div class="paragraph">
+<p>In addition to the synchronization messages, the HA plugin uses control messages
+to notify about segment changes and optionally messages for simple monitoring
+functions:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>SEGMENT_DROP</code></dt>
+<dd>
+<p>List of segments the sending node is dropping responsibility.</p>
+</dd>
+<dt class="hdlist1"><code>SEGMENT_TAKE</code></dt>
+<dd>
+<p>List of segments the sending node is taking responsibility.</p>
+</dd>
+<dt class="hdlist1"><code>STATUS</code></dt>
+<dd>
+<p>Heartbeat message containing a list of segments the sending node is responsible.</p>
+</dd>
+<dt class="hdlist1"><code>RESYNC</code></dt>
+<dd>
+<p>Request for resynchronization of a list of segments.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The take/drop messages are sent to notify other nodes about changes done by the
+daemon automatically or the administrator manually. The receiving node will
+automatically do the opposite action to handle all segments exactly once.</p>
+</div>
+<div class="paragraph">
+<p>If heartbeat monitoring is enabled, the STATUS message is periodically sent. This
+allows to detect the activity of the remote node and take over segments the remote
+node is not serving. It also implements node failure detection for simple errors.</p>
+</div>
+<div class="paragraph">
+<p>If a replacement of a failing node is installed, reintegration of the node can be
+sped up by sending the resynchronization message. The active node will start
+resyncing all SAs, allowing the administrator to rebalance the load distribution
+in the cluster afterwards.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_failover"><a class="anchor" href="#_failover"></a>Failover</h3>
+<div class="paragraph">
+<p>In the failover case, responsibility for complete ClusterIP segments are moved
+from one node to another. Responsibility for a segment can be enabled or disabled
+on each node. For this purpose the plugin uses the same hashing algorithm to
+calculate responsibility based on the source IP address.</p>
+</div>
+<div class="paragraph">
+<p>If a segment is activated, the plugin searches for IKE_SAs in this segment and sets
+the state of all <code>PASSIVE</code> IKE_SAs to <code>ESTABLISHED</code>. No further action is required:
+The daemon handles the IKE_SA as every other one and sends out synchronization
+messages for state changes.</p>
+</div>
+<div class="paragraph">
+<p>On segment deactivation, the plugin searches for IKE_SAs in the <code>ESTABLISHED</code> state
+in these segments and sets the state to <code>PASSIVE</code>.</p>
+</div>
+<div class="paragraph">
+<p>CHILD_SAs are completely unaffected from activation and deactivation: They are
+always active and handle traffic assigned by ClusterIP.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reintegration"><a class="anchor" href="#_reintegration"></a>Reintegration</h3>
+<div class="paragraph">
+<p>To re-integrate a failed node into a cluster, the node needs state information from
+scratch. If all the required state has been synced, the reintegrated node can be
+used as failover node again. Segments can be activated on the reintegrated node
+only after all required state has been exchanged.</p>
+</div>
+<div class="paragraph">
+<p>Each node caches IKE_SA specific messages locally for all IKE_SAs currently active.
+If a different node wants to reintegrate, the active node pushes the message cache
+to the new node. This allows the reintegrated node to reestablish the state for all
+IKE_SAs.</p>
+</div>
+<div class="paragraph">
+<p>Synchronizing CHILD_SAs is not possible using the cache, as the messages do not
+contain sequence number information managed in the kernel. To reintegrate a node,
+the active node initiates rekeying on all CHILD_SAs. The new CHILD_SA will be
+synchronized, starting with fresh sequence numbers in the kernel. CHILD_SA rekeying
+is inexpensive, as it usually does not include a DH exchange.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_ha_plugin"><a class="anchor" href="#_building_ha_plugin"></a>Building HA Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin must be enabled via
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a>. The plugin must use the same hashing
+algorithm for segment calculation as the kernel (<code><strong>jhash</strong></code>). This algorithm has
+changed for Linux 2.6.37 and may again change in the future. To use the correct
+version of <code><strong>jhash</strong></code>, build strongSwan against the kernel headers of the kernel
+you&#8217;re actually running strongSwan on:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>./configure --enable-ha --with-linux-headers=/path/to/target/kernel/include/linux</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration is done in two places. The necessary virtual IPs and the ClusterIP
+rules are installed manually. This is explicitly not done by the daemon, as the
+rules must stay active after daemon shutdown or error conditions.</p>
+</div>
+<div class="paragraph">
+<p>The HA plugin requires a configuration matching to the installed ClusterIP rules.
+All nodes in the cluster need an identical connection configuration, but <strong>may</strong> use
+different credentials (i.e. different private keys and certificates to authenticate
+the cluster node).</p>
+</div>
+<div class="sect2">
+<h3 id="_clusterip"><a class="anchor" href="#_clusterip"></a>ClusterIP</h3>
+<div class="paragraph">
+<p>The configuration of the extended ClusterIP module is similar to a default ClusterIP
+setup. For a traffic forwarding IPsec gateway, a cluster usually needs an internal
+virtual IP/MAC address and an external virtual IP/MAC address on each node.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ip address add 192.168.0.200/24 dev eth0
+iptables -A INPUT -i eth0 -d 192.168.0.200 -j CLUSTERIP --new \
+   --hashmode sourceip --clustermac 01:00:5e:00:00:20 \
+   --total-nodes 2 --local-node 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This example installs the virtual IP <code>192.168.0.200</code> on interface <code><strong>eth0</strong></code> and
+adds a corresponding ClusterIP rule. ClusterIP rules are always added to the
+<code><strong>iptables</strong></code> <code>INPUT</code> chain. To get the same result for segment responsibility
+calculation in the kernel and the <a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin, the sourceip
+hashmode and a hash init value of 0 must be used (default).</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>--total-nodes</strong></code> option must match the configuration of the
+<a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin and all nodes require the same virtual IP/MAC
+address and ClusterIP configuration.</p>
+</div>
+<div class="paragraph">
+<p>ClusterIP requires the <code><strong>--local-node</strong></code> option to be present. While the
+<a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin reassigns segment responsibility during daemon
+startup, it is recommended to use zero, so that a node booting up does not process
+any packets until the <a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin tells it to do so.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_address_pools"><a class="anchor" href="#_address_pools"></a>Address Pools</h3>
+<div class="paragraph">
+<p>Using an address pool to assign virtual IP addresses to clients is a little more
+complicated in a cluster. Using a central database based pool should be no problem,
+as long as you have a fail-save MySQL database cluster.</p>
+</div>
+<div class="paragraph">
+<p>In-memory address pools do not provide any synchronization: you don&#8217;t want to assign
+the same address from two different nodes to different clients. One option would be
+to split up e.g. a <code><strong>10.0.2.0/23</strong></code> pool into a <code><strong>10.0.2.0/24</strong></code> and a <code><strong>10.0.3.0/24</strong></code>
+pool and use each pool on one node. But this approach has its limitations: If one
+node goes down and gives away an IKE_SA, the pool state is lost. If the failed node
+reintegrates into the cluster and takes over the same IKE_SA, the virtual IP will
+be in use again. But the reset pool will not reflect this fact and may reassign
+the same address to another client.</p>
+</div>
+<div class="paragraph">
+<p>As an alternative strongSwan provides an HA-enabled in-memory address pool.
+The pool is simple to configure but only hands out addresses the local node is
+responsible for (using segment calculations). Further it reserves addresses in the
+pool for IKE_SAs handled by a different node.</p>
+</div>
+<div class="paragraph">
+<p>To configure an HA enabled in-memory address pool, add a <code><strong>pools</strong></code> subsection
+in the <a href="../config/strongswanConf.html#_charon_plugins_ha" class="xref page"><code><strong>ha</strong></code></a> section of
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> and define the required pools.
+Use exactly the <code><strong>same</strong></code> pool configuration on both nodes. There is no need to
+split up the pools with the HA-enabled implementation!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># ...
+    ha {
+      # ...
+      pools {
+        sales = 10.0.1.0/24
+        finance = 10.0.2.0/24
+      }
+    }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To use the pools, reference them in the connections definitions of
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>, e.g.:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.sales_dept.pools = sales</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_administrating_segment_responsibility"><a class="anchor" href="#_administrating_segment_responsibility"></a>Administrating segment responsibility</h3>
+<div class="paragraph">
+<p>Changing the segment responsibility is done for the daemon, where it will propagate
+the changes in segment responsibility to the kernel.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin uses a very similar interface for segment
+control as ClusterIP. Instead of a <code><strong>proc</strong></code> entry, it uses a FIFO located at
+<code><strong>/var/run/charon.ha</strong></code>. Echoing <code><strong>+1/-1</strong></code> will activate/deactivate responsibility
+for segment <code><strong>1</strong></code> while an additional command <code><strong>*3</strong></code> will enforce a
+resynchronization by triggering a rekey of all SAs in segment <code><strong>3</strong></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Two examples are provided in our
+<a href="../devs/testingEnvironment.html" class="xref page">testing environment</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.strongswan.org/testing/testresults/ha/active-passive"><code><strong>ha/active-passive</strong></code></a> -
+One node active the other passive, but ready to take over immediately</p>
+</li>
+<li>
+<p><a href="https://www.strongswan.org/testing/testresults/ha/both-active"><code><strong>ha/both-active</strong></code></a> -
+Two active nodes with load sharing for ESP</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="routeBasedVpn.html">Route-based VPN</a></span>
+  <span class="next"><a href="hashAndUrl.html">Hash and URL</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

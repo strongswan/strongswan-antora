@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Apple IKEv2 Configuration Profile :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/interop/appleIkev2Profile.html">
+    <link rel="prev" href="ios.html">
+    <link rel="next" href="fortinet.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Interoperability</li>
+    <li><a href="ios.html">iOS and macOS</a></li>
+    <li><a href="appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/interop/appleIkev2Profile.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Apple IKEv2 Configuration Profile</h1>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While iOS 8 introduced native IKEv2 support, the VPN application&#8217;s GUI was initially
+not updated to allow configuration of such connections on the devices themselves.
+Therefore it was required to create IKEv2 connections with custom configuration
+profiles.</p>
+</div>
+<div class="paragraph">
+<p>Since iOS 9 IKEv2 connections may be configured in the GUI. But it is still possible
+to configure VPN connections with profiles (offering some settings that are not
+available in the GUI). Such profiles can be created manually or you can use
+<a href="https://support.apple.com/apple-configurator">Apple Configurator</a> or
+<a href="https://support.apple.com/profile-manager">Apple Profile Manager</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can adjust the following templates to your setup and then send it to your
+device[s] via email or provide it via HTTP. In order for the iOS mail client to
+install the profile, the file name of the attachment must end in <code><strong>.mobileconfig</strong></code>
+and the content type should be <code><strong>application/octet-stream</strong></code> (Thunderbird seems to
+use <code><strong>text/html</strong></code> which will not work).</p>
+</div>
+<div class="paragraph">
+<p>Several notes to the configuration keys are provided as comments in the template
+files below. The official documentation can be found at
+<a href="https://developer.apple.com/library/prerelease/mac/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html"><code><strong>developer.apple.com</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>macOS 10.11 and newer support IKEv2. Earlier versions only support IKEv1.</p>
+</div>
+<div class="sect2">
+<h3 id="_known_issues"><a class="anchor" href="#_known_issues"></a>Known Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>ASN.1 Distinguished Names can&#8217;t be used as identities because the client currently
+sends them as identities of type <code><strong>FQDN</strong></code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authentication_options"><a class="anchor" href="#_authentication_options"></a>Authentication Options</h3>
+<div class="paragraph">
+<p>The client and server authentication is determined by the following options
+(more details can be found in comments in the templates below):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AuthenticationMethod = Certificate</strong><br>
+In all these variants the server is authenticated with a certificate. The
+<strong>ServerCertificateIssuerCommonName</strong> and <strong>ServerCertificateCommonName</strong> options
+are used to verify the server certificate.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ExtendedAuthEnabled = 0</strong> and <strong>PayloadCertificateUUID</strong> set<br>
+The client is using
+<a href="#_certificate_based_authentication">certificate-based authentication</a>.</p>
+</li>
+<li>
+<p><strong>ExtendedAuthEnabled = 1</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>PayloadCertificateUUID</strong> set<br>
+The client is using
+<a href="#_eap_tls_authentication">certificate-based authentication via EAP-TLS</a>.</p>
+</li>
+<li>
+<p><strong>PayloadCertificateUUID</strong> <strong>not</strong> set<br>
+The client is
+<a href="#_eap_authentication">authenticated via a password-based EAP method</a>
+currently restricted to EAP-MSCHAPv2. Use of other EAP types (e.g. EAP-MD5
+or EAP-GTC) will produce an IKE_AUTH failure, asking to use EAP-MSCHAPv2
+instead (tested on IOS 9). The credentials can be configured with
+<strong>AuthName</strong> and <strong>AuthPassword</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>AuthenticationMethod = SharedSecret</strong><br>
+Uses <a href="#_psk_based_authentication">PSK-based authentication</a> for client and
+server. The PSK can be configured with the <strong>SharedSecret</strong> option.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_eap_authentication_base_template"><a class="anchor" href="#_eap_authentication_base_template"></a>EAP Authentication (base template)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This configuration is compatible to the
+<a href="windowsClients.html#_using_passwords_with_eap_mschapv2" class="xref page">Windows EAP configuration</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;code class="xml"&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  &lt;!-- Set the name to whatever you like, it is used in the profile list on the device --&gt;
+  &lt;key&gt;PayloadDisplayName&lt;/key&gt;
+  &lt;string&gt;Profile name&lt;/string&gt;
+  &lt;!-- This is a reverse-DNS style unique identifier used to detect duplicate profiles --&gt;
+  &lt;key&gt;PayloadIdentifier&lt;/key&gt;
+  &lt;string&gt;org.example.vpn1&lt;/string&gt;
+  &lt;!-- A globally unique identifier, use uuidgen on Linux/Mac OS X to generate it --&gt;
+  &lt;key&gt;PayloadUUID&lt;/key&gt;
+  &lt;string&gt;9f93912b-5fd2-4455-99fd-13b9a47b4581&lt;/string&gt;
+  &lt;key&gt;PayloadType&lt;/key&gt;
+  &lt;string&gt;Configuration&lt;/string&gt;
+  &lt;key&gt;PayloadVersion&lt;/key&gt;
+  &lt;integer&gt;1&lt;/integer&gt;
+  &lt;key&gt;PayloadContent&lt;/key&gt;
+  &lt;array&gt;
+    &lt;!-- It is possible to add multiple VPN payloads with different identifiers/UUIDs and names --&gt;
+    &lt;dict&gt;
+      &lt;!-- This is an extension of the identifier given above --&gt;
+      &lt;key&gt;PayloadIdentifier&lt;/key&gt;
+      &lt;string&gt;org.example.vpn1.conf1&lt;/string&gt;
+      &lt;!-- A globally unique identifier for this payload --&gt;
+      &lt;key&gt;PayloadUUID&lt;/key&gt;
+      &lt;string&gt;29e4456d-3f03-4f15-b46f-4225d89465b7&lt;/string&gt;
+      &lt;key&gt;PayloadType&lt;/key&gt;
+      &lt;string&gt;com.apple.vpn.managed&lt;/string&gt;
+      &lt;key&gt;PayloadVersion&lt;/key&gt;
+      &lt;integer&gt;1&lt;/integer&gt;
+      &lt;!-- This is the name of the VPN connection as seen in the VPN application later --&gt;
+      &lt;key&gt;UserDefinedName&lt;/key&gt;
+      &lt;string&gt;VPN Name&lt;/string&gt;
+      &lt;key&gt;VPNType&lt;/key&gt;
+      &lt;string&gt;IKEv2&lt;/string&gt;
+      &lt;key&gt;IKEv2&lt;/key&gt;
+      &lt;dict&gt;
+        &lt;!-- Hostname or IP address of the VPN server --&gt;
+        &lt;key&gt;RemoteAddress&lt;/key&gt;
+        &lt;string&gt;vpn.example.org&lt;/string&gt;
+        &lt;!-- Remote identity, can be a FQDN, a userFQDN, an IP or (theoretically) a certificate's subject DN. Can't be empty.
+             IMPORTANT: DNs are currently not handled correctly, they are always sent as identities of type FQDN --&gt;
+        &lt;key&gt;RemoteIdentifier&lt;/key&gt;
+        &lt;string&gt;vpn.example.org&lt;/string&gt;
+        &lt;!-- Local IKE identity, same restrictions as above. If it is empty the client's IP address will be used --&gt;
+        &lt;key&gt;LocalIdentifier&lt;/key&gt;
+        &lt;string&gt;&lt;/string&gt;
+        &lt;!-- Optional, if it matches the CN of the root CA certificate (not the full subject DN) a certificate request will be sent
+             NOTE: If this is not configured make sure to configure leftsendcert=always on the server, otherwise it won't send its certificate --&gt;
+        &lt;key&gt;ServerCertificateIssuerCommonName&lt;/key&gt;
+        &lt;string&gt;Example Root CA&lt;/string&gt;
+        &lt;!-- Optional, the CN or one of the subjectAltNames of the server certificate to verify it, if not set RemoteIdentifier will be used --&gt;
+        &lt;key&gt;ServerCertificateCommonName&lt;/key&gt;
+        &lt;string&gt;vpn.example.org&lt;/string&gt;
+        &lt;!-- The server is authenticated using a certificate --&gt;
+        &lt;key&gt;AuthenticationMethod&lt;/key&gt;
+        &lt;string&gt;Certificate&lt;/string&gt;
+        &lt;!-- The client uses EAP to authenticate --&gt;
+        &lt;key&gt;ExtendedAuthEnabled&lt;/key&gt;
+        &lt;integer&gt;1&lt;/integer&gt;
+        &lt;!-- User name for EAP authentication. Since iOS 9 this is optional, the user is prompted when the profile is installed --&gt;
+        &lt;key&gt;AuthName&lt;/key&gt;
+        &lt;string&gt;User&lt;/string&gt;
+        &lt;!-- Optional password for EAP authentication, if it is not set the user is prompted when the profile is installed
+        &lt;key&gt;AuthPassword&lt;/key&gt;
+        &lt;string&gt;...&lt;/string&gt;
+        --&gt;
+        &lt;!-- The next two dictionaries are optional (as are the keys in them), but it is recommended to specify them as the default is to use 3DES.
+             IMPORTANT: Because only one proposal is sent (even if nothing is configured here) it must match the server configuration --&gt;
+        &lt;key&gt;IKESecurityAssociationParameters&lt;/key&gt;
+        &lt;dict&gt;
+          &lt;!-- @see https://developer.apple.com/documentation/networkextension/nevpnikev2encryptionalgorithm --&gt;
+          &lt;key&gt;EncryptionAlgorithm&lt;/key&gt;
+          &lt;string&gt;AES-128&lt;/string&gt;&lt;!-- Alternatives include: AES-256, AES-256-GCM, etc --&gt;
+          &lt;!-- @see https://developer.apple.com/documentation/networkextension/nevpnikev2integrityalgorithm --&gt;
+          &lt;key&gt;IntegrityAlgorithm&lt;/key&gt;
+          &lt;string&gt;SHA1-96&lt;/string&gt;&lt;!-- Alternatives include: SHA2-256, SHA2-512, etc --&gt;
+          &lt;!-- @see https://developer.apple.com/documentation/networkextension/nevpnikev2diffiehellmangroup --&gt;
+          &lt;key&gt;DiffieHellmanGroup&lt;/key&gt;
+          &lt;integer&gt;14&lt;/integer&gt;&lt;!-- Alternatives include 20, 21, 31, etc --&gt;
+        &lt;/dict&gt;
+        &lt;key&gt;ChildSecurityAssociationParameters&lt;/key&gt;
+        &lt;dict&gt;
+          &lt;key&gt;EncryptionAlgorithm&lt;/key&gt;
+          &lt;string&gt;AES-128&lt;/string&gt;&lt;!-- Alternatives include: AES-256, AES-256-GCM, etc --&gt;
+          &lt;key&gt;IntegrityAlgorithm&lt;/key&gt;
+          &lt;string&gt;SHA1-96&lt;/string&gt;&lt;!-- Alternatives include: SHA2-256, SHA2-512, etc --&gt;
+          &lt;key&gt;DiffieHellmanGroup&lt;/key&gt;
+          &lt;integer&gt;14&lt;/integer&gt;&lt;!-- Alternatives include 20, 21, 31, etc --&gt;
+        &lt;/dict&gt;
+      &lt;/dict&gt;
+    &lt;/dict&gt;
+    &lt;!-- This payload is optional but it provides an easy way to install the CA certificate together with the configuration --&gt;
+    &lt;dict&gt;
+      &lt;key&gt;PayloadIdentifier&lt;/key&gt;
+      &lt;string&gt;org.example.ca&lt;/string&gt;
+      &lt;key&gt;PayloadUUID&lt;/key&gt;
+      &lt;string&gt;64988b2c-33e0-4adf-a432-6fbcae543408&lt;/string&gt;
+      &lt;key&gt;PayloadType&lt;/key&gt;
+      &lt;string&gt;com.apple.security.root&lt;/string&gt;
+      &lt;key&gt;PayloadVersion&lt;/key&gt;
+      &lt;integer&gt;1&lt;/integer&gt;
+      &lt;!-- This is the Base64 (PEM) encoded CA certificate --&gt;
+      &lt;key&gt;PayloadContent&lt;/key&gt;
+      &lt;data&gt;
+      MIIDajCCA...
+      &lt;/data&gt;
+    &lt;/dict&gt;
+  &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+&lt;/code&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_certificate_based_authentication"><a class="anchor" href="#_certificate_based_authentication"></a>Certificate-based Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This configuration is compatible to the
+<a href="windowsClients.html#_using_x_509_machine_certificates" class="xref page">Windows with Machine
+Certificates configuration</a>. Only the differences to the above configuration are
+shown.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;code class="xml"&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  ...
+  &lt;array&gt;
+    &lt;dict&gt;
+      ...
+      &lt;key&gt;IKEv2&lt;/key&gt;
+      &lt;dict&gt;
+        ...
+        &lt;!-- Local IKE identity, should match one of the subjectAltNames of the client certificate
+             IMPORTANT: As mentioned above, subject DN's currently can't be used --&gt;
+        &lt;key&gt;LocalIdentifier&lt;/key&gt;
+        &lt;string&gt;client@example.org&lt;/string&gt;
+        ...
+        &lt;!-- Either set this to 0 or don't configure it at all to use certificate authentication also for the client
+        &lt;key&gt;ExtendedAuthEnabled&lt;/key&gt;
+        &lt;integer&gt;0&lt;/integer&gt;
+        --&gt;
+        &lt;!-- Similarly, instead of AuthName and AuthPassword, we configure the certificate to use --&gt;
+        &lt;key&gt;PayloadCertificateUUID&lt;/key&gt;
+        &lt;string&gt;d60488c6-328e-4944-9c8d-61db8095c864&lt;/string&gt;
+        &lt;!-- Optional key type, to use ECDSA keys this has to be set to ECDSA... as it defaults to RSA
+        &lt;key&gt;CertificateType&lt;/key&gt;
+        &lt;string&gt;ECDSA256&lt;/string&gt;
+        --&gt;
+        ...
+      &lt;/dict&gt;
+    &lt;/dict&gt;
+    &lt;dict&gt;
+      &lt;key&gt;PayloadIdentifier&lt;/key&gt;
+      &lt;string&gt;org.example.vpn1.client&lt;/string&gt;
+      &lt;key&gt;PayloadUUID&lt;/key&gt;
+      &lt;string&gt;d60488c6-328e-4944-9c8d-61db8095c864&lt;/string&gt;
+      &lt;key&gt;PayloadType&lt;/key&gt;
+      &lt;string&gt;com.apple.security.pkcs12&lt;/string&gt;
+      &lt;key&gt;PayloadVersion&lt;/key&gt;
+      &lt;integer&gt;1&lt;/integer&gt;
+      &lt;!-- Optional password to decrypt the PKCS#12 container, if not set the user is prompted when installing the profile
+      &lt;key&gt;Password&lt;/key&gt;
+      &lt;string&gt;...&lt;/string&gt;
+      --&gt;
+      &lt;!-- This is the Base64 encoded PKCS#12 container with the certificate and private key for the client.
+           IMPORTANT: The CA certificate will not be extracted from the container, so either install it separately or include it as payload (as seen above) --&gt;
+      &lt;key&gt;PayloadContent&lt;/key&gt;
+      &lt;data&gt;
+      MIINCQ...
+      &lt;/data&gt;
+    &lt;/dict&gt;
+    &lt;!-- As mentioned above the CA certificate is not extracted from the PKCS#12 container, so install it using this payload --&gt;
+    &lt;dict&gt;
+      &lt;key&gt;PayloadIdentifier&lt;/key&gt;
+      &lt;string&gt;org.example.ca&lt;/string&gt;
+      ...
+    &lt;/dict&gt;
+  &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+&lt;/code&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_eap_tls_authentication"><a class="anchor" href="#_eap_tls_authentication"></a>EAP-TLS authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This configuration is compatible to the
+<a href="windowsClients.html#_using_x_509_user_certificates" class="xref page">Windows with User Certificates configuration</a>.</p>
+</div>
+<div class="paragraph">
+<p>This is basically the same as the certificate configuration above, but with
+<strong>ExtendedAuthEnabled</strong> activated.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;code class="xml"&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  ...
+  &lt;array&gt;
+    &lt;dict&gt;
+      ...
+      &lt;key&gt;IKEv2&lt;/key&gt;
+      &lt;dict&gt;
+        ...
+        &lt;!-- Enable EAP, by configuring PayloadCertificateUUID EAP-TLS gets used --&gt;
+        &lt;key&gt;ExtendedAuthEnabled&lt;/key&gt;
+        &lt;integer&gt;1&lt;/integer&gt;
+        &lt;!-- Instead of AuthName and AuthPassword, we configure the certificate to use --&gt;
+        &lt;key&gt;PayloadCertificateUUID&lt;/key&gt;
+        &lt;string&gt;d60488c6-328e-4944-9c8d-61db8095c864&lt;/string&gt;
+        &lt;!-- Optional key type, to use ECDSA keys this has to be set to ECDSA... as it defaults to RSA
+        &lt;key&gt;CertificateType&lt;/key&gt;
+        &lt;string&gt;ECDSA256&lt;/string&gt;
+        --&gt;
+        ...
+      &lt;/dict&gt;
+    &lt;/dict&gt;
+    &lt;!-- Certificates are configured as shown above. If your AAA server certificate is issued by a different CA just install multiple CA certificates --&gt;
+  &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+&lt;/code&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_psk_based_authentication"><a class="anchor" href="#_psk_based_authentication"></a>PSK-based Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is also possible to use Pre-Shared Keys (PSKs) for authentication.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;code class="xml"&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  ...
+  &lt;array&gt;
+    &lt;dict&gt;
+      ...
+      &lt;key&gt;IKEv2&lt;/key&gt;
+      &lt;dict&gt;
+        ...
+        &lt;!-- Use a pre-shared secret for authentication --&gt;
+        &lt;key&gt;AuthenticationMethod&lt;/key&gt;
+        &lt;string&gt;SharedSecret&lt;/string&gt;
+        &lt;!-- The actual secret --&gt;
+        &lt;key&gt;SharedSecret&lt;/key&gt;
+        &lt;string&gt;...&lt;/string&gt;
+        &lt;!-- No EAP --&gt;
+        &lt;key&gt;ExtendedAuthEnabled&lt;/key&gt;
+        &lt;integer&gt;0&lt;/integer&gt;
+        ...
+      &lt;/dict&gt;
+    &lt;/dict&gt;
+  &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+&lt;/code&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enable_on_demand_vpn"><a class="anchor" href="#_enable_on_demand_vpn"></a>Enable On-Demand VPN</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible to automatically trigger an VPN-Connect if needed. This example shows
+rules which will disconnect the tunnel when connected to a specific WiFi SSID
+(<code><strong>MySSID</strong></code>) and establishes a tunnel when domain name resolution of specific domains
+fail (<code><strong>*.internal.mydomain.com</strong></code>).
+For more details have a look at Apple&#8217;s <a href="https://developer.apple.com/library/prerelease/mac/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html">Configuration Profile Reference</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;code class="xml"&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  ...
+  &lt;array&gt;
+    &lt;dict&gt;
+      ...
+      &lt;key&gt;IKEv2&lt;/key&gt;
+      &lt;dict&gt;
+        ...
+        &lt;key&gt;OnDemandEnabled&lt;/key&gt;
+        &lt;integer&gt;1&lt;/integer&gt;
+        &lt;key&gt;OnDemandRules&lt;/key&gt;
+        &lt;array&gt;
+          &lt;!--
+               1. Check if we are connected to a WiFi network
+               2. Check if the SSID is included in the SSIDMatch-array
+               3. If 1 + 2 are true, then disconnect the tunnel
+          --&gt;
+          &lt;dict&gt;
+            &lt;key&gt;InterfaceTypeMatch&lt;/key&gt;
+            &lt;string&gt;WiFi&lt;/string&gt;
+            &lt;key&gt;SSIDMatch&lt;/key&gt;
+            &lt;array&gt;
+              &lt;string&gt;MySSID&lt;/string&gt;
+            &lt;/array&gt;
+            &lt;key&gt;Action&lt;/key&gt;
+            &lt;string&gt;Disconnect&lt;/string&gt;
+          &lt;/dict&gt;
+          &lt;!--
+               1. For each connection attempt, test if the domain name is included in the Domains-array
+               2. If 1 is true, try domain name resolution
+               3. If 2 fails or times out, establish a VPN connection
+          --&gt;
+          &lt;dict&gt;
+            &lt;key&gt;Action&lt;/key&gt;
+            &lt;string&gt;EvaluateConnection&lt;/string&gt;
+            &lt;key&gt;ActionParameters&lt;/key&gt;
+            &lt;array&gt;
+              &lt;dict&gt;
+                &lt;key&gt;Domains&lt;/key&gt;
+                &lt;array&gt;
+                  &lt;string&gt;*.internal.mydomain.com&lt;/string&gt;
+                &lt;/array&gt;
+                &lt;key&gt;DomainAction&lt;/key&gt;
+                &lt;string&gt;ConnectIfNeeded&lt;/string&gt;
+              &lt;/dict&gt;
+            &lt;/array&gt;
+          &lt;/dict&gt;
+          &lt;!--
+            Default entry, ignore any other cases
+          --&gt;
+          &lt;dict&gt;
+            &lt;key&gt;Action&lt;/key&gt;
+            &lt;string&gt;Ignore&lt;/string&gt;
+          &lt;/dict&gt;
+        &lt;/array&gt;
+        ...
+      &lt;/dict&gt;
+    &lt;/dict&gt;
+  &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+&lt;/code&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="ios.html">iOS and macOS</a></span>
+  <span class="next"><a href="fortinet.html">Fortinet Devices</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developer Documentation :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/devs/devs.html">
+    <link rel="prev" href="../plugins/pluginLoad.html">
+    <link rel="next" href="contributions.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Devs</li>
+    <li><a href="devs.html">Developer Documentation</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/devs/devs.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Developer Documentation</h1>
+<div class="sect1">
+<h2 id="_contributions_license"><a class="anchor" href="#_contributions_license"></a>Contributions / License</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before starting development, please read our
+<a href="contributions.html" class="xref page">contribution requirements</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_the_source_code"><a class="anchor" href="#_getting_the_source_code"></a>Getting the Source Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The easiest way to get the source code is checking it out from our
+<a href="https://github.com/strongswan/strongswan">Git repository</a>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>git clone https://github.com/strongswan/strongswan.git</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_browsing_the_source_code"><a class="anchor" href="#_browsing_the_source_code"></a>Browsing the Source Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Git repository can be browsed directly at <a href="https://github.com/strongswan/strongswan">GitHub</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source_code_documentation"><a class="anchor" href="#_source_code_documentation"></a>Source Code Documentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>strongSwan uses extractable inline documentation extensively. This documentation
+is extracted with <a href="https://doxygen.org">Doxygen</a> for the latest release and uploaded to
+<a href="https://www.strongswan.org/apidoc">strongswan.org/apidoc</a>. Use <code><strong>make apidoc</strong></code> to generate it from the
+sources.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_style"><a class="anchor" href="#_code_style"></a>Code style</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For our code we heavily use an
+<a href="objectOrientedC.html" class="xref page">object oriented programming style</a> for C. Also
+have a look to our basic <a href="programmingStyle.html" class="xref page">programming style</a>
+guidelines.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quality_assurance"><a class="anchor" href="#_quality_assurance"></a>Quality Assurance</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_unit_tests"><a class="anchor" href="#_unit_tests"></a>Unit Tests</h3>
+<div class="paragraph">
+<p>Our libraries are tested with an increasing number of unit tests. To run them use
+<code><strong>make check</strong></code>. The following environment variables change the behavior of the
+test runner:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 62.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since<br>
+Version</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_PLUGINS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A space-separated list of plugins to load<br>
+ (not implemented by all test runners)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_REDUCED_KEYLENGTHS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is set test cases that generate keys will do so only for reduced key
+ lengths to avoid blocking on hosts with low entropy</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_STRONGSWAN_CONF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to a custom <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> file used
+ for the tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_RUNNERS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test runners to run</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_SUITES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test suites to run<br>
+ (all suites are run if this is not specified)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_SUITES_EXCLUDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test suites excluded from running</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_CASES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test cases to run<br>
+ (all cases of selected suites are run if this is not specified)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_CASES_EXCLUDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test cases excluded from running</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_FUNCTIONS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test functions to run
+ (all functions of selected suites/cases are run if this is not specified)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_FUNCTIONS_EXCLUDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test functions excluded from running</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_VERBOSITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The log level used when running the tests (<code><strong>-1</strong></code> to <code><strong>4</strong></code> with a default of
+ <code><strong>-1</strong></code>), see <a href="../config/logging.html" class="xref page">Logging</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LEAK_DETECTIVE_DISABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If our custom memory allocator is enabled with <code><strong>--enable-leak-detective</strong></code> it
+ can be disabled temporarily by setting this variable in order to speed up
+ running the tests</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Coverage reports can be generated with <code><strong>make coverage</strong></code> which requires the
+<code><strong>--enable-coverage</strong></code> <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> option which
+is not recommended for production builds as it disables all optimizations.</p>
+</div>
+<div class="paragraph">
+<p>The unit tests also run automatically for every commit:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions?query=workflow%3ALinux"><img src="https://github.com/strongswan/strongswan/workflows/Linux/badge.svg" alt="Linux" title="Linux"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions?query=workflow%3AAndroid"><img src="https://github.com/strongswan/strongswan/workflows/Android/badge.svg" alt="Android" title="Android"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions?query=workflow%3AmacOS"><img src="https://github.com/strongswan/strongswan/workflows/macOS/badge.svg" alt="macOS" title="macOS"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions?query=workflow%3AWindows"><img src="https://github.com/strongswan/strongswan/workflows/Windows/badge.svg" alt="Windows" title="Cross-compiled Windows"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://ci.appveyor.com/api/projects/tobiasbrunner/strongswan-52lo9"><img src="https://ci.appveyor.com/api/projects/status/186bfuup38t9pu4k?svg=true" alt="Windows" title="Native Windows on AppVeyor"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://api.cirrus-ci.com/github/strongswan/strongswan"><img src="https://api.cirrus-ci.com/github/strongswan/strongswan.svg?branch=master" alt="FreeBSD" title="FreeBSD on Cirrus CI"></a></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Information on the code coverage:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://codecov.io/gh/strongswan/strongswan"><img src="https://codecov.io/gh/strongswan/strongswan/branch/master/graph/badge.svg" alt="Codecov" title="Code Coverage"></a></span></p>
+</div>
+<div class="paragraph">
+<p>And the code base is automatically analyzed:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions?query=workflow%3ASonarCloud"><img src="https://github.com/strongswan/strongswan/workflows/SonarCloud/badge.svg" alt="SonarCloud" title="SonarCloud"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://sonarcloud.io/dashboard?id=strongswan"><img src="https://sonarcloud.io/api/project_badges/measure?project=strongswan&amp;metric=alert_status" alt="Sonarcloud" title="SonarCloud"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan//actions?query=workflow%3Algtm.com"><img src="https://github.com/strongswan/strongswan/workflows/lgtm.com/badge.svg" alt="LGTM" title="LGTM"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://lgtm.com/projects/g/strongswan/strongswan/"><img src="https://img.shields.io/lgtm/grade/cpp/github/strongswan/strongswan" alt="LGTM Grade" title="LGTM Grade"></a></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Part of the source code is periodicylly fuzzed by Google OSS-Fuzz:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&amp;can=1&amp;q=proj:strongswan"><img src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/strongswan.svg" alt="Fuzzing" title="Fuzzing Status"></a></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_environment"><a class="anchor" href="#_testing_environment"></a>Testing Environment</h3>
+<div class="paragraph">
+<p>Our integration and regression
+<a href="testingEnvironment.html" class="xref page">testing environment</a> helps us ensure the quality
+of future releases. The test results for the latest strongSwan release are
+published <a href="https://strongswan.org/testresults.html">online</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_components"><a class="anchor" href="#_components"></a>Components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/strongswan/strongswan//tree/master/src"><code>src</code></a> directory in the strongSwan distribution contains the following components:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Component</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>aikgen</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to generate an Attestation Identity Key bound to a TPM 1.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The IKE keying daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A command line IKE client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page"><code><strong>charon-nm</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The back end for the <a href="../features/networkManager.html" class="xref page">NetworkManager</a> D-BUS
+ plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-svc.html" class="xref page"><code><strong>charon-svc</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Windows IKE service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</a></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An IKE daemon similar to <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> but specifically
+ designed for use with <code><strong>systemd</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>charon-tkm</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A variant of <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> that is backed by a
+ Trusted Key Manager (<a href="https://www.codelabs.ch/tkm/">TKM</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/integrityTests.html" class="xref page"><code><strong>checksum</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to generate checksums of built executables and libraries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tools/conftest.html" class="xref page"><code><strong>conftest</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conformance test tool</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/androidVpnClient.html" class="xref page"><code><strong>frontends/android</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPN client for Android</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page"><code><strong>frontends/gnome</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page">NetworkManager</a> plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/macos.html" class="xref page"><code><strong>frontends/osx</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>charon-xpc</strong></code> helper daemon for the native <a href="../os/macos.html" class="xref page">macOS application</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ipsec</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The legacy ipsec command line tool wrapping commands and other tools</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libcharon</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains most of the code and the plugins of the
+ <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libfast</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A lightweight framework to build native web applications using ClearSilver and
+ FastCGI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page"><code><strong>libimcv</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Various Integrity Measurement Collectors (IMCs), Integrity Measuremeent
+ Validators (IMVs) and the library code shared by them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libipsec</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A userland IPsec implementation used by
+ <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a> and the
+ <a href="../os/androidVpnClient.html" class="xref page">Android VPN Client</a> app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libpts</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains code for TPM-based <a href="../tnc/tnc.html" class="xref page">Platform Trust Services</a> (PTS)
+ and SWID tag handling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libpttls</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <a href="../tnc/tnc.html" class="xref page"><code><strong>PT-TLS</strong></code></a> protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libradius</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RADIUS protocol implementation used by e.g. the
+ <a href="../plugins/eap-radius.html" class="xref page"><code><strong>eap-radius</strong></code></a> and <code><strong>tnc-pdp</strong></code> plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>libsimaka</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains code shared by several EAP-SIM/AKA plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libstrongswan</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The strongSwan library with basic functions used by the daemons and utilities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/eap-tls.html" class="xref page"><code><strong>libtls</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TLS implementation used by the <a href="../plugins/eap-tls.html" class="xref page"><code><strong>eap-tls</strong></code></a>, <code><strong>eap-ttls</strong></code>,
+ <code><strong>eap-peap</strong></code> and other plugins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libtnccs</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <a href="../tnc/tnc.html" class="xref page"><code>IF-TNCCS</code></a> interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libtncif</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implmements the <a href="../tnc/tnc.html" class="xref page"><code>IF-IMC/IF-IMV</code></a> interfaces</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>manager</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A deprecated graphical management application for
+ <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> based on <code><strong>libfast</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>medsrv</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An experimental management front end for mediation servers based on <code><strong>libfast</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public Key Infrastructure utility</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tools/pool.html" class="xref page"><code><strong>pool</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to manage attributes and IP address pools provided by the
+ <a href="../plugins/attr-sql.html" class="xref page"><code><strong>attr-sql</strong></code></a> plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/pt-tls-client.html" class="xref page"><code><strong>pt-tls-client</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integrity measurement client using the <code><strong>PT-TLS</strong></code> protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tools/scepclient.html" class="xref page"><code><strong>scepclient</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to enroll certificates using the SCEP protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/sec-updater.html" class="xref page"><code><strong>sec-updater</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utility extracting information about security updates and backports of Linux
+ repositories (e.g. Debian or Ubuntu)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>starter</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Legacy daemon that reads <code><strong>ipsec.conf</strong></code> and controls the keying daemon charon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>stroke</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Legacy command line utility to control <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> via
+ the <code><strong>stroke</strong></code> protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration and control utility that communicates via the
+ <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/sw-collector.html" class="xref page"><code><strong>sw-collector</strong></code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utility extracting information about software package installation, update or
+ removal events from the <code><strong>apt</strong></code> history log</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>tpm_extendpcr</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool that extends a digest into a TPM PCR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>_updown</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default script called by the <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> plugin on
+ tunnel up/down events</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>xfrmi</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create an <code>XFRM</code> interface</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../plugins/pluginLoad.html">Plugin Load Options</a></span>
+  <span class="next"><a href="contributions.html">Contributions</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

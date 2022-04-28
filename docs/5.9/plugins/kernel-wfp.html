@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>kernel-wfp Plugin :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/plugins/kernel-wfp.html">
+    <link rel="prev" href="kernel-libipsec.html">
+    <link rel="next" href="load-tester.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Plugins</li>
+    <li><a href="plugins.html">Plugin List</a></li>
+    <li><a href="kernel-wfp.html">kernel-wfp Plugin</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/plugins/kernel-wfp.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">kernel-wfp Plugin</h1>
+<div class="sect1">
+<h2 id="_purpose"><a class="anchor" href="#_purpose"></a>Purpose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>kernel-wfp</strong></code> plugin for <code><strong>libcharon</strong></code> is an interface to the IPsec backend
+in the Windows Filter Platform on <a href="../os/windows.html" class="xref page">Windows</a>. It installs and
+maintains Security Associations and Policies to the Windows Kernel.</p>
+</div>
+<div class="paragraph">
+<p>The plugin is disabled by default and can be enabled with the
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> option</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-kernel-wfp</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supported_ciphers"><a class="anchor" href="#_supported_ciphers"></a>Supported ciphers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This kernel backend supports both <code>AH</code>, <code>ESP</code> and <code>ESP-in-UDP</code> for both tunnel
+and transport mode Security Associations.</p>
+</div>
+<div class="paragraph">
+<p>The following integrity algorithms are supported for both <code>AH</code> and <code>ESP</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>md5
+sha1
+sha256
+aes128gmac
+aes192gmac
+aes256gmac</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following encryption algorithms for <code>ESP</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>null
+des
+3des
+aes128
+aes192
+aes256</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and these <code>AEAD</code> mode ciphers for <code>ESP</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>aes128gcm16
+aes192gcm16
+aes256gcm16</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_behavior"><a class="anchor" href="#_behavior"></a>Behavior</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Windows Filtering platform is a firewalling framework on the Windows
+operating system. It supports the installation of arbitrary filters from userland
+applications. Windows native IPsec is managed through the WFP API by
+associating filters to IPsec SA information.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>kernel-wfp</strong></code> plugin implements an IPsec backend using the WFP API. As it
+seems that there is no support to register custom keying modules in Windows 7,
+$ the backend installs SA and policy information directly after negotiation.
+This means that strongSwan does not install Main Mode or Quick Mode policies in
+WFP in a way the Windows native keying modules do. Instead we maintain such
+information locally in our IKE daemon and just install negotiated information.</p>
+</div>
+<div class="paragraph">
+<p>The Windows kernel handles the IPsec ruleset using so called SA contexts,
+managed by <em>IPsecSaContextCreate0</em> and associated functions. An SA context knows
+exactly one inbound and one outbound IPsec SA bundle for processing traffic,
+associated using the <code><strong>IPsecSaContextAddInbound0</strong></code> and <code><strong>IPsecSaContextAddOutbound0</strong></code>
+functions. Each SA bundle contains algorithm and other configurations and the
+associated encryption and integrity protection keys.</p>
+</div>
+<div class="sect2">
+<h3 id="_transport_mode"><a class="anchor" href="#_transport_mode"></a>Transport Mode</h3>
+<div class="paragraph">
+<p>In Transport mode, an SA context is directly tied to an outbound filter rule
+during construction. The inbound filter rule is associated to the SA context by
+calling <code><strong>IPsecSaContextGetSpi0</strong></code>. Filter rules get installed using the
+<code><strong>FwpmFilterAdd0</strong></code> function.</p>
+</div>
+<div class="paragraph">
+<p>Together with the inbound and outbound filters acting as policies, the SA context
+with the inbound and the outbound SA bundles form the kernel-level object that
+got negotiated for a <code>CHILD SA</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tunnel_mode"><a class="anchor" href="#_tunnel_mode"></a>Tunnel Mode</h3>
+<div class="paragraph">
+<p>Configuring tunnel mode in WFP works very similarly to transport mode. An SA
+context is used to attach inbound and outbound SA bundles.</p>
+</div>
+<div class="paragraph">
+<p>A tunnel mode, however, usually has more than just an inbound and an outbound
+IPsec policy. It also needs forward policies, and multiple different in, out and
+forward policies for different selectors are desirable.</p>
+</div>
+<div class="paragraph">
+<p>To install the required filter set for a tunnel mode SA, the WFP API provides a
+<code><strong>FwpmIPsecTunnelAdd0</strong></code> function. This function implicitly creates multiple
+filter rules from the passed traffic selectors, which can be associated to an SA
+context. The internals of this function, however, are somewhat unclear and it
+limits the flexibility of policy installation.</p>
+</div>
+<div class="paragraph">
+<p>To allow the installation of multiple selectors and policies, the <code><strong>kernel-wfp</strong></code>
+plugin installs filter rules manually for tunnel mode. To do so, a provider
+context is required to associate an arbitrary number of filters to it. The
+provider context is then referenced by the SA context to link all filters to the
+SA bundles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_state_and_spi_management"><a class="anchor" href="#_state_and_spi_management"></a>State and SPI Management</h3>
+<div class="paragraph">
+<p>The strongSwan IPsec kernel abstraction layer is loosely defined for the <code>PF_KEY</code>
+and similar interfaces, working on SA and policy granular level. It usually
+installs in- and outbound Security Associations, and then attaches IPsec policies
+using a unique <code><strong>reqid</strong></code> identifier.</p>
+</div>
+<div class="paragraph">
+<p>For the WFP interface, this paradigm does not work very well. It expects the
+policy information first, followed by the SA context and the in- and outbound
+Security Associations. The WFP interface can&#8217;t allocate SPIs without creating
+policy entries and an SA context first. In strongSwan, however, we must allocate
+SPIs before installing policies, as this information is negotiated in IKEv2.</p>
+</div>
+<div class="paragraph">
+<p>To work around these interface differences, the <code><strong>kernel-wfp</strong></code> plugin caches any
+policy or SA addition. Once all this information has been collected, it installs
+it in a single batch. Instead of using kernel allocated SPIs using
+<code><strong>IPsecSaContextGetSpi0</strong></code>, it allocates SPIs in userland pseudo-randomly and uses
+<code><strong>IPsecSaContextSetSpi0</strong></code> to set it.</p>
+</div>
+<div class="paragraph">
+<p>All policy and SA information installed by strongSwan is non-persistent. A system
+reboot or a restart of the Base Filtering Engine service removes any rule
+installed by the plugin.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bypass_policies"><a class="anchor" href="#_bypass_policies"></a>Bypass Policies</h3>
+<div class="paragraph">
+<p>When installing IPsec policies, an IKE daemon must ensure that the policies
+don&#8217;t cover IKE packets. This makes sure that IKE packets are never encapsulated
+in ESP.</p>
+</div>
+<div class="paragraph">
+<p>While WFP has built-in support for IKE bypass filters, these cover policies
+installed by <code><strong>FwpmIpsecTunnelAdd0</strong></code> only. We therefore install global bypass
+filter rules for the IKE socket. These filter use a high priority to have
+precedence over any IPsec policy negotiated.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trap_policies_and_events"><a class="anchor" href="#_trap_policies_and_events"></a>Trap Policies and Events</h3>
+<div class="paragraph">
+<p>strongSwan can install IPsec policies not having Security Associations attached
+to it, the trap policies. If the kernel layer processes a packet matching such a
+policy, it raises an event to strongSwan. strongSwan then negotiates an SA for
+this policy, protecting traffic on demand.</p>
+</div>
+<div class="paragraph">
+<p>In WFP, strongSwan uses drop firewall rules for trap policies and registers for
+firewalling events using <code><strong>FwpmNetEventSubscribe0</strong></code> to register for drop events.
+If the Windows kernel raises an event for a drop rule, it informs strongSwan
+which in turn looks for the corresponding trap policy and starts SA negotiation.</p>
+</div>
+<div class="paragraph">
+<p>The firewall event subscription is also used to catch other IPsec related
+rocessing errors, which get logged by strongSwan.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ipsecdump_utility"><a class="anchor" href="#_ipsecdump_utility"></a>ipsecdump Utility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For development and debugging purposes, the plugin comes with an <code><strong>ipsecdump.exe</strong></code>
+utility. By default it dumps Security Associations currently installed on the
+system. When invoked with a <code><strong>filters</strong></code> argument, it dumps any IPsec related
+firewall filters.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_known_issues_and_limitations"><a class="anchor" href="#_known_issues_and_limitations"></a>Known Issues and Limitations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following limitations apply to the <code><strong>kernel-wfp</strong></code> plugin:</p>
+</div>
+<div class="sect2">
+<h3 id="_accessing_gateway_internal_address_in_a_net_to_net_tunnel"><a class="anchor" href="#_accessing_gateway_internal_address_in_a_net_to_net_tunnel"></a>Accessing Gateway Internal Address in a net-to-net Tunnel</h3>
+<div class="paragraph">
+<p>When a Windows Gateway offers IPsec protected access to an internal subnet in
+tunnel mode, an IPsec client is currently unable to access any internal IP
+address of the gateway itself, even if it is part of the covered subnet. The
+kernel raises a <code>STATUS_IPSEC_CLEAR_TEXT_DROP</code> event if such a packet is received.
+The Microsoft Knowledge Base entry <a href="http://support.microsoft.com/kb/2502685/en-us">KB2502685</a> exactly describes this
+issue and provides a hotfix, but is related to a Forefront TMG server. It is
+currently not clear if the same issue applies to the Windows 7 product family or
+if it can be worked around from userland.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_protocolport_restrictions_on_forwarding_net_to_net_connections"><a class="anchor" href="#_protocolport_restrictions_on_forwarding_net_to_net_connections"></a>Protocol/Port Restrictions on Forwarding net-to-net Connections</h3>
+<div class="paragraph">
+<p>The Windows Kernel does not parse transport layer IP packet headers when
+forwarding packets. Therefore it does not support protocol or port selectors in
+IPsec forwarding policies, but only in policies for a local address. In practice
+strongSwan currently just ignores protocol/port restrictions in forwarding
+policies, but enforces them for inbound/outbound policies. Forwarding policies
+therefore may cover more traffic than negotiated in IKE.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unsolicited_inbound_traffic_in_udp_encapsulated_esp_packets"><a class="anchor" href="#_unsolicited_inbound_traffic_in_udp_encapsulated_esp_packets"></a>Unsolicited Inbound Traffic in UDP-Encapsulated ESP Packets</h3>
+<div class="paragraph">
+<p>When receiving traffic on an UDP-encapsulated ESP tunnel mode connection, any
+unsolicited inbound traffic gets dropped by the kernel with a
+<code>STATUS_INTERNAL_ERROR</code> event. This applies to UDP-encapsulated connections only
+and does not affect traffic that the kernel can associate to a known connection.
+For example, the return path works fine if the Windows host initiates a TCP
+connection over such a tunnel.</p>
+</div>
+<div class="paragraph">
+<p>It is currently unknown if this is a kernel related issue or if it can be worked
+around by configuring UDP encapsulation in a slightly different fashion.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_traffic_selectors_for_transport_mode_connections"><a class="anchor" href="#_multiple_traffic_selectors_for_transport_mode_connections"></a>Multiple Traffic Selectors for Transport Mode Connections</h3>
+<div class="paragraph">
+<p>Due the design of SA context information in the Windows kernel, in transport
+mode only a single inbound and outbound filter can be applied. This means that a
+single <code>CHILD SA</code> can have a single selector only. In practice, this is usually
+not much of a problem, as transport mode SAs can cover a single host pair only.
+Defining multiple protocols or address ranges is currently not possible, though.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sa_usage_lifetime_and_volumes"><a class="anchor" href="#_sa_usage_lifetime_and_volumes"></a>SA Usage, Lifetime and Volumes</h3>
+<div class="paragraph">
+<p>The Windows kernel does not seem to provide any means of getting per-SA statistics.
+<code><strong>IPsecGetSaStatistics0</strong></code> works on a global level only and the <code><strong>IPsecSaEnum0</strong></code>
+and <code><strong>IPsecSaContextEnum0</strong></code> return configured lifetime values only.</p>
+</div>
+<div class="paragraph">
+<p>For strongSwan this implies that no usage counters are available, and that DPD
+checking and keep-alive messages can&#8217;t be reduced based on IPsec SA activity.</p>
+</div>
+<div class="paragraph">
+<p>It is currently not possible to configure volume based rekeying. Time based
+rekeying is managed by strongSwan in userland, but hard SA lifetimes ensure that
+the kernel rejects packets even if userland does not renew connections as expected.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="kernel-libipsec.html">kernel-libipsec Plugin</a></span>
+  <span class="next"><a href="load-tester.html">load-tester Plugin</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>eap-tls Plugin :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/plugins/eap-tls.html">
+    <link rel="prev" href="eap-simaka-sql.html">
+    <link rel="next" href="error-notify.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Plugins</li>
+    <li><a href="plugins.html">Plugin List</a></li>
+    <li><a href="eap-tls.html">eap-tls Plugin</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/plugins/eap-tls.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">eap-tls Plugin</h1>
+<div class="sect1">
+<h2 id="_purpose"><a class="anchor" href="#_purpose"></a>Purpose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>eap-tls</strong></code> plugin for <code><strong>libcharon</strong></code>  supports EAP-TLS authentication.
+EAP-TLS uses a TLS handshake to mutually authenticate client and server (or an
+AAA backend) based on X.509 certificates.</p>
+</div>
+<div class="paragraph">
+<p>While EAP-TLS is a secure and very flexible protocol, it is rather slow when
+used over IKE. Depending on the fragment and certificate size, it requires 6-10
+additional IKE exchanges compared to traditional IKEv2 certificate authentication.
+But there are other reasons to use EAP-TLS, such as Windows 7 smartcard based
+authentication or if you require certificate authentication against a
+centralized AAA backend server.</p>
+</div>
+<div class="paragraph">
+<p>As EAP-TLS authenticates the client and the EAP server mutually, it is possible
+to skip IKEv2 server authentication and use the EAP-only authentication mechanism.</p>
+</div>
+<div class="paragraph">
+<p>The plugin is disabled by default and can be enabled with the
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> option</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-eap-tls</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_compatibility"><a class="anchor" href="#_compatibility"></a>Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The EAP-TLS backend uses its own TLS stack shipped with strongSwan. This stack
+supports TLS versions 1.0, 1.1, 1.2, and 1.3 and has been tested against:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OpenSSL 0.9.8 server via FreeRADIUS EAP-TLS (TLS 1.0)</p>
+</li>
+<li>
+<p>Windows 7 client via IKEv2 EAP-TLS (TLS 1.0)</p>
+</li>
+<li>
+<p>Windows 7 client via IE9 (TLS 1.0, 1.1, 1.2)</p>
+</li>
+<li>
+<p>GnuTLS server via Apache mod_gnutls (TLS 1.1)</p>
+</li>
+<li>
+<p>NSS client via Firefox 3.6.8 (TLS 1.0)</p>
+</li>
+<li>
+<p>Self (TLS 1.0, 1.1, 1.2, 1.3)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_connections"><a class="anchor" href="#_connections"></a>Connections</h3>
+<div class="paragraph">
+<p>EAP-TLS is configured as any other EAP method. The client uses</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.local.auth = eap</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and the server selects EAP-TLS for the client using</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.remote.auth = eap-tls</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>strongSwan supports AAA servers via <a href="eap-radius.html" class="xref page">RADIUS</a>, i.e.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.remote.auth = eap-radius</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>also works in conjunction with EAP-TLS.</p>
+</div>
+<div class="paragraph">
+<p>By default the VPN gateway uses IKEv2 certificate authentication to prove its
+identity to the clients. But as EAP-TLS is a mutual authentication protocol,
+<code>EAP-only</code> authentication can be used by specifying</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.local.auth = eap</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on the gateway side.</p>
+</div>
+<div class="paragraph">
+<p>Certificates for EAP-TLS are configured the same way as for traditional IKEv2
+certificate-based authentication, using the
+<a href="../swanctl/swanctlDir.html" class="xref page"><strong><code>swanctl</strong></code></a> certificate and key directories as
+well as the <a href="../swanctl/swanctlConf.html" class="xref page">'<strong>swanctl.conf</strong>'</a> definitions</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.local.certs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.remote.certs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on VPN client and gateway, respectively. CRL and OCSP revocation is supported by
+TLS, too.</p>
+</div>
+<div class="paragraph">
+<p>For authentication against an AAA backend server, the VPN gateway usually uses a
+different identity via IKE than the AAA backend via EAP. To specify a different
+AAA identity on the client use the <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+attribute</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.local.aaa_id</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It defaults to the IKEv2 identity defined by</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.remote.id</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A VPN gateway terminating the EAP-TLS authentication locally may use the
+<code><strong>aaa_id</strong></code> within EAP-TLS but requires a certificate with such a subject or
+subjectAltName.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eap_tls_options"><a class="anchor" href="#_eap_tls_options"></a>EAP-TLS Options</h3>
+<div class="paragraph">
+<p>The <code><strong>eap-tls</strong></code> plugin is configured using the following options in the
+<a href="../config/strongswanConf.html#_charon_plugins_eap_tls" class="xref page"><code><strong>charon.plugins.eap-tls</strong></code></a>
+section of <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.1818%;">
+<col style="width: 9.0909%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fragment_size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1024</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum size of an EAP-TLS packet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">include_length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Include length in non-fragmented EAP-TLS packets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max_message_count</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of processed EAP-TLS packets (<code><strong>0</strong></code> = no limit)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_tls_stack_options"><a class="anchor" href="#_tls_stack_options"></a>TLS Stack Options</h3>
+<div class="paragraph">
+<p>There is usually no cipher suite configuration required, the TLS stack enables
+all secure algorithms that it has registered crypto backends for. Depending on
+the <a href="plugins.html" class="xref page">plugin</a> configuration, the TLS stack supports the
+following cipher suites:</p>
+</div>
+<div class="paragraph">
+<p><strong>Cipher suites supported since version 5.9.2</strong></p>
+</div>
+<details>
+<summary class="title">Details</summary>
+<div class="content">
+<div class="paragraph">
+<p><strong>TLS 1.3</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TLS_AES_256_GCM_SHA384,
+TLS_AES_128_GCM_SHA256,
+TLS_CHACHA20_POLY1305_SHA256,
+TLS_AES_128_CCM_SHA256,
+TLS_AES_128_CCM_8_SHA256</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>TLS 1.2 and older</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
+TLS_RSA_WITH_AES_256_GCM_SHA384,
+TLS_RSA_WITH_AES_256_CBC_SHA256,
+TLS_RSA_WITH_AES_256_CBC_SHA,
+TLS_RSA_WITH_AES_128_GCM_SHA256,
+TLS_RSA_WITH_AES_128_CBC_SHA256,
+TLS_RSA_WITH_AES_128_CBC_SHA,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_NULL_SHA,
+TLS_ECDHE_RSA_WITH_NULL_SHA,
+TLS_RSA_WITH_NULL_SHA256,
+TLS_RSA_WITH_NULL_SHA</pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p><strong>Cipher suites supported before version 5.9.2</strong></p>
+</div>
+<details>
+<summary class="title">Details</summary>
+<div class="content">
+<div class="paragraph">
+<p><strong>TLS 1.2 and older</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,
+TLS_RSA_WITH_AES_128_CBC_SHA,
+TLS_RSA_WITH_AES_128_CBC_SHA256,
+TLS_RSA_WITH_AES_256_CBC_SHA,
+TLS_RSA_WITH_AES_256_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA,
+TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,
+TLS_RSA_WITH_3DES_EDE_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_NULL_SHA,
+TLS_ECDHE_RSA_WITH_NULL_SHA,
+TLS_RSA_WITH_NULL_SHA,
+TLS_RSA_WITH_NULL_SHA256,
+TLS_RSA_WITH_NULL_MD5</pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>ECDHE and ECDSA require a third-party crypto backend. Since version 5.9.2, EdDSA
+$ may also be used with ECDSA cipher suites. ECDHE support is limited to the
+named curves <code><strong>SECP256R1</strong></code>, <code><strong>SECP384R1</strong></code>, <code><strong>SECP521R1</strong></code>, <code><strong>SECP224R1</strong></code> and
+<code><strong>SECP192R1</strong></code> with uncompressed points. Since version 5.9.2, <code><strong>Curve25519</strong></code> and
+<code><strong>Curve448</strong></code> are also supported. <code>CAMELLIA</code> encryption requires either the
+<code><strong>openssl</strong></code> or <code><strong>gcrypt</strong></code> plugin. <code>NULL</code> encryption is automatically disabled if
+the stack is used for purposes other than EAP-TLS where only the handshake of
+TLS is used.</p>
+</div>
+<div class="paragraph">
+<p>The minimum and maximum TLS versions may be configured in
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> via the attributes</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls.version_min
+libtls.version_max</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are three <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> options
+to limit the cipher suites by algorithms:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls {
+  key_exchange = ecdhe-ecdsa, ecdhe-rsa, dhe-rsa, rsa
+  cipher = aes256gcm, aes128gcm, chacha20poly1305, aes256, aes128, camellia256, camellia128, null
+  mac = sha384, sha256, sha1
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To specify the list of suites directly, use the <code><strong>suites</strong></code> option and a comma-
+separated list of the cipher suites above:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls {
+  suites = TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since version 5.9.2 the ECDH groups and signature schemes may be configured with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls {
+  ke_group = curve448, curve25519, ecp521, ecp384, ecp256, ecp224, ecp192
+  signature = ed448, ed25519, ecdsa_sha521, ecdsa_sha384, ecdsa_sha256, rsa_pss_rsae_sha512, rsa_pss_rsae_sha384, rsa_pss_rsae_sha256, rsa_pkcs1_sha512, rsa_pkcs1_sha384, rsa_pkcs1_sha256
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-only"><img src="../_images/a-m-c.png" alt="topology" width="187" height="129" title="rw-eap-tls-only example"></a></span>
+strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-only">example</a> showing the use of EAP-TLS only authentication.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-radius"><img src="../_images/a-m-c.png" alt="topology" width="187" height="129" title="rw-eap-tls-radius example"></a></span>
+strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-radius">example</a> showing the use of EAP-TLS with AAA server.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="eap-simaka-sql.html">eap-simaka-sql Plugin</a></span>
+  <span class="next"><a href="error-notify.html">error-notify Plugin</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
