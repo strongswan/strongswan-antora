@@ -1,13 +1,11 @@
-code,
-kbd,
-pre {
-	font-size: .75rem;
-}
-
 @media screen and (min-width:1024px) {
 	.doc {
 		font-size: .85rem;
 	}
+}
+
+.doc .admonitionblock code {
+	font-size:  0.95em;
 }
 
 .doc pre {
