@@ -542,6 +542,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -611,7 +614,7 @@
 <div class="paragraph">
 <p>The type and binary encoding of identity strings specified in
 <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> , e.g. the parameters
-<code><strong>connections.&lt;conn&gt;.local&lt;suffix&gt;.id</strong></code> or '<strong>secrets.eap&lt;suffix&gt;.id&lt;suffix&gt;</strong>` and
+<code><strong>connections.&lt;conn&gt;.local&lt;suffix&gt;.id</strong></code> or <code><strong>secrets.eap&lt;suffix&gt;.id&lt;suffix&gt;</strong></code> and
 several other identities defined as strings, are parsed as follows:</p>
 </div>
 <div class="ulist">
@@ -630,9 +633,9 @@ of that character:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If the string begins with <code><strong>@#</strong></code>, the type is set to <code><strong>KEY_ID</strong></code> and the string
+<p>If the string begins with <code><strong>@&num;</strong></code>, the type is set to <code><strong>KEY_ID</strong></code> and the string
 following that prefix is assumed to be the hex-encoded binary value of the
-identity (note that <code><strong>#</strong></code> is used for comments in config files, so quotes are
+identity (note that <code><strong>&num;</strong></code> is used for comments in config files, so quotes are
 necessary).</p>
 </li>
 <li>
@@ -660,22 +663,24 @@ follows:</p>
 <ul>
 <li>
 <p>If the value is an empty string or equals <code><strong>%any</strong></code>, <code><strong>%any6</strong></code>, <code><strong>0.0.0.0</strong></code>,
-<code><strong>::</strong></code>  or <code><strong>*</strong></code>, the type is set to <code><strong>ID_ANY</strong></code> which matches any other identity.</p>
+<code><strong>::</strong></code>  or <code><strong>&ast;</strong></code>, the type is set to <code><strong>ID_ANY</strong></code> which matches any other identity.</p>
 </li>
 <li>
 <p>If the value contains a colon <code><strong>:</strong></code>, it is assumed to be an <code><strong>IPv6</strong></code> address.
 But if parsing the address and converting it to its binary encoding fails, the
 type is set to <code><strong>KEY_ID</strong></code> and the encoding is the literal value. Since version
 5.4.0 subnets in CIDR notation and address ranges (i.e. two addresses separated
-by a hyphen <code><strong>-</strong></code> without spaces are parsed too (they can&#8217;t be used as IKE
+by a hyphen <code><strong>-</strong></code> without spaces) are parsed too (they can&#8217;t be used as IKE
 identities but e.g. to define shared secrets in
 <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>).</p>
 </li>
 <li>
 <p>For all other strings, an attempt at parsing them as <code><strong>IPv4</strong></code> addresses is made
-(since version 5.4.0 also as subnets and ranges, see above). If that fails, the
-type is set to <code><strong>FQDN</strong></code> and the literal value is adopted as encoding (this is
-where domain names and simple names end up).</p>
+(since version 5.4.0 also as subnets and ranges, see above).</p>
+<div class="paragraph">
+<p>If that fails, the type is set to <code><strong>FQDN</strong></code> and the literal value is adopted
+as encoding (this is where domain names and simple names end up).</p>
+</div>
 </li>
 </ul>
 </div>
@@ -692,14 +697,14 @@ the type and value are explicitly specified:</p>
 specified by surrounding the numerical type value with curly brackets.</p>
 </li>
 <li>
-<p>If the value starts with <code><strong>#</strong></code>, the remaining data is interpreted as hex
+<p>If the value starts with <code><strong>&num;</strong></code>, the remaining data is interpreted as hex
 encoding. Otherwise, the string is used as is as the identification data (note
-that <code><strong>\#</strong></code> is used for comments in config files, so quotes are necessary).</p>
+that <code><strong>&num;</strong></code> is used for comments in config files, so quotes are necessary).</p>
 <div class="paragraph">
 <p><strong>Important:</strong> This implies that no conversion is performed for non-string
 identities. For example, <code><strong>ipv4:10.0.0.1</strong></code> does not create a valid
 <code><strong>ID_IPV4_ADDR</strong></code> IKE identity, as it does not get converted to binary
-<code><strong>0x0a000001</strong></code>. Instead, one could use <code><strong>ipv4:#0a000001</strong></code> to get a valid
+<code><strong>0x0a000001</strong></code>. Instead, one could use <code><strong>ipv4:&num;0a000001</strong></code> to get a valid
 identity, but just using the automatic conversion as described above is usually
 simpler. The same applies to the ASN.1 encoded types (for subject DNs the
 <a href="../pki/pkiDn.html" class="xref page"><code><strong>pki --dn</strong></code></a> command may be useful).</p>
@@ -715,7 +720,7 @@ simpler. The same applies to the ASN.1 encoded types (for subject DNs the
 inadequate or produces the wrong result.  For instance, strongSwan does not nest
 RDNs when generating the binary encoding of an ASN.1 DN, which some PKIs do.
 Another example is the need to encode an <code><strong>FQDN</strong></code> as a <code><strong>KEY_ID</strong></code> which is
-rather inconvenient with the <code><strong>@#</strong></code> syntax, as the binary encoding has to be
+rather inconvenient with the <code><strong>@&num;</strong></code> syntax, as the binary encoding has to be
 provided.</p>
 </div>
 </div>

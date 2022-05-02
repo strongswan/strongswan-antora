@@ -542,6 +542,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="tncServer.html">TNC Server</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -663,8 +666,8 @@ have to be disabled in order not to disrupt the communication.</p>
 </div>
 <div class="paragraph">
 <p>It is also recommended to set the maximum PB-TNC batch size and the maximum
-PA-TNC message size possible with PT-EAP transport to the optimum values defined
-above.</p>
+PA-TNC message size possible with PT-EAP transport to the
+<a href="optimumTncSizes.html" class="xref page">optimum values</a> defined above.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1086,11 +1089,9 @@ client.</p>
 <div class="paragraph">
 <p>The first PA-TNC message is of standard subtype <code><strong>Operating System</strong></code> and contains
 a PA-TNC attribute of type <code><strong>Max Attribute Size Request</strong></code> defined in the <code><strong>TCG</strong></code>
-namespace (<a href="https://trustedcomputinggroup.org/wp-content/uploads/IFM_Segmentation_v1r5_04042016.final_.pdf">TCG TNC IF-M Segmentation</a>) which proposes to split up huge
-PA-TNC (TCG TNC IF-M) messages into <code><strong>TCG/Segmentation Attributes</strong></code> with a maxium
-size of <code><strong>32698</strong></code> bytes each, plus a second PA-TNC attribute of the standard type
-<code><strong>Attribute Request</strong></code> which requests a PA-TNC attribute of standard type
-<code><strong>Installed Packages</strong></code></p>
+namespace which proposes to split up huge PA-TNC messages into segments with a
+maximum size of <code><strong>32'698</strong></code> bytes each (see
+<a href="optimumTncSizes.html#_pa_tnc_message_segmentation" class="xref page">PA-TNC message segmentation</a>), plus a second PA-TNC attribute of the standard type <code><strong>Attribute Request</strong></code> which requests a PA-TNC attribute of standard type <code><strong>Installed Packages</strong></code></p>
 </div>
 <div class="listingblock">
 <div class="content">

@@ -542,6 +542,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -690,7 +693,7 @@ keyvalue := key = value\n</pre>
 </div>
 <div class="paragraph">
 <p>Values must be terminated by a newline. Comments are possible using the
-#-character. Section names and keys may contain any printable character except:</p>
+<code><strong>&num;</strong></code> character. Section names and keys may contain any printable character except:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -799,10 +802,10 @@ connections {
 <div class="sect2">
 <h3 id="_including_files"><a class="anchor" href="#_including_files"></a>Including Files</h3>
 <div class="paragraph">
-<p>The <code><strong>include</strong></code> statement allows to include otherfiles into <code><strong>strongswan.conf</strong></code>,
+<p>The <code><strong>include</strong></code> statement allows to include other files into <code><strong>strongswan.conf</strong></code>,
 e.g.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
 <pre>include /some/path/*.conf</pre>
 </div>
@@ -1375,7 +1378,7 @@ connection attempts are blocked</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">How the Relative Distinguished Names (RDNs) a certificate&#8217;s Subject Distinguished
  Name (DN) is composed of, are matched against configured identities. Possible
  values are <code><strong>strict</strong></code> (the default), <code><strong>reordered</strong></code>, and <code><strong>relaxed</strong></code>.  With
- <code><strong>strict</strong></code> the number, type and order of all RDNs have to match. Wildcards (<code><strong>*</strong></code>)
+ <code><strong>strict</strong></code> the number, type and order of all RDNs have to match. Wildcards (<code><strong>&ast;</strong></code>)
  for RDN values are allowed (that&#8217;s the case for all three variants). Using
  <code><strong>reordered</strong></code> also matches a DN if the RDNs appear in a different order, The
  number and type still have to match. Finally <code><strong>relaxed</strong></code> also allows matches of
