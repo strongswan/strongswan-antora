@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Cloud Platforms :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/howtos/cloudPlatforms.html">
-    <link rel="prev" href="smartcards.html">
-    <link rel="next" href="nameSpaces.html">
+    <title>GUI-based CA Management :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/pki/caManagement.html">
+    <link rel="prev" href="pkiQuickstart.html">
+    <link rel="next" href="../howtos/introduction.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -176,28 +176,28 @@
     <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="introduction.html">Introduction to strongSwan</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="forwarding.html">Forwarding and Split-Tunneling</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="securityRecommendations.html">Security Recommendations</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="smartcards.html">Smart Card Configuration</a>
+    <a class="nav-link" href="pkiQuickstart.html">Certificates Quickstart</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="cloudPlatforms.html">Cloud Platforms</a>
+    <a class="nav-link" href="caManagement.html">GUI-based CA Management</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
   </li>
 </ul>
   </li>
@@ -350,7 +350,7 @@
     <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+    <a class="nav-link" href="pki.html">pki Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
@@ -624,142 +624,234 @@
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
     <li>Howtos</li>
-    <li><a href="cloudPlatforms.html">Cloud Platforms</a></li>
+    <li><a href="caManagement.html">GUI-based CA Management</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/howtos/cloudPlatforms.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/pki/caManagement.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Cloud Platforms</h1>
+<h1 class="page">GUI-based CA Management</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Running strongSwan on a cloud platform is usually relatively painless because only
-the hardware is virtualized. The kernel and userspace is untouched.</p>
+<p>This list only includes free software as defined by the GNU foundation.
+Please contribute a small description if you think your favorite tool should be
+included in the list.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_general_warnings_and_problems"><a class="anchor" href="#_general_warnings_and_problems"></a>General Warnings And Problems</h2>
+<h2 id="_gnomint"><a class="anchor" href="#_gnomint"></a>gnoMint</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Generally in a cloud environment, the underlying network checks the source IP address
-of the sent IP packets. You need to be able to deactivate this check in order to
-use strongSwan as a VPN gateway, either in a roadwarrior or a site-to-site scenario.
-Except if you masquerade the source address of all packets that are transmitted
-over the network. However, it is advisable to avoid NAT at any cost because it
-prevents you from addressing remote endpoints. This only applies to the outermost
-IP packet though as it does not affect the inner IP packet of any tunneling protocol.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/gnoMint.png" alt="gnoMint">
+</div>
 </div>
 <div class="paragraph">
-<p>As an alternative, the packets from and to the VPN gateway can be transported to
-the hosts on the local network using other means than directly on top of Ethernet,
-e.g by using IPsec in tunnel mode, GRE, IPinIP or other protocols.</p>
+<p><a href="https://sourceforge.net/projects/gnomint/">gnoMint</a> allows any person to run a Certification Authority, creating
+certificates for any purpose: e-mail signing and/or crypting; TLS authentication
+through web, VPNs or other protocols; secured web-servers&#8230;&#8203; Its development was
+started due to the lack of a 'just-works' CA software: creating a CA from zero,
+through open-source command-line utilities, was possible, but was unconfortable
+to remember all the neccessary parameters. And you had to create a difficult
+configuration file. So here is <a href="https://sourceforge.net/projects/gnomint/">gnoMint</a>, and it will help all systems
+and network administrators to deploy a Certification Authority very easily.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_container_virtualization"><a class="anchor" href="#_container_virtualization"></a>Container Virtualization</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Container-virtualized environments often do not offer a working IPsec stack to
-the software in the container. Therefore the
-<a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a> interface might have to
-be used instead.</p>
-</div>
-<div class="paragraph">
-<p>To use <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a>, <code><strong>tun</strong></code> devices have
-to be available. Keep in mind that using
-<a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a> has drawbacks and is generally
-discouraged. Change to a hardware-virtualized virtual machine if possible.</p>
-</div>
-<div class="paragraph">
-<p><strong>OpenVZ</strong> uses container virtualization. On <strong>OpenVZ</strong>, support for IPsec seems to
-have been broken at some point. <strong>Virtuozzo</strong> can also be a container. With <strong>Virtuozzo</strong>
-it depends on the VM type.</p>
-</div>
-<div class="paragraph">
-<p>If the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon complains about not being able
-to open an XFRM socket or the installation of SAs fails, then it&#8217;s very likely
-container-virtualized.</p>
-</div>
-<div class="paragraph">
-<p>strongSwan in a <strong>Docker container</strong> works with kernel IPsec if the host operating
-system has a working IPsec stack and if the docker container, as well as strongSwan,
-have the necessary privileges to access it (<code>CAP_NET_ADMIN</code>). You do not have
-to enable host networking.</p>
-</div>
-<div class="paragraph">
-<p>An incomplete list of container virtualization technologies:</p>
-</div>
+<div class="sect2">
+<h3 id="_features"><a class="anchor" href="#_features"></a>Features</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>LXC</p>
+<p>Creating all the infrastructure to keep and run a Certification Authority,
+saved in only one file.</p>
 </li>
 <li>
-<p>Docker</p>
+<p>Create Certification Signing Requests, allowing to export them to PKCS#8 files,
+so they can be send to other CAs.</p>
 </li>
 <li>
-<p><a href="nameSpaces.html" class="xref page">Generally Linux namespaces</a></p>
+<p>Create X.509 certificates, with a usual set of subject-parameters.</p>
+</li>
+<li>
+<p>Export certificates and private keys to PEM files, so they can be used by external
+applications.</p>
+</li>
+<li>
+<p>For each CA, establish a set of policies for certificate generation.</p>
+</li>
+<li>
+<p>Import CSRs made by other applications.</p>
+</li>
+<li>
+<p>Export PKCS#12 structures, so the certificates can be imported easily by web
+and mail clients.</p>
+</li>
+<li>
+<p>Revoke certificates, and generate the corresponding CRLs.</p>
+</li>
+<li>
+<p>Allow the possibility of keeping the CA private key or other private keys in
+external files or devices (as USB drives).</p>
+</li>
+<li>
+<p>Allow the management of a whole hierarchy of CAs with their respectives
+certificates.</p>
+</li>
+<li>
+<p>Import pre-existing Certification Authorities with all their data.</p>
+</li>
+<li>
+<p>Allows an easy CA operation from command-line tools, for batch certificate
+creation, or integration with other utilities.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drawbacks"><a class="anchor" href="#_drawbacks"></a>Drawbacks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>With the exception of the Root CA key where the RSA key size can be chosen,
+only 2048 bit RSA end entity or intermediate CA keys are available which
+doesn&#8217;t allow for a 128 bit security strength.</p>
+</li>
+<li>
+<p>No support of ECDSA keys.</p>
+</li>
+<li>
+<p>No support of <code><strong>subjectAlternativeNames</strong></code> which doesn&#8217;t allow to use Fully
+Qualified Domain Names (FQDNs) for hosts or email addresses for users as IKEv2
+identities.</p>
+</li>
+<li>
+<p>The selection of the Country Name from a dropdown list is quite tiresome.</p>
+</li>
+<li>
+<p>No new releases since version 1.3.0 in 2016.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_aws_ec2"><a class="anchor" href="#_aws_ec2"></a>AWS EC2</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>On AWS the source check of a machine can be disabled in the EC2 management menu.
-Disabling it is required if the host running strongSwan is supposed to make the
-whole Internet available to the hosts in the VPC. Otherwise add the routes to
-the remote network in the VPC&#8217;s route settings.</p>
-</div>
-<div class="paragraph">
-<p>This is not required if you protect the traffic between the other hosts and the
-<strong>central gateway</strong> in the VPC (not the AWS-provided Internet Gateway) using IPsec
-in tunnel mode.</p>
-</div>
-<div class="paragraph">
-<p>Generally the source check only has to be disabled if the routing table of the
-VPC disagrees with the direction the traffic goes into and comes from (the return
-path check fails). That is the same mechanism as the <code><strong>rp_filter</strong></code> on Linux.</p>
-</div>
-</div>
 </div>
 <div class="sect1">
-<h2 id="_azure"><a class="anchor" href="#_azure"></a>Azure</h2>
+<h2 id="_tinyca_2"><a class="anchor" href="#_tinyca_2"></a>TinyCA 2</h2>
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tinyCa.png" alt="tinyCA">
+</div>
+</div>
 <div class="paragraph">
-<p>Each virtual NIC attached to a VM has an option to enable IP forwarding. If that
-option is not enabled, then Azure does a <code><strong>src/dst</strong></code> check.</p>
+<p><a href="https://opsec.eu/src/tinyca/#:~:text=TinyCA">TinyCA</a> is a simple graphical user interface written in Perl/Gtk to
+manage a small Certification Authority. TinyCA works as a frontend for openssl.</p>
+</div>
+<div class="sect2">
+<h3 id="_features_2"><a class="anchor" href="#_features_2"></a>Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Unlimited CAs possible.</p>
+</li>
+<li>
+<p>Support for creating and managing Intermediate CAs.</p>
+</li>
+<li>
+<p>Creation and Revocation of X.509 certificates.</p>
+</li>
+<li>
+<p>PKCS#10 Requests can be imported and signed.</p>
+</li>
+<li>
+<p>Certificates can be exported as: PEM, DER, TXT or PKCS#12.</p>
+</li>
+<li>
+<p>Certificates can have a Fully Qualified Domain Name (FQDN), an IP
+address or an email address as a <code><strong>subjectAlternativeName</strong></code>.</p>
+</li>
+<li>
+<p>Certificate Revocation List (CRL).</p>
+</li>
+<li>
+<p>CRLs can be exported as: PEM, DER and TXT.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drawbacks_2"><a class="anchor" href="#_drawbacks_2"></a>Drawbacks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>No support of ECDSA keys.</p>
+</li>
+<li>
+<p>No new releases since version 0.7.5 in 2006.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_google_cloud_engine"><a class="anchor" href="#_google_cloud_engine"></a>Google Cloud Engine</h2>
+<h2 id="_xca"><a class="anchor" href="#_xca"></a>Xca</h2>
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/xca.png" alt="Xca">
+</div>
+</div>
 <div class="paragraph">
-<p>No specialties about the Google Cloud Engine (GCE) are known at this point.</p>
+<p><a href="https://hohnstaedt.de/xca">Xca</a> is a  graphical user interface for  handling  X.509  certificates,
+RSA or ECDSA keys, PKCS#10 requests and CRLs in software and on smartcards.</p>
 </div>
+<div class="sect2">
+<h3 id="_features_3"><a class="anchor" href="#_features_3"></a>Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Start your own PKI and create all kinds of private keys, certificates, requests
+or CRLs.</p>
+</li>
+<li>
+<p>Import and export them in any format like PEM, DER, PKCS#7, PKCS#12.</p>
+</li>
+<li>
+<p>Use them for your IPsec, OpenVPN, TLS or any other certificate based setup.</p>
+</li>
+<li>
+<p>Manage your Smart-Cards via PKCS#11 interface.</p>
+</li>
+<li>
+<p>Export certificates and requests as OpenSSL config file.</p>
+</li>
+<li>
+<p>Create Subject- and/or Extension- templates to ease issuing similar certs.</p>
+</li>
+<li>
+<p>Convert existing certificates or requests to templates.</p>
+</li>
+<li>
+<p>Get the broad support of x509v3 extensions as flexible as OpenSSL but more
+user-friendly.</p>
+</li>
+<li>
+<p>Adapt the columns to have your important information at a glance.</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_digitalocean_droplets"><a class="anchor" href="#_digitalocean_droplets"></a>DigitalOcean Droplets</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>On DigitalOcean the source check cannot be disabled.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="smartcards.html">Smart Card Configuration</a></span>
-  <span class="next"><a href="nameSpaces.html">strongSwan in Linux Network Namespaces</a></span>
+  <span class="prev"><a href="pkiQuickstart.html">Certificates Quickstart</a></span>
+  <span class="next"><a href="../howtos/introduction.html">Introduction to strongSwan</a></span>
 </nav>
 </article>
   </div>
