@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>pki --signcrl :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/pki/pkiSignCrl.html">
+    <title>IPComp :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/features/ipcomp.html">
+    <link rel="prev" href="natTraversal.html">
+    <link rel="next" href="networkManager.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -135,34 +137,34 @@
     <span class="nav-text">Features</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+    <a class="nav-link" href="vip.html">Virtual IP Addresses</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+    <a class="nav-link" href="mobike.html">MOBIKE</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+    <a class="nav-link" href="natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="ipcomp.html">IPComp</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+    <a class="nav-link" href="networkManager.html">NetworkManager</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+    <a class="nav-link" href="routeBasedVpn.html">Route-based VPN</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+    <a class="nav-link" href="highAvailability.html">High Availability</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+    <a class="nav-link" href="hashAndUrl.html">Hash and URL</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+    <a class="nav-link" href="integrityTests.html">Integrity Tests</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+    <a class="nav-link" href="ietf.html">IPsec and Related Standards</a>
   </li>
 </ul>
   </li>
@@ -174,7 +176,7 @@
     <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="pkiQuickstart.html">Certificates Quickstart</a>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -345,7 +347,7 @@
     <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="pki.html">pki Tool</a>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
@@ -618,101 +620,166 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
-    <li><a href="pkiSignCrl.html">pki --signcrl</a></li>
+    <li>Features</li>
+    <li><a href="ipcomp.html">IPComp</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/pki/pkiSignCrl.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/features/ipcomp.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">pki --signcrl</h1>
-<div class="sect1">
-<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pki --signcrl --cacert file --cakey file|--cakeyid hex [--lifetime days]
-              [--not-before datetime] [--not-after datetime] [--dateform form]
-              [[--reason key-compromise|ca-compromise|affiliation-changed|superseded|cessation-of-operation|certificate-hold]
-               [--date timestamp] --cert file|--serial hex]*
-              [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
-              [--rsa-padding pkcs1|pss] [--outform der|pem]
-
-pki --signcrl --help</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
+<h1 class="page">IPComp</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand generates an X.509 certificate revocation list (CRL)
-signed by a CA private key.</p>
+<p>IP Payload Compression (IPComp) is a protocol that allows compressing the content
+of IP packets. It&#8217;s defined in <a href="https://datatracker.ietf.org/doc/html/rfc3173">RFC 3173</a>.</p>
+</div>
+<div class="paragraph">
+<p>It may be combined with IPsec to provide compression before encryption (making up
+for some of the overhead introduced by IPsec itself). To use it, both peers have
+to support it and it must be negotiated during IKE. strongSwan currently only
+supports DEFLATE as compression algorithm.</p>
+</div>
+<div class="paragraph">
+<p>To enable IPComp in strongSwan enable <code><strong>&lt;child&gt;.ipcomp</strong></code> in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_options"><a class="anchor" href="#_options"></a>Options</h2>
+<h2 id="_linux"><a class="anchor" href="#_linux"></a>Linux</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">--cacert      (-c)  CA certificate file
---cakey       (-k)  CA private key file
---cakeyid     (-x)  smartcard or TPM CA private key object handle
---lifetime    (-l)  days the CRL gets a nextUpdate, default: 15
---not-before  (-F)  absolute time when the validity of the CRL begins
---not-after   (-T)  absolute time when the validity of the CRL ends
---dateform    (-D)  strptime(3) format for the --not-before and --not-after options, default: %d.%m.%y %T
---lastcrl     (-a)  CRL of lastUpdate to copy revocations from
---basecrl     (-b)  base CRL to create a delta CRL for
---crluri      (-u)  freshest delta CRL URI to include
---cert        (-z)  certificate file to revoke
---serial      (-s)  hex encoded certificate serial number to revoke
---reason      (-r)  reason for certificate revocation
---date        (-d)  revocation date as unix timestamp, default: now
---digest      (-g)  digest for signature creation, default: key-specific
---rsa-padding (-R)  padding for RSA signatures, default: pkcs1
---outform     (-f)  encoding of generated crl, default: der
---debug       (-v)  set debug level, default: 1
---options     (-+)  read command line options from file
---help        (-h)  show usage information</pre>
+<div class="paragraph">
+<p>When debugging connections that use IPComp on Linux there are some things to be aware of.</p>
 </div>
+<div class="paragraph">
+<p>For packets smaller than a certain threshold the kernel does not do any compression
+(e.g. default-sized pings for IPv4). To handle uncompressed packets in tunnel mode
+the kernel will implicitly create an IPIP tunnel besides the actual IPComp SAs.
+These IPIP states can be seen in <code><strong>ip xfrm state</strong></code> with <code><strong>proto 4</strong></code>. For IPv6, the
+kernel also creates such states - <code><strong>proto 41</strong></code> - but since the compression threshold
+is relatively low and IPv6 packets are naturally larger even default-sized pings
+are compressed. These IPIP tunnels also have an impact on the firewall rules that
+are installed by the default updown script (some issues were fixed with version 5.1.2
+and for IPv6 with version 5.4.0) or manually, as IPIP traffic has to be allowed
+explicitly in the INPUT chain.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Revoke a certificate</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">pki --signcrl --cacert caCert.der --cakey caKey.der --reason superseded --cert peerCert.der &gt; crl.der</pre>
-</div>
+<div class="paragraph">
+<p>Due to how the six states (IPsec, IPComp, IPIP, in- and outbound each) are used,
+the traffic counters (bytes, packets) seen in <code><strong>ip -s xfrm state</strong></code> might look a bit
+confusing at first:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Update an existing CRL with two new revocations, using the certificates serial, but no reason</p>
+<p>For outbound traffic, the IPIP state is not used, instead all traffic directly
+goes through the outbound IPComp and IPsec SAs. The kernel will simply not perform
+any compression for small packets (the byte and packet counters of the IPComp SA
+are still increased, though). The thresholds are statically defined in
+<code><strong>net/xfrm/xfrm_algo.c</strong></code> for each compression algorithm. For <code><strong>deflate</strong></code> it is
+90 bytes.</p>
+</li>
+<li>
+<p>For the inbound traffic, on the other hand, the traffic counters for the IPComp
+SAs are accurate and only count actually decompressed traffic. The other packets
+pass through the implicitly created IPIP tunnel, increasing its traffic counters.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>This can be seen in the <a href="https://www.strongswan.org/testing/testresults/ikev2/compress">compress test scenario</a> (or
+<a href="https://www.strongswan.org/testing/testresults/ipv6/rw-compress-ikev2">for IPv6</a>). Host <code><strong>carol</strong></code> sends two pings to
+<code><strong>alice</strong></code> via gateway <code><strong>moon</strong></code> but only one ping actually gets compressed.</p>
+</div>
+<div class="paragraph">
+<p>So on <code><strong>carol</strong></code> the packet and byte counts for all six states are as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 15.3846%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">State</th>
+<th class="tableblock halign-left valign-top">Bytes</th>
+<th class="tableblock halign-left valign-top">Packets</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ESP out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">173</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The larger ping request got highly compressed as it basically contains the same
+ data repeated over and over</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPComp out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8296</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only one packet of these actually gets compressed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPIP out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ESP in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">172</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPComp in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8212</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the compressed ping reply</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPIP in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the uncompressed ping reply</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The IPComp/IPsec packet processing in the kernel may be visualized as follows:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --signcrl --cacert caCert.der --cakey caKey.der --lastcrl crl1.der --serial 0123 --serial 0345 &gt; crl2.der</pre>
+<pre>                        len &lt; threshold
+            +---------+    no header     +---------+
+outbound---&gt;|IPComp SA|-----------------&gt;| ESP SA  |---&gt;
+            +----+----+                  +----+----+
+                 |        /----------\        |
+len &gt;= threshold +-------&gt;| compress |--------+ IPComp header
+                          \----------/              added
+
+                          +---------+    +---------+
+        &lt;--------+--------|  IPIP   |&lt;---| ESP SA  |&lt;---inbound
+                 |        +---------+    +----+----+
+                 |        +---------+         |
+                 +--------|IPComp SA|&lt;--------+ IPComp header
+                          +---------+               found</pre>
 </div>
 </div>
 </div>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="natTraversal.html">NAT Traversal</a></span>
+  <span class="next"><a href="networkManager.html">NetworkManager</a></span>
+</nav>
 </article>
   </div>
 </main>

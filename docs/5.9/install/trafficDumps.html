@@ -146,6 +146,9 @@
     <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -258,49 +261,67 @@
     <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
   </li>
+</ul>
+  </li>
   <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
   </li>
+</ul>
+  </li>
   <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -557,6 +578,9 @@
     <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -704,11 +728,11 @@ you&#8217;re using userland-encryption based on <code><strong>libipsec</strong><
 <div class="paragraph">
 <p>The solution to the problem is to use the <code><strong>nflog</strong></code> interface in the <code><strong>iptables</strong></code>
 framework to get exactly the packets we are interested in. Taking a look at the
-netfilter packet flow</p>
+<a href="https://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg">netfilter packet flow</a></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<a class="image" href="https://inai.de/images/nf-packet-flow.png"><img src="https://inai.de/images/nf-packet-flow.png" alt="netfilter graph"></a>
+<a class="image" href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg" alt="netfilter graph"></a>
 </div>
 </div>
 <div class="paragraph">
@@ -716,7 +740,7 @@ netfilter packet flow</p>
 </div>
 <div class="paragraph">
 <p><code><strong>nflog</strong></code> rules log to a kernel internal multicast group which is identified by
-an integer in the <code><strong>0 .. 2^16-1</strong></code> range. Only the part of the datagram that the
+an integer in the <code><strong>0 .. 2&#94;16-1</strong></code> range. Only the part of the datagram that the
 framework sees will be captured. For <code><strong>iptables</strong></code> this is an IPv4 packet whereas
 for <code><strong>ip6tables</strong></code> it is an IPv6 packet. If you use it in <code><strong>ebtables</strong></code> this is an
 Ethernet frame.</p>

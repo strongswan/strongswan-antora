@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Frequently Asked Questions (FAQ) :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/support/faq.html">
+    <link rel="prev" href="helpRequests.html">
+    <link rel="next" href="flawReporting.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.strongswan.org">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Support</li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/support/faq.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Frequently Asked Questions (FAQ)</h1>
+<div class="sect1">
+<h2 id="_general_questions"><a class="anchor" href="#_general_questions"></a>General Questions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_capturing_outbound_plaintext_packets_with_tcpdumpwireshark"><a class="anchor" href="#_capturing_outbound_plaintext_packets_with_tcpdumpwireshark"></a>Capturing outbound plaintext packets with tcpdump/wireshark</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>When using <code>tcpdump/wireshark</code> to sniff traffic secured by IPsec,
+incoming packets show up twice: encrypted i.e. as ESP packets and unencrypted as
+plaintext packets. However, for outgoing traffic, only ESP packets show up. How
+can I get incoming <strong>and</strong> outgoing packets as plaintext?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> That&#8217;s a peculiarity of the Linux kernel. Capture the (UDP encapsulated) ESP
+packets and use wireshark to decrypt them. See <a href="https://wiki.wireshark.org/ESP_Preferences" class="bare">https://wiki.wireshark.org/ESP_Preferences</a></p>
+</div>
+<div class="paragraph">
+<p>Run the <code><strong>ip xfrm state</strong></code> command to determine the encryption algorithms and the
+symmetric keys used by the kernel. Depending on your configuration, strongSwan
+periodically changes encryption keys. Keep this in mind if you are capturing
+traffic over an extended period of time.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s also a document that shows different ways to
+<a href="../install/trafficDumps.html" class="xref page">dump traffic</a> on the IPsec endpoint.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_non_standard_ike_ports"><a class="anchor" href="#_non_standard_ike_ports"></a>Non-standard IKE ports</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Can I use a local non-standard port for IKE?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> The default socket implementation <code><strong>socket-default</strong></code> can only listen on two
+predetermined ports. By default one is used for <a href="../features/natTraversal.html" class="xref page">NAT Traversal</a>.
+There are compile time options and two settings in
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> to determine these ports,
+but clients usually will only use the default ports (<code><strong>500/4500</strong></code>). To use
+ephemeral source ports on a client, these settings may be set to <code><strong>0</strong></code> so the
+plugin determines them when it&#8217;s initialized.</p>
+</div>
+<div class="paragraph">
+<p>As a client, strongSwan can use an arbitrary remote port, which may be configured
+via <code><strong>remote_port</strong></code> in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> (see the
+notes regarding
+<a href="../features/natTraversal.html#_custom_server_ports" class="xref page">custom server ports and NAT-Traversal</a>).
+There is also another socket implementation called <code><strong>socket-dynamic</strong></code>, which is
+experimental and can send IKE messages from specific source ports (specified with
+<code><strong>local_port</strong></code>), and requires sending packets to the remote NAT-T port (e.g.
+<code><strong>remote_port = 4500</strong></code>).</p>
+</div>
+<div class="paragraph">
+<p>You can also use the <code>DNAT</code> and <code>SNAT</code> targets in <code><strong>iptables</strong></code> to move ports around,
+if you desire so.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plugin_is_missing"><a class="anchor" href="#_plugin_is_missing"></a>Plugin is missing</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>I need some <a href="../plugins/plugins.html" class="xref page">plugin</a>, but it seems my version
+of charon doesn&#8217;t load it! What should I do?!</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Check if you <a href="../plugins/pluginLoad.html" class="xref page">customized the list of loaded plugins</a>.
+If so, make sure the plugin you need is included (see below for details on modular
+plugin loading). Then make sure the plugin is actually installed. For that, run
+<code><strong>find</strong></code> (check the man page of <code><strong>find</strong></code> for the syntax) with the required parameters
+to search your hard drive for the plugin&#8217;s <code><strong>.so</strong></code> file. If it exists and is in a
+plausible directory, then it should be installed. Then restart the daemon.</p>
+</div>
+<div class="paragraph">
+<p>If your installation of strongSwan is configured for
+<a href="../plugins/pluginLoad.html#_modular_configuration" class="xref page">modular loading</a>
+(the default since version 5.1.2) and
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> includes the
+<code><strong>strongswan.d/charon/</strong></code> directory, check if the plugin-specific configuration
+file in that directory contains <code><strong>load = yes</strong></code> in the plugin-specific configuration
+section. If the file doesn&#8217;t exist, the plugin is likely not installed.</p>
+</div>
+<div class="paragraph">
+<p>If you compiled strongSwan yourself, rebuild it with the required plugins
+<a href="../install/autoconf.html" class="xref page">enabled</a>. Make sure to run <code><strong>make clean</strong></code> before rebuilding
+again to update the plugin lists used by the executables.</p>
+</div>
+<div class="paragraph">
+<p>If you got strongSwan from the <a href="../install/install.html" class="xref page">repositories of a distribution</a>,
+look for additional packages. It is likely the distribution ships the plugin you&#8217;re
+looking for in another package. If you still can not find it, search the issue tracker
+of that distribution for a bug report or feature request for the plugin you want.
+If you found one, weigh in on it, unless it is already closed or a plausible
+reason was given why the request can not be fulfilled.
+If you did not find a bug report or feature request in the issue tracker of that
+distribution, open one stating your request for the plugin you&#8217;re looking for to
+be included.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_strongswan_crashes"><a class="anchor" href="#_strongswan_crashes"></a>strongSwan crashes</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>strongSwan crashes and I don&#8217;t know why. What should I do?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> If you are not using the latest version, it is very likely that the crash
+you experienced was already fixed.</p>
+</div>
+<div class="paragraph">
+<p>If you <a href="../install/install.html" class="xref page">compiled it yourself</a>, make sure your cleaned
+the build directory before compiling. If you do not do that, you can end up linking
+objects of different strongSwan versions together and that can cause crashes.
+If you don&#8217;t use the same configure options when building a newer version,
+uninstalling/removing the previous binaries/libraries is required (the same applies
+if you previously had strongSwan installed from a distribution package).
+Then recompile it and reinstall it.</p>
+</div>
+<div class="paragraph">
+<p>If you installed it as <a href="../install/install.html" class="xref page">binary package</a>, check the
+corresponding distribution&#8217;s issue tracker for reports.</p>
+</div>
+<div class="paragraph">
+<p>In either case, if the crashes persist, try to find a similar report in our
+issue tracker or discussion forum and read it. If you can&#8217;t find one, create
+a new one with as much details as possible.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_compatibility_with_freeswan_openswan_and_libreswan"><a class="anchor" href="#_configuration_compatibility_with_freeswan_openswan_and_libreswan"></a>Configuration compatibility with FreeS/WAN, Openswan and Libreswan</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Are configuration files of FreeS/WAN, Openswan and Libreswan compatible with the ones of strongSwan?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> They are not compatible. Although the general format of <code><strong>ipsec.conf</strong></code> is
+identical between the different swans, the files are not compatible, because several
+options have different meanings and a variety of different options are absent from
+some versions and others exist. Do not attempt to reuse configuration files between
+different swans.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <strong>ipsec.conf</strong> backend is deprecated, use
+      <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> or
+      <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_subnets_per_sa"><a class="anchor" href="#_multiple_subnets_per_sa"></a>Multiple subnets per SA</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Can I tunnel several subnets in one CHILD_SA?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> If you use IKEv2, you can if the peers support it. Some do not (e.g. devices
+by Checkpoint, Cisco and Fortinet, refer to the <strong>Interoperability</strong> section for details).
+If you use IKEv1, you need to be a roadwarrior and use the <em>UNITY</em> extension.
+strongSwan implements it with the <a href="../plugins/unity.html" class="xref page"><code><strong>unity</strong></code></a> plugin.</p>
+</div>
+<div class="paragraph">
+<p>In any other case, you need to define a separate CHILD_SA per subnet pair.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ipsec_and_iptablesnftables"><a class="anchor" href="#_ipsec_and_iptablesnftables"></a>IPsec and iptables/nftables</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>How does IPsec on Linux interact with <code>iptables/nftables</code>?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> IPsec-protected traffic passes through the same tables and chains as
+unprotected traffic. The only exception is that IPsec-protected traffic passes
+through some chains twice. You can tell protected and unprotected traffic apart
+using the <code><strong>policy</strong></code> module in <code><strong>iptables</strong></code> or the <code><strong>nft_xfrm</strong></code> module in <code><strong>nftables</strong></code>.
+The <a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg">Netfilter traffic flow graph</a> shows where IPsec (XFRM) hooks into
+Netfilter and which tables and chains are traversed in what order.</p>
+</div>
+<div class="paragraph">
+<p>Packets that are compressed using <a href="../features/ipcomp.html" class="xref page">IPComp</a> pass through
+some chains three times. Once as encapsulated packet, then as IP-in-IP packet and
+then as the actual packet. The protocol number depends on the encapsulated protocol.
+You need to allow the protocols in the firewall depending on your tunnel configuration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ipsec_policy_ordering"><a class="anchor" href="#_ipsec_policy_ordering"></a>IPsec policy ordering</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>In which order do IPsec policies apply?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> The policies' priorities are used to order them. They are checked from the
+lowest priority to the highest priority. The one that matches first is applied
+(first match wins, lower number = higher priority).</p>
+</div>
+<div class="paragraph">
+<p>strongSwan installs all passthrough policies with higher priorities than other
+policies and drop policies with lower priorities.  The priorities can be changed
+manually via <code><strong>&lt;child&gt;.priority</strong></code> setting in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_high_availability_and_failover_configurations"><a class="anchor" href="#_high_availability_and_failover_configurations"></a>High Availability and Failover configurations</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Does strongSwan support high availability and failover configurations?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> At this moment (version 5.9.6), strongSwan only supports
+<a href="../features/highAvailability.html" class="xref page">active-active/passive HA clusters</a> that are
+comprised of two nodes. It only supports such configurations when both peers
+receive the same packets by use of an multicast group, as described on
+<a href="../features/highAvailability.html" class="xref page">High Availability</a>.</p>
+</div>
+<div class="paragraph">
+<p>Failover configurations with policy-based tunnels are, while not impossible, tricky
+to implement. However, with <a href="../features/routeBasedVpn.html" class="xref page">route-based tunnels</a>
+that are built using virtual interfaces and with a dynamic routing daemon, such
+a configuration should be easily possible between one strongSwan installation
+and two redundant remote gateways, like AWS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_no_matching_peer_config_found"><a class="anchor" href="#_no_matching_peer_config_found"></a>No matching peer config found</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>The connection attempt by a peer fails with the error <code>no matching peer config found</code>.
+How do I fix this?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> When a peer connects, the IKE daemon has to find a config object with all the
+information required for the authentication of the peer and the CHILD_SAs that
+should be established. It does this by comparing the <strong>IP addresses</strong> and the
+<strong>identities</strong> in the received message to those in the loaded configurations (the
+IKE proposal is also considered in newer versions). If no matching configuration
+is found based on that information, the connection can&#8217;t be established and you
+see the corresponding error message.</p>
+</div>
+<div class="paragraph">
+<p>That message is actually preceded by another that looks something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>looking for peer configs matching 192.168.0.1[moon.strongswan.org]...192.168.0.100[carol@strongswan.org]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which contains the following information:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">192.168.0.1</dt>
+<dd>
+<p>Local IP address of the IKE_SA (= responder/server&#8217;s IP)</p>
+</dd>
+<dt class="hdlist1">[moon.strongswan.org]</dt>
+<dd>
+<p>Responder/Server identity proposed by the
+initiator/client in the IDr payload, if one was received, must match the local
+identity that&#8217;s configured</p>
+</dd>
+<dt class="hdlist1">192.168.0.100</dt>
+<dd>
+<p>Remote IP address of the IKE_SA (= initiator/client&#8217;s IP)</p>
+</dd>
+<dt class="hdlist1">[carol@strongswan.org]</dt>
+<dd>
+<p>Initiator/Client identity proposed by the
+initiator/client in the IDi payload, must match the remote identity that&#8217;s
+configured</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Basically, this information has to match whatever is configured in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> (wildcards are allowed in the
+configured identities, e.g. <code><strong>&ast;@strongswan.org</strong></code>). So if no config is found,
+make sure to compare the data in the log message to the configured values seen
+in <a href="../swanctl/swanctlListConns.html" class="xref page"><code><strong>swanctl --list-conns</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>Note that the type of compared identities (e.g. FQDN vs. USER_FQDN or KEY_ID,
+see <a href="../config/identityParsing.html" class="xref page">identity parsing</a>) must match too. Identities
+might look the same in the log and e.g.
+<a href="../swanctl/swanctlListConns.html" class="xref page"><code><strong>swanctl --list-conns</strong></code></a> but their type could
+be different. More details about this comparison (including the type) are logged
+only if the <a href="../config/logging.html" class="xref page">log level</a> for <code><strong>cfg</strong></code> is increased to <code><strong>3</strong></code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_constraint_check_failed_identity_required"><a class="anchor" href="#_constraint_check_failed_identity_required"></a>Constraint check failed: identity '&#8230;&#8203;' required</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>The authentication fails with the error <code>constraint check failed: identity '&#8230;&#8203;' required</code>.
+What exactly is the problem?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> To prevent <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM attacks</a>, some of the clients that, for simplicity, don&#8217;t
+require configuring the server identity explicitly (e.g. the
+<a href="../os/android.html" class="xref page">Android app</a> or the
+<a href="../features/networkManager.html" class="xref page">NetworkManager plugin</a>) enforce the hostname/IP
+as remote identity and will check that this identity is contained in a
+<code><strong>subjectAlternativeName</strong></code> (SAN) extension of the server certificate. If that&#8217;s not
+the case, you&#8217;ll receive that error (also see the questions below regarding
+matching identities against CN and wildcard certificates). Both mentioned clients
+allow configuring the server identity explicitly in the advanced settings, but
+other clients might not. In that case you&#8217;ll have to add the missing SAN to the
+certificate (e.g. with the <code><strong>--san</strong></code> option for
+<a href="../pki/pkiIssue.html" class="xref page"><code><strong>pki --issue</strong></code></a>) or use a hostname or IP address that&#8217;s
+already contained as SAN in the certificate.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pre_shared_key_authentication"><a class="anchor" href="#_pre_shared_key_authentication"></a>Pre-Shared Key Authentication</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Should I use IKE with PSK authentication?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Both IKEv1 and IKEv2 with PSK-based authentication are vulnerable to dictionary
+and brute-force attacks (online but also offline if a password hash was actively
+gathered beforehand, with <a href="#_aggressive_mode">IKEv1 Aggressive Mode</a> even passively).
+So it is generally recommended to use digital signature (certificate) based authentication.</p>
+</div>
+<div class="paragraph">
+<p>If you have to use PSKs, you should generate high entropy PSKs as shown in the
+<a href="../howtos/securityRecommendations.html#_preshared_keys" class="xref page">security recommendations</a>.
+It&#8217;s also not recommended to use the same PSK for multiple hosts, e.g. to authenticate
+a server in roadwarrior scenarios (every client that knows the PSK can impersonate
+the server or any of the other clients).</p>
+</div>
+<div class="paragraph">
+<p>For roadwarrior scenarios with IKEv2, username/password-based EAP authentication
+for clients with certificate authentication for the server might be an option.
+The certificate makes sure clients only send their password hash to the correct
+server (which prevents offline attacks). However, such setups could still be
+vulnerable to online attacks if weak user passwords are used.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_certificates_private_keys"><a class="anchor" href="#_certificates_private_keys"></a>Certificates / Private Keys</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_wildcard_certificates"><a class="anchor" href="#_wildcard_certificates"></a>Wildcard Certificates</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Does strongSwan support wildcard certificates?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong>: No, it doesn&#8217;t. The reason for that is that wildcard certificates were declared
+<a href="https://datatracker.ietf.org/doc/html/rfc6125#section-7.2">deprecated in RFC 6125</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_matching_cn_field_in_distinguished_names"><a class="anchor" href="#_matching_cn_field_in_distinguished_names"></a>Matching CN field in Distinguished Names</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Does strongSwan support checking the ID against the Common Name (CN) field
+of a Distinguished Name (DN) in X.509 certificates?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong>: No, it doesn&#8217;t. The ID must be present in a SAN field of the correct type.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_x_509_certificate_chain_files"><a class="anchor" href="#_x_509_certificate_chain_files"></a>X.509 Certificate Chain Files</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Can strongSwan read chain files (an end-entity certificate and the CAs that are required to authenticate it)?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Not completely, it only reads the first certificate from such files.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_no_private_key_found"><a class="anchor" href="#_no_private_key_found"></a>No private key found</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>strongSwan logs "no private key found". What&#8217;s wrong?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> You are trying to use a certificate to authenticate yourself for which you
+did not provide the private key to strongSwan. Check the log for errors when
+the private keys are loaded.</p>
+</div>
+<div class="paragraph">
+<p>If it persists, check that the certificate&#8217;s public key was generated using the
+private key you&#8217;re trying to use (e.g. with <a href="../pki/pkiPrint.html" class="xref page"><code><strong>pki --print</strong></code></a>
+and <a href="../pki/pkiVerify.html" class="xref page"><code><strong>pki --verify</strong></code></a>). It surprisingly often happens that
+people re-generate keys and certificates and try to use the wrong private key.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_no_trusted_rsa_public_key_found_for"><a class="anchor" href="#_no_trusted_rsa_public_key_found_for"></a>No trusted RSA public key found for [&#8230;&#8203;]</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>I get the error <code>no trusted RSA public key found for [&#8230;&#8203;]</code> when trying to establish my VPN connection. Why is that happening?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> The daemon is unable to authenticate the remote peer&#8217;s transmitted identity
+using its available authentication credentials (e.g. transmitted client certificate,
+all transmitted and installed/trusted CA certificates).</p>
+</div>
+<div class="paragraph">
+<p>Make sure your configuration fulfills the following requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The end-entity certificate is transmitted (check the log for <code>sending end entity
+cert</code> and/or <code>received end entity cert</code>) or locally installed (make sure it matches
+the peer&#8217;s private key)</p>
+<div class="paragraph">
+<p>This is affected by the <code><strong>send_certreq</strong></code> and <code><strong>send_cert</strong></code> settings in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
+</div>
+</li>
+<li>
+<p>Any required intermediate CA certificates are also sent or locally installed</p>
+</li>
+<li>
+<p>The root/intermediate CA that issued the end-entity certificate is trusted or
+the end-entity certificate is locally installed (check
+<a href="../swanctl/swanctlListCerts.html" class="xref page"><code><strong>swanctl --list-certs</strong></code></a>)</p>
+</li>
+<li>
+<p>The end-entity and CA certificates are valid (make sure to also check the system
+time). Note that this check is skipped for locally installed end-entity certificates</p>
+</li>
+<li>
+<p>The transmitted identity is either in one of it&#8217;s certificate&#8217;s SAN fields
+with the correct type (type IP if it&#8217;s an IP, type FQDN if it&#8217;s a FQDN) or it
+equals the certificate&#8217;s full subject DN (distinguished name)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ikev2"><a class="anchor" href="#_ikev2"></a>IKEv2</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_disabling_nat_traversal"><a class="anchor" href="#_disabling_nat_traversal"></a>Disabling NAT traversal?</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>How can I turn off NAT traversal in charon (IKEv2)?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> NAT traversal cannot be disabled in the charon daemon. If you don&#8217;t like
+automatic port floating to UDP/4500 due to the MOBIKE protocol (<a href="https://datatracker.ietf.org/doc/html/rfc4555">RFC 4555</a>),
+which happens even if no NAT situation exists, then you can disable MOBIKE by
+disabling <code><strong>&lt;conn&gt;.mobike</strong></code> in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_public_key_authentication_fails_with_retransmissions"><a class="anchor" href="#_public_key_authentication_fails_with_retransmissions"></a>Public Key Authentication Fails With Retransmissions</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>My IKEv2 connection fails with retransmits during the IKE_AUTH exchange
+when using RSA certificates, but works when a PSK is used. Why?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> This is probably related to the Path MTU. The IKE_AUTH messages that contain
+the certificates and certificate requests can get pretty big, therefore, the IP
+packets transporting these UDP datagrams could get fragmented. Some firewalls
+might block IP fragments and will therefore hamper your IKE connection.</p>
+</div>
+<div class="paragraph">
+<p>strongSwan and many other implementations support <a href="https://datatracker.ietf.org/doc/html/rfc7383">IKEv2 fragmentation</a>
+to avoid this problem. Make sure this is not disabled (<code>fragmentation</code> option in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>) and the peer supports it (check
+for <code>FRAGMENTATION_SUPPORTED</code> (<code>FRAG_SUP</code>) notifies in IKE_SA_INIT messages in the
+log).</p>
+</div>
+<div class="paragraph">
+<p>If you can&#8217;t use IKEv2 fragmentation or configure the responsible firewall(s) to
+accept IP fragments, you could try to preload the certificates on both sides and
+then configure <code><strong>send_cert=never</strong></code> in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> to prevent the daemon from sending
+certificates (<code><strong>send_certreq=no</strong></code> may be used to avoid sending certificate requests,
+which also prevents that certificates are sent with the default setting of
+<code><strong>ifasked</strong></code> for <code><strong>send_cert</strong></code>).</p>
+</div>
+<div class="paragraph">
+<p>Using ECDSA instead of RSA will also reduce the size of the IKE_AUTH messages as
+keys/certificates will be significantly smaller.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ikev1"><a class="anchor" href="#_ikev1"></a>IKEv1</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_no_proposal_chosen_returned_by_zyxellinksysx_router"><a class="anchor" href="#_no_proposal_chosen_returned_by_zyxellinksysx_router"></a>No proposal chosen returned by ZyXEL/Linksys/x router</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>I&#8217;m trying to set up a VPN tunnel with a ZyXEL/Linksys/X router but the
+other side keeps on telling me <code>no proposal chosen</code> when strongSwan initiates the connection.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Make sure that the peer supports all the algorithms (including the key
+lengths) which strongSwan proposes for IKE and ESP. In terms of IKE, the proposal
+consists of the following parts: Encryption algorithm, hash algorithm (PRF) and
+DH group. In terms of ESP, the proposal includes the following: Encryption algorithm,
+hash algorithm, DH group (for PFS) and compression algorithm. There are lots of
+IPsec implementations out there that do <strong>not</strong> support compression or have
+implemented it erroneously. So the first thing to try in this situation is to
+switch compression off (the default). Then try to make sure the proposals match
+on both ends.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_invalid_hash_v1_payload_length_decryption_failed"><a class="anchor" href="#_invalid_hash_v1_payload_length_decryption_failed"></a>Invalid HASH_V1 payload length, decryption failed?</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>I&#8217;m getting the error message <code>invalid HASH_V1 payload length, decryption failed?</code>
+when using PSK authentication. What could be the reason?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> This is most likely due to an incorrect PSK on one of the peers. Since the
+PSK is incorporated into the key material used so secure the IKEv1 packets they
+can&#8217;t be decrypted properly if the PSKs don&#8217;t match.</p>
+</div>
+<div class="paragraph">
+<p>Note that the PSK whose associated identities/IPs matches best is used. So if the
+local identity is configured with every PSK, every PSK will basically match to
+some degree. Which is why only remote identities/IPs should be associated with PSKs.</p>
+</div>
+<div class="paragraph">
+<p>For IKEv1, there is also a lookup based on the IP addresses (i.e. every secret
+that lists the local IP will match). And as responder, identities can only be
+used directly to find PSKs if aggressive mode is used (<a href="#_aggressive_mode">which
+should never be used with PSK</a>). However, if a configuration is found (based on
+the IPs) a lookup based on the configured identities is still done (all matching
+configs are considered until a PSK is found).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_aggressive_mode"><a class="anchor" href="#_aggressive_mode"></a>Aggressive Mode</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>Does strongSwan support IKEv1 Aggressive Mode?</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Since version 5.0.0 the answer is <em>yes</em>. However, the strongSwan developers
+still recommend to avoid its use with pre-shared keys. This is due to a known
+weakness of the protocol. With Aggressive Mode, a hash of the pre-shared key is
+transmitted in clear-text. An eavesdropper can capture this hash and run an offline
+brute-force attack against it. Once the pre-shared key is known <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM attacks</a>
+to gather the XAuth credentials can easily be executed. Aggressive Mode is
+therefore incompatible with the basic principles of the strongSwan project which
+is to deliver a product that meets high security standards. That&#8217;s why, in order
+to use Aggressive Mode with pre-shared keys as responder (i.e. on gateways) it
+is required to enable</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>charon {
+  i_dont_care_about_security_and_use_aggressive_mode_psk = yes
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. As promised often in
+numerous public and private talks, strongSwan then changes its name to <strong>weakSwan</strong>.
+It is not required to set this option for clients as they often have no other choice.</p>
+</div>
+<div class="paragraph">
+<p>To avoid Aggressive Mode with pre-shared keys (and other short-comings of IKEv1
+Main or Aggressive Mode) the best option is to switch to <strong>IKEv2 with signature-based
+authentication</strong>, because IKEv2 PSK based authentication is also vulnerable to
+dictionary and brute-force attacks.</p>
+</div>
+<div class="paragraph">
+<p>But even for IKEv1 <a href="https://www.strongswan.org/testing/testresults/ikev1/xauth-id-rsa-hybrid">hybrid authentication</a>
+provides an easy to deploy alternative.  This mode uses a certificate to
+authenticate the gateway and only XAuth to authenticate the client, during
+Phase 1 (Main or Aggressive Mode) the client is not authenticated.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nat_between_windows_l2tpipsec_clients_and_strongswan"><a class="anchor" href="#_nat_between_windows_l2tpipsec_clients_and_strongswan"></a>NAT Between Windows L2TP/IPsec Clients and strongSwan</h3>
+<div class="paragraph">
+<p><strong>Q:</strong> <em>I want to set up strongSwan to interoperate with Microsoft Windows using
+L2TP/IPsec.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> NAT-Traversal with IPsec transport mode has some inherent issues (see
+<a href="https://datatracker.ietf.org/doc/html/rfc3948#section-5.2">RFC 3948</a> and
+<a href="https://www.strongswan.org/testing/testresults/ikev2/host2host-transport-nat">this test scenario</a>
+for an illustration). While strongSwan supports NAT-T with transport mode, the
+fundamental issues remain. Refer to the <a href="../plugins/connmark.html" class="xref page"><code><strong>connmark</strong></code></a>
+plugin for possible workarounds in some scenarios. However, for Windows L2TP clients
+that all use the same client port
+<a href="../plugins/connmark.html#_windows_l2tp" class="xref page">the plugin alone is not enough</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="helpRequests.html">Help Requests</a></span>
+  <span class="next"><a href="flawReporting.html">Flaw Reporting</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
