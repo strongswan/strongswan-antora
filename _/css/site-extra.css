@@ -13,6 +13,10 @@
 	line-height: 1.3;
 }
 
+.doc p a code {
+	color: inherit;
+}
+
 .navbar {
 	background: #8a0020;
 }
