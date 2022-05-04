@@ -2568,6 +2568,46 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 </table>
 </div>
 <div class="sect3">
+<h4 id="_charon_plugins_forecast"><a class="anchor" href="#_charon_plugins_forecast"></a><a href="../plugins/forecast.html" class="xref page">charon.plugins.forecast</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 30.7692%;">
+<col style="width: 7.6923%;">
+<col style="width: 61.5385%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of multicast groups to join locally. The local host receives
+ and forwards packets in the local LAN for joined multicast groups only. Packets
+ matching the list of multicast groups get forwarded to connected clients. The
+ default group includes host multicasts, IGMP, mDNS, LLMNR and SSDP/WS-Discovery
+ and is usually a good choice for Windows clients.
+ <code><strong>[224.0.0.1,224.0.0.22,224.0.0.251,224.0.0.252,239.255.255.250]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">interface</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the local interface to listen for broadcasts messages to forward. If no
+ interface is configured, the first usable interface is used, which is usually
+ just fine for single-homed hosts. If your host has multiple interfaces, set this
+ option to the local LAN interface you want to forward broadcasts from/to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reinject</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of <code>CHILD SA</code> configuration names for which to perform
+ multi/broadcast reinjection. For clients connecting over such a configuration,
+ any multi/broadcast received over the tunnel gets reinjected to all active tunnels.
+ This makes the broadcasts visible to other peers, and for examples allows clients
+ to see others shares. If disabled, multi/broadcast messages received over a tunnel
+ are injected to the local network only, but not to other IPsec clients.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
 <h4 id="_charon_plugins_gcrypt"><a class="anchor" href="#_charon_plugins_gcrypt"></a>charon.plugins.gcrypt</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

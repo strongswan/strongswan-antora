@@ -745,8 +745,8 @@ identity to the clients. But as EAP-TLS is a mutual authentication protocol,
 <div class="paragraph">
 <p>Certificates for EAP-TLS are configured the same way as for traditional IKEv2
 certificate-based authentication, using the
-<a href="../swanctl/swanctlDir.html" class="xref page"><strong><code>swanctl</strong></code></a> certificate and key directories as
-well as the <a href="../swanctl/swanctlConf.html" class="xref page">'<strong>swanctl.conf</strong>'</a> definitions</p>
+<a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a> certificate and key directories as
+well as the <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> definitions</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -949,7 +949,7 @@ TLS_RSA_WITH_NULL_MD5</pre>
 </details>
 <div class="paragraph">
 <p>ECDHE and ECDSA require a third-party crypto backend. Since version 5.9.2, EdDSA
-$ may also be used with ECDSA cipher suites. ECDHE support is limited to the
+may also be used with ECDSA cipher suites. ECDHE support is limited to the
 named curves <code><strong>SECP256R1</strong></code>, <code><strong>SECP384R1</strong></code>, <code><strong>SECP521R1</strong></code>, <code><strong>SECP224R1</strong></code> and
 <code><strong>SECP192R1</strong></code> with uncompressed points. Since version 5.9.2, <code><strong>Curve25519</strong></code> and
 <code><strong>Curve448</strong></code> are also supported. <code>CAMELLIA</code> encryption requires either the
@@ -1008,13 +1008,17 @@ separated list of the cipher suites above:</p>
 <div class="sect1">
 <h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-only"><img src="../_images/a-m-c.png" alt="topology" width="187" height="129" title="rw-eap-tls-only example"></a></span>
-strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-only">example</a> showing the use of EAP-TLS only authentication.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-only"><img src="../_images/a-m-c.png" alt="topology" width="276" height="190"></a>
 </div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-radius"><img src="../_images/a-m-c.png" alt="topology" width="187" height="129" title="rw-eap-tls-radius example"></a></span>
-strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-radius">example</a> showing the use of EAP-TLS with AAA server.</p>
+<div class="title">Figure 1. strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-only">example</a> showing the use of EAP-TLS only authentication.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-radius"><img src="../_images/a-m-c.png" alt="topology" width="276" height="190"></a>
+</div>
+<div class="title">Figure 2. strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-tls-radius">example</a> showing the use of EAP-TLS with AAA server.</div>
 </div>
 </div>
 </div>

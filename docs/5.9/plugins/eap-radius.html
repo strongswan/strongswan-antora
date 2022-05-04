@@ -1228,13 +1228,17 @@ the IKE_SA.</p>
 }</pre>
 </div>
 </div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-framed-ip-radius"><img src="../_images/a-m-c-w-d.png" alt="topology" width="252" height="129" title="rw-eap-framed-ip-radius example"></a></span>
-strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-framed-ip-radius">example</a> using the <a href="https://datatracker.ietf.org/doc/html/rfc2865#section-5.8"><code><strong>Framed-IP-Address</strong></code></a> attribute</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-framed-ip-radius"><img src="../_images/a-m-c-w-d.png" alt="topology" width="372" height="190"></a>
 </div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-md5-class-radius"><img src="../_images/a-m-c-w-d.png" alt="topology" width="252" height="129" title="rw-eap-md5-class-radius example"></a></span>
-strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-md5-class-radius">example</a> using the <a href="https://datatracker.ietf.org/doc/html/rfc2865#section-5.25"><code><strong>Class</strong></code></a> attribute</p>
+<div class="title">Figure 1. strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-framed-ip-radius">example</a> using the <a href="https://datatracker.ietf.org/doc/html/rfc2865#section-5.8"><code><strong>Framed-IP-Address</strong></code></a> attribute</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-md5-class-radius"><img src="../_images/a-m-c-w-d.png" alt="topology" width="372" height="190"></a>
+</div>
+<div class="title">Figure 2. strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-eap-md5-class-radius">example</a> using the <a href="https://datatracker.ietf.org/doc/html/rfc2865#section-5.25"><code><strong>Class</strong></code></a> attribute</div>
 </div>
 </div>
 </div>
@@ -1324,7 +1328,7 @@ shown in the example below:</p>
 <p>The <em>Accounting-Stop</em> message additionally adds
 <a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.7"><code><strong>Acct-Session-Time</strong></code></a>,
 <a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.3"><code><strong>Acct-Input-Octets</strong></code></a>,
-<a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.4"><code><strong>Acct-Output-Octets</strong></a></code>,
+<a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.4"><code><strong>Acct-Output-Octets</strong></code></a>,
 <a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.8"><code><strong>Acct-Input-Packets</strong></code></a> and
 <a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.9"><code><strong>Acct-Output-Packets</strong></code></a>.
 The plugin optionally adds
@@ -1333,9 +1337,11 @@ messages to RADIUS accounting messages.</p>
 </div>
 <div class="sect2">
 <h3 id="_example"><a class="anchor" href="#_example"></a>Example</h3>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-radius-accounting"><img src="../_images/a-m-c.png" alt="topology" width="187" height="129" title="rw-radius-accounting example"></a></span>
-strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-radius-accounting">example</a> showing the use of RADIUS accounting.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/ikev2/rw-radius-accounting"><img src="../_images/a-m-c.png" alt="topology" width="276" height="190"></a>
+</div>
+<div class="title">Figure 3. strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-radius-accounting">example</a> showing the use of RADIUS accounting</div>
 </div>
 </div>
 </div>
@@ -1461,7 +1467,7 @@ strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-radi
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://datatracker.ietf.org/doc/html/rfc2866#section-5.9">Acct-Output-Packets</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of sent packets</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">- - ✔ ✔</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">– – ✔ ✔</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Total number of sent packets over all CHILD_SAs of this IKE_SA</p></td>
 </tr>
 <tr>
@@ -1543,10 +1549,11 @@ with RADIUS, set '<strong>auth = xauth-radius</strong>' in a <code><strong>remot
 </div>
 <div class="sect2">
 <h3 id="_example_2"><a class="anchor" href="#_example_2"></a>Example</h3>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://www.strongswan.org/testing/testresults/ikev1/xauth-rsa-radius"><img src="../_images/a-m-c.png" alt="topology" width="187" height="129" title="xauth-rsa-radius example"></a></span>
-strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev1/xauth-rsa-radius">example</a> showing the use of <code><strong>XAuth</strong></code> with the <code><strong>eap-radius</strong></code>
-plugin.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/ikev1/xauth-rsa-radius"><img src="../_images/a-m-c.png" alt="topology" width="276" height="190"></a>
+</div>
+<div class="title">Figure 4. strongSwan <a href="https://www.strongswan.org/testing/testresults/ikev1/xauth-rsa-radius">example</a> showing the use of <code><strong>XAuth</strong></code> with the <code><strong>eap-radius</strong></code> plugin</div>
 </div>
 </div>
 <div class="sect2">
