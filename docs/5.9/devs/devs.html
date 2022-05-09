@@ -706,78 +706,79 @@ test runner:</p>
 <col style="width: 62.5%;">
 <col style="width: 12.5%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Since Version</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Variable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Since<br>
-Version</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_PLUGINS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_PLUGINS</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A space-separated list of plugins to load<br>
  (not implemented by all test runners)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.3.3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_REDUCED_KEYLENGTHS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If this is set test cases that generate keys will do so only for reduced key
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_REDUCED_KEYLENGTHS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this is set, test cases that generate keys will do so only for reduced key
  lengths to avoid blocking on hosts with low entropy</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_STRONGSWAN_CONF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_STRONGSWAN_CONF</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Path to a custom <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> file used
  for the tests</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_RUNNERS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_RUNNERS</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test runners to run</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5.0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_SUITES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_SUITES</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test suites to run<br>
  (all suites are run if this is not specified)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_SUITES_EXCLUDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_SUITES_EXCLUDE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test suites excluded from running</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.2.1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_CASES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_CASES</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test cases to run<br>
  (all cases of selected suites are run if this is not specified)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_CASES_EXCLUDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_CASES_EXCLUDE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test cases excluded from running</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_FUNCTIONS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_FUNCTIONS</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test functions to run
  (all functions of selected suites/cases are run if this is not specified)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_FUNCTIONS_EXCLUDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_FUNCTIONS_EXCLUDE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test functions excluded from running</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TESTS_VERBOSITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_VERBOSITY</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The log level used when running the tests (<code><strong>-1</strong></code> to <code><strong>4</strong></code> with a default of
  <code><strong>-1</strong></code>), see <a href="../config/logging.html" class="xref page">Logging</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LEAK_DETECTIVE_DISABLE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If our custom memory allocator is enabled with <code><strong>--enable-leak-detective</strong></code> it
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LEAK_DETECTIVE_DISABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If our custom memory allocator is enabled with <code><strong>--enable-leak-detective</strong></code>, it
  can be disabled temporarily by setting this variable in order to speed up
  running the tests</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -792,7 +793,7 @@ is not recommended for production builds as it disables all optimizations.</p>
 <div class="paragraph">
 <p>The unit tests also run automatically for every commit:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table class="tableblock frame-none grid-none stretch">
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -821,7 +822,7 @@ is not recommended for production builds as it disables all optimizations.</p>
 <div class="paragraph">
 <p>And the code base is automatically analyzed:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table class="tableblock frame-none grid-none stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -895,7 +896,7 @@ published <a href="https://strongswan.org/testresults.html">online</a>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The Windows IKE service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</a></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An IKE daemon similar to <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> but specifically
  designed for use with <code><strong>systemd</strong></code></p></td>
 </tr>
@@ -964,7 +965,7 @@ published <a href="https://strongswan.org/testresults.html">online</a>.</p>
  <a href="../plugins/eap-radius.html" class="xref page"><code><strong>eap-radius</strong></code></a> and <code><strong>tnc-pdp</strong></code> plugins</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>libsimaka</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libsimaka</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains code shared by several EAP-SIM/AKA plugins</p></td>
 </tr>
 <tr>
