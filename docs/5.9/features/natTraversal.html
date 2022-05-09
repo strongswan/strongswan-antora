@@ -184,6 +184,9 @@
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">IPsec Protocol</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -639,54 +642,123 @@
 <h1 class="page">NAT Traversal</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>The IKEv2 protocol includes NAT traversal (NAT-T) in the core standard, but it&#8217;s
-optional to implement. strongSwan implements it and does not require any special
-configuration. The <code>NAT_DETECTION_SOURCE_IP</code> and <code>NAT_DETECTION_DESTINATION_IP</code>
-notifications included in the <code>IKE_SA_INIT</code> exchange indicate the peer&#8217;s NAT-T
-capability and allow detecting which peer, if any, is behind a NAT device. If a
-NAT situation is detected, the client switches to UDP port 4500 to send the
-<code>IKE_AUTH</code> request (only if it used port 500 initially, see below regarding custom
-ports) and UDP encapsulation will be activated for IPsec SAs.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <a href="https://datatracker.ietf.org/doc/html/rfc7296">IKEv2</a> protocol includes <strong>NAT Traversal</strong> (NAT-T) in the core
+      standard but it is optional to implement for vendors. The strongSwan
+      <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon implements <strong>NAT-Traversal</strong>
+      without any special prior configuration but the mechanism cannot be disabled,
+      either.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you don&#8217;t like the automatic port floating to UDP port <code><strong>4500</strong></code> due to the
+      <a href="mobike.html" class="xref page">MOBIKE</a> protocol which happens even if no NAT
+      situation exists, then you can disable <a href="mobike.html" class="xref page">MOBIKE</a> by
+      setting <code><strong>mobike = no</strong></code> in the <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+      connection definition.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>NAT-T cannot be disabled in the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> IKE daemon.
-If you don&#8217;t like the automatic port floating to UDP/4500 due to the
-<a href="mobike.html" class="xref page">MOBIKE</a> protocol which happens even if no NAT situation
-exists, then you can disable <a href="mobike.html" class="xref page">MOBIKE</a> by disabling the
-<code><strong>mobike</strong></code> option in the <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
-connection definition.</p>
+<p>Since the ESP protocol with IP protocol number <code><strong>50</strong></code> doesn&#8217;t have any ports,
+<em>per se</em> it is not suited for <strong>Port Address Translation</strong>, the standard method of
+traversing a NAT router for the TCP and UDP protocols.</p>
+</div>
+<div class="paragraph">
+<p>Some NAT routers have a feature, often called something like <strong>IPsec Passthrough</strong>
+that detects outbound IKE traffic from a single host behind the NAT device and
+will forward inbound IKE and ESP packets to that specific host as shown in the
+figure below</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/ipsecForwarding.png" alt="IPsec Forwarding">
+</div>
+</div>
+<div class="paragraph">
+<p>Unfortunately this
+won&#8217;t work with multiple IPsec clients behind the same NAT router that all want
+to communicate with the same VPN gateway as shown in the network topology below</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/natTraversal.png" alt="NAT Traversal">
+</div>
+</div>
+<div class="paragraph">
+<p>The solution proposed by <a href="https://datatracker.ietf.org/doc/html/rfc3948">RFC 3948</a> is to encapsulate ESP packets in
+UDP datagrams which then allows to apply <strong>Port Address Translation</strong> as shown in
+the figure above. The well-known <strong>NAT Traversal</strong> UDP port <code><strong>4500</strong></code> is shared with
+the IKE protocol when a <a href="https://datatracker.ietf.org/doc/html/rfc7296#section-2.23">NAT situation is detected</a> between
+the two IPsec endpoints. The detection is based on the <code>NAT_DETECTION_SOURCE_IP</code>
+and <code>NAT_DETECTION_DESTINATION_IP</code> notifications sent in the <code>IKE_SA_INIT</code> exchange
+that contain source and destination IP address hashes, respectively.</p>
+</div>
+<div class="paragraph">
+<p>ESP-in-UDP encapsulation can be enforced even if no NAT situation exists by setting
+<code><strong>encap = yes</strong></code> for a given connection definition in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>. If enabled, the
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon will send a manipulated
+<code>NAT_DETECTION_SOURCE_IP</code> notify payload so that it will look to the remote peer
+as if there were a NAT situation.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_udp_encapsulation_of_esp"><a class="anchor" href="#_udp_encapsulation_of_esp"></a>UDP Encapsulation of ESP</h2>
+<h2 id="_esp_in_udp_encapsulation"><a class="anchor" href="#_esp_in_udp_encapsulation"></a>ESP-in-UDP Encapsulation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Because ESP packets are unidirectional, NAT devices can&#8217;t map them like they do
-with e.g. TCP/UDP packets by using the source and destination ports in those headers.
-Some NAT devices have a feature, often called something like "IPsec passthrough"
-that detects IKE traffic from a single host behind the NAT router and will forward
-incoming plain ESP packets to that host. But that won&#8217;t work with multiple clients
-behind the same NAT router that use the same VPN gateway. To allow multiple clients,
-UDP encapsulation is used. Adding a UDP header to the ESP packets allows NAT
-devices to treat them like the IKE packets (or any other UDP packets) and to
-maintain port mappings to forward the packets from/to the correct hosts behind the
-NAT router.</p>
+<p>ESP-in-UDP encapsulation means that an eight octet UDP header is inserted between
+the IP Header and the ESP Header of the ESP packet. At the outset the UDP source
+and destination ports are both set to the well-known value <code><strong>4500</strong></code> but might get
+changed on the way by one or several NAT routers.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/espInUdpEncapsulation.png" alt="ESP in UDP Encapsulation">
+</div>
 </div>
 <div class="paragraph">
-<p>The UDP-encapsulated ESP packets are sent on the same ports used for IKE traffic.
-To distinguish them from IKE packets, the latter are modified so they contain four
-zero bytes right after the UDP header where the SPI is located in ESP packets
-(known as "non-ESP marker"). This means that the UDP socket/port (4500 by default)
-has to handle traffic differently than the default IKE UDP 500 socket/port. This
-has some implications when using a custom server port (see below).</p>
+<p>The first field in the ESP header right after the UDP header is the 32 bit non-zero
+<strong>Security Parameters Index</strong> (SPI).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_non_esp_marker"><a class="anchor" href="#_non_esp_marker"></a>Non-ESP Marker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If the first 32 bits right after the UDP header are set to zero then instead of
+an encapsulated ESP payload packet, an IKE management packet is carried. Thus this
+four octet all-zero <strong>Non-ESP Marker</strong> is used to differentiate between ESP and IKE
+traffic. ESP packets are processed in the kernel, whereas the IKE packets are
+forwarded to the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> userland IKE daemon.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/nonEspMarker.png" alt="Non-ESP Marker">
+</div>
 </div>
 <div class="paragraph">
-<p>UDP encapsulation may also be forced, even if no NAT situation is detected by
-using the <code><strong>encap = yes</strong></code> option in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.
-If enabled, the daemon will send a manipulated <code><strong>NAT_DETECTION_SOURCE_IP</strong></code> notify
-payload so that it looks to the peer as if there were a NAT situation.</p>
+<p>The insertion of a <strong>Non-ESP Marker</strong> means that the default UDP <code><strong>4500</strong></code> socket/port
+has to handle traffic differently from the default IKE UDP <code><strong>500</strong></code> socket/port.
+This has some implications when using a
+<a href="#_custom_server_ports">custom server port</a> (see below).</p>
 </div>
 </div>
 </div>
@@ -694,10 +766,28 @@ payload so that it looks to the peer as if there were a NAT situation.</p>
 <h2 id="_nat_t_keepalives"><a class="anchor" href="#_nat_t_keepalives"></a>NAT-T Keepalives</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>strongSwan starts sending keepalive packets if it is behind a NAT to keep the
-mappings in the NAT device intact. The interval for these small packets (a single
-<code><strong>0xff</strong></code> byte after the UDP header) may be configured with the <code><strong>charon.keep_alive</strong></code>
-<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> option (set to <code><strong>0</strong></code> to disable
+<p>When a NAT router applies <strong>Port Address Translation</strong> to an outbound IP packet,
+the address/port mapping is stored in an internal lookup table together with a
+time-to-live value. This mapping is needed by the router so that inbound IP packets
+can be translated back to the original address/port values.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/natKeepalive.png" alt="NAT Keepalive">
+</div>
+</div>
+<div class="paragraph">
+<p>Since an established IPsec connection can be inactive for minutes or even hours,
+the IPsec peer behind a NAT router has to send periodic NAT-T keepalive UDP
+packets containing a single <code><strong>0xff</strong></code> byte in order to refresh the NAT mapping entry
+in the NAT router&#8217;s lookup table.</p>
+</div>
+<div class="paragraph">
+<p>Of course the NAT-T keepalives also reach the IPsec peer on the other side of the
+connection but the packets are silently dropped by the kernel. By default the
+keep-alives are sent ever <code><strong>20s</strong></code> but the interval can configured via the
+<code><strong>charon.keep_alive</strong></code> parameter in
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> (set to <code><strong>0</strong></code> to disable
 sending keepalives, e.g. behind a static DNAT aka port forwarding).</p>
 </div>
 </div>
