@@ -644,9 +644,9 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://wiki.gnome.org/Projects/NetworkManager">NetworkManager</a> allows configuration and control of VPN daemons through a
-plugin interface. We provide such a plugin for NetworkManager to configure road
-warrior clients for the most common setups. The plugin supports connections using
-the IKEv2 protocol only.</p>
+plugin interface. We provide such a plugin for NetworkManager to configure
+roadwarrior clients for the most common setups. The plugin supports connections
+using the IKEv2 protocol only.</p>
 </div>
 <div class="paragraph">
 <p>NetworkManager uses D-Bus to communicate with a special build of the charon IKE
@@ -656,7 +656,7 @@ daemon (<code><strong>charon-nm</strong></code>) which runs independently of the
 <div class="paragraph">
 <p>The plugin uses a certificate for server authentication and supports <code><strong>EAP</strong></code> and
 public key authentication for client authentication (since version 5.8.3 /
-<code>NetworkManager-strongswan 1.5.0</code> also <code><strong>EAP-TLS</strong></code>). <code><strong>PSK</strong></code> authentication is
+NetworkManager-strongswan 1.5.0 also <code><strong>EAP-TLS</strong></code>). <code><strong>PSK</strong></code> authentication is
 supported starting with version 1.3.1 of the plugin but strong secrets (a minimum
 of 20 characters) are enforced.</p>
 </div>
@@ -672,7 +672,7 @@ can be used (see below for details).</p>
 requirements to the certificate. If you deploy CA certificates, the server
 certificate will need a <code><strong>subjectAltName</strong></code> including the host name of the server
 (the same you enter in the client&#8217;s configuration). Since version 5.8.3 /
-<code>NetworkManager-strongswan 1.5.0</code> it&#8217;s possible to configure the server identity
+NetworkManager-strongswan 1.5.0 it&#8217;s possible to configure the server identity
 explicitly. You can also use preinstalled root CA certificates of your distribution,
 using the <code><strong>--with-nm-ca-dir</strong></code>
 <a href="../install/autoconf.html#_with_options" class="xref page"><code><strong>./configure</strong></code></a> option. Since version
@@ -709,54 +709,81 @@ packages of your favorite Linux distribution.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Your distribution may provide a package (e.g. <code><strong>network-manager-strongswan</strong></code>
-on Debian/Ubuntu). Otherwise, you have to build strongSwan from source.</p>
+on Debian/Ubuntu). Otherwise, you have to build strongSwan from sources.</p>
 </div>
 <div class="sect2">
-<h3 id="_building_from_source"><a class="anchor" href="#_building_from_source"></a>Building from Source</h3>
+<h3 id="_building_from_sources"><a class="anchor" href="#_building_from_sources"></a>Building from Sources</h3>
+<div class="sect3">
+<h4 id="_backend"><a class="anchor" href="#_backend"></a>Backend</h4>
 <div class="paragraph">
-<p>To build from source you additionally need the NetworkManager headers for the
-strongSwan NM backend:</p>
+<p>To build the strongSwan NM backend (<code><strong>charon-nm</strong></code>) from sources you need the
+NetworkManager headers:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>apt-get install libssl-dev network-manager-dev libnm-glib-vpn-dev libnm-gtk-dev \
-                libnma-dev libgtk-3-dev libsecret-1-dev gnome-common</pre>
+<pre>apt-get install libssl-dev libnm-dev</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>NM integration works only for IKEv2. Since on a desktop we have OpenSSL installed
-anyway, we are going to use libcrypto for all cryptographic operations.
-<code><strong>--enable-agent</strong></code> builds the <code><strong>ssh-agent</strong></code> private key plugin, EAP plugins are
-enabled using <code><strong>--enable-eap-gtc --enable-eap-md5 --enable-eap-mschapv2</strong></code></p>
+anyway, we are going to use libcrypto for all cryptographic operations.</p>
 </div>
 <div class="paragraph">
-<p>For smart card support, <code><strong>--enable-pkcs11</strong></code>. You may omit options you don&#8217;t need.</p>
+<p><code><strong>--enable-agent</strong></code> builds the <code><strong>ssh-agent</strong></code> private key plugin, EAP plugins are
+enabled using <code><strong>--enable-eap-gtc --enable-eap-md5 --enable-eap-mschapv2</strong></code>. For
+smart card support, add <code><strong>--enable-pkcs11</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>You may omit options you don&#8217;t need, or add additional ones (e.g. to enable
+<a href="../plugins/eap-tls.html" class="xref page"><code><strong>EAP-TLS</strong></code></a> or the
+<a href="../plugins/bypass-lan.html" class="xref page"><code><strong>bypass-lan</strong></code> plugin</a>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre># get the strongSwan tarball
-wget http://download.strongswan.org/strongswan-5.x.x.tar.bz2
-tar xjf strongswan-5.x.x.tar.bz2
+wget https://download.strongswan.org/strongswan-5.x.x.tar.bz2
+tar xf strongswan-5.x.x.tar.bz2
 cd strongswan-5.x.x
 
-# build charon with OpenSSL/NM Plugin
+# build strongSwan with OpenSSL/NM backend
 ./configure --sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib \
    --disable-aes --disable-des --disable-md5 --disable-sha1 --disable-sha2 \
    --disable-fips-prf --disable-gmp --enable-openssl --enable-nm --enable-agent \
    --enable-eap-gtc --enable-eap-md5 --enable-eap-mschapv2 --enable-eap-identity
 make
-make install
-
-# get the NetworkManager strongsSwan plugin as a tarball
-wget http://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.x.x.tar.bz2
-tar xjf NetworkManager-strongswan-1.x.x.tar.bz2
+make install</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_frontend"><a class="anchor" href="#_frontend"></a>Frontend</h4>
+<div class="paragraph">
+<p>To build the NM GUI plugin from sources you additionally need GTK and GUI
+utility libraries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apt-get install libnma-dev libgtk-3-dev libsecret-1-dev intltool</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To build with GTK 4 support (available since NetworkManager-strongswan 1.6.0),
+additionally install <code>libnma-gtk4-dev</code> and <code>libgtk-4-dev</code> and pass
+<code><strong>--with-gkt4</strong></code> below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># get the NetworkManager strongSwan plugin as a tarball
+wget https://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.x.x.tar.bz2
+tar xf NetworkManager-strongswan-1.x.x.tar.bz2
 cd NetworkManager-strongswan-1.x.x
 
-# build the NetworkManager strongsSwan plugin
+# build the NetworkManager strongSwan plugin
 # (if you changed prefix/libexecdir above, set --with-charon=/path/to/charon-nm)
 ./configure --sysconfdir=/etc --prefix=/usr
 make
 make install</pre>
+</div>
 </div>
 </div>
 </div>
@@ -768,20 +795,22 @@ make install</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Click on nm-applet &#8594; Edit Connections&#8230;&#8203;
-(or VPN Connections &#8594; Configure VPN&#8230;&#8203; in older releases)</p>
+<p>Open the Network area in GNOME Settings (<code>gnome-control-center</code>) (or click on
+the NM-applet &#8594; Edit Connections&#8230;&#8203; or VPN Connections &#8594; Configure VPN&#8230;&#8203;
+in older releases)</p>
 </li>
 <li>
-<p>Add &#8594; IPsec/IKEv2 (strongswan) &#8594; Create&#8230;&#8203;</p>
+<p>Add VPN &#8594; IPsec/IKEv2 (strongswan) &#8594; Create&#8230;&#8203;</p>
 </li>
 <li>
 <p>Configure your client</p>
 </li>
 <li>
-<p>Click on nm-applet &#8594; VPN Connections &#8594; Your Connection</p>
+<p>Enable the VPN connection via GNOME Settings or status area (or click on
+NM-applet &#8594; VPN Connections &#8594; Your Connection in older releases)</p>
 </li>
 <li>
-<p>Enter password</p>
+<p>Enter password if necessary</p>
 </li>
 </ul>
 </div>
@@ -791,7 +820,7 @@ administration choose the subnet(s); the client always proposes 0.0.0.0/0 for
 the remote network and the server narrows that down to the configured subnet(s).</p>
 </div>
 <div class="paragraph">
-<p>If you use public key based authentication, please store your certificate and
+<p>If you use public key-based authentication, please store your certificate and
 private key in separate files.</p>
 </div>
 </div>
@@ -807,7 +836,7 @@ first certificate with a private key on any token in any slot.</p>
 <div class="paragraph">
 <p>First, you&#8217;ll need to specify the PKCS#11 module in
 <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. Please refer to the
-f<a href="#plugins/pkcs11">smart card</a> support information for details on how to do so
+<a href="../plugins/pkcs11.html" class="xref page">smart card</a> support information for details on how to do so
 (use the <code><strong>charon-nm</strong></code> section to only load modules in the NM backend).</p>
 </div>
 <div class="paragraph">
@@ -838,7 +867,7 @@ but no CA constraint</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Look for a public key having the certificates subjectKeyIdentifier as ID</p>
+<p>Look for a public key having the certificate&#8217;s subjectKeyIdentifier as ID</p>
 </li>
 <li>
 <p>If not found, enumerate all public keys and look for a certificate with a
@@ -865,7 +894,7 @@ matching subjectKeyIdentifier and use its ID</p>
 <div class="paragraph">
 <p>In short the private key on the token must have a public key readable without
 login and both objects must have a matching ID. Before version 5.5.1 both objects
-had to have an ID matching the certificate`s <code><strong>subjectKeyIdentifier</strong></code>
+had to have an ID matching the certificate&#8217;s <code><strong>subjectKeyIdentifier</strong></code>
 (or the hash of the <code><strong>subjectPublicKey</strong></code> field of the public key). The certificate
 needs the <code><strong>TLS CLient Auth Extended Key</strong></code> usage flag.</p>
 </div>
@@ -882,8 +911,9 @@ configured explicitly.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Depending on the used authentication methods, you can use server configurations
-very similar to those for Windows clients (based on certificates or MSCHAPv2)
-or e.g. use <a href="#plugins/eap-gtc"><code><strong>eap-gtc</strong></code></a> and
+very similar to those for
+<a href="../interop/windowsClients.html#_authentication_methods" class="xref page">Windows clients</a> (based
+on certificates or MSCHAPv2) or e.g. use <a href="#plugins/eap-gtc"><code><strong>eap-gtc</strong></code></a> and
 <a href="#plugins/xauth-pam"><code><strong>xauth-pam</strong></code></a> to authenticate against PAM.</p>
 </div>
 </div>
