@@ -663,7 +663,7 @@ library.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_the_app"><a class="anchor" href="#_building_the_app"></a>Building the App</h2>
+<h2 id="_building_with_android_studiogradle"><a class="anchor" href="#_building_with_android_studiogradle"></a>Building with Android Studio/Gradle</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The code for the App can be found in the
@@ -672,21 +672,16 @@ repository. To build it the <a href="https://developer.android.com/tools/index.h
 needed to set up a build environment for Android Apps can be found in the
 documentation provided by Google, so these won&#8217;t be replicated here.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building_with_android_studiogradle"><a class="anchor" href="#_building_with_android_studiogradle"></a>Building with Android Studio/Gradle</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>This is the default since around version 5.3.4. See below for the classic build
-instructions.</p>
+<p>Building with Android Studio/Gradle is the default since around version 5.3.4.
+Instructions to build via Eclipse/ADT are not provided anymore.</p>
 </div>
 <div class="sect2">
 <h3 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h3>
 <div class="sect3">
 <h4 id="_the_strongswan_sources"><a class="anchor" href="#_the_strongswan_sources"></a>The strongSwan Sources</h4>
 <div class="paragraph">
-<p>Since (<a href="https://github.com/strongswan/strongswan/commit/1bd213db79f6ed1666f22c82ca99added38eeb89">commit 1bd213db79</a>)
+<p>Since <a href="https://github.com/strongswan/strongswan/commit/1bd213db79f6ed1666f22c82ca99added38eeb89">commit 1bd213db79</a>
 of the strongSwan repository and version
 <a href="androidVpnClient.html#_1_6_0_2016_05_02" class="xref page">1.6.0</a> of the app, the default is
 to use the strongSwan sources of the current Git tree.</p>
@@ -715,12 +710,11 @@ tarball) by setting <code><strong>strongswan_DIR</strong></code> in
 <div class="sect3">
 <h4 id="_the_openssl_directory"><a class="anchor" href="#_the_openssl_directory"></a>The openssl Directory</h4>
 <div class="paragraph">
-<p>The BoringSSL or OpenSSL sources are expected in the
-<a href="https://github.com/strongswan/strongswan/tree/master/src/frontends/android/app/src/main/jni/openssl"><code>openssl</code></a> directory. To build the sources within
-the Android NDK they have to be specially prepared. The easiest way to get these
-sources is to check them out directly from our Git server (similar for OpenSSL, but
-the code in our repository is currently too old and Google will reject apps built
-with it in the Play store):</p>
+<p>The BoringSSL or OpenSSL sources are expected in the <code>src/frontends/android/app/src/main/jni/openssl</code> directory.
+To build the sources within the Android NDK they have to be specially prepared.
+The easiest way to get these sources is to check them out directly from our Git
+server (similar for OpenSSL, but the code in our repository is currently too old
+and Google will reject apps built with it in the Play store):</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -730,101 +724,16 @@ with it in the Play store):</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_building_the_app_2"><a class="anchor" href="#_building_the_app_2"></a>Building the App</h3>
+<h3 id="_building_the_app"><a class="anchor" href="#_building_the_app"></a>Building the App</h3>
 <div class="paragraph">
 <p>The <a href="https://github.com/strongswan/strongswan/tree/master/src/frontends/android"><code>src/frontends/android</code></a> directory can directly be opened
 as an existing project in Android Studio. The initial build will fail if the NDK
-directory is not known. In that case set it via <code>File - Project Structure&#8230;&#8203;</code> or
+directory is not known. In that case set it via <code>File &#8594; Project Structure&#8230;&#8203;</code> or
 manually in <code><strong>local.properties</strong></code> (<code><strong>ndk.dir=/path/to/ndk</strong></code>). Afterwards the build
 should complete successfully.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building_with_eclipse_and_adt_plugin"><a class="anchor" href="#_building_with_eclipse_and_adt_plugin"></a>Building with Eclipse and ADT plugin</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>instructions when using Eclipse with the ADT plugin
-(was changed to Gradle around version 5.3.4, see above).</p>
-</div>
-<div class="sect2">
-<h3 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a>Requirements</h3>
-<div class="paragraph">
-<p>Several subdirectories of the <a href="https://github.com/strongswan/strongswan/tree/master/src/frontends/android/app/src/main/jni"><code><strong>jni</strong></code></a> directory have to
-be prepared properly in oder to build the native parts successfully.</p>
-</div>
-<div class="sect3">
-<h4 id="_the_strongswan_directory"><a class="anchor" href="#_the_strongswan_directory"></a>The strongswan Directory</h4>
-<div class="paragraph">
-<p>This can be a symlink to the root of the Git repository, i.e. use something like
-this to create it:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ln -s ../../../../ jni/strongswan</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The sources in the repository have to prepared properly, otherwise the build will
-fail. In the root of the strongSwan sources run the following to create the required
-files. Building from the Git repository like this has some external dependencies,
-see <a href="https://github.com/strongswan/strongswan/tree/master/HACKING"><code>HACKING</code></a> for details.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>./autogen.sh &amp;&amp; ./configure &amp;&amp; make dist</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This creates several pre-built source files. The tarball that is also created can
-be deleted afterwards.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_the_openssl_directory_2"><a class="anchor" href="#_the_openssl_directory_2"></a>The openssl Directory</h4>
-<div class="paragraph">
-<p>This directory contains the sources for a version of OpenSSL specially prepared
-for the build within the Android NDK. The easiest way to get these sources is to
-check it out directly from our Git server:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>git clone git://git.strongswan.org/android-ndk-openssl.git -b ndk-static jni/openssl</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_building_the_native_parts"><a class="anchor" href="#_building_the_native_parts"></a>Building the Native Parts</h3>
-<div class="paragraph">
-<p>When everything is ready in the <code><strong>jni</strong></code> directory, the native libraries can be
-built with the following command (either from the
-<a href="https://github.com/strongswan/strongswan/tree/master/src/frontends/android"><code><strong>src/frontends/android</strong></code></a> or
-<a href="https://github.com/strongswan/strongswan/tree/master/src/frontends/android/app/src/main/jni"><code><strong>jni</strong></code></a> directory):</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>/path/to/ndk/root/ndk-build</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_building_the_app_3"><a class="anchor" href="#_building_the_app_3"></a>Building the App</h3>
-<div class="paragraph">
-<p>To build the App a new project has to be created in Eclipse (
-<code>New &#8594; Project &#8594; Android Project</code> from Existing Code). If a symlink is used for
-the <code><strong>jni/strongswan</strong></code> directory it takes a while for the ADT plugin to load the
-available projects after <code><strong>src/frontends/android</strong></code> has been selected. That&#8217;s
-because it will recursively traverse into the <code><strong>strongswan</strong></code> directory, so either
-remove the symlink before creating the project or wait and just deselect every
-found project but the first one.</p>
-</div>
-<div class="paragraph">
-<p>The App will then be built automatically (or can be built via
-<code>Project &#8594; Build Project</code>). If anything is changed in the native parts, <code><strong>ndk-build</strong></code>
-can be used to rebuild them. It is recommended that <code>Project &#8594; Clean&#8230;&#8203;</code> is used
-in Eclipse afterwards to force it to load the new libraries and rebuild the App.</p>
+<p>Building via <code>./gradlew build</code> is also possible.</p>
 </div>
 </div>
 </div>
