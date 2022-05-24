@@ -646,8 +646,21 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code><strong>tpm</strong></code> plugin for <code><strong>libtpmtss</strong></code> allows to access persistent RSA and ECDSA
-private keys bound to a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>. Optionally the
+private keys bound to a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>. Optionally, the
 <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> can be enabled as a true random number source.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Keys bound to a TPM 2.0 can only be used with IKEv2, because IKEv1&#8217;s
+           legacy signature schemes are not supported.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The plugin is disabled by default and can be enabled with the
