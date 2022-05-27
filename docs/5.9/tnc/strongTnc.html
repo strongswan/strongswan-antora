@@ -6,7 +6,7 @@
     <title>strongTNC :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tnc/strongTnc.html">
     <link rel="prev" href="optimumTncSizes.html">
-    <link rel="next" href="../support/helpRequests.html">
+    <link rel="next" href="swima.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -574,6 +574,18 @@
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="strongTnc.html">strongTNC</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -746,8 +758,8 @@ LANGUAGE_CODE=en-us
 TIME_ZONE=Europe/Zurich
 
 [admins]
-Your Name: jane.doe@strongswan.org
-Another Admin: joe.doe@strongswan.org
+Your Name: jane.doe@example.com
+Another Admin: joe.doe@example.com
 
 [security]
 SECRET_KEY=strongSwan
@@ -806,7 +818,8 @@ file and name it e.g. <strong>tnc.conf</strong>`</p>
 
 &lt;VirtualHost *:80&gt;
     ServerName tnc.example.com
-    ServerAdmin jane.doe@strongswan.org
+    ServerAlias tnc
+    ServerAdmin jane.doe@example.com
 
     DocumentRoot /var/www/tnc
 
@@ -1026,7 +1039,7 @@ TNC policies and both the <code><strong>Scanner IMV</strong></code></p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a></span>
-  <span class="next"><a href="../support/helpRequests.html">Help Requests</a></span>
+  <span class="next"><a href="swima.html">Software Inventory</a></span>
 </nav>
 </article>
   </div>

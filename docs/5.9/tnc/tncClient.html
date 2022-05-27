@@ -574,6 +574,18 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="strongTnc.html">strongTNC</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -743,7 +755,7 @@ IMC "Scanner"        /usr/lib/ipsec/imcvs/imc-scanner.so
 </div>
 </div>
 <div class="paragraph">
-<p>In the configuration file above, the <code><strong>OS IMC</strong></code> and the <code><strong>Scanner IMV</strong></code> are enabled, so
+<p>In the configuration file above, the <code><strong>OS IMC</strong></code> and the <code><strong>Scanner IMC</strong></code> are enabled, so
 that these Integrity Measurement Collectors have to be built beforehand with the
 <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> options</p>
 </div>
@@ -759,7 +771,7 @@ that these Integrity Measurement Collectors have to be built beforehand with the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>00[DMN] Starting IKE charon daemon (strongSwan 5.9.5, Linux 5.13.0-35-generic, x86_64)
+<pre>00[DMN] Starting IKE charon daemon (strongSwan 5.9.7, Linux 5.13.0-35-generic, x86_64)
 00[TNC] loading IMCs from '/etc/tnc_config'
 00[TNC] added IETF attributes
 00[TNC] added ITA-HSR attributes
@@ -812,11 +824,6 @@ the credentials and the connection configurations.</p>
 00[DMN] conns: successfully loaded 1 connections, 0 unloaded</pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tnc_enabled_vpn_client_configuration_2"><a class="anchor" href="#_tnc_enabled_vpn_client_configuration_2"></a>TNC-Enabled VPN Client Configuration</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>The TNC-enabled VPN client configuration is based on the following
 <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> file</p>
@@ -1015,8 +1022,9 @@ the tunnel the client&#8217;s EAP Identity is requested again</p>
 <h3 id="_pb_tnc_connection_1"><a class="anchor" href="#_pb_tnc_connection_1"></a>PB-TNC Connection 1</h3>
 <div class="paragraph">
 <p>Now within the EAP-TTLS tunnel the PT-EAP transport protocol is started and the
-PB-TNC (TCG TNC IF-TNCCS) Connection ID <code><strong>1</strong></code> is assigned to the connection by the
-TNC client and a new state is created for both the <code><strong>OS IMC</strong></code> and the <code><strong>Scanner IMC</strong></code></p>
+<code><strong>PB-TNC</strong></code> (TCG TNC IF-TNCCS 2.0) Connection ID <code><strong>1</strong></code> is assigned to the connection
+by the TNC client and a new state is created for both the <code><strong>OS IMC</strong></code> and the
+<code><strong>Scanner IMC</strong></code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1120,27 +1128,29 @@ client.</p>
 </div>
 <div class="paragraph">
 <p>The first PA-TNC message is of standard subtype <code><strong>Operating System</strong></code> and contains
-a PA-TNC attribute of type <code><strong>Max Attribute Size Request</strong></code> defined in the <code><strong>TCG</strong></code>
+a PA-TNC attribute of type <code><strong>Segmentation Contract Request</strong></code> defined in the <code><strong>TCG</strong></code>
 namespace which proposes to split up huge PA-TNC messages into segments with a
 maximum size of <code><strong>32'698</strong></code> bytes each (see
-<a href="optimumTncSizes.html#_pa_tnc_message_segmentation" class="xref page">PA-TNC message segmentation</a>), plus a second PA-TNC attribute of the standard type <code><strong>Attribute Request</strong></code> which requests a PA-TNC attribute of standard type <code><strong>Installed Packages</strong></code></p>
+<a href="optimumTncSizes.html#_pa_tnc_message_segmentation" class="xref page">PA-TNC message segmentation</a>),
+plus a second PA-TNC attribute of the standard type <code><strong>Attribute Request</strong></code> which
+requests a PA-TNC attribute of standard type <code><strong>Installed Packages</strong></code></p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>05[TNC] handling PB-PA message type 'IETF/Operating System' 0x000000/0x00000001
 05[IMC] IMC 1 "OS" received message for Connection ID 1 from IMV 1
 05[TNC] processing PA-TNC message with ID 0xc084b149
-05[TNC] processing PA-TNC attribute type 'TCG/Max Attribute Size Request' 0x005597/0x00000021
+05[TNC] processing PA-TNC attribute type 'TCG/Segmentation Contract Request' 0x005597/0x00000021
 05[TNC] processing PA-TNC attribute type 'IETF/Attribute Request' 0x000000/0x00000001
 05[TNC]   0x000000/0x00000007 'IETF/Installed Packages'
 05[IMC] IMC 1 received a segmentation contract request from IMV 1 for PA message type 'IETF/Operating System' 0x000000/0x00000001
-05[IMC]   maximum attribute size of 100000000 bytes with maximum segment size of 32698 bytes</pre>
+05[IMC]   no message size limit, maximum segment size of 32698 bytes</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code><strong>OS IMC</strong></code> compiles a list of all installed Ubuntu packages for the
 <code><strong>Installed Packages</strong></code> PA-TNC attribute and puts it into a PA-TNC message of
-standard subtype <code><strong>Operating System</strong></code> together with the <code><strong>Max Attribute Size Response</strong></code>
+standard subtype <code><strong>Operating System</strong></code> together with the <code><strong>Segmentation Contract Response</strong></code>
 PA-TNC attribute defined in the <code><strong>TCG</strong></code> namespace</p>
 </div>
 <div class="listingblock">
@@ -1155,7 +1165,7 @@ PA-TNC attribute defined in the <code><strong>TCG</strong></code> namespace</p>
 05[IMC] package 'util-linux' (2.34-0.1ubuntu9.1)
 05[IMC] package 'zlib1g' (1:1.2.11.dfsg-2ubuntu1.2)
 05[TNC] creating PA-TNC message with ID 0x6e31e351
-05[TNC] creating PA-TNC attribute type 'TCG/Max Attribute Size Response' 0x005597/0x00000022
+05[TNC] creating PA-TNC attribute type 'TCG/Segmentation Contract Response' 0x005597/0x00000022
 05[TNC] creating PA-TNC attribute type 'IETF/Installed Packages' 0x000000/0x00000007
 05[TNC] creating PB-PA message type 'IETF/Operating System' 0x000000/0x00000001</pre>
 </div>
