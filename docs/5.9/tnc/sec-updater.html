@@ -671,9 +671,11 @@ sec-updater -h | --help</pre>
 <div class="paragraph">
 <p>The <code><strong>sec-updater</strong></code> tool extracts information about security updates and backports
 of Linux repositories (e.g. Debian or Ubuntu). This information is used to update
-the package version information stored in the  strongTNC  SQLite database. The
-<code><strong>dpkg --compare-versions</strong></code> command is used to determine which package versions
-are affected by a given security update.</p>
+the package version information stored in the
+<a href="swimaServer.html#_security_updater" class="xref page">SQLite database</a> of the
+<a href="swima.html#_security_updates" class="xref page">strongTNC</a> tool and also provide SWID tags
+of the updated package versions. The <code><strong>dpkg --compare-versions</strong></code> command is used
+to determine which package versions are affected by a given security update.</p>
 </div>
 </div>
 </div>
@@ -753,6 +755,12 @@ are affected by a given security update.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Global IMV policy database URI. If it contains a password, make sure to adjust
+ the access permissions of the config file accordingly</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">load</p></td>
 <td class="tableblock halign-left valign-top"></td>
