@@ -1018,11 +1018,22 @@ vulnerable to online attacks if weak user passwords are used.</p>
 <div class="sect2">
 <h3 id="_matching_cn_field_in_distinguished_names"><a class="anchor" href="#_matching_cn_field_in_distinguished_names"></a>Matching CN field in Distinguished Names</h3>
 <div class="paragraph">
-<p><strong>Q:</strong> <em>Does strongSwan support checking the ID against the Common Name (CN) field
-of a Distinguished Name (DN) in X.509 certificates?</em></p>
+<p><strong>Q:</strong> <em>Does strongSwan support checking a FQDN identity against the Common Name (CN)
+field of a Distinguished Name (DN) in X.509 certificates?</em></p>
 </div>
 <div class="paragraph">
-<p><strong>A:</strong>: No, it doesn&#8217;t. The ID must be present in a SAN field of the correct type.</p>
+<p><strong>A:</strong>: No, it doesn&#8217;t. Distinguished Names of certificates (and with that any RDNs,
+such as CN) are only matched against identities of type <code><strong>DN</strong></code>. For instance, the
+identity <code><strong>vpn.strongswan.org</strong></code> won&#8217;t match a certificate&#8217;s subject DN such as
+<code><strong>C=CH, O=strongSwan, CN=vpn.strongswan.org</strong></code>. However, the <code><strong>DN</strong></code> identity
+<code><strong>C=&ast;, O=&ast;, CN=vpn.strongswan.org</strong></code> would match it (also see
+<code><strong>charon.rdn_matching</strong></code> in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>).</p>
+</div>
+<div class="paragraph">
+<p>To match an identity of type <code><strong>FQDN</strong></code> (fully qualified domain name) or
+<code><strong>USER_FQDN</strong></code> (email address) against a certificate, it has to be present in
+a subjectAltName (SAN) extension of the correct type.  In the above example
+<code><strong>vpn.strongswan.org</strong></code> would have to be contained in a SAN of type <code><strong>dNSName</strong></code>.</p>
 </div>
 </div>
 <div class="sect2">
