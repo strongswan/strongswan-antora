@@ -701,8 +701,13 @@ files below. The official documentation can be found at
 <div class="ulist">
 <ul>
 <li>
-<p>ASN.1 Distinguished Names can&#8217;t be used as identities because the client currently
-sends them as identities of type <code><strong>FQDN</strong></code>.</p>
+<p>ASN.1 Distinguished Names can&#8217;t be used as identities because the client
+currently sends them as identities of type <code><strong>FQDN</strong></code>.</p>
+</li>
+<li>
+<p>Apple clients can only process PKCS#12 containers that are protected with
+3DES and the legacy KDF. So when using <code><strong>openssl pkcs12</strong></code> with OpenSSL 3.0 and
+newer, the <code><strong>-legacy</strong></code> option is required.</p>
 </li>
 </ul>
 </div>
