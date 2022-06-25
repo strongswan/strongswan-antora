@@ -6,7 +6,7 @@
     <title>Software Inventory Server :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tnc/swimaServer.html">
     <link rel="prev" href="swimaClient.html">
-    <link rel="next" href="../support/helpRequests.html">
+    <link rel="next" href="measuredBoot.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -586,6 +586,33 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -764,7 +791,7 @@ IMV "SWIMA"   /usr/lib/ipsec/imcvs/imv-swima.so</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>These two Integrity Measurement Collectors have to be built beforehand with the
+<p>These two Integrity Measurement Verifiers have to be built beforehand with the
 <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> options</p>
 </div>
 <div class="literalblock">
@@ -882,7 +909,7 @@ identfies the endpoint to be measured</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first PA-TNC message is of standard subtype <code><strong>SWIMA</strong></code> and contains a
+<p>The second PA-TNC message is of standard subtype <code><strong>SWIMA</strong></code> and contains a
 <code><strong>Segmentation Contract Request</strong></code> attribute defined in the <code><strong>TCG</strong></code> namespace which
 proposes to split up huge PA-TNC messages into segments with a maximum size of
 <code><strong>32'698</strong></code> bytes each (see
@@ -939,7 +966,7 @@ measurement workitems is configured in the database:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>No policy enforcements are defined for the <code><strong>OS IMV</strong></code> so standard <code><strong>Assessment
+<p>No policy enforcements are defined for the <code><strong>OS IMV</strong></code>, so standard <code><strong>Assessment
 Result</strong></code> and <code><strong>Remediation Instructions</strong></code> are generated and inserted into a
 PA-TNC message of standard subtype <code><strong>Operating Systems</strong></code></p>
 </div>
@@ -1047,7 +1074,7 @@ defined in the <code><strong>TCG</strong></code> namespace inserted into a PA-TN
 </div>
 </div>
 <div class="paragraph">
-<p>THE TNC server receives a PB-TNC Client Data batch containing a PA-TNC message</p>
+<p>The TNC server receives a PB-TNC Client Data batch containing a PA-TNC message</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1228,7 +1255,7 @@ subtype <code><strong>SWIMA</strong></code></p>
 <p>The overall policy recommendation issued by the TNC server is <code><strong>allow</strong></code> and
 communicated to the TNC client in the form of a PB-TNC <code><strong>Assessment-Result</strong></code>
 and a PB-TNC <code><strong>Access-Recommendation</strong></code> payload, both of which are sent together
-with the PA-TNC message from the <code><strong>SWIMA IMV</strong></code> in PB-TNC Result batch to the
+with the PA-TNC message from the <code><strong>SWIMA IMV</strong></code> in a PB-TNC Result batch to the
 TNC client</p>
 </div>
 <div class="listingblock">
@@ -1248,7 +1275,7 @@ TNC client</p>
 </div>
 <div class="paragraph">
 <p>The TNC client replies with a PB-TNC Close batch which causes the PB-TNC connection
-to be deleted. Due to the positive final recommandation, the IKEv2 connection is
+to be deleted. Due to the positive final recommendation, the IKEv2 connection is
 allowed to complete</p>
 </div>
 <div class="listingblock">
@@ -1284,7 +1311,7 @@ measurements was successful. Thus an <code>EAP-SUCCESS</code> message is sent to
 </div>
 </div>
 <div class="paragraph">
-<p>The IKEv2 client sents an <code>AUTH</code> payload depending on the <code>MSK</code> (Master Secret Key)
+<p>The IKEv2 client sends an <code>AUTH</code> payload depending on the <code>MSK</code> (Master Secret Key)
 derived from the <code>EAP-TTLS</code> session</p>
 </div>
 <div class="listingblock">
@@ -1527,7 +1554,7 @@ and <code><strong>universe</strong></code> packages.</p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="swimaClient.html">Software Inventory Client</a></span>
-  <span class="next"><a href="../support/helpRequests.html">Help Requests</a></span>
+  <span class="next"><a href="measuredBoot.html">Measured Boot</a></span>
 </nav>
 </article>
   </div>

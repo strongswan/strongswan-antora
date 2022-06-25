@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PCR Boot Events :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tnc/pcrBootEvents.html">
+    <link rel="prev" href="attestationServer.html">
+    <link rel="next" href="ima.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="5.9">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">IPsec Protocol</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">5.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Platform Security</li>
+    <li><a href="tnc.html">Trusted Network Connect</a></li>
+    <li><a href="measuredBoot.html">Measured Boot</a></li>
+    <li><a href="pcrBootEvents.html">PCR Boot Events</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/tnc/pcrBootEvents.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">PCR Boot Events</h1>
+<div class="sect1">
+<h2 id="_pcr_usage"><a class="anchor" href="#_pcr_usage"></a>PCR Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_legacy_bios_platforms"><a class="anchor" href="#_legacy_bios_platforms"></a>Legacy BIOS Platforms</h3>
+<div class="paragraph">
+<p>On platforms with a traditional BIOS, the PCR usage is defined by the
+<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_PCClientImplementation_1-21_1_00.pdf">TCG PC Client Specific Implementation Specification for Conventional BIOS v1.21</a>
+and summarized in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">PCR</th>
+<th class="tableblock halign-left valign-top">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S-CRTM, BIOS, Host Platform Extensions, and Embedded Option ROMs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host Platform Configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Option ROM Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Option ROM Configuration and Data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPL Code (usually the MBR) and Boot Attempts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPL Code Configuration and Data (for use by the IPL Code)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">State Transitions and Wake Events</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host Platform Manufacturer Specific</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8-15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defined for use by the Static OS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debug</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Support</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modern_uefi_platforms"><a class="anchor" href="#_modern_uefi_platforms"></a>Modern UEFI Platforms</h3>
+<div class="paragraph">
+<p>On modern EFI or UEFI platforms, the PCR usage and the EFI events are defined by
+the <a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_EFI_Platform_1_22_Final_-v15.pdf">TCG EFI Platform Specification v1.22</a> and summarized in the graph below</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="../_images/efiPcrUsage.png"><img src="../_images/efiPcrUsage.png" alt="EFI PCR Usage"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pcr_boot_event_log"><a class="anchor" href="#_pcr_boot_event_log"></a>PCR Boot Event Log</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following boot event log has been extracted from the binary file</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/sys/kernel/security/tpm0/binary_bios_measurements</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on an Intel <code><strong>x86_64</strong></code> platform running <strong>Ubuntu</strong> on a Linux <code><strong>5.13.0-44-generic</strong></code>
+kernel. The parsed log consists of three informational event entries at the top
+that are not extended into any PCR, followed by 136 event entries that were extended
+into one of the Platform Configuration Registers (PCRs) <code><strong>0..9</strong></code> or <code><strong>14</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>No. PCR Event Type  (Size)
+     0  No Action  (0 bytes)
+        ''
+        Not extended into PCR!
+     0  Preboot Cert  (37 bytes)
+        'Spec ID Event03'
+        Not extended into PCR!
+     0  No Action  (17 bytes)
+        'StartupLocality' 3
+        Not extended into PCR!
+  1  0  S-CRTM Contents  (27 bytes)
+        'Boot Guard Measured S-CRTM'
+  2  0  S-CRTM Version  (20 bytes)
+  3  0  EFI Platform Firmware Blob  (16 bytes)
+  4  0  EFI Platform Firmware Blob  (16 bytes)
+  5  0  EFI Platform Firmware Blob  (16 bytes)
+  6  2  EFI Boot Services Driver  (76 bytes)
+  7  0  POST Code  (9 bytes)
+        'ACPI DATA'
+  8  0  POST Code  (9 bytes)
+        'ACPI DATA'
+  9  7  EFI Variable Driver Config  (53 bytes)
+ 10  7  EFI Variable Driver Config  (1019 bytes)
+ 11  7  EFI Variable Driver Config  (2583 bytes)
+ 12  7  EFI Variable Driver Config  (5116 bytes)
+ 13  7  EFI Variable Driver Config  (13434 bytes)
+ 14  7  Separator  (4 bytes)
+ 15  2  EFI Boot Services Driver  (76 bytes)
+ 16  2  EFI Boot Services Driver  (76 bytes)
+ 17  1  EFI Variable Driver Config  (301 bytes)
+ 18  1  EFI Variable Driver Config  (102 bytes)
+ 19  1  EFI Variable Driver Config  (211 bytes)
+ 20  2  EFI Boot Services Driver  (76 bytes)
+ 21  2  EFI Boot Services Driver  (76 bytes)
+ 22  2  EFI Boot Services Driver  (76 bytes)
+ 23  2  EFI Boot Services Driver  (76 bytes)
+ 24  2  EFI Boot Services Driver  (76 bytes)
+ 25  2  EFI Boot Services Driver  (76 bytes)
+ 26  4  EFI Boot Services Application  (76 bytes)
+ 27  1  EFI Handoff Tables  (32 bytes)
+ 28  1  EFI Variable Boot  (76 bytes)
+ 29  1  EFI Variable Boot  (348 bytes)
+ 30  1  EFI Variable Boot  (166 bytes)
+ 31  1  EFI Variable Boot  (108 bytes)
+ 32  1  EFI Variable Boot  (110 bytes)
+ 33  1  EFI Variable Boot  (107 bytes)
+ 34  1  EFI Variable Boot  (107 bytes)
+ 35  1  EFI Variable Boot  (113 bytes)
+ 36  1  EFI Variable Boot  (113 bytes)
+ 37  1  EFI Variable Boot  (110 bytes)
+ 38  1  EFI Variable Boot  (112 bytes)
+ 39  1  EFI Variable Boot  (179 bytes)
+ 40  1  EFI Variable Boot  (113 bytes)
+ 41  1  EFI Variable Boot  (115 bytes)
+ 42  4  EFI Action  (40 bytes)
+ 43  0  Separator  (4 bytes)
+ 44  1  Separator  (4 bytes)
+ 45  2  Separator  (4 bytes)
+ 46  3  Separator  (4 bytes)
+ 47  4  Separator  (4 bytes)
+ 48  5  Separator  (4 bytes)
+ 49  6  Separator  (4 bytes)
+ 50  7  EFI Variable Authority  (1608 bytes)
+ 51  5  EFI GPT Event  (740 bytes)
+ 52  4  EFI Boot Services Application  (170 bytes)
+ 53 14  IPL  (8 bytes)
+        'MokList'
+ 54 14  IPL  (9 bytes)
+        'MokListX'
+ 55  7  EFI Variable Authority  (68 bytes)
+ 56  4  EFI Boot Services Application  (88 bytes)
+ 57  7  EFI Variable Authority  (1120 bytes)
+ 58  9  IPL  (31 bytes)
+        '(hd0,gpt1)/EFI/ubuntu/grub.cfg'
+ 59  8  IPL  (67 bytes)
+        'grub_cmd: search.fs_uuid 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee root'
+ 60  8  IPL  (42 bytes)
+        'grub_cmd: set prefix=(hd0,gpt5)/boot/grub'
+ 61  9  IPL  (44 bytes)
+        '(hd0,gpt5)/boot/grub/x86_64-efi/command.lst'
+ 62  9  IPL  (39 bytes)
+        '(hd0,gpt5)/boot/grub/x86_64-efi/fs.lst'
+ 63  9  IPL  (43 bytes)
+        '(hd0,gpt5)/boot/grub/x86_64-efi/crypto.lst'
+ 64  9  IPL  (45 bytes)
+        '(hd0,gpt5)/boot/grub/x86_64-efi/terminal.lst'
+ 65  8  IPL  (51 bytes)
+        'grub_cmd: configfile (hd0,gpt5)/boot/grub/grub.cfg'
+ 66  9  IPL  (30 bytes)
+        '(hd0,gpt5)/boot/grub/grub.cfg'
+ 67  8  IPL  (46 bytes)
+        'grub_cmd: [ -s (hd0,gpt5)/boot/grub/grubenv ]'
+ 68  9  IPL  (29 bytes)
+        '(hd0,gpt5)/boot/grub/grubenv'
+ 69  8  IPL  (32 bytes)
+        'grub_cmd: set have_grubenv=true'
+ 70  8  IPL  (19 bytes)
+        'grub_cmd: load_env'
+ 71  9  IPL  (29 bytes)
+        '(hd0,gpt5)/boot/grub/grubenv'
+ 72  8  IPL  (19 bytes)
+        'grub_cmd: [  = 2 ]'
+ 73  8  IPL  (19 bytes)
+        'grub_cmd: [  = 1 ]'
+ 74  8  IPL  (15 bytes)
+        'grub_cmd: [  ]'
+ 75  8  IPL  (24 bytes)
+        'grub_cmd: set default=0'
+ 76  8  IPL  (22 bytes)
+        'grub_cmd: [ xy = xy ]'
+ 77  8  IPL  (35 bytes)
+        'grub_cmd: menuentry_id_option=--id'
+ 78  8  IPL  (37 bytes)
+        'grub_cmd: export menuentry_id_option'
+ 79  8  IPL  (15 bytes)
+        'grub_cmd: [  ]'
+ 80  8  IPL  (22 bytes)
+        'grub_cmd: [ xy = xy ]'
+ 81  8  IPL  (23 bytes)
+        'grub_cmd: font=unicode'
+ 82  8  IPL  (27 bytes)
+        'grub_cmd: loadfont unicode'
+ 83  9  IPL  (39 bytes)
+        '(hd0,gpt5)/boot/grub/fonts/unicode.pf2'
+ 84  8  IPL  (27 bytes)
+        'grub_cmd: set gfxmode=auto'
+ 85  8  IPL  (21 bytes)
+        'grub_cmd: load_video'
+ 86  8  IPL  (22 bytes)
+        'grub_cmd: [ xy = xy ]'
+ 87  8  IPL  (27 bytes)
+        'grub_cmd: insmod all_video'
+ 88  8  IPL  (25 bytes)
+        'grub_cmd: insmod gfxterm'
+ 89  8  IPL  (53 bytes)
+        'grub_cmd: set locale_dir=(hd0,gpt5)/boot/grub/locale'
+ 90  8  IPL  (25 bytes)
+        'grub_cmd: set lang=en_US'
+ 91  8  IPL  (25 bytes)
+        'grub_cmd: insmod gettext'
+ 92  8  IPL  (34 bytes)
+        'grub_cmd: terminal_output gfxterm'
+ 93  8  IPL  (19 bytes)
+        'grub_cmd: [  = 1 ]'
+ 94  8  IPL  (22 bytes)
+        'grub_cmd: [ xy = xy ]'
+ 95  8  IPL  (35 bytes)
+        'grub_cmd: set timeout_style=hidden'
+ 96  8  IPL  (25 bytes)
+        'grub_cmd: set timeout=10'
+ 97  8  IPL  (44 bytes)
+        'grub_cmd: set menu_color_normal=white/black'
+ 98  8  IPL  (52 bytes)
+        'grub_cmd: set menu_color_highlight=black/light-gray'
+ 99  8  IPL  (20 bytes)
+        'grub_cmd: [  != 1 ]'
+100  8  IPL  (55 bytes)
+        'grub_cmd: [ -e (hd0,gpt5)/boot/grub/gfxblacklist.txt ]'
+101  8  IPL  (24 bytes)
+        'grub_cmd: [ efi != pc ]'
+102  8  IPL  (34 bytes)
+        'grub_cmd: set linux_gfx_mode=keep'
+103  8  IPL  (32 bytes)
+        'grub_cmd: export linux_gfx_mode'
+104  8  IPL  (707 bytes)
+        'grub_cmd: menuentry Ubuntu --class ubuntu --class gnu-linux --class gnu --class os --id gnulinux-simple-956f1d5b-ce31-4ece-8c1f-90d0b11a02ee {
+           recordfail
+          load_video
+          gfxmode $linux_gfx_mode
+          insmod gzio
+          if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+          insmod part_gpt
+          insmod ext2
+          if [ x$feature_platform_search_hint = xy ]; then
+            search --no-floppy --fs-uuid --set=root  956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+          else
+            search --no-floppy --fs-uuid --set=root 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+          fi
+          linux  /boot/vmlinuz-5.13.0-44-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro ima_tcb ima_hash=sha256 quiet splash $vt_handoff
+          initrd  /boot/initrd.img-5.13.0-44-generic
+        }'
+105  8  IPL  (3566 bytes)
+        'grub_cmd: submenu Advanced options for Ubuntu --id gnulinux-advanced-956f1d5b-ce31-4ece-8c1f-90d0b11a02ee {
+          menuentry 'Ubuntu, with Linux 5.13.0-44-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-5.13.0-44-generic-advanced-956f1d5b-ce31-4ece-8c1f-90d0b11a02ee' {
+            recordfail
+            load_video
+            gfxmode $linux_gfx_mode
+            insmod gzio
+            if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+            insmod part_gpt
+            insmod ext2
+            if [ x$feature_platform_search_hint = xy ]; then
+              search --no-floppy --fs-uuid --set=root  956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            else
+              search --no-floppy --fs-uuid --set=root 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            fi
+            echo  'Loading Linux 5.13.0-44-generic ...'
+            linux  /boot/vmlinuz-5.13.0-44-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro ima_tcb ima_hash=sha256 quiet splash $vt_handoff
+            echo  'Loading initial ramdisk ...'
+            initrd  /boot/initrd.img-5.13.0-44-generic
+          }
+          menuentry 'Ubuntu, with Linux 5.13.0-44-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-5.13.0-44-generic-recovery-956f1d5b-ce31-4ece-8c1f-90d0b11a02ee' {
+            recordfail
+            load_video
+            insmod gzio
+            if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+            insmod part_gpt
+            insmod ext2
+            if [ x$feature_platform_search_hint = xy ]; then
+              search --no-floppy --fs-uuid --set=root  956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            else
+              search --no-floppy --fs-uuid --set=root 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            fi
+            echo  'Loading Linux 5.13.0-44-generic ...'
+            linux  /boot/vmlinuz-5.13.0-44-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro recovery nomodeset dis_ucode_ldr ima_tcb ima_hash=sha256
+            echo  'Loading initial ramdisk ...'
+            initrd  /boot/initrd.img-5.13.0-44-generic
+          }
+          menuentry 'Ubuntu, with Linux 5.13.0-41-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-5.13.0-41-generic-advanced-956f1d5b-ce31-4ece-8c1f-90d0b11a02ee' {
+            recordfail
+            load_video
+            gfxmode $linux_gfx_mode
+            insmod gzio
+            if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+            insmod part_gpt
+            insmod ext2
+            if [ x$feature_platform_search_hint = xy ]; then
+              search --no-floppy --fs-uuid --set=root  956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            else
+              search --no-floppy --fs-uuid --set=root 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            fi
+            echo  'Loading Linux 5.13.0-41-generic ...'
+            linux  /boot/vmlinuz-5.13.0-41-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro ima_tcb ima_hash=sha256 quiet splash $vt_handoff
+            echo  'Loading initial ramdisk ...'
+            initrd  /boot/initrd.img-5.13.0-41-generic
+          }
+          menuentry 'Ubuntu, with Linux 5.13.0-41-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-5.13.0-41-generic-recovery-956f1d5b-ce31-4ece-8c1f-90d0b11a02ee' {
+            recordfail
+            load_video
+            insmod gzio
+            if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+            insmod part_gpt
+            insmod ext2
+            if [ x$feature_platform_search_hint = xy ]; then
+              search --no-floppy --fs-uuid --set=root  956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            else
+              search --no-floppy --fs-uuid --set=root 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee
+            fi
+            echo  'Loading Linux 5.13.0-41-generic ...'
+            linux  /boot/vmlinuz-5.13.0-41-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro recovery nomodeset dis_ucode_ldr ima_tcb ima_hash=sha256
+            echo  'Loading initial ramdisk ...'
+            initrd  /boot/initrd.img-5.13.0-41-generic
+          }
+        }'
+106  8  IPL  (362 bytes)
+        'grub_cmd: menuentry Windows Boot Manager (on /dev/nvme0n1p1) --class windows --class os --id osprober-efi-1A1F-D13C {
+          insmod part_gpt
+          insmod fat
+          if [ x$feature_platform_search_hint = xy ]; then
+            search --no-floppy --fs-uuid --set=root  1A1F-D13C
+          else
+            search --no-floppy --fs-uuid --set=root 1A1F-D13C
+          fi
+          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+        }'
+107  8  IPL  (33 bytes)
+        'grub_cmd: set timeout_style=menu'
+108  8  IPL  (21 bytes)
+        'grub_cmd: [ 10 = 0 ]'
+109  8  IPL  (75 bytes)
+        'grub_cmd: menuentry UEFI Firmware Settings --id uefi-firmware {
+          fwsetup
+        }'
+110  8  IPL  (49 bytes)
+        'grub_cmd: [ -f (hd0,gpt5)/boot/grub/custom.cfg ]'
+111  8  IPL  (76 bytes)
+        'grub_cmd: [ -z (hd0,gpt5)/boot/grub -a -f (hd0,gpt5)/boot/grub/custom.cfg ]'
+112  8  IPL  (27 bytes)
+        'grub_cmd: setparams Ubuntu'
+113  8  IPL  (21 bytes)
+        'grub_cmd: recordfail'
+114  8  IPL  (27 bytes)
+        'grub_cmd: set recordfail=1'
+115  8  IPL  (22 bytes)
+        'grub_cmd: [ -n true ]'
+116  8  IPL  (18 bytes)
+        'grub_cmd: [ -z  ]'
+117  8  IPL  (30 bytes)
+        'grub_cmd: save_env recordfail'
+118  8  IPL  (21 bytes)
+        'grub_cmd: load_video'
+119  8  IPL  (22 bytes)
+        'grub_cmd: [ xy = xy ]'
+120  8  IPL  (27 bytes)
+        'grub_cmd: insmod all_video'
+121  8  IPL  (23 bytes)
+        'grub_cmd: gfxmode keep'
+122  8  IPL  (30 bytes)
+        'grub_cmd: set gfxpayload=keep'
+123  8  IPL  (26 bytes)
+        'grub_cmd: [ keep = keep ]'
+124  8  IPL  (38 bytes)
+        'grub_cmd: set vt_handoff=vt.handoff=7'
+125  8  IPL  (22 bytes)
+        'grub_cmd: insmod gzio'
+126  8  IPL  (26 bytes)
+        'grub_cmd: [ xefi = xxen ]'
+127  8  IPL  (26 bytes)
+        'grub_cmd: insmod part_gpt'
+128  8  IPL  (22 bytes)
+        'grub_cmd: insmod ext2'
+129  8  IPL  (22 bytes)
+        'grub_cmd: [ xy = xy ]'
+130  8  IPL  (87 bytes)
+        'grub_cmd: search --no-floppy --fs-uuid --set=root 956f1d5b-ce31-4ece-8c1f-90d0b11a02ee'
+131  8  IPL  (148 bytes)
+        'grub_cmd: linux /boot/vmlinuz-5.13.0-44-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro ima_tcb ima_hash=sha256 quiet splash vt.handoff=7'
+132  9  IPL  (32 bytes)
+        '/boot/vmlinuz-5.13.0-44-generic'
+133  4  EFI Boot Services Application  (32 bytes)
+134  8  IPL  (148 bytes)
+        'kernel_cmdline: /boot/vmlinuz-5.13.0-44-generic root=UUID=956f1d5b-ce31-4ece-8c1f-90d0b11a02ee ro ima_tcb ima_hash=sha256 quiet splash vt.handoff=7'
+135  8  IPL  (52 bytes)
+        'grub_cmd: initrd /boot/initrd.img-5.13.0-44-generic'
+136  9  IPL  (35 bytes)
+        '/boot/initrd.img-5.13.0-44-generic'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We see that besides the pre-boot phase actually measured by the UEFI, also the
+bootloader <code><strong>grub</strong></code> is measured before it is executed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pcr_file_hash_extension"><a class="anchor" href="#_pcr_file_hash_extension"></a>PCR File Hash Extension</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The graph shown below shows how multiple file measurements can be extended into
+a Platform Configuration Register (PCR). The PCR acts as a kind of blockchain
+securing the files against modification.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="../_images/pcrExtension.png"><img src="../_images/pcrExtension.png" alt="PCR Hash Extension"></a>
+</div>
+<div class="title">Figure 1. Multiple File Hashes extended into PCR n</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_final_pcr_state"><a class="anchor" href="#_final_pcr_state"></a>Final PCR State</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After all 136 boot event hashes listed above have been extended into the corresponding
+Platform Configuration Registers, the SHA-256 PCR bank has taken on the following
+final state as displayed by the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_pcrread.1.md"><code><strong>tpm2_pcrread</strong></code></a> command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_pcrread sha256
+  sha256:
+    0 : 0x06156CE646859EE3810957549A184B7A2EA6C6C04F3DDB8A2CD3A367F4931671
+    1 : 0x6CB042076EC2B867A92BCB8E12F914D64A06E29BA1080CE4E02755C021236C81
+    2 : 0x303B0987954CD09CA178B86BDD605540F40040E8E642BD1173AC45BC9B36A349
+    3 : 0x3D458CFE55CC03EA1F443F1562BEEC8DF51C75E14A9FCF9A7234A13F198E7969
+    4 : 0xA31DBF9D3BCE3203F254598D69351D8E4B7E1B54CD433D1C71079252246AECEF
+    5 : 0xBB496D971FABAC31BC4D1CA2F2EAF7C082F3E93C256F0793E0CF6714FD36404D
+    6 : 0x3D458CFE55CC03EA1F443F1562BEEC8DF51C75E14A9FCF9A7234A13F198E7969
+    7 : 0x446F7A67D578B2F947C4E112F76996E7E367D274AFAFBE778994C41A4B67BCFE
+    8 : 0x36772CB77B34C1BCDC416E3CC050E7267B64C29128129B6A3A138A74C65873AD
+    9 : 0xE2097CE21704A846B3553F24DF4E5726F1B986DC31C311B830288D860021EE57
+    10: 0xD36EBB1BC3F6DF8292F9A13BD4BCA0AC639D2EEB2646ED76DCD06429BDF7A82B
+    11: 0x0000000000000000000000000000000000000000000000000000000000000000
+    12: 0x0000000000000000000000000000000000000000000000000000000000000000
+    13: 0x0000000000000000000000000000000000000000000000000000000000000000
+    14: 0xE3991B7DDD47BE7E92726A832D6874C5349B52B789FA0DB8B558C69FEA29574E
+    15: 0x0000000000000000000000000000000000000000000000000000000000000000
+    16: 0x0000000000000000000000000000000000000000000000000000000000000000
+    17: 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    18: 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    19: 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    20: 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    21: 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    22: 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    23: 0x0000000000000000000000000000000000000000000000000000000000000000</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_boot_aggregate_value"><a class="anchor" href="#_boot_aggregate_value"></a>Boot Aggregate Value</h3>
+<div class="paragraph">
+<p>At the end of the boot attestation phase, the concatenated final hashes from
+<code><strong>PCR 0..9</strong></code> are extended into <code><strong>PCR 10</strong></code> to form the so-called <strong>boot aggregate</strong>
+value which is used as a starting value for the file measurements done by the
+<a href="ima.html" class="xref page">Integrity Measurement Architecture</a> (IMA).</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="attestationServer.html">Attestation Server</a></span>
+  <span class="next"><a href="ima.html">Integrity Measurement Architecture</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

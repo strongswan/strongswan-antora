@@ -586,6 +586,33 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -838,8 +865,30 @@ communicating either over TLS (<a href="https://datatracker.ietf.org/doc/html/rf
 all software packages installed on an endpoint in a central database allows to
 proactively take countermeasures when a new vulnerability is discovered in a software
 package because immediately all endpoints that are concerned can be
-<a href="swima.html#_security_updates" class="xref page">listed</a> by the
-<a href="strongTnc.html" class="xref page">strongTNC</a> tool.</p>
+<a href="swima.html#_security_updates" class="xref page">listed</a> by the <a href="strongTnc.html" class="xref page">strongTNC</a>
+tool.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_measured_boot"><a class="anchor" href="#_measured_boot"></a>Measured Boot</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="measuredBoot.html" class="xref page">Remote Attestation</a> of the boot phase by measuring the
+<a href="pcrBootEvents.html" class="xref page">BIOS/UEFI entries</a> and the boot loader before executing
+them is also supported by the <a href="strongTnc.html" class="xref page">strongTNC</a> tool.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_integrity_measurements"><a class="anchor" href="#_file_integrity_measurements"></a>File Integrity Measurements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Linux <a href="ima.html" class="xref page">Integrity Measurement Architecture</a> (IMA) allows to
+measure all system files and libraries before executing them. The file hashes
+are extended into <code><strong>PCR10</strong></code> of the endpoint&#8217;s <a href="../tpm/tpm2.html" class="xref page">Trusted Platform
+Module</a> (TPM). The <a href="strongTnc.html" class="xref page">strongTNC</a> database stores reference values
+of all file hashes so that tampering of system files by root kits can be detected.</p>
 </div>
 </div>
 </div>

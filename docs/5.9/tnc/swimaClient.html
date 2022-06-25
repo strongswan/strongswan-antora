@@ -586,6 +586,33 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -825,10 +852,9 @@ have to be configured. As a minimum the following entries are needed</p>
 <div class="content">
 <pre>libimcv {
   plugins {
-      imc-swima {
-         swid_full = yes
-         swid_database = sqlite:///etc/pts/collector.db
-      }
+    imc-swima {
+      swid_full = yes
+      swid_database = sqlite:///etc/pts/collector.db
     }
   }
 }</pre>
@@ -1343,7 +1369,8 @@ from the <code>EAP-TTLS</code> session</p>
 </div>
 <div class="paragraph">
 <p>The IKEv2 server in turn authenticates itself again via an <code>AUTH</code> payload depending
-on the <code>EAP-TTLS MSK</code> as well. The PB-TNC connection is deleted</p>
+on the <code>EAP-TTLS MSK</code> as well. The <code><strong>OS IMC</strong></code> and <code><strong>SWIMA IMC</strong></code> states as well as the
+PB-TNC connection are deleted</p>
 </div>
 <div class="listingblock">
 <div class="content">
