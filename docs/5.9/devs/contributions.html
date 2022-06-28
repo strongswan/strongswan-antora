@@ -701,14 +701,11 @@ such a feature or are even working on it. We can also give you some useful hints
 on how to integrate your work into the strongSwan architecture.</p>
 </div>
 <div class="paragraph">
-<p>Depending on the form and affected components of your contribution, you <strong>must not</strong>
-submit the code under a GPL license but under the <a href="https://opensource.org/licenses/mit-license.php">MIT license</a> (see below
-for details).</p>
+<p>For non-trivial submissions we&#8217;ll require that you sign a Contributor License
+Agreement (see below for details).</p>
 </div>
 <div class="paragraph">
-<p>Patches may be submitted as <strong>pull requests</strong> on <a href="https://github.com/strongswan/strongswan/pulls/">Github</a> or as emails
-to our <a href="https://lists.strongswan.org/mailman/listinfo/dev">Developer mailing list</a> (please use <code><strong>git format-patch</strong></code> or
-<code><strong>git send-email</strong></code>).</p>
+<p>Patches may be submitted as <strong>pull requests</strong> on <a href="https://github.com/strongswan/strongswan/pulls/">GitHub</a>.</p>
 </div>
 </div>
 </div>
@@ -717,7 +714,7 @@ to our <a href="https://lists.strongswan.org/mailman/listinfo/dev">Developer mai
 <div class="sectionbody">
 <div class="paragraph">
 <p>strongSwan is an open source project distributed under the GPLv2 license. We
-think the open source model has several advantages over a commercial product:</p>
+think the open source model has several advantages over a proprietary product:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -736,6 +733,17 @@ giving feedback and further improve its quality.</p>
 <div class="paragraph">
 <p>We strongly believe in open source and will <strong>always</strong> distribute strongSwan under
 a GPL license.</p>
+</div>
+<div class="sect2">
+<h3 id="_commercial_license"><a class="anchor" href="#_commercial_license"></a>Commercial License</h3>
+<div class="paragraph">
+<p>A commercial, non-GPL license is available for most of the components of the
+strongSwan project (see below for a <a href="#gpl-only">list of GPL-only components</a>).</p>
+</div>
+<div class="paragraph">
+<p>Please contact us at <a href="mailto:info@strongswan.org">info@strongswan.org</a> for details if you are
+interested.</p>
+</div>
 </div>
 </div>
 </div>
@@ -766,8 +774,8 @@ to several people.</p>
 <h2 id="_contributing"><a class="anchor" href="#_contributing"></a>Contributing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Depending on the strongSwan components of your contribution, you have to use
-different license for your contribution:</p>
+<p>Depending on the strongSwan components of your contribution, a signed
+Contributor License Agreement (CLA) will usually be required:</p>
 </div>
 <div class="sect2">
 <h3 id="_core_libraries_front_ends_and_tools"><a class="anchor" href="#_core_libraries_front_ends_and_tools"></a>Core Libraries, Front Ends and Tools</h3>
@@ -781,11 +789,15 @@ different license for your contribution:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code><strong>libcharon</strong></code> daemon core (<a href="https://github.com/strongswan/strongswan/tree/master/src/libcharon"><code>src/libcharon</code></a>).</p>
+<p><code><strong>libcharon</strong></code> daemon core (<a href="https://github.com/strongswan/strongswan/tree/master/src/libcharon"><code>src/libcharon</code></a>)
+and its plugins (<a href="https://github.com/strongswan/strongswan/tree/master/src/libcharon/plugins"><code>src/libcharon/plugins</code></a>)</p>
 </li>
 <li>
 <p><code><strong>libstrongswan</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan"><code>src/libstrongswan</code></a>)
-and other related libraries.</p>
+and other related libraries and their plugins</p>
+</li>
+<li>
+<p>any new plugins created by a contribution</p>
 </li>
 </ul>
 </div>
@@ -798,11 +810,11 @@ and other related libraries.</p>
 <p><a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>
 (<a href="https://github.com/strongswan/strongswan/tree/master/src/charon"><code>src/charon</code></a>) and
 <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a>
-(<a href="https://github.com/strongswan/strongswan/tree/master/src/charon-systemd"><code>src/charon-systemd</code></a>).</p>
+(<a href="https://github.com/strongswan/strongswan/tree/master/src/charon-systemd"><code>src/charon-systemd</code></a>)</p>
 </li>
 <li>
 <p><a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a> command line utility
-(<a href="https://github.com/strongswan/strongswan/tree/master/src/charon-cmd"><code>src/charon-cmd</code></a>).</p>
+(<a href="https://github.com/strongswan/strongswan/tree/master/src/charon-cmd"><code>src/charon-cmd</code></a>)</p>
 </li>
 <li>
 <p>the <a href="../os/androidVpnClient.html" class="xref page">Android app</a>, etc.</p>
@@ -815,10 +827,10 @@ and other related libraries.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a>.</p>
+<p><a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a></p>
 </li>
 <li>
-<p><a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a>.</p>
+<p><a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a></p>
 </li>
 </ul>
 </div>
@@ -826,7 +838,22 @@ and other related libraries.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>we will require contributions to be under the GPL-compatible <a href="https://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+<p>we will require that contributors have signed a Contributor License
+Agreement (CLA).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When submitting a <strong>pull request</strong>, a bot will automatically check if all
+     authors have signed the CLA and otherwise provide instructions on how to
+     proceed.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>This allows us to:</p>
@@ -834,7 +861,7 @@ and other related libraries.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrate your work in our GPLed strongSwan project, keeping your copyright</p>
+<p>Integrate your work in our GPLed strongSwan project</p>
 </li>
 <li>
 <p>To switch the project&#8217;s license to GPLv3 if required</p>
@@ -849,44 +876,32 @@ and other related libraries.</p>
 project rolling. We cannot improve strongSwan without a constant income.</p>
 </div>
 <div class="paragraph">
-<p>Other projects require you to assign your copyright to the project/foundation/company.
-We think this is much more complicated or not even possible in some countries.
-With an MIT license, you will keep your copyright.</p>
-</div>
-<div class="paragraph">
 <p>If you submit non-trivial patches:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>send new files with the following MIT license in the header (without any GPL
-header at all)</p>
+<p>if you extend existing files in a non-trivial way, you may add your own
+copyright to the existing header</p>
 </li>
 <li>
-<p>if you extend existing files in a non-trivial way, add the following MIT
-license below the existing GPL license header</p>
+<p>for new files, add the following header</p>
 <div class="listingblock">
 <div class="content">
 <pre>/*
  * Copyright (C) &lt;year&gt; &lt;copyright holders&gt;
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * Copyright (C) secunet Security Networks AG
  *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.  See &lt;http://www.fsf.org/copyleft/gpl.txt&gt;.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * for more details.
  */</pre>
 </div>
 </div>
@@ -895,12 +910,103 @@ license below the existing GPL license header</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_plugins"><a class="anchor" href="#_plugins"></a>Plugins</h3>
+<h3 id="gpl-only"><a class="anchor" href="#gpl-only"></a>Legacy and Other GPL-only Components</h3>
 <div class="paragraph">
-<p>If you are writing your own plugin, you are free to use a GPL license. We will
-not require you to send it under the MIT license (although, we&#8217;d obviously prefer
-it). If you extend existing plugins, contributing under the MIT license will
-usually be required. Contact us if you are unsure about the license.</p>
+<p>If your contributions are targeting any of the following components we will
+<strong>not require</strong> contributors to have signed a Contributor License Agreement (CLA).</p>
+</div>
+<div class="paragraph">
+<p>The files in these components use regular GPLv2-headers, if any.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>legacy components:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>starter</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/starter"><code>src/starter</code></a>)</p>
+</li>
+<li>
+<p><code><strong>ipsec</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/ipsec"><code>src/ipsec</code></a>)</p>
+</li>
+<li>
+<p><code><strong>&lowbar;updown</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/&lowbar;updown"><code>src/&lowbar;updown</code></a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>the GPL-only NetworkManager front- and backend:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>NM plugin</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/frontends/gnome"><code>src/frontends/gnome</code></a>)</p>
+</li>
+<li>
+<p><code><strong>charon-nm</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/charon-nm"><code>src/charon-nm</code></a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>the GPL-only plugins:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>tnccs_11</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libtnccs/plugins/tnccs_11"><code>src/libtnccs/plugins/tnccs_11</code></a>)</p>
+</li>
+<li>
+<p><code><strong>eap_sim_pcsc</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libcharon/plugins/eap_sim_pcsc"><code>src/libcharon/plugins/eap_sim_pcsc</code></a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>legacy crypto plugins:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>aes</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/aes"><code>src/libstrongswan/aes</code></a>)</p>
+</li>
+<li>
+<p><code><strong>blowfish</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/blowfish"><code>src/libstrongswan/blowfish</code></a>)</p>
+</li>
+<li>
+<p><code><strong>des</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/des"><code>src/libstrongswan/des</code></a>)</p>
+</li>
+<li>
+<p><code><strong>gmp</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/gmp"><code>src/libstrongswan/gmp</code></a>)</p>
+</li>
+<li>
+<p><code><strong>ntru</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/ntru"><code>src/libstrongswan/ntru</code></a>)</p>
+</li>
+<li>
+<p><code><strong>md4</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/md4"><code>src/libstrongswan/md4</code></a>)</p>
+</li>
+<li>
+<p><code><strong>md5</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/md5"><code>src/libstrongswan/md5</code></a>)</p>
+</li>
+<li>
+<p><code><strong>sha1</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/sha1"><code>src/libstrongswan/sha1</code></a>)</p>
+</li>
+<li>
+<p><code><strong>sha2</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/src/libstrongswan/plugins/sha2"><code>src/libstrongswan/sha2</code></a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>the testing framework:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>testing</strong></code> (<a href="https://github.com/strongswan/strongswan/tree/master/testing"><code>testing</code></a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>

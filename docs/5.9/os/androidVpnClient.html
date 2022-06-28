@@ -830,6 +830,12 @@ If no profile ID is passed or it doesn&#8217;t match the ID of the currently
 <h2 id="_server_configuration"><a class="anchor" href="#_server_configuration"></a>Server Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>The app is compatible to the <a href="../interop/windowsClients.html" class="xref page">Windows example configurations</a>
+we provide (although the app supports stronger algorithms than Windows clients
+do, so adding additional algorithms or <code>default</code> to the configured proposals is
+advised).</p>
+</div>
+<div class="paragraph">
 <p>Since strongSwan version 5.2.1 and version <a href="#_1_4_5_2014_11_06">1.4.5</a> of the
 app, <code><strong>connections.&lt;conn&gt;.fragmentation = yes</strong></code> may be added to the server
 <a href="../swanctl/swanctlConf.html" class="xref page">configuration</a> to use IKEv2 fragmentation which
