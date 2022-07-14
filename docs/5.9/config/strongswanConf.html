@@ -1216,9 +1216,11 @@ peer doesn&#8217;t send a vendor ID via <code><strong>send_vendor_id</strong></c
 <td class="tableblock halign-left valign-top"><p class="tableblock">fragment_size</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>1280</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum size (complete IP datagram size in bytes) of a sent IKE fragment when
- using proprietary IKEv1 or standardized IKEv2 fragmentation, defaults to <code><strong>1280</strong></code>
- (use <code><strong>0</strong></code> for address family specific default values, which uses a lower value
- for IPv4). If specified this limit is used for both IPv4 and IPv6</p></td>
+ using proprietary IKEv1 or standardized IKEv2 fragmentation. If specified, this
+ limit is used for both IPv4 and IPv6 with a default of <code><strong>1280</strong></code> bytes. Use <code><strong>0</strong></code>
+ for the address-family-specific default values defined by
+ <a href="https://datatracker.ietf.org/doc/html/rfc7383#section-2.5.1">RFC 7383</a> which specifies a very conservative limit of
+ <code><strong>576</strong></code> bytes for IPv4 but sets the limit to <code><strong>1280</strong></code> bytes for IPv6.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">group</p></td>
