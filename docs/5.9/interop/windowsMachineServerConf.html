@@ -719,13 +719,7 @@ using machine certificates to connect to the strongSwan VPN gateway.</p>
     children {
       win {
         local_ts = 0.0.0.0/0, ::/0
-
-        rekey_time = 1h
-        esp_proposals = aes256-sha256-sha1-modp2048
-       }
-      version = 2
-      reauth_time = 3h
-      proposals = aes256-sha256-modp2048
+      }
     }
   }
 }
@@ -740,6 +734,22 @@ pools {
   }
 }</pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code><strong>aes256-sha256-modp2048</strong></code> for IKE and <code><strong>aes256-sha1-modp2048</strong></code> for ESP
+      are the <a href="windowsClients.html#strong_ke" class="xref page">strongest proposals</a>
+      the Windows client is able to offer unless PowerShell is used. These
+      proposals are not explicitly configured here to accept stronger algorithms
+      proposed by such and other clients via strongSwan&#8217;s default proposals.
+</td>
+</tr>
+</table>
 </div>
 <div class="dlist">
 <dl>
@@ -777,15 +787,6 @@ will be accepted. The CA certificate is stored in the
 <dd>
 <p>All IPv4 and IPv6 traffic will be tunneled from the Windows client to the
 strongSwan VPN gateway (no split-tunneling use case).</p>
-</dd>
-<dt class="hdlist1">children.win.esp_proposals = aes256-sha256-sha1-modp2048 </dt>
-<dd>
-<p><code>aes256-sha1-modp2048</code> is the strongest proposal the Windows client is able
-to offer.</p>
-</dd>
-<dt class="hdlist1">proposals = aes256-sha256-modp2048 </dt>
-<dd>
-<p>This is the strongest IKE proposal the Windows client is able to offer.</p>
 </dd>
 </dl>
 </div>
