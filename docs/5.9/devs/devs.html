@@ -831,6 +831,13 @@ test runner:</p>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_VERBOSITY_&lt;GROUP&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The log level used for a specific log group (<code><strong>CFG</strong></code>, <code><strong>IKE</strong></code>, etc.) when
+ running the tests (<code><strong>-1</strong></code> to <code><strong>4</strong></code> with a default of <code><strong>TESTS_VERBOSITY</strong></code>),
+ see <a href="../config/logging.html" class="xref page">Logging</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.7</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>LEAK_DETECTIVE_DISABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If our custom memory allocator is enabled with <code><strong>--enable-leak-detective</strong></code>, it
  can be disabled temporarily by setting this variable in order to speed up

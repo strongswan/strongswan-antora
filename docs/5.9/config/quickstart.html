@@ -1292,6 +1292,99 @@ the IPv4 address of the client.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_passthroughbypass_policies"><a class="anchor" href="#_passthroughbypass_policies"></a>Passthrough/bypass policies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Passthrough or bypass policies allow excluding specific traffic from IPsec
+processing.</p>
+</div>
+<div class="sect2">
+<h3 id="_for_a_local_lan"><a class="anchor" href="#_for_a_local_lan"></a>For a local LAN</h3>
+<div class="paragraph">
+<p>To automatically install passthrough policies for locally connected subnets,
+the <a href="../plugins/bypass-lan.html" class="xref page"><code><strong>bypass-lan</strong></code> plugin</a> may be used.</p>
+</div>
+<div class="paragraph">
+<p>The following is a manual passthrough policy that applies to packets from and
+to the <code><strong>10.0.0.0/8</strong></code> subnet. <code><strong>remote_addrs</strong></code> is set to <code><strong>127.0.0.1</strong></code> to
+prevent this connection from being considered if a peer connects.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/etc/swanctl/swanctl.conf:
+
+  connections {
+    passthrough-lan {
+      remote_addrs = 127.0.0.1
+      children {
+        passthrough-lan {
+          local_ts  = 10.0.0.0/8
+          remote_ts = 10.0.0.0/8
+          mode = pass
+          start_action = trap
+        }
+      }
+    }
+  }</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_for_arbitrary_subnetsaddresses"><a class="anchor" href="#_for_arbitrary_subnetsaddresses"></a>For arbitrary subnets/addresses</h3>
+<div class="paragraph">
+<p>The following is a passthrough policy that applies to packets that are sent
+from an address in <code><strong>192.168.2.0/24</strong></code> to an address in <code><strong>10.1.0.0/24</strong></code> or
+vice-versa.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/etc/swanctl/swanctl.conf:
+
+  connections {
+    passthrough-subnet {
+      remote_addrs = 127.0.0.1
+      children {
+        passthrough-subnet {
+          local_ts  = 10.1.0.0/24
+          remote_ts = 192.168.2.0/24
+          mode = pass
+          start_action = trap
+        }
+      }
+    }
+  }</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_for_specific_protocols_andor_ports"><a class="anchor" href="#_for_specific_protocols_andor_ports"></a>For specific protocols and/or ports</h3>
+<div class="paragraph">
+<p>The following is a passthrough policy that allows traffic to the local SSH port
+from any remote address/port.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/etc/swanctl/swanctl.conf:
+
+  connections {
+    passthrough-ssh {
+      remote_addrs = 127.0.0.1
+      children {
+        passthrough-ssh {
+          local_ts  = dynamic[tcp/22]
+          remote_ts = 0.0.0.0/0
+          mode = pass
+          start_action = trap
+        }
+      }
+    }
+  }</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../features/ietf.html">IPsec and Related Standards</a></span>
   <span class="next"><a href="../pki/pkiQuickstart.html">Certificates Quickstart</a></span>
