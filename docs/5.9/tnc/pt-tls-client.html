@@ -729,9 +729,9 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 <h3 id="_options"><a class="anchor" href="#_options"></a>Options</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 7.1428%;">
-<col style="width: 35.7142%;">
-<col style="width: 57.143%;">
+<col style="width: 5.8823%;">
+<col style="width: 17.647%;">
+<col style="width: 76.4707%;">
 </colgroup>
 <tbody>
 <tr>
@@ -741,52 +741,52 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--connect &lt;hostname|address&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--connect</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the hostname or IP address of the PT-TLS server</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--port &lt;port&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--port</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the port of the <code>PT-TLS</code> server, default: <code><strong>271</strong></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-x</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert &lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to an X.509 certificate file. This option can be repeated to load
  multiple client and CA certificates</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-X</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--certid &lt;hex&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--certid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the handle of the certificate stored in a smartcard or a
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform Module</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-k</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">`--key &lt;file&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to the client&#8217;s <code>PKCS#1</code> or <code>PKCS#8</code> private key file</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-K</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--keyid &lt;hex&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--keyid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the keyid of the private key stored in a smartcard or a
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform Module</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-t</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key-type &lt;type&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key-type</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Define the type of the private key if stored in <code>PKCS#1</code> format. Can be omitted
  with <code>PKCS#8</code> keys</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--client &lt;id&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--client</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the username or client ID of the client required for password-based <code>SASL</code>
  authentication</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-s</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--secret &lt;password&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--secret</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the preshared secret or client password required for password-based  <code>SASL</code>
  authentication</p></td>
 </tr>
@@ -797,7 +797,7 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--debug &lt;level&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--debug</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set debug level, default: <code><strong>1</strong></code></p></td>
 </tr>
 <tr>
@@ -807,7 +807,7 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-+</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--optionsfrom &lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--options</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Read command line options from file.</p></td>
 </tr>
 </tbody>
