@@ -791,7 +791,7 @@ which should print a list of ipsec specific kernel state.</p>
 <div class="sect2">
 <h3 id="_install_packages"><a class="anchor" href="#_install_packages"></a>Install Packages</h3>
 <div class="paragraph">
-<p>Our test-system was installed using the Developer and Kern-Developer distributions
+<p>Our test system was installed using the Developer and Kern-Developer distributions
 in <code><strong>sysinstall</strong></code>. So there are maybe additional packages required on your system.</p>
 </div>
 <div class="paragraph">
@@ -818,20 +818,23 @@ compiles the GMP plugin, so <code><strong>libgmp</strong></code> is required). F
 <div class="listingblock">
 <div class="content">
 <pre>./configure --enable-kernel-pfkey --enable-kernel-pfroute --disable-kernel-netlink \
-            --disable-scripts --with-group=wheel</pre>
+            --disable-scripts --with-printf-hooks=builtin --with-group=wheel</pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+While FreeBSD&#8217;s C library implements the GNU extensions for custom
+<code>printf()</code> conversion specifiers, the implementation seems to leak memory, so
+using <code><strong>--with-printf-hooks=builtin</strong></code> is recommended.
+</td>
+</tr>
+</table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_limitations"><a class="anchor" href="#_limitations"></a>Limitations</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Because there is currently no way to change the IP addresses of an installed
-<code>IPsec SA</code> in the FreeBSD kernel, <code>IPsec SAs</code> are rekeyed when a client&#8217;s IP
-address changes. This <a href="https://forums.freebsd.org/threads/strongswan-doesnt-follow-network-ip-changes.40671/#post-226838">discussion</a> on the FreeBSD forums has more on
-this.</p>
 </div>
 </div>
 </div>
