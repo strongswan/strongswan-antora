@@ -930,6 +930,51 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="_certificate_encoding"><a class="anchor" href="#_certificate_encoding"></a>Certificate Encoding</h3>
+<div class="paragraph">
+<p>The <code><strong>bin2sql</strong></code> script in <a href="https://github.com/strongswan/strongswan/blob/master/scripts/bin2sql.c"><code>scripts/bin2sql.c</code></a> can be used to convert X.509
+certificates in binary ASN.1-encoded <code><strong>der</strong></code> format to the <code><strong>hex</strong></code> blob format
+needed by the SQL <code><strong>certificates</strong></code> table.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>bin2sql</strong></code> utility can be compiled by changing via the <code><strong>cd</strong></code> command into the
+<code><strong>scripts</strong></code> subdirectory and executing the <code><strong>make</strong></code> command there.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Certificate <code><strong>myCert.der</strong></code> in binary <code><strong>der</strong></code> format</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>od -t x1 myCert.der
+0000000 30 82 05 55 30 82 03 3d a0 03 02 01 02 02 08 7c
+0000020 24 43 4b b7 dc ef 7e 30 0d 06 09 2a 86 48 86 f7
+...
+0002500 d6 03 54 9c 77 71 de 4c 15 29 03 2f fb 07 b6 e4
+0002520 fe 81 c7 7f a6 3f dc 27 61</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Convert the binary content of the certificate file to SQL <code><strong>hex</strong></code> blob</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cat myCert.der | ./bin2sql
+X'308205553082033da00302010202087c24434bb7dcef7e300d06092a864886f7...d603549c7771de4c1529032ffb07b6e4fe81c77fa63fdc2761'</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
