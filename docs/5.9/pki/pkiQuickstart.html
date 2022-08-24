@@ -925,6 +925,21 @@ to load this information is to put everything into a <code>PKCS#12</code> contai
 <p>The strongSwan <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> tool currently is not able to create
 <code>PKCS#12</code> containers so that <code><strong>openssl</strong></code> must be used.</p>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<strong>Apple</strong> and <strong>Android</strong> clients can only process PKCS#12 containers that
+           are protected with 3DES and the legacy KDF. So when using
+           <code><strong>openssl pkcs12</strong></code> with OpenSSL 3.0 and newer, the <code><strong>-legacy</strong></code> option
+           is required.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Omitting the <code><strong>-certfile</strong></code> argument from the command above is indicated in the
 following situation:</p>
