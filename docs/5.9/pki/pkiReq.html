@@ -353,9 +353,6 @@
     <a class="nav-link" href="pki.html">pki Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -372,6 +369,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
   </li>
 </ul>
   </li>
@@ -694,7 +694,7 @@
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">pki --req [--in file|--keyid hex] [--type rsa|ecdsa|priv] --dn distinguished-name
-          [--san subjectAltName]+ [--password challengePassword]
+          [--san subjectAltName]+ [--profile profile] [--password challengePassword]
           [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
           [--rsa-padding pkcs1|pss] [--outform der|pem]
 
@@ -721,6 +721,7 @@ pki --req --help</pre>
 --type        (-t)  type of input key, default: priv
 --dn          (-d)  subject distinguished name
 --san         (-a)  subjectAltName to include in cert request
+--profile     (-P)  certificate profile name to include in cert request
 --password    (-p)  challengePassword to include in cert request
 --digest      (-g)  digest for signature creation, default: key-specific
 --rsa-padding (-R)  padding for RSA signatures, default: pkcs1
@@ -738,13 +739,14 @@ pki --req --help</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Generate a certificate request for an RSA public key</p>
+<p>Generate a certificate request for an RSA public key with a TLS-server profile</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req --in myKey.der --dn "C=CH, O=strongSwan, CN=moon.strongswan.org" &gt; myReq.de</pre>
+<pre class="nowrap">pki --req --in myKey.der --dn "C=CH, O=strongSwan, CN=moon.strongswan.org"
+          --profile server &gt; myReq.der</pre>
 </div>
 </div>
 <div class="ulist">
@@ -756,7 +758,8 @@ pki --req --help</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req --in myKey.der --type ecdsa --dn "C=CH, O=strongSwan, CN=carol@strongswan.org" --digest sha256 &gt; myReq.der</pre>
+<pre class="nowrap">pki --req --in myKey.der --type ecdsa --dn "C=CH, O=strongSwan, CN=carol@strongswan.org"
+          --digest sha256 &gt; myReq.der</pre>
 </div>
 </div>
 <div class="ulist">
@@ -782,7 +785,8 @@ pki --req --help</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req --options req.opt --in myKey.der --dn "C=CH, O=strongSwan, CN=carol@strongswan.org" --san carol@strongswan.org &gt; myReq.der</pre>
+<pre class="nowrap">pki --req --options req.opt --in myKey.der --dn "C=CH, O=strongSwan, CN=carol@strongswan.org"
+          --san carol@strongswan.org &gt; myReq.der</pre>
 </div>
 </div>
 </div>

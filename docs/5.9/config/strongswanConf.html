@@ -355,9 +355,6 @@
     <a class="nav-link" href="../pki/pki.html">pki Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -374,6 +371,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
   </li>
 </ul>
   </li>
@@ -4928,6 +4928,23 @@ subsection.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Plugins to load in <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> tool</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scep.http_bind</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source IP address to bind for HTTP operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scep.http_timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout for HTTP operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scep.renewal_via_pkcs_req</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some SCEP servers (e.g. <a href="https://github.com/openxpki/openxpki"><strong>openxpki</strong></a>) are incorrectly doing certificate
+ renewal via <a href="https://datatracker.ietf.org/doc/html/rfc8894#section-3.2.1.2"><code><strong>msgType</strong></code></a> <code>PKCSReq</code> (<code><strong>19</strong></code>) instead of
+ <code>RenewalReq</code> (<code><strong>17</strong></code>)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -4968,23 +4985,6 @@ subsection.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">load</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Plugins to load in <a href="../tnc/pt-tls-client.html" class="xref page"><code><strong>pt-tls-client tool</strong></code></a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_scepclient"><a class="anchor" href="#_scepclient"></a><a href="../tools/scepclient.html" class="xref page">scepclient</a></h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 30.7692%;">
-<col style="width: 7.6923%;">
-<col style="width: 61.5385%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">load</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Plugins to load in <a href="../tools/scepclient.html" class="xref page"><code><strong>scepclient</strong></code></a> tool</p></td>
 </tr>
 </tbody>
 </table>

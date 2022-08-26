@@ -6,7 +6,7 @@
     <title>pki Tool :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/pki/pki.html">
     <link rel="prev" href="../swanctl/swanctl.html">
-    <link rel="next" href="../tools/scepclient.html">
+    <link rel="next" href="../tnc/pt-tls-client.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -355,9 +355,6 @@
     <a class="nav-link" href="pki.html">pki Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../tools/scepclient.html">scepclient Tool</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -374,6 +371,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
   </li>
 </ul>
   </li>
@@ -696,7 +696,7 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --gen     (-g)  generate a new private key
+<pre>pki --gen     (-g)  generate a new private key
 pki --self    (-s)  create a self signed certificate
 pki --issue   (-i)  issue a certificate using a CA certificate and key
 pki --signcrl (-c)  issue a CRL using a CA certificate and key
@@ -709,6 +709,10 @@ pki --print   (-a)  print a credential in a human readable form
 pki --dn      (-d)  extract the subject DN of an X.509 certificate
 pki --pub     (-p)  extract the public key from a private key/certificate
 pki --verify  (-v)  verify a certificate using the CA certificate
+pki --scep    (-S)  Enroll an X.509 certificate with a SCEP server
+pki --scepca  (-C)  Get CA [and RA] certificate[s] from a SCEP server
+pki --est     (-E)  Enroll an X.509 certificate with an EST server
+pki --estca   (-e)  Get CA certificate[s] from an EST server
 pki --help    (-h)  show usage information</pre>
 </div>
 </div>
@@ -725,6 +729,27 @@ certificates, issue end entity and intermediate CA certificates signed by the
 private key of a CA and containing <code>subjectAltNames</code>, CRL distribution points and
 URIs of OCSP servers. You can also extract raw public keys from private keys,
 certificate requests and certificates and compute two kinds of SHA1-based key IDs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Starting with version 5.9.8, the <code><strong>pki</strong></code> command supports certificate enrollment
+via the <strong>Simple Certificate Enrollment Protocol</strong> (SCEP) as defined by
+<a href="https://datatracker.ietf.org/doc/html/rfc8894">RFC 8894</a>, replacing the obsoleted
+<a href="../tools/scepclient.html" class="xref page"><code><strong>ipsec scepclient</strong></code></a> tool.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, with version 5.9.8 the newer <code><strong>https</strong></code> based <strong>Enrollment over Secure
+Transport</strong> (EST) protocol (<a href="https://datatracker.ietf.org/doc/html/rfc7030">RFC 7030</a>) is being offered, too.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -759,8 +784,14 @@ certificate requests and certificates and compute two kinds of SHA1-based key ID
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiReq.html" class="xref page"><code>pki --req</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiScepCa.html" class="xref page"><code>pki --scepca</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiScep.html" class="xref page"><code>pki --scep</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiEstCa.html" class="xref page"><code>pki --estca</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiEst.html" class="xref page"><code>pki --est</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -769,6 +800,54 @@ certificate requests and certificates and compute two kinds of SHA1-based key ID
 <p>Each subcommand has additional options. Pass <code><strong>--help</strong></code> to a subcommand to get
 additional information.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following parameters can be configured in the
+<a href="../config/strongswanConf.html#_pki" class="xref page"><code><strong>pki</strong></code></a> section of
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 15.3846%;">
+<col style="width: 7.6923%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plugins to load in <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> tool</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scep.http_bind</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source IP address to bind for HTTP operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scep.http_timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout for HTTP operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scep.renewal_via_pkcs_req</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some SCEP servers (e.g. <a href="https://github.com/openxpki/openxpki"><strong>openxpki</strong></a>) are incorrectly doing certificate
+ renewal via <a href="https://datatracker.ietf.org/doc/html/rfc8894#section-3.2.1.2"><code><strong>msgType</strong></code></a> <code>PKCSReq</code> (<code><strong>19</strong></code>) instead of
+ <code>RenewalReq</code> (<code><strong>17</strong></code>)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -786,7 +865,7 @@ can be found <a href="pkiQuickstart.html" class="xref page">here</a>.</p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../swanctl/swanctl.html">swanctl Tool</a></span>
-  <span class="next"><a href="../tools/scepclient.html">scepclient Tool</a></span>
+  <span class="next"><a href="../tnc/pt-tls-client.html">pt-tls-client Tool</a></span>
 </nav>
 </article>
   </div>

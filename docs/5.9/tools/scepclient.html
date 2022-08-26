@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>scepclient Tool :: strongSwan Documentation</title>
+    <title>ipsec scepclient Tool :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tools/scepclient.html">
-    <link rel="prev" href="../pki/pki.html">
-    <link rel="next" href="../tnc/pt-tls-client.html">
+    <link rel="prev" href="conftest.html">
+    <link rel="next" href="../plugins/plugins.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -354,9 +354,6 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../pki/pki.html">pki Tool</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="scepclient.html">scepclient Tool</a>
-  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
   </li>
@@ -374,6 +371,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="scepclient.html">ipsec scepclient Tool</a>
   </li>
 </ul>
   </li>
@@ -680,7 +680,7 @@
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
     <li>Tools</li>
-    <li><a href="scepclient.html">scepclient Tool</a></li>
+    <li><a href="scepclient.html">ipsec scepclient Tool</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/tools/scepclient.adoc">Edit this Page</a></div>
@@ -690,7 +690,7 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">scepclient Tool</h1>
+<h1 class="page">ipsec scepclient Tool</h1>
 <div class="sect1">
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
 <div class="sectionbody">
@@ -707,8 +707,8 @@ ipsec scepclient --help</pre>
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code><strong>scepclient</strong></code> tool is a client implementation of the <em>Simple Certificate
-Enrollment Protocol</em> (SCEP).</p>
+<p>The <code><strong>ipsec scepclient</strong></code> tool was an early client implementation of the
+<em>Simple Certificate Enrollment Protocol</em> (SCEP).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -717,13 +717,19 @@ Enrollment Protocol</em> (SCEP).</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This tool was written in 2005 and only got marginal updates since then.
-      Hence it implements an old version of the SCEP Internet Draft (version
-      10/11 of <a href="https://datatracker.ietf.org/doc/html/draft-nourse-scep-11">draft-nourse-scep</a>). The new SCEP <a href="https://datatracker.ietf.org/doc/html/rfc8894">RFC 8894</a> was
-      released in September 2020, so the tool might not be compatible with newer
-      SCEP servers. It also uses default algorithms that are really not
-      state-of-the-art anymore (e.g. <code>MD5</code> to hash/sign and single <code>DES</code> to
-      encrypt).
+<div class="paragraph">
+<p>This tool was written in 2005 and only got marginal updates since then. Hence it
+implemented an old version of the SCEP Internet Draft (version 10/11 of
+<a href="https://datatracker.ietf.org/doc/html/draft-nourse-scep-11">draft-nourse-scep</a>) and used the broken <code>MD5</code> hash and single <code>DES</code>
+encryption algorithms as defaults.</p>
+</div>
+<div class="paragraph">
+<p>With strongSwan version 5.9.8 <code><strong>ipsec scepclient</strong></code> will be replaced by the
+<a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommands <a href="../pki/pkiScep.html" class="xref page"><code><strong>pki --scep</strong></code></a> and
+<a href="../pki/pkiScepCa.html" class="xref page"><code><strong>pki --scepca</strong></code></a> which implement the new SCEP
+<a href="https://datatracker.ietf.org/doc/html/rfc8894">RFC 8894</a> standard that was released in September 2020 and which
+supports trusted <strong>certificate renewal</strong> based on the existing client certificate.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -731,8 +737,8 @@ This tool was written in 2005 and only got marginal updates since then.
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../pki/pki.html">pki Tool</a></span>
-  <span class="next"><a href="../tnc/pt-tls-client.html">pt-tls-client Tool</a></span>
+  <span class="prev"><a href="conftest.html">ipsec conftest Tool</a></span>
+  <span class="next"><a href="../plugins/plugins.html">Plugin List</a></span>
 </nav>
 </article>
   </div>
