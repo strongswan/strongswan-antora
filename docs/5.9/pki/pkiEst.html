@@ -122,6 +122,9 @@
     <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -728,9 +731,9 @@ key for automatic TLS client authentication with the EST server.</p>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 5.8823%;">
-<col style="width: 17.647%;">
-<col style="width: 76.4707%;">
+<col style="width: 6.25%;">
+<col style="width: 18.75%;">
+<col style="width: 75%;">
 </colgroup>
 <tbody>
 <tr>
@@ -809,83 +812,16 @@ key for automatic TLS client authentication with the EST server.</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_libtls_options"><a class="anchor" href="#_libtls_options"></a>libtls Options</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_tls_options"><a class="anchor" href="#_tls_options"></a>TLS Options</h3>
 <div class="paragraph">
-<p>The following options can be set in the
-<a href="../config/strongswanConf.html#_libtls" class="xref page"><code><strong>libtls</strong></code></a> section of
-<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a></p>
+<p>The <code><strong>pki --est</strong></code> command uses the strongSwan <code><strong>libtls</strong></code> library that can be
+configured and fine-tuned with the following <a href="../config/tlsOptions.html" class="xref page">TLS options</a>.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 30.7692%;">
-<col style="width: 7.6923%;">
-<col style="width: 61.5385%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Key</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Default</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description [Default]</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cipher</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS encryption ciphers</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">key_exchange</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS key exchange methods</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ke_group</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS key exchange groups</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mac</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS MAC algorithms</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">signature</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS signature schemes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">suites</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS cipher suites</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">send_certreq_authorities</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to include CAs in a server&#8217;s <code><strong>CertificateRequest</strong></code> message. May be
- disabled if clients can&#8217;t handle a long list of CAs</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">version_min</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum TLS version to negotiate</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">version_max</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum TLS version to negotiate</p></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
-<p>And overview on the configuration of the
-<a href="../plugins/eap-tls.html#_tls_stack_options" class="xref page">TLS stack options</a> is given
-<a href="../plugins/eap-tls.html#_tls_stack_options" class="xref page">here</a>. It is especially recommended
-to set <code><strong>version_max = 1.3</strong></code> in order to profit from the latest TLS 1.3 version.</p>
+<p>It is especially recommended to set <code><strong>version_max = 1.3</strong></code> in order to profit from
+the latest TLS 1.3 version.</p>
+</div>
 </div>
 </div>
 </div>

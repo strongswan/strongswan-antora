@@ -124,6 +124,9 @@
     <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -725,13 +728,16 @@ to a list defined by <code><strong>/etc/tnc_config</strong></code>. PA-TNC messa
 several <code>PA-TNC</code> attributes are multiplexed into <code>PB-TNC</code> (<a href="https://datatracker.ietf.org/doc/html/rfc5793">RFC 5793</a>)
 client or server data batches which in turn are transported via <code>PT-TLS</code>.</p>
 </div>
-<div class="sect2">
-<h3 id="_options"><a class="anchor" href="#_options"></a>Options</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options"><a class="anchor" href="#_options"></a>Options</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 5.8823%;">
-<col style="width: 17.647%;">
-<col style="width: 76.4707%;">
+<col style="width: 6.25%;">
+<col style="width: 18.75%;">
+<col style="width: 75%;">
 </colgroup>
 <tbody>
 <tr>
@@ -812,6 +818,16 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="_tls_options"><a class="anchor" href="#_tls_options"></a>TLS Options</h3>
+<div class="paragraph">
+<p>The <code><strong>pt-tl-client</strong></code> command uses the strongSwan <code><strong>libtls</strong></code> library that can be
+configured and fine-tuned with the following <a href="../config/tlsOptions.html" class="xref page">TLS options</a>.</p>
+</div>
+<div class="paragraph">
+<p>It is especially recommended to set <code><strong>version_max = 1.3</strong></code> in order to profit from
+the latest TLS 1.3 version.</p>
+</div>
 </div>
 </div>
 </div>

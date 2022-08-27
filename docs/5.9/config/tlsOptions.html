@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>IKEv2 Legacy Configuration Examples :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/config/IKEv2Stroke.html">
+    <title>TLS Options :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/config/tlsOptions.html">
+    <link rel="prev" href="retransmission.html">
+    <link rel="next" href="sqliteDbSchema.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -121,7 +123,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="retransmission.html">Retransmission</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="tlsOptions.html">TLS Options</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -680,246 +682,263 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
-    <li><a href="IKEv2Stroke.html">IKEv2 Legacy Configuration Examples</a></li>
+    <li>Configuration</li>
+    <li><a href="tlsOptions.html">TLS Options</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/config/IKEv2Stroke.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/config/tlsOptions.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">IKEv2 Legacy Configuration Examples</h1>
-<div class="sect1">
-<h2 id="_remote_access"><a class="anchor" href="#_remote_access"></a>Remote Access</h2>
-<div class="sectionbody">
+<h1 class="page">TLS Options</h1>
+<div class="paragraph">
+<p>The strongSwan <code><strong>libtls</strong></code> library offers a full <strong>Transport Layer Security</strong> (TLS)
+stack implementing <a href="https://datatracker.ietf.org/doc/html/rfc8446">TLS version 1.3</a> and <a href="https://datatracker.ietf.org/doc/html/rfc5246">TLS version 1.2</a>.
+The legacy <a href="https://datatracker.ietf.org/doc/html/rfc4346">TLS version 1.1</a> and <a href="https://datatracker.ietf.org/doc/html/rfc2246">TLS version 1.0</a> are supported,
+too, but due to security reasons shouldn&#8217;t be used anymore.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>libtls</strong></code> is used internally by the strongSwan
+<a href="../plugins/eap-tls.html" class="xref page"><code><strong>eap-tls</strong></code></a>, <code><strong>eap-ttls</strong></code>, <code><strong>eap-peap</strong></code> and
+<a href="../plugins/tnc-ifmap.html" class="xref page"><code><strong>tnc-ifmap</strong></code></a> plugins, as well as by the
+<a href="../pki/pkiEst.html" class="xref page"><code><strong>pki --est</strong></code></a>, <a href="../pki/pkiEstCa.html" class="xref page"><code><strong>pki --estca</strong></code></a>,
+and <a href="../tnc/pt-tls-client.html" class="xref page"><code><strong>pt-tls-client</strong></code></a> command line tools.</p>
+</div>
+<div class="paragraph">
+<p>The options of the TLS stack can be configured in the
+<a href="strongswanConf.html#_libtls" class="xref page"><code><strong>libtls</strong></code></a> section of
+<a href="strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a></p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 57.1428%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2858%;">
+<col style="width: 30.7692%;">
+<col style="width: 7.6923%;">
+<col style="width: 61.5385%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Key</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Default</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description [Default]</strong></th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RSA authentication with X.509 certificates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-cert">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ipv6-stroke/rw-ikev2">IPv6</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/nat-rw">NAT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cipher</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS encryption ciphers</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PSK authentication with pre-shared keys (IP)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-psk-ipv4">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ipv6-stroke/rw-psk-ikev2">IPv6</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/nat-rw-psk">NAT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key_exchange</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS key exchange methods</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PSK authentication with pre-shared keys (FQDN)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-psk-fqdn">IPv4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ke_group</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS key exchange groups</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_AKA authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-aka-rsa">IPv4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mac</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS MAC algorithms</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_AKA authentication with EAP identity</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-aka-id-rsa">IPv4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">signature</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS signature schemes</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_SIM authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-sim-rsa">IPv4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">suites</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-sim-radius">RADIUS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of TLS cipher suites</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_SIM authentication with EAP identity</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-sim-id-radius">RADIUS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send_certreq_authorities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to include CAs in a server&#8217;s <code><strong>CertificateRequest</strong></code> message. May be
+ disabled if clients can&#8217;t handle a long list of CAs</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_SIM only authentication</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-sim-only-radius">RADIUS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version_min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum TLS version to negotiate</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_MSCHAPv2 authentication with EAP identity</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-mschapv2-id-rsa">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_MD5 authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-md5-rsa">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-md5-radius">RADIUS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_MD5 authentication with EAP identity</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-md5-id-rsa">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-md5-id-radius">RADIUS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_TLS authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-tls-only">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-tls-radius">RADIUS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_TTLS with EAP_MD5 client authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-ttls-only">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-ttls-radius">RADIUS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_PEAP with EAP_MD5 client authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-peap-md5">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-peap-radius">RADIUS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EAP_PEAP with EAP_MSCHAPv2 client authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/rw-eap-peap-mschapv2">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version_max</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum TLS version to negotiate</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>There is usually no cipher suite configuration required, the TLS stack enables
+all secure algorithms that it has registered crypto backends for. Depending on
+the <a href="../plugins/plugins.html" class="xref page">plugin</a> configuration, the TLS stack supports the
+following cipher suites:</p>
+</div>
+<div class="paragraph">
+<p><strong>Cipher suites supported since version 5.9.2</strong></p>
+</div>
+<details>
+<summary class="title">Details</summary>
+<div class="content">
+<div class="paragraph">
+<p><strong>TLS 1.3</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TLS_AES_256_GCM_SHA384,
+TLS_AES_128_GCM_SHA256,
+TLS_CHACHA20_POLY1305_SHA256,
+TLS_AES_128_CCM_SHA256,
+TLS_AES_128_CCM_8_SHA256</pre>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_remote_access_with_virtual_ip_adresses"><a class="anchor" href="#_remote_access_with_virtual_ip_adresses"></a>Remote Access with Virtual IP Adresses</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 57.1428%;">
-<col style="width: 42.8572%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RAM-based server-side virtual IP pool</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/ip-pool">IPv4</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DB-based server-side virtual IP pool</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/ip-pool-db">IPv4</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Static server-side virtual IP addresses</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/config-payload">IPv4</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Static client-side virtual IP addresses</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/virtual-ip">IPv4</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Two RAM-based server-side virtual IP pools</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/ip-two-pools">IPv4</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Two DB-based server-side virtual IP pools</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/ip-two-pools-db">IPv4</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p><strong>TLS 1.2 and older</strong></p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_site_to_site"><a class="anchor" href="#_site_to_site"></a>Site-to-Site</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 57.1428%;">
-<col style="width: 14.2857%;">
-<col style="width: 28.5715%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RSA authentication with X.509 certificates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/net2net-cert">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ipv6-stroke/net2net-ikev2">IPv6</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PSK authentication with pre-shared keys</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/net2net-psk">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Connection setup automatically started by daemon</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/net2net-start">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Connection setup triggered by data to be tunneled</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/net2net-route">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_host_to_host"><a class="anchor" href="#_host_to_host"></a>Host-to-Host</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 57.1428%;">
-<col style="width: 14.2857%;">
-<col style="width: 28.5715%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec tunnel mode with X.509 certificates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/host2host-cert">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ipv6-stroke/host2host-ikev2">IPv6</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec transport mode with X.509 certificates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/host2host-transport">IPv4</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ipv6-stroke/transport-ikev2">IPv6</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ip_protocol_and_port_policies"><a class="anchor" href="#_ip_protocol_and_port_policies"></a>IP Protocol and Port Policies</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 57.1428%;">
-<col style="width: 42.8572%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IPsec tunnel restricted to ICMP and ssh protocols</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke/protoport-dual">IPv4</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_complete_list"><a class="anchor" href="#_complete_list"></a>Complete List</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.strongswan.org/testing/testresults/ikev2-stroke">All IKEv2 legacy test scenarios</a></p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
+TLS_RSA_WITH_AES_256_GCM_SHA384,
+TLS_RSA_WITH_AES_256_CBC_SHA256,
+TLS_RSA_WITH_AES_256_CBC_SHA,
+TLS_RSA_WITH_AES_128_GCM_SHA256,
+TLS_RSA_WITH_AES_128_CBC_SHA256,
+TLS_RSA_WITH_AES_128_CBC_SHA,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_NULL_SHA,
+TLS_ECDHE_RSA_WITH_NULL_SHA,
+TLS_RSA_WITH_NULL_SHA256,
+TLS_RSA_WITH_NULL_SHA</pre>
 </div>
 </div>
 </div>
+</details>
+<div class="paragraph">
+<p><strong>Cipher suites supported before version 5.9.2</strong></p>
+</div>
+<details>
+<summary class="title">Details</summary>
+<div class="content">
+<div class="paragraph">
+<p><strong>TLS 1.2 and older</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,
+TLS_RSA_WITH_AES_128_CBC_SHA,
+TLS_RSA_WITH_AES_128_CBC_SHA256,
+TLS_RSA_WITH_AES_256_CBC_SHA,
+TLS_RSA_WITH_AES_256_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256,
+TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA,
+TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,
+TLS_RSA_WITH_3DES_EDE_CBC_SHA,
+TLS_ECDHE_ECDSA_WITH_NULL_SHA,
+TLS_ECDHE_RSA_WITH_NULL_SHA,
+TLS_RSA_WITH_NULL_SHA,
+TLS_RSA_WITH_NULL_SHA256,
+TLS_RSA_WITH_NULL_MD5</pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>ECDHE and ECDSA require a third-party crypto backend. Since version 5.9.2, EdDSA
+may also be used with ECDSA cipher suites. ECDHE support is limited to the
+named curves <code><strong>SECP256R1</strong></code>, <code><strong>SECP384R1</strong></code>, <code><strong>SECP521R1</strong></code>, <code><strong>SECP224R1</strong></code> and
+<code><strong>SECP192R1</strong></code> with uncompressed points. Since version 5.9.2, <code><strong>Curve25519</strong></code> and
+<code><strong>Curve448</strong></code> are also supported. <code>CAMELLIA</code> encryption requires either the
+<code><strong>openssl</strong></code> or <code><strong>gcrypt</strong></code> plugin. <code>NULL</code> encryption is automatically disabled if
+the stack is used for purposes other than EAP-TLS where only the handshake of
+TLS is used.</p>
+</div>
+<div class="paragraph">
+<p>There are three <a href="strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> options
+to limit the cipher suites by algorithms:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls {
+  key_exchange = ecdhe-ecdsa, ecdhe-rsa, dhe-rsa, rsa
+  cipher = aes256gcm, aes128gcm, chacha20poly1305, aes256, aes128, camellia256, camellia128, null
+  mac = sha384, sha256, sha1
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To specify the list of suites directly, use the <code><strong>suites</strong></code> option and a comma-
+separated list of the cipher suites above:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls {
+  suites = TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since version 5.9.2 the ECDH groups and signature schemes may be configured with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libtls {
+  ke_group = curve448, curve25519, ecp521, ecp384, ecp256, ecp224, ecp192
+  signature = ed448, ed25519, ecdsa_sha521, ecdsa_sha384, ecdsa_sha256, rsa_pss_rsae_sha512, rsa_pss_rsae_sha384, rsa_pss_rsae_sha256, rsa_pkcs1_sha512, rsa_pkcs1_sha384, rsa_pkcs1_sha256
+}</pre>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="retransmission.html">Retransmission</a></span>
+  <span class="next"><a href="sqliteDbSchema.html">SQLite Database Schema</a></span>
+</nav>
 </article>
   </div>
 </main>
