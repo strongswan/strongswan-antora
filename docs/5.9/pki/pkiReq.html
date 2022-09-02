@@ -696,9 +696,14 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req [--in file|--keyid hex] [--type rsa|ecdsa|priv] --dn distinguished-name
+<pre>pki --req [--in file|--keyid hex] [--type rsa|ecdsa|priv] --dn distinguished-name
           [--san subjectAltName]+ [--profile profile] [--password challengePassword]
-          [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
+          [--digest sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
+          [--rsa-padding pkcs1|pss] [--outform der|pem]
+
+pki --req [--in file|--keyid hex] [--type rsa|ecdsa|priv] --oldreq file
+          [--password challengePassword]
+          [--digest sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
           [--rsa-padding pkcs1|pss] [--outform der|pem]
 
 pki --req --help</pre>
@@ -717,23 +722,98 @@ pki --req --help</pre>
 <div class="sect1">
 <h2 id="_options"><a class="anchor" href="#_options"></a>Options</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">--in          (-i)  private key input file, default: stdin
---keyid       (-x)  smartcard or TPM private key object handle
---type        (-t)  type of input key, default: priv
---dn          (-d)  subject distinguished name
---san         (-a)  subjectAltName to include in cert request
---profile     (-P)  certificate profile name to include in cert request
---password    (-p)  challengePassword to include in cert request
---digest      (-g)  digest for signature creation, default: key-specific
---rsa-padding (-R)  padding for RSA signatures, default: pkcs1
---outform     (-f)  encoding of generated request, default: der
---debug       (-v)  set debug level, default: 1
---options     (-+)  read command line options from file----
---help        (-h)  show usage information</pre>
-</div>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 6.6666%;">
+<col style="width: 20%;">
+<col style="width: 73.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-h</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints usage information and a short summary of the available options</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--debug</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set debug level, default: <code><strong>1</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-+</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--options</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read command line options from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--in</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private key input file. If not given the key is read from <code><strong>STDIN</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-x</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--keyid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Smartcard or TPM private key object handle in hex format with an optional
+<code><strong>0x</strong></code> prefix</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the input key. Either <code><strong>priv</strong></code>, <code><strong>rsa</strong></code>, <code><strong>ecdsa</strong></code> or <code><strong>bliss</strong></code>.
+ Defaults to <code><strong>priv</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-d</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--dn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subject distinguished name (DN). Required if the <code><strong>--oldreq</strong></code> option is not set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-a</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--san</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subjectAltName extension to include in request. Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-P</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--profile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Certificate profile name to be included in the certificate request. Can be any
+UTF8 string. Supported e.g. by <a href="https://github.com/openxpki/openxpki"><code><strong>openxpki</strong></code></a> (with profiles <code><strong>pc-client</strong></code>,
+<code><strong>tls-server</strong></code>, etc.) or  <a href="pkiIssue.html" class="xref page"><code><strong>pki --issue</strong></code></a> (with profiles
+<code><strong>server</strong></code>, <code><strong>client</strong></code>, <code><strong>dual</strong></code>, or <code><strong>ocsp</strong></code>) that are translated into
+corresponding <strong>Extended Key Usage</strong> (EKU) flags in the generated X.509 certificate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code><strong>challengePassword</strong></code> to include in the certificate request</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-o</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--oldreq</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Old certificate request to be used as a template. Required if the <code><strong>--dn</strong></code> option
+ is not set. The public key in the old certificate request is replaced and a fresh
+ signature is generated using the new private key. Optionally a new
+ <code><strong>challengePassword</strong></code> may be set using the <code><strong>--password</strong></code> option.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-g</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--digest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Digest to use for signature creation. One of <code><strong>sha1</strong></code>, <code><strong>sha224</strong></code>, <code><strong>sha256</strong></code>,
+<code><strong>sha384</strong></code>, <code><strong>sha512</strong></code>, <code><strong>sha3_224</strong></code>, <code><strong>sha3_256</strong></code>, <code><strong>sha3_384</strong></code>, or <code><strong>sha3_512</strong></code>.
+ The default is determined based on the type and size of the signature key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-R</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--rsa-padding</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pkcs1</strong></code> or <code><strong>pss</strong></code>, defaults
+to <code><strong>pkcs1</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-f</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--outform</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Encoding of the created certificate file. Either <code><strong>der</strong></code> (<code>ASN.1 DER</code>) or
+<code><strong>pem</strong></code> (<code>Base64 PEM</code>), defaults to <code><strong>der</strong></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -748,8 +828,20 @@ pki --req --help</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req --in myKey.der --dn "C=CH, O=strongSwan, CN=moon.strongswan.org"
+<pre>pki --req --in myKey.der --dn "C=CH, O=strongSwan, CN=moon.strongswan.org"
           --profile server &gt; myReq.der</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate a certificate request for a renewed key based on an existing template</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --req --in myNewKey.der --oldreq myReq.der &gt; myNewReq.der</pre>
 </div>
 </div>
 <div class="ulist">
@@ -761,7 +853,7 @@ pki --req --help</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req --in myKey.der --type ecdsa --dn "C=CH, O=strongSwan, CN=carol@strongswan.org"
+<pre>pki --req --in myKey.der --type ecdsa --dn "C=CH, O=strongSwan, CN=carol@strongswan.org"
           --digest sha256 &gt; myReq.der</pre>
 </div>
 </div>
@@ -774,7 +866,7 @@ pki --req --help</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">cat &gt; req.opt
+<pre>cat &gt; req.opt
 --type ecdsa
 --digest sha256</pre>
 </div>
@@ -788,7 +880,7 @@ pki --req --help</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --req --options req.opt --in myKey.der --dn "C=CH, O=strongSwan, CN=carol@strongswan.org"
+<pre>pki --req --options req.opt --in myKey.der --dn "C=CH, O=strongSwan, CN=carol@strongswan.org"
           --san carol@strongswan.org &gt; myReq.der</pre>
 </div>
 </div>
