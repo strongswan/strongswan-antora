@@ -1559,6 +1559,13 @@ connection attempts are blocked</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use RSA with PSS padding instead of PKCS#1 padding by default</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rsa_pss_trailerfield</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to encode an explicit <code><strong>trailerField</strong></code> value of <code><strong>0x01</strong></code> in the RSA-PSS
+ <code><strong>algorithmIdentifier</strong></code> (as documented in <a href="https://datatracker.ietf.org/doc/html/rfc7427#appendix-A.4.3">RFC 7427</a>)
+ or using the DEFAULT value by omitting the <code><strong>trailerField</strong></code> (since version 5.9.8)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">send_delay</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Delay in ms for sending packets, to simulate a larger Round Trip Time (RTT)</p></td>
