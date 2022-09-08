@@ -1907,8 +1907,9 @@ of the CHILD_SA configuration, which must be unique within the connection
  the connection only, which then can be manually initiated or used as a responder
  configuration. The value <code><strong>trap</strong></code> installs a trap policy which triggers the tunnel
  as soon as matching traffic has been detected. The value <code><strong>start</strong></code> initiates the
- connection actively. These two modes can be combined with <code><strong>trap|start</strong></code>, to
- immediately initiate a connection for which trap policies have been installed.</p>
+ connection actively. Since version 5.9.6 these two modes can be combined with
+ <code><strong>trap|start</strong></code>, to immediately initiate a connection for which trap policies
+ have been installed.</p>
 <p class="tableblock"> When unloading or replacing a CHILD_SA configuration having a <code><strong>start_action</strong></code>
  different from <code><strong>none</strong></code>, the inverse action is performed. Configurations with
  <code><strong>start</strong></code> get closed while those with <code><strong>trap</strong></code> get uninstalled (both happens
