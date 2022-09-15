@@ -924,9 +924,19 @@ to be set to enable RSA-PSS authentication</p>
 }</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The <code><strong>rsa_pss_trailerfield</strong></code> option is needed to fix a <a href="https://community.fortinet.com/t5/Fortinet-Forum/IKEv2-digital-signature-with-rsa-pss-sha2-256-fails/td-p/222906">Fortinet quirk</a>
-when using RSA-PSS with either SHA256, SHA384, or SHA512.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The <code><strong>rsa_pss_trailerfield</strong></code> option is needed to fix a
+           <a href="https://community.fortinet.com/t5/Fortinet-Forum/IKEv2-digital-signature-with-rsa-pss-sha2-256-fails/td-p/222906">Fortinet quirk</a> when using RSA-PSS with either SHA256,
+           SHA384 or SHA512.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1004,10 +1014,17 @@ when using RSA-PSS with either SHA256, SHA384, or SHA512.</p>
 initiate completed successfully</pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Another <a href="https://community.fortinet.com/t5/Fortinet-Forum/Why-does-FortiGate-send-self-signed-Root-CA-Certificate-in-IKEv2/m-p/223575">FortiGate Quirk</a> is seen in the IKE_AUTH response where the
-FortiGate gateway sends the self-signed Root CA certificate in a separate CERT
-payload besides the server certificate and the Issuing CA certificate</p>
+<p>Another <a href="https://community.fortinet.com/t5/Fortinet-Forum/Why-does-FortiGate-send-self-signed-Root-CA-Certificate-in-IKEv2/m-p/223575">FortiGate Quirk</a> is seen in the IKE_AUTH response above where
+the FortiGate gateway sends the self-signed Root CA certificate in a separate CERT
+payload besides the server certificate and the Issuing CA certificate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1021,6 +1038,10 @@ payload besides the server certificate and the Issuing CA certificate</p>
 <p>This doesn&#8217;t break the negotiation in any way but just takes up network bandwidth
 because additional IKEv2 fragments are needed to transmit the unnecessary Root CA
 certificate.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
