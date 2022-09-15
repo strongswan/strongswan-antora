@@ -707,7 +707,354 @@ VPN functionality. This also encompasses the <strong>FortiGate</strong> product 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_known_quirks"><a class="anchor" href="#_known_quirks"></a>Known Quirks</h2>
+<h2 id="_rsa_pss_authentication"><a class="anchor" href="#_rsa_pss_authentication"></a>RSA-PSS Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We describe how to set up a <em>dialup</em> connection from one or serveral strongSwan
+VPN clients to a central FortiGate Gateway using RSA-PSS authentication. We
+assume static IP addresses so that no NAT traversal and no virtual IP addresses
+are needed.</p>
+</div>
+<div class="sect2">
+<h3 id="_network_topology"><a class="anchor" href="#_network_topology"></a>Network Topology</h3>
+<div class="paragraph">
+<p>Up to <code><strong>253</strong></code> strongSwan VPN clients can connect to the fortiGate gateway
+in order access the <code><strong>10.1.0.0/16</strong></code> network</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+-----------+
+| client1   |--------------+
++-----------+ 192.168.0.1  |
+                           |
++-----------+              |                +-----------+     +-------------+
+| client2   |--------------+----------------| fortigate |-----| 10.1.0.0/16 |
++-----------+ 192.168.0.2  |  192.168.0.254 +-----------+ .1  +-------------+
+                           .
+                           .
++-----------+              |
+| client&lt;n&gt; |--------------+
++-----------+ 192.168.0.n</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fortigate_gateway_configuration"><a class="anchor" href="#_fortigate_gateway_configuration"></a>Fortigate Gateway Configuration</h3>
+<div class="paragraph">
+<p>We use a two-tier X.509 certificate hierarchy with a Root CA certificate
+(<code>CA_CERT_1</code>) and an Issuing CA certificate (<code>CA_CERT_2</code>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># show vpn certificate ca
+
+config vpn certificate ca
+    edit "CA_Cert_1"
+        set range global
+    next
+    edit "CA_Cert_2"
+        set range global
+    next
+end</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We load the corresponding CRLs statically as files</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># show vpn certificate crl
+
+config vpn certificate crl
+    edit "CRL_1"
+        set range global
+    next
+    edit "CRL_2"
+        set range global
+    next
+end</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The RSA private key and the matching fortiGate X.509 gateway certificate is
+loaded via PKCS#12 protected by a password</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># show vpn certificate local "fortigate"
+
+config vpn certificate local
+    edit "fortigate"
+        set password ENC bYmZ...pw==
+        set range global
+    next</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Any client possessing a valid X.509 certificate issued by the Issuing CA is
+allowed to connect to the network behind the fortiGate gateway</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># show user peer
+
+config user peer
+    edit "strongswan_peer"
+        set ca "CA_Cert_2"
+    next
+end</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The IKEv2 connection definition with the fortiGate gateway acting as a passive
+responder using <code>RSA-PSS</code> authentication with either a <code>SHA2-256</code> or <code>SHA2-384</code>
+hash</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># show vpn ipsec phase1-interface
+
+config vpn ipsec phase1-interface
+    edit "strongswan"
+        set type dynamic
+        set interface "internal3"
+        set ike-version 2
+        set local-gw 192.168.0.254
+        set authmethod signature
+        set net-device disable
+        set proposal aes128-sha256 aes256-sha384
+        set dpd on-idle
+        set comments "VPN: strongswan (Created by AS)"
+        set dhgrp 31 15 14
+        set nattraversal disable
+        set digital-signature-auth enable
+        set signature-hash-alg sha2-256 sha2-384
+        set rsa-signature-format pss
+        set certificate "fortigate"
+        set peer "strongswan_peer"
+        set dpd-retryinterval 60
+    next
+end</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The traffic selectors <code><strong>src-subnet</strong></code> and <code><strong>dst-subnet</strong></code> allow any client in the
+<code><strong>192.168.0.0/24</strong></code> network to connect to the <code><strong>10.1.0.0/16</strong></code> subnet protected by
+the FortiGate gateway</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># show vpn ipsec phase2-interface
+
+config vpn ipsec phase2-interface
+    edit "strongswan"
+        set phase1name "strongswan"
+        set proposal aes128gcm aes256gcm aes128-sha256 aes256-sha256
+        set dhgrp 31 15 14
+        set comments "VPN: strongswan (Created by AS)"
+        set src-subnet 10.1.0.0 255.255.0.0
+        set dst-subnet 192.168.0.0 255.255.255.0
+    next
+end</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_strongswan_client_configuration"><a class="anchor" href="#_strongswan_client_configuration"></a>strongSwan Client Configuration</h3>
+<div class="paragraph">
+<p>This is <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> connection definition
+for <code><strong>client1</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connections {
+  fortigate {
+    remote_addrs = 192.168.0.254
+    local_addrs  = 192.168.0.1
+
+    local {
+      auth = pubkey-sha256-sha384
+      certs = client1Cert.der
+      id = client1.strongswan.org
+    }
+    remote {
+      auth = pubkey-sha256-sha384
+      id = "C=CH, O=strongSwan Project, CN=fortigate.strongswan.org"
+      cacerts = issuingCaCert.pem
+    }
+    children {
+      fortigate {
+        local_ts = 192.168.0.1
+        remote_ts = 0.0.0.0/0
+        esp_proposals = aes128gcm16-aes256gcm16-x25519
+        rekey_time = 3600
+      }
+    }
+    version = 2
+    mobike = no
+    reauth_time = 10800
+    proposals = aes128-aes256-sha256-sha384-x25519
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following credential files must be stored in the
+<a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a> directory</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>rsa/client1Key.der
+x509/client1Cert.der
+x509ca/rootCaCert.pem
+x509ca/issuingCaCert.pem
+x509crl/rootCaCrl.der
+x509crl/issuingCaCrl.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> options have
+to be set to enable RSA-PSS authentication</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>charon-systemd {
+  rsa_pss = yes
+  rsa_pss_trailerfield = yes
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>rsa_pss_trailerfield</strong></code> option is needed to fix a <a href="https://community.fortinet.com/t5/Fortinet-Forum/IKEv2-digital-signature-with-rsa-pss-sha2-256-fails/td-p/222906">Fortinet quirk</a>
+when using RSA-PSS with either SHA256, SHA384, or SHA512.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initiating_the_connection"><a class="anchor" href="#_initiating_the_connection"></a>Initiating the Connection</h3>
+<div class="paragraph">
+<p>The IPsec connectiong is initiated by the strongSwan VPN client with the
+<a href="../swanctl/swanctlInitiate.html" class="xref page"><code><strong>swanctl --initiate</strong></code></a> command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># swanctl --initiate --child fortigate
+
+[IKE] initiating IKE_SA fortigate[1] to 192.168.0.254
+[ENC] generating IKE_SA_INIT request 0 [ SA KE No N(NATD_S_IP) N(NATD_D_IP) N(FRAG_SUP) N(HASH_ALG) N(REDIR_SUP) ]
+[NET] sending packet: from 192.168.0.1[500] to 192.168.0.254[500] (264 bytes)
+
+[NET] received packet: from 192.168.0.254[500] to 192.168.0.1[500] (181 bytes)
+[ENC] parsed IKE_SA_INIT response 0 [ SA KE No CERTREQ N(FRAG_SUP) N(HASH_ALG) ]
+[CFG] selected proposal: IKE:AES_CBC_128/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/CURVE_25519
+[IKE] received cert request for "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[IKE] sending cert request for "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[IKE] authentication of 'client1.strongswan.org' (myself) with RSA_EMSA_PSS_SHA2_256_SALT_32 successful
+[IKE] sending end entity cert "C=CH, O=strongSwan Project, CN=client1.strongswan.org"
+[IKE] establishing CHILD_SA fortigate{1}
+[ENC] generating IKE_AUTH request 1 [ IDi CERT N(INIT_CONTACT) CERTREQ IDr AUTH SA TSi TSr N(EAP_ONLY) N(MSG_ID_SYN_SUP) ]
+[ENC] splitting IKE message (1936 bytes) into 2 fragments
+[ENC] generating IKE_AUTH request 1 [ EF(1/2) ]
+[ENC] generating IKE_AUTH request 1 [ EF(2/2) ]
+[NET] sending packet: from 192.168.0.1[500] to 192.168.0.254[500] (1444 bytes)
+[NET] sending packet: from 192.168.0.1[500] to 192.168.0.254[500] (580 bytes)
+
+[NET] received packet: from 192.168.0.254[500] to 192.168.0.1[500] (1124 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(1/5) ]
+[ENC] received fragment #1 of 5, waiting for complete IKE message
+[NET] received packet: from 192.168.0.254[500] to 192.168.0.1[500] (1124 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(2/5) ]
+[ENC] received fragment #2 of 5, waiting for complete IKE message
+[NET] received packet: from 192.168.0.254[500] to 192.168.0.1[500] (1124 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(3/5) ]
+[ENC] received fragment #3 of 5, waiting for complete IKE message
+[NET] received packet: from 192.168.0.254[500] to 192.168.0.1[500] (1124 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(4/5) ]
+[ENC] received fragment #4 of 5, waiting for complete IKE message
+[NET] received packet: from 192.168.0.254[500] to 192.168.0.1[500] (500 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(5/5) ]
+[ENC] received fragment #5 of 5, reassembled fragmented IKE message (4704 bytes)
+[ENC] parsed IKE_AUTH response 1 [ IDr CERT CERT CERT AUTH SA TSi TSr ]
+[IKE] received end entity cert "C=CH, O=strongSwan Project, CN=fortigate.strongswan.org"
+[IKE] received issuer cert "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[IKE] received issuer cert "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+[CFG]   using certificate "C=CH, O=strongSwan Project, CN=fortigate.strongswan.cor"
+[CFG]   using trusted intermediate ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[CFG] checking certificate status of "C=CH, O=strongSwan Project, CN=fortigate.strongswan.org"
+[CFG]   using trusted certificate "C=CH, O=strongSwan Project, CN=strongSwanIssuing CA"
+[CFG]   using trusted ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+[CFG]   reached self-signed root ca with a path length of 0
+[CFG]   crl correctly signed by "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[CFG]   crl is valid: until Oct 09 10:35:35 2022
+[CFG]   using cached crl
+[CFG] certificate status is good
+[CFG]   using trusted ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+[CFG] checking certificate status of "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[CFG]   using trusted certificate "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+[CFG]   crl correctly signed by "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+[CFG]   crl is valid: until Oct 09 10:34:13 2022
+[CFG]   using cached crl
+[CFG] certificate status is good
+[CFG]   reached self-signed root ca with a path length of 1
+[IKE] authentication of 'C=CH, O=strongSwan Project, CN=fortigate.strongswan.org' with RSA_EMSA_PSS_SHA2_256_SALT_32 successful
+[IKE] IKE_SA fortigate[1] established between 192.168.0.1[client1.strongswan.org]...192.168.0.254[C=CH, O=strongSwan Project, CN=fortigate.strongswan.org]
+[IKE] scheduling reauthentication in 9993s
+[IKE] maximum IKE_SA lifetime 11073s
+[CFG] selected proposal: ESP:AES_GCM_16_128/NO_EXT_SEQ
+[IKE] CHILD_SA fortigate{1} established with SPIs ce664504_i e538cd87_o and TS 192.168.0.1/32 === 10.10.5.0/24
+initiate completed successfully</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another <a href="https://community.fortinet.com/t5/Fortinet-Forum/Why-does-FortiGate-send-self-signed-Root-CA-Certificate-in-IKEv2/m-p/223575">FortiGate Quirk</a> is seen in the IKE_AUTH response where the
+FortiGate gateway sends the self-signed Root CA certificate in a separate CERT
+payload besides the server certificate and the Issuing CA certificate</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[ENC] parsed IKE_AUTH response 1 [ IDr CERT CERT CERT AUTH SA TSi TSr ]
+[IKE] received end entity cert "C=CH, O=strongSwan Project, CN=fortigate.strongswan.org"
+[IKE] received issuer cert "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA"
+[IKE] received issuer cert "C=CH, O=strongSwan Project, CN=strongSwan Root CA"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This doesn&#8217;t break the negotiation in any way but just takes up network bandwidth
+because additional IKEv2 fragments are needed to transmit the unnecessary Root CA
+certificate.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_status"><a class="anchor" href="#_connection_status"></a>Connection Status</h3>
+<div class="paragraph">
+<p>The IPsec connectiong is initiated by the strongSwan VPN client with the
+<a href="../swanctl/swanctlListSas.html" class="xref page"><code><strong>swanctl --list-sas</strong></code></a> command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># swanctl --list-sas
+
+fortigate: #1, ESTABLISHED, IKEv2, 41188a5051bf3473_i* 009b2e2e7f9247c8_r
+  local  'client1.strongswan.org' @ 192.168.0.1[500]
+  remote 'C=CH, O=strongSwan Project, CN=fortigate.strongswan.org' @ 192.168.0.254[500]
+  AES_CBC-128/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/CURVE_25519
+  established 1939s ago, reauth in 8054s
+  fortigate: #1, reqid 1, INSTALLED, TUNNEL, ESP:AES_GCM_16-128
+    installed 1939s ago, rekeying in 1380s, expires in 2021s
+    in  ce664504,  95928 bytes,  1142 packets,     1s ago
+    out e538cd87,  95928 bytes,  1142 packets,     1s ago
+    local  192.168.0.1/32
+    remote 10.1.0.0/16</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similar to strongSwan which always generates an inbound SPI starting with
+<code><strong>0xc..</strong></code>, FortiGate SPIs always start with <code><strong>0xe..</strong></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_known_quirks"><a class="anchor" href="#_other_known_quirks"></a>Other Known Quirks</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
