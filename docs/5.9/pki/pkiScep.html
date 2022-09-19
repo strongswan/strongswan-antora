@@ -759,7 +759,9 @@ key for automatic authentication with the SCEP server.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-u</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--url</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the SCEP server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the SCEP server. According to <a href="https://datatracker.ietf.org/doc/html/rfc8894#section-4.1">RFC 8894</a>, the URL
+ should be of the form <code><strong>http&#58;//&lt;hostname&gt;[:&lt;port&gt;]/cgi-bin/pkiclient.exe</strong></code> but
+ depending on the SCEP server the path might be different</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
@@ -955,7 +957,7 @@ Issued certificate is trusted, valid from Jul 20 15:05:33 2023 until Jul 20 15:0
      the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
  </footer>
 
-<script src="../../../_/js/site.js"></script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
 <script src="../../../_/js/vendor/lunr.js"></script>
 <script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
