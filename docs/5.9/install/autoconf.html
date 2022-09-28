@@ -826,6 +826,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable Android specific logger plugin</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-asan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable build with AddressSanitizer (ASan)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/attr-sql.html" class="xref page">--enable-attr-sql</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable SQL-based configuration attributes. This is a plugin for VPN gateways
@@ -1072,11 +1077,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.5.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable fuzzing scripts (found in directory <code>fuzz</code> and intended for use on the
  OSS-Fuzz infrastructure)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcm</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable GCM AEAD wrapper crypto plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcrypt</p></td>
@@ -1636,6 +1636,11 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-fips-prf</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable default FIPS PRF software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-gcm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable GCM AEAD wrapper crypto plugin (was disabled by default prior to 5.9.8)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-gmp</p></td>
