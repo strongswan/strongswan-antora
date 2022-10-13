@@ -967,7 +967,7 @@ For instance, referring to the image above, if host <code><strong>moon</strong><
 tunnel to host <code><strong>sun</strong></code> (connecting the two networks <code><strong>10.1.0.0/16</strong></code> and
 <code><strong>10.2.0.0/24</strong></code>) and host <code><strong>carol</strong></code> has a roadwarrior connection to host <code><strong>sun</strong></code>
 (from which <code><strong>carol</strong></code> received a virtual IP address of <code><strong>10.3.0.10</strong></code>). Then <code><strong>carol</strong></code>
-wont be able to automatically communicate with <code><strong>alice</strong></code>, even if forwarding is
+won&#8217;t be able to automatically communicate with <code><strong>alice</strong></code>, even if forwarding is
 enabled on <code><strong>sun</strong></code>.  This is because there is no IPsec policy allowing traffic
 between <code><strong>carol</strong></code> (<code><strong>10.3.0.10</strong></code>) and <code><strong>alice</strong></code> (<code><strong>10.1.0.10</strong></code>). An additional SA
 between <code><strong>moon</strong></code> and <code><strong>sun</strong></code> connecting the virtual subnet <code><strong>10.3.0.0/24</strong></code> with
@@ -1382,7 +1382,7 @@ Connectivity change detection can be disabled by setting <code><strong>charon.pr
 in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>.</p>
 </div>
 <div class="paragraph">
-<p>If IPv6 is used then make sure to <a href="../config/IPv6Ndp.html" class="xref page">bypass</a> Neighbor Discovery
+<p>If IPv6 is used, then make sure to <a href="../config/IPv6Ndp.html" class="xref page">bypass</a> Neighbor Discovery
 Protocol (NDP) traffic if necessary. It is possible that you encounter MSS/MTU
 problems when tunneling traffic. Please refer to
 <a href="forwarding.html#_mtumss_issues" class="xref page">Forwarding and Split-Tunneling</a> for
