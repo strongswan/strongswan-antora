@@ -6,7 +6,7 @@ site:
 content:
   sources:
   - url: https://github.com/strongswan/strongswan-docs.git
-    branches: [master]
+    branches: [master, docs-6.0]
     start_path: docs
 ui:
   bundle:
