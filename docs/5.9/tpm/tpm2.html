@@ -855,7 +855,7 @@ newer, we recommend these latest versions:</p>
 <p><strong>tpm2-tss</strong> version <strong>3.2.0</strong>: <a href="https://github.com/tpm2-software/tpm2-tss/releases/tag/3.2.0" class="bare">https://github.com/tpm2-software/tpm2-tss/releases/tag/3.2.0</a></p>
 </li>
 <li>
-<p><strong>tpm2-tools</strong> version <strong>5.2</strong>: <a href="https://github.com/tpm2-software/tpm2-tools/releases/tag/5.2" class="bare">https://github.com/tpm2-software/tpm2-tools/releases/tag/5.2</a></p>
+<p><strong>tpm2-tools</strong> version <strong>5.3</strong>: <a href="https://github.com/tpm2-software/tpm2-tools/releases/tag/5.3" class="bare">https://github.com/tpm2-software/tpm2-tools/releases/tag/5.3</a></p>
 </li>
 </ul>
 </div>
@@ -891,7 +891,7 @@ keys stored in the Non-Volatile (NV) RAM:</p>
 </div>
 <div class="paragraph">
 <p>The man pages of all <code><strong>tpm2-tools</strong></code> functions with their arguments can be found
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man">here</a>. The access to the <code><strong>/dev/tpmrm0</strong></code> TPM resource manager device
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man">here</a>. The access to the <code><strong>/dev/tpmrm0</strong></code> TPM resource manager device
 requires <code><strong>root</strong></code> rights on most Linux platforms. But e.g. with Ubuntu, adding the
 user to the <code><strong>tss</strong></code> group enables direct access to the TPM device:</p>
 </div>
@@ -981,7 +981,7 @@ L1 - publicExponent:
 <div class="sect2">
 <h3 id="_rsa_endorsement_key"><a class="anchor" href="#_rsa_endorsement_key"></a>RSA Endorsement Key</h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_createek.1.md"><code><strong>tpm2_createek</strong></code></a> command derives a 2048 bit RSA
+<p>The <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createek.1.md"><code><strong>tpm2_createek</strong></code></a> command derives a 2048 bit RSA
 Endorsement Key (EK) in a deterministic way from the secret <em>Endorsement Primary Seed</em>
 <strong>unique</strong> to each TPM device and makes the key persistent in the non-volatile memory
 of the TPM under the object handle <code><strong>0x81010002</strong></code></p>
@@ -992,7 +992,7 @@ of the TPM under the object handle <code><strong>0x81010002</strong></code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_getcap.1.md"><code><strong>tpm2_getcap</strong></code></a> command we can check that the
+<p>Using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_getcap.1.md"><code><strong>tpm2_getcap</strong></code></a> command we can check that the
 newly derived Endorsement Key has been persisted in the NV RAM</p>
 </div>
 <div class="listingblock">
@@ -1025,7 +1025,7 @@ encryption algorithm is AES-CFB with 128 bits
 <h3 id="_delete_persisted_keys"><a class="anchor" href="#_delete_persisted_keys"></a>Delete Persisted Keys</h3>
 <div class="paragraph">
 <p>We therefore delete the duplicate key with the following
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1051,7 +1051,7 @@ action: evicted</pre>
 <div class="sect2">
 <h3 id="_ecc_endorsement_key"><a class="anchor" href="#_ecc_endorsement_key"></a>ECC Endorsement Key</h3>
 <div class="paragraph">
-<p>Again using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_createek.1.md"><code><strong>tpm2_createek</strong></code></a> command we derive a
+<p>Again using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createek.1.md"><code><strong>tpm2_createek</strong></code></a> command we derive a
 256 bit ECC Endorsement Key (EK) in a deterministic way from the secret
 <em>Endorsement Primary Seed</em> <strong>unique</strong> to each TPM device and make the key persistent
 in the non-volatile memory of the TPM under the object handle <code><strong>0x81010002</strong></code>:</p>
@@ -1088,7 +1088,7 @@ encryption algorithm is AES-CFB with 128 bits
 <div class="paragraph">
 <p>Endorsement Key certificates issued for Intel firmware TPMs can be automatically
 downloaded from an Intel web server using the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_getekcertificate.1.md"><code><strong>tpm2_getcertificate</strong></code></a> command:</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_getekcertificate.1.md"><code><strong>tpm2_getcertificate</strong></code></a> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1124,7 +1124,7 @@ downloaded EK certificate belonging to the ECC key:</p>
 <div class="paragraph">
 <p>For the RSA 2048 Endorsement Key we first have to extract the public keyfile
 <code><strong>ek_rsa.pub</strong></code> in the TPM 2.0 proprietary format using the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_readpublic.1.md"><code><strong>tpm2_readpublic</strong></code></a> command because we forgot to do
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_readpublic.1.md"><code><strong>tpm2_readpublic</strong></code></a> command because we forgot to do
 this in the first place:</p>
 </div>
 <div class="literalblock">
@@ -1195,7 +1195,7 @@ stored in an NV index:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_nvreadpublic.1.md"><code><strong>tpm2_nvreadpublic</strong></code></a> command we can
+<p>Using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvreadpublic.1.md"><code><strong>tpm2_nvreadpublic</strong></code></a> command we can
 look for large data objects which are prime candidates for X.509 certificates:</p>
 </div>
 <div class="listingblock">
@@ -1279,7 +1279,7 @@ loaded certificate from TPM NV index 0x01c0000a
 </div>
 <div class="paragraph">
 <p>or we can first retrieve the binary certificate blob from the NV RAM using the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_nvread.1.md"><code><strong>tpm2_nvread</strong></code></a> command:</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvread.1.md"><code><strong>tpm2_nvread</strong></code></a> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1327,7 +1327,7 @@ TPM 2.0 - PCR banks: SHA1 SHA256</pre>
 <h3 id="_rsa_attestation_key"><a class="anchor" href="#_rsa_attestation_key"></a>RSA Attestation Key</h3>
 <div class="paragraph">
 <p>A 2048 bit RSA Attestation Key (AK) bound to the RSA EK with handle <code><strong>0x81010001</strong></code>
-can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_createak.1.md"><code><strong>tpm2_createak</strong></code></a> command:</p>
+can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createak.1.md"><code><strong>tpm2_createak</strong></code></a> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1336,7 +1336,7 @@ can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tre
 </div>
 <div class="paragraph">
 <p>and made persistent under the handle <code><strong>0x81010003</strong></code> with the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command:</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1365,7 +1365,7 @@ signature algorithm is RSASSA with SHA256 hash
 <h3 id="_ecc_attestation_key"><a class="anchor" href="#_ecc_attestation_key"></a>ECC Attestation Key</h3>
 <div class="paragraph">
 <p>A 256 bit ECC Attestation Key (AK) bound to the ECC EK with handle <code><strong>0x81010002</strong></code>
-can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_createak.1.md"><code><strong>tpm2_createak</strong></code></a> command:</p>
+can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createak.1.md"><code><strong>tpm2_createak</strong></code></a> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1374,7 +1374,7 @@ can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tre
 </div>
 <div class="paragraph">
 <p>and made persistent under the handle <code><strong>0x81010004</strong></code> with the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command:</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1660,7 +1660,7 @@ be reserved first so we check the size of the X.509 ECC certificate</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_nvdefine.1.md"><code><strong>tpm2_nvdefine</strong></code></a> command allocates a memory
+<p>The <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvdefine.1.md"><code><strong>tpm2_nvdefine</strong></code></a> command allocates a memory
 location with a size of 1001 bytes that can be accessed via the handle <code><strong>0x01800004</strong></code>
 which is also called the NV index</p>
 </div>
@@ -1673,7 +1673,7 @@ nv-index: 0x1800004</pre>
 </div>
 <div class="paragraph">
 <p>Then we write the certificate file to the NV RAM destination using the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_nvwrite.1.md"><code><strong>tpm2_nvwrite</strong></code></a> command:</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvwrite.1.md"><code><strong>tpm2_nvwrite</strong></code></a> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1715,12 +1715,81 @@ nv-index: 0x1800003</pre>
 <div class="paragraph">
 <p>We decide to use the RSA AK certificate externally, though. Thus we release the
 memory assigned to NV index <code><strong>0x01800003</strong></code> via the
-<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.2/man/tpm2_nvundefine.1.md"><code><strong>tpm2_nvundefine</strong></code></a> command:</p>
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvundefine.1.md"><code><strong>tpm2_nvundefine</strong></code></a> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>$ tpm2_nvundefine 0x01800003 -C o</pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_tpm_2_0_devices_with_stronger_rsa_and_ecc_keys"><a class="anchor" href="#_new_tpm_2_0_devices_with_stronger_rsa_and_ecc_keys"></a>New TPM 2.0 Devices with stronger RSA and ECC Keys</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Starting with version <code><strong>5.3</strong></code> of the <code><strong>tpm2-tools</strong></code>, RSA keys with lengths &gt; 2048
+bits and ECC keys with lengths &gt; 256 bits are supported. Also signatures can be
+based on <code><strong>sha384</strong></code> or <code><strong>sha512</strong></code> hashes if the TPM 2.0 firmware supports them.</p>
+</div>
+<div class="paragraph">
+<p>E.g. the following TPM 2.0 device manufactured by STMicroelectronics has support
+for <code><strong>NIST_P384</strong></code> ECC keys and signatures based on `"SHA384" hashes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TPM 2.0 - manufacturer: STM  () rev: 01.38 2018 FIPS 140-2
+TPM 2.0 - algorithms: RSA SHA1 HMAC AES MGF1 KEYEDHASH XOR SHA256 SHA384 RSASSA RSAES RSAPSS OAEP ECDSA ECDH ECDAA ECSCHNORR KDF1_SP800_56A KDF1_SP800_108 ECC SYMCIPHER SHA3_256 SHA3_384 CTR OFB CBC CFB ECB
+TPM 2.0 - ECC curves: NIST_P256 NIST_P384 BN_P256
+TPM 2.0 - PCR banks: SHA1 SHA256</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_endorsement_keys"><a class="anchor" href="#_endorsement_keys"></a>Endorsement Keys</h3>
+<div class="paragraph">
+<p>An <code>EK</code> with an RSA 3072 bit key is derived with the following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createek -G rsa3072 -c 0x81010001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and an <code>EK</code> with an ECC 384 bit key with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createek -G ecc384 -c 0x81010002</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_attestation_keys"><a class="anchor" href="#_attestation_keys"></a>Attestation Keys</h3>
+<div class="paragraph">
+<p>An <code>AK</code> with an RSA 3072 bit key is derived with the following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createak -C 0x81010001 -G rsa3072 -g sha256 -s rsassa -c ak_rsa.ctx -u ak_rsa.pub -n ak_rsa.name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and an <code>AK</code> with an ECC 384 bit key with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createak -C 0x81010002 -G ecc384 -g sha384 -s ecdsa -c ak_ecc.ctx -u ak_ecc.pub -n ak_ecc.name</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ibm_tpm_2_0_simulator"><a class="anchor" href="#_ibm_tpm_2_0_simulator"></a>IBM TPM 2.0 Simulator</h3>
+<div class="paragraph">
+<p>A <a href="https://github.com/strongX509/docker/tree/master/tpm"><code><strong>tpm-server</strong></code></a> Docker container with a readily installed
+<a href="https://sourceforge.net/projects/ibmswtpm2">IBM TPM 2.0 Simulator</a> plus the <a href="https://github.com/tpm2-software/tpm2-tools"><code><strong>tpm2-tools</strong></code></a> and
+the strongSwan <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> tool allows you to freely experiment
+with the larger RSA and ECC keys.</p>
 </div>
 </div>
 </div>
