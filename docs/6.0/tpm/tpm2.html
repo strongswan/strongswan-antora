@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Trusted Platform Module 2.0 :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tpm/tpm2.html">
+    <link rel="prev" href="../devs/fuzzing.html">
+    <link rel="next" href="../tnc/tnc.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="6.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">IPsec Protocol</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/microsoftStatusNotify.html">Microsoft Status Notify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlCounters.html">swanctl --counters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlFlushCerts.html">swanctl --flush-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInitiate.html">swanctl --initiate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInstall.html">swanctl --install</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAlgs.html">swanctl --list-algs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAuths.html">swanctl --list-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListCerts.html">swanctl --list-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListConns.html">swanctl --list-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPols.html">swanctl --list-pols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPools.html">swanctl --list-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListSas.html">swanctl --list-sas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAll.html">swanctl --load-all</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAuths.html">swanctl --load-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadConns.html">swanctl --load-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadCreds.html">swanctl --load-creds</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadPools.html">swanctl --load-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLog.html">swanctl --log</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRedirect.html">swanctl --redirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRekey.html">swanctl --rekey</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlReloadSettings.html">swanctl --reload-settings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlStats.html">swanctl --stats</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlTerminate.html">swanctl --terminate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlUninstall.html">swanctl --uninstall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlVersion.html">swanctl --version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">6.0 Beta</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../5.9/index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">6.0 Beta</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../5.9/index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../5.9/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Platform Security</li>
+    <li><a href="tpm2.html">TPM 2.0</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0 Beta</button>
+  <div class="version-menu">
+    <a class="version is-current" href="tpm2.html">6.0 Beta</a>
+    <a class="version" href="../../5.9/tpm/tpm2.html">5.9</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/tpm/tpm2.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Trusted Platform Module 2.0</h1>
+<div class="sect1">
+<h2 id="_connect_to_a_tpm_2_0_device"><a class="anchor" href="#_connect_to_a_tpm_2_0_device"></a>Connect to a TPM 2.0 Device</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_install_tpm_2_0_software_stack_and_tools"><a class="anchor" href="#_install_tpm_2_0_software_stack_and_tools"></a>Install TPM 2.0 Software Stack and Tools</h3>
+<div class="paragraph">
+<p>In order to connect to a TPM 2.0 hardware or firmware device a software stack implementing the
+<a href="https://trustedcomputinggroup.org/resource/tcg-tss-2-0-system-level-api-sapi-specification/">TCG TSS 2.0 System Level API</a>
+is needed. An excellent open source <a href="https://github.com/tpm2-software/tpm2-tss"><code><strong>tpm2-tss</strong></code></a> library is available
+from the <a href="https://github.com/tpm2-software"><code><strong>tpm2-software</strong></code></a> project that also offers a set of
+<a href="https://github.com/tpm2-software/tpm2-tools"><code><strong>tpm2-tools</strong></code></a> using the
+<a href="https://trustedcomputinggroup.org/resource/tcg-tss-2-0-enhanced-system-api-esapi-specification/">TCG TSS 2.0 Enhanced System Level API</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tpm_Infineon_SLB_9665.jpg" alt="Infineon TPM 2.0" width="50%">
+</div>
+<div class="title">Figure 1. TPM 2.0 implemented as a hardware device</div>
+</div>
+<div class="paragraph">
+<p>When using a <strong>strongSwan</strong> version newer than <strong>5.9.0</strong> with <strong>Linux 5.4</strong> kernel or
+newer, we recommend these latest versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>tpm2-tss</strong> version <strong>3.2.0</strong>: <a href="https://github.com/tpm2-software/tpm2-tss/releases/tag/3.2.0" class="bare">https://github.com/tpm2-software/tpm2-tss/releases/tag/3.2.0</a></p>
+</li>
+<li>
+<p><strong>tpm2-tools</strong> version <strong>5.3</strong>: <a href="https://github.com/tpm2-software/tpm2-tools/releases/tag/5.3" class="bare">https://github.com/tpm2-software/tpm2-tools/releases/tag/5.3</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Fedora 36</strong> and <strong>Ubuntu 22.04</strong> come with version <strong>3.2.0</strong> of the <strong>tpm2-tss</strong>
+      library and version <strong>5.2</strong> of the  <strong>tpm2-tools</strong>, whereas <strong>Debian 11</strong> supports
+      the slightly older <strong>tpm2-tss 3.0.3</strong> and <strong>tpm2-tools 5.0</strong> versions, so that
+      for these Linux distributions no manual compilation of the two packages is
+      necessary. For older Linux releases it is recommended to download and install
+      the latest tarballs from the <a href="https://github.com/tpm2-software"><code><strong>tpm2-software</strong></code></a> site.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to test if we can connect to the TPM 2.0 device, we list all persistent
+keys stored in the Non-Volatile (NV) RAM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_getcap handles-persistent
+
+- 0x81000001
+- 0x81000002
+- 0x81010001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The man pages of all <code><strong>tpm2-tools</strong></code> functions with their arguments can be found
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man">here</a>. The access to the <code><strong>/dev/tpmrm0</strong></code> TPM resource manager device
+requires <code><strong>root</strong></code> rights on most Linux platforms. But e.g. with Ubuntu, adding the
+user to the <code><strong>tss</strong></code> group enables direct access to the TPM device:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo usermod -a -G tss &lt;username&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enable_the_strongswan_tpm_plugin"><a class="anchor" href="#_enable_the_strongswan_tpm_plugin"></a>Enable the strongSwan tpm Plugin</h3>
+<div class="paragraph">
+<p>The strongSwan libtpmtss <a href="../plugins/tpm.html" class="xref page"><code><strong>tpm</strong></code></a> plugin and the TSS2
+interface are enabled and built with the following options</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ ./configure --enable-tss-tss2 --enable-tpm  ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the strongSwan <a href="../pki/pki.html" class="xref page"><code>pki</code></a> tool we can now list the persistent
+key stored under the handle <code><strong>0x81010001</strong></code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ pki --print --type priv --keyid 0x81010001 --debug 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With debug level 2 some basic information on the TPM device is shown.
+A second generation Intel firmware TPM running on the Intel Management Engine is
+employed. Both SHA1 and SHA256 PCR banks are available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TPM 2.0 - manufacturer: INTC (Intel) rev: 01.38 2018
+TPM 2.0 - algorithms: RSA SHA1 HMAC AES MGF1 KEYEDHASH XOR SHA256 RSASSA RSAES RSAPSS OAEP ECDSA ECDH ECDAA ECSCHNORR KDF1_SP800_56A KDF1_SP800_108 ECC SYMCIPHER CTR OFB CBC CFB ECB
+TPM 2.0 - ECC curves: NIST_P256 BN_P256
+TPM 2.0 - PCR banks: SHA1 SHA256</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Apparently the analyzed persistent key can be used for encryption only:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TPM 2.0 via TSS2 v2 available
+encryption algorithm is AES-CFB with 128 bits</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Debug level 2 shows that <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> extracts the public key from the
+TPM and converts it into a standard PKCS#1 format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>L0 - subjectPublicKeyInfo:
+L1 - algorithm:
+L2 - algorithmIdentifier:
+L3 - algorithm:
+  'rsaEncryption'
+L1 - subjectPublicKey:
+-- &gt; --
+L0 - RSAPublicKey:
+L1 - modulus:
+L1 - publicExponent:
+-- &lt; --</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end of the output the fingerprint of the 2048 bit RSA key is listed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  privkey:   RSA 2048 bits
+  keyid:     ee:c7:bf:5a:de:0f:11:84:2c:86:2b:69:84:ba:65:b9:81:d2:a9:45
+  subjkey:   df:f2:e9:e7:79:98:f0:d2:0b:62:db:c0:5c:2c:eb:45:73:85:e9:79</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_derive_persistent_endorsement_keys"><a class="anchor" href="#_derive_persistent_endorsement_keys"></a>Derive Persistent Endorsement Keys</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rsa_endorsement_key"><a class="anchor" href="#_rsa_endorsement_key"></a>RSA Endorsement Key</h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createek.1.md"><code><strong>tpm2_createek</strong></code></a> command derives a 2048 bit RSA
+Endorsement Key (EK) in a deterministic way from the secret <em>Endorsement Primary Seed</em>
+<strong>unique</strong> to each TPM device and makes the key persistent in the non-volatile memory
+of the TPM under the object handle <code><strong>0x81010002</strong></code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_createek -G rsa -c 0x81010002</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_getcap.1.md"><code><strong>tpm2_getcap</strong></code></a> command we can check that the
+newly derived Endorsement Key has been persisted in the NV RAM</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_getcap handles-persistent
+
+- 0x81000001
+- 0x81000002
+- 0x81010001
+- 0x81010002</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Listing the key properties shows that the 2048 bit Endorsement Key already exists
+under the handle <code><strong>0x81010001</strong></code> analyzed in the previous section</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type priv --keyid 0x81010002
+
+TPM 2.0 via TSS2 v2 available
+encryption algorithm is AES-CFB with 128 bits
+  privkey:   RSA 2048 bits
+  keyid:     ee:c7:bf:5a:de:0f:11:84:2c:86:2b:69:84:ba:65:b9:81:d2:a9:45
+  subjkey:   df:f2:e9:e7:79:98:f0:d2:0b:62:db:c0:5c:2c:eb:45:73:85:e9:79</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete_persisted_keys"><a class="anchor" href="#_delete_persisted_keys"></a>Delete Persisted Keys</h3>
+<div class="paragraph">
+<p>We therefore delete the duplicate key with the following
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_evictcontrol -c 0x81010002
+
+persistent-handle: 0x81010002
+action: evicted</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The key removal can be verified with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_getcap handles-persistent
+
+- 0x81000001
+- 0x81000002
+- 0x81010001</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ecc_endorsement_key"><a class="anchor" href="#_ecc_endorsement_key"></a>ECC Endorsement Key</h3>
+<div class="paragraph">
+<p>Again using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createek.1.md"><code><strong>tpm2_createek</strong></code></a> command we derive a
+256 bit ECC Endorsement Key (EK) in a deterministic way from the secret
+<em>Endorsement Primary Seed</em> <strong>unique</strong> to each TPM device and make the key persistent
+in the non-volatile memory of the TPM under the object handle <code><strong>0x81010002</strong></code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_createek -G ecc -c 0x81010002 -u ek_ecc.pub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Optionally we saved the public key in a TPM 2.0 proprietary format in the file
+<code><strong>ek_ecc.pub</strong></code>. The fingerprint of the ECC EK private key can be directly displayed
+with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type priv --keyid 0x81010002
+
+TPM 2.0 via TSS2 v2 available
+encryption algorithm is AES-CFB with 128 bits
+  privkey:   ECDSA 256 bits
+  keyid:     25:db:73:13:0f:c9:c8:91:68:30:8e:02:89:c1:0d:65:bd:ad:69:2a
+  subjkey:   9c:b9:fb:b0:32:81:24:82:a7:07:b2:bd:bd:d3:7c:2b:22:7f:74:bf</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_endorsement_key_certificates"><a class="anchor" href="#_endorsement_key_certificates"></a>Endorsement Key Certificates</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_fetched_via_url"><a class="anchor" href="#_fetched_via_url"></a>Fetched via URL</h3>
+<div class="paragraph">
+<p>Endorsement Key certificates issued for Intel firmware TPMs can be automatically
+downloaded from an Intel web server using the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_getekcertificate.1.md"><code><strong>tpm2_getcertificate</strong></code></a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_getekcertificate -o ek_ecc.crt -u ek_ecc.pub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For successful retrieval the public key <code><strong>ek_ecc.pub</strong></code> in the TPM 2.0 proprietary
+format is required. Using the <a href="../pki/pki.html" class="xref page"><code>pki</code></a> tool we can list the
+downloaded EK certificate belonging to the ECC key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --in ek_ecc.crt
+
+  subject:  ""
+  issuer:   "C=US, ST=CA, L=Santa Clara, O=Intel Corporation, OU=TPM EK intermediate for CNL_EPID_POST_B1LP_PROD_2 pid:9, CN=www.intel.com"
+  validity:  not before Sep 04 02:00:00 2019, ok
+             not after  Jan 01 00:59:59 2050, ok (expires in 10600 days)
+  serial:    07:99:3b:c6:88:aa:7d:72:b0:24:24:05:09:01:bb:42:55:70:1a:43
+  altNames:  tcg-at-tpmManufacturer=id:494E5443, tcg-at-tpmModel=CNL, tcg-at-tpmVersion=id:00020000
+  CRL URIs:  https://trustedservices.intel.com/content/CRL/ekcert/CNLEPIDPOSTB1LPPROD2_EK_Device.crl
+  certificatePolicies:
+             1.2.840.113741.1.5.2.1
+             CPS: https://trustedservices.intel.com/content/CRL/ekcert/EKcertPolicyStatement.pdf
+  authkeyId: 17:a0:05:75:d0:5e:58:e3:88:12:10:bb:98:b1:04:5b:b4:c3:06:39
+  subjkeyId: 9c:b9:fb:b0:32:81:24:82:a7:07:b2:bd:bd:d3:7c:2b:22:7f:74:bf
+  pubkey:    ECDSA 256 bits
+  keyid:     25:db:73:13:0f:c9:c8:91:68:30:8e:02:89:c1:0d:65:bd:ad:69:2a
+  subjkey:   9c:b9:fb:b0:32:81:24:82:a7:07:b2:bd:bd:d3:7c:2b:22:7f:74:bf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the RSA 2048 Endorsement Key we first have to extract the public keyfile
+<code><strong>ek_rsa.pub</strong></code> in the TPM 2.0 proprietary format using the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_readpublic.1.md"><code><strong>tpm2_readpublic</strong></code></a> command because we forgot to do
+this in the first place:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_readpublic -Q -c 0x81010001 -o ek_rsa.pub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can retrieve the RSA EK certificate, too:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_getekcertificate -o ek_rsa.crt -u ek_rsa.pub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and view the contents with the <a href="../pki/pkiPrint.html" class="xref page"><code><strong>pki --print</strong></code></a> command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --in ek_rsa.crt
+
+  subject:  ""
+  issuer:   "C=US, ST=CA, L=Santa Clara, O=Intel Corporation, OU=TPM EK intermediate for CNL_EPID_POST_B1LP_PROD_2 pid:9, CN=www.intel.com"
+  validity:  not before Sep 04 02:00:00 2019, ok
+             not after  Jan 01 00:59:59 2050, ok (expires in 10600 days)
+  serial:    14:26:0b:eb:12:a2:82:87:af:3b:75:e0:a1:a4:87:60:72:95:55:92
+  altNames:  tcg-at-tpmManufacturer=id:494E5443, tcg-at-tpmModel=CNL, tcg-at-tpmVersion=id:00020000
+  CRL URIs:  https://trustedservices.intel.com/content/CRL/ekcert/CNLEPIDPOSTB1LPPROD2_EK_Device.crl
+  certificatePolicies:
+             1.2.840.113741.1.5.2.1
+             CPS: https://trustedservices.intel.com/content/CRL/ekcert/EKcertPolicyStatement.pdf
+  authkeyId: 17:a0:05:75:d0:5e:58:e3:88:12:10:bb:98:b1:04:5b:b4:c3:06:39
+  subjkeyId: df:f2:e9:e7:79:98:f0:d2:0b:62:db:c0:5c:2c:eb:45:73:85:e9:79
+  pubkey:    RSA 2048 bits
+  keyid:     ee:c7:bf:5a:de:0f:11:84:2c:86:2b:69:84:ba:65:b9:81:d2:a9:45
+  subjkey:   df:f2:e9:e7:79:98:f0:d2:0b:62:db:c0:5c:2c:eb:45:73:85:e9:79</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can easily check that in both EK certificates the key fingerprints
+(<code><strong>keyid</strong></code> and <code><strong>subjkey</strong></code> match with those of the EK keys persisted in the TPM.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stored_in_non_volatile_ram"><a class="anchor" href="#_stored_in_non_volatile_ram"></a>Stored in Non-Volatile RAM</h3>
+<div class="paragraph">
+<p>Most hardware TPMs are shipped with their Endorsement Key Certificates stored in
+NV RAM. E.g. on an STMicroelectronics TPM device the following data objects are
+stored in an NV index:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_getcap handles-nv-index
+
+- 0x1410001
+- 0x1410002
+- 0x1410004
+- 0x1880001
+- 0x1880011
+- 0x1C00002
+- 0x1C0000A
+- 0x1C00012
+- 0x1C10102
+- 0x1C10103
+- 0x1C10104
+- 0x1C101C0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvreadpublic.1.md"><code><strong>tpm2_nvreadpublic</strong></code></a> command we can
+look for large data objects which are prime candidates for X.509 certificates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_nvreadpublic
+
+  ...
+0x1c00002:
+  name: 000b5c112bd5f410d0abe96a50e94ff721a005c32567e4b1112ab0a8fb7e0289b7f2
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ppwrite|writedefine|write_stclear|ppread|ownerread|authread|no_da|written|platformcreate
+    value: 0x1600762
+  size: 1033
+
+0x1c0000a:
+  name: 000b1948300e66afad594b7a8e8368d53ddd36908fb2b46dd7b5a88051b50e4047ab
+  hash algorithm:
+    friendly: sha256
+    value: 0xB
+  attributes:
+    friendly: ppwrite|writedefine|write_stclear|ppread|ownerread|authread|no_da|written|platformcreate
+    value: 0x1600762
+  size: 639
+
+0x1c00012:
+  name: 000cde411e123085083eedb1c9312e08dd8d229df6a5e16996035a2e3000d860b372c924de0354a6af4c7886656d2065814f
+  hash algorithm:
+    friendly: sha384
+    value: 0xC
+  attributes:
+    friendly: ppwrite|writedefine|write_stclear|ppread|ownerread|authread|no_da|written|platformcreate
+    value: 0x1600762
+  size: 707
+  ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can use <a href="../pki/pki.html" class="xref page"><code><strong>pki --print</strong></code></a> command to directly list the properties
+of the EK certificates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --keyid 0x01c00002
+
+TPM 2.0 via TSS2 v2 available
+loaded certificate from TPM NV index 0x01c00002
+  subject:  ""
+  issuer:   "C=CH, O=STMicroelectronics NV, CN=STM TPM EK Intermediate CA 06"
+  validity:  not before Feb 11 01:00:00 2020, ok
+             not after  Jan 01 01:00:00 2031, ok (expires in 3650 days)
+  serial:    72:78:a1:2c:87:b6:aa:45:c4:1f:57:ff:d1:3d:cf:93:42:34:b9:c9
+  altNames:  tcg-at-tpmManufacturer=id:53544D20, tcg-at-tpmModel=ST33HTPHAHD4, tcg-at-tpmVersion=id:00010101
+  authkeyId: fb:17:d7:0d:73:48:70:e9:19:c4:e8:e6:03:97:5e:66:4e:0e:43:de
+  subjkeyId: e9:3d:51:32:04:42:73:3e:fc:bb:9e:f8:0c:21:9a:53:ec:73:80:94
+  pubkey:    RSA 2048 bits
+  keyid:     d3:e3:71:79:df:32:53:34:60:0f:1f:38:dc:d4:6d:53:59:1b:c5:3c
+  subjkey:   e9:3d:51:32:04:42:73:3e:fc:bb:9e:f8:0c:21:9a:53:ec:73:80:94</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --keyid 0x01c0000a
+
+TPM 2.0 via TSS2 v2 available
+loaded certificate from TPM NV index 0x01c0000a
+  subject:  ""
+  issuer:   "C=CH, O=STMicroelectronics NV, CN=STM TPM ECC Intermediate CA 02"
+  validity:  not before Mar 09 01:00:00 2020, ok
+             not after  Jan 01 01:00:00 2031, ok (expires in 3650 days)
+  serial:    51:e8:fc:b2:64:8d:1d:36:a5:bc:d7:c9:63:c1:d6:de:e7:25:09:a4
+  altNames:  tcg-at-tpmManufacturer=id:53544D20, tcg-at-tpmModel=ST33HTPHAHD4, tcg-at-tpmVersion=id:00010101
+  authkeyId: 66:2d:8f:1c:ec:df:f1:47:a8:b6:f0:ea:29:6a:f7:f2:4c:ad:f9:cf
+  subjkeyId: d1:e8:fc:b2:64:8d:1d:36:a5:bc:d7:c9:63:c1:d6:de:e7:25:09:a4
+  pubkey:    ECDSA 256 bits
+  keyid:     8b:62:31:bf:08:9d:39:74:6d:05:fd:35:eb:2e:13:64:12:86:03:16
+  subjkey:   d1:e8:fc:b2:64:8d:1d:36:a5:bc:d7:c9:63:c1:d6:de:e7:25:09:a4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or we can first retrieve the binary certificate blob from the NV RAM using the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvread.1.md"><code><strong>tpm2_nvread</strong></code></a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_nvread 0x01c00012 -C o -o ek_ecc384.crt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then list the properties of the EK certificate file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --in ek_ecc384.crt
+
+  subject:  ""
+  issuer:   "C=CH, O=STMicroelectronics NV, CN=STM TPM ECC384 Intermediate CA 01"
+  validity:  not before Feb 08 01:00:00 2020, ok
+             not after  Jan 01 01:00:00 2031, ok (expires in 3650 days)
+  serial:    39:ed:ae:d4:89:9e:52:08:9f:42:8a:f5:d5:58:7b:50:a6:24:f3:63
+  altNames:  tcg-at-tpmManufacturer=id:53544D20, tcg-at-tpmModel=ST33HTPHAHD4, tcg-at-tpmVersion=id:00010101
+  authkeyId: bd:96:3e:9a:d5:74:aa:d9:4f:ad:6c:bf:41:6d:d8:5b:4a:55:99:42
+  subjkeyId: b9:ed:ae:d4:89:9e:52:08:9f:42:8a:f5:d5:58:7b:50:a6:24:f3:63
+  pubkey:    ECDSA 384 bits
+  keyid:     04:68:52:c4:00:ab:10:75:82:57:99:45:1e:7c:12:01:5a:8e:50:c9
+  subjkey:   b9:ed:ae:d4:89:9e:52:08:9f:42:8a:f5:d5:58:7b:50:a6:24:f3:63</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We see that the STMicroelectronics device apparently supports 384 bit ECC keys</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TPM 2.0 - manufacturer: STM  () rev: 01.38 2018 FIPS 140-2
+TPM 2.0 - algorithms: RSA SHA1 HMAC AES MGF1 KEYEDHASH XOR SHA256 SHA384 RSASSA RSAES RSAPSS OAEP ECDSA ECDH ECDAA ECSCHNORR KDF1_SP800_56A KDF1_SP800_108 ECC SYMCIPHER SHA3_256 SHA3_384 CTR OFB CBC CFB ECB
+TPM 2.0 - ECC curves: NIST_P256 NIST_P384 BN_P256
+TPM 2.0 - PCR banks: SHA1 SHA256</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_generate_persistent_attestation_keys"><a class="anchor" href="#_generate_persistent_attestation_keys"></a>Generate Persistent Attestation Keys</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rsa_attestation_key"><a class="anchor" href="#_rsa_attestation_key"></a>RSA Attestation Key</h3>
+<div class="paragraph">
+<p>A 2048 bit RSA Attestation Key (AK) bound to the RSA EK with handle <code><strong>0x81010001</strong></code>
+can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createak.1.md"><code><strong>tpm2_createak</strong></code></a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_createak -C 0x81010001 -G rsa -g sha256 -s rsassa -c ak_rsa.ctx -u ak_rsa.pub -n ak_rsa.name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and made persistent under the handle <code><strong>0x81010003</strong></code> with the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_evictcontrol -C o -c ak_rsa.ctx 0x81010003
+
+persistent-handle: 0x81010003
+action: persisted</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The properties of the RSA AK which is a signing key can be displayed with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type priv --keyid 0x81010003
+
+TPM 2.0 via TSS2 v2 available
+signature algorithm is RSASSA with SHA256 hash
+  privkey:   RSA 2048 bits
+  keyid:     df:b7:8f:95:61:8f:70:84:f4:03:e8:7e:83:a6:dd:5f:c5:ff:72:b5
+  subjkey:   48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ecc_attestation_key"><a class="anchor" href="#_ecc_attestation_key"></a>ECC Attestation Key</h3>
+<div class="paragraph">
+<p>A 256 bit ECC Attestation Key (AK) bound to the ECC EK with handle <code><strong>0x81010002</strong></code>
+can be created with the <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_createak.1.md"><code><strong>tpm2_createak</strong></code></a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_createak -C 0x81010002 -G ecc -g sha256 -s ecdsa -c ak_ecc.ctx -u ak_ecc.pub -n ak_ecc.name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and made persistent under the handle <code><strong>0x81010004</strong></code> with the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_evictcontrol.1.md"><code><strong>tpm2_evictcontrol</strong></code></a> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_evictcontrol -C o -c ak_ecc.ctx 0x81010004
+
+persistent-handle: 0x81010004
+action: persisted</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The properties of the ECC AK which is a signing key can be displayed with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type priv --keyid 0x81010004
+
+TPM 2.0 via TSS2 v2 available
+signature algorithm is ECDSA with SHA256 hash
+  privkey:   ECDSA 256 bits
+  keyid:     ba:64:37:a4:0e:c8:42:67:8c:55:5a:f9:1b:2a:eb:ff:5f:40:c3:e3
+  subjkey:   cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_generate_pkcs10_certificate_requests"><a class="anchor" href="#_generate_pkcs10_certificate_requests"></a>Generate PKCS#10 Certificate Requests</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rsa_certificate_request"><a class="anchor" href="#_rsa_certificate_request"></a>RSA Certificate Request</h3>
+<div class="paragraph">
+<p>The <a href="../pki/pkiReq.html" class="xref page"><code><strong>pki --req</strong></code></a> tool can directly generate a <strong>PKCS#10</strong>
+certificate request self-signed by the TPM 2.0 private key and containing the
+corresponding public key as well as the desired end entity identity:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --req --type priv --keyid 0x81010003 --dn "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com" --san edu.strongsec.com --outform pem &gt; ak_rsa_req.pem
+
+TPM 2.0 via TSS2 v2 available
+signature algorithm is RSASSA with SHA256 hash
+Smartcard PIN: &lt;return&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since we didn&#8217;t configure a password when creating the AK, just press &lt;return&gt;
+when prompted for the PIN. With <code><strong>openssl</strong></code> we can verify the contents of the
+generated certificate request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ openssl req -in ak_rsa_req.pem -noout -text
+
+Certificate Request:
+    Data:
+        Version: 1 (0x0)
+        Subject: C = CH, O = strongSec GmbH, OU = AK RSA, CN = edu.strongsec.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (2048 bit)
+                Modulus:
+                    00:9e:cc:3c:be:0a:37:86:db:ab:a5:01:49:a4:be:
+                    0f:10:0e:32:50:12:27:64:52:85:0f:21:5e:c7:14:
+                    f4:d9:7f:95:0a:22:91:73:9f:60:07:45:d3:8e:4b:
+                    6d:94:00:83:44:ed:9c:f2:c0:14:9c:33:01:46:d0:
+                    78:e4:10:ae:51:3a:9c:c2:b7:a0:c7:04:66:80:bb:
+                    c2:bc:02:5b:d6:de:da:93:98:de:a7:cd:a5:5d:c1:
+                    8a:bb:13:8b:d9:21:88:c0:61:40:d2:30:eb:0d:dd:
+                    63:8d:a4:e0:b0:1a:bb:18:7f:6e:62:e1:bf:b3:39:
+                    fa:c2:80:32:88:6a:da:f0:24:90:5c:16:b6:bb:30:
+                    5d:96:25:24:cf:f2:03:19:0f:56:58:f2:32:00:51:
+                    8b:0a:c3:15:81:db:34:ee:a4:64:5b:b6:3c:e6:d3:
+                    df:e3:16:80:07:0e:13:91:4d:18:9c:b3:fd:ca:72:
+                    78:72:56:e9:13:4c:1d:a2:03:f0:e1:8d:cd:54:1c:
+                    68:ea:46:47:1c:f9:f9:97:7a:f1:59:96:58:6c:d8:
+                    8e:a9:15:fc:4d:93:5d:fa:51:5d:33:5a:bb:77:59:
+                    18:3e:6b:f6:45:f7:92:c2:12:0a:bb:64:af:0b:ff:
+                    0d:08:7a:18:90:d9:10:63:b1:6a:19:78:da:9d:ab:
+                    7a:87
+                Exponent: 65537 (0x10001)
+        Attributes:
+        Requested Extensions:
+            X509v3 Subject Alternative Name:
+                DNS:edu.strongsec.com
+    Signature Algorithm: sha256WithRSAEncryption
+         35:89:16:59:fc:ab:64:a9:a1:89:cc:d0:e6:a9:06:19:e1:5e:
+         11:98:20:ea:ca:f0:5f:06:3c:11:ff:72:98:96:92:08:91:68:
+         d8:bd:e6:05:ed:ef:49:cf:22:6d:da:ab:2c:10:a7:df:59:a3:
+         0e:e4:bf:f6:8a:62:0b:28:eb:62:89:d0:50:d0:df:2f:5a:2d:
+         39:c6:7b:ac:34:6c:85:93:be:0d:9b:70:15:47:73:2f:00:da:
+         52:e3:65:c2:02:f9:88:0f:b8:f5:24:dc:db:43:15:fe:bc:8c:
+         98:96:81:aa:6d:aa:4c:6e:38:a2:89:27:5c:8d:27:5d:16:1a:
+         fa:3b:e7:81:69:58:db:a9:9a:c7:ea:06:d2:1c:13:ba:ee:92:
+         a4:8a:64:e3:5f:19:2c:d3:54:4f:3c:da:52:fc:9a:35:72:5c:
+         a9:d4:93:7c:e3:69:08:2b:fb:4e:35:84:7e:e3:eb:95:86:2e:
+         5b:e5:01:c1:69:53:86:f9:6b:38:31:83:97:76:8b:ba:3d:9c:
+         28:5b:84:b0:9b:e9:91:8b:db:9e:4d:3b:03:db:f4:84:a6:8d:
+         b2:18:9f:3a:3e:f9:36:64:15:98:4f:69:37:6b:9e:b2:92:a0:
+         9c:ab:05:35:65:28:b8:df:92:4b:fe:d1:40:6d:05:e2:4f:4e:
+         75:15:8c:22</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ecc_certificate_request"><a class="anchor" href="#_ecc_certificate_request"></a>ECC Certificate Request</h3>
+<div class="paragraph">
+<p>We repeat the same for the ECC Attestation Key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --req --type priv --keyid 0x81010004 --dn "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com" --san edu.strongsec.com --outform pem &gt; ak_ecc_req.pem
+
+TPM 2.0 via TSS2 v2 available
+signature algorithm is ECDSA with SHA256 hash
+Smartcard PIN: &lt;return&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and verify that the certificate request has been self-signed by the ECC AK private-key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ openssl req -in ak_ecc_req.pem -noout -text
+
+Certificate Request:
+    Data:
+        Version: 1 (0x0)
+        Subject: C = CH, O = strongSec GmbH, OU = AK ECC, CN = edu.strongsec.com
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:80:e7:cd:47:9e:c7:71:08:98:82:22:ed:99:1f:
+                    40:50:bd:44:da:a1:ca:ac:0b:e2:13:7f:f3:ae:63:
+                    99:61:74:a2:b6:15:ae:5c:27:9e:bd:f2:27:91:95:
+                    d1:ee:8f:99:93:ca:7b:4e:4e:87:a1:00:9e:94:24:
+                    b1:13:d1:11:2c
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        Attributes:
+        Requested Extensions:
+            X509v3 Subject Alternative Name:
+                DNS:edu.strongsec.com
+    Signature Algorithm: ecdsa-with-SHA256
+         30:46:02:21:00:a0:3a:98:28:79:4b:bf:bd:90:92:d0:86:a2:
+         69:34:9c:61:6b:87:8e:d0:30:8b:69:b0:94:bd:20:1a:c2:d8:
+         e8:02:21:00:8e:e1:3d:5a:84:69:a1:dc:eb:c3:68:7d:80:7c:
+         3b:73:c8:40:08:a2:88:56:94:03:9f:49:52:60:40:a1:9a:9f</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_issuing_attestion_key_certificates"><a class="anchor" href="#_issuing_attestion_key_certificates"></a>Issuing Attestion Key Certificates</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_certification_authority"><a class="anchor" href="#_certification_authority"></a>Certification Authority</h3>
+<div class="paragraph">
+<p>X.509 end entity certificates have to be signed by an in-house or official external
+<em>Certification Authority</em> (CA). In our example we are using the <strong>strongSec 2016
+Root CA</strong> which was generated in 2016 with the <a href="../pki/pkiGen.html" class="xref page"><code><strong>pki --gen</strong></code></a>
+command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ pki --gen --type rsa --size 4096 --outform pem &gt; cakey.pem</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>creating a 4096 bit RSA key pair and then creating a self-signed CA certificate
+with a lifetime of 10 years</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ pki --self --ca --type rsa --in cakey.pem --dn="C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA" --lifetime 3652 --outform pem &gt; cacert.pem</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>as the following listing shows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --in cacert.pem
+
+  subject:  "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Sep 02 10:25:01 2016, ok
+             not after  Sep 02 10:25:01 2026, ok (expires in 2067 days)
+  serial:    7c:24:43:4b:b7:dc:ef:7e
+  flags:     CA CRLSign self-signed
+  subjkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  pubkey:    RSA 4096 bits
+  keyid:     6c:79:f3:7a:b0:df:ac:69:03:b2:ac:6a:ed:82:3a:d2:66:93:b1:21
+  subjkey:   6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rsa_attestation_key_certificate"><a class="anchor" href="#_rsa_attestation_key_certificate"></a>RSA Attestation Key Certificate</h3>
+<div class="paragraph">
+<p>The PKCS#10 certificate request exported from the TPM is used to generate an
+RSA Attestation Key certificate signed by the Root CA:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ pki --issue --cacert cacert.pem --cakey cakey.pem -type pkcs10 --in ak_rsa_req.pem --dn "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com" --san "edu.strongsec.com" --crl http://www.strongsec.com/ca/strongsec.crl --flag serverAuth --lifetime 1827 &gt; ak_rsa_cert.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>having the following content</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --in ak_rsa_cert.der
+
+  subject:  "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Dec 23 15:26:22 2020, ok
+             not after  Dec 23 15:26:22 2025, ok (expires in 1814 days)
+  serial:    79:e5:74:2f:a4:df:b8:d2
+  altNames:  edu.strongsec.com
+  flags:     serverAuth
+  CRL URIs:  http://www.strongsec.com/ca/strongsec.crl
+  authkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  subjkeyId: 48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07
+  pubkey:    RSA 2048 bits
+  keyid:     df:b7:8f:95:61:8f:70:84:f4:03:e8:7e:83:a6:dd:5f:c5:ff:72:b5
+  subjkey:   48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ecc_attestation_key_certificate"><a class="anchor" href="#_ecc_attestation_key_certificate"></a>ECC Attestation Key Certificate</h3>
+<div class="paragraph">
+<p>The second PKCS#10 certificate request exported from the TPM is used to generate
+an ECC Attestation Key certificate signed by the Root CA:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ pki --issue --cacert cacert.pem --cakey cakey.pem -type pkcs10 --in ak_ecc_req.pem --dn "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com" --san "edu.strongsec.com" --crl http://www.strongsec.com/ca/strongsec.crl --flag serverAuth --lifetime 1827 &gt; ak_ecc_cert.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>having the following content</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ pki --print --type x509 --in ak_ecc_cert.der
+
+  subject:  "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Dec 23 15:27:40 2020, ok
+             not after  Dec 23 15:27:40 2025, ok (expires in 1814 days)
+  serial:    65:fd:5b:98:47:11:f6:45
+  altNames:  edu.strongsec.com
+  flags:     serverAuth
+  CRL URIs:  http://www.strongsec.com/ca/strongsec.crl
+  authkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  subjkeyId: cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04
+  pubkey:    ECDSA 256 bits
+  keyid:     ba:64:37:a4:0e:c8:42:67:8c:55:5a:f9:1b:2a:eb:ff:5f:40:c3:e3
+  subjkey:   cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_storing_certificates_in_the_nv_ram"><a class="anchor" href="#_storing_certificates_in_the_nv_ram"></a>Storing Certificates in the NV RAM</h3>
+<div class="paragraph">
+<p>A TPM 2.0 has a certain amount of Non Volatile Random Access Memory (NV RAM) that
+can be used to store arbitrary data, e.g. the X.509 certificates matching the
+persistent keys. If both the certificates and keys are persisted in the TPM then
+the system disk of the host can be reformatted at any time without loosing the
+machine or user credentials.As with smartcards the needed amount of memory must
+be reserved first so we check the size of the X.509 ECC certificate</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ls -l ak_ecc_cert.der
+
+-rw-rw-r-- 1 andi andi 1001 Dez 23 15:31 ak_ecc_cert.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvdefine.1.md"><code><strong>tpm2_nvdefine</strong></code></a> command allocates a memory
+location with a size of 1001 bytes that can be accessed via the handle <code><strong>0x01800004</strong></code>
+which is also called the NV index</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_nvdefine 0x01800004 -C o -s 1001 -a 0x2000A
+
+nv-index: 0x1800004</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we write the certificate file to the NV RAM destination using the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvwrite.1.md"><code><strong>tpm2_nvwrite</strong></code></a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_nvwrite 0x01800004 -C o -i ak_ecc_cert.der</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_removing_certificates_from_nv_ram"><a class="anchor" href="#_removing_certificates_from_nv_ram"></a>Removing Certificates from NV RAM</h3>
+<div class="paragraph">
+<p>First we store the RSA AK certificate in the NV RAM under the handle <code><strong>0x0180003</strong></code>,
+again by first determining the size of the object to be persisted:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ls -l ak_rsa_cert.der
+
+-rw-rw-r-- 1 andi andi 1204 Dez 23 15:30 ak_rsa_cert.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>allocating space for it</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_nvdefine 0x01800003 -C o -s 1204 -a 0x2000A
+
+nv-index: 0x1800003</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and finally storing the certificate</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_nvwrite 0x01800003 -C o -i ak_rsa_cert.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We decide to use the RSA AK certificate externally, though. Thus we release the
+memory assigned to NV index <code><strong>0x01800003</strong></code> via the
+<a href="https://github.com/tpm2-software/tpm2-tools/tree/5.3/man/tpm2_nvundefine.1.md"><code><strong>tpm2_nvundefine</strong></code></a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ tpm2_nvundefine 0x01800003 -C o</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_tpm_2_0_devices_with_stronger_rsa_and_ecc_keys"><a class="anchor" href="#_new_tpm_2_0_devices_with_stronger_rsa_and_ecc_keys"></a>New TPM 2.0 Devices with stronger RSA and ECC Keys</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Starting with version <code><strong>5.3</strong></code> of the <code><strong>tpm2-tools</strong></code>, RSA keys with lengths &gt; 2048
+bits and ECC keys with lengths &gt; 256 bits are supported. Also signatures can be
+based on <code><strong>sha384</strong></code> or <code><strong>sha512</strong></code> hashes if the TPM 2.0 firmware supports them.</p>
+</div>
+<div class="paragraph">
+<p>E.g. the following TPM 2.0 device manufactured by STMicroelectronics has support
+for <code><strong>NIST_P384</strong></code> ECC keys and signatures based on `"SHA384" hashes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>TPM 2.0 - manufacturer: STM  () rev: 01.38 2018 FIPS 140-2
+TPM 2.0 - algorithms: RSA SHA1 HMAC AES MGF1 KEYEDHASH XOR SHA256 SHA384 RSASSA RSAES RSAPSS OAEP ECDSA ECDH ECDAA ECSCHNORR KDF1_SP800_56A KDF1_SP800_108 ECC SYMCIPHER SHA3_256 SHA3_384 CTR OFB CBC CFB ECB
+TPM 2.0 - ECC curves: NIST_P256 NIST_P384 BN_P256
+TPM 2.0 - PCR banks: SHA1 SHA256</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_endorsement_keys"><a class="anchor" href="#_endorsement_keys"></a>Endorsement Keys</h3>
+<div class="paragraph">
+<p>An <code>EK</code> with an RSA 3072 bit key is derived with the following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createek -G rsa3072 -c 0x81010001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and an <code>EK</code> with an ECC 384 bit key with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createek -G ecc384 -c 0x81010002</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_attestation_keys"><a class="anchor" href="#_attestation_keys"></a>Attestation Keys</h3>
+<div class="paragraph">
+<p>An <code>AK</code> with an RSA 3072 bit key is derived with the following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createak -C 0x81010001 -G rsa3072 -g sha256 -s rsassa -c ak_rsa.ctx -u ak_rsa.pub -n ak_rsa.name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and an <code>AK</code> with an ECC 384 bit key with the command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tpm2_createak -C 0x81010002 -G ecc384 -g sha384 -s ecdsa -c ak_ecc.ctx -u ak_ecc.pub -n ak_ecc.name</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ibm_tpm_2_0_simulator"><a class="anchor" href="#_ibm_tpm_2_0_simulator"></a>IBM TPM 2.0 Simulator</h3>
+<div class="paragraph">
+<p>A <a href="https://github.com/strongX509/docker/tree/master/tpm"><code><strong>tpm-server</strong></code></a> Docker container with a readily installed
+<a href="https://sourceforge.net/projects/ibmswtpm2">IBM TPM 2.0 Simulator</a> plus the <a href="https://github.com/tpm2-software/tpm2-tools"><code><strong>tpm2-tools</strong></code></a> and
+the strongSwan <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> tool allows you to freely experiment
+with the larger RSA and ECC keys.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_tpm_2_0_keys_with_strongswan"><a class="anchor" href="#_using_tpm_2_0_keys_with_strongswan"></a>Using TPM 2.0 Keys with strongSwan</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configure_private_key_access"><a class="anchor" href="#_configure_private_key_access"></a>Configure Private Key Access</h3>
+<div class="paragraph">
+<p>Configuration of TPM 2.0 private key access as tokens in the
+<a href="../swanctl/swanctlConf.html#_secrets" class="xref page"><code><strong>secrets</strong></code></a> section of
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>secrets {
+    token_ak_rsa {
+       handle = 0x81010003
+    }
+    token_ak_ecc {
+       handle = 0x81010004
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_define_ipsec_connection"><a class="anchor" href="#_define_ipsec_connection"></a>Define IPsec Connection</h3>
+<div class="paragraph">
+<p>This connection configuration in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+references the ECC AK certificate used for client authentication via its handle,
+i.e. the NV index</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connections {
+   host {
+      remote_addrs = 10.10.1.43
+
+      local {
+         auth = pubkey
+         certs-tpm {
+            handle = 0x01800004
+         }
+         id = edu.strongsec.com
+      }
+      remote {
+         auth = pubkey
+         id = mijas.strongsec.com
+      }
+      children {
+         host {
+            esp_proposals = aes256gcm128-x25519
+         }
+      }
+      version = 2
+      proposals = aes256-sha256-x25519
+   }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_starting_the_strongswan_daemon"><a class="anchor" href="#_starting_the_strongswan_daemon"></a>Starting the strongSwan Daemon</h3>
+<div class="paragraph">
+<p>The <strong>strongSwan</strong> IKEv2 <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a>
+daemon is started via <code><strong>systemd</strong></code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo systemctl start strongswan</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 systemd[1]: Starting strongSwan IPsec IKEv1/IKEv2 daemon using swanctl...
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded plugins: charon-systemd random nonce drbg x509 revocation constraints pubkey pkcs1 pkcs8 pkcs12 pem openssl curl tpm kernel-netl&gt;
+Jan 04 15:18:38 edu charon-systemd[648407]: spawning 16 worker threads
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded certificate 'C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com'
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded certificate 'C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The RSA AK private key is attached to the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> daemon via the TPM 2.0 TSS
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: TPM 2.0 via TSS2 v2 available
+Jan 04 15:18:38 edu charon-systemd[648407]: signature algorithm is RSASSA with SHA256 hash
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded RSA private key from token</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The ECC AK private key is attached to the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> daemon via the TPM 2.0 TSS
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: TPM 2.0 via TSS2 v2 available
+Jan 04 15:18:38 edu charon-systemd[648407]: signature algorithm is ECDSA with SHA256 hash
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded ECDSA private key from token</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The ECC AK certificate is loaded by the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> daemon via the TPM 2.0 TSS
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: TPM 2.0 via TSS2 v2 available
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded certificate from TPM NV index 0x01800004</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The connection definition is received by the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> daemon triggered by the
+<a href="../swanctl/swanctlLoadConns.html" class="xref page"><code><strong>swanctl --load-conns</strong></code></a> command via the VICI
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: added vici connection: host</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> command line tool reports its actions</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu swanctl[648429]: loaded certificate from '/etc/swanctl/x509/ak_rsa_cert.der'
+Jan 04 15:18:38 edu swanctl[648429]: loaded certificate from '/etc/swanctl/x509ca/cacert.pem'
+Jan 04 15:18:38 edu swanctl[648429]: loaded key token_ak_rsa from token [keyid: 4882621574a210c57570c2d67d599f22d94f9c07]
+Jan 04 15:18:38 edu swanctl[648429]: loaded key token_ak_ecc from token [keyid: cc8349872b9ef3cbb835120287ff14892844a604]
+Jan 04 15:18:38 edu swanctl[648429]: loaded connection 'host'
+Jan 04 15:18:38 edu swanctl[648429]: successfully loaded 1 connections, 0 unloaded</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu systemd[1]: Started strongSwan IPsec IKEv1/IKEv2 daemon using swanctl.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="../swanctl/swanctlListConns.html" class="xref page"><code><strong>swanctl --list-conns</strong></code></a> command allows
+to list the loaded connection definitions</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ swanctl --list-conns
+
+host: IKEv2, no reauthentication, rekeying every 14400s
+  local:  %any
+  remote: 10.10.1.43
+  local public key authentication:
+    id: edu.strongsec.com
+    certs: C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com
+  remote public key authentication:
+    id: mijas.strongsec.com
+  host: TUNNEL, rekeying every 3600s
+    local:  dynamic
+    remote: dynamic</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The loaded certificates can also be displayed</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ swanctl --list-certs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can clearly see that the connection between the AK certificates and their
+matching AK private key has been established (&#8230;&#8203;, has private key)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>List of X.509 End Entity Certificates
+
+  subject:  "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Dec 23 15:27:40 2020, ok
+             not after  Dec 23 15:27:40 2025, ok (expires in 1814 days)
+  serial:    65:fd:5b:98:47:11:f6:45
+  altNames:  edu.strongsec.com
+  flags:     serverAuth
+  CRL URIs:  http://www.strongsec.com/ca/strongsec.crl
+  authkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  subjkeyId: cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04
+  pubkey:    ECDSA 256 bits, has private key
+  keyid:     ba:64:37:a4:0e:c8:42:67:8c:55:5a:f9:1b:2a:eb:ff:5f:40:c3:e3
+  subjkey:   cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04
+
+  subject:  "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Dec 23 15:26:22 2020, ok
+             not after  Dec 23 15:26:22 2025, ok (expires in 1813 days)
+  serial:    79:e5:74:2f:a4:df:b8:d2
+  altNames:  edu.strongsec.com
+  flags:     serverAuth
+  CRL URIs:  http://www.strongsec.com/ca/strongsec.crl
+  authkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  subjkeyId: 48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07
+  pubkey:    RSA 2048 bits, has private key
+  keyid:     df:b7:8f:95:61:8f:70:84:f4:03:e8:7e:83:a6:dd:5f:c5:ff:72:b5
+  subjkey:   48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>List of X.509 CA Certificates
+
+  subject:  "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Sep 02 10:25:01 2016, ok
+             not after  Sep 02 10:25:01 2026, ok (expires in 2066 days)
+  serial:    7c:24:43:4b:b7:dc:ef:7e
+  flags:     CA CRLSign self-signed
+  subjkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  pubkey:    RSA 4096 bits
+  keyid:     6c:79:f3:7a:b0:df:ac:69:03:b2:ac:6a:ed:82:3a:d2:66:93:b1:21
+  subjkey:   6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initiating_ikev2_connection"><a class="anchor" href="#_initiating_ikev2_connection"></a>Initiating IKEv2 Connection</h3>
+<div class="paragraph">
+<p>Next we initiate the "host" connection</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ swanctl --initiate --child host</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] initiating IKE_SA host[1] to 10.10.1.43
+[ENC] generating IKE_SA_INIT request 0 [ SA KE No N(NATD_S_IP) N(NATD_D_IP) N(FRAG_SUP) N(HASH_ALG) N(REDIR_SUP) ]
+[NET] sending packet: from 10.10.1.33[500] to 10.10.1.43[500] (240 bytes)
+[NET] received packet: from 10.10.1.43[500] to 10.10.1.33[500] (293 bytes)
+[ENC] parsed IKE_SA_INIT response 0 [ SA KE No N(NATD_S_IP) N(NATD_D_IP) CERTREQ N(FRAG_SUP) N(HASH_ALG) N(CHDLESS_SUP) N(MULT_AUTH) ]
+[CFG] selected proposal: IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/CURVE_25519
+[IKE] received cert request for "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[IKE] sending cert request for "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The ECC AK private key stored in the TPM 2.0 is used to generate an
+<code><strong>ECDSA_WITH_SHA256_DER</strong></code> signature which is sent in the AUTH payload of the
+IKE_AUTH request. The matching client certificate is sent int the CERT payload.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] authentication of 'edu.strongsec.com' (myself) with ECDSA_WITH_SHA256_DER successful
+[IKE] sending end entity cert "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com"</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] establishing CHILD_SA host{1}
+[ENC] generating IKE_AUTH request 1 [ IDi CERT N(INIT_CONTACT) CERTREQ IDr AUTH SA TSi TSr N(MOBIKE_SUP) N(ADD_6_ADDR) N(MULT_AUTH) N(EAP_ONLY) N(MSG_ID_SYN_SUP) ]
+[NET] sending packet: from 10.10.1.33[4500] to 10.10.1.43[4500] (1392 bytes)
+[NET] received packet: from 10.10.1.43[4500] to 10.10.1.33[4500] (1236 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(1/2) ]
+[ENC] received fragment #1 of 2, waiting for complete IKE message
+[NET] received packet: from 10.10.1.43[4500] to 10.10.1.33[4500] (132 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(2/2) ]
+[ENC] received fragment #2 of 2, reassembled fragmented IKE message (1296 bytes)
+[ENC] parsed IKE_AUTH response 1 [ IDr CERT AUTH SA TSi TSr N(AUTH_LFT) N(MOBIKE_SUP) N(ADD_4_ADDR) N(ADD_6_ADDR) ]
+[IKE] received end entity cert "C=CH, O=strongSec GmbH, CN=mijas.strongsec.com"
+[CFG]   using certificate "C=CH, O=strongSec GmbH, CN=mijas.strongsec.com"
+[CFG]   using trusted ca certificate "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The status of the received peer certificate is verified using CRLs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[CFG] checking certificate status of "C=CH, O=strongSec GmbH, CN=mijas.strongsec.com"
+[CFG]   fetching crl from 'http://www.strongsec.com/ca/strongsec.crl' ...
+[CFG]   using trusted certificate "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl correctly signed by "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl is valid: until Jan 10 10:00:01 2021
+[CFG]   fetching crl from 'http://www.strongsec.net/ca/strongsec_delta.crl' ...
+[CFG]   using trusted certificate "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl correctly signed by "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl is valid: until Jan 05 10:00:01 2021
+[CFG] certificate status is good</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[CFG]   reached self-signed root ca with a path length of 0
+[IKE] authentication of 'mijas.strongsec.com' with ECDSA_WITH_SHA256_DER successful
+[IKE] IKE_SA host[1] established between 10.10.1.33[edu.strongsec.com]...10.10.1.43[mijas.strongsec.com]
+[IKE] scheduling rekeying in 13703s
+[IKE] maximum IKE_SA lifetime 15143s
+[CFG] selected proposal: ESP:AES_GCM_16_256/NO_EXT_SEQ
+[IKE] CHILD_SA host{1} established with SPIs c585d49f_i c1630769_o and TS 10.10.1.33/32 === 10.10.1.43/32
+[IKE] received AUTH_LIFETIME of 9777s, scheduling reauthentication in 8337s
+initiate completed successfully</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The established IKE and CHILD SAs can be displayed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ swanctl --list-sas
+
+host: #1, ESTABLISHED, IKEv2, 4ef1452bda258a1b_i* a8508d872adadc84_r
+  local  'edu.strongsec.com' @ 10.10.1.33[4500]
+  remote 'mijas.strongsec.com' @ 10.10.1.43[4500]
+  AES_CBC-256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/CURVE_25519
+  established 60s ago, rekeying in 13643s, reauth in 8277s
+  host: #1, reqid 1, INSTALLED, TUNNEL, ESP:AES_GCM_16-256
+    installed 62s ago, rekeying in 3271s, expires in 3900s
+    in  c585d49f,  15168 bytes,   172 packets,     0s ago
+    out c1630769,  25184 bytes,   113 packets,    60s ago
+    local  10.10.1.33/32
+    remote 10.10.1.43/32</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_terminating_ikev2_connection"><a class="anchor" href="#_terminating_ikev2_connection"></a>Terminating IKEv2 Connection</h3>
+<div class="paragraph">
+<p>The IKE and CHILD SAs are terminated</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ swanctl --terminate --ike host</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] deleting IKE_SA host[1] between 10.10.1.33[edu.strongsec.com]...10.10.1.43[mijas.strongsec.com]
+[IKE] sending DELETE for IKE_SA host[1]
+[ENC] generating INFORMATIONAL request 2 [ D ]
+[NET] sending packet: from 10.10.1.33[4500] to 10.10.1.43[4500] (80 bytes)
+[NET] received packet: from 10.10.1.43[4500] to 10.10.1.33[4500] (80 bytes)
+[ENC] parsed INFORMATIONAL response 2 [ ]
+[IKE] IKE_SA deleted
+terminate completed successfully</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>TCG Developer Blog April 2018:
+<a href="https://develop.trustedcomputinggroup.org/2018/04/11/easy-tpm-2-0-access-with-the-strongswan-vpn-solution/">Easy TPM 2.0 Access with the strongSwan VPN Solution</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../devs/fuzzing.html">Fuzzing</a></span>
+  <span class="next"><a href="../tnc/tnc.html">Trusted Network Connect</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

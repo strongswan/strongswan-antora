@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Introduction to strongSwan :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/howtos/introduction.html">
+    <link rel="prev" href="../pki/caManagement.html">
+    <link rel="next" href="ipsecProtocol.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Sites</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+             <a class="navbar-item" href="https://github.com/strongswan/strongswan">Source Repository</a>
+            <a class="navbar-item" href="https://github.com/strongswan/strongswan-docs">AsciiDoc Repository</a>
+         </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+            <a class="navbar-item" href="https://lists.strongswan.org/">Mailing Lists</a>
+            <a class="navbar-item" href="https://tnc.strongswan.org">strongTNC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="6.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Howtos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ipsecProtocol.html">IPsec Protocol</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/microsoftStatusNotify.html">Microsoft Status Notify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlCounters.html">swanctl --counters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlFlushCerts.html">swanctl --flush-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInitiate.html">swanctl --initiate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInstall.html">swanctl --install</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAlgs.html">swanctl --list-algs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAuths.html">swanctl --list-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListCerts.html">swanctl --list-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListConns.html">swanctl --list-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPols.html">swanctl --list-pols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPools.html">swanctl --list-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListSas.html">swanctl --list-sas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAll.html">swanctl --load-all</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAuths.html">swanctl --load-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadConns.html">swanctl --load-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadCreds.html">swanctl --load-creds</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadPools.html">swanctl --load-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLog.html">swanctl --log</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRedirect.html">swanctl --redirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRekey.html">swanctl --rekey</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlReloadSettings.html">swanctl --reload-settings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlStats.html">swanctl --stats</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlTerminate.html">swanctl --terminate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlUninstall.html">swanctl --uninstall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlVersion.html">swanctl --version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Devs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">6.0 Beta</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../5.9/index.html">strongSwan Docs</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">6.0 Beta</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../5.9/index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../5.9/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Howtos</li>
+    <li><a href="introduction.html">Introduction to strongSwan</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0 Beta</button>
+  <div class="version-menu">
+    <a class="version is-current" href="introduction.html">6.0 Beta</a>
+    <a class="version" href="../../5.9/howtos/introduction.html">5.9</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/howtos/introduction.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Introduction to strongSwan</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document gives an introduction to strongSwan for new users (or for existing
+users wanting to catch-up).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is assumed that the reader of this document&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>understands the principles of networking, from setting IP addresses and DNS servers
+to basic firewalling</p>
+</li>
+<li>
+<p>grasps the basic authentication concepts based on public-key cryptography and a
+public-key infrastructure (PKI)</p>
+</li>
+<li>
+<p>knows how to install binary software packages or how to compile source code
+following instructions</p>
+</li>
+<li>
+<p>is adept on the console</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t have such knowledge, there exist many ready-to-use appliances that
+provide remote IPsec access.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_securing_a_network"><a class="anchor" href="#_securing_a_network"></a>Securing a Network</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>strongSwan is a complete <a href="ipsecProtocol.html" class="xref page">IPsec</a> solution providing
+encryption and authentication to servers and clients. strongSwan can be used to
+secure communications with remote networks, so that connecting remotely is the
+same as connecting locally.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/topology.png" alt="topology">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Gateway </dt>
+<dd>
+<p>The gateway is usually your firewall but this can be any host within your network.
+Often the gateway is also able to serve a small network with DHCP and DNS.
+In the image above the hosts <code><strong>moon</strong></code> and <code><strong>sun</strong></code> serve as gateways for the
+internal hosts <code><strong>alice</strong></code>, <code><strong>venus</strong></code> and <code><strong>bob</strong></code>, respectively.</p>
+</dd>
+<dt class="hdlist1">Remote Access / Roadwarrior Clients </dt>
+<dd>
+<p>Usually, roadwarriors are laptops and other mobile devices connecting remotely
+to your home network via the <strong>gateway</strong>. In the image above <code><strong>carol</strong></code> and <code><strong>dave</strong></code>
+represent roadwarriors who want to access either of the two networks behind the
+two gateways.</p>
+</dd>
+<dt class="hdlist1">Remote Hosts / Host-to-Host </dt>
+<dd>
+<p>This can be a remote web server or a backup system. This is illustrated in the
+image by host <code><strong>winnetou</strong></code> and either of the gateways <code><strong>moon</strong></code> and <code><strong>sun</strong></code>. The
+connection between the two hosts can usually be initiated by either one of them.</p>
+</dd>
+<dt class="hdlist1">Remote Sites / Site-to-Site </dt>
+<dd>
+<p>Hosts in two or more subnets at different locations should be able to access
+each other. Again referring to the image above, the two subnets <code><strong>10.1.0.0/16</strong></code>
+and <code><strong>10.2.0.0/24</strong></code> behind gateways <code><strong>moon</strong></code> and <code><strong>sun</strong></code>, respectively, might be
+connected, so that e.g. the hosts <code><strong>alice</strong></code> and <code><strong>bob</strong></code> may securely communicate
+with one another.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>On our website you&#8217;ll find dozens of complete
+<a href="../config/IKEv2.html" class="xref page">configuration examples</a> covering these and similar situations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ike_and_ipsec_basics"><a class="anchor" href="#_ike_and_ipsec_basics"></a>IKE and IPsec Basics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>strongSwan</strong> is basically a keying daemon that uses the
+<a href="ipsecProtocol.html#_internet_key_exchange_version_2_ikev2" class="xref page">Internet Key Exchange Version 2</a>
+(IKEv2) protocol to establish <strong>Security Associations</strong> (SAs) between two peers.
+For legacy applications <a href="https://en.wikipedia.org/wiki/Internet_Key_Exchange">IKEv1</a> is still supported, although we strongly
+discourage from using IKEv1 due to stability and some security reasons. IKE provides
+strong authentication of both peers and derives unique cryptographically-strong
+session keys. Such an IKE session is often denoted <strong>IKE_SA</strong> in our documentation.
+Besides authentication and key material IKE also provides the means to exchange
+configuration information (e.g. <a href="../features/vip.html" class="xref page">virtual IP</a> addresses) and
+to negotiate IPsec SAs, which are often called <strong>CHILD_SAs</strong>. IPsec SAs define which
+network traffic is to be secured and how it has to be encrypted and authenticated.</p>
+</div>
+<div class="paragraph">
+<p>A CHILD_SA consists of two components:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The actual IPsec SAs (two of them are established, one in each direction) describing
+the algorithms and keys used to encrypt and authenticate the traffic.</p>
+</li>
+<li>
+<p>The policies (there are at least two) that define which network traffic shall use
+that SA.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The policies work both ways, i.e. only traffic matching an inbound policy will be
+allowed after decryption. Policies are derived from the traffic selectors (TS)
+negotiated via IKE when establishing a CHILD_SA. Unprotected traffic that the kernel
+receives and for which there is <strong>no</strong> matching inbound IPsec policy will be dropped.
+This is a security feature.</p>
+</div>
+<div class="paragraph">
+<p>The actual <a href="https://en.wikipedia.org/wiki/IPsec">IPsec traffic</a> is not handled by <strong>strongSwan</strong> but will be relegated
+to the network and IPsec stack of the operating system kernel. <strong>strongSwan</strong> installs
+the negotiated IPsec SAs and SPs into the kernel by using a platform-dependent
+<strong>kernel interface</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The mentioned distinction between policies and SAs often leads to <strong>misconceptions</strong>.
+For instance, referring to the image above, if host <code><strong>moon</strong></code> has a site-to-site
+tunnel to host <code><strong>sun</strong></code> (connecting the two networks <code><strong>10.1.0.0/16</strong></code> and
+<code><strong>10.2.0.0/24</strong></code>) and host <code><strong>carol</strong></code> has a roadwarrior connection to host <code><strong>sun</strong></code>
+(from which <code><strong>carol</strong></code> received a virtual IP address of <code><strong>10.3.0.10</strong></code>). Then <code><strong>carol</strong></code>
+won&#8217;t be able to automatically communicate with <code><strong>alice</strong></code>, even if forwarding is
+enabled on <code><strong>sun</strong></code>.  This is because there is no IPsec policy allowing traffic
+between <code><strong>carol</strong></code> (<code><strong>10.3.0.10</strong></code>) and <code><strong>alice</strong></code> (<code><strong>10.1.0.10</strong></code>). An additional SA
+between <code><strong>moon</strong></code> and <code><strong>sun</strong></code> connecting the virtual subnet <code><strong>10.3.0.0/24</strong></code> with
+<code><strong>10.1.0.0/16</strong></code> would be a possible solution to this issue.</p>
+</div>
+<div class="paragraph">
+<p>Generally IPsec processing and routing are two different topics. IPsec is often
+just bumped into the stack (policy based) and the original routing decision for
+the unprotected packet also applies to the protected packet. This is the reason
+that strongSwan <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> IKE daemon by default installs
+specific routes to the remote part of the TS (in newer
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> versions (&gt;5.5.0), routes aren&#8217;t installed
+for transport mode CHILD_SAs). An exception to this is
+<a href="../features/routeBasedVpn.html" class="xref page">route-based IPsec</a> that uses interfaces to control
+what packets are going to be processed by each tunnel to a unique participant.
+<a href="../features/routeBasedVpn.html" class="xref page">Route-based</a> IPsec is less flexible than
+policy-based IPsec.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_authentication_basics"><a class="anchor" href="#_authentication_basics"></a>Authentication Basics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To ensure that the peer with which an IKE_SA is established is really who it claims
+to be, it has to be authenticated.</p>
+</div>
+<div class="paragraph">
+<p>strongSwan provides several methods to do this:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Public Key Authentication </dt>
+<dd>
+<p>RSA, ECDSA or EdDSA X.509 certificates are used to verify the authenticity of
+the peer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Certificates can be self-signed (in which case they have to be installed on
+all peers) or signed by a common Certificate Authority (CA). The latter
+simplifies deployment and configuration a lot as the gateway only needs the
+CA certificate to authenticate all peers that provide a valid certificate
+signed by that CA.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">Certificate Revocation Lists</a> (CRLs) or the
+<a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol</a> (OCSP) may be used to verify the
+validity of certificates.</p>
+</li>
+<li>
+<p>To securely store private keys <a href="smartcards.html" class="xref page">smartcards</a> may be
+used via the <a href="../plugins/pkcs11.html" class="xref page"><code><strong>pkcs11</strong></code></a> plugin.</p>
+</li>
+<li>
+<p>In order to prevent <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle attacks</a>, the identity claimed by
+the peer has to be confirmed by the certificate, either by the <code><strong>subjectDn</strong></code> or
+a <code><strong>subjectAltName</strong></code> extension.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Pre-Shared-Key Authenticiation (PSK) </dt>
+<dd>
+<p>A pre-shared-key is an easy-to-deploy option but it <strong>requires strong secrets</strong>
+to be secure.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the PSK is known to many users (which is often the case with IKEv1 XAuth with
+PSK) any user who knows the secret could impersonate the gateway. Therefore this
+method is <strong>not recommended</strong> for large scale deployments.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Extensible Authentication Protocol (EAP) </dt>
+<dd>
+<p>This covers several possible authentication methods, some are based on
+username/password-based authentication (EAP-MD5, EAP-MSCHAPv2, EAP-GTC) or on
+X.509 certificates (EAP-TLS). Some can even tunnel other EAP methods (EAP-TTLS,
+EAP-PEAP).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The actual authentication of users may be delegated to a RADIUS server with the
+<a href="../plugins/eap-radius.html" class="xref page"><code><strong>eap-radius</strong></code></a> plugin.</p>
+</li>
+<li>
+<p>EAP authentication can only be used with IKEv2 and for some methods with IKEv1
+using the <a href="../plugins/xauth-eap.html" class="xref page"><code><strong>xauth-eap</strong></code></a> plugin.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">eXtended Authentication (XAuth) </dt>
+<dd>
+<p>XAuth provides a flexible authentication framework within IKEv1. It is mainly
+used for username/password-based authentication. Also it is generally used as a
+second authentication method after a mutual authentication based on either
+X.509 certificates or PSK. With <em>IKEv1 hybrid authentication</em> it is however
+possible to authenticate the gateway with a certificate and use XAuth to
+authenticate the client, only.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>With IKEv2 it is possible to use multiple authentication rounds (<a href="https://datatracker.ietf.org/doc/html/rfc4739">RFC 4739</a>),
+for instance to first authenticate the <strong>machine</strong> with an X.509 certificate and then
+the <strong>user</strong> with a username/password-based authentication scheme (e.g EAP-MSCHAPv2).
+It is also possible to use asymmetric authentication, e.g. by authenticating the
+gateway with a certificate and the client with a username/password-based EAP method
+in the first authentication round. Please be aware that not all IKEv2 implementations
+support the <a href="https://datatracker.ietf.org/doc/html/rfc4739">RFC 4739</a> extension.</p>
+</div>
+<div class="paragraph">
+<p>Again, our website provides dozens of <a href="../config/IKEv2.html" class="xref page">configuration examples</a>
+covering these and other authentication options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_files"><a class="anchor" href="#_configuration_files"></a>Configuration Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The recommended way of configuring strongSwan is via the powerful
+<a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> control interface and the
+<a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> command line tool. The
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> configuration file used by
+<a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> is stored together with certificates and
+corresponding private keys in the <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a> directory.</p>
+</div>
+<div class="paragraph">
+<p>Global strongSwan settings as well as plugin-specific configurations are defined
+in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, the legacy <code><strong>stroke</strong></code> control interface and the <code><strong>ipsec</strong></code> command
+line tool can be used with the deprecated <code><strong>ipsec.conf</strong></code> and <code><strong>ipsec.secrets</strong></code>
+configuration files.</p>
+</div>
+<div class="sect2">
+<h3 id="_other_configuration_sources"><a class="anchor" href="#_other_configuration_sources"></a>Other Configuration Sources</h3>
+<div class="paragraph">
+<p>The configuration may also be loaded from an
+<a href="../config/sqliteDbSchema.html" class="xref page">SQL database</a> or can be provided by custom plugins.
+Using the <code><strong>charon-nm</strong></code> daemon variant, the
+<a href="../features/networkManager.html" class="xref page">NetworkManager</a> can be used to manage VPN
+connections.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation"><a class="anchor" href="#_installation"></a>Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../install/install.html" class="xref page">strongSwan installation</a> is covered in a separate
+<a href="../install/install.html" class="xref page">document</a>.</p>
+</div>
+<div class="paragraph">
+<p>Using binary packages provided by your distribution is generally recommended, as
+it makes maintenance easier. Unfortunately, this means that you are often not able
+to use the most recent version.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_invocation_and_maintenance"><a class="anchor" href="#_invocation_and_maintenance"></a>Invocation and Maintenance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>strongSwan is usually managed with the <a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> command
+while the IKE <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon</strong></code></a> is controlled by
+<code><strong>systemd</strong></code> on modern distros. With legacy installations, strongSwan is controlled
+by the <code><strong>ipsec</strong></code> command where <code><strong>ipsec start</strong></code> will start the <code><strong>starter</strong></code> daemon
+which in turn starts and configures the keying <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>
+daemon.</p>
+</div>
+<div class="paragraph">
+<p>IKE Connections and CHILD SAs defined in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+can be started through three different ways:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On traffic </dt>
+<dd>
+<p>If <code><strong>start_action = trap</strong></code> is used, IPsec trap policies for the configured
+traffic (defined via <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code>) will be installed and traffic
+matching these policies will trigger <strong>acquire events</strong> that cause the daemon to
+establish the required IKE/IPsec SAs. This is also used for passthrough/drop IPsec
+policies, to let specific traffic bypass other policies/SAs or drop it completely.</p>
+</dd>
+<dt class="hdlist1">On startup </dt>
+<dd>
+<p>CHILD_SAs configured with <code><strong>start_action = start</strong></code> will automatically be
+established when the daemon is started. They are not automatically restarted when
+they go down for some reason. You need to specify other configuration settings
+(<code><strong>dpd_action</strong></code> and/or <code><strong>close_action</strong></code> to restart them automatically but even
+then, the setup is not bullet-proof and will potentially leak packets. You are
+encouraged to use trap policies and read the
+<a href="securityRecommendations.html" class="xref page">SecurityRecommendations</a> to take care
+of any problems.</p>
+</dd>
+<dt class="hdlist1">Manually </dt>
+<dd>
+<p>A connection that uses no <code><strong>start_action</strong></code> has to be established manually with
+<a href="../swanctl/swanctlInitiate.html" class="xref page"><code><strong>swanctl --initiate</strong></code></a> or acts passively
+as a responder waiting for a peer/roadwarrior to connect. Depending on the
+configuration, it is also possible to use
+<a href="../swanctl/swanctlInstall.html" class="xref page"><code><strong>swanctl --install</strong></code></a> to install policies manually
+for such connections as <code><strong>start_action = trap</strong></code> would do it on startup.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>After an SA has been established,
+<a href="../swanctl/swanctlTerminate.html" class="xref page"><code><strong>swanctl --terminate</strong></code></a> may be used to tear
+down the IKE_SA or individual CHILD_SAs.</p>
+</div>
+<div class="paragraph">
+<p>Whenever the <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> file or credentials
+in the <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a> directory are changed they may be
+reloaded with the different
+<a href="../swanctl/swanctl.html#_subcommands" class="xref page"><code><strong>swanct --load-..</strong></code></a> commands. Already
+established connections are not affected by these commands (unless
+<code><strong>start_action = start</strong></code> is used). If a configuration update is required, the SAs
+or even the daemon must be restarted.</p>
+</div>
+<div class="paragraph">
+<p>Using the different <a href="../swanctl/swanctl.html#_subcommands" class="xref page"><code><strong>swanctl --list-..</strong></code></a>
+commands will provide information about loaded or cached certificates, supported
+algorithms and loaded plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logging_and_monitoring"><a class="anchor" href="#_logging_and_monitoring"></a>Logging and Monitoring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you run into problems, increasing the log level might help you understand what
+exactly went wrong. The different <a href="../config/logging.html" class="xref page">logging options</a> are
+described in a <a href="../config/logging.html" class="xref page">separate document</a> or the
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> man page. Recommended log
+settings for debugging problems may be found <a href="../support/helpRequests.html" class="xref page">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Whenever you encounter a log message similar to <code><strong>received &#8230;&#8203; error notify</strong></code> where
+the placeholder <code><strong>&#8230;&#8203;</strong></code> is e.g. <code>NO_PROPOSAL_CHOSEN</code> or <code>TS_UNACCEPTABLE</code>, you
+should consult the logs of the <strong>remote peer</strong> in order to find out why that
+error notify was generated in the first place.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="../swanctl/swanctl.html#_subcommands" class="xref page"><code><strong>swanctl --list-..</strong></code></a> commands will
+provide information about the established and configured connections.</p>
+</div>
+<div class="paragraph">
+<p>On Linux, the <code><strong>iproute2</strong></code> package provides the <code><strong>ip xfrm state</strong></code> and
+<code><strong>ip xfrm policy</strong></code> commands to request detailed information about the IPsec SAs
+and policies installed in the kernel.  Adding the <code><strong>-s</strong></code> option will display extensive
+statistical information like the number of transmitted or invalid packages. On other
+platforms the <code><strong>setkey</strong></code> command from the <code><strong>ipsec-tools</strong></code> package provides similar
+information.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>tcpdump</strong></code> and <code><strong>wireshark</strong></code> are also often useful to debug problems.</p>
+</div>
+<div class="paragraph">
+<p>When testing a connection with <code><strong>ping</strong></code>, make sure to select a source IP address
+(with the <code><strong>-I</strong></code> option) that is included in the local traffic selector (also see
+<a href="#_site_to_site_configurations">Site-to-Site Configurations</a> below).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pki"><a class="anchor" href="#_pki"></a>PKI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use certificate-based authentication you&#8217;ll need to create either self-signed
+certificates or set up a complete public-key infrastructure (PKI), consisting of a
+Certificate Authority (CA), optional intermediate CAs and end-entity certificates
+plus Certificate Revocation Lists (CRLs) or alternative methods like OCSP to verify
+the validity of certificates.</p>
+</div>
+<div class="paragraph">
+<p>One of the easiest ways to generate certificates is to use the
+<a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> tool. Since setting up a whole PKI can be quite complex
+we provide some <a href="../pki/pkiQuickstart.html" class="xref page">simple instructions</a> to get you started.</p>
+</div>
+<div class="paragraph">
+<p>OpenSSL is also a widespread alternative to generate certificates, as are several
+GUI based <a href="../pki/caManagement.html" class="xref page">CA management utilities</a>.
+Microsoft&#8217;s <a href="https://docs.microsoft.com/en-us/learn/modules/implement-manage-active-directory-certificate-services/">Active Directory Certificate Services</a> (AD CS) could also be
+used for large scale PKIs.</p>
+</div>
+<div class="sect2">
+<h3 id="_certificate_requirements"><a class="anchor" href="#_certificate_requirements"></a>Certificate Requirements</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The generated end entity certificates need to authenticate the corresponding
+remote IKE ID for peer authentication to succeed.</p>
+</li>
+<li>
+<p>To authenticate against another strongSwan instance using one or several certificates
+(also attribute certificates might be used), the certificate must authenticate
+the IKE ID the host is sending.</p>
+<div class="paragraph">
+<p><em>If Alice tries to authenticate against Bob as Alice (herself) then Alice&#8217;s certificate
+must contain at least one <code><strong>subjectAltName</strong></code> (SAN) field with the correct type (FQDN)
+and the value <strong>Alice</strong> or the <code><strong>subjectDistinguishedName</strong></code> (DN), not the <code><strong>commonName</strong></code>
+(CN) has to be <strong>Alice</strong>!</em></p>
+</div>
+<div class="paragraph">
+<p>In other words you can use the complete <code><strong>DN</strong></code> or any of the <code><strong>SAN</strong></code> fields (assuming
+the type is correct) as an IKE ID.
+See <a href="#_notes_regarding_certificates">Notes regarding certificates</a> for details.</p>
+</div>
+</li>
+<li>
+<p>Additionally, the certificate has to be trusted by Bob, either by being known
+beforehand by Bob to being valid, or the certificate being issued by a certificate
+authority (CA) Bob is trusting.</p>
+</li>
+<li>
+<p>For authentication to succeed, the other peer has to possess the complete X.509
+certificate trust chain from root certificate (the root CA) down to the end entity
+certificate (the host or user certificate) including all intermediate certificates
+(intermediate CAs). This is done either by sending any intermediate certificates to
+the remote host or the remote host already having them installed locally.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The requirements for certificate-based authentication with third party IKE
+implementations are stated in separate documents for
+<a href="../interop/windowsCertRequirements.html" class="xref page">Microsoft Windows</a> and
+<a href="../interop/ios.html#_certificate_requirements" class="xref page">Apple iOS/macOS</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notes_regarding_certificates"><a class="anchor" href="#_notes_regarding_certificates"></a>Notes regarding Certificates</h3>
+<div class="paragraph">
+<p>A root CA certificate which being at the top of the X.509 trust chain, is always
+self-signed and can therefore be faked by anyone, is <code><strong>never</strong></code> sent to another host.
+Any peer must install the root CA certificate locally in a trustful way and never
+accept any root CA certificates received over the network.</p>
+</div>
+<div class="paragraph">
+<p>A local certificate is only sent to another host if at least one of the following
+settings are true:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The local host has set <code><strong>connections.&lt;conn&gt;.send_cert = always</strong></code> in the
+connection definition it is using.</p>
+</li>
+<li>
+<p>The remote peer requests a certificate issued by a trusted CA by sending a
+CERTREQ payload to the local peer that indicates one of the CAs in the path
+from the local host&#8217;s certificate up to its root CA certificate.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_routing"><a class="anchor" href="#_routing"></a>Routing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On Linux, strongSwan installs routes into routing table <code><strong>220</strong></code> by default and
+hence requires the kernel to support policy based routing.</p>
+</div>
+<div class="paragraph">
+<p>You can make the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon install the routes
+into any table you like or you can disable them completely. For that purpose the
+<code><strong>charon.install_routes</strong></code>, <code><strong>charon.routing_table</strong></code> and <code><strong>charon.routing_table_prio</strong></code>
+settings in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> may be used. When
+a tunnel is established between two subnets, <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>
+tries to find local IPs in the tunneled local subnets. Such an IP must be configurd
+with <strong>scope global</strong> to be viable for the lookup. If a valid IP is found,
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> will install a route pointing to the remote
+subnet where the source IP is set to the found IP. This results in routes like the
+following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>10.1.0.0/24 via 10.2.0.1 src 10.2.0.2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In that example, the local IP would be <code><strong>10.2.0.2</strong></code>. The remote subnet would be
+<code><strong>10.1.0.0/24</strong></code>. This is done, so packets to the remote subnet are sent with the
+correct source IP. Thus the IPsec policies will match and traffic from the local
+machine to the remote subnet will be secured by IPsec.</p>
+</div>
+<div class="paragraph">
+<p>To avoid conflicts with these routes (especially if
+<a href="../features/vip.html" class="xref page">virtual IPs</a> addresses are used), the <code><strong>kernel-netlink</strong></code>
+plugin manually parses the host&#8217;s routing tables to determine a suitable source
+address when sending IKE packets. On hosts with a (very) high number of routes this
+is quite inefficient. In that case, setting <code><strong>charon.plugins.kernel-netlink.fwmark</strong></code>
+in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> is recommended, as it will
+allow using a more efficient source address lookup.</p>
+</div>
+<div class="paragraph">
+<p>In order to detect connectivity changes, strongSwan parses the events that the kernel
+sends when a route is installed or deleted and hence could cause high CPU load when
+e.g. running on a system that receives a lot of routes via dynamic routing.
+Connectivity change detection can be disabled by setting <code><strong>charon.process_route = no</strong></code>
+in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>If IPv6 is used, then make sure to <a href="../config/IPv6Ndp.html" class="xref page">bypass</a> Neighbor Discovery
+Protocol (NDP) traffic if necessary. It is possible that you encounter MSS/MTU
+problems when tunneling traffic. Please refer to
+<a href="forwarding.html#_mtumss_issues" class="xref page">Forwarding and Split-Tunneling</a> for
+details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_remote_access_configurations"><a class="anchor" href="#_remote_access_configurations"></a>Remote Access Configurations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section we present example configurations for common remote access use cases.
+In these so called <strong>roadwarrior</strong> scenarios mobile clients will be able to connect to
+a remote network.</p>
+</div>
+<div class="paragraph">
+<p>Because these clients most likely connect from unknown IP addresses, the gateway
+will use <code><strong>remote_addrs = %any</strong></code> to literally accept connections from anywhere.
+To simplify <a href="forwarding.html" class="xref page">routing traffic back</a> to the clients and
+because roadwarriors are often located behind one or more NAT devices, the use of
+<a href="../features/vip.html" class="xref page">virtual IP</a> addresses is necessary.</p>
+</div>
+<div class="paragraph">
+<p>The virtual IPs can either be from a distinct subnet or actually from the subnet
+behind the gateway by use of the <a href="../plugins/farp.html" class="xref page"><code><strong>farp</strong></code></a> plugin and optionally
+the <a href="../plugins/dhcp.html" class="xref page"><code><strong>dhcp</strong></code></a> plugin.</p>
+</div>
+<div class="paragraph">
+<p>Whether roadwarriors will send all traffic to the gateway or use
+<a href="forwarding.html" class="xref page">split-tunneling</a>, i.e. only send traffic for specific
+destinations through the tunnel, is also something to consider. This is explained
+in more details in <a href="forwarding.html" class="xref page">Forwarding and Split-Tunneling</a>.
+That document also explains how traffic is <a href="forwarding.html" class="xref page">forwarded</a>
+to hosts behind the gateway.</p>
+</div>
+<div class="sect2">
+<h3 id="_ikev2_configurations"><a class="anchor" href="#_ikev2_configurations"></a>IKEv2 Configurations</h3>
+<div class="paragraph">
+<p>The three strongSwan gateway configurations shown for the
+<a href="../interop/windowsClients.html" class="xref page">Windows clients</a> may be used for all IKEv2 clients:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="../interop/windowsMachineServerConf.html" class="xref page">Certificate-based Authentication</a></p>
+</li>
+<li>
+<p><a href="../interop/windowsUserServerConf.html" class="xref page">Certificate-based EAP-TLS Authentication</a></p>
+</li>
+<li>
+<p><a href="../interop/windowsEapServerConf.html" class="xref page">Password-based EAP Authentication</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In all three use cases the gateway is authenticated by a certificate while the
+clients either authenticate themselves based on certificates (1, 2) or on
+username/password schemes (3). The generic EAP use case (3) incorporates the
+EAP-TLS use case (2), so that only two configurations (1, 3) must be implemented
+in parallel on a strongSwan VPN gateway to leave it up to the VPN clients to select
+any of the three authentication methods above.</p>
+</div>
+<div class="paragraph">
+<p>With the <a href="../plugins/eap-radius.html" class="xref page"><code><strong>eap-radius</strong></code></a> plugin, user authentication
+may be delegated to a RADIUS server (e.g. an existing Active Directory DC).</p>
+</div>
+<div class="paragraph">
+<p>Both the <a href="../os/androidVpnClient.html" class="xref page">strongSwan VPN Client for Android</a> and
+<a href="../features/networkManager.html" class="xref page">NetworkManager</a> may be used with any of the
+strongSwan VPN gateway configurations. Alternatively the
+<a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a> command line IKEv2 client provides a
+simple means to establish roadwarrior connections.</p>
+</div>
+<div class="paragraph">
+<p><a href="../os/macos.html#_native_application" class="xref page">Our app for macOS</a> supports IKEv2 and simple
+EAP authentication. With <a href="../interop/appleIkev2Profile.html" class="xref page">iOS 8 and macOS 10.10</a>
+Apple introduced support for IKEv2 in their clients. A GUI to configure such
+connections is currently not provided, so it&#8217;s necessary to write (or generate)
+<a href="../interop/appleIkev2Profile.html" class="xref page">custom configuration profiles</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_site_to_site_configurations"><a class="anchor" href="#_site_to_site_configurations"></a>Site-to-Site Configurations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We provide the following site-to-site
+<a href="../config/IKEv2.html#_site_to_site" class="xref page">configuration examples</a></p>
+</div>
+<div class="paragraph">
+<p>The most important difference compared to the remote access case is that the
+initiator will not request a <a href="../features/vip.html" class="xref page">virtual IP</a> address but instead
+use <code><strong>local_ts</strong></code> to tunnel traffic from one or more local subnets. With IKEv2
+multiple subnets (in CIDR notation) can be added to <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code>
+separated by commas. If IKEv1 is used, a separate
+<a href="../swanctl/swanctlConf.html#_connections_conn_children" class="xref page"><code><strong>children.&lt;child&gt;</strong></code></a>
+subsection has to be added for each combination of local and remote subnet, as only
+the first subnet in <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code> will be used.</p>
+</div>
+<div class="paragraph">
+<p>One thing that often confuses users new to IPsec is that testing a net-to-net
+scenario from either of the gateways often requires one to select the source address
+used specifically (e.g. with <code><strong>ping -I</strong></code>) because the external IP of either gateway
+might not be included in the tunneled subnets. If that is something you require,
+either add the external IPs to the list of subnets in <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code>
+or add a specific host-to-host config.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_host_to_host_configurations"><a class="anchor" href="#_host_to_host_configurations"></a>Host-to-Host Configurations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Host-to-host connections are very easy to setup. You basically have to set
+<code><strong>remote_addrs</strong></code> to the hostname or IP address of the peer and configure the
+desired authentication. Neither the <code><strong>local_ts</strong></code> nor <code><strong>remote_ts</strong></code> traffic selectors
+have to be set explicitly.</p>
+</div>
+<div class="paragraph">
+<p>Again, our web site provides some practical host-to-host
+<a href="../config/IKEv2.html#_host_to_host" class="xref page">configuration examples</a>.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../pki/caManagement.html">GUI-based CA Management</a></span>
+  <span class="next"><a href="ipsecProtocol.html">IPsec Protocol</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/"> 
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2022
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
