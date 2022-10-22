@@ -1399,7 +1399,7 @@ authentication</strong>, because IKEv2 PSK based authentication is also vulnerab
 dictionary and brute-force attacks.</p>
 </div>
 <div class="paragraph">
-<p>But even for IKEv1 <a href="https://www.strongswan.org/testing/testresults/ikev1/xauth-id-rsa-hybrid">hybrid authentication</a>
+<p>But even for IKEv1 <a href="https://www.strongswan.org/testing/testresults6/ikev1/xauth-id-rsa-hybrid">hybrid authentication</a>
 provides an easy to deploy alternative.  This mode uses a certificate to
 authenticate the gateway and only XAuth to authenticate the client, during
 Phase 1 (Main or Aggressive Mode) the client is not authenticated.</p>
@@ -1414,7 +1414,7 @@ L2TP/IPsec.</em></p>
 <div class="paragraph">
 <p><strong>A:</strong> NAT-Traversal with IPsec transport mode has some inherent issues (see
 <a href="https://datatracker.ietf.org/doc/html/rfc3948#section-5.2">RFC 3948</a> and
-<a href="https://www.strongswan.org/testing/testresults/ikev2/host2host-transport-nat">this test scenario</a>
+<a href="https://www.strongswan.org/testing/testresults6/ikev2/host2host-transport-nat">this test scenario</a>
 for an illustration). While strongSwan supports NAT-T with transport mode, the
 fundamental issues remain. Refer to the <a href="../plugins/connmark.html" class="xref page"><code><strong>connmark</strong></code></a>
 plugin for possible workarounds in some scenarios. However, for Windows L2TP clients

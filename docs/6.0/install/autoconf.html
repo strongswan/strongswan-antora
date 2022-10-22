@@ -915,6 +915,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="https://datatracker.ietf.org/doc/html/rfc3779">RFC 3779</a> address block constraint support plugin</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-aes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable AES software implementation plugin</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-aesni</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.3.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable Intel AES-NI crypto plugin</p></td>
@@ -1013,6 +1018,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable conntrack based marks to select return path SA</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-curve25519</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin providing X25519 DH group and Ed25519 public key authentication</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/counters.html" class="xref page">--enable-counters</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.6.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin that collects several performance counters</p></td>
@@ -1043,6 +1053,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use dbghlp.dll on Windows to create and print backtraces for memory leaks and
  segfaults</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-des</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable DES/3DES software implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/dhcp.html" class="xref page">--enable-dhcp</a></p></td>
@@ -1184,6 +1199,12 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable simple <code>file://</code> URI fetcher</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-fips-prf</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable FIPS PRF software implementation plugin. Required for <code><strong>eap-aka</strong></code> and
+ <code><strong>eap-sim</strong></code> plugins.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/forecast.html" class="xref page">--enable-forecast</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin that forwards broadcast/multicast messages</p></td>
@@ -1200,6 +1221,11 @@ plugins.</p>
  OSS-Fuzz infrastructure)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcm</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable GCM AEAD wrapper crypto plugin</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcrypt</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable gcrypt plugin. Requires the GNU <strong>libgcrypt</strong> library</p></td>
@@ -1208,6 +1234,17 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-git-version</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use output of <code>git describe</code> as version information in executables</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gmp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="https://gmplib.org/">GNU Multi Precision</a> based public key cryptography
+ implementation plugin. Requires <code>libgmp</code> library.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-hmac</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable HMAC crypto implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/ha.html" class="xref page">--enable-ha</a></p></td>
@@ -1368,7 +1405,12 @@ plugins.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-md4</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable MD4 software implementation plugin. Required for <code>eap-mschapv2</code> plugin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable MD4 software implementation plugin. Required for <code><strong>eap-mschapv2</strong></code> plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-md5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable MD5 software implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-medcli</p></td>
@@ -1405,11 +1447,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-nm</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../features/networkManager.html" class="xref page">NetworkManager</a> backend</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-openssl</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="https://openssl.org/">OpenSSL</a> crypto plugin. Requires the <code><strong>libcrypto</strong></code> library</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-oqs</p></td>
@@ -1450,6 +1487,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable PKCS#11 crypto token support plugin</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-pkcs12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable PKCS#12 container support plugin</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-python-eggs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable build of provided python eggs e.g. for the
@@ -1464,6 +1506,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/radattr.html" class="xref page">--enable-radattr</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to inject and process custom RADIUS attributes as IKEv2 client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-rc2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable RC2 software implementation plugin. Required for <code><strong>pkcs12</strong></code> plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-rdrand</p></td>
@@ -1492,6 +1539,16 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.9.6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable SELinux support for labeled IPsec and the
  <a href="../plugins/selinux.html" class="xref page">selinux</a> plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-sha1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SHA-1 software implementation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-sha2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable SHA-256/SHA-384/SHA-512 software implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-sha3</p></td>
@@ -1529,6 +1586,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-sqlite</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable SQLite database support. Requires <code>libsqlite3</code> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-stroke</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable legacy <code>stroke</code> configuration backend for <code>charon</code> daemon</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-svc</p></td>
@@ -1696,11 +1758,6 @@ specific plugins.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-aes</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default AES software implementation plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/attr.html" class="xref page">--disable-attr</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> based
@@ -1722,20 +1779,10 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable advanced X.509 constraint checking plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-curve25519</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable plugin providing X25519 DH group and Ed25519 public key authentication</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-defaults</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.0.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable all features that are enabled by default. Basically it&#8217;s short for
  removing all options listed in this section.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-des</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default DES/3DES software implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-dnskey</p></td>
@@ -1746,27 +1793,6 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-drgb</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.8.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable the NIST Deterministic Random Bit Generator plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-fips-prf</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default FIPS PRF software implementation plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-gcm</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable GCM AEAD wrapper crypto plugin (was disabled by default prior to 5.9.8)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-gmp</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default <a href="https://gmplib.org/">GNU Multi Precision</a> based public key cryptography
- implementation plugin. Requires <code>libgmp</code> library.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-hmac</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default HMAC crypto implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-ikev1</p></td>
@@ -1794,14 +1820,14 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable the <code>charon</code> plugin load option warning in starter</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-md5</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default MD5 software implementation plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-nonce</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable nonce generation plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-openssl</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disable default <a href="https://openssl.org/">OpenSSL</a> crypto plugin. Requires the <code><strong>libcrypto</strong></code> library</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pem</p></td>
@@ -1829,11 +1855,6 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable PKCS#8 private key decoding plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-pkcs12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable PKCS#12 container support plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pki.html" class="xref page">--disable-pki</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> public key and certificate utility</p></td>
@@ -1847,11 +1868,6 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-random</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable default RNG implementation using the raw <code>/dev/[u]random</code> devices</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-rc2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable RC2 software implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/resolve.html" class="xref page">--disable-resolve</a></p></td>
@@ -1870,16 +1886,6 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable the build of additional utilities found in <code>scripts</code> directory</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-sha1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default SHA-1 software implementation plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-sha2</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable default SHA-256/SHA-384/SHA-512 software implementation plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-socket-default</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable default socket implementation for <code>charon</code> daemon</p></td>
@@ -1888,11 +1894,6 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-sshkey</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable SSH key decoding plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-stroke</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable legacy <code>stroke</code> configuration backend for <code>charon</code> daemon</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../swanctl/swanctl.html" class="xref page">--disable-swanctl</a></p></td>
