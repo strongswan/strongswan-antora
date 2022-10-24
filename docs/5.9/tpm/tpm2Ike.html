@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ipsec conftest Tool :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tools/conftest.html">
-    <link rel="prev" href="../tnc/attest.html">
-    <link rel="next" href="scepclient.html">
+    <title>TPM 2.0 Use with strongSwan IKE Daemon :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tpm/tpm2Ike.html">
+    <link rel="prev" href="tpm2.html">
+    <link rel="next" href="../tnc/tnc.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -486,16 +486,16 @@
     <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="pool.html">ipsec pool Tool</a>
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="conftest.html">ipsec conftest Tool</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="scepclient.html">ipsec scepclient Tool</a>
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
   </li>
 </ul>
   </li>
@@ -679,10 +679,10 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+    <a class="nav-link" href="tpm2.html">TPM 2.0</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../tpm/tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a>
   </li>
 </ul>
   </li>
@@ -810,115 +810,389 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
-    <li>Tools</li>
-    <li><a href="conftest.html">ipsec conftest Tool</a></li>
+    <li>Platform Security</li>
+    <li><a href="tpm2.html">TPM 2.0</a></li>
+    <li><a href="tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">5.9</button>
   <div class="version-menu">
-    <a class="version" href="../../6.0/tools/conftest.html">6.0 Beta</a>
-    <a class="version is-current" href="conftest.html">5.9</a>
+    <a class="version is-missing" href="../../6.0/index.html">6.0 Beta</a>
+    <a class="version is-current" href="tpm2Ike.html">5.9</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/tools/conftest.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/tpm/tpm2Ike.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">ipsec conftest Tool</h1>
+<h1 class="page">TPM 2.0 Use with strongSwan IKE Daemon</h1>
 <div class="sect1">
-<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre>ipsec conftest --help         show usage information
-
-ipsec conftest --version      show conftest version
-
-ipsec conftest --suite &lt;file&gt; global testsuite configuration (default: ./suite.conf)
-
-ipsec conftest --test &lt;file&gt;  test specific configuration</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
+<h2 id="_configure_private_key_access"><a class="anchor" href="#_configure_private_key_access"></a>Configure Private Key Access</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code><strong>ipsec conftest</strong></code> utility allows you to run preconfigured tests on IKE, based
-on the mainstream strongSwan stack. It can inject or mangle packets to test the
-behavior of other implementations under certain conditions.</p>
-</div>
-<div class="paragraph">
-<p>The auxiliary <code><strong>ipsec</strong></code> command, if available, sets the execution path to
-<code><strong>${libexecdir}/ipsec/</strong></code> which is usually <code><strong>/usr/libexec/ipsec/</strong></code> or
-<code><strong>/usr/local/libexec/ipsec/</strong></code>. The <code><strong>${libexecdir}</strong></code> directory can be configured
-with the <code><strong>--libexecdir</strong></code> <a href="../install/autoconf.html#_dir_options" class="xref page"><code><strong>./configure</strong></code></a>
-option defaulting to <code><strong>${prefix}/libexec</strong></code>).</p>
-</div>
-<div class="paragraph">
-<p>To enable the <code><strong>ipsec conftest</strong></code> utility, add</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>--enable-conftest</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>to the <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> options.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A test suite consists of a suite configuration file (<code><strong>--suite parameter</strong></code>) and
-individual test configurations (selected by the <code><strong>--test parameter</strong></code>) which use
-the same structure as <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. To
-configure plugins, a <code><strong>conftest</strong></code> section in
-<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> can be used.</p>
-</div>
-<div class="paragraph">
-<p>The <a href="https://github.com/strongswan/strongswan/blob/master/src/conftest/README"><code><strong>README</strong></code></a> file in the <code><strong>conftest</strong></code> source has
-details on the possible configuration sections and options.</p>
-</div>
-<div class="sect2">
-<h3 id="_specifying_host_ids"><a class="anchor" href="#_specifying_host_ids"></a>Specifying Host IDs</h3>
-<div class="paragraph">
-<p>When using certificate DN as <code><strong>leftid|rightid</strong></code> in <code><strong>ipsec.conf</strong></code>, the DN is
-enclosed in quotation marks, like in the following example:</p>
+<p>Configuration of <a href="tpm2.html#_generate_persistent_attestation_keys" class="xref page">TPM 2.0</a>
+private key access as tokens in the
+<a href="../swanctl/swanctlConf.html#_secrets" class="xref page"><code><strong>secrets</strong></code></a> section of
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>conn sample-with-ca-cert
-  rightid="C=CH, O=Linux strongSwan, CN=peer name"</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>However the equivalent options <code><strong>lid|rid</strong></code> in a conftest suite or test
-configuration <strong>must</strong> be written without quotation marks, otherwise there will be
-authentication errors.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>configs {
-  ike-sample-a {
-    rid = C=CH, O=Linux strongSwan, CN=peer name
-  }
+<pre>secrets {
+    token_ak_rsa {
+       handle = 0x81010003
+    }
+    token_ak_ecc {
+       handle = 0x81010004
+    }
 }</pre>
 </div>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_define_ipsec_connection"><a class="anchor" href="#_define_ipsec_connection"></a>Define IPsec Connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This connection configuration in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+references the <a href="tpm2.html#_ecc_attestation_key_certificate" class="xref page">ECC AK certificate</a>
+used for client authentication via its handle,
+i.e. the NV index</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connections {
+   host {
+      remote_addrs = 10.10.1.43
+
+      local {
+         auth = pubkey
+         certs-tpm {
+            handle = 0x01800004
+         }
+         id = edu.strongsec.com
+      }
+      remote {
+         auth = pubkey
+         id = mijas.strongsec.com
+      }
+      children {
+         host {
+            esp_proposals = aes256gcm128-x25519
+         }
+      }
+      version = 2
+      proposals = aes256-sha256-x25519
+   }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starting_the_strongswan_daemon"><a class="anchor" href="#_starting_the_strongswan_daemon"></a>Starting the strongSwan Daemon</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>strongSwan</strong> <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a>
+IKE daemon is started via <code><strong>systemd</strong></code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo systemctl start strongswan</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 systemd[1]: Starting strongSwan IPsec IKEv1/IKEv2 daemon using swanctl...
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded plugins: charon-systemd random nonce drbg x509 revocation constraints pubkey pkcs1 pkcs8 pkcs12 pem openssl curl tpm kernel-netl&gt;
+Jan 04 15:18:38 edu charon-systemd[648407]: spawning 16 worker threads
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded certificate 'C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com'
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded certificate 'C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="tpm2.html#_rsa_attestation_key" class="xref page">RSA AK private key</a> is attached to the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> IKE daemon via the TPM 2.0 TSS
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: TPM 2.0 via TSS2 v2 available
+Jan 04 15:18:38 edu charon-systemd[648407]: signature algorithm is RSASSA with SHA256 hash
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded RSA private key from token</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="tpm2.html#_ecc_attestation_key" class="xref page">ECC AK private key</a> is attached to the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> IKE daemon via the TPM 2.0 TSS
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: TPM 2.0 via TSS2 v2 available
+Jan 04 15:18:38 edu charon-systemd[648407]: signature algorithm is ECDSA with SHA256 hash
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded ECDSA private key from token</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="tpm2.html#_ecc_attestation_key_certificate" class="xref page">ECC AK certificate</a> is loaded
+by the <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> IKE daemon via the
+TPM 2.0 TSS interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: TPM 2.0 via TSS2 v2 available
+Jan 04 15:18:38 edu charon-systemd[648407]: loaded certificate from TPM NV index 0x01800004</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The connection definition is received by the
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> IKE daemon triggered by the
+<a href="../swanctl/swanctlLoadConns.html" class="xref page"><code><strong>swanctl --load-conns</strong></code></a> command via the VICI
+interface</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu charon-systemd[648407]: added vici connection: host</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> command line tool reports its actions</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu swanctl[648429]: loaded certificate from '/etc/swanctl/x509/ak_rsa_cert.der'
+Jan 04 15:18:38 edu swanctl[648429]: loaded certificate from '/etc/swanctl/x509ca/cacert.pem'
+Jan 04 15:18:38 edu swanctl[648429]: loaded key token_ak_rsa from token [keyid: 4882621574a210c57570c2d67d599f22d94f9c07]
+Jan 04 15:18:38 edu swanctl[648429]: loaded key token_ak_ecc from token [keyid: cc8349872b9ef3cbb835120287ff14892844a604]
+Jan 04 15:18:38 edu swanctl[648429]: loaded connection 'host'
+Jan 04 15:18:38 edu swanctl[648429]: successfully loaded 1 connections, 0 unloaded</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Jan 04 15:18:38 edu systemd[1]: Started strongSwan IPsec IKEv1/IKEv2 daemon using swanctl.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="../swanctl/swanctlListConns.html" class="xref page"><code><strong>swanctl --list-conns</strong></code></a> command allows
+to list the loaded connection definitions</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ swanctl --list-conns
+
+host: IKEv2, no reauthentication, rekeying every 14400s
+  local:  %any
+  remote: 10.10.1.43
+  local public key authentication:
+    id: edu.strongsec.com
+    certs: C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com
+  remote public key authentication:
+    id: mijas.strongsec.com
+  host: TUNNEL, rekeying every 3600s
+    local:  dynamic
+    remote: dynamic</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The loaded certificates can also be displayed</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ swanctl --list-certs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can clearly see that the connection between the AK certificates and their
+matching AK private key has been established (&#8230;&#8203;, has private key)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>List of X.509 End Entity Certificates
+
+  subject:  "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Dec 23 15:27:40 2020, ok
+             not after  Dec 23 15:27:40 2025, ok (expires in 1814 days)
+  serial:    65:fd:5b:98:47:11:f6:45
+  altNames:  edu.strongsec.com
+  flags:     serverAuth
+  CRL URIs:  http://www.strongsec.com/ca/strongsec.crl
+  authkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  subjkeyId: cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04
+  pubkey:    ECDSA 256 bits, has private key
+  keyid:     ba:64:37:a4:0e:c8:42:67:8c:55:5a:f9:1b:2a:eb:ff:5f:40:c3:e3
+  subjkey:   cc:83:49:87:2b:9e:f3:cb:b8:35:12:02:87:ff:14:89:28:44:a6:04
+
+  subject:  "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Dec 23 15:26:22 2020, ok
+             not after  Dec 23 15:26:22 2025, ok (expires in 1813 days)
+  serial:    79:e5:74:2f:a4:df:b8:d2
+  altNames:  edu.strongsec.com
+  flags:     serverAuth
+  CRL URIs:  http://www.strongsec.com/ca/strongsec.crl
+  authkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  subjkeyId: 48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07
+  pubkey:    RSA 2048 bits, has private key
+  keyid:     df:b7:8f:95:61:8f:70:84:f4:03:e8:7e:83:a6:dd:5f:c5:ff:72:b5
+  subjkey:   48:82:62:15:74:a2:10:c5:75:70:c2:d6:7d:59:9f:22:d9:4f:9c:07</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>List of X.509 CA Certificates
+
+  subject:  "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  issuer:   "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+  validity:  not before Sep 02 10:25:01 2016, ok
+             not after  Sep 02 10:25:01 2026, ok (expires in 2066 days)
+  serial:    7c:24:43:4b:b7:dc:ef:7e
+  flags:     CA CRLSign self-signed
+  subjkeyId: 6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5
+  pubkey:    RSA 4096 bits
+  keyid:     6c:79:f3:7a:b0:df:ac:69:03:b2:ac:6a:ed:82:3a:d2:66:93:b1:21
+  subjkey:   6d:c2:af:37:49:41:b9:fd:f4:45:8b:aa:e0:03:3b:b9:e5:7b:9c:b5</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_initiating_ikev2_connection"><a class="anchor" href="#_initiating_ikev2_connection"></a>Initiating IKEv2 Connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Next we initiate the "host" connection</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ swanctl --initiate --child host</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] initiating IKE_SA host[1] to 10.10.1.43
+[ENC] generating IKE_SA_INIT request 0 [ SA KE No N(NATD_S_IP) N(NATD_D_IP) N(FRAG_SUP) N(HASH_ALG) N(REDIR_SUP) ]
+[NET] sending packet: from 10.10.1.33[500] to 10.10.1.43[500] (240 bytes)
+[NET] received packet: from 10.10.1.43[500] to 10.10.1.33[500] (293 bytes)
+[ENC] parsed IKE_SA_INIT response 0 [ SA KE No N(NATD_S_IP) N(NATD_D_IP) CERTREQ N(FRAG_SUP) N(HASH_ALG) N(CHDLESS_SUP) N(MULT_AUTH) ]
+[CFG] selected proposal: IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/CURVE_25519
+[IKE] received cert request for "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[IKE] sending cert request for "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="tpm2.html#_ecc_attestation_key" class="xref page">ECC AK private key</a> stored in the TPM 2.0
+is used to generate an <code><strong>ECDSA_WITH_SHA256_DER</strong></code> signature which is sent in the
+AUTH payload of the IKE_AUTH request. The matching client certificate is sent in
+the CERT payload.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] authentication of 'edu.strongsec.com' (myself) with ECDSA_WITH_SHA256_DER successful
+[IKE] sending end entity cert "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com"</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] establishing CHILD_SA host{1}
+[ENC] generating IKE_AUTH request 1 [ IDi CERT N(INIT_CONTACT) CERTREQ IDr AUTH SA TSi TSr N(MOBIKE_SUP) N(ADD_6_ADDR) N(MULT_AUTH) N(EAP_ONLY) N(MSG_ID_SYN_SUP) ]
+[NET] sending packet: from 10.10.1.33[4500] to 10.10.1.43[4500] (1392 bytes)
+[NET] received packet: from 10.10.1.43[4500] to 10.10.1.33[4500] (1236 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(1/2) ]
+[ENC] received fragment #1 of 2, waiting for complete IKE message
+[NET] received packet: from 10.10.1.43[4500] to 10.10.1.33[4500] (132 bytes)
+[ENC] parsed IKE_AUTH response 1 [ EF(2/2) ]
+[ENC] received fragment #2 of 2, reassembled fragmented IKE message (1296 bytes)
+[ENC] parsed IKE_AUTH response 1 [ IDr CERT AUTH SA TSi TSr N(AUTH_LFT) N(MOBIKE_SUP) N(ADD_4_ADDR) N(ADD_6_ADDR) ]
+[IKE] received end entity cert "C=CH, O=strongSec GmbH, CN=mijas.strongsec.com"
+[CFG]   using certificate "C=CH, O=strongSec GmbH, CN=mijas.strongsec.com"
+[CFG]   using trusted ca certificate "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The status of the received peer certificate is verified using CRLs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[CFG] checking certificate status of "C=CH, O=strongSec GmbH, CN=mijas.strongsec.com"
+[CFG]   fetching crl from 'http://www.strongsec.com/ca/strongsec.crl' ...
+[CFG]   using trusted certificate "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl correctly signed by "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl is valid: until Jan 10 10:00:01 2021
+[CFG]   fetching crl from 'http://www.strongsec.net/ca/strongsec_delta.crl' ...
+[CFG]   using trusted certificate "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl correctly signed by "C=CH, O=strongSec GmbH, CN=strongSec 2016 Root CA"
+[CFG]   crl is valid: until Jan 05 10:00:01 2021
+[CFG] certificate status is good</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[CFG]   reached self-signed root ca with a path length of 0
+[IKE] authentication of 'mijas.strongsec.com' with ECDSA_WITH_SHA256_DER successful
+[IKE] IKE_SA host[1] established between 10.10.1.33[edu.strongsec.com]...10.10.1.43[mijas.strongsec.com]
+[IKE] scheduling rekeying in 13703s
+[IKE] maximum IKE_SA lifetime 15143s
+[CFG] selected proposal: ESP:AES_GCM_16_256/NO_EXT_SEQ
+[IKE] CHILD_SA host{1} established with SPIs c585d49f_i c1630769_o and TS 10.10.1.33/32 === 10.10.1.43/32
+[IKE] received AUTH_LIFETIME of 9777s, scheduling reauthentication in 8337s
+initiate completed successfully</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The established IKE and CHILD SAs can be displayed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ swanctl --list-sas
+
+host: #1, ESTABLISHED, IKEv2, 4ef1452bda258a1b_i* a8508d872adadc84_r
+  local  'edu.strongsec.com' @ 10.10.1.33[4500]
+  remote 'mijas.strongsec.com' @ 10.10.1.43[4500]
+  AES_CBC-256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/CURVE_25519
+  established 60s ago, rekeying in 13643s, reauth in 8277s
+  host: #1, reqid 1, INSTALLED, TUNNEL, ESP:AES_GCM_16-256
+    installed 62s ago, rekeying in 3271s, expires in 3900s
+    in  c585d49f,  15168 bytes,   172 packets,     0s ago
+    out c1630769,  25184 bytes,   113 packets,    60s ago
+    local  10.10.1.33/32
+    remote 10.10.1.43/32</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_terminating_ikev2_connection"><a class="anchor" href="#_terminating_ikev2_connection"></a>Terminating IKEv2 Connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The IKE and CHILD SAs are terminated</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ swanctl --terminate --ike host</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[IKE] deleting IKE_SA host[1] between 10.10.1.33[edu.strongsec.com]...10.10.1.43[mijas.strongsec.com]
+[IKE] sending DELETE for IKE_SA host[1]
+[ENC] generating INFORMATIONAL request 2 [ D ]
+[NET] sending packet: from 10.10.1.33[4500] to 10.10.1.43[4500] (80 bytes)
+[NET] received packet: from 10.10.1.43[4500] to 10.10.1.33[4500] (80 bytes)
+[ENC] parsed INFORMATIONAL response 2 [ ]
+[IKE] IKE_SA deleted
+terminate completed successfully</pre>
+</div>
+</div>
+</div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../tnc/attest.html">ipsec attest Tool</a></span>
-  <span class="next"><a href="scepclient.html">ipsec scepclient Tool</a></span>
+  <span class="prev"><a href="tpm2.html">TPM 2.0</a></span>
+  <span class="next"><a href="../tnc/tnc.html">Trusted Network Connect</a></span>
 </nav>
 </article>
   </div>
