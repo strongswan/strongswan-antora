@@ -838,9 +838,9 @@
 the <a href="swanctl.html" class="xref page"><code><strong>swanctl --load-</strong>*</code></a> commands.</p>
 </div>
 <div class="paragraph">
-<p>The file uses a <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>-style syntax
-(referencing sections, since version 5.7.0, and including other files is supported
-as well) and is located in the <a href="swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a>
+<p>The file uses a <a href="../config/strongswanConf.html#_syntax" class="xref page"><code><strong>strongswan.conf</strong></code></a>-style
+syntax (referencing sections, since version 5.7.0, and including other files is
+supported as well) and is located in the <a href="swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a>
 configuration directory, usually <code><strong>/etc/swanctl</strong></code>.</p>
 </div>
 <div class="paragraph">
@@ -850,12 +850,36 @@ configuration directory, usually <code><strong>/etc/swanctl</strong></code>.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_number_formats"><a class="anchor" href="#_number_formats"></a>Number Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Options that define an integer value can be specified as decimal (the default)
+or hexadecimal (<code><strong>0x</strong></code> prefix, upper- or lowercase letters are accepted).
+Locale-dependent strings (e.g. the thousands separator of the current locale)
+may also be accepted in locales other than <code><strong>C</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Options that define a floating-point value can be specified as decimal (the
+default) or hexadecimal (<code><strong>0x</strong></code> prefix, upper- or lowercase letters are accepted).
+The radix character (decimal separator) in either case is locale-dependent,
+usually <code>'<strong>.</strong>'</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_time_formats"><a class="anchor" href="#_time_formats"></a>Time Formats</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For all options that define a time, the time is specified in seconds. The <code><strong>s</strong></code>,
-<code><strong>m</strong></code>, <code><strong>h</strong></code> and <code><strong>d</strong></code> suffixes explicitly define the units for seconds, minutes,
-hours and days, respectively.</p>
+<p>Unless stated otherwise, options that define a time are specified in seconds.
+The <code><strong>s</strong></code>, <code><strong>m</strong></code>, <code><strong>h</strong></code> and <code><strong>d</strong></code> suffixes may be used to automatically convert values
+given in seconds, minutes, hours or days (for instance, instead of configuring
+a rekey time of <code><strong>4</strong></code> hours as <code><strong>14400</strong></code> seconds, <code><strong>4h</strong></code> may be used).</p>
+</div>
+<div class="paragraph">
+<p>There are some global options that don&#8217;t accept these suffixes as they are
+configured as integer values in seconds or milliseconds, or even as
+floating-point numbers (e.g. the retransmission timeout). Options that accept
+the suffixes have a corresponding default value.</p>
 </div>
 </div>
 </div>
@@ -1225,13 +1249,23 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.if_id_in</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. XFRM interface ID set on inbound policies/SA. Can be
- overridden by child config, see there for details</p></td>
+ overridden by child config, see there for details.
+<br>
+ The special value <code><strong>%unique</strong></code> allocates a unique interface ID per IKE_SA,
+ which is inherited by all its CHILD_SAs (unless overriden there), beyond
+ that the value <code><strong>%unique-dir</strong></code> assigns a different unique interface ID for
+ each direction (<code><strong>in/out</strong></code>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.if_id_out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. XFRM interface ID set on outbound policies/SA. Can be
- overridden by child config, see there for details</p></td>
+ overridden by child config, see there for details.
+<br>
+ The special value <code><strong>%unique</strong></code> allocates a unique interface ID per IKE_SA,
+ which is inherited by all its CHILD_SAs (unless overriden there), beyond
+ that the value <code><strong>%unique-dir</strong></code> assigns a different unique interface ID for
+ each direction (<code><strong>in/out</strong></code>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.mediation</p></td>

@@ -1105,6 +1105,40 @@ to learn about the details.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_number_formats"><a class="anchor" href="#_number_formats"></a>Number Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Options that define an integer value can be specified as decimal (the default)
+or hexadecimal (<code><strong>0x</strong></code> prefix, upper- or lowercase letters are accepted).
+Locale-dependent strings (e.g. the thousands separator of the current locale)
+may also be accepted in locales other than <code><strong>C</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Options that define a floating-point value can be specified as decimal (the
+default) or hexadecimal (<code><strong>0x</strong></code> prefix, upper- or lowercase letters are accepted).
+The radix character (decimal separator) in either case is locale-dependent,
+usually <code>'<strong>.</strong>'</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_time_formats"><a class="anchor" href="#_time_formats"></a>Time Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Unless stated otherwise, options that define a time are specified in seconds.
+The <code><strong>s</strong></code>, <code><strong>m</strong></code>, <code><strong>h</strong></code> and <code><strong>d</strong></code> suffixes may be used to automatically convert values
+given in seconds, minutes, hours or days (for instance, instead of configuring
+a rekey time of <code><strong>4</strong></code> hours as <code><strong>14400</strong></code> seconds, <code><strong>4h</strong></code> may be used).</p>
+</div>
+<div class="paragraph">
+<p>There are some global options that don&#8217;t accept these suffixes as they are
+configured as integer values in seconds or milliseconds, or even as
+floating-point numbers (e.g. the retransmission timeout). Options that accept
+the suffixes have a corresponding default value.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_keys"><a class="anchor" href="#_keys"></a>Keys</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1669,7 +1703,7 @@ connection attempts are blocked</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">retry_initiate_interval</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interval in seconds to use when retrying to initiate an <code>IKE SA</code> e.g. if DNS
  resolution failed (<code><strong>0</strong></code> to disable retries)</p></td>
 </tr>
@@ -2448,7 +2482,7 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accounting_interval</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interval in seconds for interim RADIUS accounting updates, if not specified by
  the RADIUS server in the Access-Accept message</p></td>
 </tr>
@@ -3619,6 +3653,11 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether OCSP validation should be enabled</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10s</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3786,7 +3825,7 @@ the <code><strong>ikev2_decryption_table</code></strong> file. Keys for ESP CHIL
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">timeout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">How long to wait for a valid system time if an interval is configured.
  <code><strong>0</strong></code> to recheck indefinitely</p></td>
 </tr>
@@ -5080,12 +5119,12 @@ subsection.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scep.http_timeout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>30s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timeout for HTTP operations</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scep.renewal_via_pkcs_req</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Some SCEP servers (e.g. <a href="https://github.com/openxpki/openxpki"><strong>openxpki</strong></a>) are incorrectly doing certificate
  renewal via <a href="https://datatracker.ietf.org/doc/html/rfc8894#section-3.2.1.2"><code><strong>msgType</strong></code></a> <code>PKCSReq</code> (<code><strong>19</strong></code>) instead of
  <code>RenewalReq</code> (<code><strong>17</strong></code>)</p></td>
