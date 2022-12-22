@@ -1558,7 +1558,7 @@ connection attempts are blocked</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max_ikev1_exchanges</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of IKEv1 phase 2 exchanges per IKE_SA to keep state about and &lt;
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of IKEv1 phase 2 exchanges per IKE_SA to keep state about and
  track concurrently</p></td>
 </tr>
 <tr>
@@ -1669,6 +1669,12 @@ connection attempts are blocked</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">replay_window</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>32</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Size of the AH/ESP replay window, in packets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reqid_base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value of the first reqid to be automatically assigned to a CHILD_SA (since
+ version 5.9.9)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">retransmit_base</p></td>
@@ -3622,14 +3628,27 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File where name servers are written to.
+<td class="tableblock halign-left valign-top"><p class="tableblock">File where name servers are written to if not using <code><strong>resolvconf(8)</strong></code>
 <code><strong>[/etc/resolv.conf]</strong></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">resolv_conf.iface_prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolvconf.iface</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix to be used for interface names provided to <code><strong>resolvconf(8)</strong></code>.
- <code><strong>[lo.inet.ipsec.]</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The interface name and protocol sent to <code><strong>resolvconf(8)</strong></code>. This has to be a
+ valid interface name according to the rules defined by <code><strong>resolvconf</strong></code>.  Also,
+ it should have a high priority according to the order defined in
+ <code><strong>interface-order(8)</strong></code> if relevant on the system
+ <code><strong>[lo.inet]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolvconf.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path/command for <code><strong>resolvconf(8)</strong></code> (since version 5.9.9). The command is
+ executed by a shell, so <code><strong>"resolvconf"</strong></code> will work if it&#8217;s in <code>$PATH</code> of the
+ daemon. If not configured, <code><strong>resolvconf(8)</strong></code> will be used if found at the
+ default location.  Otherwise, the file in <code><strong>charon.plugins.resolve.file</strong></code> will
+ be modified directly
+ <code><strong>[/sbin/resolvconf]</strong></code></p></td>
 </tr>
 </tbody>
 </table>

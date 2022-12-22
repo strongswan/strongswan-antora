@@ -881,14 +881,27 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File where name servers are written to.
+<td class="tableblock halign-left valign-top"><p class="tableblock">File where name servers are written to if not using <code><strong>resolvconf(8)</strong></code>
 <code><strong>[/etc/resolv.conf]</strong></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">resolv_conf.iface_prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolvconf.iface</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix to be used for interface names provided to <code><strong>resolvconf(8)</strong></code>.
- <code><strong>[lo.inet.ipsec.]</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The interface name and protocol sent to <code><strong>resolvconf(8)</strong></code>. This has to be a
+ valid interface name according to the rules defined by <code><strong>resolvconf</strong></code>.  Also,
+ it should have a high priority according to the order defined in
+ <code><strong>interface-order(8)</strong></code> if relevant on the system
+ <code><strong>[lo.inet]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolvconf.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path/command for <code><strong>resolvconf(8)</strong></code> (since version 5.9.9). The command is
+ executed by a shell, so <code><strong>"resolvconf"</strong></code> will work if it&#8217;s in <code>$PATH</code> of the
+ daemon. If not configured, <code><strong>resolvconf(8)</strong></code> will be used if found at the
+ default location.  Otherwise, the file in <code><strong>charon.plugins.resolve.file</strong></code> will
+ be modified directly
+ <code><strong>[/sbin/resolvconf]</strong></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -896,17 +909,19 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <h3 id="_support_for_resolvconf8"><a class="anchor" href="#_support_for_resolvconf8"></a>Support for resolvconf(8)</h3>
 <div class="paragraph">
 <p>strongSwan provides support for installing name servers via the
-<a href="http://en.wikipedia.org/wiki/Resolvconf"><code><strong>resolvconf</strong></code></a> framework.  If <code><strong>resolvconf</strong></code> is installed the
-plugin automatically invokes it appropriately instead of modifying <code><strong>resolv.conf</strong></code>
-directly.</p>
+<a href="http://en.wikipedia.org/wiki/Resolvconf"><code><strong>resolvconf</strong></code></a> framework (or e.g. the implementation provided by
+systemd&#8217;s <code><strong>resolvectl</strong></code>).  If <code><strong>resolvconf</strong></code> is found or its path is explicitly
+configured, the plugin automatically invokes it appropriately instead of
+modifying <code><strong>resolv.conf</strong></code> directly.</p>
 </div>
 <div class="paragraph">
-<p>The interface names provided to <code><strong>resolvconf</strong></code> are built by adding the IP
-address of the name server to the prefix configured in
-<a href="../config/strongswanConf.html" class="xref page">strongswan.conf</a> (or the default).
-The result must be a valid interface name according to the rules specified by
-<code><strong>resolvconf(8)</strong></code>. Additionally, the resulting interface name should have a high
-priority when the order defined in <code><strong>interface-order(5)</strong></code> is applied.</p>
+<p>Prior to version 5.9.9, the plugin installed every name server separately and
+generated unique interface names by adding the IP address of the name server to
+a prefix (configured in the now removed <code><strong>resolvconf.iface_prefix</strong></code> option).
+Since version 5.9.9, all name servers are installed and associated with a
+single, configurable interface/protocol name (<code><strong>resolvconf.iface</strong></code>). If multiple
+name servers are assigned, <code><strong>resolvconf</strong></code> will be invoked multiple times but
+each will receive all name servers available at the time.</p>
 </div>
 </div>
 </div>
