@@ -29,11 +29,6 @@ ui:
     contents: |
       static_files:
       - favicon.ico
-  # might not be necessary in the future
-  - path: css/search.css
-    contents: ./node_modules/@antora/lunr-extension/supplemental_ui/css/search.css
-  - path: js/search-ui.js
-    contents: ./node_modules/@antora/lunr-extension/supplemental_ui/js/search-ui.js
 antora:
   extensions:
     - require: '@antora/lunr-extension'
