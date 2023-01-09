@@ -843,7 +843,7 @@
 pki --req [--in file|--keyid hex] [--type rsa|ecdsa|priv] --oldreq file
           [--password challengePassword]
           [--digest sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
-          [--rsa-padding pkcs1|pss] [--outform der|pem]
+          [--rsa-padding pss|pkcs1] [--outform der|pem]
 
 pki --req --help</pre>
 </div>
@@ -942,8 +942,7 @@ corresponding <strong>Extended Key Usage</strong> (EKU) flags in the generated X
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-R</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--rsa-padding</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pkcs1</strong></code> or <code><strong>pss</strong></code>, defaults
-to <code><strong>pkcs1</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pss</strong></code> (the default) or <code><strong>pkcs1</strong></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-f</code></p></td>

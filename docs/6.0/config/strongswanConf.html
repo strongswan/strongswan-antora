@@ -1547,7 +1547,7 @@ connection attempts are blocked</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make_before_break</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Initiate IKEv2 reauthentication with a <strong>make-before-break</strong> instead of a
  <strong>break-before-make</strong> scheme. Make-before-break uses overlapping <code>IKE</code> and <code>CHILD SA</code>
  during reauthentication by first recreating all new SAs before deleting the old
@@ -1730,8 +1730,9 @@ connection attempts are blocked</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rsa_pss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use RSA with PSS padding instead of PKCS#1 padding by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use RSA with PSS padding by default. Revert to legacy PKCS#1 padding by setting
+ the option to no</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rsa_pss_trailerfield</p></td>
