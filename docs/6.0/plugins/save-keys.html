@@ -1000,7 +1000,16 @@ PING bob.strongswan.org (10.2.0.10) 56(84) bytes of data.
 </div>
 </div>
 <div class="paragraph">
-<p>We store the captured <code><strong>wireshark</strong></code> trace under the file name <code><strong>moon.pcapng</strong></code>.</p>
+<p>We enable the decoding of encrypted ESP payloads in the Wireshark
+<code><strong>Edit/Preferences/Protocols/ESP</strong></code> menu</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="../_images/wiresharkDecrypt.png"><img src="../_images/wiresharkDecrypt.png" alt="Enable ESP decryption" width="550" height="427"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally we store the captured <code><strong>wireshark</strong></code> trace under the file name <code><strong>moon.pcapng</strong></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1050,7 +1059,7 @@ table, so that the <code><strong>deadbeef</strong></code> ICMP request is displa
 </div>
 <div class="imageblock">
 <div class="content">
-<a class="image" href="../_images/wiresharkESP.png"><img src="../_images/wiresharkESP.png" alt="Encrypted wireshark trace"></a>
+<a class="image" href="../_images/wiresharkESP.png"><img src="../_images/wiresharkESP.png" alt="Decrypted wireshark ESP packets"></a>
 </div>
 </div>
 <div class="paragraph">
@@ -1060,7 +1069,7 @@ the <code><strong>Encrypted Data</strong></code> IKEv2 payload can be browsed in
 </div>
 <div class="imageblock">
 <div class="content">
-<a class="image" href="../_images/wiresharkIKE.png"><img src="../_images/wiresharkIKE.png" alt="Encrypted wireshark trace"></a>
+<a class="image" href="../_images/wiresharkIKE.png"><img src="../_images/wiresharkIKE.png" alt="Decrypted wireshark IKEv2 packets"></a>
 </div>
 </div>
 </div>
