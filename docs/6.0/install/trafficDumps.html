@@ -1171,10 +1171,10 @@ whereas with IKEv2 look for <code><strong>Sk</strong></code>. The ESP keys are l
 <code><strong>chd</strong></code> subsystem but can also be extracted via <code><strong>ip xfrm state</strong></code>.</p>
 </div>
 <div class="paragraph">
-<p>Starting with strongSwan version 5.6.2, the <code><strong>save-keys</strong></code> plugin for <code><strong>libcharon</strong></code>
-can be used to automatically store IKE and ESP keys in a file in Wireshark format.
-This key file can then be loaded by Wireshark to decrypt the captured IKE and ESP
-packets.</p>
+<p>Starting with strongSwan version 5.6.2, the <a href="../plugins/save-keys.html" class="xref page"><code><strong>save-keys</strong></code></a>
+plugin for <code><strong>libcharon</strong></code> can be used to automatically store IKE and ESP keys under
+corresponding default file names in Wireshark format. This key files can then be
+loaded by Wireshark to decrypt the captured IKE and ESP packets.</p>
 </div>
 <div class="paragraph">
 <p>To debug IKEv2 it is also possible to use <code><strong>NULL</strong></code> encryption via the <code><strong>openssl</strong></code>
