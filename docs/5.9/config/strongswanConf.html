@@ -869,7 +869,8 @@ the path usually  is <code><strong>/etc/strongswan.conf</strong></code>.</p>
 </div>
 <div class="paragraph">
 <p>Since version 5.1.2 the default config file may be split up and separate files
-are placed in the <a href="strongswanDir.html" class="xref page"><code><strong>/etc/strongswan.d</strong></code></a> directory.</p>
+are placed in the <a href="strongswanDir.html" class="xref page"><code><strong>${sysconfdir}/strongswan.d</strong></code></a>
+directory.</p>
 </div>
 <div class="paragraph">
 <p>The location in which <code><strong>strongswan.conf</strong></code> is looked for can be overwritten at
@@ -1260,7 +1261,7 @@ peer doesn&#8217;t send a vendor ID via <code><strong>send_vendor_id</strong></c
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether Certicate Revocation Lists (CRLs) fetched via HTTP or LDAP should be
  saved under a unique file name derived from the public key of the Certification
- Authority (CA) to <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>/etc/swanctl/x509crl</strong></code></a></p></td>
+ Authority (CA) to <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>${sysconfdir}/x509crl</strong></code></a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check_current_path</p></td>
@@ -2258,6 +2259,14 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of redirects followed by the plugin, set to <code><strong>0</strong></code>  to disable
  following redirects, set to <code><strong>-1</strong></code> for no limit</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tls_backend</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The SSL/TLS backend to configure in curl if multiple are available (requires
+ <code>libcurl</code> 7.56 or newer). A list of available options is logged on level 2 if
+ nothing is configured. Similar but on level 1 if the selected backend isn&#8217;t
+ available</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3025,6 +3034,16 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
  present. For rare cases in which the loopback device cannot be used to obtain
  the appropriate feature flag, this option can be used to specify an alternative
  interface for offload feature detection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">install_routes_xfrmi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether routes via <a href="../features/routeBasedVpn.html#_xfrm_interfaces_on_linux" class="xref page">XFRM interfaces</a>
+ are automatically installed for SAs that reference such an interface via
+ <code><strong>if_id_out</strong></code>.  If the traffic selectors include the IKE traffic to the peer, this
+ requires special care (e.g. installing bypass policies and/or routes, or
+ setting a mark on the IKE socket and excluding such packets from the configured
+ routing table via <code><strong>fwmark</strong></code> option). Since version 5.9.10</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mss</p></td>
@@ -4122,7 +4141,7 @@ the <code><strong>ikev2_decryption_table</code></strong> file. Keys for ESP CHIL
 <td class="tableblock halign-left valign-top"><p class="tableblock">File to read DNSSEC trust anchors from (usually root zone KSK). The format of
  the file is the standard DNS Zone file format, anchors can be stored as DS or
  DNSKEY entries in the file.
- <code><strong>[/etc/ipsec.d/dnssec.keys]</strong></code></p></td>
+ <code><strong>[${sysconfdir}/ipsec.d/dnssec.keys]</strong></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -4273,6 +4292,11 @@ username part</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Directory from which to load CA certificates if no certificate is configured.
  <code><strong>[${nm_ca_dir}]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mtu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1400</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MTU for XFRM interfaces created by the NM plugin</p></td>
 </tr>
 </tbody>
 </table>
