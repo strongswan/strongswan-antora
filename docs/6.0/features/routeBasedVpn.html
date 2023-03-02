@@ -1313,9 +1313,10 @@ interfaces yet with <code><strong>ip -d link</strong></code>.</p>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-The daemon will not install any routes for CHILD_SAs with outbound
-           interface ID, so it&#8217;s not necessary to disable the route installation
-           globally.
+By default, the daemon will not install any routes for CHILD_SAs with
+           outbound interface ID, so it&#8217;s not necessary to disable the route
+           installation globally. Since version 5.9.10 strongSwan optionally
+           installs routes automatically (see below)
 </td>
 </tr>
 </table>
@@ -1345,6 +1346,32 @@ inherited by all CHILD_SAs created under the IKE_SA).</p>
 </div>
 <div class="paragraph">
 <p>It&#8217;s possible to use transport mode for host-to-host connections between two peers.</p>
+</div>
+<div class="paragraph">
+<p>Since version 5.9.10, strongSwan optionally installs routes via XFRM
+interfaces if the <code><strong>charon.plugins.kernel-netlink.install_routes_xfrmi</strong></code> option
+is enabled. A route is only installed if an interface with the ID configured
+in <code><strong>if_id_out</strong></code> exists when the corresponding CHILD_SA is installed.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+If the traffic selectors include the IKE traffic to the peer, enabling
+         <code><strong>install_routes_xfrmi</strong></code> requires special care (similarly, if manually
+         installed routes conflict with the IKE traffic to the peer). Besides
+         excluding all traffic to the peer via bypass policies and throw routes,
+         the easiest way to only exclude IKE traffic is setting a mark on the
+         IKE socket (via <code><strong>charon.plugins.socket-default.fwmark</strong>=&lt;mark&gt;</code>) and
+         excluding such packets from the configured routing table where routes
+         via XFRM interface are installed (via
+         <code><strong>charon.plugins.kernel-netlink.fwmark</strong>=!&lt;mark&gt;</code>).
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">

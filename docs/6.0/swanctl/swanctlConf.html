@@ -1135,16 +1135,19 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.childless</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>allow</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. Use childless IKE_SA initiation (<a href="https://datatracker.ietf.org/doc/html/rfc6023">RFC 6023</a>) for
- IKEv2. Acceptable values are <code><strong>allow</strong></code> (the default), <code><strong>force</strong></code> and <code><strong>never</strong></code>.
- If set to <code><strong>allow</strong></code>, responders will accept childless IKE_SAs (as indicated via
- notify in the IKE_SA_INIT response) while initiators continue to create regular
- IKE_SAs with the first CHILD_SA created during IKE_AUTH, unless the IKE_SA is
- initiated explicitly without any children (which will fail if the responder does
- not support or has disabled this extension).  If set to <code><strong>force</strong></code>, only childless
- initiation is accepted and the first CHILD_SA is created with a separate
- <code>CREATE_CHILD_SA</code> exchange (e.g. to use an independent DH exchange for all
- CHILD_SAs). Finally, setting the option to <code><strong>never</strong></code>, disables support for
- childless IKE_SAs as responder</p></td>
+ IKEv2, with the first CHILD_SA created with a separate CREATE_CHILD_SA
+ exchange (e.g. to use an independent key exchange for all CHILD_SAs). Acceptable
+ values are <code><strong>allow</strong></code> (the default), <code><strong>prefer</strong></code> (since version 5.9.10),
+ <code><strong>force</strong></code> and <code><strong>never</strong></code>.  If set to <code><strong>allow</strong></code>, responders will accept childless
+ IKE_SAs (as indicated via notify in the IKE_SA_INIT response) while initiators
+ continue to create regular IKE_SAs with the first CHILD_SA created during
+ IKE_AUTH, unless the IKE_SA is initiated explicitly without any children (which
+ will fail if the responder does not support or has disabled this extension).
+ The effect of <code><strong>prefer</strong></code> is the same as <code><strong>allow</strong></code> on responders, but as
+ initiator, a childless IKE_SA is initiated if the responder supports it. If set
+ to <code><strong>force</strong></code>, only childless initiation is accepted in either role. Finally,
+ setting the option to <code><strong>never</strong></code>, disables support for childless IKE_SAs as
+ responder</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.send_certreq</p></td>
@@ -2047,9 +2050,12 @@ of the CHILD_SA configuration, which must be unique within the connection
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.hw_offload</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable hardware offload for this CHILD_SA, if supported by the IPsec implementation.
- The value <code><strong>yes</strong></code> enforces offloading and the installation will fail if it&#8217;s not
- supported by either kernel or device. The value <code><strong>auto</strong></code> enables offloading if it&#8217;s
- supported but the installation does not fail otherwise</p></td>
+ The values <code><strong>crypto</strong></code> or <code><strong>packet</strong></code> (since 5.9.10) enforce crypto or full packet
+ offloading and the installation will fail if the selected mode is not supported
+ by either kernel or device. On Linux, <code><strong>packet</strong></code> also offloads policies,
+ including trap policies. The value <code><strong>auto</strong></code> enables full packet or crypto
+ offloading, if either is supported, but the installation does not fail
+ otherwise.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.copy_df</p></td>
