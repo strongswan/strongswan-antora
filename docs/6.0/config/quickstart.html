@@ -1533,6 +1533,82 @@ from any remote address/port.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_for_specific_port_ranges"><a class="anchor" href="#_for_specific_port_ranges"></a>For specific port ranges</h3>
+<div class="paragraph">
+<p>The following is a passthrough policy that allows traffic to the local TCP port
+range <code><strong>65000-65255</strong></code> from any remote address/port. Using the little-known
+capability of the <code><strong>kernel-netlink</strong></code> plugin to implement port ranges defined by
+a bit mask (similar to an IP subnet mask), the arbitrary port range defined above
+can be split into the following six contiguous subranges described by a bit mask
+each:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>port subrange</strong></th>
+<th class="tableblock halign-left valign-top"><strong>number of ports in range</strong></th>
+<th class="tableblock halign-left valign-top"><strong>bit mask</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65000-65007</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/29 (0xfffffff8)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65008-65023</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>16</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/28 (0xfffffff0)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65024-65151</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>128</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/25 (0xffffff80)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65152-65215</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/26 (0xffffffc0)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65216-65247</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/27 (0xffffffe0)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65248-65255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/29 (0xfffffff8)</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre>/etc/swanctl/swanctl.conf:
+
+  connections {
+    passthrough-port-range {
+      remote_addrs = 127.0.0.1
+      children {
+        passthrough-port-range {
+          local_ts  = dynamic[tcp/65000-65007],dynamic[tcp/65008-65023],dynamic[tcp/65024-65151],dynamic[tcp/65152-65215],dynamic[tcp/65216-65247],dynamic[tcp/65248-65255]
+          remote_ts = 0.0.0.0/0
+          mode = pass
+          start_action = trap
+        }
+      }
+    }
+  }</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
