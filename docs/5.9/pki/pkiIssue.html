@@ -654,7 +654,7 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Devs</span>
+    <span class="nav-text">Development</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
@@ -907,6 +907,11 @@ private key.</p>
 </div>
 <div class="paragraph">
 <p>The generic type <code>priv</code> can be used to load any supported private key type.</p>
+</div>
+<div class="paragraph">
+<p>Without modifiers, the <code>--flag</code> argument overrides flags from PKCS#10
+certificate requests. Prefixing a flag with <code>+</code> adds it to the set of flags
+read from the request, prefixing it with <code>-</code> removes it from that set.</p>
 </div>
 </div>
 </div>
