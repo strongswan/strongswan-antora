@@ -847,7 +847,8 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>pki --estca --url url [--caout file] [--outform der|pem] [--force] [--debug level]
+<pre>pki --estca --url url [--label label] --cacert file [--caout file]
+           [--outform der|pem] [--force] [--debug level]
 
 pki --estca --help</pre>
 </div>
@@ -896,6 +897,11 @@ Transport</strong> protocol (<a href="https://datatracker.ietf.org/doc/html/rfc7
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-u</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--url</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URL of the SCEP server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--label</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label in the EST server path</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-C</code></p></td>

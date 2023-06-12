@@ -838,7 +838,7 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>pki --scep --url url [--in file] --dn distinguished-name [--san subjectAltName]+
+<pre>pki --scep --url url [--in file] [--dn distinguished-name] [--san subjectAltName]+
           [--profile profile] [--password password]
            --cacert-enc file --cacert-sig file [--cacert file]+
           [--cert file --key file] [--cipher aes|des3]
@@ -910,7 +910,7 @@ key for automatic authentication with the SCEP server.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-d</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--dn</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subject distinguished name (DN). Required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subject distinguished name (DN). Required unless <code>--cert</code> is given</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-a</code></p></td>

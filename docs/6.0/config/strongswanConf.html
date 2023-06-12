@@ -2998,6 +2998,18 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow that the remote traffic selector equals the IKE peer</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fwmark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Firewall mark to set on outbound raw ESP packets. Since version 5.9.11
+ <code><strong>[charon.plugins.socket-default.fwmark]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">raw_esp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to send and receive ESP packets without UDP encapsulation if supported
+ on this platform and no NAT is detected. Since version 5.9.11</p></td>
+</tr>
 </tbody>
 </table>
 </div>

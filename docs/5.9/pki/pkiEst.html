@@ -838,7 +838,7 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>pki --est --url url [--in file] [--cacert file]+
+<pre>pki --est --url url [--label label] [--in file] --cacert file
          [--cert file|--certid hex --key file|--keyid hex]
          [--userpass username:password] [--interval time]
          [--maxpolltime time] [--outform der|pem]
@@ -897,6 +897,11 @@ key for automatic TLS client authentication with the EST server.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-u</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--url</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URL of the EST server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--label</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label in the EST server path</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>

@@ -877,15 +877,25 @@ the <code><strong>kernel-pfroute</strong></code> plugin has to be enabled, too.<
 <h2 id="_behavior"><a class="anchor" href="#_behavior"></a>Behavior</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With the plugin enabled a TUN device is created on startup that will be used to
+<p>With the plugin enabled, a TUN device is created on startup that will be used to
 handle cleartext traffic from and to the host. For each IPsec SA routes get
 installed that direct traffic to the TUN device, from there the plugin reads the
-cleartext packets and encrypts them via <code><strong>libipsec</strong></code>. The resulting ESP packets
-will be sent over the UDP sockets the daemon uses for IKE traffic, which is why
-<strong>the plugin currently only works with UDP encapsulation (NAT-T) enabled</strong>.
-Encapsulated ESP packets that are received on the daemon&#8217;s UDP socket are
-decrypted by <code><strong>libipsec</strong></code> and then injected via TUN device. <code><strong>libipsec</strong></code> can use
-all ciphers supported for IKE to encrypt and authenticate traffic.</p>
+cleartext packets and encrypts them via <code><strong>libipsec</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The resulting ESP packets are usually sent over the UDP sockets the daemon
+uses for IKE traffic, that is, <strong>the plugin enforces UDP encapsulation (NAT-T)</strong>.
+On Linux, handling of raw ESP packets can be enabled since version 5.9.11 to
+also send/receive ESP packets without UDP-encapsulation (this uses RAW sockets).</p>
+</div>
+<div class="paragraph">
+<p>ESP packets that are received are decrypted by <code><strong>libipsec</strong></code> and then injected
+via TUN device. <code><strong>libipsec</strong></code> can use all ciphers supported for IKE to encrypt
+and authenticate traffic.</p>
+</div>
+<div class="paragraph">
+<p>Since version 5.9.11, trap policies are supported to trigger the negotiation
+of SAs once matching traffic hits the TUN device.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -936,6 +946,18 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <td class="tableblock halign-left valign-top"><p class="tableblock">allow_peer_ts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow that the remote traffic selector equals the IKE peer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fwmark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Firewall mark to set on outbound raw ESP packets. Since version 5.9.11
+ <code><strong>[charon.plugins.socket-default.fwmark]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">raw_esp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to send and receive ESP packets without UDP encapsulation if supported
+ on this platform and no NAT is detected. Since version 5.9.11</p></td>
 </tr>
 </tbody>
 </table>
