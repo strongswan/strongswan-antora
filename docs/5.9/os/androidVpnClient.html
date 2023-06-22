@@ -825,8 +825,8 @@
     <a class="version is-current" href="androidVpnClient.html">5.9</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/os/androidVpnClient.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/os/androidVpnClient.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -879,7 +879,7 @@ shows the current connection status and allows connecting/terminating the curren
 VPN connection easily. The same version brought support for the Always-on VPN
 feature that may be enabled in the system&#8217;s VPN settings on Android 7+ and will
 start the VPN profile after a reboot (refer to the
-<a href="#_2_0_0_2018_07_03">[changelog</a> for potential caveats). The default VPN profile
+<a href="#_2_0_0_2018_07_03">changelog</a> for potential caveats). The default VPN profile
 used for these two features may be configured in the app&#8217;s global settings (the
 default is to initiate the most recently used profile).</p>
 </div>
@@ -1048,6 +1048,14 @@ it is limited to use UDP-encapsulated ESP, which it sends/receives via the UDP
 sockets used for IKE. So UDP-encapsulation is
 <a href="../features/natTraversal.html#_udp_encapsulation_of_esp" class="xref page">always enforced</a> even
 if there is no NAT between client and server, by sending a random NAT-D payload.</p>
+</li>
+<li>
+<p>The above has implications regarding IPv6. Because the Linux kernel only
+supports UDP-encapsulation for ESP for IPv6 since 5.8, many servers might not
+support this yet.  Therefore, while IPv6 is always supported inside the
+tunnel (if appropriate virtual IPs and traffic selectors are negotiated),
+support for IPv6 transport addresses for IKE and ESP has to be enabled
+explicitly (per connection, available since <a href="#_2_3_1_2020_10_29">2.3.1</a>).</p>
 </li>
 <li>
 <p>The app is not compatible with Google&#8217;s <a href="https://fi.google.com">Project Fi</a> which provides
