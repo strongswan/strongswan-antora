@@ -868,26 +868,88 @@ with some small changes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For manual configurations, specify only DH group 2 (<code><strong>modp1024</strong></code>) in the <code><strong>ike</strong></code>
-configuration. Although the iOS client claims to support <code><strong>modp1536</strong></code>, an
-unfixed bug prevents these connections from succeeding. An appropriate
-configuration consisting of 3 proposals for iOS, Windows and macOS, respectively
-might look like</p>
-<div class="listingblock">
-<div class="content">
-<pre>ike=aes256-sha256-modp1024,aes256-sha1-modp1024,3des-sha1-modp1024
-esp=aes256-sha256,aes256-sha1,3des-sha1</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As of iOS 14 (maybe earlier) <code><strong>modp2048</strong></code> and <code><strong>sha2</strong></code> are supported. Thus use</p>
-</div>
+<p>When configuring clients manually without profile, strongSwan&#8217;s default
+proposals should work fine with recent iOS/macOS versions.  If you like to
+manually specify proposals (e.g. to use PFS, see below), note that <code><strong>modp2048</strong></code>
+and <code><strong>sha2</strong></code> are supported at least since iOS 14. So the following proposals
+may be configured (if necessary, combined with further algorithms/proposals
+for other clients):</p>
 <div class="listingblock">
 <div class="content">
 <pre>ike=aes256-sha256-modp2048
 esp=aes256-sha256</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If you want to use <a href="../config/rekeying.html#_ipsec_sas" class="xref page">PFS for CHILD_SAs</a>,
+  be aware that only iOS sends a proposal with DH group (and a second one
+  without), by default, macOS only sends one without. So to support PFS with iOS
+  clients without failing to rekey with macOS clients, configure something like
+  this to make the DH group optional:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ike=aes256-sha256-modp2048
+esp=aes256-sha256-modp2048-modpnone</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also note that only iOS sends a proposal with <code><strong>ecp256</strong></code>, by default.  And while
+it also sends one with <code><strong>modp1536</strong></code>, that might not work due to an unfixed bug,
+so using <code><strong>modp2048</strong></code> or <code><strong>ecp256</strong></code> should be preferred. Refer to the following
+proposal lists for details.</p>
+</div>
+<details>
+<summary class="title">Default IKE/ESP proposals sent by iOS/macOS</summary>
+<div class="content">
+<div class="paragraph">
+<p>iOS (as of 16.5)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/MODP_2048
+IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/ECP_256
+IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/MODP_1536
+IKE:AES_CBC_128/HMAC_SHA1_96/PRF_HMAC_SHA1/MODP_1024
+IKE:3DES_CBC/HMAC_SHA1_96/PRF_HMAC_SHA1/MODP_1024
+
+ESP:AES_CBC_256/HMAC_SHA2_256_128/NO_EXT_SEQ
+ESP:AES_CBC_256/HMAC_SHA2_256_128/NO_EXT_SEQ
+ESP:AES_CBC_256/HMAC_SHA2_256_128/NO_EXT_SEQ
+ESP:AES_CBC_128/HMAC_SHA1_96/NO_EXT_SEQ
+ESP:3DES_CBC/HMAC_SHA1_96/NO_EXT_SEQ</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When rekeying IPsec SAs (the DH group in the first proposal is presumably the
+one selected for IKE):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ESP:AES_CBC_256/HMAC_SHA2_256_128/MODP_2048/NO_EXT_SEQ
+ESP:AES_CBC_256/HMAC_SHA2_256_128/NO_EXT_SEQ</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>macOS (as of 13.4)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/MODP_2048
+
+ESP:AES_CBC_256/HMAC_SHA2_256_128/NO_EXT_SEQ</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When rekeying IPsec SAs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ESP:AES_CBC_256/HMAC_SHA2_256_128/NO_EXT_SEQ</pre>
+</div>
+</div>
+</div>
+</details>
 </li>
 <li>
 <p>The client does not send a certificate request (<code><strong>CERTREQ</strong></code>) unless

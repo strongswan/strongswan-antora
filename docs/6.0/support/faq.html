@@ -1246,8 +1246,11 @@ people re-generate keys and certificates and try to use the wrong private key.</
 </div>
 <div class="paragraph">
 <p><strong>A:</strong> The daemon is unable to authenticate the remote peer&#8217;s transmitted identity
-using its available authentication credentials (e.g. transmitted client certificate,
-all transmitted and installed/trusted CA certificates).</p>
+(the value in <code>[]</code>) using its available authentication credentials (e.g.
+transmitted client certificate, all transmitted and installed/trusted CA
+certificates). This could be because no matching certificate/key is found or if
+certificate validation failed. Make sure to check the log messages before this
+error for details (see below for hints what to look for).</p>
 </div>
 <div class="paragraph">
 <p>Make sure your configuration fulfills the following requirements:</p>
@@ -1264,7 +1267,18 @@ the peer&#8217;s private key)</p>
 </div>
 </li>
 <li>
-<p>Any required intermediate CA certificates are also sent or locally installed</p>
+<p>Any required intermediate CA certificates are also sent (check the log for
+<code>sending issuer cert</code> and/or <code>received issuer cert</code>) or locally installed</p>
+</li>
+<li>
+<p>The end-entity certificate matches the peer&#8217;s transmitted identity, and
+certificate validation is attempted (check the log for <code>using certificate</code>
+and/or <code>using trusted ca certificate</code>). If the error is logged without any such
+attempt, make sure the transmitted identity is either in one of the
+certificate&#8217;s subjectAltName (SAN) extensions with the correct type (type IP if
+it&#8217;s an IP address, type FQDN if it&#8217;s a FQDN) or it equals the certificate&#8217;s
+full subject DN (distinguished name). To fix this, either update the
+certificate (e.g. add the missing SAN), or change the identity the peer sends</p>
 </li>
 <li>
 <p>The root/intermediate CA that issued the end-entity certificate is trusted or
@@ -1274,11 +1288,6 @@ the end-entity certificate is locally installed (check
 <li>
 <p>The end-entity and CA certificates are valid (make sure to also check the system
 time). Note that this check is skipped for locally installed end-entity certificates</p>
-</li>
-<li>
-<p>The transmitted identity is either in one of it&#8217;s certificate&#8217;s SAN fields
-with the correct type (type IP if it&#8217;s an IP, type FQDN if it&#8217;s a FQDN) or it
-equals the certificate&#8217;s full subject DN (distinguished name)</p>
 </li>
 </ul>
 </div>
