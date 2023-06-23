@@ -1146,6 +1146,16 @@ responder (it is disabled by default):</p>
 <p>To collect IKEv2 logs on macOS, use the <code>process:NEIKEv2Provider</code> search filter
 in <a href="https://support.apple.com/guide/console/welcome/mac">Console</a>.</p>
 </div>
+<div class="paragraph">
+<p>Logs can also be viewed or followed in Terminal with the following
+commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>log show --predicate 'process == "NEIKEv2Provider"'
+log stream --predicate 'process == "NEIKEv2Provider"'</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
