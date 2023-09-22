@@ -882,6 +882,19 @@
 <div class="sect1">
 <h2 id="_compile_strongswan_yourself"><a class="anchor" href="#_compile_strongswan_yourself"></a>Compile strongSwan Yourself</h2>
 <div class="sectionbody">
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Make sure no strongSwan-related distribution packages are installed
+         before building and installing strongSwan from sources
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_linux_kernel_requirements"><a class="anchor" href="#_linux_kernel_requirements"></a>Linux Kernel Requirements</h3>
 <div class="paragraph">
@@ -893,7 +906,7 @@ include the required <a href="kernelModules.html" class="xref page">kernel modul
 <h3 id="_building_strongswan"><a class="anchor" href="#_building_strongswan"></a>Building strongSwan</h3>
 <div class="paragraph">
 <p>The GNU build system (Autotools) is used to build strongSwan. There is an ever
-growing list of <a href="autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> options available.</p>
+growing list of <a href="autoconf.html" class="xref page"><code><strong>./configure</strong></code> options</a> available.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -921,9 +934,9 @@ plugins enabled with the above options.</p>
 </td>
 <td class="content">
 Some plugins have <strong>dependencies on third-party libraries</strong>. To compile these
-      plugins the header files of those libraries are required. Make sure these
+      plugins, the header files of those libraries are required. Make sure these
       are installed on your system, e.g. by installing the appropriate <strong>-dev</strong>
-      package on Debian-based systems. Otherwise the configure script will
+      package on Debian-based systems. Otherwise, the configure script will
       complain that it can&#8217;t find the library or header files.
 </td>
 </tr>
@@ -946,7 +959,8 @@ Some plugins have <strong>dependencies on third-party libraries</strong>. To com
 <p>Unpack the tarball and navigate into the directory:</p>
 <div class="listingblock">
 <div class="content">
-<pre>tar xjf strongswan-x.x.x.tar.bz2; cd strongswan-x.x.x</pre>
+<pre>tar xjf strongswan-x.x.x.tar.bz2
+cd strongswan-x.x.x</pre>
 </div>
 </div>
 </li>

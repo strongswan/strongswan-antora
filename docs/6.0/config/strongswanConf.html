@@ -3077,6 +3077,14 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock">MTU to set on installed routes, <code><strong>0</strong></code> to disable</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">port_bypass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use port or socket based IKE XFRM bypass policies. IKE bypass
+ policies are used to exempt IKE traffic from XFRM processing. The default
+ socket based policies are directly tied to the IKE UDP sockets, port
+ based policies use global XFRM bypass policies for the used IKE UDP ports.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">process_rules</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether to process changes in routing rules to trigger roam events. This is

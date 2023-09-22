@@ -1343,25 +1343,45 @@ interfaces if the <code><strong>charon.plugins.kernel-netlink.install_routes_xfr
 is enabled. A route is only installed if an interface with the ID configured
 in <code><strong>if_id_out</strong></code> exists when the corresponding CHILD_SA is installed.</p>
 </div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-If the traffic selectors include the IKE traffic to the peer, enabling
-         <code><strong>install_routes_xfrmi</strong></code> requires special care (similarly, if manually
-         installed routes conflict with the IKE traffic to the peer). Besides
-         excluding all traffic to the peer via bypass policies and throw routes,
-         the easiest way to only exclude IKE traffic is setting a mark on the
-         IKE socket (via <code><strong>charon.plugins.socket-default.fwmark</strong>=&lt;mark&gt;</code>) and
-         excluding such packets from the configured routing table where routes
-         via XFRM interface are installed (via
-         <code><strong>charon.plugins.kernel-netlink.fwmark</strong>=!&lt;mark&gt;</code>).
-</td>
-</tr>
-</table>
+</div>
+<div class="sect2">
+<h3 id="_avoid_routing_loops_with_ikeesp_traffic"><a class="anchor" href="#_avoid_routing_loops_with_ikeesp_traffic"></a>Avoid Routing Loops with IKE/ESP Traffic</h3>
+<div class="paragraph">
+<p>If the negotiated traffic selectors include the IKE/ESP traffic to the
+peer, enabling <code><strong>install_routes_xfrmi</strong></code> (see above) requires special care to
+avoid routing loops (i.e. routing IKE and ESP packets into the XFRM interface).
+The same applies if routes that conflict with the IKE/ESP traffic (e.g. a default
+route) are installed manually via an XFRM interface.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the routes via XFRM interface are installed in routing table 220, which
+is what the mentioned option does, by default, there are basically two options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set marks on the IKE packets (globally via <code><strong>charon.plugins.socket-default.fwmark</strong>=&lt;mark&gt;</code>)
+and the ESP packets (via <code><strong>&lt;child&gt;.set_mark_out</strong>=&lt;mark&gt;</code>), and then exclude
+such packets from routing table 220 by adding a negative mark on the routing
+rule (via <code><strong>charon.plugins.kernel-netlink.fwmark</strong>=!&lt;mark&gt;</code>).
+<code>&lt;mark&gt;</code> is an arbitrary value, but preferably one that&#8217;s not already used for
+something else on the system.</p>
+</li>
+<li>
+<p>Alternatively, e.g. if the kernel doesn&#8217;t support <code><strong>set_mark_out</strong></code>, install an
+explicit route to the peer&#8217;s IP address, either via a physical interface
+instead of the XFRM interface, or, for instance, a <code><strong>throw</strong></code> route in table
+220, so the other routes in that table are ignored for packets addressed to
+the peer and the next and eventually the main routing table will be used (e.g.
+<code><strong>ip route add throw &lt;peer ip&gt; table 220</strong></code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first option should be preferred as it only affects IKE and ESP traffic and
+protects all other traffic addressed to the peer&#8217;s IP address, and it has the
+advantage of not requiring a route for each peer and continues to work if a
+peer&#8217;s IP address changes.</p>
 </div>
 </div>
 <div class="sect2">
