@@ -1297,19 +1297,15 @@ is inexpensive, as it usually does not include a DH exchange.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_ha_plugin"><a class="anchor" href="#_building_ha_plugin"></a>Building HA Plugin</h2>
+<h2 id="_building_the_ha_plugin"><a class="anchor" href="#_building_the_ha_plugin"></a>Building the HA Plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="../plugins/ha.html" class="xref page"><code><strong>ha</strong></code></a> plugin must be enabled via
-<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a>. The plugin must use the same hashing
-algorithm for segment calculation as the kernel (<code><strong>jhash</strong></code>). This algorithm has
-changed for Linux 2.6.37 and may again change in the future. To use the correct
-version of <code><strong>jhash</strong></code>, build strongSwan against the kernel headers of the kernel
-you&#8217;re actually running strongSwan on:</p>
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a>:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>./configure --enable-ha --with-linux-headers=/path/to/target/kernel/include/linux</pre>
+<pre>./configure --enable-ha</pre>
 </div>
 </div>
 </div>
