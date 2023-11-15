@@ -1061,6 +1061,11 @@ Installs the private key, the host and CA certificates needed as TLS credentials
 by an <code><strong>apache2</strong></code>-based <a href="https://openxpki.readthedocs.io/en/develop/quickstart.html"><strong>OpenXPKI</strong></a> server.</p>
 </li>
 <li>
+<p><a href="https://github.com/strongswan/strongswan/blob/master/src/cert-enroll/cert-install-ssl"><code><strong>cert-install-ssl</strong></code></a>:
+Installs the generated key, host certificate and associated CA certificates
+as credentials for a TLS-protected client-server connection.</p>
+</li>
+<li>
 <p><a href="https://github.com/strongswan/strongswan/blob/master/src/cert-enroll/cert-install-sssd"><code><strong>cert-install-sssd</strong></code></a>:
 Copies the current and the previous but still valid <strong>Root CA</strong> and
 <strong>Intermediate CA</strong> certificates into the <code><strong>ldap_tls_cacertdir</strong></code> directory defined
