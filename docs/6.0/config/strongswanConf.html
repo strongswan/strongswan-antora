@@ -454,6 +454,9 @@
     <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -599,6 +602,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
@@ -3532,6 +3538,24 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Load the legacy provider in OpenSSL 3+ for algorithms like MD4, DES, or Blowfish
 (the first two are required for EAP-MSCHAPv2). If disabled, the default provider
  is loaded, or those configured in the OpenSSL config (e.g. the fips provider)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_charon_plugins_openxpki"><a class="anchor" href="#_charon_plugins_openxpki"></a><a href="../plugins/openxpki.html" class="xref page">charon.plugins.openxpki</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 30.7692%;">
+<col style="width: 7.6923%;">
+<col style="width: 61.5385%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openxpki/openxpki">OpenXPKI</a> MySQL/MariaDB URI. If it contains a password, make sure to
+ adjust the permissions of the config file accordingly</p></td>
 </tr>
 </tbody>
 </table>

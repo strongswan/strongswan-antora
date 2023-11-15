@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>pki --dn :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/pki/pkiDn.html">
-    <link rel="prev" href="pkiAcert.html">
-    <link rel="next" href="pkiEst.html">
+    <title>pki --ocsp :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/pki/pkiOcsp.html">
+    <link rel="prev" href="pkiKeyid.html">
+    <link rel="next" href="pkiPkcs12.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -435,7 +435,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="pkiAcert.html">pki --acert</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="pkiDn.html">pki --dn</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -453,7 +453,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="pkiKeyid.html">pki --keyid</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="pkiOcsp.html">pki --ocsp</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -833,32 +833,36 @@
     <li><a href="../index.html">strongSwan Docs</a></li>
     <li>Tools</li>
     <li><a href="pki.html">pki Tool</a></li>
-    <li><a href="pkiDn.html">pki --dn</a></li>
+    <li><a href="pkiOcsp.html">pki --ocsp</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">6.0 Beta</button>
   <div class="version-menu">
-    <a class="version is-current" href="pkiDn.html">6.0 Beta</a>
-    <a class="version" href="../../5.9/pki/pkiDn.html">5.9</a>
+    <a class="version is-current" href="pkiOcsp.html">6.0 Beta</a>
+    <a class="version" href="../../5.9/pki/pkiOcsp.html">5.9</a>
   </div>
 </div>
-<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/pki/pkiDn.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/pki/pkiOcsp.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">pki --dn</h1>
+<h1 class="page">pki --ocsp</h1>
 <div class="sect1">
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --dn [--in file] [--format config|hex|base64|bin]
+<pre>pki --ocsp [--in file] [--cacert file]+
 
-pki --dn --help</pre>
+pki --ocsp  --respond [--in file] --cacert file --key file [--cert file]+
+           [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
+           [--rsa-padding pkcs1|pss] [--lifetime minutes]
+
+pki --ocsp --help</pre>
 </div>
 </div>
 </div>
@@ -867,25 +871,84 @@ pki --dn --help</pre>
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand extracts the ASN.1-encoded subject
-<code>DistinguishedName</code> (<code>DN</code>) of an X.509 certificate and export it in different
-formats. This may be useful when the strongSwan identity parser is unable to
-produce the correct binary encoding from a string.</p>
+<p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand parses an <em>Online Certificate Status Protocol</em>
+(OCSP) request as defined by <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a> and with the <code><strong>--respond</strong></code> option
+generates an OCSP response based on the OCSP request. The certificate status is
+directly retrieved from the internal certificate database of an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a>
+server. The <code><strong>--respond</strong></code> option requires  the <a href="../plugins/openxpki.html" class="xref page"><code><strong>openxpki</strong></code></a>
+and <code><strong>mysql</strong></code> libstrongswan plugins in order to access the certificate database of the
+<a href="https://github.com/openxpki/openxpki">OpenXPKI</a> server running on the same host.</p>
+</div>
+<div class="paragraph">
+<p>Supported since version 5.9.12.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_options"><a class="anchor" href="#_options"></a>Options</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">--in       (-i)  input file, default: stdin
---format   (-f)  output format, default: config
---debug    (-v)  set debug level, default: 1
---options  (-+)  read command line options from file
---help     (-h)  show usage information</pre>
-</div>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 6.6666%;">
+<col style="width: 20%;">
+<col style="width: 73.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-h</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints usage information and a short summary of the available options</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--debug</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set debug level, default: <code><strong>1</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-+</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--options</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read command line options from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--in</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP request. If not given, the OCSP request is read from <code><strong>STDIN</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cacert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CA certificate corresponding to one of the issuer hashes contained in the OCSP
+ request. If the OCSP request is signed, a CA certificate forming the trust chain.
+ Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer key. Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer certificate (if it is not a CA certificate). Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-g</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--digest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Digest to use for signature creation. The default is determined based on the
+ type and size of the OCSP signing key.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-R</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--rsa-padding</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pkcs1</strong></code> or <code><strong>pss</strong></code>, defaults to <code><strong>pkcs1</strong></code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--lifetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validity in minutes of the OCSP response (if missing,<code><strong>nextUpdate</strong></code> is omitted)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -894,55 +957,185 @@ produce the correct binary encoding from a string.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Print the first line of a X.509 certificate listing</p>
+<p>Show the raw content of an OCSP request:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ pki --print --in myCert.der | head -1
-subject:  "C=CH, O=strongSwan, CN=Server"</pre>
+<pre>pki --ocsp --in req_ca.der
+
+nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (no match)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (no match)
+  serialNumber:      4f:33:21:1d:4d:fd:9b:db
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (no match)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (no match)
+  serialNumber:      68:f2:93:10:65:d0:5e:d1</pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Extract this subject <code>DN</code> in different formats:</p>
+<p>Show the content of the same OCSP request if the issuer certificate is given:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ pki --dn --in myCert.der
-"asn1dn:#3033310b300906035504061302434831133011060355040a130a7374726f6e675377616e310f300d06035504031306536572766572"</pre>
+<pre>pki --ocsp --in req_ca.der --cacert cacert.pem
+
+nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      4f:33:21:1d:4d:fd:9b:db
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      68:f2:93:10:65:d0:5e:d1</pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Respond to the OCSP request above, with the OCSP response signed by the CA itself:</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ pki --dn --in myCert.der --format hex
-3033310b300906035504061302434831133011060355040a130a7374726f6e675377616e310f300d06035504031306536572766572</pre>
+<pre>pki --ocsp --respond --in req_ca.der --cacert cacert.pem --key cakey.pem \
+           --lifetime 10 &gt; rsp_ca.der
+
+nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      4f:33:21:1d:4d:fd:9b:db
+  thisUpdate:        Oct 19 15:54:15 UTC 2023
+  nextUpdate:        Oct 19 16:04:15 UTC 2023
+  certValidation:    GOOD
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      68:f2:93:10:65:d0:5e:d1
+  thisUpdate:        Oct 19 15:54:15 UTC 2023
+  nextUpdate:        Oct 19 16:04:15 UTC 2023
+  certValidation:    GOOD
+trusted signer:     "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+ocspResponseStatus:  successful</pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Respond to a signed OCSP request providing the complete trust chain:</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ pki --dn --in myCert.der --format base64
-MDMxCzAJBgNVBAYTAkNIMRMwEQYDVQQKEwpzdHJvbmdTd2FuMQ8wDQYDVQQDEwZTZXJ2ZXI=</pre>
+<pre>pki --ocsp --respond --in req_signed.der --cacert cacert.pem --cacert issuer1.pem \
+           --key signerKey1.pem --cert signerCert1.pem --lifetime 10 &gt; rsp_signed.der
+
+requestor:          "C=CH, O=strongSwan Project, CN=vpn.strongswan.org"
+  using certificate "C=CH, O=strongSwan Project, CN=vpn.strongswan.org"
+  using trusted intermediate ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  using trusted ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  reached self-signed root ca with a path length of 1
+requestor is trusted
+nonce:               a8:0f:29:0f:08:9c:29:c1:0d:a8:cb:b0:21:fa:e1:f7
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      04:ff:cc:8d:36:91:cb:35:d7:c4
+  thisUpdate:        Oct 19 16:30:54 UTC 2023
+  nextUpdate:        Oct 19 16:40:54 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Mar 26 06:41:54 UTC 2023
+  revocationReason:  superseded
+trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Issuing CA 1"
+ocspResponseStatus:  successful</pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Respond to an OCSP request containing two items from different known issuers
+having an OCSP signer each. The issuer of the first request item determines the
+OCSP signer used to sign the OCSP response:</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ pki --dn --in myCert.der --format bin | xxd
-0000000: 3033 310b 3009 0603 5504 0613 0243 4831  031.0...U....CH1
-0000010: 1330 1106 0355 040a 130a 7374 726f 6e67  .0...U....strong
-0000020: 5377 616e 310f 300d 0603 5504 0313 0653  Swan1.0...U....S
-0000030: 6572 7665 72                             erver</pre>
+<pre>pki --ocsp --respond --in req.der --cacert issuer1.pem --cacert issuer2.pem \
+           --key signerKey1.pem --cert signerCert1.pem \
+           --key signerKey2.pem --cert signerCert2.pem \
+           --lifetime 10 &gt; rsp_trusted.der
+
+nonce:               a1:33:aa:bc:96:60:69:76:f3:bc:9c:88:3b:07:50:47
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2"
+  issuerKeyHash:     72:41:ca:f9:35:87:89:a0:fb:8c:d6:bb:7e:bb:d3:83:ab:d5:89:7b (ok)
+  issuerNameHash:    5e:b2:b4:42:e1:a5:fb:1c:bc:d8:4e:35:10:72:b2:c3:9a:38:4f:cd (ok)
+  serialNumber:      29:ff:36:d9:9a:21:49:61:91:1d
+  thisUpdate:        Oct 19 16:02:35 UTC 2023
+  nextUpdate:        Oct 19 16:12:35 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Sep 22 13:13:04 UTC 2023
+  revocationReason:  superseded
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      10:ff:45:9a:6d:ee:4c:ec:7c:97
+  thisUpdate:        Oct 19 16:02:35 UTC 2023
+  nextUpdate:        Oct 19 16:12:35 UTC 2023
+ certValidation:    FAILED
+there are multiple known issuers
+trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Issuing CA 2"
+ocspResponseStatus:  successful</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Repeat the OCSP response above but with a self-signed OCSP signing certificate</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --ocsp --respond --in req.der --cacert issuer1.pem --cacert issuer2.pem \
+           --key signerKey.pem --cert signerCert.pem --lifetime 10 &gt; rsp_self_signed.der
+
+nonce:               a1:33:aa:bc:96:60:69:76:f3:bc:9c:88:3b:07:50:47
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2"
+  issuerKeyHash:     72:41:ca:f9:35:87:89:a0:fb:8c:d6:bb:7e:bb:d3:83:ab:d5:89:7b (ok)
+  issuerNameHash:    5e:b2:b4:42:e1:a5:fb:1c:bc:d8:4e:35:10:72:b2:c3:9a:38:4f:cd (ok)
+  serialNumber:      29:ff:36:d9:9a:21:49:61:91:1d
+  thisUpdate:        Oct 19 16:13:23 UTC 2023
+  nextUpdate:        Oct 19 16:23:23 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Sep 22 13:13:04 UTC 2023
+  revocationReason:  superseded
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      10:ff:45:9a:6d:ee:4c:ec:7c:97
+  thisUpdate:        Oct 19 16:13:23 UTC 2023
+  nextUpdate:        Oct 19 16:23:23 UTC 2023
+  certValidation:    GOOD
+there are multiple known issuers
+self-signed signer: "C=CH, O=strongSwan Project, CN=strongSwan OCSP signer"
+ocspResponseStatus:  successful</pre>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="pkiAcert.html">pki --acert</a></span>
-  <span class="next"><a href="pkiEst.html">pki --est</a></span>
+  <span class="prev"><a href="pkiKeyid.html">pki --keyid</a></span>
+  <span class="next"><a href="pkiPkcs12.html">pki --pkcs12</a></span>
 </nav>
 </article>
   </div>
