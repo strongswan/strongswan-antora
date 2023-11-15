@@ -1652,6 +1652,12 @@ connection attempts are blocked</p></td>
  see <a href="jobPriority.html" class="xref page">Job Priority</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reject_trusted_end_entity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reject peers that use trusted end-entity certificates (i.e. local certificates).
+ Since version 5.9.12</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rdn_matching</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">How the Relative Distinguished Names (RDNs) a certificate&#8217;s Subject Distinguished
@@ -3038,14 +3044,6 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
  <code><strong>[min(PAGE_SIZE, 8192)]</strong></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">force_receive_buffer_size</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the maximum Netlink socket receive buffer in bytes set by
- <code><strong>receive_buffer_size</strong></code> exceeds the system-wide maximum from
- <code><strong>/proc/sys/net/core/rmem_max</strong></code>, this option can be used to override the limit.
- Enabling this option requires special privileges (<code>CAP_NET_ADMIN</code>)</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">fwmark</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Firewall mark to set on the routing rule that directs traffic to our own routing
@@ -3103,12 +3101,13 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">receive_buffer_size</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8388608</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum Netlink socket receive buffer in bytes. This value controls how many
- bytes of Netlink messages can be received on a Netlink socket. The default value
- is set by <code><strong>/proc/sys/net/core/rmem_default</strong></code>. The specified value cannot exceed
- the system-wide maximum from <code><strong>/proc/sys/net/core/rmem_max</strong></code> unless
- <code><strong>force_receive_buffer_size</strong></code> is enabled</p></td>
+ bytes of Netlink messages can be queued to a Netlink socket. If set to 0,
+ the default from <code><strong>/proc/sys/net/core/rmem_default</strong></code> will apply. Note that the
+ kernel doubles the configured value to account for overhead. To exceed the
+ system-wide maximum from <code><strong>/proc/sys/net/core/rmem_max</strong></code>, special privileges
+ (<code>CAP_NET_ADMIN</code>) are necessary, otherwise, the kernel silently caps the value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">roam_events</p></td>
