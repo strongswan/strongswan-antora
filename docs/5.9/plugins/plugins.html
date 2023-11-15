@@ -43,6 +43,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -444,6 +445,9 @@
     <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -589,6 +593,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="openxpki.html">openxpki Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="pkcs11.html">pkcs11 Plugin</a>
@@ -1078,6 +1085,12 @@ for specific needs.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on the <a href="https://openssl.org/">OpenSSL</a> library</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="openxpki.html" class="xref page">openxpki</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable OCSP responder accessing <a href="https://github.com/openxpki/openxpki">OpenXPKI</a> MySQL/MariaDB <code><strong>certificate</strong></code> database</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">padlock</p></td>

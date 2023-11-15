@@ -43,6 +43,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -444,6 +445,9 @@
     <a class="nav-link" href="pkiKeyid.html">pki --keyid</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="pkiPkcs12.html">pki --pkcs12</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -589,6 +593,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
@@ -856,6 +863,7 @@ pki --scep    (-S)  Enroll an X.509 certificate with a SCEP server
 pki --scepca  (-C)  Get CA [and RA] certificate[s] from a SCEP server
 pki --est     (-E)  Enroll an X.509 certificate with an EST server
 pki --estca   (-e)  Get CA certificate[s] from an EST server
+pki --ocsp    (-o)  OCSP request parser and OCSP responder
 pki --help    (-h)  show usage information</pre>
 </div>
 </div>
@@ -889,6 +897,11 @@ via the <strong>Simple Certificate Enrollment Protocol</strong> (SCEP) as define
 <div class="paragraph">
 <p>Additionally, with version 5.9.8 the newer <code><strong>https</strong></code> based <strong>Enrollment over Secure
 Transport</strong> (EST) protocol (<a href="https://datatracker.ietf.org/doc/html/rfc7030">RFC 7030</a>) is being offered, too.</p>
+</div>
+<div class="paragraph">
+<p>Version 5.9.12 introduces an <strong>Online Certificate Status Protocol</strong> (OCSP) responder
+as defined by <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, interoperating with an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a>
+server by directly accessing its internal <code><strong>certificate</strong></code> datebase.</p>
 </div>
 </td>
 </tr>
@@ -929,7 +942,7 @@ Transport</strong> (EST) protocol (<a href="https://datatracker.ietf.org/doc/htm
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiReq.html" class="xref page"><code>pki --req</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiScepCa.html" class="xref page"><code>pki --scepca</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiScep.html" class="xref page"><code>pki --scep</code></a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="pkiOcsp.html" class="xref page"><code>pki --ocsp</code></a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>

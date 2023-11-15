@@ -43,6 +43,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -444,6 +445,9 @@
     <a class="nav-link" href="pkiKeyid.html">pki --keyid</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="pkiPkcs12.html">pki --pkcs12</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -589,6 +593,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
@@ -841,7 +848,6 @@
 <div class="listingblock">
 <div class="content">
 <pre>pki --scepca --url url [--caout file] [--raout file] [--outform der|pem] [--force]
-            [--debug level]
 
 pki --scepca --help</pre>
 </div>

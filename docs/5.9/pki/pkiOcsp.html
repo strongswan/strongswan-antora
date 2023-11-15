@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>pt-tls-client Tool :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tnc/pt-tls-client.html">
-    <link rel="prev" href="../tools/cert-enroll.html">
-    <link rel="next" href="sw-collector.html">
+    <title>pki --ocsp :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/pki/pkiOcsp.html">
+    <link rel="prev" href="pkiKeyid.html">
+    <link rel="next" href="pkiPkcs12.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="5.9">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -46,15 +46,6 @@
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">News</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
-  </li>
-</ul>
-  </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Installation</span>
@@ -174,10 +165,10 @@
     <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+    <a class="nav-link" href="pkiQuickstart.html">Certificates Quickstart</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+    <a class="nav-link" href="caManagement.html">GUI-based CA Management</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -430,78 +421,81 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+    <a class="nav-link" href="pki.html">pki Tool</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+    <a class="nav-link" href="pkiAcert.html">pki --acert</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+    <a class="nav-link" href="pkiDn.html">pki --dn</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+    <a class="nav-link" href="pkiEst.html">pki --est</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+    <a class="nav-link" href="pkiEstCa.html">pki --estca</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+    <a class="nav-link" href="pkiGen.html">pki --gen</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+    <a class="nav-link" href="pkiIssue.html">pki --issue</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+    <a class="nav-link" href="pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="pkiOcsp.html">pki --ocsp</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+    <a class="nav-link" href="pkiPkcs12.html">pki --pkcs12</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+    <a class="nav-link" href="pkiPkcs7.html">pki --pkcs7</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+    <a class="nav-link" href="pkiPrint.html">pki --print</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+    <a class="nav-link" href="pkiPub.html">pki --pub</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+    <a class="nav-link" href="pkiReq.html">pki --req</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+    <a class="nav-link" href="pkiScep.html">pki --scep</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+    <a class="nav-link" href="pkiScepCa.html">pki --scepca</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+    <a class="nav-link" href="pkiSelf.html">pki --self</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+    <a class="nav-link" href="pkiSignCrl.html">pki --signcrl</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+    <a class="nav-link" href="pkiVerify.html">pki --verify</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/cert-enroll.html">cert-enroll Tool</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="pt-tls-client.html">pt-tls-client Tool</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="sw-collector.html">sw-collector Tool</a>
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="sec-updater.html">sec-updater Tool</a>
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="attest.html">ipsec attest Tool</a>
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
@@ -599,6 +593,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
@@ -703,56 +700,56 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="tnc.html">Trusted Network Connect</a>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="tncClient.html">TNC Client</a>
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="tncServer.html">TNC Server</a>
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="strongTnc.html">strongTNC</a>
+    <a class="nav-link" href="../tnc/strongTnc.html">strongTNC</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="swima.html">Software Inventory</a>
+    <a class="nav-link" href="../tnc/swima.html">Software Inventory</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+    <a class="nav-link" href="../tnc/swimaClient.html">Software Inventory Client</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+    <a class="nav-link" href="../tnc/swimaServer.html">Software Inventory Server</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+    <a class="nav-link" href="../tnc/measuredBoot.html">Measured Boot</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+    <a class="nav-link" href="../tnc/attestationClient.html">Attestation Client</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+    <a class="nav-link" href="../tnc/attestationServer.html">Attestation Server</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+    <a class="nav-link" href="../tnc/pcrBootEvents.html">PCR Boot Events</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+    <a class="nav-link" href="../tnc/ima.html">Integrity Measurement Architecture</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="imaClient.html">IMA Client</a>
+    <a class="nav-link" href="../tnc/imaClient.html">IMA Client</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="imaServer.html">IMA Server</a>
+    <a class="nav-link" href="../tnc/imaServer.html">IMA Server</a>
   </li>
 </ul>
   </li>
@@ -799,17 +796,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0 Beta</span>
+    <span class="version">5.9</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../5.9/index.html">strongSwan Docs</a>
+      <a class="title" href="../index.html">strongSwan Docs</a>
       <ul class="versions">
-        <li class="version is-current">
-          <a href="../index.html">6.0 Beta</a>
+        <li class="version">
+          <a href="../../6.0/index.html">6.0 Beta</a>
         </li>
-        <li class="version is-latest">
-          <a href="../../5.9/index.html">5.9</a>
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
         </li>
       </ul>
     </li>
@@ -821,40 +818,42 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../5.9/index.html" class="home-link"></a>
+  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
     <li>Tools</li>
-    <li><a href="pt-tls-client.html">pt-tls-client Tool</a></li>
+    <li><a href="pki.html">pki Tool</a></li>
+    <li><a href="pkiOcsp.html">pki --ocsp</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0 Beta</button>
+  <button class="version-menu-toggle" title="Show other versions of page">5.9</button>
   <div class="version-menu">
-    <a class="version is-current" href="pt-tls-client.html">6.0 Beta</a>
-    <a class="version" href="../../5.9/tnc/pt-tls-client.html">5.9</a>
+    <a class="version is-missing" href="../../6.0/index.html">6.0 Beta</a>
+    <a class="version is-current" href="pkiOcsp.html">5.9</a>
   </div>
 </div>
-<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/tnc/pt-tls-client.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/pki/pkiOcsp.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">pt-tls-client Tool</h1>
+<h1 class="page">pki --ocsp</h1>
 <div class="sect1">
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>pt-tls-client --connect hostname|address [--port port] [--certid hex|--cert file]+
-             [--keyid hex|--key file] [--key-type rsa|ecdsa] [--client client-id]
-             [--secret password] [--mutual] [--optionsfrom filename] [--quiet]
-             [--debug level]
+<pre>pki --ocsp [--in file] [--cacert file]+
 
-pt-tls-client -h | --help</pre>
+pki --ocsp  --respond [--in file] --cacert file --key file [--cert file]+
+           [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
+           [--rsa-padding pkcs1|pss] [--lifetime minutes]
+
+pki --ocsp --help</pre>
 </div>
 </div>
 </div>
@@ -863,20 +862,16 @@ pt-tls-client -h | --help</pre>
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code><strong>pt-tls-client</strong></code> is a simple client using the <code>PT-TLS</code> (<a href="https://datatracker.ietf.org/doc/html/rfc6876">RFC 6876</a>)
-transport protocol to collect integrity measurements on the client platform.
-<code>PT-TLS</code> does an initial <code>TLS</code> handshake with certificate-based server
-authentication and optional certificate-based client authentication. Alternatively
-simple password-based <code>SASL</code> client  authentication protected by <code>TLS</code> can be used.</p>
+<p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand parses an <em>Online Certificate Status Protocol</em>
+(OCSP) request as defined by <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a> and with the <code><strong>--respond</strong></code> option
+generates an OCSP response based on the OCSP request. The certificate status is
+directly retrieved from the internal certificate database of an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a>
+server. The <code><strong>--respond</strong></code> option requires  the <a href="../plugins/openxpki.html" class="xref page"><code><strong>openxpki</strong></code></a>
+and <code><strong>mysql</strong></code> libstrongswan plugins in order to access the certificate database of the
+<a href="https://github.com/openxpki/openxpki">OpenXPKI</a> server running on the same host.</p>
 </div>
 <div class="paragraph">
-<p>Attribute requests and integrity measurements are exchanged via the <code>PA-TNC</code>
-(<a href="https://datatracker.ietf.org/doc/html/rfc5792">RFC 5792</a>) message protocol between any number of Integrity Measurement
-Verifiers (IMVs) residing on the remote <code>PT-TLS</code> server and multiple Integrity
-Measurement Collectors (IMCs) loaded dynamically by the <code>PT-TLS</code> client according
-to a list defined by <code><strong>/etc/tnc_config</strong></code>. PA-TNC messages that contain one or
-several <code>PA-TNC</code> attributes are multiplexed into <code>PB-TNC</code> (<a href="https://datatracker.ietf.org/doc/html/rfc5793">RFC 5793</a>)
-client or server data batches which in turn are transported via <code>PT-TLS</code>.</p>
+<p>Supported since version 5.9.12.</p>
 </div>
 </div>
 </div>
@@ -893,63 +888,7 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-h</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--help</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prints usage information and a short summary of the available commands</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--connect</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the hostname or IP address of the PT-TLS server</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the port of the <code>PT-TLS</code> server, default: <code><strong>271</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-x</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to an X.509 certificate file. This option can be repeated to load
- multiple client and CA certificates</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-X</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--certid</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the handle of the certificate stored in a smartcard or a
- <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform Module</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-k</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to the client&#8217;s <code>PKCS#1</code> or <code>PKCS#8</code> private key file</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-K</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--keyid</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the keyid of the private key stored in a smartcard or a
- <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform Module</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-t</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key-type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Define the type of the private key if stored in <code>PKCS#1</code> format. Can be omitted
- with <code>PKCS#8</code> keys</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--client</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the username or client ID of the client required for password-based <code>SASL</code>
- authentication</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-s</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--secret</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the preshared secret or client password required for password-based  <code>SASL</code>
- authentication</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-q</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--mutual</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enable mutual attestation between <code>PT-TLS</code> client and <code>PT-TLS</code> server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prints usage information and a short summary of the available options</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code></p></td>
@@ -957,28 +896,50 @@ client or server data batches which in turn are transported via <code>PT-TLS</co
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set debug level, default: <code><strong>1</strong></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-q</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--quiet</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Disable debug output to stderr</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-+</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Read command line options from file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read command line options from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--in</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP request. If not given, the OCSP request is read from <code><strong>STDIN</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cacert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CA certificate corresponding to one of the issuer hashes contained in the OCSP
+ request. If the OCSP request is signed, a CA certificate forming the trust chain.
+ Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer key. Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer certificate (if it is not a CA certificate). Can be used multiple times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-g</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--digest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Digest to use for signature creation. The default is determined based on the
+ type and size of the OCSP signing key.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-R</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--rsa-padding</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pkcs1</strong></code> or <code><strong>pss</strong></code>, defaults to <code><strong>pkcs1</strong></code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--lifetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validity in minutes of the OCSP response (if missing,<code><strong>nextUpdate</strong></code> is omitted)</p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="_tls_options"><a class="anchor" href="#_tls_options"></a>TLS Options</h3>
-<div class="paragraph">
-<p>The <code><strong>pt-tl-client</strong></code> command uses the strongSwan <code><strong>libtls</strong></code> library that can be
-configured and fine-tuned with the following <a href="../config/tlsOptions.html" class="xref page">TLS options</a>.</p>
-</div>
-<div class="paragraph">
-<p>It is especially recommended to set <code><strong>version_max = 1.3</strong></code> in order to profit from
-the latest TLS 1.3 version.</p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -987,63 +948,185 @@ the latest TLS 1.3 version.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Connect  to a <code>PT-TLS</code> server using certificate-based authentication, storing
-the private <code>ECDSA</code> key in a file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>pt-tls-client --connect pdp.example.com --cert ca.crt --cert client.crt \
-              --key client.key --key-type ecdsa</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Connect to a <code>PT-TLS</code> server using certificate-based authentication, storing the
-private key in a smartcard or a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform
-Module:</p>
-<div class="listingblock">
-<div class="content">
-<pre>pt-tls-client --connect pdp.example.com --cert ca.crt --cert client.crt \
-              --keyid 0x81010002</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Connect to a <code>PT-TLS</code> server listening on port <code>443</code>, using `SASL? password-based
-authentication:</p>
-<div class="listingblock">
-<div class="content">
-<pre>pt-tls-client --connect pdp.example.com --port 443 --cert ca.crt --client jane \
-              --password p2Nl9trKlb</pre>
-</div>
-</div>
+<p>Show the raw content of an OCSP request:</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_files"><a class="anchor" href="#_files"></a>Files</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><code>/etc/tnc_config</code> defines the IMCs to be loaded by the <code><strong>pt-tls-client</strong></code>.</p>
-</div>
-<div class="sect2">
-<h3 id="_example"><a class="anchor" href="#_example"></a>Example</h3>
 <div class="listingblock">
 <div class="content">
-<pre>#IMC-Configuration
+<pre>pki --ocsp --in req_ca.der
 
-IMC "OS"          /usr/lib/ipsec/imcvs/imc-os.so
-IMC "SWIMA"       /usr/lib/ipsec/imcvs/imc-swima.so
-IMC "ATTESTATION" /usr/lib/ipsec/imcvs/imc-attestation.so</pre>
+nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (no match)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (no match)
+  serialNumber:      4f:33:21:1d:4d:fd:9b:db
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (no match)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (no match)
+  serialNumber:      68:f2:93:10:65:d0:5e:d1</pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Show the content of the same OCSP request if the issuer certificate is given:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --ocsp --in req_ca.der --cacert cacert.pem
+
+nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      4f:33:21:1d:4d:fd:9b:db
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      68:f2:93:10:65:d0:5e:d1</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Respond to the OCSP request above, with the OCSP response signed by the CA itself:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --ocsp --respond --in req_ca.der --cacert cacert.pem --key cakey.pem \
+           --lifetime 10 &gt; rsp_ca.der
+
+nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      4f:33:21:1d:4d:fd:9b:db
+  thisUpdate:        Oct 19 15:54:15 UTC 2023
+  nextUpdate:        Oct 19 16:04:15 UTC 2023
+  certValidation:    GOOD
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  issuerKeyHash:     b6:76:79:95:b5:58:5f:85:1e:1f:c7:52:4a:fc:06:93:f3:39:79:19 (ok)
+  issuerNameHash:    af:25:78:ce:fc:15:4c:36:4d:26:2c:98:d4:c5:67:95:81:31:a3:4d (ok)
+  serialNumber:      68:f2:93:10:65:d0:5e:d1
+  thisUpdate:        Oct 19 15:54:15 UTC 2023
+  nextUpdate:        Oct 19 16:04:15 UTC 2023
+  certValidation:    GOOD
+trusted signer:     "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+ocspResponseStatus:  successful</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Respond to a signed OCSP request providing the complete trust chain:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --ocsp --respond --in req_signed.der --cacert cacert.pem --cacert issuer1.pem \
+           --key signerKey1.pem --cert signerCert1.pem --lifetime 10 &gt; rsp_signed.der
+
+requestor:          "C=CH, O=strongSwan Project, CN=vpn.strongswan.org"
+  using certificate "C=CH, O=strongSwan Project, CN=vpn.strongswan.org"
+  using trusted intermediate ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  using trusted ca certificate "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
+  reached self-signed root ca with a path length of 1
+requestor is trusted
+nonce:               a8:0f:29:0f:08:9c:29:c1:0d:a8:cb:b0:21:fa:e1:f7
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      04:ff:cc:8d:36:91:cb:35:d7:c4
+  thisUpdate:        Oct 19 16:30:54 UTC 2023
+  nextUpdate:        Oct 19 16:40:54 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Mar 26 06:41:54 UTC 2023
+  revocationReason:  superseded
+trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Issuing CA 1"
+ocspResponseStatus:  successful</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Respond to an OCSP request containing two items from different known issuers
+having an OCSP signer each. The issuer of the first request item determines the
+OCSP signer used to sign the OCSP response:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --ocsp --respond --in req.der --cacert issuer1.pem --cacert issuer2.pem \
+           --key signerKey1.pem --cert signerCert1.pem \
+           --key signerKey2.pem --cert signerCert2.pem \
+           --lifetime 10 &gt; rsp_trusted.der
+
+nonce:               a1:33:aa:bc:96:60:69:76:f3:bc:9c:88:3b:07:50:47
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2"
+  issuerKeyHash:     72:41:ca:f9:35:87:89:a0:fb:8c:d6:bb:7e:bb:d3:83:ab:d5:89:7b (ok)
+  issuerNameHash:    5e:b2:b4:42:e1:a5:fb:1c:bc:d8:4e:35:10:72:b2:c3:9a:38:4f:cd (ok)
+  serialNumber:      29:ff:36:d9:9a:21:49:61:91:1d
+  thisUpdate:        Oct 19 16:02:35 UTC 2023
+  nextUpdate:        Oct 19 16:12:35 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Sep 22 13:13:04 UTC 2023
+  revocationReason:  superseded
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      10:ff:45:9a:6d:ee:4c:ec:7c:97
+  thisUpdate:        Oct 19 16:02:35 UTC 2023
+  nextUpdate:        Oct 19 16:12:35 UTC 2023
+ certValidation:    FAILED
+there are multiple known issuers
+trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Issuing CA 2"
+ocspResponseStatus:  successful</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Repeat the OCSP response above but with a self-signed OCSP signing certificate</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>pki --ocsp --respond --in req.der --cacert issuer1.pem --cacert issuer2.pem \
+           --key signerKey.pem --cert signerCert.pem --lifetime 10 &gt; rsp_self_signed.der
+
+nonce:               a1:33:aa:bc:96:60:69:76:f3:bc:9c:88:3b:07:50:47
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2"
+  issuerKeyHash:     72:41:ca:f9:35:87:89:a0:fb:8c:d6:bb:7e:bb:d3:83:ab:d5:89:7b (ok)
+  issuerNameHash:    5e:b2:b4:42:e1:a5:fb:1c:bc:d8:4e:35:10:72:b2:c3:9a:38:4f:cd (ok)
+  serialNumber:      29:ff:36:d9:9a:21:49:61:91:1d
+  thisUpdate:        Oct 19 16:13:23 UTC 2023
+  nextUpdate:        Oct 19 16:23:23 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Sep 22 13:13:04 UTC 2023
+  revocationReason:  superseded
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      10:ff:45:9a:6d:ee:4c:ec:7c:97
+  thisUpdate:        Oct 19 16:13:23 UTC 2023
+  nextUpdate:        Oct 19 16:23:23 UTC 2023
+  certValidation:    GOOD
+there are multiple known issuers
+self-signed signer: "C=CH, O=strongSwan Project, CN=strongSwan OCSP signer"
+ocspResponseStatus:  successful</pre>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../tools/cert-enroll.html">cert-enroll Tool</a></span>
-  <span class="next"><a href="sw-collector.html">sw-collector Tool</a></span>
+  <span class="prev"><a href="pkiKeyid.html">pki --keyid</a></span>
+  <span class="next"><a href="pkiPkcs12.html">pki --pkcs12</a></span>
 </nav>
 </article>
   </div>

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>pt-tls-client Tool :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/tnc/pt-tls-client.html">
-    <link rel="prev" href="../tools/cert-enroll.html">
-    <link rel="next" href="sw-collector.html">
+    <title>openxpki Plugin :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/plugins/openxpki.html">
+    <link rel="prev" href="lookip.html">
+    <link rel="next" href="pkcs11.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="5.9">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -46,15 +46,6 @@
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all"></button>
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">News</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
-  </li>
-</ul>
-  </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Installation</span>
@@ -454,6 +445,9 @@
     <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -488,20 +482,20 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/cert-enroll.html">cert-enroll Tool</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="pt-tls-client.html">pt-tls-client Tool</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="sw-collector.html">sw-collector Tool</a>
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="sec-updater.html">sec-updater Tool</a>
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="attest.html">ipsec attest Tool</a>
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
@@ -517,150 +511,153 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+    <a class="nav-link" href="plugins.html">Plugin List</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+    <a class="nav-link" href="addrblock.html">addrblock Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+    <a class="nav-link" href="attr.html">attr Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+    <a class="nav-link" href="attr-sql.html">attr-sql Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+    <a class="nav-link" href="bypass-lan.html">bypass-lan Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+    <a class="nav-link" href="certexpire.html">certexpire Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+    <a class="nav-link" href="connmark.html">connmark Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+    <a class="nav-link" href="constraints.html">constraints Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+    <a class="nav-link" href="counters.html">counters Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+    <a class="nav-link" href="coupling.html">coupling Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+    <a class="nav-link" href="curl.html">curl Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+    <a class="nav-link" href="dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+    <a class="nav-link" href="duplicheck.html">duplicheck Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+    <a class="nav-link" href="eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+    <a class="nav-link" href="eap-gtc.html">eap-gtc Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+    <a class="nav-link" href="eap-radius.html">eap-radius Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+    <a class="nav-link" href="eap-simaka-sql.html">eap-simaka-sql Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+    <a class="nav-link" href="eap-tls.html">eap-tls Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+    <a class="nav-link" href="error-notify.html">error-notify Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+    <a class="nav-link" href="ext-auth.html">ext-auth Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+    <a class="nav-link" href="farp.html">farp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+    <a class="nav-link" href="forecast.html">forecast Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+    <a class="nav-link" href="ha.html">ha Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+    <a class="nav-link" href="kernel-iph.html">kernel-iph Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+    <a class="nav-link" href="kernel-libipsec.html">kernel-libipsec Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+    <a class="nav-link" href="kernel-wfp.html">kernel-wfp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+    <a class="nav-link" href="load-tester.html">load-tester Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+    <a class="nav-link" href="lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="openxpki.html">openxpki Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+    <a class="nav-link" href="pkcs11.html">pkcs11 Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+    <a class="nav-link" href="radattr.html">radattr Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+    <a class="nav-link" href="resolve.html">resolve Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/save-keys.html">save-keys Plugin</a>
+    <a class="nav-link" href="save-keys.html">save-keys Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+    <a class="nav-link" href="selinux.html">selinux Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+    <a class="nav-link" href="socket-win.html">socket-win Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+    <a class="nav-link" href="sql.html">sql Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+    <a class="nav-link" href="systime-fix.html">systime-fix Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+    <a class="nav-link" href="test-vectors.html">test-vectors Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+    <a class="nav-link" href="tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+    <a class="nav-link" href="tpm.html">tpm Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+    <a class="nav-link" href="unity.html">unity Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+    <a class="nav-link" href="updown.html">updown Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+    <a class="nav-link" href="vici.html">vici Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+    <a class="nav-link" href="whitelist.html">whitelist Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+    <a class="nav-link" href="winhttp.html">winhttp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+    <a class="nav-link" href="xauth-eap.html">xauth-eap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+    <a class="nav-link" href="xauth-noauth.html">xauth-noauth Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+    <a class="nav-link" href="xauth-pam.html">xauth-pam Plugin</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+    <a class="nav-link" href="pluginLoad.html">Plugin Load Options</a>
   </li>
 </ul>
   </li>
@@ -703,56 +700,56 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="tnc.html">Trusted Network Connect</a>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="tncClient.html">TNC Client</a>
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="tncServer.html">TNC Server</a>
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="strongTnc.html">strongTNC</a>
+    <a class="nav-link" href="../tnc/strongTnc.html">strongTNC</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="swima.html">Software Inventory</a>
+    <a class="nav-link" href="../tnc/swima.html">Software Inventory</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+    <a class="nav-link" href="../tnc/swimaClient.html">Software Inventory Client</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+    <a class="nav-link" href="../tnc/swimaServer.html">Software Inventory Server</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+    <a class="nav-link" href="../tnc/measuredBoot.html">Measured Boot</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+    <a class="nav-link" href="../tnc/attestationClient.html">Attestation Client</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+    <a class="nav-link" href="../tnc/attestationServer.html">Attestation Server</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+    <a class="nav-link" href="../tnc/pcrBootEvents.html">PCR Boot Events</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+    <a class="nav-link" href="../tnc/ima.html">Integrity Measurement Architecture</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="imaClient.html">IMA Client</a>
+    <a class="nav-link" href="../tnc/imaClient.html">IMA Client</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="imaServer.html">IMA Server</a>
+    <a class="nav-link" href="../tnc/imaServer.html">IMA Server</a>
   </li>
 </ul>
   </li>
@@ -799,17 +796,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0 Beta</span>
+    <span class="version">5.9</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../5.9/index.html">strongSwan Docs</a>
+      <a class="title" href="../index.html">strongSwan Docs</a>
       <ul class="versions">
-        <li class="version is-current">
-          <a href="../index.html">6.0 Beta</a>
+        <li class="version">
+          <a href="../../6.0/index.html">6.0 Beta</a>
         </li>
-        <li class="version is-latest">
-          <a href="../../5.9/index.html">5.9</a>
+        <li class="version is-current is-latest">
+          <a href="../index.html">5.9</a>
         </li>
       </ul>
     </li>
@@ -821,229 +818,145 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../5.9/index.html" class="home-link"></a>
+  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
-    <li>Tools</li>
-    <li><a href="pt-tls-client.html">pt-tls-client Tool</a></li>
+    <li>Plugins</li>
+    <li><a href="plugins.html">Plugin List</a></li>
+    <li><a href="openxpki.html">openxpki Plugin</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0 Beta</button>
+  <button class="version-menu-toggle" title="Show other versions of page">5.9</button>
   <div class="version-menu">
-    <a class="version is-current" href="pt-tls-client.html">6.0 Beta</a>
-    <a class="version" href="../../5.9/tnc/pt-tls-client.html">5.9</a>
+    <a class="version is-missing" href="../../6.0/index.html">6.0 Beta</a>
+    <a class="version is-current" href="openxpki.html">5.9</a>
   </div>
 </div>
-<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/tnc/pt-tls-client.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/plugins/openxpki.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">pt-tls-client Tool</h1>
+<h1 class="page">openxpki Plugin</h1>
 <div class="sect1">
-<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>Synopsis</h2>
+<h2 id="_purpose"><a class="anchor" href="#_purpose"></a>Purpose</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>openxpki</strong></code> plugin for <code><strong>libstrongswan</strong></code> allows direct access to
+the <a href="https://github.com/openxpki/openxpki">OpenXPKI</a> MySQL/MariaDB database which is used by the
+<a href="../pki/pkiOcsp.html" class="xref page"><code><strong>pki --ocsp</strong></code></a> command to retrieve the online
+certificate status and return it in an OCSP response.</p>
+</div>
+<div class="paragraph">
+<p>The plugin is disabled by default and can be enabled with the
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> option</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-openxpki</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also required is support for <strong>MySQL</strong>/<strong>MariaDB</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-mysql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which builds and loads the <code><strong>mysql</strong></code> plugin.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implementation"><a class="anchor" href="#_implementation"></a>Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>openxpki</strong></code> plugin directly accesses the <code><strong>certificate</strong></code> database table:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre>pt-tls-client --connect hostname|address [--port port] [--certid hex|--cert file]+
-             [--keyid hex|--key file] [--key-type rsa|ecdsa] [--client client-id]
-             [--secret password] [--mutual] [--optionsfrom filename] [--quiet]
-             [--debug level]
-
-pt-tls-client -h | --help</pre>
+<pre>+--------------------------+------------------------------+------+-----+---------+
+| Field                    | Type                         | Null | Key | Default |
++--------------------------+------------------------------+------+-----+---------+
+| pki_realm                | varchar(255)                 | YES  | MUL | NULL    |
+| issuer_dn                | varchar(1000)                | YES  |     | NULL    |
+| cert_key                 | decimal(49,0)                | NO   | PRI | NULL    |
+| issuer_identifier        | varchar(64)                  | NO   | PRI | NULL    |
+| identifier               | varchar(64)                  | YES  | UNI | NULL    |
+| subject                  | varchar(1000)                | YES  | MUL | NULL    |
+| status                   | enum('ISSUED','HOLD'         | YES  | MUL | UNKNOWN |
+|                          |      'CRL_ISSUANCE_PENDING', |      |     |         |
+|                          |      'REVOKED','UNKNOWN')    |      |     |         |
+| subject_key_identifier   | varchar(255)                 | YES  |     | NULL    |
+| authority_key_identifier | varchar(255)                 | YES  |     | NULL    |
+| notbefore                | int(10) unsigned             | YES  | MUL | NULL    |
+| notafter                 | int(10) unsigned             | YES  | MUL | NULL    |
+| revocation_time          | int(10) unsigned             | YES  | MUL | NULL    |
+| invalidity_time          | int(10) unsigned             | YES  | MUL | NULL    |
+| reason_code              | varchar(50)                  | YES  | MUL | NULL    |
+| hold_instruction_code    | varchar(50)                  | YES  | MUL | NULL    |
+| revocation_id            | int(11)                      | YES  | UNI | NULL    |
+| req_key                  | bigint(20) unsigned          | YES  | MUL | NULL    |
+| data                     | longtext                     | YES  |     | NULL    |
++--------------------------+------------------------------+------+-----+---------+</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code><strong>pt-tls-client</strong></code> is a simple client using the <code>PT-TLS</code> (<a href="https://datatracker.ietf.org/doc/html/rfc6876">RFC 6876</a>)
-transport protocol to collect integrity measurements on the client platform.
-<code>PT-TLS</code> does an initial <code>TLS</code> handshake with certificate-based server
-authentication and optional certificate-based client authentication. Alternatively
-simple password-based <code>SASL</code> client  authentication protected by <code>TLS</code> can be used.</p>
+<p>The <code><strong>sql</strong></code> plugin is configured using the following options in the
+<a href="../config/strongswanConf.html#_charon_plugins_openxpki" class="xref page"><code><strong>charon.plugins.openxpki</strong></code></a>
+section of <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>:</p>
 </div>
-<div class="paragraph">
-<p>Attribute requests and integrity measurements are exchanged via the <code>PA-TNC</code>
-(<a href="https://datatracker.ietf.org/doc/html/rfc5792">RFC 5792</a>) message protocol between any number of Integrity Measurement
-Verifiers (IMVs) residing on the remote <code>PT-TLS</code> server and multiple Integrity
-Measurement Collectors (IMCs) loaded dynamically by the <code>PT-TLS</code> client according
-to a list defined by <code><strong>/etc/tnc_config</strong></code>. PA-TNC messages that contain one or
-several <code>PA-TNC</code> attributes are multiplexed into <code>PB-TNC</code> (<a href="https://datatracker.ietf.org/doc/html/rfc5793">RFC 5793</a>)
-client or server data batches which in turn are transported via <code>PT-TLS</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_options"><a class="anchor" href="#_options"></a>Options</h2>
-<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 6.6666%;">
-<col style="width: 20%;">
-<col style="width: 73.3334%;">
+<col style="width: 18.1818%;">
+<col style="width: 9.0909%;">
+<col style="width: 72.7273%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-h</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--help</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prints usage information and a short summary of the available commands</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--connect</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the hostname or IP address of the PT-TLS server</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the port of the <code>PT-TLS</code> server, default: <code><strong>271</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-x</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to an X.509 certificate file. This option can be repeated to load
- multiple client and CA certificates</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-X</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--certid</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the handle of the certificate stored in a smartcard or a
- <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform Module</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-k</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to the client&#8217;s <code>PKCS#1</code> or <code>PKCS#8</code> private key file</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-K</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--keyid</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the keyid of the private key stored in a smartcard or a
- <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform Module</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-t</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--key-type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Define the type of the private key if stored in <code>PKCS#1</code> format. Can be omitted
- with <code>PKCS#8</code> keys</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--client</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the username or client ID of the client required for password-based <code>SASL</code>
- authentication</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-s</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--secret</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the preshared secret or client password required for password-based  <code>SASL</code>
- authentication</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-q</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--mutual</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enable mutual attestation between <code>PT-TLS</code> client and <code>PT-TLS</code> server</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--debug</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set debug level, default: <code><strong>1</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-q</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--quiet</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Disable debug output to stderr</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-+</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Read command line options from file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">database</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openxpki/openxpki">OpenXPKI</a> MySQL/MariaDB URI. If it contains a password, make sure to
+ adjust the permissions of the config file accordingly</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="_tls_options"><a class="anchor" href="#_tls_options"></a>TLS Options</h3>
-<div class="paragraph">
-<p>The <code><strong>pt-tl-client</strong></code> command uses the strongSwan <code><strong>libtls</strong></code> library that can be
-configured and fine-tuned with the following <a href="../config/tlsOptions.html" class="xref page">TLS options</a>.</p>
-</div>
-<div class="paragraph">
-<p>It is especially recommended to set <code><strong>version_max = 1.3</strong></code> in order to profit from
-the latest TLS 1.3 version.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Connect  to a <code>PT-TLS</code> server using certificate-based authentication, storing
-the private <code>ECDSA</code> key in a file:</p>
-<div class="listingblock">
-<div class="content">
-<pre>pt-tls-client --connect pdp.example.com --cert ca.crt --cert client.crt \
-              --key client.key --key-type ecdsa</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Connect to a <code>PT-TLS</code> server using certificate-based authentication, storing the
-private key in a smartcard or a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> Trusted Platform
-Module:</p>
-<div class="listingblock">
-<div class="content">
-<pre>pt-tls-client --connect pdp.example.com --cert ca.crt --cert client.crt \
-              --keyid 0x81010002</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Connect to a <code>PT-TLS</code> server listening on port <code>443</code>, using `SASL? password-based
-authentication:</p>
-<div class="listingblock">
-<div class="content">
-<pre>pt-tls-client --connect pdp.example.com --port 443 --cert ca.crt --client jane \
-              --password p2Nl9trKlb</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_files"><a class="anchor" href="#_files"></a>Files</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><code>/etc/tnc_config</code> defines the IMCs to be loaded by the <code><strong>pt-tls-client</strong></code>.</p>
-</div>
-<div class="sect2">
 <h3 id="_example"><a class="anchor" href="#_example"></a>Example</h3>
 <div class="listingblock">
 <div class="content">
-<pre>#IMC-Configuration
-
-IMC "OS"          /usr/lib/ipsec/imcvs/imc-os.so
-IMC "SWIMA"       /usr/lib/ipsec/imcvs/imc-swima.so
-IMC "ATTESTATION" /usr/lib/ipsec/imcvs/imc-attestation.so</pre>
+<pre>libstrongswan {
+  plugins {
+    openxpki {
+      database = "mysql://openxpki:openxpki@localhost/openxpki"
+    }
+}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../tools/cert-enroll.html">cert-enroll Tool</a></span>
-  <span class="next"><a href="sw-collector.html">sw-collector Tool</a></span>
+  <span class="prev"><a href="lookip.html">lookip Plugin</a></span>
+  <span class="next"><a href="pkcs11.html">pkcs11 Plugin</a></span>
 </nav>
 </article>
   </div>
