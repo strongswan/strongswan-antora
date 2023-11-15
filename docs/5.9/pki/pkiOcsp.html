@@ -850,8 +850,9 @@
 <pre>pki --ocsp [--in file] [--cacert file]+
 
 pki --ocsp  --respond [--in file] --cacert file --key file [--cert file]+
+           [--index file]+ [--lifetime minutes]
            [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
-           [--rsa-padding pkcs1|pss] [--lifetime minutes]
+           [--rsa-padding pkcs1|pss]
 
 pki --ocsp --help</pre>
 </div>
@@ -864,11 +865,10 @@ pki --ocsp --help</pre>
 <div class="paragraph">
 <p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand parses an <em>Online Certificate Status Protocol</em>
 (OCSP) request as defined by <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a> and with the <code><strong>--respond</strong></code> option
-generates an OCSP response based on the OCSP request. The certificate status is
-directly retrieved from the internal certificate database of an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a>
-server. The <code><strong>--respond</strong></code> option requires  the <a href="../plugins/openxpki.html" class="xref page"><code><strong>openxpki</strong></code></a>
-and <code><strong>mysql</strong></code> libstrongswan plugins in order to access the certificate database of the
-<a href="https://github.com/openxpki/openxpki">OpenXPKI</a> server running on the same host.</p>
+generates an OCSP response based on the OCSP request. The certificate status for
+this may be provided by plugins, so if not using the <code><strong>--index</strong></code> option, this requires
+the <a href="../plugins/openxpki.html" class="xref page"><code><strong>openxpki</strong></code></a> and <code><strong>mysql</strong></code> plugins in order to
+directly access the certificate database of an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a> server.</p>
 </div>
 <div class="paragraph">
 <p>Supported since version 5.9.12.</p>
@@ -923,6 +923,16 @@ and <code><strong>mysql</strong></code> libstrongswan plugins in order to access
 <td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer certificate (if it is not a CA certificate). Can be used multiple times</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-x</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--index</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenSSL-style <code><strong>index.txt</strong></code> providing information about  the  status of
+ certificates issued by the CA certificate loaded immediately before. Can be
+ used multiple times if the status for multiple CAs should be provided, just
+ make sure to pass each <code><strong>index.txt</strong></code> file right after the corresponding CA
+ certificate.
+ See below for a description of the structure of these files.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-g</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--digest</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Digest to use for signature creation. The default is determined based on the
@@ -943,16 +953,77 @@ and <code><strong>mysql</strong></code> libstrongswan plugins in order to access
 </div>
 </div>
 <div class="sect1">
-<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
+<h2 id="_index_txt_description"><a class="anchor" href="#_index_txt_description"></a>index.txt Description</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Each line in an <code><strong>index.txt</strong></code> file consists of six columns that are <strong>separated by
+tab</strong> characters:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Show the raw content of an OCSP request:</p>
+<p>The first column denotes the certificate status, which can be either <code><strong>V</strong></code>
+(for valid), <code><strong>E</strong></code> (for expired, treated like valid), or <code><strong>R</strong></code> (for revoked).</p>
 </li>
-</ul>
+<li>
+<p>The second column contains the certificate&#8217;s expiration date and time in UTC in
+the format <code><strong>YYMMDDHHMMSSZ</strong></code>. This field is <strong>ignored</strong> by the command but <strong>must not
+be empty</strong>.</p>
+</li>
+<li>
+<p>The third column is the revocation date and time in UTC in the format
+<code><strong>YYMMDDHHMMSSZ</strong></code> and an optional revocation reason that immediately follows it,
+separated by a comma. Valid reasons are <code><strong>keyCompromise</strong></code>, <code><strong>CACompromise</strong></code>,
+<code><strong>affiliationChanged</strong></code>, <code><strong>superseded</strong></code>, <code><strong>cessationOfOperation</strong></code>,
+<code><strong>certificateHold</strong></code>, and <code><strong>removeFromCRL</strong></code>, any other value or omitting a reason
+results in <code><strong>unspecified</strong></code>.</p>
+</li>
+<li>
+<p>The fourth column contains the certificate&#8217;s serial number in
+hexadecimal encoding.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The 5. and 6. columns are <strong>both ignored</strong> by the command, so they may be
+<strong>omitted completely</strong>. They can contain a path to the certificate (usually set to
+<code><strong>unknown</strong></code>) and the certificate&#8217;s subject DN with slashes separating the RDNs.
+However, note that omitting these fields makes the file incompatible to OpenSSL.</p>
 </div>
 <div class="listingblock">
+<div class="title">Example index.txt</div>
+<div class="content">
+<pre>V    310930122422Z       03  unknown /C=CH/O=strongSwan/CN=moon.strongswan.org <i class="conum" data-value="1"></i><b>(1)</b>
+V    310930122422Z       04  unknown /C=CH/O=strongSwan/CN=sun.strongswan.org
+R    310930122422Z   231002122422Z,keyCompromise 88 <i class="conum" data-value="2"></i><b>(2)</b>
+V    Z       05 <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Note that the fields are separated by tabs. So if a certificate is valid, two
+tabs follow after the expiration date.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This line only specifies the relevant first four columns</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>This line even uses a dummy expiration date as the command doesn&#8217;t care for
+the expiration date</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Show the raw content of an OCSP request</div>
 <div class="content">
 <pre>pki --ocsp --in req_ca.der
 
@@ -965,14 +1036,8 @@ nonce:               5b:14:e3:cc:d5:b2:65:ec:c4:0d:c3:11:37:6a:9d:71
   serialNumber:      68:f2:93:10:65:d0:5e:d1</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Show the content of the same OCSP request if the issuer certificate is given:</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
+<div class="title">Show the content of the same OCSP request if the issuer certificate is given</div>
 <div class="content">
 <pre>pki --ocsp --in req_ca.der --cacert cacert.pem
 
@@ -987,14 +1052,8 @@ issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
   serialNumber:      68:f2:93:10:65:d0:5e:d1</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Respond to the OCSP request above, with the OCSP response signed by the CA itself:</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
+<div class="title">Respond to the OCSP request above, with the OCSP response signed by the CA itself</div>
 <div class="content">
 <pre>pki --ocsp --respond --in req_ca.der --cacert cacert.pem --key cakey.pem \
            --lifetime 10 &gt; rsp_ca.der
@@ -1018,14 +1077,8 @@ trusted signer:     "C=CH, O=strongSwan Project, CN=strongSwan Root CA"
 ocspResponseStatus:  successful</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Respond to a signed OCSP request providing the complete trust chain:</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
+<div class="title">Respond to a signed OCSP request providing the complete trust chain</div>
 <div class="content">
 <pre>pki --ocsp --respond --in req_signed.der --cacert cacert.pem --cacert issuer1.pem \
            --key signerKey1.pem --cert signerCert1.pem --lifetime 10 &gt; rsp_signed.der
@@ -1050,16 +1103,8 @@ trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Is
 ocspResponseStatus:  successful</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Respond to an OCSP request containing two items from different known issuers
-having an OCSP signer each. The issuer of the first request item determines the
-OCSP signer used to sign the OCSP response:</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
+<div class="title">Respond to an OCSP request containing two items from different known issuers having an OCSP signer each</div>
 <div class="content">
 <pre>pki --ocsp --respond --in req.der --cacert issuer1.pem --cacert issuer2.pem \
            --key signerKey1.pem --cert signerCert1.pem \
@@ -1088,14 +1133,12 @@ trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Is
 ocspResponseStatus:  successful</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Repeat the OCSP response above but with a self-signed OCSP signing certificate</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>In the above example, the issuer of the first request item determines the
+OCSP signer used to sign the OCSP response.</p>
 </div>
 <div class="listingblock">
+<div class="title">Repeat the OCSP response above but with a self-signed OCSP signing certificate</div>
 <div class="content">
 <pre>pki --ocsp --respond --in req.der --cacert issuer1.pem --cacert issuer2.pem \
            --key signerKey.pem --cert signerCert.pem --lifetime 10 &gt; rsp_self_signed.der
@@ -1119,6 +1162,48 @@ issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
   certValidation:    GOOD
 there are multiple known issuers
 self-signed signer: "C=CH, O=strongSwan Project, CN=strongSwan OCSP signer"
+ocspResponseStatus:  successful</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Respond to OCSP requests with data from index.txt files for multiple CAs with an OCSP signer each</div>
+<div class="content">
+<pre>pki --ocsp --respond --in req1.der --cacert issuer1.pem --index index1.txt \
+           --cert signerCert1.pem --key signerKey1.pem \
+           --cacert issuer2.pem --index index2.txt \
+           --cert signerCert2.pem --key signerKey2.pem --lifetime 10 &gt; rsp1.der
+
+loaded status of 4 certificates issued by 'C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1' from index1.txt
+loaded status of 3 certificates issued by 'C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2' from index2.txt
+nonce:               af:f5:70:75:5d:b7:ff:c8:16:e3:87:94:59:8a:34:6e
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1"
+  issuerKeyHash:     5a:1b:ec:17:f0:6d:18:45:66:5b:62:40:64:67:a2:c8:e7:6a:84:20 (ok)
+  issuerNameHash:    df:1e:24:71:96:e6:bc:8c:06:46:90:18:a2:7d:b9:82:18:45:e7:09 (ok)
+  serialNumber:      10:ff:45:9a:6d:ee:4c:ec:7c:97
+  thisUpdate:        Oct 19 16:40:21 UTC 2023
+  nextUpdate:        Oct 19 16:50:21 UTC 2023
+  certValidation:    GOOD
+trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Issuing CA 1"
+ocspResponseStatus:  successful
+
+pki --ocsp --respond --in req2.der --cacert issuer1.pem --index index1.txt \
+           --cert signerCert1.pem --key signerKey1.pem \
+           --cacert issuer2.pem --index index2.txt \
+           --cert signerCert2.pem --key signerKey2.pem --lifetime 10 &gt; rsp2.der
+
+loaded status of 4 certificates issued by 'C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 1' from index1.txt
+loaded status of 3 certificates issued by 'C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2' from index2.txt
+nonce:               bd:c6:ad:36:b9:88:ed:71:c5:01:67:86:e9:ae:fd:1f
+issuer:             "C=CH, O=strongSwan Project, CN=strongSwan Issuing CA 2"
+  issuerKeyHash:     72:41:ca:f9:35:87:89:a0:fb:8c:d6:bb:7e:bb:d3:83:ab:d5:89:7b (ok)
+  issuerNameHash:    5e:b2:b4:42:e1:a5:fb:1c:bc:d8:4e:35:10:72:b2:c3:9a:38:4f:cd (ok)
+  serialNumber:      29:ff:36:d9:9a:21:49:61:91:1d
+  thisUpdate:        Oct 19 16:40:34 UTC 2023
+  nextUpdate:        Oct 19 16:50:34 UTC 2023
+  certValidation:    REVOKED
+  revocationTime:    Sep 22 13:13:04 UTC 2023
+  revocationReason:  superseded
+trusted signer:     "C=CH, O=strongSwan Project, CN=OCSP signer of strongSwan Issuing CA 2"
 ocspResponseStatus:  successful</pre>
 </div>
 </div>

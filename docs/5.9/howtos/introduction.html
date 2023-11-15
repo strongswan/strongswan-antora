@@ -938,11 +938,16 @@ with one another.</p>
 <div class="paragraph">
 <p><strong>strongSwan</strong> is basically a keying daemon that uses the
 <a href="ipsecProtocol.html#_internet_key_exchange_version_2_ikev2" class="xref page">Internet Key Exchange Version 2</a>
-(IKEv2) protocol to establish <strong>Security Associations</strong> (SAs) between two peers.
+(IKEv2) protocol to establish <strong>Security Associations</strong> (SAs) and negotiate
+<strong>Security Policies</strong> (SPs) between two peers.
 For legacy applications <a href="https://en.wikipedia.org/wiki/Internet_Key_Exchange">IKEv1</a> is still supported, although we strongly
-discourage from using IKEv1 due to stability and some security reasons. IKE provides
-strong authentication of both peers and derives unique cryptographically-strong
-session keys. Such an IKE session is often denoted <strong>IKE_SA</strong> in our documentation.
+discourage from using IKEv1 due to stability and some security reasons (it is now
+<a href="https://datatracker.ietf.org/doc/html/rfc9395">officially deprecated</a>).</p>
+</div>
+<div class="paragraph">
+<p>IKE provides strong authentication of both peers and derives unique
+cryptographically-strong session keys. Such an IKE session is often denoted
+<strong>IKE_SA</strong> in our documentation.
 Besides authentication and key material IKE also provides the means to exchange
 configuration information (e.g. <a href="../features/vip.html" class="xref page">virtual IP</a> addresses) and
 to negotiate IPsec SAs, which are often called <strong>CHILD_SAs</strong>. IPsec SAs define which
@@ -965,7 +970,7 @@ that SA.</p>
 </div>
 <div class="paragraph">
 <p>The policies work both ways, i.e. only traffic matching an inbound policy will be
-allowed after decryption. Policies are derived from the traffic selectors (TS)
+allowed after decryption. Policies are derived from the <strong>traffic selectors</strong> (TS)
 negotiated via IKE when establishing a CHILD_SA. Unprotected traffic that the kernel
 receives and for which there is <strong>no</strong> matching inbound IPsec policy will be dropped.
 This is a security feature.</p>
@@ -989,17 +994,24 @@ between <code><strong>moon</strong></code> and <code><strong>sun</strong></code>
 <code><strong>10.1.0.0/16</strong></code> would be a possible solution to this issue.</p>
 </div>
 <div class="paragraph">
-<p>Generally IPsec processing and routing are two different topics. IPsec is often
-just bumped into the stack (policy based) and the original routing decision for
-the unprotected packet also applies to the protected packet. This is the reason
-that strongSwan <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> IKE daemon by default installs
-specific routes to the remote part of the TS (in newer
-<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> versions (&gt;5.5.0), routes aren&#8217;t installed
-for transport mode CHILD_SAs). An exception to this is
-<a href="../features/routeBasedVpn.html" class="xref page">route-based IPsec</a> that uses interfaces to control
-what packets are going to be processed by each tunnel to a unique participant.
-<a href="../features/routeBasedVpn.html" class="xref page">Route-based</a> IPsec is less flexible than
-policy-based IPsec.</p>
+<p>Generally, IPsec processing and routing are not directly related. IPsec is often
+just bumped into the network stack and matching traffic is processed
+transparently (<strong>policy-based</strong>). So any routes to the remote TS will technically
+work for packets to get forwarded and processed by IPsec. However, source address
+selection can be a problem when traffic is sent from the VPN host itself. If the
+local TS don&#8217;t include its "public" address, traffic would not get processed if
+the source address is e.g. selected based on the default route. This is
+particularly true if virtual IP addresses are used. So to ensure that an address
+from a local TS is selected as source, the strongSwan
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> IKE daemon, by default, installs specific
+routes to the remote TS for most CHILD_SAs (excluded are e.g. those that use
+transport mode or TS with specific ports/protocol).</p>
+</div>
+<div class="paragraph">
+<p>An alternative approach is <a href="../features/routeBasedVpn.html" class="xref page"><strong>route-based</strong> IPsec</a>
+that uses interfaces and explicit routes to control what packets are going to be
+processed by IPsec tunnels (traffic routed that way still has to match the
+negotiated policies).</p>
 </div>
 </div>
 </div>
@@ -1382,7 +1394,7 @@ machine to the remote subnet will be secured by IPsec.</p>
 </div>
 <div class="paragraph">
 <p>To avoid conflicts with these routes (especially if
-<a href="../features/vip.html" class="xref page">virtual IPs</a> addresses are used), the <code><strong>kernel-netlink</strong></code>
+<a href="../features/vip.html" class="xref page">virtual IP</a> addresses are used), the <code><strong>kernel-netlink</strong></code>
 plugin manually parses the host&#8217;s routing tables to determine a suitable source
 address when sending IKE packets. On hosts with a (very) high number of routes this
 is quite inefficient. In that case, setting <code><strong>charon.plugins.kernel-netlink.fwmark</strong></code>
