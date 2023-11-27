@@ -1606,6 +1606,14 @@ connection attempts are blocked</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">WINS server assigned to peer via configuration payload (CP)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ocsp_nonce_len</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Length of nonces in OCSP requests. According to <a href="https://datatracker.ietf.org/doc/html/rfc8954">RFC 8954</a>, valid
+ values are between 1 and 32, with new clients required to use 32. Some servers
+ might not support that so lowering the value to e.g. 16 might be necessary.
+ Since version 5.9.13</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">port</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>500</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UDP port used locally. If set to 0 a random port will be allocated</p></td>
