@@ -1283,6 +1283,18 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  each direction (<code><strong>in/out</strong></code>)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.ocsp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reply</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.9.14.	Send OCSP status requests in certificate request payloads
+ and/or send OCSP status response in certificate payloads when using certificate-
+ based authentication. With the default of <code><strong>reply</strong></code> the daemon sends OCSP status
+ responses in certificate payloads if an OCSP status request has been received in
+ a certificate request, <code><strong>never</strong></code> disables sending of OCSP status requests and
+ responses altogether, <code><strong>request</strong></code> causes OCSP status requests in certificate
+ request payloads to be sent whenever certificate-based authentication is used,
+ <code><strong>both</strong></code> combines <code><strong>reply</strong></code> and <code><strong>request</strong></code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.mediation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Whether this connection is a mediation connection, i.e.

@@ -3636,6 +3636,13 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether the <code>PKCS#11</code> modules should be used as <code>RNG</code></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use_rsa_pss_hashers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the <code>PKCS#11</code> modules should try to use internal hashing for <code>RSA-PSS</code>
+ signatures (some <code>PKCS#11</code> libraries don&#8217;t implement internal hashing in
+ conjunction with <code>RSA-PSS</code> correctly). <code>RSA-PSS</code> support since version 5.9.14</p></td>
+</tr>
 </tbody>
 </table>
 </div>

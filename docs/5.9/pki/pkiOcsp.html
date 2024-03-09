@@ -849,8 +849,8 @@
 <div class="content">
 <pre>pki --ocsp [--in file] [--cacert file]+
 
-pki --ocsp  --respond [--in file] --cacert file --key file [--cert file]+
-           [--index file]+ [--lifetime minutes]
+pki --ocsp  --respond [--in file] [--lifetime minutes] [--cacert file [--index file]]+
+           [--key file|--keyid hex]+ [--cert file|--certid hex]+
            [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
            [--rsa-padding pkcs1|pss]
 
@@ -871,7 +871,7 @@ the <a href="../plugins/openxpki.html" class="xref page"><code><strong>openxpki<
 directly access the certificate database of an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a> server.</p>
 </div>
 <div class="paragraph">
-<p>Supported since version 5.9.12.</p>
+<p>Supported since version 5.9.12, <code>--keyid</code> and <code>--certid</code> options since version 5.9.14.</p>
 </div>
 </div>
 </div>
@@ -918,9 +918,21 @@ directly access the certificate database of an <a href="https://github.com/openx
 <td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer key. Can be used multiple times</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-K</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--keyid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Smartcard or TPM 2.0 OCSP signer key object handle. Can be used multiple times</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-c</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--cert</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer certificate (if it is not a CA certificate). Can be used multiple times</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OCSP signer certificate (if it is not a CA certificate). Can be used multiple$
+ times</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-X</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--certid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Smartcard or TPM 2.0 OCSP signer certificate object handle. Can be used
+ multiple times</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-x</code></p></td>
