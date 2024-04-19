@@ -861,7 +861,7 @@
 pki --ocsp  --respond [--in file] [--lifetime minutes] [--cacert file [--index file]]+
            [--key file|--keyid hex]+ [--cert file|--certid hex]+
            [--digest md5|sha1|sha224|sha256|sha384|sha512|sha3_224|sha3_256|sha3_384|sha3_512]
-           [--rsa-padding pss|pkcs1]
+           [--rsa-padding pkcs1|pss]
 
 pki --ocsp --help</pre>
 </div>
@@ -962,7 +962,7 @@ directly access the certificate database of an <a href="https://github.com/openx
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-R</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--rsa-padding</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pss</strong></code> or <code><strong>pkcs1</strong></code>, defaults to <code><strong>pss</strong></code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Padding to use for RSA signatures. Either <code><strong>pkcs1</strong></code> or <code><strong>pss</strong></code>, defaults to <code><strong>pkcs1</strong></code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-l</code></p></td>
