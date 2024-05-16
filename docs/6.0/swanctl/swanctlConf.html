@@ -168,7 +168,7 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Howtos</span>
+    <span class="nav-text">How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
@@ -222,7 +222,7 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">OS</span>
+    <span class="nav-text">Portability / OS</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -864,15 +864,72 @@ syntax (referencing sections, since version 5.7.0, and including other files is
 supported as well) and is located in the <a href="swanctlDir.html" class="xref page"><code><strong>swanctl</strong></code></a>
 configuration directory, usually <code><strong>/etc/swanctl</strong></code>.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Examples are provided in the <a href="../config/quickstart.html" class="xref page"><strong>Quickstart guide</strong></a>.
+Many more can be found in our <a href="https://www.strongswan.org/testing/testresults6">testing environment</a> (but make sure to
+read <a href="../config/configExamplesNotes.html" class="xref page">the notes on these</a> before using them).
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_dot_notation_placeholders"><a class="anchor" href="#_dot_notation_placeholders"></a>dot-Notation / Placeholders</h3>
 <div class="paragraph">
-<p>Many examples can be found in our testing environment, eg. as used by the
-<a href="https://www.strongswan.org/testing/testresults6/ikev2">IKEv2 scenarios</a>.</p>
+<p>In this manual, the options are documented in dot-notation and with generic
+placeholders, for instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connections.&lt;conn&gt;.remote&lt;suffix&gt;.auth=... <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+connections.&lt;conn&gt;.children.&lt;child&gt;.local_ts=... <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>&lt;conn&gt;</strong></code> designates an arbitrary connection name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>&lt;suffix&gt;</strong></code> is an optional extension to the given section name, it can be
+omitted in many cases, except when e.g. defining secondary authentication
+rounds or multiple secrets of the same type</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code><strong>&lt;child&gt;</strong></code> is an arbitrary child name</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The two options above as they might appear in an actual config file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connections {
+    connection_a {
+        remote {
+            auth=...
+        }
+        children {
+            child_1 {
+                local_ts=...
+            }
+        }
+    }
+}</pre>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_number_formats"><a class="anchor" href="#_number_formats"></a>Number Formats</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_number_formats"><a class="anchor" href="#_number_formats"></a>Number Formats</h3>
 <div class="paragraph">
 <p>Options that define an integer value can be specified as decimal (the default)
 or hexadecimal (<code><strong>0x</strong></code> prefix, upper- or lowercase letters are accepted).
@@ -886,10 +943,8 @@ The radix character (decimal separator) in either case is locale-dependent,
 usually <code>'<strong>.</strong>'</code>.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_time_formats"><a class="anchor" href="#_time_formats"></a>Time Formats</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_time_formats"><a class="anchor" href="#_time_formats"></a>Time Formats</h3>
 <div class="paragraph">
 <p>Unless stated otherwise, options that define a time are specified in seconds.
 The <code><strong>s</strong></code>, <code><strong>m</strong></code>, <code><strong>h</strong></code> and <code><strong>d</strong></code> suffixes may be used to automatically convert values
@@ -901,6 +956,7 @@ a rekey time of <code><strong>4</strong></code> hours as <code><strong>14400</st
 configured as integer values in seconds or milliseconds, or even as
 floating-point numbers (e.g. the retransmission timeout). Options that accept
 the suffixes have a corresponding default value.</p>
+</div>
 </div>
 </div>
 </div>

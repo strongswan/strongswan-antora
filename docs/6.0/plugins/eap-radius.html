@@ -168,7 +168,7 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Howtos</span>
+    <span class="nav-text">How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
@@ -222,7 +222,7 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">OS</span>
+    <span class="nav-text">Portability / OS</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
@@ -1363,6 +1363,87 @@ initiated by the VPN gateway.</p>
 negotiated identity. This is useful, as some RADIUS servers interpret such a
 prefix as a request for a specific EAP method (e.g. <code><strong>0</strong></code> as <code><strong>EAP-SIM</strong></code>, <code><strong>1</strong></code>
 as <code><strong>EAP-AKA</strong></code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_identity_matching"><a class="anchor" href="#_identity_matching"></a>Identity Matching</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <strong>client&#8217;s IKE or EAP identity</strong> might be <strong>completely unauthenticated</strong> when
+the authentication is delegated to a RADIUS server. So <strong>switching connections</strong>
+or basing other policy decisions on that identity is potentially unsafe.
+Consider using <a href="#_group_selection"><strong>group selection</strong></a> instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The plugin sends the IKE identity (or EAP identity if the IKE daemon is
+instructed to do an EAP-Identity exchange) as <code><strong>User-Name</strong></code> attribute to the
+RADIUS server. As described in the previous section, that <strong>same identity</strong> is
+also sent as <code><strong>EAP-Identity</strong></code> response in the first <code><strong>Access-Request</strong></code> message
+if <code><strong>eap_start=no</strong></code> is configured (the default).</p>
+</div>
+<div class="paragraph">
+<p>However, whether that identity is validated in any way depends on the RADIUS
+server&#8217;s behavior and configuration. For instance, whether it enforces a match
+against the client certificate if EAP-TLS is used, or whether it uses it as a
+lookup key to find a password in case of EAP-MD5/MSCHAPv2. <strong>If it doesn&#8217;t, the
+IKE daemon can&#8217;t trust that identity</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Moreover, with <code><strong>eap_start=yes</strong></code>, the RADIUS server may perform its own
+<code><strong>EAP-Identity</strong></code> exchange. This identity can be <strong>completely unrelated</strong> to the
+IKE identity that&#8217;s passed in the <code><strong>User-Name</strong></code> attribute (e.g. with Windows
+clients that send their IP as IKE identity). And the IKE daemon won&#8217;t know about
+this even if the RADIUS server changes the <code><strong>User-Name</strong></code> attribute in the
+<code><strong>Access-Accept</strong></code> reply as the plugin currently doesn&#8217;t process this attribute.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, <strong>switching connections</strong> or basing other policy decisions on the
+IKE/EAP identity (e.g. in a script or plugin like
+<a href="ext-auth.html" class="xref page"><code><strong>ext-auth</strong></code></a> or
+<a href="whitelist.html" class="xref page"><code><strong>whitelist</strong></code></a>)
+is potentially unsafe when RADIUS servers are involved. Instead, consider using
+<a href="#_group_selection"><strong>group selection</strong></a> based on attributes provided by the
+RADIUS server in the <code><strong>Access-Accept</strong></code> message. However, unless validated, the
+RADIUS server shouldn&#8217;t base this attribute assignment on the <code><strong>User-Name</strong></code>
+attribute either, but instead use e.g. information extracted from the verified
+client certificate.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>When using EAP-TLS with <strong>FreeRADIUS</strong>, it&#8217;s easily possible to match the IKE/EAP
+identity passed in the <code>User-Name</code> attribute against the Common Name (CN) RDN
+in the client certificate&#8217;s subject distinguished name (DN) by setting:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>check_cert_cn = %{User-Name}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even more flexibility is offered by the <code>virtual_server</code> offered by the
+<code>rlm_eap_tls</code> module, which can also match against other and even multiple
+attributes extracted from the client certificate such as CN (<code>TLS-Client-Cert-Common-Name</code>
+attribute) and SANs (e.g. <code>TLS-Client-Cert-Subject-Alt-Name-Email</code> or
+<code>TLS-Client-Cert-Subject-Alt-Name-Dns</code>).</p>
+</div>
+<div class="paragraph">
+<p>However, if the IKE/EAP identity is the certificate&#8217;s subject DN, matching
+<code>TLS-Client-Cert-Subject</code> generally won&#8217;t work because the string value it
+contains does not match the binary ASN.1-encoded value that&#8217;s sent in the
+<code>User-Name</code> attribute.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
