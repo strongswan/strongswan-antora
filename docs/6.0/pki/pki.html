@@ -890,13 +890,6 @@ private key of a CA and containing <code>subjectAltNames</code>, CRL distributio
 URIs of OCSP servers. You can also extract raw public keys from private keys,
 certificate requests and certificates and compute two kinds of SHA1-based key IDs.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
 <p>Starting with version 5.9.8, the <code><strong>pki</strong></code> command supports certificate enrollment
 via the <strong>Simple Certificate Enrollment Protocol</strong> (SCEP) as defined by
@@ -904,17 +897,13 @@ via the <strong>Simple Certificate Enrollment Protocol</strong> (SCEP) as define
 <a href="../tools/scepclient.html" class="xref page"><code><strong>ipsec scepclient</strong></code></a> tool.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, with version 5.9.8 the newer <code><strong>https</strong></code> based <strong>Enrollment over Secure
-Transport</strong> (EST) protocol (<a href="https://datatracker.ietf.org/doc/html/rfc7030">RFC 7030</a>) is being offered, too.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Additionally, since version 5.9.8, the newer <code><strong>HTTPS/TLS</strong></code> based <strong>Enrollment over
+Secure Transport</strong> (EST) protocol (<a href="https://datatracker.ietf.org/doc/html/rfc7030">RFC 7030</a>) is being offered, too.</p>
 </div>
 <div class="paragraph">
-<p>Version 5.9.12 introduces an <strong>Online Certificate Status Protocol</strong> (OCSP) responder
+<p>Version 5.9.12 introduced an <strong>Online Certificate Status Protocol</strong> (OCSP) responder
 as defined by <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, interoperating with an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a>
-server by directly accessing its internal <code><strong>certificate</strong></code> datebase.</p>
+server by directly accessing its internal <code><strong>certificate</strong></code> database.</p>
 </div>
 </div>
 </div>
