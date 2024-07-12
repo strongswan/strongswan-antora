@@ -47,6 +47,16 @@
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Installation</span>
 <ul class="nav-list">
@@ -62,15 +72,24 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../install/trafficDumps.html">Taking Traffic Dumps</a>
-  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Configuration</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+</ul>
+  </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../config/config.html">Configuration Files</a>
@@ -162,21 +181,6 @@
     <span class="nav-text">How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/ipsecProtocol.html">IPsec Protocol</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -190,6 +194,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/trafficDumps.html">Taking Traffic Dumps</a>
   </li>
 </ul>
   </li>
@@ -858,7 +865,7 @@ where a virtual IP address is requested by the <strong>initiator</strong> and on
 IPv4 and/or IPv6 addresses are assigned from multiple pools by the <strong>responder</strong>.</p>
 </div>
 <div class="paragraph">
-<p>An alterantive approach is possible by the IKEv2 protocol where the <strong>responder</strong>
+<p>An alternative approach is possible by the IKEv2 protocol where the <strong>responder</strong>
 would propose virtual IP addresses to the <strong>initiator</strong> but this is an uncommon
 setup and therefore not supported. It is supported for IKEv1, though, with
 <code>ModeConfig</code> in <code><strong>push</strong></code> mode.</p>

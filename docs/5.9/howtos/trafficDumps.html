@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Developer Documentation :: strongSwan Documentation</title>
-    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/devs/devs.html">
-    <link rel="prev" href="../plugins/pluginLoad.html">
-    <link rel="next" href="contributions.html">
+    <title>Taking Traffic Dumps on Linux :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/howtos/trafficDumps.html">
+    <link rel="prev" href="nameSpaces.html">
+    <link rel="next" href="../daemons/charon.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/site-extra.css">
@@ -49,10 +49,10 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+    <a class="nav-link" href="introduction.html">Introduction to strongSwan</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
+    <a class="nav-link" href="ipsecProtocol.html">Introduction to IPsec</a>
   </li>
 </ul>
   </li>
@@ -181,22 +181,22 @@
     <span class="nav-text">How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+    <a class="nav-link" href="forwarding.html">Forwarding and Split-Tunneling</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+    <a class="nav-link" href="securityRecommendations.html">Security Recommendations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+    <a class="nav-link" href="smartcards.html">Smart Card Configuration</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+    <a class="nav-link" href="cloudPlatforms.html">Cloud Platforms</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+    <a class="nav-link" href="nameSpaces.html">strongSwan in Linux Network Namespaces</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/trafficDumps.html">Taking Traffic Dumps</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="trafficDumps.html">Taking Traffic Dumps</a>
   </li>
 </ul>
   </li>
@@ -672,23 +672,23 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Development</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="devs.html">Developer Documentation</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="contributions.html">Contributions</a>
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="programmingStyle.html">Programming Style</a>
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="objectOrientedC.html">Object Oriented C</a>
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testingEnvironment.html">Testing Environment</a>
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="fuzzing.html">Fuzzing</a>
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
   </li>
 </ul>
   </li>
@@ -829,464 +829,369 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
-    <li>Development</li>
-    <li><a href="devs.html">Developer Documentation</a></li>
+    <li>How-tos</li>
+    <li><a href="trafficDumps.html">Taking Traffic Dumps</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">5.9</button>
   <div class="version-menu">
-    <a class="version" href="../../6.0/devs/devs.html">6.0 Beta</a>
-    <a class="version is-current" href="devs.html">5.9</a>
+    <a class="version is-missing" href="../../6.0/index.html">6.0 Beta</a>
+    <a class="version is-current" href="trafficDumps.html">5.9</a>
   </div>
 </div>
-<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/devs/devs.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/howtos/trafficDumps.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Developer Documentation</h1>
+<h1 class="page">Taking Traffic Dumps on Linux</h1>
 <div class="sect1">
-<h2 id="_contributions_license"><a class="anchor" href="#_contributions_license"></a>Contributions / License</h2>
+<h2 id="_abstract"><a class="anchor" href="#_abstract"></a>Abstract</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before starting development, please read our
-<a href="contributions.html" class="xref page">contribution requirements</a>.</p>
+<p>This is a short tutorial on how to get correct IPsec traffic dumps on Linux.</p>
+</div>
+<div class="paragraph">
+<p>Many users are not aware of the packet capture anomaly that occurs when capturing
+with default settings using <code><strong>wireshark</strong></code> and <code><strong>tcpdump</strong></code>. This article will
+explain how to take correct traffic dumps of &#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_ingress_ipsec_and_ike_traffic">Ingress IPsec and IKE traffic</a></p>
+</li>
+<li>
+<p><a href="#_egress_ipsec_and_ike_traffic">Egress IPsec and IKE traffic</a></p>
+</li>
+<li>
+<p><a href="#_decapsulated_ipsec_traffic">Decapsulated IPsec traffic</a></p>
+</li>
+<li>
+<p><a href="#_ipsec_traffic_terminated_at_local_host">IPsec traffic terminated at local host</a>
+(<code><strong>iptables INPUT</strong></code> chain)</p>
+</li>
+<li>
+<p><a href="#_ipsec_traffic_forwarded_to_remote_hosts">IPsec traffic forwarded to remote hosts</a>
+(<code><strong>iptables FORWARD</strong></code> chain)</p>
+</li>
+<li>
+<p><a href="#_outgoing_ipsec_traffic">Outgoing IPsec traffic</a>
+(<code><strong>iptables OUTPUT</strong></code> chain)</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_the_source_code"><a class="anchor" href="#_getting_the_source_code"></a>Getting the Source Code</h2>
+<h2 id="_a_word_of_warning"><a class="anchor" href="#_a_word_of_warning"></a>A Word of Warning</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The easiest way to get the source code is checking it out from our
-<a href="https://github.com/strongswan/strongswan">Git repository</a>:</p>
+<p>In the course of the tutorial, firewall rules will be modified. This approach only
+works with kernel processing of IPsec traffic.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you do not exactly know what you are doing then stop here and read
+         material about the topic first.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Traffic dumps are generally not useful for debugging of IKE, because charon
+optionally logs the complete structure of the IKE packets. However the graphical
+interface provided by Wireshark could be helpful. If you&#8217;re debugging problems with
+ESP or AH encoding or other fancy things, it is useful, though.</p>
+</div>
+<div class="paragraph">
+<p>This method can only capture traffic before <code><strong>nat POSTROUTING</strong></code> which is the last
+chain before IPsec processing of outgoing packets happen. To check if packets match
+the SPs, check the traffic counters of the <code>CHILD_SA</code>. You can see them in the
+output of <a href="../swanctl/swanctlListSas.html" class="xref page"><code><strong>swanctl --list-sas</strong></code></a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>Problem Statement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Capturing traffic with <code><strong>tcpdump</strong></code> or <code><strong>wireshark</strong></code> by listening on a normal
+network interface shows encapsulated and decapsulated IPsec traffic only for
+inbound traffic. For outbound traffic only the encrypted packets are seen.
+This is because of how the capturing socket of the <code><strong>libpcap</strong></code> library used by
+the aforementioned tools work.</p>
+</div>
+<div class="paragraph">
+<p>IPsec processing is usually done in the kernel. strongSwan only handles IKE. If
+you&#8217;re using userland-encryption based on <code><strong>libipsec</strong></code> then the
+<a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a> plugin in
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> handles that traffic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_solution"><a class="anchor" href="#_the_solution"></a>The Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The solution to the problem is to use the <code><strong>nflog</strong></code> interface in the <code><strong>iptables</strong></code>
+framework to get exactly the packets we are interested in. Taking a look at the
+<a href="https://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg">netfilter packet flow</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg" alt="netfilter graph"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>gives a list of possible places to dump traffic at.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>nflog</strong></code> rules log to a kernel internal multicast group which is identified by
+an integer in the <code><strong>0 .. 2&#94;16-1</strong></code> range. Only the part of the datagram that the
+framework sees will be captured. For <code><strong>iptables</strong></code> this is an IPv4 packet whereas
+for <code><strong>ip6tables</strong></code> it is an IPv6 packet. If you use it in <code><strong>ebtables</strong></code> this is an
+Ethernet frame.</p>
+</div>
+<div class="paragraph">
+<p>Using <code><strong>nflog</strong></code> to dump packets, forces you to use a special interface syntax
+of the form <code><strong>nflog:</strong>&lt;groupnumber&gt;</code> with <code><strong>tcpdump</strong></code> and <code><strong>wireshark</strong></code>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>git clone https://github.com/strongswan/strongswan.git</pre>
+<pre>tcpdump -s 0 -n -i nflog:5</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_browsing_the_source_code"><a class="anchor" href="#_browsing_the_source_code"></a>Browsing the Source Code</h2>
+<h2 id="_rules"><a class="anchor" href="#_rules"></a>Rules</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Git repository can be browsed directly at <a href="https://github.com/strongswan/strongswan">GitHub</a>.</p>
+<p>Because <code><strong>nflog</strong></code> rules are normal <code><strong>iptables</strong></code> rules, the rules need a proper
+match and target part so you get exactly the traffic you want. You also must put
+the rule into the correct place for it to get the packets you&#8217;re interested in.
+The <code><strong>policy</strong></code> match module of @iptables@ enables you to match packets with a
+matching IPsec policy.</p>
+</div>
+<div class="paragraph">
+<p>Following are the parameters for the <code><strong>nflog</strong></code> target in <code><strong>iptables</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NFLOG
+    This target provides logging of matching packets. When this  target  is
+    set  for  a  rule,  the Linux kernel will pass the packet to the loaded
+    logging backend to log the packet. This is usually used in  combination
+    with  nfnetlink_log as logging backend, which will multicast the packet
+    through a netlink socket to the specified multicast group. One or  more
+    userspace  processes may subscribe to the group to receive the packets.
+    Like LOG, this is a non-terminating target, i.e. rule traversal contin‐
+    ues at the next rule.
+
+    --nflog-group nlgroup
+           The netlink group (0 - 2^16-1) to which packets are (only appli‐
+           cable for nfnetlink_log). The default value is 0.
+
+    --nflog-prefix prefix
+           A prefix string to include in the log message, up to 64  charac‐
+           ters long, useful for distinguishing messages in the logs.
+
+    --nflog-range size
+           The  number  of bytes to be copied to userspace (only applicable
+           for nfnetlink_log). nfnetlink_log instances  may  specify  their
+           own range, this option overrides it.
+
+    --nflog-threshold size
+           Number of packets to queue inside the kernel before sending them
+           to userspace (only applicable for nfnetlink_log). Higher  values
+           result in less overhead per packet, but increase delay until the
+           packets reach userspace. The default value is 1.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Source: man page of <strong>iptables-extensions</strong> for <strong>iptables</strong> version 1.4.21.</em></p>
+</div>
+<div class="paragraph">
+<p>And the man page of the <code><strong>policy</strong></code> match module for <code><strong>iptables</strong></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>policy
+    This modules matches the policy used by IPsec for handling a packet.
+
+    --dir {in|out}
+           Used  to  select  whether  to  match the policy used for decapsulation
+           or the policy that will be used for encapsulation.  in is valid in the
+           PREROUTING, INPUT and FORWARD chains, out is valid in the POSTROUTING,
+           OUTPUT and FORWARD chains.
+
+    --pol {none|ipsec}
+           Matches if the packet is subject to IPsec processing. --pol none cannot
+           be combined with --strict.
+
+    --strict
+           Selects whether to match the exact policy or match if any rule of the
+           policy matches the given policy.
+
+    For each policy element that is to be described, one can use one or more of
+    the following options. When --strict is in effect, at least one must be used
+    per element.
+
+    [!] --reqid id
+           Matches the reqid of the policy rule. The reqid can be specified with
+           setkey(8) using unique:id as level.
+
+    [!] --spi spi
+           Matches the SPI of the SA.
+
+    [!] --proto {ah|esp|ipcomp}
+           Matches the encapsulation protocol.
+
+    [!] --mode {tunnel|transport}
+           Matches the encapsulation mode.
+
+    [!] --tunnel-src addr[/mask]
+           Matches the source end-point address of a tunnel mode SA. Only valid
+           with --mode tunnel.
+
+    [!] --tunnel-dst addr[/mask]
+           Matches the destination end-point address of a tunnel mode SA. Only
+           valid with --mode tunnel.
+
+    --next Start the next element in the policy specification. Can only be used
+           with --strict.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Source: manpage of <strong>iptables-extensions</strong> for <strong>iptables</strong> version 1.4.21.</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_source_code_documentation"><a class="anchor" href="#_source_code_documentation"></a>Source Code Documentation</h2>
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>strongSwan uses extractable inline documentation extensively. This documentation
-is extracted with <a href="https://doxygen.org">Doxygen</a> for the latest release and uploaded to
-<a href="https://www.strongswan.org/apidoc">strongswan.org/apidoc</a>. Use <code><strong>make apidoc</strong></code> to generate it from the
-sources.</p>
+<p>The following rules use <code><strong>nflog</strong></code> group <code><strong>5</strong></code>. Adjust the value for whatever group
+you&#8217;re using.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_style"><a class="anchor" href="#_code_style"></a>Code style</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For our code we heavily use an
-<a href="objectOrientedC.html" class="xref page">object oriented programming style</a> for C. Also
-have a look to our basic <a href="programmingStyle.html" class="xref page">programming style</a>
-guidelines.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_quality_assurance"><a class="anchor" href="#_quality_assurance"></a>Quality Assurance</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_unit_tests"><a class="anchor" href="#_unit_tests"></a>Unit Tests</h3>
-<div class="paragraph">
-<p>Our libraries are tested with an increasing number of unit tests. To run them use
-<code><strong>make check</strong></code>. The following environment variables change the behavior of the
-test runner:</p>
+<h3 id="_ingress_ipsec_and_ike_traffic"><a class="anchor" href="#_ingress_ipsec_and_ike_traffic"></a>Ingress IPsec and IKE Traffic</h3>
+<div class="listingblock">
+<div class="content">
+<pre>iptables -t raw -I PREROUTING -p esp -j NFLOG --nflog-group 5
+iptables -t raw -I PREROUTING -p ah -j NFLOG --nflog-group 5
+iptables -t raw -I PREROUTING -p udp -m multiport --dports 500,4500 -j NFLOG --nflog-group 5</pre>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 62.5%;">
-<col style="width: 12.5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Variable</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Since Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_PLUGINS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A space-separated list of plugins to load<br>
- (not implemented by all test runners)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.3.3</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_REDUCED_KEYLENGTHS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If this is set, test cases that generate keys will do so only for reduced key
- lengths to avoid blocking on hosts with low entropy</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_STRONGSWAN_CONF</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Path to a custom <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> file used
- for the tests</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_RUNNERS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test runners to run</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.5.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_SUITES</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test suites to run<br>
- (all suites are run if this is not specified)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_SUITES_EXCLUDE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test suites excluded from running</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_CASES</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test cases to run<br>
- (all cases of selected suites are run if this is not specified)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_CASES_EXCLUDE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test cases excluded from running</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_FUNCTIONS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test functions to run
- (all functions of selected suites/cases are run if this is not specified)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_FUNCTIONS_EXCLUDE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of test functions excluded from running</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_ITERATIONS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A comma-separated list of iterations of a loop-based test function to run
- (all iterations are run if this is not specified)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.8</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_NO_IPV6</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Disables IPv6 test cases (e.g. to run the tests in Docker containers that only
- provide IPv4 networking)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.6</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_VERBOSITY</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The log level used when running the tests (<code><strong>-1</strong></code> to <code><strong>4</strong></code> with a default of
- <code><strong>-1</strong></code>), see <a href="../config/logging.html" class="xref page">Logging</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_VERBOSITY_&lt;GROUP&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The log level used for a specific log group (<code><strong>CFG</strong></code>, <code><strong>IKE</strong></code>, etc.) when
- running the tests (<code><strong>-1</strong></code> to <code><strong>4</strong></code> with a default of <code><strong>TESTS_VERBOSITY</strong></code>),
- see <a href="../config/logging.html" class="xref page">Logging</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.9.7</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LEAK_DETECTIVE_DISABLE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If our custom memory allocator is enabled with <code><strong>--enable-leak-detective</strong></code>, it
- can be disabled temporarily by setting this variable in order to speed up
- running the tests</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Coverage reports can be generated with <code><strong>make coverage</strong></code> which requires the
-<code><strong>--enable-coverage</strong></code> <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> option which
-is not recommended for production builds as it disables all optimizations.</p>
-</div>
-<div class="paragraph">
-<p>The unit tests also run automatically for every commit:</p>
-</div>
-<table class="tableblock frame-none grid-none stretch">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/linux.yml"><img src="https://github.com/strongswan/strongswan/workflows/Linux/badge.svg" alt="Linux" title="Linux"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/android.yml"><img src="https://github.com/strongswan/strongswan/workflows/Android/badge.svg" alt="Android" title="Android"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/macos.yml"><img src="https://github.com/strongswan/strongswan/workflows/macOS/badge.svg" alt="macOS" title="macOS"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/windows.yml"><img src="https://github.com/strongswan/strongswan/workflows/Windows/badge.svg" alt="Windows" title="Cross-compiled Windows"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://ci.appveyor.com/project/tobiasbrunner/strongswan-52lo9"><img src="https://ci.appveyor.com/api/projects/status/186bfuup38t9pu4k?svg=true" alt="Windows" title="Native Windows on AppVeyor"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://cirrus-ci.com/github/strongswan/strongswan"><img src="https://api.cirrus-ci.com/github/strongswan/strongswan.svg?branch=master" alt="FreeBSD" title="FreeBSD on Cirrus CI"></a></span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Information on the code coverage:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://codecov.io/gh/strongswan/strongswan"><img src="https://codecov.io/gh/strongswan/strongswan/branch/master/graph/badge.svg" alt="Codecov" title="Code Coverage"></a></span></p>
-</div>
-<div class="paragraph">
-<p>And the code base is automatically analyzed:</p>
-</div>
-<table class="tableblock frame-none grid-none stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/sonarcloud.yml"><img src="https://github.com/strongswan/strongswan/workflows/SonarCloud/badge.svg" alt="SonarCloud" title="SonarCloud"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://sonarcloud.io/dashboard?id=strongswan"><img src="https://sonarcloud.io/api/project_badges/measure?project=strongswan&amp;metric=alert_status" alt="Sonarcloud" title="SonarCloud"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan//actions/workflows/codeql.yml"><img src="https://github.com/strongswan/strongswan/workflows/CodeQL/badge.svg" alt="CodeQL" title="CodeQL"></a></span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Part of the source code is periodicylly fuzzed by Google OSS-Fuzz:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&amp;can=1&amp;q=proj:strongswan"><img src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/strongswan.svg" alt="Fuzzing" title="Fuzzing Status"></a></span></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testing_environment"><a class="anchor" href="#_testing_environment"></a>Testing Environment</h3>
+<h3 id="_egress_ipsec_and_ike_traffic"><a class="anchor" href="#_egress_ipsec_and_ike_traffic"></a>Egress IPsec and IKE Traffic</h3>
+<div class="listingblock">
+<div class="content">
+<pre>iptables -t raw -I OUTPUT -p esp -j NFLOG --nflog-group 5
+iptables -t raw -I OUTPUT -p ah -j NFLOG --nflog-group 5
+iptables -t raw -I OUTPUT -p udp -m multiport --dports 500,4500 -j NFLOG --nflog-group 5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_decapsulated_ipsec_traffic"><a class="anchor" href="#_decapsulated_ipsec_traffic"></a>Decapsulated IPsec Traffic</h3>
+<div class="listingblock">
+<div class="content">
+<pre>iptables -t mangle -I PREROUTING -m policy --pol ipsec --dir in -j NFLOG --nflog-group 5
+iptables -t mangle -I POSTROUTING -m policy --pol ipsec --dir out -j NFLOG --nflog-group 5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ipsec_traffic_terminated_at_local_host"><a class="anchor" href="#_ipsec_traffic_terminated_at_local_host"></a>IPsec Traffic Terminated at Local Host</h3>
+<div class="listingblock">
+<div class="content">
+<pre>iptables -t filter -I INPUT -m addrtype --dst-type LOCAL -m policy --pol ipsec --dir in -j NFLOG --nflog-group 5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ipsec_traffic_forwarded_to_remote_hosts"><a class="anchor" href="#_ipsec_traffic_forwarded_to_remote_hosts"></a>IPsec Traffic Forwarded to Remote Hosts</h3>
+<div class="listingblock">
+<div class="content">
+<pre>iptables -t filter -I FORWARD -m addrtype ! --dst-type LOCAL -m policy --pol ipsec --dir in -j NFLOG --nflog-group 5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_outgoing_ipsec_traffic"><a class="anchor" href="#_outgoing_ipsec_traffic"></a>Outgoing IPsec Traffic</h3>
+<div class="listingblock">
+<div class="content">
+<pre>iptables -t filter -I OUTPUT -m policy --pol ipsec --dir out -j NFLOG --nflog-group 5</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_the_traffic"><a class="anchor" href="#_getting_the_traffic"></a>Getting the traffic</h3>
+<div class="listingblock">
+<div class="content">
+<pre>tcpdump -s 0 -n -i nflog:5</pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Our integration and regression
-<a href="testingEnvironment.html" class="xref page">testing environment</a> helps us ensure the quality
-of future releases. The test results for the latest strongSwan release are
-published <a href="https://strongswan.org/testresults.html">online</a>.</p>
+<p>Alternatively use Wireshark. The <code><strong>nflog</strong></code> group appears in the interface list.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_components"><a class="anchor" href="#_components"></a>Components</h2>
+<h2 id="_special_case_libipsec"><a class="anchor" href="#_special_case_libipsec"></a>Special Case: libipsec</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://github.com/strongswan/strongswan//tree/master/src"><code>src</code></a> directory in the strongSwan distribution contains the following components:</p>
+<p>If you&#8217;re using <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>libipsec</strong></code></a> then simply make
+<code><strong>tcpdump</strong></code> listen on the <code><strong>tun</strong></code> interface to get decapsulated traffic.
+If you want IKE and the IPsec traffic, just listen on the interface that is used
+to communicate with the peers.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Component</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>aikgen</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to generate an Attestation Identity Key bound to a TPM 1.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tools/cert-enroll.html" class="xref page"><code><strong>cert-enroll</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Automated certificate enrollment tool</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The IKE keying daemon</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A command line IKE client</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page"><code><strong>charon-nm</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The back end for the <a href="../features/networkManager.html" class="xref page">NetworkManager</a> D-BUS
- plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-svc.html" class="xref page"><code><strong>charon-svc</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Windows IKE service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An IKE daemon similar to <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> but specifically
- designed for use with <code><strong>systemd</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>charon-tkm</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A variant of <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> that is backed by a
- Trusted Key Manager (<a href="https://www.codelabs.ch/tkm/">TKM</a>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/integrityTests.html" class="xref page"><code><strong>checksum</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to generate checksums of built executables and libraries</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tools/conftest.html" class="xref page"><code><strong>conftest</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conformance test tool</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/androidVpnClient.html" class="xref page"><code><strong>frontends/android</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPN client for Android</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page"><code><strong>frontends/gnome</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page">NetworkManager</a> plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/macos.html" class="xref page"><code><strong>frontends/osx</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>charon-xpc</strong></code> helper daemon for the native <a href="../os/macos.html" class="xref page">macOS application</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ipsec</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The legacy ipsec command line tool wrapping commands and other tools</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libcharon</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains most of the code and the plugins of the
- <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libfast</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A lightweight framework to build native web applications using ClearSilver and
- FastCGI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page"><code><strong>libimcv</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Various Integrity Measurement Collectors (IMCs), Integrity Measuremeent
- Validators (IMVs) and the library code shared by them</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libipsec</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A userland IPsec implementation used by
- <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a> and the
- <a href="../os/androidVpnClient.html" class="xref page">Android VPN Client</a> app</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libpts</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains code for TPM-based <a href="../tnc/tnc.html" class="xref page">Platform Trust Services</a> (PTS)
- and SWID tag handling</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libpttls</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <a href="../tnc/tnc.html" class="xref page"><code><strong>PT-TLS</strong></code></a> protocol</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libradius</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RADIUS protocol implementation used by e.g. the
- <a href="../plugins/eap-radius.html" class="xref page"><code><strong>eap-radius</strong></code></a> and <code><strong>tnc-pdp</strong></code> plugins</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libsimaka</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains code shared by several EAP-SIM/AKA plugins</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libstrongswan</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The strongSwan library with basic functions used by the daemons and utilities</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/eap-tls.html" class="xref page"><code><strong>libtls</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TLS implementation used by the <a href="../plugins/eap-tls.html" class="xref page"><code><strong>eap-tls</strong></code></a>, <code><strong>eap-ttls</strong></code>,
- <code><strong>eap-peap</strong></code> and other plugins</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libtnccs</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <a href="../tnc/tnc.html" class="xref page"><code>IF-TNCCS</code></a> interface</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libtncif</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <a href="../tnc/tnc.html" class="xref page"><code>IF-IMC/IF-IMV</code></a> interfaces</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libtpmtss</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Provides access to TPM 1.2 and <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>manager</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A deprecated graphical management application for
- <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> based on <code><strong>libfast</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>medsrv</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An experimental management front end for mediation servers based on <code><strong>libfast</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Key Infrastructure utility</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tools/pool.html" class="xref page"><code><strong>pool</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to manage attributes and IP address pools provided by the
- <a href="../plugins/attr-sql.html" class="xref page"><code><strong>attr-sql</strong></code></a> plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/pt-tls-client.html" class="xref page"><code><strong>pt-tls-client</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Integrity measurement client using the <code><strong>PT-TLS</strong></code> protocol</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/sec-updater.html" class="xref page"><code><strong>sec-updater</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utility extracting information about security updates and backports of Linux
- repositories (e.g. Debian or Ubuntu)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>starter</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Legacy daemon that reads <code><strong>ipsec.conf</strong></code> and controls the keying daemon charon</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>stroke</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Legacy command line utility to control <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> via
- the <code><strong>stroke</strong></code> protocol</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration and control utility that communicates via the
- <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> interface</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/sw-collector.html" class="xref page"><code><strong>sw-collector</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utility extracting information about software package installation, update or
- removal events from the <code><strong>apt</strong></code> history log</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>tpm_extendpcr</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tool that extends a digest into a TPM PCR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>_updown</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default script called by the <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> plugin on
- tunnel up/down events</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>xfrmi</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utility to create <code>XFRM</code> interfaces</p></td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_decrypting_ikeesp_traffic_in_wireshark"><a class="anchor" href="#_decrypting_ikeesp_traffic_in_wireshark"></a>Decrypting IKE/ESP Traffic in Wireshark</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible to configure encryption and authenticaton keys in Wireshark in
+order to decrypt and verify IKE and ESP traffic. However, it depends on the
+Wireshark version how well this works. For instance, to decrypt ISAKMP (IKEv1)
+traffic only 3DES was supported until 1.12.0, which added support for AES.
+Similarly, versions before 1.10.9 only supported ISAKMP with PSK authentication.</p>
+</div>
+<div class="paragraph">
+<p>The IKE encryption and authentication keys can be extracted from the log if the
+<a href="../config/logging.html" class="xref page">log level</a> is increased to <code><strong>4</strong></code> for the <code><strong>ike</strong></code> subsystem.
+When using IKEv1 look for <code><strong>SKEYID</strong></code> or <code><strong>Ka</strong></code> to get the final encryption key
+whereas with IKEv2 look for <code><strong>Sk</strong></code>. The ESP keys are logged on level <code><strong>4</strong></code> in the
+<code><strong>chd</strong></code> subsystem but can also be extracted via <code><strong>ip xfrm state</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Starting with strongSwan version 5.6.2, the <a href="../plugins/save-keys.html" class="xref page"><code><strong>save-keys</strong></code></a>
+plugin for <code><strong>libcharon</strong></code> can be used to automatically store IKE and ESP keys under
+corresponding default file names in Wireshark format. This key files can then be
+loaded by Wireshark to decrypt the captured IKE and ESP packets.</p>
+</div>
+<div class="paragraph">
+<p>To debug IKEv2 it is also possible to use <code><strong>NULL</strong></code> encryption via the <code><strong>openssl</strong></code>
+plugin.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../plugins/pluginLoad.html">Plugin Load Options</a></span>
-  <span class="next"><a href="contributions.html">Contributions</a></span>
+  <span class="prev"><a href="nameSpaces.html">strongSwan in Linux Network Namespaces</a></span>
+  <span class="next"><a href="../daemons/charon.html">charon</a></span>
 </nav>
 </article>
   </div>

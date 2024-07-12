@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Installation Documentation :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/5.9/install/install.html">
-    <link rel="prev" href="../index.html">
+    <link rel="prev" href="../howtos/ipsecProtocol.html">
     <link rel="next" href="autoconf.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
@@ -47,6 +47,16 @@
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Installation</span>
 <ul class="nav-list">
@@ -62,15 +72,24 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="reducedPrivileges.html">Reduced Privileges</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="trafficDumps.html">Taking Traffic Dumps</a>
-  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Configuration</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+</ul>
+  </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../config/config.html">Configuration Files</a>
@@ -162,21 +181,6 @@
     <span class="nav-text">How-tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../howtos/ipsecProtocol.html">IPsec Protocol</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -190,6 +194,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/trafficDumps.html">Taking Traffic Dumps</a>
   </li>
 </ul>
   </li>
@@ -853,10 +860,21 @@
 <p><a href="https://www.archlinux.org/packages/?sort=&amp;q=strongswan">Arch Linux</a></p>
 </li>
 <li>
-<p><a href="https://packages.debian.org/search?keywords=strongswan&amp;searchon=names&amp;suite=all&amp;section=all">Debian</a></p>
-</li>
-<li>
-<p><a href="https://packages.ubuntu.com/search?keywords=strongswan&amp;searchon=names&amp;suite=all&amp;section=all">Ubuntu</a></p>
+<p><a href="https://packages.debian.org/search?keywords=strongswan&amp;searchon=names&amp;suite=all&amp;section=all">Debian</a> / <a href="https://packages.ubuntu.com/search?keywords=strongswan&amp;searchon=names&amp;suite=all&amp;section=all">Ubuntu</a></p>
+<details>
+<summary class="title"><strong>Note on Debian/Ubuntu packages</strong></summary>
+<div class="content">
+<div class="paragraph">
+<p>When installing the <code><strong>strongswan</strong></code> metapackage, the legacy daemon and
+configuration backend are installed. To use swanctl/vici instead, install the
+<code><strong>charon-systemd</strong></code> and <code><strong>strongswan-swanctl</strong></code> packages and remove both the
+<code><strong>strongswan-starter</strong></code> and <code><strong>strongswan-charon</strong></code> packages. Make sure you only
+have either the <code><strong>charon-systemd</strong></code> or the <code><strong>strongswan-starter</strong></code> package
+installed (or at least disable one of the systemd units they install, which are
+<code>strongswan.service</code> and <code>strongswan-starter.service</code>, respectively).</p>
+</div>
+</div>
+</details>
 </li>
 <li>
 <p><a href="https://software.opensuse.org/search?utf8=%E2%9C%93&amp;baseproject=ALL&amp;q=strongswan">openSUSE</a></p>
@@ -1083,7 +1101,7 @@ configure strongSwan.</p>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../index.html">strongSwan Docs</a></span>
+  <span class="prev"><a href="../howtos/ipsecProtocol.html">Introduction to IPsec</a></span>
   <span class="next"><a href="autoconf.html">Autoconf Options</a></span>
 </nav>
 </article>
