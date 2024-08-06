@@ -1193,6 +1193,26 @@ or directly from the app&#8217;s page in the Play store.</p>
 <h2 id="_changelog"><a class="anchor" href="#_changelog"></a>Changelog</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="_2_5_2_2024_08_06"><a class="anchor" href="#_2_5_2_2024_08_06"></a>2.5.2 (2024-08-06)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Increased target SDK to Android 14 and fixed compatibility issues</p>
+</li>
+<li>
+<p>Due to <a href="https://issuetracker.google.com/issues/305035828">a bug in Android 14+</a>, a new permission (<code>SYSTEM_ALERT_WINDOW</code>)
+is necessary to start a VPN profile in the background from the status tile. If
+necessary, the app opens the settings dialog where users have to search the
+app and then grant the permission manually (Google disabled the possibility
+to directly ask for this permission some versions ago)</p>
+</li>
+<li>
+<p>Fix a crash when listing installed apps for new profiles</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_2_5_1_2024_02_26"><a class="anchor" href="#_2_5_1_2024_02_26"></a>2.5.1 (2024-02-26)</h3>
 <div class="ulist">
 <ul>
