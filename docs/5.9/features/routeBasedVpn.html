@@ -852,7 +852,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Generally IPsec processing is based on policies. After regular route lookups are
-done the OS kernel consults its SPD (Security Policy Database) for a matching
+done, the OS kernel consults its SPD (Security Policy Database) for a matching
 policy and if one is found that is associated with an IPsec SA (Security
 Association) the packet is processed (e.g. encrypted and sent as ESP packet).</p>
 </div>
@@ -862,12 +862,332 @@ VPNs. Here IPsec processing does not (only) depend on negotiated policies but ma
 e.g. be controlled by routing packets to a specific interface.</p>
 </div>
 <div class="paragraph">
-<p>Most of these approaches also allow an easy capture of plaintext traffic, which
-depending on the operating system might not be that straight-forward with
+<p>Most of these approaches also allow an easy capture of plaintext traffic, which,
+depending on the operating system, might not be that straight-forward with
 policy-based VPNs, see <a href="../howtos/trafficDumps.html" class="xref page">Traffic Dumps</a>.
 Another advantage this approach could have is that the MTU can be specified for
 the tunneling devices, allowing to fragment packets before tunneling them, in case
 PMTU discovery does not work properly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_xfrm_interfaces_on_linux"><a class="anchor" href="#_xfrm_interfaces_on_linux"></a>XFRM Interfaces on Linux</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+strongSwan supports XFRM interfaces since version 5.8.0. They are supported
+      by the Linux kernel since 4.19 and <strong>iproute2</strong> version 5.1.0+. With older
+      kernels, <a href="#_vti_devices_on_linux">VTI devices</a> may be used.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>XFRM interfaces are similar to VTI devices in their basic functionality (see
+<a href="#_vti_devices_on_linux">below</a> for details) but offer several advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No tunnel endpoint addresses have to be configured on the interfaces. Compared
+to VTIs, which are layer 3 tunnel devices with mandatory endpoints, this resolves
+issues with wildcard addresses (only one VTI with wildcard endpoints is supported),
+avoids a 1:1 mapping between SAs and interfaces and easily allows SAs with multiple
+peers to share the same interface.</p>
+</li>
+<li>
+<p>Because there are no endpoint addresses, IPv4 and IPv6 SAs are supported on the
+same interface (VTI devices only support one address family).</p>
+</li>
+<li>
+<p>IPsec modes other than tunnel are supported (VTI devices only support tunnel
+mode).</p>
+</li>
+<li>
+<p>No awkward configuration via GRE keys and XFRM marks. Instead, a separate
+identifier (XFRM interface ID) links policies and SAs with XFRM interfaces.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As mentioned above, the policies and SAs are linked to XFRM interface via a separate
+identifier (interface ID). Like XFRM marks they are part of the policy selector.
+That is, policies will only match traffic if it was routed via an XFRM interface
+with a matching interface ID and duplicate policies are allowed as long as the
+interface ID is different. So it&#8217;s possible to negotiate <code><strong>0.0.0.0/0</strong></code> as traffic
+selector on both ends (to tunnel arbitrary traffic) for multiple CHILD_SAs as
+long as the interface IDs are different.</p>
+</div>
+<div class="paragraph">
+<p>Traffic that&#8217;s routed to an XFRM interface, while no policies and SAs with matching
+interface ID exist, will be dropped by the kernel. Likewise, as long as no interface
+with a matching interface ID exists, the policies and SAs will not be operational
+(i.e. outbound traffic bypasses the policies and inbound traffic is dropped). So
+it&#8217;s possible to create interfaces before SAs are created or afterwards (e.g. via
+<a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> events or <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a>
+scripts which both receive configured or optionally dynamically generated interface
+IDs).</p>
+</div>
+<div class="paragraph">
+<p>Using trap policies to dynamically create IPsec SAs based on matching traffic that
+has been routed to an XFRM interface is also an option.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s possible to use separate interfaces for in- and outbound traffic, which is
+why interface IDs may be configured for in- and outbound policies/SAs separately
+(see below).</p>
+</div>
+<div class="paragraph">
+<p>The use of XFRM interfaces are a local decision, no additional encapsulation (like
+with GRE, see <a href="#_gre_tunnels">below</a>) is added, so the other end does not have
+to be aware that such interfaces are used in addition to regular IPsec policies.</p>
+</div>
+<div class="sect2">
+<h3 id="_xfrm_interface_management"><a class="anchor" href="#_xfrm_interface_management"></a>XFRM Interface Management</h3>
+<div class="paragraph">
+<p>With <code><strong>iproute2</strong></code> 5.1.0 and newer an XFRM interface can be created as such:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ip link add &lt;name&gt; type xfrm if_id &lt;interface ID&gt; [dev &lt;underlying interface&gt;]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>strongSwan also comes with a utility (called <code><strong>xfrmi</strong></code>) to create XFRM interfaces
+if <code><strong>iproute2</strong></code> can not create the interface.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/usr/local/libexec/ipsec/xfrmi --name &lt;name&gt; --id &lt;interface ID&gt; [--dev &lt;underlying interface&gt;]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>&lt;name&gt;</code> can be any valid device name (e.g. <code><strong>ipsec0</strong></code>, <code><strong>xfrm0</strong></code>, etc.).
+<code>&lt;interface ID&gt;</code> is a decimal or hex (<code><strong>0x</strong></code> prefix) 32-bit number. The underlying
+interface currently is optional and doesn&#8217;t really matter (it only does if an
+interface is configured on the outbound policy - and it might with hardware IPsec
+offloading, but that has not been tested by us).</p>
+</div>
+<div class="paragraph">
+<p>The interface can afterwards be managed via <code><strong>iproute2</strong></code>. So to activate it, use</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ip link set &lt;name&gt; up</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Addresses, if necessary, can be added with <code><strong>ip addr</strong></code> and the interface may
+eventually be deleted with</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ip link del &lt;name&gt;</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_create_xfrm_interface_ipsec0"><a class="anchor" href="#_example_create_xfrm_interface_ipsec0"></a>Example: Create XFRM Interface (ipsec0)</h4>
+<div class="listingblock">
+<div class="content">
+<pre>ip link add ipsec0 type xfrm if_id 42
+# or if not supported by iproute2 yet:
+/usr/local/libexec/ipsec/xfrmi --name ipsec0 --id 42
+
+ip link set ipsec0 up
+ip route add 10.1.0.0/16 dev ipsec0
+ip route add 10.2.0.0/16 dev ipsec0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Statistics are available via</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ip -s link show [&lt;name&gt;]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>xfrmi</strong></code> command provides a <code><strong>--list</strong></code> option to list existing XFRM interfaces
+if using older versions of <code><strong>iproute2</strong></code> does not list the interface ID of XFRM
+interfaces yet with <code><strong>ip -d link</strong></code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+By default, the daemon will not install any routes for CHILD_SAs with
+           outbound interface ID, so it&#8217;s not necessary to disable the route
+           installation globally. Since version 5.9.10, strongSwan optionally
+           installs routes automatically (see below)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Keep in mind that traffic routed to XFRM interfaces has to match the negotiated
+IPsec policies. Therefore, connections are configured as they would if no interfaces
+were to be used. However, since policies won&#8217;t affect traffic that&#8217;s not routed
+via XFRM interfaces, it&#8217;s possible to negotiate <code><strong>0.0.0.0/0</strong></code> or <code><strong>::/0</strong></code> as traffic
+selector on both ends to tunnel arbitrary traffic.</p>
+</div>
+<div class="paragraph">
+<p>The most important connection configuration option in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> is the interface ID <code><strong>if_id_in</strong></code>
+and <code><strong>if_id_out</strong></code>. To use a single interface for in- and outbound traffic set them
+to the same value (or <code><strong>%unique</strong></code> to generate a unique ID for each CHILD_SA).
+To use separate interfaces for each direction, configure distinct values (or
+<code><strong>%unique-dir</strong></code> to generate unique IDs for each CHILD_SA and direction). It&#8217;s also
+possible to use an XFRM interface only in one direction by setting only one of the
+two settings.</p>
+</div>
+<div class="paragraph">
+<p>When setting the options on the connection-level, all CHILD_SAs for which the
+settings are not set will inherit the interface IDs of the IKE_SA (use <code><strong>%unique</strong></code>
+or <code><strong>%unique-dir</strong></code> to allocate unique IDs for each IKE_SA/direction that are
+inherited by all CHILD_SAs created under the IKE_SA).</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s possible to use transport mode for host-to-host connections between two peers.</p>
+</div>
+<div class="paragraph">
+<p>Since version 5.9.10, strongSwan optionally installs routes via XFRM
+interfaces if the <code><strong>charon.plugins.kernel-netlink.install_routes_xfrmi</strong></code> option
+is enabled. A route is only installed if an interface with the ID configured
+in <code><strong>if_id_out</strong></code> exists when the corresponding CHILD_SA is installed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_avoid_routing_loops_with_ikeesp_traffic"><a class="anchor" href="#_avoid_routing_loops_with_ikeesp_traffic"></a>Avoid Routing Loops with IKE/ESP Traffic</h3>
+<div class="paragraph">
+<p>If the negotiated traffic selectors include the IKE/ESP traffic to the
+peer, enabling <code><strong>install_routes_xfrmi</strong></code> (see above) requires special care to
+avoid routing loops (i.e. routing IKE and ESP packets into the XFRM interface).
+The same applies if routes that conflict with the IKE/ESP traffic (e.g. a default
+route) are installed manually via an XFRM interface.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the routes via XFRM interface are installed in routing table 220, which
+is what the mentioned option does, by default, there are basically two options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set marks on the IKE packets (globally via <code><strong>charon.plugins.socket-default.fwmark</strong>=&lt;mark&gt;</code>)
+and the ESP packets (via <code><strong>&lt;child&gt;.set_mark_out</strong>=&lt;mark&gt;</code>), and then exclude
+such packets from routing table 220 by adding a negative mark on the routing
+rule (via <code><strong>charon.plugins.kernel-netlink.fwmark</strong>=!&lt;mark&gt;</code>).
+<code>&lt;mark&gt;</code> is an arbitrary value, but preferably one that&#8217;s not already used for
+something else on the system.</p>
+</li>
+<li>
+<p>Alternatively, e.g. if the kernel doesn&#8217;t support <code><strong>set_mark_out</strong></code>, install an
+explicit route to the peer&#8217;s IP address, either via a physical interface
+instead of the XFRM interface, or, for instance, a <code><strong>throw</strong></code> route in table
+220, so the other routes in that table are ignored for packets addressed to
+the peer and the next and eventually the main routing table will be used (e.g.
+<code><strong>ip route add throw &lt;peer ip&gt; table 220</strong></code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first option should be preferred as it only affects IKE and ESP traffic and
+protects all other traffic addressed to the peer&#8217;s IP address, and it has the
+advantage of not requiring a route for each peer and continues to work if a
+peer&#8217;s IP address changes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example"><a class="anchor" href="#_example"></a>Example</h3>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/route-based/net2net-xfrmi"><img src="../_images/a-m-w-s-b.png" alt="topology" width="501" height="190"></a>
+</div>
+<div class="title">Figure 1. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/net2net-xfrmi">example</a> showing the use of XFRM interfaces</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sharing_xfrm_interfaces"><a class="anchor" href="#_sharing_xfrm_interfaces"></a>Sharing XFRM Interfaces</h3>
+<div class="paragraph">
+<p>Because no endpoint addresses are configured on the interfaces they can easily be
+shared by multiple SAs as long as the policies don&#8217;t conflict. Just configure the
+same interface ID for the CHILD_SAs (this also works automatically for roadwarrior
+connections where each client gets an individual IP address assigned - just route
+the subnets used for virtual IPs to the XFRM interface).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_2"><a class="anchor" href="#_example_2"></a>Example</h3>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-xfrmi"><img src="../_images/a-m-c-w-d.png" alt="topology" width="372" height="190"></a>
+</div>
+<div class="title">Figure 2. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-xfrmi">example</a> showing the use of shared XFRM interfaces</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_specific_xfrm_interfaces"><a class="anchor" href="#_connection_specific_xfrm_interfaces"></a>Connection-specific XFRM Interfaces</h3>
+<div class="paragraph">
+<p>Using custom <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> or <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a>
+scripts allows creating connection-specific XFRM interfaces. The interface ID
+(in particular if <code><strong>%unique[-dir]</strong></code> is used) is available in the scripts to create
+the XFRM interface dynamically.</p>
+</div>
+<div class="paragraph">
+<p>Note that <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> scripts are called for each
+combination of of local and remote subnet, so this might cause conflicts if more
+than one subnet is negotiated in the traffic selectors (i.e. this requires some
+kind of refcounting). The <code><strong>child-updown</strong></code> <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> event,
+however is only triggered once per CHILD_SA. To create connection-level XFRM
+interfaces with dynamic interface IDs, use the <code><strong>ike-updown</strong></code>
+<a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> event.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_network_namespaces"><a class="anchor" href="#_network_namespaces"></a>Network Namespaces</h3>
+<div class="paragraph">
+<p>XFRM interfaces can be moved to network namespaces to provide the processes there
+access to IPsec SAs/policies that were created in a different network namespace.
+For instance, this allows a single IKE daemon to provide IPsec connections for
+processes in different network namespaces (or full containers) without them having
+access to the keys of the SAs (the SAs won&#8217;t be visible in the other network
+namespaces, only the XFRM interface).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xfrm_interfaces_in_vrfs"><a class="anchor" href="#_xfrm_interfaces_in_vrfs"></a>XFRM interfaces in VRFs</h3>
+<div class="paragraph">
+<p>XFRM interfaces can be associated to a VRF layer 3 master device, so any tunnel
+terminated by an XFRM interface implicitly is bound to that VRF domain. For example,
+this allows multi-tenancy setups where traffic from different tunnels can be
+separated and routed over different interfaces.</p>
+</div>
+<div class="paragraph">
+<p>Due to a limitation in XFRM interfaces, inbound traffic fails policy checking in
+kernels prior to version 5.1.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_netfilter_ipsec_policy_match_with_xfrm_interfaces"><a class="anchor" href="#_netfilter_ipsec_policy_match_with_xfrm_interfaces"></a>Netfilter IPsec Policy Match with XFRM Interfaces</h3>
+<div class="paragraph">
+<p>Due to a limitation in the Netfilter IPsec <code><strong>policy</strong></code> match, output traffic
+forwarded over an XFRM interface does not match (inbound it matches, though).
+<code><strong>policy</strong></code> matching is not really required anymore when using XFRM interfaces, as
+the Netfilter rules can just match on the interface. So the workaround is to
+filter just on XFRM interface names instead of IPsec <code><strong>policy</strong></code> matches.</p>
+</div>
 </div>
 </div>
 </div>
@@ -884,7 +1204,7 @@ PMTU discovery does not work properly.</p>
 VTI devices are supported since the Linux 3.6 kernel but some important
       changes were added later (3.15+). The information below might not be accurate
       for older kernel versions. On newer kernels (4.19+), XFRM interfaces provide
-      a better solution than VTI devices, see <a href="#_xfrm_interfaces_on_linux">below</a>
+      a better solution than VTI devices, see <a href="#_xfrm_interfaces_on_linux">above</a>
       for details.
 </td>
 </tr>
@@ -906,10 +1226,10 @@ device it automatically gets the configured mark applied, so it will match the
 policy and get tunneled.</p>
 </div>
 <div class="paragraph">
-<p>It&#8217;s important to note that VTI tunnel devices are a local feature, no additional
-encapsulation (like with GRE, see <a href="#_gre_tunnels">below</a>) is added, so the other
-end does not have to be aware that VTI devices are used in addition to regular IPsec
-policies.</p>
+<p>As with XFRM interfaces, the use of VTI tunnel devices is a local decision, no
+additional encapsulation (like with GRE, see <a href="#_gre_tunnels">below</a>) is added,
+so the other end does not have to be aware that VTI devices are used in addition
+to regular IPsec policies.</p>
 </div>
 <div class="sect2">
 <h3 id="_vti_device_management"><a class="anchor" href="#_vti_device_management"></a>VTI Device Management</h3>
@@ -980,7 +1300,7 @@ with <code><strong>vti</strong></code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h3>
+<h3 id="_configuration_2"><a class="anchor" href="#_configuration_2"></a>Configuration</h3>
 <div class="paragraph">
 <p>First the route installation by the IKE daemon must be disabled. To do this, set
 in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>:</p>
@@ -1020,12 +1340,12 @@ work).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example"><a class="anchor" href="#_example"></a>Example</h3>
+<h3 id="_example_3"><a class="anchor" href="#_example_3"></a>Example</h3>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="https://www.strongswan.org/testing/testresults/route-based/net2net-vti"><img src="../_images/a-m-w-s-b.png" alt="topology" width="501" height="190"></a>
 </div>
-<div class="title">Figure 1. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/net2net-vti">example</a> showing the use of VTI devices</div>
+<div class="title">Figure 3. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/net2net-vti">example</a> showing the use of VTI devices</div>
 </div>
 </div>
 <div class="sect2">
@@ -1063,12 +1383,12 @@ Only one such device with the same local IP may be created.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example_2"><a class="anchor" href="#_example_2"></a>Example</h3>
+<h3 id="_example_4"><a class="anchor" href="#_example_4"></a>Example</h3>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-vti"><img src="../_images/a-m-c-w-d.png" alt="topology" width="372" height="190"></a>
 </div>
-<div class="title">Figure 2. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-vti">example</a> showing the use of shared VTI devices</div>
+<div class="title">Figure 4. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-vti">example</a> showing the use of shared VTI devices</div>
 </div>
 </div>
 <div class="sect2">
@@ -1170,320 +1490,6 @@ Using <strong>PLUTO_UNIQUEID</strong> might not be a good idea if IKE_SAs may be
 </div>
 </div>
 <div class="sect1">
-<h2 id="_xfrm_interfaces_on_linux"><a class="anchor" href="#_xfrm_interfaces_on_linux"></a>XFRM Interfaces on Linux</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-strongSwan supports XFRM interfaces since version 5.8.0. They are supported
-      by the Linux kernel since 4.19 and <strong>iproute2</strong> version 5.1.0+.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>XFRM interfaces are similar to VTI devices in their basic functionality (see
-<a href="#_vti_devices_on_linux">above</a> for details) but offer several advantages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>No tunnel endpoint addresses have to be configured on the interfaces. Compared
-to VTIs, which are layer 3 tunnel devices with mandatory endpoints, this resolves
-issues with wildcard addresses (only one VTI with wildcard endpoints is supported),
-avoids a 1:1 mapping between SAs and interfaces and easily allows SAs with multiple
-peers to share the same interface.</p>
-</li>
-<li>
-<p>Because there are no endpoint addresses, IPv4 and IPv6 SAs are supported on the
-same interface (VTI devices only support one address family).</p>
-</li>
-<li>
-<p>IPsec modes other than tunnel are supported (VTI devices only support tunnel
-mode).</p>
-</li>
-<li>
-<p>No awkward configuration via GRE keys and XFRM marks. Instead, a new identifier
-(XFRM interface ID) links policies and SAs with XFRM interfaces.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As mentioned above, the policies and SAs are linked to XFRM interface via a new
-identifier (interface ID). Like XFRM marks they are part of the policy selector.
-That is, policies will only match traffic if it was routed via an XFRM interface
-with a matching interface ID and duplicate policies are allowed as long as the
-interface ID is different. So as with VTI devices it&#8217;s possible to negotiate
-<code><strong>0.0.0.0/0</strong></code> as traffic selector on both ends (to tunnel arbitrary traffic) for
-multiple CHILD_SAs as long as the interface IDs are different.</p>
-</div>
-<div class="paragraph">
-<p>Traffic that&#8217;s routed to an XFRM interface, while no policies and SAs with matching
-interface ID exist, will be dropped by the kernel. Likewise, as long as no interface
-with a matching interface ID exists, the policies and SAs will not be operational
-(i.e. outbound traffic bypasses the policies and inbound traffic is dropped). So
-it&#8217;s possible to create interfaces before SAs are created or afterwards (e.g. via
-<a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> events or <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a>
-scripts which both receive configured or optionally dynamically generated interface
-IDs).</p>
-</div>
-<div class="paragraph">
-<p>Using trap policies to dynamically create IPsec SAs based on matching traffic that
-has been routed to an XFRM interface is also an option.</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s possible to use separate interfaces for in- and outbound traffic, which is
-why interface IDs may be configured for in- and outbound policies/SAs separately
-(see below).</p>
-</div>
-<div class="sect2">
-<h3 id="_xfrm_interface_management"><a class="anchor" href="#_xfrm_interface_management"></a>XFRM Interface Management</h3>
-<div class="paragraph">
-<p>With <code><strong>iproute2</strong></code> 5.1.0 and newer an XFRM interface can be created as such:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ip link add &lt;name&gt; type xfrm dev &lt;underlying interface&gt; if_id &lt;interface ID&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>strongSwan also comes with a utility (called <code><strong>xfrmi</strong></code>) to create XFRM interfaces
-if <code><strong>iproute2</strong></code> can not create the interface.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>/usr/local/libexec/ipsec/xfrmi --name &lt;name&gt; --id &lt;interface ID&gt; --dev &lt;underlying interface&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p><code>&lt;name&gt;</code> can be any valid device name (e.g. <code><strong>ipsec0</strong></code>, <code><strong>xfrm0</strong></code>, etc.).
-<code>&lt;interface ID&gt;</code> is a decimal or hex (<code><strong>0x</strong></code> prefix) 32-bit number. The underlying
-interface currently is mandatory, but doesn&#8217;t really matter (it only does if an
-interface is configured on the outbound policy - and it might with hardware IPsec
-offloading, but that has not been tested by us), so it could be anything, even <code><strong>lo</strong></code>.</p>
-</div>
-<div class="paragraph">
-<p>The interface can afterwards be managed via <code><strong>iproute2</strong></code>. So to activate it, use</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ip link set &lt;name&gt; up</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Addresses, if necessary, can be added with <code><strong>ip addr</strong></code> and the interface may
-eventually be deleted with</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ip link del &lt;name&gt;</pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_create_xfrm_interface_ipsec0"><a class="anchor" href="#_example_create_xfrm_interface_ipsec0"></a>Example: Create XFRM Interface (ipsec0)</h4>
-<div class="listingblock">
-<div class="content">
-<pre>ip link add ipsec0 type xfrm dev eth0 if_id 42
-# or if not supported by iproute2 yet:
-/usr/local/libexec/ipsec/xfrmi --name ipsec0 --id 42 --dev eth0
-
-ip link set ipsec0 up
-ip route add 10.1.0.0/16 dev ipsec0
-ip route add 10.2.0.0/16 dev ipsec0</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Statistics are available via</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ip -s link show [&lt;name&gt;]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code><strong>xfrmi</strong></code> command provides a <code><strong>--list</strong></code> option to list existing XFRM interfaces
-if using older versions of <code><strong>iproute2</strong></code> does not list the interface ID of XFRM
-interfaces yet with <code><strong>ip -d link</strong></code>.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_configuration_2"><a class="anchor" href="#_configuration_2"></a>Configuration</h3>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-By default, the daemon will not install any routes for CHILD_SAs with
-           outbound interface ID, so it&#8217;s not necessary to disable the route
-           installation globally. Since version 5.9.10 strongSwan optionally
-           installs routes automatically (see below)
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Keep in mind that traffic routed to XFRM interfaces has to match the negotiated
-IPsec policies. Therefore, connections are configured as they would if no interfaces
-were to be used. However, since policies won&#8217;t affect traffic that&#8217;s not routed
-via XFRM interfaces, it&#8217;s possible to negotiate <code><strong>0.0.0.0/0</strong></code> or <code><strong>::/0</strong></code> as traffic
-selector on both ends to tunnel arbitrary traffic.</p>
-</div>
-<div class="paragraph">
-<p>The most important connection configuration option in
-<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> is the interface ID <code><strong>if_id_in</strong></code>
-and <code><strong>if_id_out</strong></code>. To use a single interface for in- and outbound traffic set them
-to the same value (or <code><strong>%unique</strong></code> to generate a unique ID for each CHILD_SA).
-To use separate interfaces for each direction, configure distinct values (or
-<code><strong>%unique-dir</strong></code> to generate unique IDs for each CHILD_SA and direction). It&#8217;s also
-possible to use an XFRM interface only in one direction by setting only one of the
-two settings.</p>
-</div>
-<div class="paragraph">
-<p>When setting the options on the connection-level, all CHILD_SAs for which the
-settings are not set will inherit the interface IDs of the IKE_SA (use <code><strong>%unique</strong></code>
-or <code><strong>%unique-dir</strong></code> to allocate unique IDs for each IKE_SA/direction that are
-inherited by all CHILD_SAs created under the IKE_SA).</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s possible to use transport mode for host-to-host connections between two peers.</p>
-</div>
-<div class="paragraph">
-<p>Since version 5.9.10, strongSwan optionally installs routes via XFRM
-interfaces if the <code><strong>charon.plugins.kernel-netlink.install_routes_xfrmi</strong></code> option
-is enabled. A route is only installed if an interface with the ID configured
-in <code><strong>if_id_out</strong></code> exists when the corresponding CHILD_SA is installed.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_avoid_routing_loops_with_ikeesp_traffic"><a class="anchor" href="#_avoid_routing_loops_with_ikeesp_traffic"></a>Avoid Routing Loops with IKE/ESP Traffic</h3>
-<div class="paragraph">
-<p>If the negotiated traffic selectors include the IKE/ESP traffic to the
-peer, enabling <code><strong>install_routes_xfrmi</strong></code> (see above) requires special care to
-avoid routing loops (i.e. routing IKE and ESP packets into the XFRM interface).
-The same applies if routes that conflict with the IKE/ESP traffic (e.g. a default
-route) are installed manually via an XFRM interface.</p>
-</div>
-<div class="paragraph">
-<p>Assuming the routes via XFRM interface are installed in routing table 220, which
-is what the mentioned option does, by default, there are basically two options:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Set marks on the IKE packets (globally via <code><strong>charon.plugins.socket-default.fwmark</strong>=&lt;mark&gt;</code>)
-and the ESP packets (via <code><strong>&lt;child&gt;.set_mark_out</strong>=&lt;mark&gt;</code>), and then exclude
-such packets from routing table 220 by adding a negative mark on the routing
-rule (via <code><strong>charon.plugins.kernel-netlink.fwmark</strong>=!&lt;mark&gt;</code>).
-<code>&lt;mark&gt;</code> is an arbitrary value, but preferably one that&#8217;s not already used for
-something else on the system.</p>
-</li>
-<li>
-<p>Alternatively, e.g. if the kernel doesn&#8217;t support <code><strong>set_mark_out</strong></code>, install an
-explicit route to the peer&#8217;s IP address, either via a physical interface
-instead of the XFRM interface, or, for instance, a <code><strong>throw</strong></code> route in table
-220, so the other routes in that table are ignored for packets addressed to
-the peer and the next and eventually the main routing table will be used (e.g.
-<code><strong>ip route add throw &lt;peer ip&gt; table 220</strong></code>).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The first option should be preferred as it only affects IKE and ESP traffic and
-protects all other traffic addressed to the peer&#8217;s IP address, and it has the
-advantage of not requiring a route for each peer and continues to work if a
-peer&#8217;s IP address changes.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_example_3"><a class="anchor" href="#_example_3"></a>Example</h3>
-<div class="imageblock">
-<div class="content">
-<a class="image" href="https://www.strongswan.org/testing/testresults/route-based/net2net-xfrmi"><img src="../_images/a-m-w-s-b.png" alt="topology" width="501" height="190"></a>
-</div>
-<div class="title">Figure 3. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/net2net-xfrmi">example</a> showing the use of XFRM interfaces</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sharing_xfrm_interfaces"><a class="anchor" href="#_sharing_xfrm_interfaces"></a>Sharing XFRM Interfaces</h3>
-<div class="paragraph">
-<p>Because no endpoint addresses are configured on the interfaces they can easily be
-shared by multiple SAs as long as the policies don&#8217;t conflict. Just configure the
-same interface ID for the CHILD_SAs (this also works automatically for roadwarrior
-connections where each client gets an individual IP address assigned - just route
-the subnets used for virtual IPs to the XFRM interface).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_example_4"><a class="anchor" href="#_example_4"></a>Example</h3>
-<div class="imageblock">
-<div class="content">
-<a class="image" href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-xfrmi"><img src="../_images/a-m-c-w-d.png" alt="topology" width="372" height="190"></a>
-</div>
-<div class="title">Figure 4. strongSwan <a href="https://www.strongswan.org/testing/testresults/route-based/rw-shared-xfrmi">example</a> showing the use of shared XFRM interfaces</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_connection_specific_xfrm_interfaces"><a class="anchor" href="#_connection_specific_xfrm_interfaces"></a>Connection-specific XFRM Interfaces</h3>
-<div class="paragraph">
-<p>Using custom <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> or <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a>
-scripts allows creating connection-specific XFRM interfaces. The interface ID
-(in particular if <code><strong>%unique[-dir]</strong></code> is used) is available in the scripts to create
-the XFRM interface dynamically.</p>
-</div>
-<div class="paragraph">
-<p>Note that <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> scripts are called for each
-combination of of local and remote subnet, so this might cause conflicts if more
-than one subnet is negotiated in the traffic selectors (i.e. this requires some
-kind of refcounting). The <code><strong>child-updown</strong></code> <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> event,
-however is only triggered once per CHILD_SA. To create connection-level XFRM
-interfaces with dynamic interface IDs, use the <code><strong>ike-updown</strong></code>
-<a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> event.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_network_namespaces"><a class="anchor" href="#_network_namespaces"></a>Network Namespaces</h3>
-<div class="paragraph">
-<p>XFRM interfaces can be moved to network namespaces to provide the processes there
-access to IPsec SAs/policies that were created in a different network namespace.
-For instance, this allows a single IKE daemon to provide IPsec connections for
-processes in different network namespaces (or full containers) without them having
-access to the keys of the SAs (the SAs won&#8217;t be visible in the other network
-namespaces, only the XFRM interface).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_xfrm_interfaces_in_vrfs"><a class="anchor" href="#_xfrm_interfaces_in_vrfs"></a>XFRM interfaces in VRFs</h3>
-<div class="paragraph">
-<p>XFRM interfaces can be associated to a VRF layer 3 master device, so any tunnel
-terminated by an XFRM interface implicitly is bound to that VRF domain. For example,
-this allows multi-tenancy setups where traffic from different tunnels can be
-separated and routed over different interfaces.</p>
-</div>
-<div class="paragraph">
-<p>Due to a limitation in XFRM interfaces, inbound traffic fails policy checking in
-kernels prior to version 5.1.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_netfilter_ipsec_policy_match_with_xfrm_interfaces"><a class="anchor" href="#_netfilter_ipsec_policy_match_with_xfrm_interfaces"></a>Netfilter IPsec Policy Match with XFRM Interfaces</h3>
-<div class="paragraph">
-<p>Due to a limitation in the Netfilter IPsec <code><strong>policy</strong></code> match, output traffic
-forwarded over an XFRM interface does not match (inbound it matches, though).
-<code><strong>policy</strong></code> matching is not really required anymore when using XFRM interfaces, as
-the Netfilter rules can just match on the interface. So the work-around is to
-filter just on XFRM interface names instead of IPsec <code><strong>policy</strong></code> matches.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_marks_on_linux"><a class="anchor" href="#_marks_on_linux"></a>Marks on Linux</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1491,11 +1497,12 @@ filter just on XFRM interface names instead of IPsec <code><strong>policy</stron
 which traffic to tunnel can actually be replicated directly with marks and firewall
 rules. By configuring connections with marks and then selectively marking packets
 directly with Netfilter rules via <code><strong>MARK</strong></code> target in the <code><strong>PREROUTING</strong></code> or
-<code><strong>FORWARD</strong></code> chains only specific traffic will get tunneled.</p>
+<code><strong>FORWARD</strong></code> chains, only specific traffic will get tunneled.</p>
 </div>
 <div class="paragraph">
 <p>This may also be used to create multiple identical tunnels for which firewall rules
-dynamically decide which traffic is tunneled through which IPsec SA.</p>
+dynamically decide which traffic is tunneled through which IPsec SA (see the example
+below, which creates separate SAs for different QoS classes).</p>
 </div>
 <div class="sect2">
 <h3 id="_example_5"><a class="anchor" href="#_example_5"></a>Example</h3>
@@ -1520,8 +1527,8 @@ VPNs (running a routing protocol on-top is also easy).</p>
 <div class="paragraph">
 <p>While VTI devices depend on site-to-site IPsec connections in tunnel mode (XFRM
 interfaces are more flexible), GRE uses a host-to-host connection that can also be
-run in transport mode (avoiding additional overhead). But while VTI devices and
-XFRM interfaces may be used by only one of the peers, GRE must be used by both of
+run in transport mode (avoiding additional overhead). But while XFRM interfaces
+and VTI devices may be used by only one of the peers, GRE must be used by both of
 them.</p>
 </div>
 <div class="sect2">
@@ -1703,10 +1710,10 @@ LOCALSRCIP="$localsrcip"</pre>
 <div class="paragraph">
 <p>Based on our own userland IPsec implementation and the
 <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a> plugin it is possible to
-create route-based VPNs with TUN devices. Similar to VTI devices or XFRM interfaces
+create route-based VPNs with TUN devices. Similar to XFRM interfaces or VTI devices,
 the negotiated IPsec policies have to match the traffic routed via TUN device.
-In particular because packets have to be copied between kernel and userland it is
-not as efficient as the solutions above (also read the notes on
+Because packets have to be copied between kernel and userland, it is not as
+efficient as the solutions above (also read the notes on
 <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>kernel-libipsec</strong></code></a>).</p>
 </div>
 </div>
