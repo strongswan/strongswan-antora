@@ -960,12 +960,13 @@ are [re-]built automatically).</p>
 <div class="sect2">
 <h3 id="_platform_specific_notes"><a class="anchor" href="#_platform_specific_notes"></a>Platform-Specific Notes</h3>
 <div class="paragraph">
-<p>On <strong>Ubuntu with AppArmor</strong> installed (the default) <code><strong>libvirt</strong></code> uses the latter to
-secure virtual machines. When creating a guest <code><strong>libvirt</strong></code> automatically creates
-AppArmor profiles. The problem is that these profiles don&#8217;t reflect the
-multi-layered disk images we use (each guest&#8217;s image is linked to a common root
-image which in turn is linked to a common base image).  One option to fix this is
-to set <code><strong>security_driver = "none"</strong></code> in <code><strong>/etc/libvirt/qemu.conf</strong></code> and execute</p>
+<p>On systems with <strong>AppArmor</strong> installed, <code><strong>libvirt</strong></code> uses the latter to secure
+virtual machines. When creating a guest, <code><strong>libvirt</strong></code> automatically creates
+AppArmor profiles. The problem is that <strong>older versions</strong> (&lt; 7.1.0) didn&#8217;t create
+profiles that reflect the multi-layered disk images we use (each guest&#8217;s image
+is linked to a common root image which in turn is linked to a common base image).
+One option to fix this is for affected versions of <code><strong>libvirt</strong></code> is to set
+<code><strong>security_driver = "none"</strong></code> in <code><strong>/etc/libvirt/qemu.conf</strong></code> and execute</p>
 </div>
 <div class="literalblock">
 <div class="content">

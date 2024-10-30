@@ -1203,12 +1203,14 @@ section of <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rekey_time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1h</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time to schedule CHILD_SA rekeying. CHILD_SA rekeying refreshes key material,
  optionally using a Diffie-Hellman exchange if a group is specified in the proposal.
  To avoid rekey collisions initiated by both ends simultaneously, a value in the
- range of <code><strong>rand_time</strong></code> gets subtracted to form the effective soft lifetime. By
- default CHILD_SA rekeying is scheduled every hour, minus <code><strong>rand_time</strong></code></p></td>
+ range of <code><strong>rand_time</strong></code> gets subtracted to form the effective soft lifetime.
+ If <code><strong>life_time</strong></code> is explicitly configured, it defaults to 10% less than that,
+ otherwise CHILD_SA rekeying is scheduled every hour, minus <code><strong>rand_time</strong></code>.
+ [<code>1h</code> or <code>life_time / 1.1</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.life_time</p></td>
@@ -1227,13 +1229,14 @@ section of <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rekey_bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes processed before initiating CHILD_SA rekeying. CHILD_SA rekeying
  refreshes key material, optionally using a Diffie-Hellman exchange if a group is
  specified in the proposal. To avoid rekey collisions initiated by both ends
  simultaneously, a value in the range of <code><strong>rand_bytes</strong></code> gets subtracted to form
  the effective soft volume limit. Volume based CHILD_SA rekeying is disabled by
- default</p></td>
+ default. If <code><strong>life_bytes</strong></code> is explicitly configured, it defaults to 10% less
+ than that. [<code>0</code> or <code>life_bytes / 1.1</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.life_bytes</p></td>
@@ -1252,13 +1255,14 @@ section of <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rekey_packets</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of packets processed before initiating CHILD_SA rekeying. CHILD_SA rekeying
  refreshes key material, optionally using a Diffie-Hellman exchange if a group is
  specified in the proposal. To avoid rekey collisions initiated by both ends
  simultaneously, a value in the range of <code><strong>rand_packets</strong></code> gets subtracted to form
  the effective soft packet count limit. Packet count based CHILD_SA rekeying is
- disabled by default</p></td>
+ disabled by default. If <code><strong>life_packets</strong></code> is explicitly configured, it defaults
+ to 10% less than that. [<code>0</code> or <code>life_packets / 1.1</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.life_packets</p></td>
@@ -1266,7 +1270,7 @@ section of <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of packets processed before CHILD_SA gets closed. Usually this
  hard packets limit is never reached, because the CHILD_SA gets rekeyed before.
  If that fails for whatever reason, this limit closes the CHILD_SA. The default
- is 10% more than <code><strong>rekey_bytes</strong></code>. [<code>1.1 * rekey_packets</code>]</p></td>
+ is 10% more than <code><strong>rekey_packets</strong></code>. [<code>1.1 * rekey_packets</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rand_packets</p></td>

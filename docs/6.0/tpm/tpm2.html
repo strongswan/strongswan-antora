@@ -1623,7 +1623,7 @@ RSA Attestation Key certificate signed by the Root CA:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ pki --issue --cacert cacert.pem --cakey cakey.pem -type pkcs10 --in ak_rsa_req.pem --dn "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com" --san "edu.strongsec.com" --crl http://www.strongsec.com/ca/strongsec.crl --flag serverAuth --lifetime 1827 &gt; ak_rsa_cert.der</pre>
+<pre>$ pki --issue --cacert cacert.pem --cakey cakey.pem --type pkcs10 --in ak_rsa_req.pem --dn "C=CH, O=strongSec GmbH, OU=AK RSA, CN=edu.strongsec.com" --san "edu.strongsec.com" --crl http://www.strongsec.com/ca/strongsec.crl --flag serverAuth --lifetime 1827 &gt; ak_rsa_cert.der</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1657,7 +1657,7 @@ an ECC Attestation Key certificate signed by the Root CA:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ pki --issue --cacert cacert.pem --cakey cakey.pem -type pkcs10 --in ak_ecc_req.pem --dn "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com" --san "edu.strongsec.com" --crl http://www.strongsec.com/ca/strongsec.crl --flag serverAuth --lifetime 1827 &gt; ak_ecc_cert.der</pre>
+<pre>$ pki --issue --cacert cacert.pem --cakey cakey.pem --type pkcs10 --in ak_ecc_req.pem --dn "C=CH, O=strongSec GmbH, OU=AK ECC, CN=edu.strongsec.com" --san "edu.strongsec.com" --crl http://www.strongsec.com/ca/strongsec.crl --flag serverAuth --lifetime 1827 &gt; ak_ecc_cert.der</pre>
 </div>
 </div>
 <div class="paragraph">

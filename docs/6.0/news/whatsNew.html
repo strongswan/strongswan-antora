@@ -1048,8 +1048,8 @@ enabled by <a href="../plugins/plugins.html#_default_plugins" class="xref page">
 <h2 id="_configuration_options"><a class="anchor" href="#_configuration_options"></a>Configuration Options</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following two <a href="../config/strongswanConf.html#_charon" class="xref page"><code><strong>strongswan.conf</strong></code></a>
-configuration options are now enabled by default:</p>
+<p>The following <a href="../config/strongswanConf.html#_charon" class="xref page"><code><strong>strongswan.conf</strong></code></a>
+configuration option is now enabled by default:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1075,40 +1075,8 @@ configuration options are now enabled by default:</p>
  reauthentication, but requires support for overlapping SAs by the peer.
  strongSwan can handle such overlapping SAs since version 5.3.0</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rsa_pss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use RSA with PSS padding by default. Revert to legacy PKCS#1 padding by setting
- the option to no</p></td>
-</tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>Thus the following <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommands now use RSA-PSS signatures
-per default:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pkiAcert.html" class="xref page"><code>pki --acert</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pkiIssue.html" class="xref page"><code>pki --issue</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pkiSelf.html" class="xref page"><code>pki --self</code></a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pkiReq.html" class="xref page"><code>pki --req</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pkiScep.html" class="xref page"><code>pki --scep</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pkiSignCrl.html" class="xref page"><code>pki --signcrl</code></a></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Use the command line option <code><strong>--rsa-padding pkcs1</strong></code> for legacy PKCS#1 padding.</p>
-</div>
 </div>
 </div>
 <nav class="pagination">
