@@ -892,7 +892,8 @@ following options in your connection definition:</p>
     children {
       transport-connmark {
         mode = transport
-        mark = %unique
+        mark_in = %unique
+        mark_out = %unique
         #...
       }
     }
