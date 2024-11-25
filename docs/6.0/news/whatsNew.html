@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>What&#8217;s New in strongSwan 6.0 :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/6.0/news/whatsNew.html">
     <link rel="prev" href="../index.html">
     <link rel="next" href="../howtos/introduction.html">
     <meta name="generator" content="Antora 3.0.1">
@@ -810,16 +811,16 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0 Beta</span>
+    <span class="version">6.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <div class="title"><a href="../../5.9/index.html">strongSwan Docs</a></div>
+      <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
-        <li class="version is-current">
-          <a href="../index.html">6.0 Beta</a>
+        <li class="version is-current is-latest">
+          <a href="../index.html">6.0</a>
         </li>
-        <li class="version is-latest">
+        <li class="version">
           <a href="../../5.9/index.html">5.9</a>
         </li>
       </ul>
@@ -832,7 +833,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../5.9/index.html" class="home-link"></a>
+  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -841,13 +842,13 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0 Beta</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
   <div class="version-menu">
-    <a class="version is-current" href="whatsNew.html">6.0 Beta</a>
+    <a class="version is-current" href="whatsNew.html">6.0</a>
     <a class="version is-missing" href="../../5.9/index.html">5.9</a>
   </div>
 </div>
-<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/news/whatsNew.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/news/whatsNew.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -855,13 +856,30 @@
 </aside>
 <article class="doc">
 <h1 class="page">What&#8217;s New in strongSwan 6.0</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Please refer to the <a href="https://github.com/strongswan/strongswan/releases"><strong>full release notes</strong></a> for a complete list of
+changes.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_plugins"><a class="anchor" href="#_plugins"></a>Plugins</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_new_plugins"><a class="anchor" href="#_new_plugins"></a>New Plugins</h3>
+<h3 id="_new_plugin"><a class="anchor" href="#_new_plugin"></a>New Plugin</h3>
 <div class="paragraph">
-<p>The following new <code><strong>libstrongswan</strong></code> plugins have been <strong>added</strong>:</p>
+<p>The following new <code><strong>libstrongswan</strong></code> plugin has been <strong>added</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -876,15 +894,24 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">frodo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FrodoKEM post quantum safe key exchange method</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">oqs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Open quantum safe plugin based on the <a href="https://github.com/open-quantum-safe/liboqs"><code><strong>liboqs</strong></code></a> library</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module-Lattice-based crypto (ML-KEM)</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+ML-KEM is also supported via <a href="https://botan.randombit.net/">Botan</a> (<code><strong>botan</strong></code> plugin),
+<a href="https://www.wolfssl.com/">wolfSSL</a> (<code><strong>wolfssl</strong></code> plugin), and <a href="https://aws.amazon.com/security/opensource/cryptography/">AWS-LC</a> (<code><strong>openssl</strong></code> plugin).
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_removed_plugins"><a class="anchor" href="#_removed_plugins"></a>Removed Plugins</h3>
@@ -1088,10 +1115,10 @@ configuration option is now enabled by default:</p>
 </main>
 </div>
 <footer class="footer">
-  <a href="https://www.strongswan.org/"> 
+  <a href="https://www.strongswan.org/">
      <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
         width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
-  <p>Copyright &copy; 2021-2023
+  <p>Copyright &copy; 2021-2025
      <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
      The <a href="https://github.com/strongswan/strongswan-docs">content</a>
      is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
@@ -1099,7 +1126,6 @@ configuration option is now enabled by default:</p>
      for this site is derived from the Antora default UI and is licensed under
      the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
  </footer>
-
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
 <script src="../../../_/js/vendor/lunr.js"></script>
