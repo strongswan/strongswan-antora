@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VPN Profile Import for the Android VPN Client :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/latest/os/androidVpnClientProfiles.html">
+    <link rel="prev" href="androidVpnClient.html">
+    <link rel="next" href="androidVpnClientPrivacyPolicy.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+        <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+        <a class="navbar-item" href="https://github.com/strongswan">GitHub</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="6.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">News</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How-tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Portability / OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/microsoftStatusNotify.html">Microsoft Status Notify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlCounters.html">swanctl --counters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlFlushCerts.html">swanctl --flush-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInitiate.html">swanctl --initiate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInstall.html">swanctl --install</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAlgs.html">swanctl --list-algs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAuths.html">swanctl --list-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListCerts.html">swanctl --list-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListConns.html">swanctl --list-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPols.html">swanctl --list-pols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPools.html">swanctl --list-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListSas.html">swanctl --list-sas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAll.html">swanctl --load-all</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAuths.html">swanctl --load-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadConns.html">swanctl --load-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadCreds.html">swanctl --load-creds</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadPools.html">swanctl --load-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLog.html">swanctl --log</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRedirect.html">swanctl --redirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRekey.html">swanctl --rekey</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlReloadSettings.html">swanctl --reload-settings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlStats.html">swanctl --stats</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlTerminate.html">swanctl --terminate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlUninstall.html">swanctl --uninstall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlVersion.html">swanctl --version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/cert-enroll.html">cert-enroll Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/save-keys.html">save-keys Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tpm/tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">6.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">strongSwan Docs</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../5.9/index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Portability / OS</li>
+    <li><a href="android.html">Android</a></li>
+    <li><a href="androidVpnClientProfiles.html">Android VPN Client Profiles</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="androidVpnClientProfiles.html">6.0</a>
+    <a class="version" href="../../5.9/os/androidVpnClientProfiles.html">5.9</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/os/androidVpnClientProfiles.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">VPN Profile Import for the Android VPN Client</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since version <a href="androidVpnClient.html#_1_8_0_2017_01_20" class="xref page">1.8.0</a> of the
+<a href="androidVpnClient.html" class="xref page">strongSwan VPN Client for Android</a> it is possible to
+import VPN profiles from JSON files.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deployment"><a class="anchor" href="#_deployment"></a>Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The app will open <code><strong>http[s]://</strong></code> URLs to <code><strong>.sswan</strong></code> files. It also opens any file
+with a media type of <code><strong>application/vnd.strongswan.profile</strong></code> (the file extension
+doesn&#8217;t matter in that case). The latter should also work for email attachments
+if the MIME media type is set accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Whether downloaded files for which the media type is not correct but the extension
+is <code><strong>.sswan</strong></code> can be opened depends on the app that starts the <code><strong>Intent</strong></code>. For
+instance from Android&#8217;s default Downloads app it won&#8217;t work due to the
+<code><strong>content://</strong></code> URLs that do not contain the original file name (it works if the
+media type was set correctly by the web server), but when e.g. opening the
+downloaded file from within Chrome&#8217;s Downloads view it works as these <code><strong>Intents</strong></code>
+use <code><strong>file://</strong></code> URLs that contain the complete file name.</p>
+</div>
+<div class="paragraph">
+<p>Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a> it is possible to
+browse for profile files via SAF (Storage Access Framework), which should also
+work if the file extension and/or media type is not correct. Note that after
+importing the profile the user is able to edit it freely.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_format"><a class="anchor" href="#_file_format"></a>File Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The file format is based on <a href="https://json.org">JSON</a>. The expected encoding is UTF-8. The
+top-level element in the file is an object that may (or must) contain the
+following keys. Keys of sub-objects are separated with dots.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 23.0769%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>uuid</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier to identify the VPN profile. The format is defined in
+ <a href="https://datatracker.ietf.org/doc/html/rfc4122">RFC 4122</a>. Version 4 UUIDs (random-generated) are recommended and
+ may be created e.g. with the command <code><strong>uuid -v4</strong></code>. If a VPN profile with the same
+ UUID already exists, its settings are replaced when the profile is imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the VPN profile. The following values are currently supported and
+ determine the type of client authentication that is used (the server is always
+ authenticated with a certificate):<br>
+<code><strong>ikev2-eap</strong></code>: Username/password-based EAP authentication<br>
+<code><strong>ikev2-cert</strong></code>: Certificate authentication<br>
+<code><strong>ikev2-cert-eap</strong></code>: Certificate authentication followed by a
+  username/password-based EAP authentication<br>
+<code><strong>ikev2-eap-tls</strong></code>: EAP-TLS certificate authentication<br>
+<code><strong>ikev2-byod-eap</strong></code>: EAP-TNC with username/password-based EAP authentication<br>
+Some of the keys described below are only relevant for certain types</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apps</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional array of package names (e.g. <code><strong>com.example.app.name</code></strong>) of apps that are
+ able to use this VPN connection. For all other apps it will look as if there was
+ no VPN. Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>excluded-apps</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional array of package names (e.g. <code><strong>com.example.app.name</strong></code>) of apps that won&#8217;t
+ be able to use this VPN connection. It will look to them as if there was no VPN.
+ Only relevant if <code><strong>apps</strong></code> is not set.
+ Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ike-proposal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional custom IKE proposal, i.e. a list of crypto algorithm identifiers separated
+ by hyphens. For non-AEAD/classic encryption algorithms an integrity algorithm,
+ a pseudo random function (optional, defaults to one based on the integrity
+ algorithm) and a Diffie-Hellman group are required (e.g. <code><strong>aes256-sha256-ecp256</strong></code>).
+ For combined-mode/AEAD algorithms the integrity algorithm is omitted but a PRF
+ is required (e.g. <code><strong>aes256gcm16-prfsha256-ecp256</strong></code>).
+ Since <a href="androidVpnClient.html#_1_9_5_2017_11_17" class="xref page">1.9.5</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>esp-proposal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional custom ESP proposal, i.e. a list of crypto algorithm identifiers separated
+ by hyphens. For non-AEAD/classic encryption algorithms, an integrity algorithm is
+ required, a Diffie-Hellman group is optional (e.g. <code><strong>aes256-sha256</strong></code> or
+ <code><strong>aes256-sha256-ecp256</strong></code>). For combined-mode/AEAD algorithms, the integrity
+ algorithm is omitted (e.g. <code><strong>aes256gcm16</strong></code> or <code><strong>aes256gcm16-ecp256</strong></code>). If a DH
+ group is specified IPsec SA rekeying will use a DH key exchange. However, DH groups
+ specified here are not used when the connection is established initially because
+ the keys there are derived from the IKE SA key material. Therefore any configuration
+ mismatch with the server will only cause errors later during rekeying.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mtu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional MTU to use for the TUN device</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nat-keepalive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional interval for
+ <a href="../features/natTraversal.html#_nat_t_keepalives" class="xref page">NAT-T keepalive</a> packets.
+ Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dns-servers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional array or space-separated list of DNS server addresses to use instead of
+ those received by the VPN server.
+ Since <a href="androidVpnClient.html#_2_1_0_2019_03_14" class="xref page">2.1.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ipv6-transport</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use IPv6 transport addresses for IKE and ESP if available. Requires
+ support for UDP encapsulation for IPv6 on the server (the Linux kernel only
+ supports this since 5.8).
+ Since <a href="androidVpnClient.html#_2_3_1_2020_10_29" class="xref page">2.3.1</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_remote"><a class="anchor" href="#_remote"></a>remote</h3>
+<div class="paragraph">
+<p>Mandatory object containing information about the server. The following attributes
+are defined:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 23.0769%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addr</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server&#8217;s hostname or IP address. If no remote identity is configured this has
+ to be contained as <code><strong>subjectAltName</strong></code> extension in the server certificate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional server port (default is <code><strong>500</strong></code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional IKE identity of the server. If this is not configured it defaults to
+ <code><strong>addr</strong></code> and no <code><strong>IDr</strong></code> is sent in the IKE_AUTH request</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cert</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional Base64-encoded CA or server certificate. Is imported into the app, not
+ the system keystore. If not set, automatic CA certificate selection is enabled.
+ Thus it&#8217;s not necessary if the server certificate is issued by a CA the client
+ already trusts or if the PKCS#12-file below contains the complete certificate
+ chain (this might cause warnings on older Android releases, though, see
+ <a href="androidVpnClient.html#_client_configuration" class="xref page">Android VPN client configuration</a>
+ for details)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>certreq</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to send certificate requests for all installed or selected CA certificates.
+ Disabling this may reduce the size of the IKE_AUTH message if the server does not
+ support fragmentation. But it only works if the server doesn&#8217;t require certificate
+ requests to send back the server certificate. Since
+ <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional object that sets the revocation checking policy for the remote certificate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation.crl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use CRLs (Certificate Revocation Lists) if available for revocation
+ checking of the remote certificate. CRLs are only used if OCSP doesn&#8217;t yield a
+ result. Enabled by default. Since
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation.ocsp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use OCSP (Online Certificate Status Protocol) if available for
+ revocation checking of the remote certificate. Enabled by default. Since
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation.strict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In strict mode the authentication will fail if the status of the remote certificate
+ is unknown (e.g. because no valid CRL was available). Disabled by default. Since
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_local"><a class="anchor" href="#_local"></a>local</h3>
+<div class="paragraph">
+<p>Optional object containing information about the client. The following attributes
+are defined:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 23.0769%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eap_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional identity/username for EAP authentication. If this is required (for
+ username/password-based EAP authentication) but not configured here, the user is
+ prompted for it when importing the profile. If it is set the user is not able to
+ change it while importing (but may later do so). In both cases the user may
+ optionally enter the password while importing the profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional IKE identity of the client for certificate authentication and since
+ <a href="androidVpnClient.html#_2_2_0_2019_10_15" class="xref page">2.2.0</a> also for other authentication
+ types. Typically has to match a <code><strong>subjectAltName</strong></code> contained in the client
+ certificate if one is used. Must not be configured if the certificate&#8217;s subject
+ DN shall be used as client identity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>p12</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional Base64-encoded PKCS#12-container with the client certificate and private
+ key and optional certificate chain (the latter might cause warnings on older
+ Android releases, see
+ <a href="androidVpnClient.html#_client_configuration" class="xref page">Android VPN client configuration</a>
+ for details). Not necessary for username/password-based EAP authentication or if
+ the user already has the certificate/key installed as it may be selected while
+ importing the profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rsa-pss</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use the stronger PSS encoding instead of the classic PKCS#1 encoding
+ for RSA signatures during <a href="https://datatracker.ietf.org/doc/html/rfc7427">RFC 7427</a> signature authentication. Disabled
+ by default. May be enabled if the server supports it. Since
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_split_tunneling"><a class="anchor" href="#_split_tunneling"></a>split-tunneling</h3>
+<div class="paragraph">
+<p>Optional object containing split-tunneling settings. The following attributes
+are defined:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 23.0769%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subnets</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of subnets (in CIDR notation), IP addresses or ranges (IP-IP) to route
+ via VPN. All other traffic is forwarded as if there was no VPN. This is only
+ relevant locally, these subnets are not sent to the server. Since
+ <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>excluded</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of subnets (in CIDR notation), IP addresses or ranges (IP-IP) to exclude
+ from the VPN. Matching traffic is forwarded as if there was no VPN. This is only
+ relevant locally. Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>block-ipv4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to block IPv4 traffic that&#8217;s not destined for the VPN. Forces all IPv4
+ traffic via VPN (traffic that does not match the negotiated traffic selector is
+ then just dropped). Thus this is basically equivalent to including <code><strong>0.0.0.0/0</strong></code>
+ in <code><strong>subnets</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>block-ipv6</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to block IPv6 traffic that&#8217;s not destined for the VPN. Forces all IPv6
+traffic via VPN (traffic that does not match the negotiated traffic selector is
+then just dropped). Thus this is basically equivalent to including <code><strong>::/0</strong></code> in
+<code><strong>subnets</strong></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example"><a class="anchor" href="#_example"></a>Example</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_x_509_certificate_based_authentication"><a class="anchor" href="#_x_509_certificate_based_authentication"></a>X.509 Certificate-based Authentication</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "uuid": "a061d140-d3f9-4db7-b2f8-32d6703f4618",
+  "name": "Test Profile Certificate",
+  "type": "ikev2-cert",
+  "remote": {
+    "addr": "10.0.2.2"
+  },
+  "local": {
+    "p12": "MIIN..."
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_usernamepassword_based_eap_authentication"><a class="anchor" href="#_usernamepassword_based_eap_authentication"></a>Username/Password-based EAP Authentication</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "uuid": "559eb893-1cee-4196-8b97-67045e029e91",
+  "name": "Test Profile EAP",
+  "type": "ikev2-eap",
+  "remote": {
+    "addr": "10.0.2.2",
+    "id": "vpn.strongswan.org",
+    "cert": "MIID..."
+  },
+  "local": {
+    "eap_id": "android"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="androidVpnClient.html">Android VPN Client</a></span>
+  <span class="next"><a href="androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/">
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2025
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

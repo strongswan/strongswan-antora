@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Software Inventory Client :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/latest/tnc/swimaClient.html">
+    <link rel="prev" href="swima.html">
+    <link rel="next" href="swimaServer.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+        <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+        <a class="navbar-item" href="https://github.com/strongswan">GitHub</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="6.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">News</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How-tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Portability / OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/microsoftStatusNotify.html">Microsoft Status Notify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlCounters.html">swanctl --counters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlFlushCerts.html">swanctl --flush-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInitiate.html">swanctl --initiate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInstall.html">swanctl --install</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAlgs.html">swanctl --list-algs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAuths.html">swanctl --list-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListCerts.html">swanctl --list-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListConns.html">swanctl --list-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPols.html">swanctl --list-pols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPools.html">swanctl --list-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListSas.html">swanctl --list-sas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAll.html">swanctl --load-all</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAuths.html">swanctl --load-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadConns.html">swanctl --load-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadCreds.html">swanctl --load-creds</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadPools.html">swanctl --load-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLog.html">swanctl --log</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRedirect.html">swanctl --redirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRekey.html">swanctl --rekey</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlReloadSettings.html">swanctl --reload-settings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlStats.html">swanctl --stats</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlTerminate.html">swanctl --terminate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlUninstall.html">swanctl --uninstall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlVersion.html">swanctl --version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/cert-enroll.html">cert-enroll Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/save-keys.html">save-keys Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tpm/tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">6.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">strongSwan Docs</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../5.9/index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Platform Security</li>
+    <li><a href="tnc.html">Trusted Network Connect</a></li>
+    <li><a href="swima.html">Software Inventory</a></li>
+    <li><a href="swimaClient.html">Software Inventory Client</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="swimaClient.html">6.0</a>
+    <a class="version" href="../../5.9/tnc/swimaClient.html">5.9</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/tnc/swimaClient.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Software Inventory Client</h1>
+<div class="sect1">
+<h2 id="_software_collector"><a class="anchor" href="#_software_collector"></a>Software Collector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="sw-collector.html" class="xref page"><code><strong>sw-collector</strong></code></a> tool manages the <code><strong>Software
+Inventory</strong></code> on an endpoint based on an SQLite <code><strong>collector.db</strong></code> database which
+has to be initialized first, see <a href="sw-collector.html#_some_hints" class="xref page">hints</a>.</p>
+</div>
+<div class="paragraph">
+<p>When the <a href="sw-collector.html" class="xref page"><code><strong>sw-collector</strong></code></a> command is executed, the
+tool parses the <code><strong>apt</strong></code> history file indicated by the <code><strong>history</strong></code> parameter
+defined in the <a href="../config/strongswanConf.html#_sw_collector" class="xref page"><code><strong>sw-collector</strong></code></a>
+subsection of <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> for new
+events. The default history file is <code><strong>/var/log/apt/history.log</strong></code>. Since version
+5.9.5 the compressed <code>history.log.<strong>&lt;n&gt;</strong>.gz</code> backup files in the <code><strong>/var/log/apt/</strong></code>
+directory are automatically searched too if necessary, in order to find all
+new entries.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># sw-collector
+First-Date: 2021-02-17T01:05:01Z, eid = 1, epoch = 916780987
+Last-Event: 2021-02-17T01:05:01Z, eid = 1, epoch = 916780987
+processing "/etc/os-release" file
+operating system type is 'Ubuntu'
+operating system name is 'Ubuntu'
+operating system version is '20.04 x86_64'
+opened '/var/log/apt/history.log'
+   Warning: 2021-02-17T01:05:11Z of first entry on level 0 is newer
+gzip: /var/log/apt/history.log.1.gz: No such file or directory
+Start-Date: 2021-02-17T01:05:11Z, eid = 2
+Start-Date: 2021-02-17T01:05:20Z, eid = 3
+...
+Start-Date: 2021-02-17T01:18:43Z, eid = 93
+Start-Date: 2021-02-17T01:18:54Z, eid = 94
+  Upgrade:
+   apt (2.0.2, 2.0.4)
+      +strongswan.org__Ubuntu_20.04-x86_64-apt-2.0.4
+      -strongswan.org__Ubuntu_20.04-x86_64-apt-2.0.2
+    bash (5.0-6ubuntu1, 5.0-6ubuntu1.1)
+      +strongswan.org__Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1.1
+      -strongswan.org__Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1
+    base-files (11ubuntu5, 11ubuntu5.3)
+      +strongswan.org__Ubuntu_20.04-x86_64-base-files-11ubuntu5.3
+      -strongswan.org__Ubuntu_20.04-x86_64-base-files-11ubuntu5
+    ...
+Start-Date: 2022-05-11T07:31:09Z, eid = 95
+  Install:
+    libmpc3 (1.1.0-1)
+      +strongswan.org__Ubuntu_20.04-x86_64-libmpc3-1.1.0-1
+    ...
+    tzdata (2022a-0ubuntu0.20.04)
+      +strongswan.org__Ubuntu_20.04-x86_64-tzdata-2022a-0ubuntu0.20.04
+  Upgrade:
+    gcc-10-base (10.2.0-5ubuntu1~20.04, 10.3.0-1ubuntu1~20.04)
+      +strongswan.org__Ubuntu_20.04-x86_64-gcc-10-base-10.3.0-1ubuntu1~20.04
+      -strongswan.org__Ubuntu_20.04-x86_64-gcc-10-base-10.2.0-5ubuntu1~20.04
+    libstdc++6 (10.2.0-5ubuntu1~20.04, 10.3.0-1ubuntu1~20.04)
+      +strongswan.org__Ubuntu_20.04-x86_64-libstdc~~6-10.3.0-1ubuntu1~20.04
+      -strongswan.org__Ubuntu_20.04-x86_64-libstdc~~6-10.2.0-5ubuntu1~20.04
+Start-Date: 2022-05-11T09:33:27Z, eid = 96
+  Remove:
+    libsqlite3-dev (3.31.1-4ubuntu0.3)
+      -strongswan.org__Ubuntu_20.04-x86_64-libsqlite3-dev-3.31.1-4ubuntu0.3
+      ...
+    dpkg-dev (1.19.7ubuntu3)
+      -strongswan.org__Ubuntu_20.04-x86_64-dpkg-dev-1.19.7ubuntu3
+Start-Date: 2022-05-11T09:33:30Z, eid = 97
+  Remove:
+    libmpc3 (1.1.0-1)
+      -strongswan.org__Ubuntu_20.04-x86_64-libmpc3-1.1.0-1
+    ...
+    tzdata (2022a-0ubuntu0.20.04)
+      -strongswan.org__Ubuntu_20.04-x86_64-tzdata-2022a-0ubuntu0.20.04
+Merging:
+  merged 173 installed packages, 173 registered in database</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In a last step <a href="sw-collector.html" class="xref page"><code><strong>sw-collector</strong></code></a> calls
+<code><strong>dpkg-query --list</strong></code> in order to check whether all packages currently installed
+on the endpoint match the ones found in the <code><strong>apt</strong></code> history. In our example there
+are 173 installed packages and exactly the same number has been registed in the
+local <code><strong>collector.db</strong></code> database.</p>
+</div>
+<div class="sect2">
+<h3 id="_checking_for_swid_tags"><a class="anchor" href="#_checking_for_swid_tags"></a>Checking for SWID Tags</h3>
+<div class="paragraph">
+<p>Via the REST-API of the global <a href="strongTnc.html" class="xref page">strongTNC</a> website the
+<a href="sw-collector.html" class="xref page"><code><strong>sw-collector --unregistered</strong></code></a> command can
+be used to check whether the SWID tags of the currently installed and earlier
+removed packages are already present in the <a href="strongTnc.html" class="xref page">strongTNC</a>
+database:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># sw-collector --unregistered --installed
+  sending request to 'http://xxxx@tnc/api/sessions/0/swid-measurement/'...
+strongswan.org__Ubuntu_20.04-x86_64-adduser-3.118ubuntu2,1
+strongswan.org__Ubuntu_20.04-x86_64-apt-2.0.4,1
+strongswan.org__Ubuntu_20.04-x86_64-base-files-11ubuntu5.3,1
+strongswan.org__Ubuntu_20.04-x86_64-base-passwd-3.5.47,1
+strongswan.org__Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1.1,1
+...
+strongswan.org__Ubuntu_20.04-x86_64-zlib1g-1~1.2.11.dfsg-2ubuntu1.3,1
+strongswan.org__Ubuntu_20.04-x86_64-zlib1g-dev-1~1.2.11.dfsg-2ubuntu1.3,1
+173 installed software identifiers not registered</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This doesn&#8217;t seem to be the case since the <a href="strongTnc.html" class="xref page">strongTNC</a>
+manager has just been freshly initialized.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># sw-collector --unregistered --removed
+  sending request to 'http://xxxx@tnc/api/sessions/0/swid-measurement/'...
+strongswan.org__Ubuntu_20.04-x86_64-apt-2.0.2,0
+strongswan.org__Ubuntu_20.04-x86_64-base-files-11ubuntu5,0
+strongswan.org__Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1,0
+...
+strongswan.org__Ubuntu_20.04-x86_64-zlib1g-1~1.2.11.dfsg-2ubuntu1,0
+strongswan.org__Ubuntu_20.04-x86_64-zlib1g-1~1.2.11.dfsg-2ubuntu1.2,0
+111 removed software identifiers not registered</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same for the previously removed packages. In principle the <code><strong>SWIMA IMC</strong></code> is
+capable to generate the full SWID tags containing all SHA-2 file hashes of the
+locally installed packages but it is preferable to do a
+<a href="swimaServer.html#_importing_swid_tags_into_strongtnc_database" class="xref page">bulk import</a>
+of trusted SWID tags for a given Linux distribution directly into the
+<a href="swimaServer.html#_importing_swid_tags_into_strongtnc_database" class="xref page">strongTNC database</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_importing_swid_tags_into_strongtnc_database" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_swima_imc"><a class="anchor" href="#_swima_imc"></a>SWIMA IMC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>SWIMA IMC</strong></code> implements the
+<a href="https://datatracker.ietf.org/doc/html/rfc8412">Software Inventory Message and Attributes</a> (SWIMA) extension of the
+<a href="https://datatracker.ietf.org/doc/html/rfc5792"><code><strong>PA-TNC</strong></code></a> measurement protocol.</p>
+</div>
+<div class="sect2">
+<h3 id="_plugin_configuration"><a class="anchor" href="#_plugin_configuration"></a>Plugin Configuration</h3>
+<div class="paragraph">
+<p>In the <a href="../config/strongswanConf.html#_libimcv_plugins_imc_swima" class="xref page"><code><strong>imc-swima</strong></code></a>
+subsection of <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> some parameters
+have to be configured. As a minimum the following entries are needed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libimcv {
+  plugins {
+    imc-swima {
+      swid_full = yes
+      swid_database = sqlite:///etc/pts/collector.db
+    }
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the <code><strong>/etc/tnc_config</strong></code> configuration file the <code><strong>OS IMC</strong></code> and the <code><strong>SWIMA IMC</strong></code>
+have to enabled:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#IMC-Configuration
+
+IMC "OS"      /usr/lib/ipsec/imcvs/imc-os.so
+IMC "SWIMA"   /usr/lib/ipsec/imcvs/imc-swima.so</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These two Integrity Measurement Collectors have to be built beforehand with the
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> options</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-imc-os --enable-imc-swima</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon starts up, the IMCs are loaded.
+<code><strong>IMC 1 OS</strong></code> and <code><strong>IMC 2 SWIMA</strong></code> subcribe to the standard PA-TNC message subtypes
+<code><strong>Operating System</strong></code> and <code><strong>SWIMA</strong></code> defined in the <code><strong>IETF</strong></code> namespace, respectively.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>00[DMN] Starting IKE charon daemon (strongSwan 5.9.7, Linux 5.13.0-40-generic, x86_64)
+00[TNC] loading IMCs from '/etc/tnc_config'
+00[TNC] added IETF attributes
+00[TNC] added ITA-HSR attributes
+00[TNC] added PWG attributes
+00[TNC] added TCG attributes
+00[LIB] libimcv initialized
+00[IMC] IMC 1 "OS" initialized
+00[IMC] processing "/etc/os-release" file
+00[IMC] operating system type is 'Ubuntu'
+00[IMC] operating system name is 'Ubuntu'
+00[IMC] operating system version is '20.04 x86_64'
+00[TNC] IMC 1 supports 1 message type: 'IETF/Operating System' 0x000000/0x00000001
+00[TNC] IMC 1 "OS" loaded from '/usr/lib/ipsec/imcvs/imc-os.so'
+00[IMC] IMC 2 "SWIMA" initialized
+00[TNC] IMC 2 supports 1 message type: 'IETF/SWIMA' 0x000000/0x00000009
+00[TNC] IMC 2 "SWIMA" loaded from '/usr/lib/ipsec/imcvs/imc-swima.so'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_swima_imv" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vpn_configuration"><a class="anchor" href="#_vpn_configuration"></a>VPN Configuration</h3>
+<div class="paragraph">
+<p>The VPN configuration choses for this example is the same as for the general
+<a href="tncClient.html#_tnc_enabled_vpn_client_configuration" class="xref page">TNC client</a> but for
+reasons of brevity we will just omit the <code><strong>PT-EAP</strong></code> and <code><strong>IKEv2 EAP</strong></code> transport
+layers. Authentication is based on a TLS client certificate.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pb_tnc_connection"><a class="anchor" href="#_pb_tnc_connection"></a>PB-TNC Connection</h3>
+<div class="paragraph">
+<p>The PB-TNC (TCG TNC IF-TNCCS 2.0) Connection ID <code><strong>1</strong></code> is assigned to the connection
+by the TNC client and a new state is created for both the <code><strong>OS IMC</strong></code> and the
+<code><strong>SWIMA IMC</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>01[TNC] assigned TNCCS Connection ID 1
+01[IMC] IMC 1 "OS" created a state for IF-TNCCS 2.0 Connection ID 1: +long +excl -soh
+01[IMC]   over IF-T for Tunneled EAP 2.0 with maximum PA-TNC message size of 32722 bytes
+01[IMC] IMC 2 "SWIMA" created a state for IF-TNCCS 2.0 Connection ID 1: +long +excl -soh
+01[IMC]   over IF-T for Tunneled EAP 2.0 with maximum PA-TNC message size of 32722 bytes
+01[IMC] IMC 1 "OS" changed state of Connection ID 1 to 'Handshake'
+01[IMC] IMC 2 "SWIMA" changed state of Connection ID 1 to 'Handshake'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_pb_tnc_connection" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_os_information"><a class="anchor" href="#_os_information"></a>OS Information</h3>
+<div class="paragraph">
+<p>The <code><strong>OS IMC</strong></code> gathers information on the operating system and creates seven PA-TNC
+attributes and puts them in a PA-TNC message of the standard subtype
+<code><strong>Operating System</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>01[IMC] operating system numeric version is 20.4
+01[IMC] last boot: May 13 07:23:44 UTC 2022, 13550 s ago
+01[IMC] IPv4 forwarding is enabled
+01[IMC] factory default password is disabled
+01[IMC] device ID is a488651e36664792b306cf8be72dd630
+01[TNC] creating PA-TNC message with ID 0x5331d56c
+01[TNC] creating PA-TNC attribute type 'IETF/Product Information' 0x000000/0x00000002
+01[TNC] creating PA-TNC attribute type 'IETF/String Version' 0x000000/0x00000004
+01[TNC] creating PA-TNC attribute type 'IETF/Numeric Version' 0x000000/0x00000003
+01[TNC] creating PA-TNC attribute type 'IETF/Operational Status' 0x000000/0x00000005
+01[TNC] creating PA-TNC attribute type 'IETF/Forwarding Enabled' 0x000000/0x0000000b
+01[TNC] creating PA-TNC attribute type 'IETF/Factory Default Password Enabled' 0x000000/0x0000000c
+01[TNC] creating PA-TNC attribute type 'ITA-HSR/Device ID' 0x00902a/0x00000008
+01[TNC] creating PB-PA message type 'IETF/Operating System' 0x000000/0x00000001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>SWIMA IMC</strong></code> creates a <code><strong>Segmentation Contract Request</strong></code> attribute defined
+in the <code><strong>TCG</strong></code> namespace which proposes to split up huge PA-TNC messages into
+segments with a maximum size of <code><strong>32'698</strong></code> bytes each
+(see <a href="optimumTncSizes.html#_pa_tnc_message_segmentation" class="xref page">PA-TNC message
+segmentation</a>). This attribute is put into a PA-TNC message of standard subtype
+<code><strong>SWIMA</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>01[IMC] IMC 2 requests a segmentation contract for PA message type 'IETF/SWIMA' 0x000000/0x00000009
+01[IMC]   no message size limit, maximum segment size of 32698 bytes
+01[TNC] creating PA-TNC message with ID 0x853e6d25
+01[TNC] creating PA-TNC attribute type 'TCG/Segmentation Contract Request' 0x005597/0x00000021
+01[TNC] creating PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Both PA-TNC messages are sent in a TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>01[TNC] PB-TNC state transition from 'Init' to 'Server Working'
+01[TNC] creating PB-TNC CDATA batch
+01[TNC] adding IETF/PB-Language-Preference message
+01[TNC] adding IETF/PB-PA message
+01[TNC] adding IETF/PB-PA message
+01[TNC] sending PB-TNC CDATA batch (313 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_os_information" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_software_identifier_events"><a class="anchor" href="#_software_identifier_events"></a>Software Identifier Events</h3>
+<div class="paragraph">
+<p>The TNC client receives three PA-TNC messages in a PB-TNC Server Data batch from
+the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>12[TNC] received TNCCS batch (277 bytes)
+12[TNC] TNC client is handling inbound connection
+12[TNC] processing PB-TNC SDATA batch for Connection ID 1
+12[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+12[TNC] processing IETF/PB-PA message (52 bytes)
+12[TNC] processing IETF/PB-PA message (141 bytes)
+12[TNC] processing IETF/PB-PA message (76 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first PA-TNC message of standard subtye <code><strong>SWIMA</strong></code> is handled by the <code><strong>SWIMA IMC</strong></code>
+and contains the <code><strong>Segmentation Contract Response</strong></code> defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>12[TNC] handling PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009
+12[IMC] IMC 2 "SWIMA" received message for Connection ID 1 from IMV 2 to IMC 2
+12[TNC] processing PA-TNC message with ID 0x7ac776c3
+12[TNC] processing PA-TNC attribute type 'TCG/Segmentation Contract Response' 0x005597/0x00000022
+12[IMC] IMC 2 received a segmentation contract response from IMV 2 for PA message type 'IETF/SWIMA' 0x000000/0x00000009
+12[IMC]   no message size limit, maximum segment size of 32698 bytes</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second PA-TNC message of standard subtype <code><strong>Operating System</strong></code> is handled by
+the <code><strong>OS IMC</strong></code> and contains the standard <code><strong>Assessment Result</strong></code> and <code><strong>Remediation
+Instructions</strong></code> attributes</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>12[TNC] handling PB-PA message type 'IETF/Operating System' 0x000000/0x00000001
+12[IMC] IMC 1 "OS" received message for Connection ID 1 from IMV 1
+12[TNC] processing PA-TNC message with ID 0xd86290ad
+12[TNC] processing PA-TNC attribute type 'IETF/Assessment Result' 0x000000/0x00000009
+12[TNC] processing PA-TNC attribute type 'IETF/Remediation Instructions' 0x000000/0x0000000a
+12[IMC] ***** assessment of IMC 1 "OS" from IMV 1 *****
+12[IMC] assessment result is 'don't know'
+12[IMC] remediation string: [en]
+12[IMC] IP Packet Forwarding
+12[IMC]   Please disable the forwarding of IP packets
+12[IMC] ***** end of assessment *****</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The third PA-TNC message of standard subtype <code><strong>SWIMA</strong></code> is handled by the <code><strong>SWIMA IMC</strong></code>
+and contains a <code><strong>Segmentation Contract Request</strong></code> defined in the <code><strong>TCG</strong></code> namespace as
+well as standard <code><strong>SWIMA Request</strong></code> attribute</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>12[TNC] handling PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009
+12[IMC] IMC 2 "SWIMA" received message for Connection ID 1 from IMV 2
+12[TNC] processing PA-TNC message with ID 0x60a9b2c0
+12[TNC] processing PA-TNC attribute type 'TCG/Segmentation Contract Request' 0x005597/0x00000021
+12[TNC] processing PA-TNC attribute type 'IETF/SWIMA Request' 0x000000/0x0000000d
+12[IMC] IMC 2 received a segmentation contract request from IMV 2 for PA message type 'IETF/SWIMA' 0x000000/0x00000009
+12[IMC]   no message size limit, maximum segment size of 32698 bytes</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As a reply to the first request, a <code><strong>Segmentation Contract Response</strong></code> attribute is
+inserted into a PA-TNC message of standard subtype <code><strong>SWIMA</strong></code> and the <code><strong>SWIMA Request</strong></code>
+causes a total of 395 event items to be collected and encoded as a  <code><strong>Software
+Identifier Events</strong></code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>Adding this second attribute to the PA-TNC message would exceed the maximum size
+of <code><strong>32'722</strong></code> octets. Therefore
+<a href="optimumTncSizes.html#_pa_tnc_message_segmentation" class="xref page">PA-TNC message segmentation</a>
+is applied to the <code><strong>Software Identifier Events</strong></code> attribute and a first segment is
+encapsulated in a <code><strong>Segment Envelope</strong></code> attribute defined in the <code><strong>TCG</strong></code> namespace.
+The segment size is optimally chosen so that the <code><strong>Segment Envelope</strong></code> attribute will
+neatly fit into a maximum-size PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>12[IMC] collected 395 SW ID events at last eid 97 of epoch 0x36a4f7bb
+12[TNC] creating PA-TNC attribute type 'IETF/SW Identifier Events' 0x000000/0x0000000f
+12[TNC] creating first segment for base message ID 1 (32678 bytes)
+12[TNC] creating PA-TNC message with ID 0xbc19b497
+12[TNC] creating PA-TNC attribute type 'TCG/Segmentation Contract Response' 0x005597/0x00000022
+12[TNC] creating PA-TNC attribute type 'TCG/Segment Envelope' 0x005597/0x00000023
+12[TNC] creating PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a maximum-size PB-TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>12[TNC] TNC client is handling outbound connection
+12[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+12[TNC] creating PB-TNC CDATA batch
+12[TNC] adding IETF/PB-PA message
+12[TNC] sending PB-TNC CDATA batch (32754 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Server Data batch containing a PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] received TNCCS batch (56 bytes)
+08[TNC] TNC client is handling inbound connection
+08[TNC] processing PB-TNC SDATA batch for Connection ID 1
+08[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+08[TNC] processing IETF/PB-PA message (48 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message of standard subtype <code><strong>SWIMA</strong></code> contains a <code><strong>Next Segment</strong></code>
+attribute defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] handling PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009
+08[IMC] IMC 2 "SWIMA" received message for Connection ID 1 from IMV 2 to IMC 2
+08[TNC] processing PA-TNC message with ID 0x37422fc4
+08[TNC] processing PA-TNC attribute type 'TCG/Next Segment' 0x005597/0x00000024</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second and last segment is wrapped in a <code><strong>Segment Envelope</strong></code> attribute defined
+in the <code><strong>TCG</strong></code> namespace and inserted into a PA-TNC message of standard subtype
+<code><strong>SWIMA</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] creating last segment for base message ID 1 (6895 bytes)
+08[TNC] creating PA-TNC message with ID 0x08899819
+08[TNC] creating PA-TNC attribute type 'TCG/Segment Envelope' 0x005597/0x00000023
+08[TNC] creating PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a PB-TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] TNC client is handling outbound connection
+08[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+08[TNC] creating PB-TNC CDATA batch
+08[TNC] adding IETF/PB-PA message
+08[TNC] sending PB-TNC CDATA batch (6951 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_software_identifier_events" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_missing_swid_tags"><a class="anchor" href="#_missing_swid_tags"></a>Missing SWID Tags</h3>
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Server Data batch containing a PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] received TNCCS batch (7167 bytes)
+08[TNC] TNC client is handling inbound connection
+08[TNC] processing PB-TNC SDATA batch for Connection ID 1
+08[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+08[TNC] processing IETF/PB-PA message (7159 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message of standard subtype <code><strong>SWIMA</strong></code> contains a targeted <code><strong>SWIMA Request</strong></code>
+requesting 111 SWID tags matching the sent <code><strong>Software Identifiers</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] handling PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009
+08[IMC] IMC 2 "SWIMA" received message for Connection ID 1 from IMV 2 to IMC 2
+08[TNC] processing PA-TNC message with ID 0x60d53991
+08[TNC] processing PA-TNC attribute type 'IETF/SWIMA Request' 0x000000/0x0000000d
+08[IMC] targeted SWID tag generation
+08[IMC]   strongswan.org__Ubuntu_20.04-x86_64-apt-2.0.2
+08[IMC]   strongswan.org__Ubuntu_20.04-x86_64-base-files-11ubuntu5
+08[IMC]   strongswan.org__Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1
+          ...
+08[IMC]   strongswan.org__Ubuntu_20.04-x86_64-wget-1.20.3-1ubuntu2
+08[IMC]   strongswan.org__Ubuntu_20.04-x86_64-xdg-user-dirs-0.17-2ubuntu1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A search for the requested SWID tags is started consulting the  local
+<code><strong>collector.db</strong></code> SQLite database, the <code><strong>dpkg-query</strong></code> command and by browsing the
+<code><strong>/usr/share/strongswan</strong></code> directory. Since the requested tags belong to software
+packages removed some time ago, the file information is not available any more, so
+that the <code><strong>SWIMA IMC</strong></code> uses the <a href="https://github.com/strongswan/swidGenerator"><code><strong>swid_generator</strong></code></a> command
+to generate a pro forma tag based on the <code><strong>Software Identifier</strong></code> information, e.g.</p>
+</div>
+<div class="listingblock">
+<div class="title">Compact SWID Tag for the Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1 Software Package</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;SoftwareIdentity xmlns="http://standards.iso.org/iso/19770/-2/2015/schema.xsd"
+   xmlns:n8060="http://csrc.nist.gov/ns/swid/2015-extensions/1.0"
+   name="bash" xml:lang="en-US" tagId="Ubuntu_20.04-x86_64-bash-5.0-6ubuntu1"
+   version="5.0-6ubuntu1" versionScheme="alphanumeric"&gt;
+  &lt;Entity name="strongSwan Project" regid="strongswan.org" role="tagCreator"/&gt;
+  &lt;Meta product="Ubuntu 20.04 x86_64"/&gt;
+&lt;/SoftwareIdentity&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All 111 generated SWID tags are put into a standard <code><strong>Software Inventory</strong></code> attribute.
+Even though no file information is included in the tags, the inclusion of the attribute
+in a PA-TNC message would still exceed the maximum size of <code><strong>32'722</strong></code> octets. Therefore
+the message is segmented and a first segment is sent encapsulated in a <code><strong>Segment
+Envelope</strong></code> attribute defined in the <code><strong>TCG</strong></code> namespace in a maximum-size PA-TNC
+message of standard subtype <code><strong>SWIMA</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[IMC] SWID tag collection
+08[IMC] entering /usr/share/strongswan
+08[IMC] leaving /usr/share/strongswan
+08[IMC] collected 111 SW records
+08[TNC] creating PA-TNC attribute type 'IETF/SW Inventory' 0x000000/0x00000010
+08[TNC] creating first segment for base message ID 2 (32698 bytes)
+08[TNC] creating PA-TNC message with ID 0xbaca4544
+08[TNC] creating PA-TNC attribute type 'TCG/Segment Envelope' 0x005597/0x00000023
+08[TNC] creating PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a maximum-size PB-TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>08[TNC] TNC client is handling outbound connection
+08[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+08[TNC] creating PB-TNC CDATA batch
+08[TNC] adding IETF/PB-PA message
+08[TNC] sending PB-TNC CDATA batch (32754 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Server Data batch containing a PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>06[TNC] received TNCCS batch (56 bytes)
+06[TNC] TNC client is handling inbound connection
+06[TNC] processing PB-TNC SDATA batch for Connection ID 1
+06[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+06[TNC] processing IETF/PB-PA message (48 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message of standard subtype <code><strong>SWIMA</strong></code> contains a <code><strong>Next Segment</strong></code>
+attribute defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>06[TNC] handling PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009
+06[IMC] IMC 2 "SWIMA" received message for Connection ID 1 from IMV 2 to IMC 2
+06[TNC] processing PA-TNC message with ID 0x23377689
+06[TNC] processing PA-TNC attribute type 'TCG/Next Segment' 0x005597/0x00000024</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second and last segment is wrapped in a <code><strong>Segment Envelope</strong></code> attribute defined
+in the <code><strong>TCG</strong></code> namespace and inserted into a PA-TNC message of standard subtype
+<code><strong>SWIMA</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>06[TNC] creating last segment for base message ID 2 (27267 bytes)
+06[TNC] creating PA-TNC message with ID 0x300b30f7
+06[TNC] creating PA-TNC attribute type 'TCG/Segment Envelope' 0x005597/0x00000023
+06[TNC] creating PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a PB-TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>06[TNC] TNC client is handling outbound connection
+06[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+06[TNC] creating PB-TNC CDATA batch
+06[TNC] adding IETF/PB-PA message
+06[TNC] sending PB-TNC CDATA batch (27323 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_missing_swid_tags" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tnc_assessment_result"><a class="anchor" href="#_tnc_assessment_result"></a>TNC Assessment Result</h3>
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Result batch containing a PA-TNC message as well
+as both a PB-TNC <code><strong>Assessment-Result</strong></code> and a PB-TNC <code><strong>Access-Recommendation</strong></code> payload</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] received TNCCS batch (88 bytes)
+10[TNC] TNC client is handling inbound connection
+10[TNC] processing PB-TNC RESULT batch for Connection ID 1
+10[TNC] PB-TNC state transition from 'Server Working' to 'Decided'
+10[TNC] processing IETF/PB-PA message (48 bytes)
+10[TNC] processing IETF/PB-Assessment-Result message (16 bytes)
+10[TNC] processing IETF/PB-Access-Recommendation message (16 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>Assessment Result</strong></code> attribute received in the PA-TNC message of standard
+subtype <code><strong>SWIMA</strong></code> as well as the overall PB-TNC assessment says <code><strong>compliant</strong></code> and
+the recommendation is <code><strong>Access Allowed</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] handling PB-PA message type 'IETF/SWIMA' 0x000000/0x00000009
+10[IMC] IMC 2 "SWIMA" received message for Connection ID 1 from IMV 2 to IMC 2
+10[TNC] processing PA-TNC message with ID 0x088727cd
+10[TNC] processing PA-TNC attribute type 'IETF/Assessment Result' 0x000000/0x00000009
+10[IMC] ***** assessment of IMC 2 "SWIMA" from IMV 2 *****
+10[IMC] assessment result is 'compliant'
+10[IMC] ***** end of assessment *****
+10[TNC] PB-TNC assessment result is 'compliant'
+10[TNC] PB-TNC access recommendation is 'Access Allowed'
+10[IMC] IMC 1 "OS" changed state of Connection ID 1 to 'Allowed'
+10[IMC] IMC 2 "SWIMA" changed state of Connection ID 1 to 'Allowed'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A PB-TNC Close batch is sent to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] TNC client is handling outbound connection
+10[TNC] PB-TNC state transition from 'Decided' to 'End'
+10[TNC] creating PB-TNC CLOSE batch
+10[TNC] sending PB-TNC CLOSE batch (8 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_tnc_assessment_result" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ikev2_authentication_success"><a class="anchor" href="#_ikev2_authentication_success"></a>IKEv2 Authentication Success</h3>
+<div class="paragraph">
+<p>An <code>EAP-SUCCESS</code> message is received from the EAP server. The EAP client authenticates
+itself via an IKEv2 <code>AUTH</code> payload based on the <code>MSK</code> (Master Session Key) derived
+from the <code>EAP-TTLS</code> session</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>09[NET] received packet: from 192.168.0.2[4500] to 192.168.0.3[4500] (80 bytes)
+09[ENC] parsed IKE_AUTH response 114 [ EAP/SUCC ]
+09[IKE] EAP method EAP_TTLS succeeded, MSK established
+09[IKE] authentication of '192.168.0.3' (myself) with EAP
+09[ENC] generating IKE_AUTH request 115 [ AUTH ]
+09[NET] sending packet: from 192.168.0.3[4500] to 192.168.0.2[4500] (112 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The IKEv2 server in turn authenticates itself again via an <code>AUTH</code> payload depending
+on the <code>EAP-TTLS MSK</code> as well. The <code><strong>OS IMC</strong></code> and <code><strong>SWIMA IMC</strong></code> states as well as the
+PB-TNC connection are deleted</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>13[NET] received packet: from 192.168.0.2[4500] to 192.168.0.3[4500] (256 bytes)
+13[ENC] parsed IKE_AUTH response 115 [ AUTH CPRP(ADDR) SA TSi TSr N(MOBIKE_SUP) N(ADD_4_ADDR) ]
+13[IKE] authentication of 'server.strongswan.org' with EAP successful
+13[IMC] IMC 1 "OS" deleted the state of Connection ID 1
+13[IMC] IMC 2 "SWIMA" deleted the state of Connection ID 1
+13[TNC] removed TNCCS Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The IKEv2 connection has been successfully established.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>13[IKE] IKE_SA tnc[1] established between 192.168.0.3[192.168.0.3]...192.168.0.2[server.strongswan.org]
+13[IKE] scheduling rekeying in 14104s
+13[IKE] maximum IKE_SA lifetime 15544s
+13[IKE] installing new virtual IP 10.3.0.1
+13[CFG] selected proposal: ESP:AES_GCM_16_256/NO_EXT_SEQ
+13[IKE] CHILD_SA tnc{1} established with SPIs c7d3372f_i cf7fb53d_o and TS 10.3.0.1/32 === 10.1.0.0/24 192.168.0.2/32</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="swimaServer.html#_ikev2_authentication_success" class="xref page">SWIMA Server</a> &gt;</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="swima.html">Software Inventory</a></span>
+  <span class="next"><a href="swimaServer.html">Software Inventory Server</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/">
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2025
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

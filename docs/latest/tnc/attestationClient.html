@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Attestation Client :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/latest/tnc/attestationClient.html">
+    <link rel="prev" href="measuredBoot.html">
+    <link rel="next" href="attestationServer.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+        <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+        <a class="navbar-item" href="https://github.com/strongswan">GitHub</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="6.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">News</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Required Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How-tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../howtos/trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Portability / OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/microsoftStatusNotify.html">Microsoft Status Notify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlCounters.html">swanctl --counters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlFlushCerts.html">swanctl --flush-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInitiate.html">swanctl --initiate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInstall.html">swanctl --install</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAlgs.html">swanctl --list-algs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAuths.html">swanctl --list-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListCerts.html">swanctl --list-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListConns.html">swanctl --list-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPols.html">swanctl --list-pols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPools.html">swanctl --list-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListSas.html">swanctl --list-sas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAll.html">swanctl --load-all</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAuths.html">swanctl --load-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadConns.html">swanctl --load-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadCreds.html">swanctl --load-creds</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadPools.html">swanctl --load-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLog.html">swanctl --log</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRedirect.html">swanctl --redirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRekey.html">swanctl --rekey</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlReloadSettings.html">swanctl --reload-settings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlStats.html">swanctl --stats</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlTerminate.html">swanctl --terminate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlUninstall.html">swanctl --uninstall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlVersion.html">swanctl --version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/cert-enroll.html">cert-enroll Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/save-keys.html">save-keys Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tpm/tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">6.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">strongSwan Docs</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../5.9/index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>Platform Security</li>
+    <li><a href="tnc.html">Trusted Network Connect</a></li>
+    <li><a href="measuredBoot.html">Measured Boot</a></li>
+    <li><a href="attestationClient.html">Attestation Client</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="attestationClient.html">6.0</a>
+    <a class="version" href="../../5.9/tnc/attestationClient.html">5.9</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/tnc/attestationClient.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Attestation Client</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Attestation Client implements the <strong>Platform Trust Services</strong> (PTS) based on a
+<strong>Trusted Platform Module</strong> (TPM) and fetches the
+<a href="pcrBootEvents.html#_pcr_boot_event_log" class="xref page">Boot Event Log</a> and the corresponding
+<a href="pcrBootEvents.html#_final_pcr_state" class="xref page">final state</a> of the <strong>Platform Configuration
+Registers</strong> (PCRs) where all the individual event hashes have been extended to during
+the pre-boot and boot phases.</p>
+</div>
+<div class="paragraph">
+<p>On a Linux platform an attacker with <code><strong>root</strong></code> privileges might be able to change
+the <a href="pcrBootEvents.html#_pcr_boot_event_log" class="xref page">Boot Event Log</a> usually stored
+in the binary file</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/sys/kernel/security/tpm0/binary_bios_measurements</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>but the PCR registers stored in the protected RAM of the TPM device cannot be tampered
+with. The <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> certifies the correctness of the final PCR values
+by signing a hash over them using its <strong>Attestation Key</strong> (AK) securely stored in the
+<a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_attestation_imc"><a class="anchor" href="#_attestation_imc"></a>Attestation IMC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>Attestation IMC</strong></code> implements the over-engineered, feature-laden
+<a href="https://trustedcomputinggroup.org/wp-content/uploads/IFM_PTS_v1_0_r28.pdf">TCG Attestation PTS Protocol: Binding to TNC IF-M v1.0</a>, an extension to
+the <a href="https://datatracker.ietf.org/doc/html/rfc5792"><code><strong>PA-TNC</strong></code></a> (<code><strong>TCG TNC IF-M</strong></code>) measurement protocol. It allows
+to collect BIOS events and certify the measurements based on the local
+<a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_attestation_imv" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plugin_configuration"><a class="anchor" href="#_plugin_configuration"></a>Plugin Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For <strong>Remote Attestation</strong>, the <code><strong>OS IMC</strong></code> and the <code><strong>Attestation IMC</strong></code> have to be
+enabled in the <code><strong>/etc/tnc_config</strong></code> configuration file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#IMC-Configuration
+
+IMC "OS"           /usr/lib/ipsec/imcvs/imc-os.so
+IMC "Attestation"  /usr/lib/ipsec/imcvs/imc-attestation.so</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These two Integrity Measurement Collectors have to be built beforehand with the
+<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> options</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>--enable-imc-os --enable-imc-attestation</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the
+<a href="../config/strongswanConf.html#_libimcv_plugins_imc_os" class="xref page"><code><strong>imc-os</strong></code></a> and
+<a href="../config/strongswanConf.html#_libimcv_plugins_imc_attestation" class="xref page"><code><strong>imc-attestation</strong></code></a>
+subsections of <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> some parameters
+have to be configured. As a minimum the following entries are needed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libimcv {
+  plugins {
+    imc-os {
+      device_handle = 0x81010003
+    }
+    imc-attestation {
+      aik_handle = 0x81010003
+    }
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Both the <code><strong>device_handle</strong></code> and <code><strong>aik_handle</strong></code> point to an RSA or ECC
+<a href="../tpm/tpm2.html#_generate_persistent_attestation_keys" class="xref page">Attestation Key</a> (AK)
+stored in the <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>. This means that the <code><strong>keyid</strong></code> of
+the AK public key is used as a strong hardware ID of the endpoint and the final state
+of the PCRs after the boot measurements will be signed by the AK private key.
+As an alternative to <code><strong>aik_handle</strong></code>, the <code><strong>aik_cert</strong></code> option can be chosen to specify
+the path to an X.509 certificate containing the AK public key.</p>
+</div>
+<div class="paragraph">
+<p>When the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon starts up, it establishes a
+connection to the <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> device</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>00[DMN] Starting IKE charon daemon (strongSwan 5.9.7, Linux 5.13.0-44-generic, x86_64)
+00[PTS] TPM 2.0 - "/dev/tpmrm0" in-kernel resource manager is present
+00[PTS] TPM 2.0 - "libtss2-tcti-device.so.0" successfully loaded</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>OS IMC</strong></code> and <code><strong>Attestaton IMC</strong></code> are dynamically loaded and subscribe to the
+PA-TNC subtypes <code><strong>IETF/Operating System</strong></code> and <code><strong>TCG/PTS</strong></code>, respectively</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>00[TNC] loading IMCs from '/etc/tnc_config'
+00[TNC] added IETF attributes
+00[TNC] added ITA-HSR attributes
+00[TNC] added PWG attributes
+00[TNC] added TCG attributes
+00[PTS] added TCG functional component namespace
+00[PTS] added ITA-HSR functional component namespace
+00[PTS] added ITA-HSR functional component 'Trusted GRUB Boot Loader'
+00[PTS] added ITA-HSR functional component 'Trusted Boot'
+00[PTS] added ITA-HSR functional component 'Linux IMA'
+00[LIB] libimcv initialized
+00[IMC] IMC 1 "OS" initialized
+00[IMC] processing "/etc/os-release" file
+00[IMC] operating system type is 'Ubuntu'
+00[IMC] operating system name is 'Ubuntu'
+00[IMC] operating system version is '20.04 x86_64'
+00[TNC] IMC 1 supports 1 message type: 'IETF/Operating System' 0x000000/0x00000001
+00[TNC] IMC 1 "OS" loaded from '/usr/lib/ipsec/imcvs/imc-os.so'
+00[IMC] IMC 2 "Attestation" initialized
+00[PTS]   mandatory PTS measurement algorithm HASH_SHA1[openssl] available
+00[PTS]   mandatory PTS measurement algorithm HASH_SHA2_256[openssl] available
+00[PTS]   optional  PTS measurement algorithm HASH_SHA2_384[openssl] available
+00[PTS]   optional  PTS measurement algorithm HASH_SHA2_512[openssl] available
+00[PTS]   optional  PTS DH group MODP_2048[openssl] available
+00[PTS]   optional  PTS DH group MODP_1536[openssl] available
+00[PTS]   optional  PTS DH group MODP_1024[openssl] available
+00[PTS]   mandatory PTS DH group ECP_256[openssl] available
+00[PTS]   optional  PTS DH group ECP_384[openssl] available
+00[TNC] IMC 2 supports 1 message type: 'TCG/PTS' 0x005597/0x00000001
+00[TNC] IMC 2 "ATTESTATION" loaded from '/usr/lib/ipsec/imcvs/imc-attestation.so'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_plugin_configuration" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vpn_configuration"><a class="anchor" href="#_vpn_configuration"></a>VPN Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The VPN configuration choses for this example is the same as for the general
+<a href="tncClient.html#_tnc_enabled_vpn_client_configuration" class="xref page">TNC client</a> but just
+uses different client and server identities. For reasons of brevity we will omit
+the <code><strong>PT-EAP</strong></code> and <code><strong>IKEv2 EAP</strong></code> transport layers. Authentication is based on a
+TLS client certificate.</p>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_vpn_configuration" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pb_tnc_connection"><a class="anchor" href="#_pb_tnc_connection"></a>PB-TNC Connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The PB-TNC (TCG TNC IF-TNCCS 2.0) Connection ID <code><strong>1</strong></code> is assigned to the connection
+by the TNC client and a new state is created for both the <code><strong>OS IMC</strong></code> and the
+<code><strong>Attestation IMC</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>09[TNC] assigned TNCCS Connection ID 1
+09[IMC] IMC 1 "OS" created a state for IF-TNCCS 2.0 Connection ID 1: +long +excl -soh
+09[IMC]   over IF-T for Tunneled EAP 2.0 with maximum PA-TNC message size of 32722 bytes
+09[IMC] IMC 2 "Attestation" created a state for IF-TNCCS 2.0 Connection ID 1: +long +excl -soh
+09[IMC]   over IF-T for Tunneled EAP 2.0 with maximum PA-TNC message size of 32722 bytes
+09[IMC] IMC 1 "OS" changed state of Connection ID 1 to 'Handshake'
+09[IMC] IMC 2 "Attestation" changed state of Connection ID 1 to 'Handshake'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_pb_tnc_connection" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_os_information"><a class="anchor" href="#_os_information"></a>OS Information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><strong>OS IMC</strong></code> gathers information on the operating system and creates seven PA-TNC
+attributes and puts them in a PA-TNC message of the standard subtype
+<code><strong>Operating System</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>09[IMC] operating system numeric version is 20.4
+09[IMC] last boot: May 31 08:26:18 UTC 2022, 12009 s ago
+09[IMC] IPv4 forwarding is enabled
+09[IMC] factory default password is disabled
+09[IMC] device ID is 732c769e8d1b2efef8b64d5ae83f84d129733fdd
+09[TNC] creating PA-TNC message with ID 0xa8ddde49
+09[TNC] creating PA-TNC attribute type 'IETF/Product Information' 0x000000/0x00000002
+09[TNC] creating PA-TNC attribute type 'IETF/String Version' 0x000000/0x00000004
+09[TNC] creating PA-TNC attribute type 'IETF/Numeric Version' 0x000000/0x00000003
+09[TNC] creating PA-TNC attribute type 'IETF/Operational Status' 0x000000/0x00000005
+09[TNC] creating PA-TNC attribute type 'IETF/Forwarding Enabled' 0x000000/0x0000000b
+09[TNC] creating PA-TNC attribute type 'IETF/Factory Default Password Enabled' 0x000000/0x0000000c
+09[TNC] creating PA-TNC attribute type 'ITA-HSR/Device ID' 0x00902a/0x00000008
+09[TNC] creating PB-PA message type 'IETF/Operating System' 0x000000/0x00000001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>09[TNC] PB-TNC state transition from 'Init' to 'Server Working'
+09[TNC] creating PB-TNC CDATA batch
+09[TNC] adding IETF/PB-Language-Preference message
+09[TNC] adding IETF/PB-PA message
+09[TNC] sending PB-TNC CDATA batch (269 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#_os_informationi">Attestation Client</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pdp_referral"><a class="anchor" href="#_pdp_referral"></a>PDP-Referral</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC <code><strong>PDP-Referral</strong></code> payload defined in the <code><strong>TGC</strong></code>
+namespace and two PA-TNC messages in a PB-TNC Server Data batch</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] received TNCCS batch (274 bytes)
+10[TNC] TNC client is handling inbound connection
+10[TNC] processing PB-TNC SDATA batch for Connection ID 1
+10[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+10[TNC] processing TCG/PB-PDP-Referral message (41 bytes)
+10[TNC] processing IETF/PB-PA message (141 bytes)
+10[TNC] processing IETF/PB-PA message (84 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the PB-TNC <code><strong>PDP-Referral</strong></code> payload, the TNC server forwards the hostname
+of the  <strong>Policy Decision Point</strong> (PDP) and the TCP port through which the PDP
+will be reachable via <code>PT-TLS</code> transport after the IPsec connection has been
+successfully established.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] PDP server 'edu.strongsec.com' is listening on port 271</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thus after the endpoint has connected to the internal network via VPN, continuous
+health measurements would be possible. This dynamic switch-over from <code>PT-EAP</code> to
+<code>PT-TLS</code> transport of the PB-TNC connection hasn&#8217;t been implemented yet, though.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_os_assessment_result"><a class="anchor" href="#_os_assessment_result"></a>OS Assessment Result</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first PA-TNC message of standard subtype <code><strong>Operating System</strong></code> is handled by
+the <code><strong>OS IMC</strong></code> and contains the standard <code><strong>Assessment Result</strong></code> and <code><strong>Remediation
+Instructions</strong></code> attributes</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] handling PB-PA message type 'IETF/Operating System' 0x000000/0x00000001
+10[IMC] IMC 1 "OS" received message for Connection ID 1 from IMV 1
+10[TNC] processing PA-TNC message with ID 0xc82bacd2
+10[TNC] processing PA-TNC attribute type 'IETF/Assessment Result' 0x000000/0x00000009
+10[TNC] processing PA-TNC attribute type 'IETF/Remediation Instructions' 0x000000/0x0000000a
+10[IMC] ***** assessment of IMC 1 "OS" from IMV 1 *****
+10[IMC] assessment result is 'don't know'
+10[IMC] remediation string: [en]
+10[IMC] IP Packet Forwarding
+10[IMC]   Please disable the forwarding of IP packets
+10[IMC] ***** end of assessment *****</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_os_assessment_result" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pts_configuration"><a class="anchor" href="#_pts_configuration"></a>PTS Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The second PA-TNC message of subtype <code><strong>PTS</strong></code> defined in the <code><strong>TCG</strong></code> namespace is
+handled by the <code><strong>Attestation IMC</strong></code> and contains the following three attributes
+defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- Segmentation Contract Request
+- Request PTS Protocol Capabilities
+- PTS Measurement Algorithm Request</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the local <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a> only supports SHA1 and SHA256 PCR banks,
+the PTS measurement algorithm is set to <code>SHA2_256</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] handling PB-PA message type 'TCG/PTS' 0x005597/0x00000001
+10[IMC] IMC 2 "Attestation" received message for Connection ID 1 from IMV 2
+10[TNC] processing PA-TNC message with ID 0x0c1897a0
+10[TNC] processing PA-TNC attribute type 'TCG/Segmentation Contract Request' 0x005597/0x00000021
+10[TNC] processing PA-TNC attribute type 'TCG/Request PTS Protocol Capabilities' 0x005597/0x01000000
+10[TNC] processing PA-TNC attribute type 'TCG/PTS Measurement Algorithm Request' 0x005597/0x06000000
+10[IMC] IMC 2 received a segmentation contract request from IMV 2 for PA message type 'TCG/PTS' 0x005597/0x00000001
+10[IMC]   no message size limit, maximum segment size of 65466 bytes
+10[IMC]   lowered maximum segment size to 32698 bytes
+10[PTS] supported PTS protocol capabilities: .VDT.
+10[PTS] selected PTS measurement algorithm is HASH_SHA2_256</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As a response the following three attributes defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- Segmentation Contract Response
+- PTS Protocol Capabilities
+- PTS Measurement Algorithm</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>are put into a PA-TNC message of subtype <code><strong>PTS</strong></code> defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] creating PA-TNC message with ID 0x056d62cb
+10[TNC] creating PA-TNC attribute type 'TCG/Segmentation Contract Response' 0x005597/0x00000022
+10[TNC] creating PA-TNC attribute type 'TCG/PTS Protocol Capabilities' 0x005597/0x02000000
+10[TNC] creating PA-TNC attribute type 'TCG/PTS Measurement Algorithm' 0x005597/0x07000000
+10[TNC] creating PB-PA message type 'TCG/PTS' 0x005597/0x00000001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] TNC client is handling outbound connection
+10[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+10[TNC] creating PB-TNC CDATA batch
+10[TNC] adding IETF/PB-PA message
+10[TNC] sending PB-TNC CDATA batch (92 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Server Data batch containing a PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] received TNCCS batch (56 bytes)
+05[TNC] TNC client is handling inbound connection
+05[TNC] processing PB-TNC SDATA batch for Connection ID 1
+05[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+05[TNC] processing IETF/PB-PA message (48 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message of subtype <code><strong>PTS</strong></code> defined in the <code><strong>TCG</strong></code> namespace contains
+a <code><strong>DH Nonce Parameters Request</strong></code>. The <code>ECP_256</code> Diffie-Hellman group and a nonce
+length of 20 bytes is chosen</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] handling PB-PA message type 'TCG/PTS' 0x005597/0x00000001
+05[IMC] IMC 2 "Attestation" received message for Connection ID 1 from IMV 2
+05[TNC] processing PA-TNC message with ID 0x87e01f73
+05[TNC] processing PA-TNC attribute type 'TCG/DH Nonce Parameters Request' 0x005597/0x03000000
+05[PTS] selected PTS DH group is ECP_256
+05[PTS] nonce length is 20</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>DH Nonce Parameters Response</strong></code> is put into a PA-TNC message of subtype <code><strong>PTS</strong></code>
+defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] creating PA-TNC message with ID 0x9b6ae702
+05[TNC] creating PA-TNC attribute type 'TCG/DH Nonce Parameters Response' 0x005597/0x04000000
+05[TNC] creating PB-PA message type 'TCG/PTS' 0x005597/0x00000001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] TNC client is handling outbound connection
+05[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+05[TNC] creating PB-TNC CDATA batch
+05[TNC] adding IETF/PB-PA message
+05[TNC] sending PB-TNC CDATA batch (144 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Server Data batch containing a PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] received TNCCS batch (172 bytes)
+10[TNC] TNC client is handling inbound connection
+10[TNC] processing PB-TNC SDATA batch for Connection ID 1
+10[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+10[TNC] processing IETF/PB-PA message (164 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message of subtype <code><strong>PTS</strong></code> defined in the <code><strong>TCG</strong></code> namespace
+contains the following three attributes defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- DH Nonce Finish
+- Get TPM Version Information
+- Get Attestation Identity Key</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] handling PB-PA message type 'TCG/PTS' 0x005597/0x00000001
+10[IMC] IMC 2 "Attestation" received message for Connection ID 1 from IMV 2
+10[TNC] processing PA-TNC message with ID 0xfbdd9494
+10[TNC] processing PA-TNC attribute type 'TCG/DH Nonce Finish' 0x005597/0x05000000
+10[TNC] processing PA-TNC attribute type 'TCG/Get TPM Version Information' 0x005597/0x08000000
+10[TNC] processing PA-TNC attribute type 'TCG/Get Attestation Identity Key' 0x005597/0x0d000000
+10[PTS] selected DH hash algorithm is HASH_SHA2_256</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>TPM Version Information</strong></code> and the <code><strong>Attestation Identity Key</strong></code> attributes,
+both defined in the <code><strong>TCG</strong></code> namespace are inserted into a PA-TNC message of subtype
+<code><strong>PTS</strong></code> defined in the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] creating PA-TNC message with ID 0x436bed34
+10[TNC] creating PA-TNC attribute type 'TCG/TPM Version Information' 0x005597/0x09000000
+10[TNC] creating PA-TNC attribute type 'TCG/Attestation Identity Key' 0x005597/0x0e000000
+10[TNC] creating PB-PA message type 'TCG/PTS' 0x005597/0x00000001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[TNC] TNC client is handling outbound connection
+10[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+10[TNC] creating PB-TNC CDATA batch
+10[TNC] adding IETF/PB-PA message
+10[TNC] sending PB-TNC CDATA batch (172 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_pts_configuration" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_boot_event_measurements"><a class="anchor" href="#_boot_event_measurements"></a>Boot Event Measurements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Server Data batch containing a PA-TNC message</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] received TNCCS batch (93 bytes)
+05[TNC] TNC client is handling inbound connection
+05[TNC] processing PB-TNC SDATA batch for Connection ID 1
+05[TNC] PB-TNC state transition from 'Server Working' to 'Client Working'
+05[TNC] processing IETF/PB-PA message (85 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message of subtype <code><strong>PTS</strong></code> defined in the <code><strong>TCG</strong></code> namespace contains
+three attributes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>Get Symlinks</strong></code> defined in the <code><strong>ITA-HSR</strong></code> namespace:<br>
+Request a list of symbolic links created by the operating system due to
+<a href="https://www.linux-magazine.com/Issues/2019/228/Debian-usr-Merge">UsrMerge</a> (eg. <code>/bin &#8594; /usr/bin</code>).</p>
+</li>
+<li>
+<p><code><strong>Request Functional Component Evidence</strong></code> defined in the <code><strong>TCG</strong></code> namespace:<br>
+BIOS pre-boot evidence is requested.</p>
+</li>
+<li>
+<p><code><strong>Generate Attestation Evidence</strong></code> definedd in the <code><strong>TDG</strong></code> namespace:<br>
+Generate a <strong>TPM Quote Signature</strong> over the final state of the PCR registers
+involved in the evidence measurement.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] handling PB-PA message type 'TCG/PTS' 0x005597/0x00000001
+05[IMC] IMC 2 "Attestation" received message for Connection ID 1 from IMV 2
+05[TNC] processing PA-TNC message with ID 0xcf126135
+05[TNC] processing PA-TNC attribute type 'ITA-HSR/Get Symlinks' 0x00902a/0x00000009
+05[TNC] processing PA-TNC attribute type 'TCG/Request Functional Component Evidence' 0x005597/0x00100000
+05[TNC] processing PA-TNC attribute type 'TCG/Generate Attestation Evidence' 0x005597/0x00200000
+05[IMC] evidence requested for 1 functional components
+05[PTS] TPM 2.0 - locality indicator set to 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="pcrBootEvents.html" class="xref page">Boot Events</a> log containing 136 entries and the
+corresponding PCR event hashes are extracted</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[PTS] loaded bios measurements '/sys/kernel/security/tpm0/binary_bios_measurements' (136 entries)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The final state of the PCRs <code><strong>0..9</strong></code> and <code><strong>14</strong></code> are concatenaded into a <strong>PCR Composite</strong>
+value, hashed into a digest and then signed together with additional system information
+into a <code><strong>TPM Quote Signature</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[PTS] PCR values hashed into PCR Composite:
+05[PTS] PCR  0 06:15:6c:e6:46:85:9e:e3:81:09:57:54:9a:18:4b:7a:2e:a6:c6:c0:4f:3d:db:8a:2c:d3:a3:67:f4:93:16:71  ok
+05[PTS] PCR  1 6c:b0:42:07:6e:c2:b8:67:a9:2b:cb:8e:12:f9:14:d6:4a:06:e2:9b:a1:08:0c:e4:e0:27:55:c0:21:23:6c:81  ok
+05[PTS] PCR  2 30:3b:09:87:95:4c:d0:9c:a1:78:b8:6b:dd:60:55:40:f4:00:40:e8:e6:42:bd:11:73:ac:45:bc:9b:36:a3:49  ok
+05[PTS] PCR  3 3d:45:8c:fe:55:cc:03:ea:1f:44:3f:15:62:be:ec:8d:f5:1c:75:e1:4a:9f:cf:9a:72:34:a1:3f:19:8e:79:69  ok
+05[PTS] PCR  4 a3:1d:bf:9d:3b:ce:32:03:f2:54:59:8d:69:35:1d:8e:4b:7e:1b:54:cd:43:3d:1c:71:07:92:52:24:6a:ec:ef  ok
+05[PTS] PCR  5 bb:49:6d:97:1f:ab:ac:31:bc:4d:1c:a2:f2:ea:f7:c0:82:f3:e9:3c:25:6f:07:93:e0:cf:67:14:fd:36:40:4d  ok
+05[PTS] PCR  6 3d:45:8c:fe:55:cc:03:ea:1f:44:3f:15:62:be:ec:8d:f5:1c:75:e1:4a:9f:cf:9a:72:34:a1:3f:19:8e:79:69  ok
+05[PTS] PCR  7 44:6f:7a:67:d5:78:b2:f9:47:c4:e1:12:f7:69:96:e7:e3:67:d2:74:af:af:be:77:89:94:c4:1a:4b:67:bc:fe  ok
+05[PTS] PCR  8 36:77:2c:b7:7b:34:c1:bc:dc:41:6e:3c:c0:50:e7:26:7b:64:c2:91:28:12:9b:6a:3a:13:8a:74:c6:58:73:ad  ok
+05[PTS] PCR  9 e2:09:7c:e2:17:04:a8:46:b3:55:3f:24:df:4e:57:26:f1:b9:86:dc:31:c3:11:b8:30:28:8d:86:00:21:ee:57  ok
+05[PTS] PCR 14 e3:99:1b:7d:dd:47:be:7e:92:72:6a:83:2d:68:74:c5:34:9b:52:b7:89:fa:0d:b8:b5:58:c6:9f:ea:29:57:4e  ok
+05[PTS] PCR Composite digest: =&gt; 32 bytes @ 0x7f1858b57bf3
+05[PTS]    0: 29 6C 1D BC 8B F0 3D A1 AD 87 AC 08 45 34 78 64  )l....=.....E4xd
+05[PTS]   16: 78 EE 63 92 1B D0 E5 E2 C8 54 AB 4E A7 7D 53 E6  x.c......T.N.}S.
+05[PTS] TPM Quote Info: =&gt; 145 bytes @ 0x7f1858b57b82
+05[PTS]    0: FF 54 43 47 80 18 00 22 00 0B BD E2 F1 F3 E7 B6  .TCG..."........
+05[PTS]   16: 0C A6 6D 93 1C EC AC 7D 25 B4 69 F0 E3 9E 96 9D  ..m....}%.i.....
+05[PTS]   32: 3D B8 A8 79 89 FB E2 C1 9B C5 00 20 7E 42 B5 09  =..y....... ~B..
+05[PTS]   48: 42 91 35 72 87 1A 47 61 8F FF F5 C0 FE CD 4D A7  B.5r..Ga......M.
+05[PTS]   64: AE 2C 98 F0 A9 81 F9 B7 F7 C4 27 19 00 00 00 00  .,........'.....
+05[PTS]   80: 5F A7 4E 12 00 00 01 13 00 00 00 00 01 00 01 01  _.N.............
+05[PTS]   96: 02 00 00 00 00 00 00 00 01 00 0B 03 FF 43 00 00  .............C..
+05[PTS]  112: 20 29 6C 1D BC 8B F0 3D A1 AD 87 AC 08 45 34 78   )l....=.....E4x
+05[PTS]  128: 64 78 EE 63 92 1B D0 E5 E2 C8 54 AB 4E A7 7D 53  dx.c......T.N.}S
+05[PTS]  144: E6                                               .
+05[PTS] qualifiedSigner: =&gt; 34 bytes @ 0x7f1858b57b8a
+05[PTS]    0: 00 0B BD E2 F1 F3 E7 B6 0C A6 6D 93 1C EC AC 7D  ..........m....}
+05[PTS]   16: 25 B4 69 F0 E3 9E 96 9D 3D B8 A8 79 89 FB E2 C1  %.i.....=..y....
+05[PTS]   32: 9B C5                                            ..
+05[PTS] extraData: =&gt; 32 bytes @ 0x7f1858b57bae
+05[PTS]    0: 7E 42 B5 09 42 91 35 72 87 1A 47 61 8F FF F5 C0  ~B..B.5r..Ga....
+05[PTS]   16: FE CD 4D A7 AE 2C 98 F0 A9 81 F9 B7 F7 C4 27 19  ..M..,........'.
+05[PTS] clockInfo: =&gt; 17 bytes @ 0x7f1858b57bce
+05[PTS]    0: 00 00 00 00 5F A7 4E 12 00 00 01 13 00 00 00 00  ...._.N.........
+05[PTS]   16: 01                                               .
+05[PTS] firmwareVersion: =&gt; 8 bytes @ 0x7f1858b57bdf
+05[PTS]    0: 00 01 01 02 00 00 00 00                          ........
+05[PTS] pcrSelect: =&gt; 10 bytes @ 0x7f1858b57be7
+05[PTS]    0: 00 00 00 01 00 0B 03 FF 43 00                    ........C.
+05[PTS] PCR digest algorithm is SHA256
+05[PTS] TPM Quote Signature: =&gt; 64 bytes @ 0x7f18400063c0
+05[PTS]    0: E6 6D 59 65 48 EB 08 E7 94 E3 62 CB 18 43 D8 4A  .mYeH.....b..C.J
+05[PTS]   16: 93 CA 19 27 D7 43 D9 6B 34 BE 4A 13 93 96 15 68  ...'.C.k4.J....h
+05[PTS]   32: 29 93 67 C2 77 60 57 80 89 AA 69 04 E5 0A DA 75  ).g.w`W...i....u
+05[PTS]   48: EC BF 84 83 1B 5F FD 9F F6 7E 4D 65 D9 82 21 31  ....._...~Me..!1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>Symlinks</strong></code> attribute defined in the <code><strong>ITA-HSR</strong></code> namespace, 136 <code><strong>Simple Component
+Evidence</strong></code> attributes plus the <code><strong>Simple Evidence Final</strong></code> attribute defined in the
+<code><strong>TCG</strong></code> namespace are inserted into a PA-TNC message of subtype <code><strong>PTS</strong></code> defined in
+the <code><strong>TCG</strong></code> namespace</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] creating PA-TNC message with ID 0x23ebec16
+05[TNC] creating PA-TNC attribute type 'ITA-HSR/Symlinks' 0x00902a/0x0000000a
+05[TNC] creating PA-TNC attribute type 'TCG/Simple Component Evidence' 0x005597/0x00300000
+05[TNC] creating PA-TNC attribute type 'TCG/Simple Component Evidence' 0x005597/0x00300000
+        ...
+05[TNC] creating PA-TNC attribute type 'TCG/Simple Component Evidence' 0x005597/0x00300000
+05[TNC] creating PA-TNC attribute type 'TCG/Simple Component Evidence' 0x005597/0x00300000
+05[TNC] creating PA-TNC attribute type 'TCG/Simple Evidence Final' 0x005597/0x00400000
+05[TNC] creating PB-PA message type 'TCG/PTS' 0x005597/0x00000001</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PA-TNC message is sent in a TNC Client Data batch to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] TNC client is handling outbound connection
+05[TNC] PB-TNC state transition from 'Client Working' to 'Server Working'
+05[TNC] creating PB-TNC CDATA batch
+05[TNC] adding IETF/PB-PA message
+05[TNC] sending PB-TNC CDATA batch (11789 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_boot_event_measurements" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tnc_assessment_result"><a class="anchor" href="#_tnc_assessment_result"></a>TNC Assessment Result</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The TNC client receives a PB-TNC Result batch containing a PA-TNC message as well
+as both a PB-TNC <code><strong>Assessment-Result</strong></code> and a PB-TNC <code><strong>Access-Recommendation</strong></code> payload</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] received TNCCS batch (88 bytes)
+05[TNC] TNC client is handling inbound connection
+05[TNC] processing PB-TNC RESULT batch for Connection ID 1
+05[TNC] PB-TNC state transition from 'Server Working' to 'Decided'
+05[TNC] processing IETF/PB-PA message (48 bytes)
+05[TNC] processing IETF/PB-Assessment-Result message (16 bytes)
+05[TNC] processing IETF/PB-Access-Recommendation message (16 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>Assessment Result</strong></code> attribute received in the PA-TNC message of subtype <code><strong>PTS</strong></code>
+defined in the <code><strong>TCG</strong></code> namespace  as well as the overall PB-TNC assessment says
+<code><strong>compliant</strong></code> and the recommendation is <code><strong>Access Allowed</strong></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] handling PB-PA message type 'TCG/PTS' 0x005597/0x00000001
+05[IMC] IMC 2 "Attestation" received message for Connection ID 1 from IMV 2
+05[TNC] processing PA-TNC message with ID 0x6d4576ee
+05[TNC] processing PA-TNC attribute type 'IETF/Assessment Result' 0x000000/0x00000009
+05[IMC] ***** assessment of IMC 2 "Attestation" from IMV 2 *****
+05[IMC] assessment result is 'compliant'
+05[IMC] ***** end of assessment *****
+05[TNC] PB-TNC assessment result is 'compliant'
+05[TNC] PB-TNC access recommendation is 'Access Allowed'
+05[IMC] IMC 1 "OS" changed state of Connection ID 1 to 'Allowed'
+05[IMC] IMC 2 "Attestation" changed state of Connection ID 1 to 'Allowed'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A PB-TNC Close batch is sent to the TNC server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>05[TNC] TNC client is handling outbound connection
+05[TNC] PB-TNC state transition from 'Decided' to 'End'
+05[TNC] creating PB-TNC CLOSE batch
+05[TNC] sending PB-TNC CLOSE batch (8 bytes) for Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_tnc_assessment_result" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ikev2_authentication_success"><a class="anchor" href="#_ikev2_authentication_success"></a>IKEv2 Authentication Success</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An <code>EAP-SUCCESS</code> message is received from the EAP server. The EAP client authenticates
+itself via an IKEv2 <code>AUTH</code> payload based on the <code>MSK</code> (Master Session Key) derived
+from the <code>EAP-TTLS</code> session</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10[NET] received packet: from 10.10.0.150[4500] to 10.10.1.52[4500] (80 bytes)
+10[ENC] parsed IKE_AUTH response 25 [ EAP/SUCC ]
+10[IKE] EAP method EAP_TTLS succeeded, MSK established
+10[IKE] authentication of 'mijas.strongsec.com' (myself) with EAP
+10[ENC] generating IKE_AUTH request 26 [ AUTH ]
+10[NET] sending packet: from 10.10.1.52[4500] to 10.10.0.150[4500] (112 bytes)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The IKEv2 server in turn authenticates itself again via an <code>AUTH</code> payload depending
+on the <code>EAP-TTLS MSK</code> as well. The <code><strong>OS IMC</strong></code> and <code><strong>Attestation IMC</strong></code> states as well
+as the PB-TNC connection are deleted</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>01[NET] received packet: from 10.10.0.150[4500] to 10.10.1.52[4500] (272 bytes)
+01[ENC] parsed IKE_AUTH response 26 [ AUTH CPRP(ADDR DNS) SA TSi TSr N(AUTH_LFT) N(MOBIKE_SUP) N(ADD_6_ADDR) ]
+01[IKE] authentication of 'vpn.strongswan.org' with EAP successful
+01[TNC] TODO: setup PT-TLS connection to edu.strongsec.com:271
+01[IMC] IMC 1 "OS" deleted the state of Connection ID 1
+01[IMC] IMC 2 "Attestation" deleted the state of Connection ID 1
+01[TNC] removed TNCCS Connection ID 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The IKEv2 connection has been successfully established.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>01[IKE] IKE_SA tnc[1] established between 10.10.1.52[mijas.strongsec.com]...10.10.0.150[vpn.strongswan.org]
+01[IKE] scheduling reauthentication in 10136s
+01[IKE] maximum IKE_SA lifetime 11216s
+01[IKE] installing DNS server 10.10.0.1 to /etc/resolv.conf
+01[IKE] installing new virtual IP 10.10.1.65
+01[IKE] CHILD_SA tnc{1} established with SPIs cbc81685_i ce4c682b_o and TS 10.10.1.65/32 == 10.10.0.150/32</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="attestationServer.html#_ikev2_authentication_success" class="xref page">Attestation Server</a> &gt;</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="measuredBoot.html">Measured Boot</a></span>
+  <span class="next"><a href="attestationServer.html">Attestation Server</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/">
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2025
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
