@@ -3,6 +3,8 @@ site:
   url: https://docs.strongswan.org
   start_page: 6.0@docs::index.adoc
   robots: allow
+urls:
+  latest_version_segment: latest
 content:
   sources:
   - url: https://github.com/strongswan/strongswan-docs.git
