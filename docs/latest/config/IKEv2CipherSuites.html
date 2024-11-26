@@ -47,20 +47,15 @@
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">News</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
-  </li>
-</ul>
   </li>
 </ul>
   </li>
@@ -2045,11 +2040,52 @@ directly via their respective <a href="https://datatracker.ietf.org/doc/html/rfc
 <div class="sect1">
 <h2 id="_post_quantum_key_exchange_methods"><a class="anchor" href="#_post_quantum_key_exchange_methods"></a>Post-Quantum Key Exchange Methods</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_module_lattice_based_key_encapsulation_mechanism_ml_kem_fips_203"><a class="anchor" href="#_module_lattice_based_key_encapsulation_mechanism_ml_kem_fips_203"></a>Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM, FIPS 203)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 26.3157%;">
+<col style="width: 31.5789%;">
+<col style="width: 5.2631%;">
+<col style="width: 21.0526%;">
+<col style="width: 15.7897%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keyword</th>
+<th class="tableblock halign-left valign-top">Strength</th>
+<th class="tableblock halign-left valign-top"><a href="https://www.iana.org/assignments/ikev2-parameters/ikev2-parameters.xhtml#ikev2-parameters-8">IANA</a></th>
+<th class="tableblock halign-left valign-top"><a href="#ike-support">IKE</a></th>
+<th class="tableblock halign-left valign-top">Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mlkem512</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">128 bits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mlkem768</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">192 bits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mlkem1024</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 bits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>The forthcoming <a href="https://github.com/strongX509/docker/tree/master/pq-strongswan#readme">strongSwan 6.0 release</a> supports the NIST PQC (Post-Quantum
-Cryptography) <a href="https://csrc.nist.gov/projects/post-quantum-cryptography/selected-algorithms-2022">Selected Algorithms</a> and
-<a href="https://csrc.nist.gov/projects/post-quantum-cryptography/round-4-submissions">Round 4 Submissions</a> Key Exchange Method (KEM)
-candidates.</p>
+<p>The <code><strong>openssl</strong></code> plugin currently only supports ML-KEM via AWS-LC, not via OpenSSL.</p>
+</div>
 </div>
 </div>
 </div>

@@ -47,20 +47,15 @@
     <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">News</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/ipsecProtocol.html">Introduction to IPsec</a>
-  </li>
-</ul>
   </li>
 </ul>
   </li>
@@ -1109,8 +1104,8 @@ Since version 5.7.0, section names can&#8217;t contain dots or colons. To specif
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.ike_name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix each log entry with the connection name and a unique numerical identifier
- for each IKE_SA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the connection name and a unique numerical identifier for the current
+ IKE_SA to each log entry if available</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.json</p></td>
@@ -1134,7 +1129,7 @@ Since version 5.7.0, section names can&#8217;t contain dots or colons. To specif
  passed to <a href="https://man7.org/linux/man-pages/man3/strftime.3.html"><code><strong>strftime(3)</strong></code></a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.time_format_precision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.time_precision</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add the milliseconds (<code><strong>ms</strong></code>) or microseconds (<code><strong>us</strong></code>) within the current second
  after the timestamp (separated by a dot, so <code><strong>time_format</strong></code> should end with
@@ -1146,7 +1141,7 @@ Since version 5.7.0, section names can&#8217;t contain dots or colons. To specif
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adds the milliseconds within the current second after the timestamp (separated
  by a dot so <code><strong>time_format</strong></code> should end with <code><strong>%S</strong></code> or <code><strong>%T</strong></code>). Deprecated since
- version 6.0.0, use <code><strong>time_format_precision</strong></code> instead</p></td>
+ version 6.0.0, use <code><strong>time_precision</strong></code> instead</p></td>
 </tr>
 </tbody>
 </table>
@@ -1196,8 +1191,8 @@ or <code><strong>stderr</strong></code>.</em></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;facility&gt;.ike_name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix each log entry with the connection name and a unique numerical identifier
- for each IKE_SA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the connection name and a unique numerical identifier for the current
+ IKE_SA to each log entry if available</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;facility&gt;.log_level</p></td>
