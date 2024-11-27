@@ -23,6 +23,8 @@ ui:
     contents: ./supplemental-ui/partials/header-content.hbs
   - path: partials/footer-content.hbs
     contents: ./supplemental-ui/partials/footer-content.hbs
+  - path: img/admonitions.svg
+    contents: ./supplemental-ui/img/admonitions.svg
   - path: img/strongswan.png
     contents: ./supplemental-ui/img/strongswan.png
   - path: favicon.ico
