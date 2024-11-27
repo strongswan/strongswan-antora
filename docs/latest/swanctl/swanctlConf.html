@@ -1281,9 +1281,11 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  configurations (with EAP or configuration payloads) it might not be possible to
  actively reauthenticate as responder. The IKEv2 reauthentication lifetime
  negotiation can instruct the client to perform reauthentication. Reauthentication
- is disabled by default. Enabling it usually may lead to small connection
- interruptions as strongSwan uses a <strong>break-before-make</strong> policy with IKEv2 by
- default unless <code><strong>charon.make_before_break = yes</strong></code> is set in
+ is disabled by default. Enabling it can usually result in short connection
+ interruptions, even when using <strong>make-before-break</strong> reauthentication, which is
+ now the default. However, they are significantly shorter than when using the
+ legacy <strong>break-before-make</strong> approach, which could still be used for compatibility
+ reasons by disabling <code><strong>charon.make_before_break</strong></code> in
  <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a></p></td>
 </tr>
 <tr>

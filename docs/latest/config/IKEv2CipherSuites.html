@@ -2040,6 +2040,11 @@ directly via their respective <a href="https://datatracker.ietf.org/doc/html/rfc
 <div class="sect1">
 <h2 id="_post_quantum_key_exchange_methods"><a class="anchor" href="#_post_quantum_key_exchange_methods"></a>Post-Quantum Key Exchange Methods</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The parameter set of a certain <strong>security strength category</strong> is claimed to be
+at least as secure as a generic block cipher with the prescribed key size or a
+generic hash with the prescribed output length.</p>
+</div>
 <div class="sect2">
 <h3 id="_module_lattice_based_key_encapsulation_mechanism_ml_kem_fips_203"><a class="anchor" href="#_module_lattice_based_key_encapsulation_mechanism_ml_kem_fips_203"></a>Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM, FIPS 203)</h3>
 <table class="tableblock frame-all grid-all stretch">
@@ -2053,7 +2058,7 @@ directly via their respective <a href="https://datatracker.ietf.org/doc/html/rfc
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Keyword</th>
-<th class="tableblock halign-left valign-top">Strength</th>
+<th class="tableblock halign-left valign-top">Security</th>
 <th class="tableblock halign-left valign-top"><a href="https://www.iana.org/assignments/ikev2-parameters/ikev2-parameters.xhtml#ikev2-parameters-8">IANA</a></th>
 <th class="tableblock halign-left valign-top"><a href="#ike-support">IKE</a></th>
 <th class="tableblock halign-left valign-top">Plugins</th>
@@ -2062,21 +2067,21 @@ directly via their respective <a href="https://datatracker.ietf.org/doc/html/rfc
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mlkem512</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">128 bits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 (128 bits)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mlkem768</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">192 bits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 (192 bits)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mlkem1024</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">256 bits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 (256 bits)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>

@@ -915,35 +915,32 @@ the <code>PIN</code>.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>Break-before-make</strong> </dt>
-<dd>
-<p>This is the <strong>default</strong> behavior of the <code>IKE</code> daemon when
-reauthenticating an <code>IKEv2 SA</code>. It means that all <code>IKE_SAs</code> and <code>CHILD SAs</code> are
-torn down before recreating them. This will cause some interruptions during
-which no <code>IPsec SAs</code> are installed. If trap policies are used it could also
-trigger unnecessary acquires and hence duplicate <code>IPsec SAs</code> during that downtime.
-To prevent plaintext traffic from leaving the host appropriate firewall rules
-or drop policies may be used.</p>
-</dd>
 <dt class="hdlist1"><strong>Make-before-break</strong> </dt>
 <dd>
-<p>This method first creates duplicates of the <code>IKE SAs</code> and all <code>CHILD SAs</code>
-overlapping with the existing ones and then deletes the old ones.
-This avoids interruptions but requires that both peers can handle overlapping
-<code>SAs</code> (e.g. in regards to virtual IPs, duplicate policies or updown scripts).
-It is supported for <code>IKEv2</code> since version 5.3.0 but is disabled by default
-and may be enabled by explicitly setting</p>
-<div class="listingblock">
-<div class="content">
-<pre>charon.make_before_break = yes</pre>
-</div>
-</div>
+<p>This is the <strong>default</strong> behavior since version 6.0.0 when reauthenticating an
+<code>IKEv2 SA</code>. This method first creates duplicates of the <code>IKE SAs</code> and all
+<code>CHILD SAs</code> overlapping with the existing ones and then deletes the old ones.
+This avoids interruptions (not completely, as rekeying does, because the responder
+will usually use the new <code>CHILD SAs</code> before the initiator can install them), but
+requires that both peers can handle overlapping <code>SAs</code> (e.g. in regards to
+virtual IPs, duplicate policies or updown scripts). It is supported for <code>IKEv2</code>
+since version 5.3.0.</p>
+</dd>
+<dt class="hdlist1"><strong>Break-before-make</strong> </dt>
+<dd>
+<p>With this method, all <code>IKE_SAs</code> and <code>CHILD SAs</code> are torn down before recreating
+them. This will cause some interruptions during which no <code>IPsec SAs</code> are
+installed. If trap policies are used, it could also trigger unnecessary acquires
+during the downtime that possibly result in duplicate <code>IPsec SAs</code>.
+To prevent plaintext traffic from leaving the host, appropriate firewall rules
+or drop policies may be used.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
 <p>The <code><strong>make_before_break</strong></code> option was introduced in
-<a href="strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> with strongSwan version 5.3.0</p>
+<a href="strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> with strongSwan version 5.3.0.
+It is is enabled by default since version 6.0.0.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -961,7 +958,7 @@ and may be enabled by explicitly setting</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make_before_break</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Initiate IKEv2 reauthentication with a <strong>make-before-break</strong> instead of a
  <strong>break-before-make</strong> scheme. Make-before-break uses overlapping <code>IKE</code> and <code>CHILD SA</code>
  during reauthentication by first recreating all new SAs before deleting the old
@@ -1045,9 +1042,11 @@ times to avoid collisions.</p>
  configurations (with EAP or configuration payloads) it might not be possible to
  actively reauthenticate as responder. The IKEv2 reauthentication lifetime
  negotiation can instruct the client to perform reauthentication. Reauthentication
- is disabled by default. Enabling it usually may lead to small connection
- interruptions as strongSwan uses a <strong>break-before-make</strong> policy with IKEv2 by
- default unless <code><strong>charon.make_before_break = yes</strong></code> is set in
+ is disabled by default. Enabling it can usually result in short connection
+ interruptions, even when using <strong>make-before-break</strong> reauthentication, which is
+ now the default. However, they are significantly shorter than when using the
+ legacy <strong>break-before-make</strong> approach, which could still be used for compatibility
+ reasons by disabling <code><strong>charon.make_before_break</strong></code> in
  <a href="strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a></p></td>
 </tr>
 <tr>
