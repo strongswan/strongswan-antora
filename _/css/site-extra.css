@@ -17,12 +17,16 @@
 	color: inherit;
 }
 
+.doc thead th {
+	background-color: #f1f1f1;
+}
+
 .navbar {
 	background: #8a0020;
 }
 
 .doc .admonitionblock td.icon {
-	padding: 0;
+	font-size: .82rem;
 }
 
 .doc .admonitionblock td.icon i {
