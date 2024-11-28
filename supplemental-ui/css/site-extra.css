@@ -17,6 +17,10 @@
 	color: inherit;
 }
 
+.doc thead th {
+	background-color: #f1f1f1;
+}
+
 .navbar {
 	background: #8a0020;
 }
