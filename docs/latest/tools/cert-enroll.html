@@ -1113,15 +1113,17 @@ their strongSwan IKE <a href="../daemons/charon-systemd.html" class="xref page">
 <div class="sect2">
 <h3 id="_activation_of_installation_scripts"><a class="anchor" href="#_activation_of_installation_scripts"></a>Activation of Installation Scripts</h3>
 <div class="paragraph">
-<p>Installation scripts are activated via symbolic links im the <code><strong>cert-install.d</strong></code>
-directory. For the example of a <a href="https://www.port389.org/docs/389ds/howto/quickstart.html"><strong>389 Directory Server</strong></a> the following
-two installation scripts are referenced:</p>
+<p>Installation scripts are activated via symbolic links in the <code><strong>cert-install.d</strong></code>
+directory. For the example of a <a href="https://www.port389.org/docs/389ds/howto/quickstart.html"><strong>389 Directory Server</strong></a> managed via the
+<a href="https://cockpit-project.org/"><strong>Cockpit</strong></a> interface, the following three installation scripts are
+referenced:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre># cd /etc/cert-enroll.d
-# ln -s cert-install-available/cert-install-dirsrv cert-install.d
-# ln -s cert-install-available/cert-install-sssd   cert-install.d</pre>
+# ln -s cert-install-available/cert-install-cockpit cert-install.d
+# ln -s cert-install-available/cert-install-dirsrv  cert-install.d
+# ln -s cert-install-available/cert-install-sssd    cert-install.d</pre>
 </div>
 </div>
 </div>
