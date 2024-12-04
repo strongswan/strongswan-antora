@@ -1024,13 +1024,19 @@ standardized names in the default directory <code><strong>/root/certificates/</s
  |
  |--new/                 # temporary directory for re-enrollment
  |
- +--old/                 # repository for deprecated credentials
+ |--old/                 # repository for deprecated credentials
+ |   |
+ |   |-- key.pem         # old host key after re-enrollment
+ |   |
+ |   |-- cert.pem        # old host certificate after re-enrollment
+ |   |
+ |   |-- cacert-1.pem    # old issuing CA certificate after rollover
+ |   |
+ |   +-- cacert.pem      # old root CA certificate, if a root CA change occurred
+ |
+ +--older/
      |
-     |-- key.pem         # old host key after re-enrollment
-     |
-     |-- cert.pem        # old host certificate after re-enrollment
-     |
-     +-- cacert-1.pem    # old issuing CA certificate after rollover</pre>
+     +-- cacert-1.pem    # old issuing CA certificate, active two rollovers ago</pre>
 </div>
 </div>
 </div>
@@ -1043,6 +1049,11 @@ key and certificate installations can be implemented.</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/blob/master/src/cert-enroll/cert-install-cockpit"><code><strong>cert-install-cockpit</strong></code></a>:
+Installs the private key and host certificate as TLS credentials for the
+<a href="https://cockpit-project.org/"><strong>Cockpit</strong></a> management interface.</p>
+</li>
 <li>
 <p><a href="https://github.com/strongswan/strongswan/blob/master/src/cert-enroll/cert-install-dirsrv"><code><strong>cert-install-dirsrv</strong></code></a>:
 Installs the private key, the host and CA certificates in the NSS databases
@@ -1059,6 +1070,12 @@ a <a href="https://docs.gitea.com/"><strong>Gitea</strong></a>-based GIT server.
 Installs the private key, the host and CA certificates on VPN endpoints that
 still manage their strongSwan-based IPsec tunnels via the legacy
 <a href="https://wiki.strongswan.org/projects/strongswan/wiki/IpsecCommand"><code><strong>ipsec</strong></code></a> command line tool.</p>
+</li>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/blob/master/src/cert-enroll/cert-install-ldaputils"><code><strong>cert-install-ldaputils</strong></code></a>:
+Concatenates the present and past CA certificates into a single <code><strong>TLS_CACERT</strong></code>
+file defined by <code><strong>ldap.conf</strong></code> so that the <a href="https://wiki.debian.org/LDAP/LDAPUtils"><strong>ldap-utils</strong></a> can verify
+the LDAP server certificate.</p>
 </li>
 <li>
 <p><a href="https://github.com/strongswan/strongswan/blob/master/src/cert-enroll/cert-install-lighttpd"><code><strong>cert-install-lighttpd</strong></code></a>:
