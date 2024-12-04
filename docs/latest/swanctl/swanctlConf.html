@@ -112,7 +112,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../config/IKEv2CipherSuites.html">IKEv2 Cipher Suites</a>
+    <a class="nav-link" href="../config/proposals.html">Algorithm Proposals (Cipher Suites)</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../config/logging.html">Logging</a>
@@ -1104,14 +1104,22 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.proposals</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A proposal is a set of algorithms. For non-AEAD algorithms this includes IKE an
- encryption algorithm, an integrity algorithm, a pseudo random function (PRF) and
- a Diffie-Hellman key exchange group. For AEAD algorithms, instead of encryption
- and integrity algorithms a combined algorithm is used. With IKEv2 multiple
- algorithms of the same kind can be specified in a single proposal, from which one
- gets selected. For IKEv1 only one algorithm per kind is allowed per proposal,
- more algorithms get implicitly stripped. Use multiple proposals to offer different
- algorithm combinations with IKEv1. Algorithm keywords get separated using dashes.
+<td class="tableblock halign-left valign-top"><p class="tableblock">A proposal is a set of <a href="../config/proposals.html" class="xref page">algorithms</a>. For
+ non-AEAD IKE proposals, this includes an encryption algorithm, an integrity
+ algorithm, a pseudo-random function (PRF) and a key exchange method. For AEAD
+ proposals, instead of encryption and integrity algorithms a combined mode
+ algorithm is used.
+<br>
+ With peers that support multiple IKEv2 key exchanges (RFC 9370), up to seven
+ additional key exchanges may be negotiated. They can be configured by prefixing
+ the algorithm keyword with <code><strong>keX_</strong></code> (where <code><strong>X</strong></code> is a number between 1 and 7).
+<br>
+ For IKEv2, multiple algorithms of the same kind can be specified in a single
+ proposal, from which one gets selected. For IKEv1, only one algorithm per kind
+ is allowed per proposal, more algorithms get implicitly stripped. Use multiple
+ proposals to offer different algorithm combinations with IKEv1.
+<br>
+ <a href="../config/proposals.html" class="xref page">Algorithm keywords</a> get separated using dashes.
  Multiple proposals may be separated by commas. The special value <code><strong>default</strong></code>
  adds a default proposal of supported algorithms considered safe and is usually
  a good choice for interoperability. [<code>default</code>]</p></td>
@@ -1137,7 +1145,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the default of <code><strong>yes</strong></code> is used, ModeConfig works in <strong>pull</strong> mode where the
  initiator actively requests a virtual IP. With <code><strong>no</strong></code> <strong>push</strong> mode is used where
- the responder pushes down a virtual IP to the initiating peer. `<strong>Push</strong> mode is
+ the responder pushes down a virtual IP to the initiating peer. <strong>Push</strong> mode is
  currently supported for IKEv1 but not for IKEv2. It is used by a few
  implementations only, so that <strong>pull</strong> mode is recommended</p></td>
 </tr>
@@ -1762,52 +1770,65 @@ of the CHILD_SA configuration, which must be unique within the connection
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.ah_proposals</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AH proposals to offer for the CHILD_SA. A proposal is a set of algorithms. For AH
- this includes an integrity algorithm and an optional Diffie-Hellman group. If a
- DH group is specified, CHILD_SA/Quick Mode rekeying and initial negotiation uses
- a separate Diffie-Hellman exchange using the specified group (refer to
- <code><strong>esp_proposals</strong></code> for details).
+<td class="tableblock halign-left valign-top"><p class="tableblock">AH proposals to offer for the CHILD_SA. A proposal is a set of
+ <a href="../config/proposals.html" class="xref page">algorithms</a>. For AH, this includes an
+ integrity algorithm and an optional key exchange method. If a KE method is
+ specified, CHILD_SA/Quick Mode rekeying and initial negotiation uses a separate
+ key exchange using the negotiated method (refer to <code><strong>esp_proposals</strong></code> for details).
 <br>
- For IKEv2 multiple algorithms of the same kind can be specified in a single
- proposal, from which one gets selected. For IKEv1 only one algorithm per kind is
+ With peers that support multiple IKEv2 key exchanges (RFC 9370), up to seven
+ additional key exchanges may be negotiated. They can be configured by prefixing
+ the algorithm keyword with <code><strong>keX_</strong></code> (where <code><strong>X</strong></code> is a number between 1 and 7).
+<br>
+ For IKEv2, multiple algorithms of the same kind can be specified in a single
+ proposal, from which one gets selected. For IKEv1, only one algorithm per kind is
  allowed per proposal. Additional algorithms are implicitly stripped. Use multiple
- proposals to offer different algorithms combinations for IKEv1.
+ proposals to offer different algorithm combinations with IKEv1.
 <br>
- Algorithm keywords get separated using dashes. Multiple proposals may be separated
- by commas. The special value <code><strong>default</strong></code> forms a default proposal of supported
- algorithms considered safe and is usually a good choice for interoperability.
+ <a href="../config/proposals.html" class="xref page">Algorithm keywords</a> get separated using dashes.
+ Multiple proposals may be separated by commas. The special value <code><strong>default</strong></code>
+ forms a default proposal of supported algorithms considered safe and is usually
+ a good choice for interoperability.
+<br>
  By default no AH proposals are included, instead ESP is proposed</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.esp_proposals</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ESP proposals to offer for the CHILD_SA. A proposal is a set of algorithms. For
- ESP non-AEAD proposals this includes an integrity algorithm, an encryption
- algorithm, an optional Diffie-Hellman group and an optional Extended Sequence
- Number Mode (ESN) indicator. For AEAD proposals, a combined mode algorithm is
- used instead of the separate encryption/integrity algorithms.
+<td class="tableblock halign-left valign-top"><p class="tableblock">ESP proposals to offer for the CHILD_SA. A proposal is a set of
+ <a href="../config/proposals.html" class="xref page">algorithms</a>. For non-AEAD ESP proposals,
+ this includes an integrity algorithm, an encryption algorithm, an optional
+ key exchange method and an optional Extended Sequence Number Mode (ESN)
+ indicator. For AEAD proposals, a combined mode algorithm is used instead of the
+ separate encryption/integrity algorithms.
 <br>
- If a DH group is specified, CHILD_SA/Quick Mode rekeying and initial negotiation
- use a separate Diffie-Hellman exchange using the specified group. However, for
+ If a key exchange method is specified, CHILD_SA/Quick Mode rekeying and initial
+ negotiation use a separate key exchange using the negotiated method. However, for
  IKEv2, the keys of the CHILD_SA created implicitly with the IKE_SA will always be
- derived from the IKE_SA&#8217;s key material. So any DH group specified here will only
- apply when the CHILD_SA is later rekeyed or is created with a separate
- <code>CREATE_CHILD_SA</code> exchange. A proposal mismatch might therefore not immediately
- be noticed when the SA is established, but may later cause rekeying to fail.
+ derived from the IKE_SA&#8217;s key material. So any key exchange method specified
+ here will only apply when the CHILD_SA is later rekeyed or is created with a
+ separate <code>CREATE_CHILD_SA</code> exchange. A proposal mismatch might therefore not
+ immediately be noticed when the SA is established, but may later cause rekeying
+ to fail.
+<br>
+ With peers that support multiple IKEv2 key exchanges (RFC 9370), up to seven
+ additional key exchanges may be negotiated. They can be configured by prefixing
+ the algorithm keyword with <code><strong>keX_</strong></code> (where <code><strong>X</strong></code> is a number between 1 and 7).
 <br>
  Extended Sequence Number support may be indicated with the <code><strong>esn</strong></code> and <code><strong>noesn</strong></code>
  values. Both may be included to indicate support for both modes. If omitted,
  <code><strong>noesn</strong></code> is assumed.
 <br>
- For IKEv2 multiple algorithms of the same kind can be specified in a single
- proposal, from which one gets selected. For IKEv1 only one algorithm per kind is
+ For IKEv2, multiple algorithms of the same kind can be specified in a single
+ proposal, from which one gets selected. For IKEv1, only one algorithm per kind is
  allowed per proposal. Additional algorithms are implicitly stripped. Use multiple
- proposals to offer different algorithms combinations for IKEv1. Algorithm keywords
- get separated using dashes. Multiple proposals may be separated by commas. The
- special value <code><strong>default</strong></code> forms a default proposal of supported algorithms
- considered safe and is usually a good choice for interoperability. If no
- algorithms are specified for AH nor ESP, the <code><strong>default</strong></code> set of algorithms for ESP
- is included. [<code>default</code>]</p></td>
+ proposals to offer different algorithm combinations for IKEv1.
+<br>
+ <a href="../config/proposals.html" class="xref page">Algorithm keywords</a> get separated using dashes.
+ Multiple proposals may be separated by commas. The special value <code><strong>default</strong></code>
+ forms a default proposal of supported algorithms considered safe and is usually
+ a good choice for interoperability. If no algorithms are specified for AH nor
+ ESP, the <code><strong>default</strong></code> set of algorithms for ESP is included. [<code>default</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.sha256_96</p></td>
