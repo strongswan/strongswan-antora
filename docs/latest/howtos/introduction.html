@@ -929,7 +929,7 @@ connection between the two hosts can usually be initiated by either one of them.
 <dd>
 <p>Hosts in two or more subnets at different locations should be able to access
 each other. Again referring to the image above, the two subnets <code><strong>10.1.0.0/16</strong></code>
-and <code><strong>10.2.0.0/24</strong></code> behind gateways <code><strong>moon</strong></code> and <code><strong>sun</strong></code>, respectively, might be
+and <code><strong>10.2.0.0/16</strong></code> behind gateways <code><strong>moon</strong></code> and <code><strong>sun</strong></code>, respectively, might be
 connected, so that e.g. the hosts <code><strong>alice</strong></code> and <code><strong>bob</strong></code> may securely communicate
 with one another.</p>
 </dd>
@@ -994,7 +994,7 @@ the negotiated IPsec SAs and SPs into the kernel by using a platform-dependent
 <p>The mentioned distinction between policies and SAs often leads to <strong>misconceptions</strong>.
 For instance, referring to the image above, if host <code><strong>moon</strong></code> has a site-to-site
 tunnel to host <code><strong>sun</strong></code> (connecting the two networks <code><strong>10.1.0.0/16</strong></code> and
-<code><strong>10.2.0.0/24</strong></code>) and host <code><strong>carol</strong></code> has a roadwarrior connection to host <code><strong>sun</strong></code>
+<code><strong>10.2.0.0/16</strong></code>) and host <code><strong>carol</strong></code> has a roadwarrior connection to host <code><strong>sun</strong></code>
 (from which <code><strong>carol</strong></code> received a virtual IP address of <code><strong>10.3.0.10</strong></code>). Then <code><strong>carol</strong></code>
 won&#8217;t be able to automatically communicate with <code><strong>alice</strong></code>, even if forwarding is
 enabled on <code><strong>sun</strong></code>.  This is because there is no IPsec policy allowing traffic
