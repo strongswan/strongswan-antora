@@ -959,11 +959,12 @@ cryptographically-strong session keys. Such an IKE session is often denoted
 <strong>IKE_SA</strong> in our documentation.
 Besides authentication and key material IKE also provides the means to exchange
 configuration information (e.g. <a href="../features/vip.html" class="xref page">virtual IP</a> addresses) and
-to negotiate IPsec SAs, which are often called <strong>CHILD_SAs</strong>. IPsec SAs define which
-network traffic is to be secured and how it has to be encrypted and authenticated.</p>
+to negotiate IPsec SAs, which are often called <strong>Child SAs</strong> or <strong>CHILD_SAs</strong>.
+IPsec SAs define which network traffic is to be secured and how it has to be
+encrypted and authenticated.</p>
 </div>
 <div class="paragraph">
-<p>A CHILD_SA consists of two components:</p>
+<p>A Child SA consists of two components:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -972,17 +973,17 @@ network traffic is to be secured and how it has to be encrypted and authenticate
 the algorithms and keys used to encrypt and authenticate the traffic.</p>
 </li>
 <li>
-<p>The policies (there are at least two) that define which network traffic shall use
-that SA.</p>
+<p>The IPsec policies (there are at least two) that define which network traffic
+shall use that SA.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>The policies work both ways, i.e. only traffic matching an inbound policy will be
 allowed after decryption. Policies are derived from the <strong>traffic selectors</strong> (TS)
-negotiated via IKE when establishing a CHILD_SA. Unprotected traffic that the kernel
-receives and for which there is <strong>no</strong> matching inbound IPsec policy will be dropped.
-This is a security feature.</p>
+negotiated via IKE when establishing a Child SA. Unprotected traffic received by
+the kernel that matches an existing inbound IPsec policy is dropped. This is a
+security feature.</p>
 </div>
 <div class="paragraph">
 <p>The actual <a href="https://en.wikipedia.org/wiki/IPsec">IPsec traffic</a> is not handled by <strong>strongSwan</strong> but will be relegated
@@ -991,8 +992,10 @@ the negotiated IPsec SAs and SPs into the kernel by using a platform-dependent
 <strong>kernel interface</strong>.</p>
 </div>
 <div class="paragraph">
-<p>The mentioned distinction between policies and SAs often leads to <strong>misconceptions</strong>.
-For instance, referring to the image above, if host <code><strong>moon</strong></code> has a site-to-site
+<p>The mentioned distinction between policies and SAs often leads to <strong>misconceptions</strong>.</p>
+</div>
+<div class="paragraph">
+<p>For instance, referring to the image above, if host <code><strong>moon</strong></code> has a site-to-site
 tunnel to host <code><strong>sun</strong></code> (connecting the two networks <code><strong>10.1.0.0/16</strong></code> and
 <code><strong>10.2.0.0/16</strong></code>) and host <code><strong>carol</strong></code> has a roadwarrior connection to host <code><strong>sun</strong></code>
 (from which <code><strong>carol</strong></code> received a virtual IP address of <code><strong>10.3.0.10</strong></code>). Then <code><strong>carol</strong></code>
@@ -1000,7 +1003,8 @@ won&#8217;t be able to automatically communicate with <code><strong>alice</stron
 enabled on <code><strong>sun</strong></code>.  This is because there is no IPsec policy allowing traffic
 between <code><strong>carol</strong></code> (<code><strong>10.3.0.10</strong></code>) and <code><strong>alice</strong></code> (<code><strong>10.1.0.10</strong></code>). An additional SA
 between <code><strong>moon</strong></code> and <code><strong>sun</strong></code> connecting the virtual subnet <code><strong>10.3.0.0/24</strong></code> with
-<code><strong>10.1.0.0/16</strong></code> would be a possible solution to this issue.</p>
+<code><strong>10.1.0.0/16</strong></code> would be a possible solution to this issue, adding the virtual
+subnet to the traffic selectors of the existing site-to-site SA another.</p>
 </div>
 <div class="paragraph">
 <p>Generally, IPsec processing and routing are not directly related. IPsec is often
@@ -1013,7 +1017,7 @@ the source address is e.g. selected based on the default route. This is
 particularly true if virtual IP addresses are used. So to ensure that an address
 from a local TS is selected as source, the strongSwan
 <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> IKE daemon, by default, installs specific
-routes to the remote TS for most CHILD_SAs (excluded are e.g. those that use
+routes to the remote TS for most Child SAs (excluded are e.g. those that use
 transport mode or TS with specific ports/protocol).</p>
 </div>
 <div class="paragraph">
@@ -1083,9 +1087,8 @@ method is <strong>not recommended</strong> for large scale deployments.</p>
 <dt class="hdlist1">Extensible Authentication Protocol (EAP) </dt>
 <dd>
 <p>This covers several possible authentication methods, some are based on
-username/password-based authentication (EAP-MD5, EAP-MSCHAPv2, EAP-GTC) or on
-X.509 certificates (EAP-TLS). Some can even tunnel other EAP methods (EAP-TTLS,
-EAP-PEAP).</p>
+username/password (EAP-MD5, EAP-MSCHAPv2, EAP-GTC) or on X.509 certificates
+(EAP-TLS). Some can even tunnel other EAP methods (EAP-TTLS, EAP-PEAP).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1102,8 +1105,8 @@ using the <a href="../plugins/xauth-eap.html" class="xref page"><code><strong>xa
 <dt class="hdlist1">eXtended Authentication (XAuth) </dt>
 <dd>
 <p>XAuth provides a flexible authentication framework within IKEv1. It is mainly
-used for username/password-based authentication. Also it is generally used as a
-second authentication method after a mutual authentication based on either
+used for username/password-based authentication. Also, it is generally used as
+a second authentication method after a mutual authentication based on either
 X.509 certificates or PSK. With <em>IKEv1 hybrid authentication</em> it is however
 possible to authenticate the gateway with a certificate and use XAuth to
 authenticate the client, only.</p>
@@ -1111,8 +1114,8 @@ authenticate the client, only.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>With IKEv2 it is possible to use multiple authentication rounds (<a href="https://datatracker.ietf.org/doc/html/rfc4739">RFC 4739</a>),
-for instance to first authenticate the <strong>machine</strong> with an X.509 certificate and then
+<p>With IKEv2 it is possible to use multiple authentication rounds (<a href="https://datatracker.ietf.org/doc/html/rfc4739">RFC 4739</a>).
+For instance, to first authenticate the <strong>device</strong> with an X.509 certificate and then
 the <strong>user</strong> with a username/password-based authentication scheme (e.g EAP-MSCHAPv2).
 It is also possible to use asymmetric authentication, e.g. by authenticating the
 gateway with a certificate and the client with a username/password-based EAP method
@@ -1176,14 +1179,13 @@ to use the most recent version.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>strongSwan is usually managed with the <a href="../swanctl/swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> command
-while the IKE <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon</strong></code></a> is controlled by
-<code><strong>systemd</strong></code> on modern distros. With legacy installations, strongSwan is controlled
+while the IKE daemon <a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> is controlled
+by <code><strong>systemd</strong></code> on modern distros. With legacy installations, strongSwan is controlled
 by the <code><strong>ipsec</strong></code> command where <code><strong>ipsec start</strong></code> will start the <code><strong>starter</strong></code> daemon
-which in turn starts and configures the keying <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>
-daemon.</p>
+which in turn starts and configures the keying daemon <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>.</p>
 </div>
 <div class="paragraph">
-<p>IKE Connections and CHILD SAs defined in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+<p>IKE connections and Child SAs defined in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
 can be started through three different ways:</p>
 </div>
 <div class="dlist">
@@ -1198,7 +1200,7 @@ policies, to let specific traffic bypass other policies/SAs or drop it completel
 </dd>
 <dt class="hdlist1">On startup </dt>
 <dd>
-<p>CHILD_SAs configured with <code><strong>start_action = start</strong></code> will automatically be
+<p>Child SAs configured with <code><strong>start_action = start</strong></code> will automatically be
 established when the daemon is started. They are not automatically restarted when
 they go down for some reason. You need to specify other configuration settings
 (<code><strong>dpd_action</strong></code> and/or <code><strong>close_action</strong></code> to restart them automatically but even
@@ -1213,15 +1215,15 @@ of any problems.</p>
 <a href="../swanctl/swanctlInitiate.html" class="xref page"><code><strong>swanctl --initiate</strong></code></a> or acts passively
 as a responder waiting for a peer/roadwarrior to connect. Depending on the
 configuration, it is also possible to use
-<a href="../swanctl/swanctlInstall.html" class="xref page"><code><strong>swanctl --install</strong></code></a> to install policies manually
-for such connections as <code><strong>start_action = trap</strong></code> would do it on startup.</p>
+<a href="../swanctl/swanctlInstall.html" class="xref page"><code><strong>swanctl --install</strong></code></a> to install trap policies
+manually like <code><strong>start_action = trap</strong></code> would do on loading the connection.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
 <p>After an SA has been established,
 <a href="../swanctl/swanctlTerminate.html" class="xref page"><code><strong>swanctl --terminate</strong></code></a> may be used to tear
-down the IKE_SA or individual CHILD_SAs.</p>
+down the IKE or individual Child SAs.</p>
 </div>
 <div class="paragraph">
 <p>Whenever the <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> file or credentials
@@ -1264,7 +1266,7 @@ provide information about the established and configured connections.</p>
 <code><strong>ip xfrm policy</strong></code> commands to request detailed information about the IPsec SAs
 and policies installed in the kernel.  Adding the <code><strong>-s</strong></code> option will display extensive
 statistical information like the number of transmitted or invalid packages. On other
-platforms the <code><strong>setkey</strong></code> command from the <code><strong>ipsec-tools</strong></code> package provides similar
+platforms, the <code><strong>setkey</strong></code> command from the <code><strong>ipsec-tools</strong></code> package provides similar
 information.</p>
 </div>
 <div class="paragraph">
@@ -1303,33 +1305,28 @@ used for large scale PKIs.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The generated end entity certificates need to authenticate the corresponding
-remote IKE ID for peer authentication to succeed.</p>
-</li>
-<li>
-<p>To authenticate against another strongSwan instance using one or several certificates
-(also attribute certificates might be used), the certificate must authenticate
-the IKE ID the host is sending.</p>
+<p>The generated end-entity certificates need to authenticate the corresponding
+IKE ID for peer authentication to succeed.</p>
 <div class="paragraph">
 <p><em>If Alice tries to authenticate against Bob as Alice (herself) then Alice&#8217;s certificate
 must contain at least one <code><strong>subjectAltName</strong></code> (SAN) field with the correct type (FQDN)
-and the value <strong>Alice</strong> or the <code><strong>subjectDistinguishedName</strong></code> (DN), not the <code><strong>commonName</strong></code>
+and the value <strong>Alice</strong>, or the <code><strong>subjectDistinguishedName</strong></code> (DN), not the <code><strong>commonName</strong></code>
 (CN) has to be <strong>Alice</strong>!</em></p>
 </div>
 <div class="paragraph">
-<p>In other words you can use the complete <code><strong>DN</strong></code> or any of the <code><strong>SAN</strong></code> fields (assuming
-the type is correct) as an IKE ID.
+<p>In other words you can use the complete subject <code><strong>DN</strong></code> or any of the <code><strong>SAN</strong></code> fields
+(assuming the type is correct) of a certificate as the IKE ID.
 See <a href="#_notes_regarding_certificates">Notes regarding certificates</a> for details.</p>
 </div>
 </li>
 <li>
-<p>Additionally, the certificate has to be trusted by Bob, either by being known
-beforehand by Bob to being valid, or the certificate being issued by a certificate
-authority (CA) Bob is trusting.</p>
+<p>Additionally, the certificate has to be trusted by Bob. It either has to be known
+by Bob beforehand, or it has to be issued by a certificate authority (CA) Bob
+trusts.</p>
 </li>
 <li>
 <p>For authentication to succeed, the other peer has to possess the complete X.509
-certificate trust chain from root certificate (the root CA) down to the end entity
+certificate trust chain from root certificate (the root CA) down to the end-entity
 certificate (the host or user certificate) including all intermediate certificates
 (intermediate CAs). This is done either by sending any intermediate certificates to
 the remote host or the remote host already having them installed locally.</p>
@@ -1346,14 +1343,14 @@ implementations are stated in separate documents for
 <div class="sect2">
 <h3 id="_notes_regarding_certificates"><a class="anchor" href="#_notes_regarding_certificates"></a>Notes regarding Certificates</h3>
 <div class="paragraph">
-<p>A root CA certificate which being at the top of the X.509 trust chain, is always
-self-signed and can therefore be faked by anyone, is <code><strong>never</strong></code> sent to another host.
-Any peer must install the root CA certificate locally in a trustful way and never
-accept any root CA certificates received over the network.</p>
+<p>A root CA certificate, which sits at the top of the X.509 trust chain, is always
+self-signed and can therefore be forged by anyone, so it is <code><strong>never</strong></code> sent to
+another host. Any peer must install the root CA certificate locally in a trustful
+way and never accept any root CA certificates received over the network.</p>
 </div>
 <div class="paragraph">
 <p>A local certificate is only sent to another host if at least one of the following
-settings are true:</p>
+is true:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1376,7 +1373,7 @@ from the local host&#8217;s certificate up to its root CA certificate.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>On Linux, strongSwan installs routes into routing table <code><strong>220</strong></code> by default and
-hence requires the kernel to support policy based routing.</p>
+hence requires the kernel to support policy-based routing.</p>
 </div>
 <div class="paragraph">
 <p>You can make the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon install the routes
@@ -1384,11 +1381,11 @@ into any table you like or you can disable them completely. For that purpose the
 <code><strong>charon.install_routes</strong></code>, <code><strong>charon.routing_table</strong></code> and <code><strong>charon.routing_table_prio</strong></code>
 settings in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> may be used. When
 a tunnel is established between two subnets, <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>
-tries to find local IPs in the tunneled local subnets. Such an IP must be configurd
+tries to find local IPs in the tunneled local subnets. Such an IP must be configured
 with <strong>scope global</strong> to be viable for the lookup. If a valid IP is found,
 <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> will install a route pointing to the remote
-subnet where the source IP is set to the found IP. This results in routes like the
-following:</p>
+subnet and the preferred source IP set to the found IP. This results in routes
+like the following:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1419,9 +1416,11 @@ in <a href="../config/strongswanConf.html" class="xref page"><code><strong>stron
 </div>
 <div class="paragraph">
 <p>If IPv6 is used, then make sure to <a href="../config/IPv6Ndp.html" class="xref page">bypass</a> Neighbor Discovery
-Protocol (NDP) traffic if necessary. It is possible that you encounter MSS/MTU
-problems when tunneling traffic. Please refer to
-<a href="forwarding.html#_mtumss_issues" class="xref page">Forwarding and Split-Tunneling</a> for
+Protocol (NDP) traffic if necessary.</p>
+</div>
+<div class="paragraph">
+<p>It is possible that you encounter MSS/MTU problems when tunneling traffic. Please
+refer to <a href="forwarding.html#_mtumss_issues" class="xref page">Forwarding and Split-Tunneling</a> for
 details.</p>
 </div>
 </div>
@@ -1430,21 +1429,23 @@ details.</p>
 <h2 id="_remote_access_configurations"><a class="anchor" href="#_remote_access_configurations"></a>Remote Access Configurations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section we present example configurations for common remote access use cases.
-In these so called <strong>roadwarrior</strong> scenarios mobile clients will be able to connect to
-a remote network.</p>
+<p>In this section we present some notes on remote access configurations. Please
+refer to the <a href="../config/quickstart.html" class="xref page">Quickstart Examples</a> and the
+<a href="../config/IKEv2.html#_remote_access" class="xref page">examples from our regression tests</a>.</p>
 </div>
 <div class="paragraph">
-<p>Because these clients most likely connect from unknown IP addresses, the gateway
-will use <code><strong>remote_addrs = %any</strong></code> to literally accept connections from anywhere.
-To simplify <a href="forwarding.html" class="xref page">routing traffic back</a> to the clients and
+<p>In the so called <strong>roadwarrior</strong> scenarios mobile clients will be able to connect
+to a remote network. Because these clients most likely connect from unknown IP
+addresses, the gateway will use <code><strong>remote_addrs = %any</strong></code> (the default) to literally
+accept connections from anywhere.</p>
+</div>
+<div class="paragraph">
+<p>To simplify <a href="forwarding.html" class="xref page">routing traffic back</a> to the clients and
 because roadwarriors are often located behind one or more NAT devices, the use of
-<a href="../features/vip.html" class="xref page">virtual IP</a> addresses is necessary.</p>
-</div>
-<div class="paragraph">
-<p>The virtual IPs can either be from a distinct subnet or actually from the subnet
-behind the gateway by use of the <a href="../plugins/farp.html" class="xref page"><code><strong>farp</strong></code></a> plugin and optionally
-the <a href="../plugins/dhcp.html" class="xref page"><code><strong>dhcp</strong></code></a> plugin.</p>
+<a href="../features/vip.html" class="xref page">virtual IP</a> addresses is necessary. These addresses can
+either be from a distinct subnet or actually from the subnet behind the gateway
+by use of the <a href="../plugins/farp.html" class="xref page"><code><strong>farp</strong></code></a> plugin and optionally the
+<a href="../plugins/dhcp.html" class="xref page"><code><strong>dhcp</strong></code></a> plugin.</p>
 </div>
 <div class="paragraph">
 <p>Whether roadwarriors will send all traffic to the gateway or use
@@ -1454,8 +1455,6 @@ in more details in <a href="forwarding.html" class="xref page">Forwarding and Sp
 That document also explains how traffic is <a href="forwarding.html" class="xref page">forwarded</a>
 to hosts behind the gateway.</p>
 </div>
-<div class="sect2">
-<h3 id="_ikev2_configurations"><a class="anchor" href="#_ikev2_configurations"></a>IKEv2 Configurations</h3>
 <div class="paragraph">
 <p>The three strongSwan gateway configurations shown for the
 <a href="../interop/windowsClients.html" class="xref page">Windows clients</a> may be used for all IKEv2 clients:</p>
@@ -1488,17 +1487,13 @@ may be delegated to a RADIUS server (e.g. an existing Active Directory DC).</p>
 <div class="paragraph">
 <p>Both the <a href="../os/androidVpnClient.html" class="xref page">strongSwan VPN Client for Android</a> and
 <a href="../features/networkManager.html" class="xref page">NetworkManager</a> may be used with any of the
-strongSwan VPN gateway configurations. Alternatively the
+strongSwan VPN gateway configurations. Alternatively, the
 <a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a> command line IKEv2 client provides a
 simple means to establish roadwarrior connections.</p>
 </div>
 <div class="paragraph">
-<p><a href="../os/macos.html#_native_application" class="xref page">Our app for macOS</a> supports IKEv2 and simple
-EAP authentication. With <a href="../interop/appleIkev2Profile.html" class="xref page">iOS 8 and macOS 10.10</a>
-Apple introduced support for IKEv2 in their clients. A GUI to configure such
-connections is currently not provided, so it&#8217;s necessary to write (or generate)
-<a href="../interop/appleIkev2Profile.html" class="xref page">custom configuration profiles</a>.</p>
-</div>
+<p><a href="../interop/ios.html" class="xref page">Apple clients</a> also support IKEv2 and can
+be used with these configurations.</p>
 </div>
 </div>
 </div>
@@ -1506,18 +1501,21 @@ connections is currently not provided, so it&#8217;s necessary to write (or gene
 <h2 id="_site_to_site_configurations"><a class="anchor" href="#_site_to_site_configurations"></a>Site-to-Site Configurations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We provide the following site-to-site
-<a href="../config/IKEv2.html#_site_to_site" class="xref page">configuration examples</a></p>
+<p>You can find example site-to-site configurations in the
+<a href="../config/quickstart.html" class="xref page">Quickstart Examples</a> and the
+<a href="../config/IKEv2.html#_site_to_site" class="xref page">regression test scenarios</a>.</p>
 </div>
 <div class="paragraph">
 <p>The most important difference compared to the remote access case is that the
 initiator will not request a <a href="../features/vip.html" class="xref page">virtual IP</a> address but instead
-use <code><strong>local_ts</strong></code> to tunnel traffic from one or more local subnets. With IKEv2
+use <code><strong>local_ts</strong></code> to tunnel traffic from one or more local subnets. With IKEv2,
 multiple subnets (in CIDR notation) can be added to <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code>
 separated by commas. If IKEv1 is used, a separate
 <a href="../swanctl/swanctlConf.html#_connections_conn_children" class="xref page"><code><strong>children.&lt;child&gt;</strong></code></a>
 subsection has to be added for each combination of local and remote subnet, as only
-the first subnet in <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code> will be used.</p>
+the first subnet in <code><strong>local_ts</strong></code>/<code><strong>remote_ts</strong></code> will be used. Note that some IKEv2
+implementations (e.g. from Cisco) don&#8217;t support multiple subnets and require the
+same approach.</p>
 </div>
 <div class="paragraph">
 <p>One thing that often confuses users new to IPsec is that testing a net-to-net
@@ -1539,8 +1537,9 @@ desired authentication. Neither the <code><strong>local_ts</strong></code> nor <
 have to be set explicitly.</p>
 </div>
 <div class="paragraph">
-<p>Again, our web site provides some practical host-to-host
-<a href="../config/IKEv2.html#_host_to_host" class="xref page">configuration examples</a>.</p>
+<p>Again, you can find example host-to-host configurations in the
+<a href="../config/quickstart.html" class="xref page">Quickstart Examples</a> and the
+<a href="../config/IKEv2.html#_host_to_host" class="xref page">regression test scenarios</a>.</p>
 </div>
 </div>
 </div>

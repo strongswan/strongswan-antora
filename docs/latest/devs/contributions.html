@@ -861,7 +861,7 @@ such a feature or are even working on it. We can also give you some useful hints
 on how to integrate your work into the strongSwan architecture.</p>
 </div>
 <div class="paragraph">
-<p>For non-trivial submissions we&#8217;ll require that you sign a Contributor License
+<p>For most submissions we&#8217;ll require that you sign a Contributor License
 Agreement (see below for details).</p>
 </div>
 <div class="paragraph">
@@ -934,12 +934,13 @@ to several people.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Depending on the strongSwan components of your contribution, a signed
-Contributor License Agreement (CLA) will usually be required:</p>
+Contributor License Agreement (CLA) or a Developer Certificate of Origin (DCO)
+will be required:</p>
 </div>
 <div class="sect2">
 <h3 id="_core_libraries_front_ends_and_tools"><a class="anchor" href="#_core_libraries_front_ends_and_tools"></a>Core Libraries, Front Ends and Tools</h3>
 <div class="paragraph">
-<p>If your (non-trivial) contributions are targeting</p>
+<p>If your contributions are targeting</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1073,6 +1074,49 @@ copyright to the existing header</p>
 <div class="paragraph">
 <p>If your contributions are targeting any of the following components we will
 <strong>not require</strong> contributors to have signed a Contributor License Agreement (CLA).</p>
+</div>
+<div class="paragraph">
+<p>However, we will require contributors to provide a Developer Certificate of
+Origin (DCO) in form of a per-commit sign-off stating that they agree to
+the terms given below and published at <a href="https://developercertificate.org/">developercertificate.org</a> for
+that particular contribution.</p>
+</div>
+<details>
+<summary class="title">Full DCO text, reformatted for readability</summary>
+<div class="content">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>By making a contribution to this project, I certify that:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The contribution was created in whole or in part by me and I have the right to submit it under the open source license indicated in the file; or</p>
+</li>
+<li>
+<p>The contribution is based upon previous work that, to the best of my knowledge, is covered under an appropriate open source license and I have the right under that license to submit that work with modifications, whether created in whole or in part by me, under the same open source license (unless I am permitted to submit under a different license), as indicated in the file; or</p>
+</li>
+<li>
+<p>The contribution was provided directly to me by some other person who certified 1., 2. or 3. and I have not modified it.</p>
+</li>
+<li>
+<p>I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it, including my sign-off) is maintained indefinitely and may be redistributed consistent with this project or the open source license(s) involved.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>This sign-off is part of the commit message and can be added automatically with
+the <code><strong>-s</strong></code> option in Git&#8217;s CLI. It has the following format:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Signed-off-by: Full Name &lt;email&gt;</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The files in these components use regular GPLv2-headers, if any.</p>
