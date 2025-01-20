@@ -1159,27 +1159,80 @@ Server. All versions of Windows also support the proprietary IKEv1 fragmentation
 <h3 id="_split_routing_since_windows_10"><a class="anchor" href="#_split_routing_since_windows_10"></a>Split Routing since Windows 10</h3>
 <div class="paragraph">
 <p>Microsoft changed the Windows 10 VPN routing behavior for new VPN connections.
-Option "Use default gateway on remote network option" in the Advanced TCP/IP settings
-of the VPN connection is now disabled by default but can be enabled if desired.
-Fortunately Windows sends a DHCP request upon connection and add routes supplied
-in option <code><strong>249</strong></code> of the DHCP reply.</p>
+<a href="../howtos/forwarding.html#_split_tunneling_with_ikev2" class="xref page">Split-tunneling</a> is now
+enabled by default (<a href="../howtos/forwarding.html#_split_tunneling_with_ikev2" class="xref page">with known limitations</a>)
+but can be disabled if desired. Alternatively, DHCP may be used to configure
+which traffic is routed via gateway.</p>
 </div>
 <div class="paragraph">
-<p>Sample configuration file for dnsmasq:</p>
+<p>Windows sends a <code><strong>DHCPINFORM</strong></code> request upon connecting and adds routes supplied
+in option <code><strong>249</strong></code> of the DHCP reply. By distributing appropriate subnets
+in that option, this can be used to route everything or only specific
+subnets via gateway. Note that you can&#8217;t ignore DHCP routes in Windows.</p>
 </div>
+<details>
+<summary class="title">Example configuration for <code><strong>dnsmasq</strong></code> to forward <strong>all traffic</strong> via gateway</summary>
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre>dhcp-vendorclass=set:msipsec,MSFT 5.0
-dhcp-range=tag:msipsec,192.168.103.0,static
+dhcp-range=tag:msipsec,192.168.103.0,static <i class="conum" data-value="1"></i><b>(1)</b>
 dhcp-option=tag:msipsec,6
-dhcp-option=tag:msipsec,249, 0.0.0.0/1,0.0.0.0, 128.0.0.0/1,0.0.0.0</pre>
+dhcp-option=tag:msipsec,249, 0.0.0.0/1,0.0.0.0, 128.0.0.0/1,0.0.0.0 <i class="conum" data-value="2"></i><b>(2)</b></pre>
 </div>
 </div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>192.168.103.0</strong></code> is your (internal) network</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Two routes are pushed that cover the entire IPv4 range. Gateway could be
+anything (set to <code><strong>0.0.0.0</strong></code> in an example) as it is ignored by Windows</td>
+</tr>
+</table>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Example configuration for <code><strong>dnsmasq</strong></code> to route <strong>only specific subnet(s)</strong> via gateway</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>dhcp-vendorclass=set:msipsec,MSFT 5.0
+dhcp-range=tag:msipsec,192.168.103.0,static <i class="conum" data-value="1"></i><b>(1)</b>
+dhcp-option=tag:msipsec,6
+dhcp-option=tag:msipsec,249, 192.168.101.0/24,0.0.0.0 <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>192.168.103.0</strong></code> is your (internal) network</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Routed subnets are configured in a comma-separated list, each one is directly
+followed by a gateway address that Windows ignores (<code><strong>0.0.0.0</strong></code> in the example)</td>
+</tr>
+</table>
+</div>
+</div>
+</details>
 <div class="paragraph">
-<p>where <code><strong>192.168.103.0</strong></code> is your (internal) network. It pushes two separate routes
-which cover the entire IPv4 range. Gateway could be anything (set to <code><strong>0.0.0.0</strong></code>
-in an example) as it is ignored by Windows. Note that you can&#8217;t ignore DHCP routes
-in Windows.</p>
+<p>To allow DHCP in the second scenario, i.e. when using split-tunneling, include
+<code><strong>255.255.255.255/32</strong></code> in the server&#8217;s traffic selectors to enable broadcasts (not
+necessary when everything is tunneled via gateway anyway and the traffic selector
+is <code><strong>0.0.0.0/0</strong></code>).</p>
+</div>
+<div class="listingblock">
+<div class="title">Example traffic selector configuration to allow DHCP in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a></div>
+<div class="content">
+<pre>local_ts = 192.168.101.0/24, 255.255.255.255/32</pre>
+</div>
 </div>
 </div>
 <div class="sect2">

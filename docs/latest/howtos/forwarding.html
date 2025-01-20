@@ -1085,9 +1085,15 @@ These provide more options and also allow to configure split tunneling directly
 Windows 7, i.e. the virtual IP has to be from the remote subnet or routes have
 to be added manually, e.g. via the
 <a href="https://docs.microsoft.com/en-us/powershell/module/vpnclient//Add-VpnConnectionRoute?view=win10-ps">Add-VpnConnectionRoute</a> PowerShell
-command. To tunnel all traffic via VPN instead, split tunneling has to be disabled
-explicitly, either by enabling the <em>Use default gateway on remote network</em>
-setting described above or by using the following PowerShell command</p>
+command,
+or <a href="../interop/windowsClients.html#_split_routing_since_windows_10" class="xref page">using DHCP</a>.</p>
+<div class="paragraph">
+<p>To tunnel all traffic via VPN instead,
+<a href="../interop/windowsClients.html#_split_routing_since_windows_10" class="xref page">DHCP may be used</a>
+or split tunneling can simply be disabled explicitly, either by enabling
+the <em>Use default gateway on remote network</em> setting described above or by using
+the following PowerShell command</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>Set-VpnConnection "&lt;Connection Name&gt;" -SplitTunneling 0</pre>
