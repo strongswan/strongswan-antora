@@ -930,6 +930,10 @@ include the required <a href="kernelModules.html" class="xref page">kernel modul
 <p>The GNU build system (Autotools) is used to build strongSwan. There is an ever
 growing list of <a href="autoconf.html" class="xref page"><code><strong>./configure</strong></code> options</a> available.</p>
 </div>
+<div class="paragraph">
+<p>Refer to the <a href="../plugins/plugins.html" class="xref page">list of plugins</a> to learn more about the
+plugins enabled with these options.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -937,29 +941,32 @@ growing list of <a href="autoconf.html" class="xref page"><code><strong>./config
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Many of these configuration options are enabled by default. Thus please
-      use <strong>./configure --help</strong> to check which options are actually available for
-      your strongSwan release.
+<div class="paragraph">
+<p>Many of the configuration options are enabled by default. Thus please
+use <strong>./configure --help</strong> to check which options are actually available for
+your strongSwan release.</p>
+</div>
+<div class="paragraph">
+<p>Some plugins have <strong>dependencies on third-party libraries</strong>. To compile them,
+the header files of those libraries are required. Make sure these
+are installed on your system, e.g. by installing the appropriate <strong>-dev</strong>
+package on Debian-based systems. Otherwise, the configure script will
+complain that it can&#8217;t find the library or header files.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Refer to the <a href="../plugins/plugins.html" class="xref page">list of plugins</a> to learn more about the
-plugins enabled with the above options.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Some plugins have <strong>dependencies on third-party libraries</strong>. To compile these
-      plugins, the header files of those libraries are required. Make sure these
-      are installed on your system, e.g. by installing the appropriate <strong>-dev</strong>
-      package on Debian-based systems. Otherwise, the configure script will
-      complain that it can&#8217;t find the library or header files.
+When changing configure options, especially enabling/disabling
+           plugins, make sure to run <code><strong>make clean</strong></code> before rebuilding to make
+           sure all changes are picked up.
 </td>
 </tr>
 </table>
