@@ -912,20 +912,25 @@ following keys. Keys of sub-objects are separated with dots.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>uuid</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier to identify the VPN profile. The format is defined in
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Unique identifier to identify the VPN profile. The format is defined in
  <a href="https://datatracker.ietf.org/doc/html/rfc4122">RFC 4122</a>. Version 4 UUIDs (random-generated) are recommended and
  may be created e.g. with the command <code><strong>uuid -v4</strong></code>. If a VPN profile with the same
- UUID already exists, its settings are replaced when the profile is imported</p></td>
+ UUID already exists, its settings are replaced when the profile is imported</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the profile</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Display name of the profile</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the VPN profile. The following values are currently supported and
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type of the VPN profile. The following values are currently supported and
  determine the type of client authentication that is used (the server is always
  authenticated with a certificate):<br>
 <code><strong>ikev2-eap</strong></code>: Username/password-based EAP authentication<br>
@@ -934,38 +939,46 @@ following keys. Keys of sub-objects are separated with dots.</p>
   username/password-based EAP authentication<br>
 <code><strong>ikev2-eap-tls</strong></code>: EAP-TLS certificate authentication<br>
 <code><strong>ikev2-byod-eap</strong></code>: EAP-TNC with username/password-based EAP authentication<br>
-Some of the keys described below are only relevant for certain types</p></td>
+Some of the keys described below are only relevant for certain types</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>apps</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional array of package names (e.g. <code><strong>com.example.app.name</code></strong>) of apps that are
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional array of package names (e.g. <code><strong>com.example.app.name</code></strong>) of apps that are
  able to use this VPN connection. For all other apps it will look as if there was
- no VPN. Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+ no VPN. Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>excluded-apps</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional array of package names (e.g. <code><strong>com.example.app.name</strong></code>) of apps that won&#8217;t
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional array of package names (e.g. <code><strong>com.example.app.name</strong></code>) of apps that won&#8217;t
  be able to use this VPN connection. It will look to them as if there was no VPN.
  Only relevant if <code><strong>apps</strong></code> is not set.
- Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+ Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ike-proposal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional custom IKE proposal, i.e. a list of crypto algorithm identifiers separated
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional custom IKE proposal, i.e. a list of crypto algorithm identifiers separated
  by hyphens. For non-AEAD/classic encryption algorithms an integrity algorithm,
  a pseudo random function (optional, defaults to one based on the integrity
  algorithm) and a Diffie-Hellman group are required (e.g. <code><strong>aes256-sha256-ecp256</strong></code>).
  For combined-mode/AEAD algorithms the integrity algorithm is omitted but a PRF
  is required (e.g. <code><strong>aes256gcm16-prfsha256-ecp256</strong></code>).
- Since <a href="androidVpnClient.html#_1_9_5_2017_11_17" class="xref page">1.9.5</a></p></td>
+ Since <a href="androidVpnClient.html#_1_9_5_2017_11_17" class="xref page">1.9.5</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>esp-proposal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional custom ESP proposal, i.e. a list of crypto algorithm identifiers separated
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional custom ESP proposal, i.e. a list of crypto algorithm identifiers separated
  by hyphens. For non-AEAD/classic encryption algorithms, an integrity algorithm is
  required, a Diffie-Hellman group is optional (e.g. <code><strong>aes256-sha256</strong></code> or
  <code><strong>aes256-sha256-ecp256</strong></code>). For combined-mode/AEAD algorithms, the integrity
@@ -973,34 +986,43 @@ Some of the keys described below are only relevant for certain types</p></td>
  group is specified IPsec SA rekeying will use a DH key exchange. However, DH groups
  specified here are not used when the connection is established initially because
  the keys there are derived from the IKE SA key material. Therefore any configuration
- mismatch with the server will only cause errors later during rekeying.</p></td>
+ mismatch with the server will only cause errors later during rekeying.</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mtu</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional MTU to use for the TUN device</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional MTU to use for the TUN device</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>nat-keepalive</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional interval for
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional interval for
  <a href="../features/natTraversal.html#_nat_t_keepalives" class="xref page">NAT-T keepalive</a> packets.
- Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+ Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dns-servers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional array or space-separated list of DNS server addresses to use instead of
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional array or space-separated list of DNS server addresses to use instead of
  those received by the VPN server.
- Since <a href="androidVpnClient.html#_2_1_0_2019_03_14" class="xref page">2.1.0</a></p></td>
+ Since <a href="androidVpnClient.html#_2_1_0_2019_03_14" class="xref page">2.1.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ipv6-transport</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use IPv6 transport addresses for IKE and ESP if available. Requires
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to use IPv6 transport addresses for IKE and ESP if available. Requires
  support for UDP encapsulation for IPv6 on the server (the Linux kernel only
  supports this since 5.8).
- Since <a href="androidVpnClient.html#_2_3_1_2020_10_29" class="xref page">2.3.1</a></p></td>
+ Since <a href="androidVpnClient.html#_2_3_1_2020_10_29" class="xref page">2.3.1</a></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1027,66 +1049,84 @@ are defined:</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>x</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>addr</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The server&#8217;s hostname or IP address. If no remote identity is configured this has
- to be contained as <code><strong>subjectAltName</strong></code> extension in the server certificate</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The server&#8217;s hostname or IP address. If no remote identity is configured this has
+ to be contained as <code><strong>subjectAltName</strong></code> extension in the server certificate</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional server port (default is <code><strong>500</strong></code>)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional server port (default is <code><strong>500</strong></code>)</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional IKE identity of the server. If this is not configured it defaults to
- <code><strong>addr</strong></code> and no <code><strong>IDr</strong></code> is sent in the IKE_AUTH request</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional IKE identity of the server. If this is not configured it defaults to
+ <code><strong>addr</strong></code> and no <code><strong>IDr</strong></code> is sent in the IKE_AUTH request</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cert</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional Base64-encoded CA or server certificate. Is imported into the app, not
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional Base64-encoded CA or server certificate. Is imported into the app, not
  the system keystore. If not set, automatic CA certificate selection is enabled.
  Thus it&#8217;s not necessary if the server certificate is issued by a CA the client
  already trusts or if the PKCS#12-file below contains the complete certificate
  chain (this might cause warnings on older Android releases, though, see
  <a href="androidVpnClient.html#_client_configuration" class="xref page">Android VPN client configuration</a>
- for details)</p></td>
+ for details)</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>certreq</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to send certificate requests for all installed or selected CA certificates.
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to send certificate requests for all installed or selected CA certificates.
  Disabling this may reduce the size of the IKE_AUTH message if the server does not
  support fragmentation. But it only works if the server doesn&#8217;t require certificate
  requests to send back the server certificate. Since
- <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+ <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional object that sets the revocation checking policy for the remote certificate</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional object that sets the revocation checking policy for the remote certificate</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation.crl</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use CRLs (Certificate Revocation Lists) if available for revocation
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to use CRLs (Certificate Revocation Lists) if available for revocation
  checking of the remote certificate. CRLs are only used if OCSP doesn&#8217;t yield a
  result. Enabled by default. Since
- <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation.ocsp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use OCSP (Online Certificate Status Protocol) if available for
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to use OCSP (Online Certificate Status Protocol) if available for
  revocation checking of the remote certificate. Enabled by default. Since
- <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>revocation.strict</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In strict mode the authentication will fail if the status of the remote certificate
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>In strict mode the authentication will fail if the status of the remote certificate
  is unknown (e.g. because no valid CRL was available). Disabled by default. Since
- <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1114,39 +1154,71 @@ are defined:</p>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>eap_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional identity/username for EAP authentication. If this is required (for
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional identity/username for EAP authentication. If this is required (for
  username/password-based EAP authentication) but not configured here, the user is
- prompted for it when importing the profile. If it is set the user is not able to
- change it while importing (but may later do so). In both cases the user may
- optionally enter the password while importing the profile</p></td>
+ prompted for it when importing the profile. If it is set, the user is not able
+ to change it while importing (but may do so later). In both cases the user may
+ optionally enter the password while importing the profile unless one is provided
+ with the profile (see below)</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional IKE identity of the client for certificate authentication and since
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional IKE identity of the client for certificate authentication and since
  <a href="androidVpnClient.html#_2_2_0_2019_10_15" class="xref page">2.2.0</a> also for other authentication
  types. Typically has to match a <code><strong>subjectAltName</strong></code> contained in the client
  certificate if one is used. Must not be configured if the certificate&#8217;s subject
- DN shall be used as client identity</p></td>
+ DN shall be used as client identity</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shared_secret</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional password for EAP authentication. If it is set, the user is not able to
+ change it while importing (but may do so later). Since
+ <a href="androidVpnClient.html#_2_5_3_2025_02_20" class="xref page">2.5.3</a></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Profile files are <strong>not encrypted</strong>. So make sure to handle files
+         containing such <strong>cleartext passwords</strong> with care (e.g. send them via
+         encrypted channels and delete them after use).
+</td>
+</tr>
+</table>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>p12</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional Base64-encoded PKCS#12-container with the client certificate and private
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional Base64-encoded PKCS#12-container with the client certificate and private
  key and optional certificate chain (the latter might cause warnings on older
  Android releases, see
  <a href="androidVpnClient.html#_client_configuration" class="xref page">Android VPN client configuration</a>
  for details). Not necessary for username/password-based EAP authentication or if
  the user already has the certificate/key installed as it may be selected while
- importing the profile</p></td>
+ importing the profile</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rsa-pss</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use the stronger PSS encoding instead of the classic PKCS#1 encoding
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to use the stronger PSS encoding instead of the classic PKCS#1 encoding
  for RSA signatures during <a href="https://datatracker.ietf.org/doc/html/rfc7427">RFC 7427</a> signature authentication. Disabled
  by default. May be enabled if the server supports it. Since
- <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p></td>
+ <a href="androidVpnClient.html#_2_0_0_2018_07_03" class="xref page">2.0.0</a></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1174,33 +1246,41 @@ are defined:</p>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>subnets</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An array of subnets (in CIDR notation), IP addresses or ranges (IP-IP) to route
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>An array of subnets (in CIDR notation), IP addresses or ranges (IP-IP) to route
  via VPN. All other traffic is forwarded as if there was no VPN. This is only
  relevant locally, these subnets are not sent to the server. Since
- <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+ <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>excluded</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An array of subnets (in CIDR notation), IP addresses or ranges (IP-IP) to exclude
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>An array of subnets (in CIDR notation), IP addresses or ranges (IP-IP) to exclude
  from the VPN. Matching traffic is forwarded as if there was no VPN. This is only
- relevant locally. Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p></td>
+ relevant locally. Since <a href="androidVpnClient.html#_1_9_0_2017_07_03" class="xref page">1.9.0</a></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>block-ipv4</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to block IPv4 traffic that&#8217;s not destined for the VPN. Forces all IPv4
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to block IPv4 traffic that&#8217;s not destined for the VPN. Forces all IPv4
  traffic via VPN (traffic that does not match the negotiated traffic selector is
  then just dropped). Thus this is basically equivalent to including <code><strong>0.0.0.0/0</strong></code>
- in <code><strong>subnets</strong></code></p></td>
+ in <code><strong>subnets</strong></code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>block-ipv6</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to block IPv6 traffic that&#8217;s not destined for the VPN. Forces all IPv6
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Whether to block IPv6 traffic that&#8217;s not destined for the VPN. Forces all IPv6
 traffic via VPN (traffic that does not match the negotiated traffic selector is
 then just dropped). Thus this is basically equivalent to including <code><strong>::/0</strong></code> in
-<code><strong>subnets</strong></code></p></td>
+<code><strong>subnets</strong></code></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>

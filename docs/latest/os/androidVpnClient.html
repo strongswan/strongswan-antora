@@ -874,7 +874,10 @@ supported via enterprise mobility management (EMM). This allows pushing VPN
 profiles to managed devices using basically the same settings as those in the
 <a href="androidVpnClientProfiles.html" class="xref page">profile files</a>. But also provides additional
 options to configure global app settings and disable certain features of the app
-(e.g. the ability for users to add or import their own VPN profiles).</p>
+(e.g. the ability for users to add or import their own VPN profiles). Note that
+distributing certificates with managed profiles requires the MDM to assign the
+<code>CERT_INSTALL</code> delegated scope to the strongSwan app so it can install the
+certificate and private key.</p>
 </div>
 <div class="paragraph">
 <p>Client certificates and keys, and CA certificates may be added by bundling them
@@ -1187,6 +1190,30 @@ or directly from the app&#8217;s page in the Play store.</p>
 <div class="sect1">
 <h2 id="_changelog"><a class="anchor" href="#_changelog"></a>Changelog</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_5_3_2025_02_20"><a class="anchor" href="#_2_5_3_2025_02_20"></a>2.5.3 (2025-02-20)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Add support for distributing passwords in managed profiles</p>
+</li>
+<li>
+<p>Add support for importing <a href="androidVpnClientProfiles.html" class="xref page">profile files</a>
+with passwords (a warning is displayed to remind users that the file contains
+the password in cleartext)</p>
+</li>
+<li>
+<p>Fix a crash when editing the password of a managed profile</p>
+</li>
+<li>
+<p>Fix a crash when re-importing an already existing profile from a file</p>
+</li>
+<li>
+<p>Fix some deprecation warnings</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_2_5_2_2024_08_06"><a class="anchor" href="#_2_5_2_2024_08_06"></a>2.5.2 (2024-08-06)</h3>
 <div class="ulist">
