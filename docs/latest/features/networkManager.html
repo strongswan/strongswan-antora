@@ -873,21 +873,21 @@ of 20 characters) are enforced.</p>
 </div>
 <div class="paragraph">
 <p>You can use any password based <code><strong>EAP</strong></code> method supported by strongSwan (<code><strong>MD5</strong></code>/
-<code><strong>GTC</strong></code>/<code><strong>MSCHAPv2</strong></code>) or public key authentication. Private keys are either stored
-in a file or accessed through your ready-to-use <code><strong>ssh-agent</strong></code>. You&#8217;ll need a
-certificate matching that key. Also private keys and certificates on a smart card
-can be used (see below for details).</p>
+<code><strong>GTC</strong></code>/<code><strong>MSCHAPv2</strong></code>) or public key authentication (optionally with <code><strong>EAP-TLS</strong></code>).
+Private keys are either stored in a file or accessed through your ready-to-use
+<code><strong>ssh-agent</strong></code>. You&#8217;ll need a certificate matching that key. Also, private keys
+and certificates on a smart card can be used (see below for details).</p>
 </div>
 <div class="paragraph">
 <p>If you configure the server certificate directly on the clients, there are no
-requirements to the certificate. If you deploy CA certificates, the server
-certificate will need a <code><strong>subjectAltName</strong></code> including the host name of the server
+certificate requirements. If you deploy CA certificates, the server
+certificate will need a <code><strong>subjectAltName</strong></code> matching the host name of the server
 (the same you enter in the client&#8217;s configuration). Since version 5.8.3 /
 NetworkManager-strongswan 1.5.0 it&#8217;s possible to configure the server identity
 explicitly. You can also use preinstalled root CA certificates of your distribution,
 using the <code><strong>--with-nm-ca-dir</strong></code>
 <a href="../install/autoconf.html#_with_options" class="xref page"><code><strong>./configure</strong></code></a> option. Since version
-5.5.1 this can also be modified with the <code><strong>charon-nm.ca_dir</strong></code> setting in
+5.5.1, this can also be modified with the <code><strong>charon-nm.ca_dir</strong></code> setting in
 <a href="../config/strongswanConf.html#_charon_nm" class="xref page"><code><strong>strongswan.conf</strong></code></a>. Just don&#8217;t specify
 any server/CA certificate in the GUI to use preinstalled root certificates.
 CA certificates on a smart card are automatically used.</p>
@@ -1006,9 +1006,9 @@ make install</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Open the Network area in GNOME Settings (<code>gnome-control-center</code>) (or click on
+<p>Open the Network area in GNOME Settings (<code>gnome-control-center</code>), or click on
 the NM-applet &#8594; Edit Connections&#8230;&#8203; or VPN Connections &#8594; Configure VPN&#8230;&#8203;
-in older releases)</p>
+in older releases</p>
 </li>
 <li>
 <p>Add VPN &#8594; IPsec/IKEv2 (strongswan) &#8594; Create&#8230;&#8203;</p>
@@ -1027,13 +1027,156 @@ NM-applet &#8594; VPN Connections &#8594; Your Connection in older releases)</p>
 </div>
 <div class="paragraph">
 <p>As you can see there is no subnet configuration for the tunnel. We let the server
-administration choose the subnet(s); the client always proposes 0.0.0.0/0 for
-the remote network and the server narrows that down to the configured subnet(s).</p>
+administration choose the subnet(s); the client always proposes <code>0.0.0.0/0,::/0</code>
+as remote traffic selector and the server narrows that down to the
+configured subnet(s).</p>
 </div>
 <div class="paragraph">
 <p>If you use public key-based authentication, please store your certificate and
 private key in separate files.</p>
 </div>
+<div class="paragraph">
+<p>Many of the global <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>-specific configuration
+options in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> also apply to
+<code><strong>charon-nm</strong></code>. However, options set in the <code><strong>charon</strong></code> section are
+<strong>not inherited</strong> by <code><strong>charon-nm</strong></code>. So make sure to set settings in the
+<code><strong>charon-nm</strong></code> section.</p>
+</div>
+<div class="paragraph">
+<p>The following options are specific to <code><strong>charon-nm</strong></code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 7.6923%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ca_dir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory from which to load CA certificates if no certificate is configured.
+ <code><strong>[${nm_ca_dir}]</strong></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mtu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1400</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MTU for XFRM interfaces created by the NM plugin</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Logging for <code><strong>charon-nm</strong></code> is configured via <code>syslog</code> by default. On systems
+with <code>systemd</code>, log messages can be viewed with <code>journalctl -u NetworkManager</code>
+because <code><strong>charon-nm</strong></code> is controlled by NetworkManager.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 7.6923%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="3"><p class="tableblock">charon-nm.syslog.daemon</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default to <a href="../config/logging.html" class="xref page">logging</a> via syslog&#8217;s daemon facility on
+ level 1.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Due to its primary purpose for roadwarrior connections, its interaction with
+NetworkManager, and its use of XFRM interfaces, <code><strong>charon-nm</strong></code> sets very specific
+default values for several global options. It&#8217;s usually not necessary to change
+them, but they may in case of conflicts.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 7.6923%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="3"><p class="tableblock">charon-nm</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">install_virtual_ip_on</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interface on which virtual IP addresses are installed. Note that NM
+ also installs the virtual IPs on the XFRM interface. However, that happens
+ later than required to install routes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source port when sending packets to port 500. Defaults to an ephemeral
+ port. May be set to <code>500</code> if firewall rules require a static port.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">port_nat_t</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source port when sending packets to port 4500 or a custom server port.
+ Defaults to an ephemeral port. May be set to e.g. <code>4500</code> if firewall rules
+ require a static port.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">routing_table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>210</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Table where routes via XFRM interface are installed. Should be different
+ than the table used for the regular IKE daemon due to the mark (see below).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">routing_table_prio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>210</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Priority of the routing table. Higher than the default priority used for the
+ regular IKE daemon.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="3"><p class="tableblock">charon-nm.plugins.kernel-netlink</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fwmark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>!210</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make packets with this mark ignore the routing table. Must be the same mark
+ set in <code>charon-nm.plugins.socket-default.fwmark</code>.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="3"><p class="tableblock">charon-nm.plugins.socket-default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fwmark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>210</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mark applied to IKE and ESP packets to ignore the routing table and avoid
+ routing loops when using XFRM interfaces.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">

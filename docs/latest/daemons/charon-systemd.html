@@ -947,11 +947,44 @@ strongswan.service - strongSwan IPsec IKEv1/IKEv2 daemon using swanctl
 </div>
 </div>
 <div class="sect1">
-<h2 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h2>
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By default the <code><strong>charon-systemd</strong></code> backend logs to the <code><strong>systemd</strong></code> journal that
-can be inspected using  <code><strong>journalctl</strong></code>. Log levels can be configured very
+<p>Many of the <a href="charon.html" class="xref page"><code><strong>charon</strong></code></a>-specific configuration options
+in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> also apply to
+<code><strong>charon-systemd</strong></code>. Actually, options set in the <code><strong>charon</strong></code> section are
+<strong>automatically inherited</strong> by <code><strong>charon-systemd</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following options are specific to <code><strong>charon-systemd</strong></code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 15.3846%;">
+<col style="width: 7.6923%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">journal</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Section to configure native systemd journal logger, very similar to the syslog
+ logger as described in <a href="../config/logging.html" class="xref page">Logging</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h3>
+<div class="paragraph">
+<p>By default, the <code><strong>charon-systemd</strong></code> backend logs to the <code><strong>systemd</strong></code> journal,
+which can be viewed using  <code><strong>journalctl</strong></code>. Log levels can be configured very
 similar to the <a href="charon.html" class="xref page"><code><strong>charon</strong></code></a>
 <a href="../config/logging.html" class="xref page">logger configuration</a> but using a <code><strong>journal</strong></code> section:</p>
 </div>
@@ -968,8 +1001,8 @@ similar to the <a href="charon.html" class="xref page"><code><strong>charon</str
 </div>
 </div>
 <div class="paragraph">
-<p>Of course one may define traditional <code><strong>syslog</strong></code> and <code><strong>filelog</strong></code> loggers in the
-<code><strong>charon-systemd</strong></code> section of <code><strong>strongswan.conf</strong></code>, refer to the
+<p>Of course, one may define traditional <code><strong>syslog</strong></code> and <code><strong>filelog</strong></code> loggers in the
+<code><strong>charon-systemd</strong></code> section of <code><strong>strongswan.conf</strong></code>. Refer to the
 <a href="../config/logging.html" class="xref page">logger configuration</a> for details. To disable the
 <code><strong>journal</strong></code> logger and make it silent, set</p>
 </div>
@@ -1021,6 +1054,7 @@ similar to the <a href="charon.html" class="xref page"><code><strong>charon</str
 identifier specific to each log message type. The log levels are also mapped to
 values stored in the <code><strong>PRIORITY</strong></code> field (<code><strong>0</strong></code> to <code><strong>LOG_NOTICE</strong></code>, <code><strong>1</strong></code> to
 <code><strong>LOG_INFO</strong></code>, everything above to <code><strong>LOG_DEBUG</strong></code>, see <code><strong>syslog(3)</strong></code>).</p>
+</div>
 </div>
 </div>
 </div>

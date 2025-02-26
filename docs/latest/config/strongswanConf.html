@@ -1168,29 +1168,49 @@ the suffixes have a corresponding default value.</p>
 <p>The following list shows all <code><strong>strongswan.conf</strong></code> keys that are currently defined
 (using dot notation).</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code><strong>${prefix}</strong></code> refers to the directory that can be configured with the
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code><strong>${prefix}</strong></code> 
+</td>
+<td class="hdlist2">
+<p>refers to the directory that can be configured with the
 <code><strong>--prefix</strong></code> <a href="../install/autoconf.html#_dir_options" class="xref page"><code><strong>./configure</strong></code></a>
-option (defaults to <code><strong>/usr/local</strong></code>).</p>
-</li>
-<li>
-<p><code><strong>${sysconfdir}</strong></code> refers to the directory that can be configured with the
+option (defaults to <code><strong>/usr/local</strong></code>)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code><strong>${sysconfdir}</strong></code> 
+</td>
+<td class="hdlist2">
+<p>refers to the directory that can be configured with the
 <code><strong>--sysconfdir</strong></code> <a href="../install/autoconf.html#_dir_options" class="xref page"><code><strong>./configure</strong></code></a>
-option (defaults to <code><strong>${prefix}/etc</strong></code>).</p>
-</li>
-<li>
-<p><code><strong>${piddir}</strong></code> refers to the directory that can be configured with the
+option (defaults to <code><strong>${prefix}/etc</strong></code>)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code><strong>${piddir}</strong></code> 
+</td>
+<td class="hdlist2">
+<p>refers to the directory that can be configured with the
 <code><strong>--with-piddir</strong></code> <a href="../install/autoconf.html#_with_options" class="xref page"><code><strong>./configure</strong></code></a>
-option (defaults to <code><strong>/var/run</strong></code>).</p>
-</li>
-<li>
-<p><code><strong>${nm_ca_dir}</strong></code> refers to the directory that can be configured with the
+option (defaults to <code><strong>/var/run</strong></code>)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code><strong>${nm_ca_dir}</strong></code> 
+</td>
+<td class="hdlist2">
+<p>refers to the directory that can be configured with the
 <code><strong>--with-nm-ca-dir</strong></code> <a href="../install/autoconf.html#_with_options" class="xref page"><code><strong>./configure</strong></code></a>
-option (defaults to <code><strong>/usr/share/ca-certificates</strong></code>).</p>
-</li>
-</ul>
+option (defaults to <code><strong>/usr/share/ca-certificates</strong></code>)</p>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_aikgen"><a class="anchor" href="#_aikgen"></a>aikgen</h3>
@@ -1242,11 +1262,14 @@ option (defaults to <code><strong>/usr/share/ca-certificates</strong></code>).</
 <div class="sect2">
 <h3 id="_charon"><a class="anchor" href="#_charon"></a>charon</h3>
 <div class="paragraph">
-<p>Many of the options in this section also apply to
-<a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a>,
-<a href="../daemons/charon-systemd.html" class="xref page"><strong><code>charon-systemd</strong></code></a> and other derivatives of
-the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon. Just use their respective name
-(e.g. <code><strong>charon-systemd</strong></code> instead of <code><strong>charon</strong></code>).</p>
+<p>Many of the options in this section also apply to derivatives of the
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon. Just use their respective name (e.g.
+<code><strong>charon-systemd</strong></code> instead of <code><strong>charon</strong></code>). Note that
+<a href="../daemons/charon-systemd.html" class="xref page"><code><strong>charon-systemd</strong></code></a> and
+<a href="../daemons/charon-svc.html" class="xref page"><code><strong>charon-svc</strong></code></a> both automatically inherit
+options from the <code><strong>charon</strong></code> section. However,
+<a href="../daemons/charon-cmd.html" class="xref page"><code><strong>charon-cmd</strong></code></a> and
+<a href="../features/networkManager.html" class="xref page"><code><strong>charon-nm</strong></code></a> don&#8217;t.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -4320,7 +4343,7 @@ username part</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_charon_nm"><a class="anchor" href="#_charon_nm"></a><a href="#daemons/charon-nm">charon-nm</a></h3>
+<h3 id="_charon_nm"><a class="anchor" href="#_charon_nm"></a><a href="../features/networkManager.html" class="xref page">charon-nm</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 30.7692%;">
@@ -4350,7 +4373,7 @@ username part</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_charon_systemd"><a class="anchor" href="#_charon_systemd"></a><a href="#daemons/charon-systemd">charon-systemd</a></h3>
+<h3 id="_charon_systemd"><a class="anchor" href="#_charon_systemd"></a><a href="../daemons/charon-systemd.html" class="xref page">charon-systemd</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 30.7692%;">
