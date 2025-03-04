@@ -2351,6 +2351,16 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
  to the DHCP server</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">interface_receive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interface name the plugin uses to bind its receive socket. The default is
+ to use the same interface as the send socket. Set it to the empty string
+ to avoid binding the receive socket to any interface while the send socket
+ is bound to one. If the server runs on the same host and the send socket is
+ bound to an interface, it might be necessary to set this to <code>lo</code> or the
+ empty string. Since version 6.0.1</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DHCP</code> server unicast or broadcast IP address.
@@ -2672,10 +2682,10 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock">servers</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Section to specify multiple RADIUS servers. The <code><strong>nas_identifier</strong></code>, <code><strong>secret</strong></code>,
- <code><strong>sockets</strong></code> and <code><strong>port</strong></code> (or <code><strong>auth_port</strong></code>) options can be specified for each
- server. The <code><strong>retransmit</strong></code> settings can also be changed for each server.  A
- server&#8217;s IP/Hostname can be configured using the <code><strong>address</strong></code> option. The
- <code><strong>acct_port</strong></code> [1813] option can be used to specify the port used for RADIUS
+ <code><strong>sockets</strong></code>, <code><strong>source</strong></code>, and <code><strong>port</strong></code> (or <code><strong>auth_port</strong></code>) options can be
+ specified for each server. The <code><strong>retransmit</strong></code> settings can also be changed for
+ each server.  A server&#8217;s IP/Hostname can be configured using the <code><strong>address</strong></code> option.
+ The <code><strong>acct_port</strong></code> [1813] option can be used to specify the port used for RADIUS
  accounting. For each server a priority can be specified using the <code><strong>preference</strong></code> [0]
  option</p></td>
 </tr>
@@ -2683,6 +2693,11 @@ set lower than <code><strong>0x00000100</strong></code> (256) as SPIs between 1 
 <td class="tableblock halign-left valign-top"><p class="tableblock">sockets</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of sockets (ports) to use. Increase for high load</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional specific source IP to use. Since version 6.0.1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">station_id_with_port</p></td>

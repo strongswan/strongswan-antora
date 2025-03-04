@@ -929,6 +929,7 @@ add a new section to the <code><strong>servers</strong></code> subsection with a
           address = 1.2.3.4
           secret = R4diu5-shared-$ecreŧ
           # nas_identifier = ipsec-gateway
+          # source = 4.3.2.1
         }
       }
     }</pre>
@@ -949,6 +950,10 @@ entropy because the secret might be subject to dictionary attacks.</p>
 against the RADIUS server and allows it to enforce a policy, for example.
 If you need an UDP port different from the RADIUS default [<code><strong>1812</strong></code>] use the
 <code><strong>port</strong></code> option.</p>
+</li>
+<li>
+<p>The optional <code><strong>source</strong></code> attribute, available since version 6.0.1, forces RADIUS
+messages to be sent from a specific source IP</p>
 </li>
 </ul>
 </div>

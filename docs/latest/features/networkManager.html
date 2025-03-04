@@ -1146,6 +1146,24 @@ them, but they may in case of conflicts.</p>
  require a static port.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retransmit_base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base to use for calculating exponential back off, see
+ <a href="../config/retransmission.html" class="xref page">Retransmission</a>. Default retransmission
+ settings for <code>charon-nm</code> are deliberately lower to fail and possibly
+ reestablish SAs more quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retransmit_timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout in seconds before sending first retransmit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retransmit_tries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of times to retransmit a packet before giving up.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">routing_table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>210</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table where routes via XFRM interface are installed. Should be different

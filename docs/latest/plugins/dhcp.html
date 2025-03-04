@@ -911,9 +911,9 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 25%;">
 <col style="width: 8.3333%;">
-<col style="width: 75.0001%;">
+<col style="width: 66.6667%;">
 </colgroup>
 <thead>
 <tr>
@@ -940,6 +940,16 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interface name the plugin uses for address allocation. The default is to bind
  to any (<code>0.0.0.0</code>) and let the system decide which way to route the packets
  to the DHCP server</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">interface_receive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interface name the plugin uses to bind its receive socket. The default is
+ to use the same interface as the send socket. Set it to the empty string
+ to avoid binding the receive socket to any interface while the send socket
+ is bound to one. If the server runs on the same host and the send socket is
+ bound to an interface, it might be necessary to set this to <code>lo</code> or the
+ empty string. Since version 6.0.1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">server</p></td>
