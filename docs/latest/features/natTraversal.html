@@ -1027,26 +1027,45 @@ Otherwise they would be treated as UDP-encapsulated ESP packets.</p>
 <dd>
 <p>Because the client has to connect to a socket/port that is prepared to process
 UDP-encapsulated ESP packets, the correct setting to specify a custom port is
-<code><strong>charon.port_nat_t</strong></code>. The <code><strong>charon.port</strong></code> setting is not relevant in this scenario
-(i.e. the default socket/port will not be used, hence inbound traffic to port 500
-could be blocked).</p>
+<code><strong>charon.port_nat_t</strong></code> in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>.<br>
+The <code><strong>charon.port</strong></code> setting is not relevant in this scenario (i.e. the default
+socket/port is not be used, so inbound traffic to port 500 could be blocked).</p>
 </dd>
 <dt class="hdlist1">Client</dt>
 <dd>
-<p>The client must add a non-ESP marker when sending IKE packets to a custom server
-port or port 4500. strongSwan adds one if neither source nor destination port is 500.
-This means the client can&#8217;t use port 500 in order to already add a non-ESP
-marker when sending the initial <code>IKE_SA_INIT</code> request. This can be achieved by
-either setting the local port used for IKE (<code><strong>local_port</strong></code> in
-<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>) to 4500 or by setting
-<code><strong>charon.port</strong></code> on the client to either <code><strong>0</strong></code> to allocate a random port or any
-number != 500 (if that port is not used by any other process), so that the source
-port won&#8217;t be 500 and does not have to be set explicitly in the connection config.
-If the latter is done, the client will, however, switch to the second source port
-configured via <code><strong>charon.port_nat_t</strong></code> if a NAT situation is detected or MOBIKE is
-enabled, so setting both to <code><strong>0</strong></code> usually makes most sense for mobile clients that
-connect to a custom server port (but leaving that at 4500 is usually not a problem,
-either).</p>
+<p>The client must add a non-ESP marker when sending IKE packets to port 4500 or a
+custom server port. strongSwan adds one if neither source nor destination port
+is 500, which means the client can&#8217;t send packets from port 500 so that such a
+marker gets already added to the initial <code>IKE_SA_INIT</code> request.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Since version 6.0.1, this is handled automatically by sending the initial
+message from the NAT-T socket if the destination port is not 500.</p>
+</li>
+<li>
+<p>For older releases, this can be achieved in two ways:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Either by setting the source port used for IKE to 4500 explicitly in the
+connection config (<code><strong>local_port</strong></code> in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>).</p>
+</li>
+<li>
+<p>Or by setting <code><strong>charon.port</strong></code> in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>
+to either <code><strong>0</strong></code>, to allocate a random port, or any number != 500 (as long as that
+port is not used by any other process). That way the source port won&#8217;t be 500 and
+also doesn&#8217;t have to be set explicitly in the connection config. Note that the
+client will switch to the second source port configured in <code><strong>charon.port_nat_t</strong></code>
+if a NAT situation is detected or MOBIKE is enabled. So setting both to <code><strong>0</strong></code>
+usually makes most sense for mobile clients that connect to a custom server port
+(but leaving the second setting at 4500 is usually not a problem either).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </dd>
 </dl>
 </div>
