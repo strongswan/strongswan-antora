@@ -985,38 +985,38 @@ its own subsection with an arbitrary yet unique name (denoted <code>&lt;name&gt;
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.cacert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_cacert"></a><a href="#_authorities_name_cacert"> </a>&lt;name&gt;.cacert</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The certificates may use a relative path from the
  <a href="swanctlDir.html" class="xref page"><code><strong>swanctl/x509ca</strong></code></a> directory or an absolute path.
  Configure one of <code><strong>cacert</strong></code>, <code><strong>file</strong></code>, or <code><strong>handle</strong></code> per section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_file"></a><a href="#_authorities_name_file"> </a>&lt;name&gt;.file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to the certificate to load. Passed as-is to the daemon, so it must
  be readable by it.
  Configure one of <code><strong>cacert</strong></code>, <code><strong>file</strong></code>, or <code><strong>handle</strong></code> per section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.handle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_handle"></a><a href="#_authorities_name_handle"> </a>&lt;name&gt;.handle</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hex-encoded <code>CKA_ID</code> or handle of the CA certificate on a token or
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>, respectively.
  Configure one of <code><strong>cacert</strong></code>, <code><strong>file</strong></code>, or <code><strong>handle</strong></code> per section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_slot"></a><a href="#_authorities_name_slot"> </a>&lt;name&gt;.slot</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional slot number of the token that stores the CA certificate</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_module"></a><a href="#_authorities_name_module"> </a>&lt;name&gt;.module</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional PKCS#11 module name</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.cert_uri_base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_cert_uri_base"></a><a href="#_authorities_name_cert_uri_base"> </a>&lt;name&gt;.cert_uri_base</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the base URI for the Hash and URL feature supported by IKEv2. Instead of
  exchanging complete certificates, IKEv2 allows one to send an URI that resolves
@@ -1024,12 +1024,12 @@ its own subsection with an arbitrary yet unique name (denoted <code>&lt;name&gt;
  SHA1 hash of the DER encoded certificates to this base URI</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.crl_uris</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_crl_uris"></a><a href="#_authorities_name_crl_uris"> </a>&lt;name&gt;.crl_uris</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of CRL distribution points (ldap, http, or file URI)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.ocsp_uris</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_authorities_name_ocsp_uris"></a><a href="#_authorities_name_ocsp_uris"> </a>&lt;name&gt;.ocsp_uris</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of OCSP URIs</p></td>
 </tr>
@@ -1057,14 +1057,14 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_version"></a><a href="#_connections_conn_version"> </a>&lt;conn&gt;.version</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IKE major version to use for connection. <code><strong>1</strong></code> uses IKEv1 aka ISAKMP, <code><strong>2</strong></code> uses
  IKEv2. A connection using the default of <code><strong>0</strong></code> accepts both IKEv1 and IKEv2 as
  a responder and initiates the connection actively with IKEv2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.local_addrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_addrs"></a><a href="#_connections_conn_local_addrs"> </a>&lt;conn&gt;.local_addrs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>%any</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Local [comma-separated] address[es] to use for IKE communication. Accepts single
  IPv4/IPv6 addresses, DNS names, CIDR subnets or IP address ranges. As an initiator,
@@ -1075,7 +1075,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  lookup is delayed for that time</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.remote_addrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_addrs"></a><a href="#_connections_conn_remote_addrs"> </a>&lt;conn&gt;.remote_addrs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>%any</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Remote [comma-separated] address[es] to use for IKE communication. Accepts single
  IPv4/IPv6 addresses, DNS names, CIDR subnets or IP address ranges. As an initiator,
@@ -1087,7 +1087,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  address or DNS name must be specified</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.local_port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_port"></a><a href="#_connections_conn_local_port"> </a>&lt;conn&gt;.local_port</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>500</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Local UDP port for IKE communication. By default the port of the socket backend
  is used, which is usually <code><strong>500</strong></code>. If port <code><strong>500</strong></code> is used, automatic IKE port
@@ -1096,13 +1096,13 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  <code><strong>socket-dynamic</strong></code> plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.remote_port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_port"></a><a href="#_connections_conn_remote_port"> </a>&lt;conn&gt;.remote_port</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>500</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Remote UDP port for IKE communication. If the default of port <code><strong>500</strong></code> is used,
  automatic IKE port floating to port <code><strong>4500</strong></code> is used to work around NAT issues</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.proposals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_proposals"></a><a href="#_connections_conn_proposals"> </a>&lt;conn&gt;.proposals</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A proposal is a set of <a href="../config/proposals.html" class="xref page">algorithms</a>. For
  non-AEAD IKE proposals, this includes an encryption algorithm, an integrity
@@ -1125,7 +1125,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  a good choice for interoperability. [<code>default</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.vips</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_vips"></a><a href="#_connections_conn_vips"> </a>&lt;conn&gt;.vips</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of virtual IPs to request in IKEv2 configuration payloads
  or IKEv1 ModeConfig. The wildcard addresses <code><strong>0.0.0.0</strong></code> and <code><strong>::</strong></code> request an
@@ -1133,7 +1133,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  a different address, though, or none at all</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.aggressive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_aggressive"></a><a href="#_connections_conn_aggressive"> </a>&lt;conn&gt;.aggressive</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables IKEv1 Aggressive Mode instead of IKEv1 Main Mode with Identity Protection.
  Aggressive Mode is considered less secure because the ID and HASH payloads are
@@ -1141,7 +1141,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  and even worse, start dictionary attacks on the Preshared Key</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.pull</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_pull"></a><a href="#_connections_conn_pull"> </a>&lt;conn&gt;.pull</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the default of <code><strong>yes</strong></code> is used, ModeConfig works in <strong>pull</strong> mode where the
  initiator actively requests a virtual IP. With <code><strong>no</strong></code> <strong>push</strong> mode is used where
@@ -1150,14 +1150,14 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  implementations only, so that <strong>pull</strong> mode is recommended</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.dscp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_dscp"></a><a href="#_connections_conn_dscp"> </a>&lt;conn&gt;.dscp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Differentiated Services Codepoint (DSCP) to set on outgoing IKE packets for this
  connection. The value is a six digit binary encoded string specifying the
  Codepoint to set, as defined in <a href="https://datatracker.ietf.org/doc/html/rfc2474">RFC 2474</a>. [<code>000000</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.encap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_encap"></a><a href="#_connections_conn_encap"> </a>&lt;conn&gt;.encap</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">To enforce UDP encapsulation of ESP packets, the IKE daemon can manipulate the
  NAT detection payloads. This makes the peer believe that a NAT situation exist
@@ -1166,7 +1166,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  restrictive intermediary firewalls that block ESP packets</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.mobike</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_mobike"></a><a href="#_connections_conn_mobike"> </a>&lt;conn&gt;.mobike</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables <a href="https://datatracker.ietf.org/doc/html/rfc4555">MOBIKE</a> on IKEv2 connections. <a href="https://datatracker.ietf.org/doc/html/rfc4555">MOBIKE</a> is enabled by
  default on IKEv2 connections and allows mobility of clients and multi-homing on
@@ -1177,14 +1177,14 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  like this behavior, hence it can be disabled</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.dpd_delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_dpd_delay"></a><a href="#_connections_conn_dpd_delay"> </a>&lt;conn&gt;.dpd_delay</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interval to check the liveness of a peer actively using IKEv2 <code>INFORMATIONAL</code>
  exchanges or IKEv1 <code>R_U_THERE</code> messages. Active DPD checking is only enforced if
  no IKE or ESP/AH packet has been received for the configured DPD delay</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.dpd_timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_dpd_timeout"></a><a href="#_connections_conn_dpd_timeout"> </a>&lt;conn&gt;.dpd_timeout</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Charon by default uses the normal retransmission mechanism and timeouts to check
  the liveness of a peer, as all messages are used for liveness checking. For
@@ -1192,7 +1192,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  has no effect on IKEv2 connections</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.fragmentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_fragmentation"></a><a href="#_connections_conn_fragmentation"> </a>&lt;conn&gt;.fragmentation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Use IKE fragmentation (proprietary IKEv1 extension or <a href="https://datatracker.ietf.org/doc/html/rfc7383">RFC 7383</a> IKEv2
  fragmentation).  Acceptable  values  are <code><strong>yes</strong></code> (the default since version 5.5.1),
@@ -1206,7 +1206,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  processed irrespective of the value of this option, i.e. even when set to <code><strong>no</strong></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.childless</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_childless"></a><a href="#_connections_conn_childless"> </a>&lt;conn&gt;.childless</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>allow</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. Use childless IKE_SA initiation (<a href="https://datatracker.ietf.org/doc/html/rfc6023">RFC 6023</a>) for
  IKEv2, with the first CHILD_SA created with a separate CREATE_CHILD_SA
@@ -1224,7 +1224,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  responder</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.send_certreq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_send_certreq"></a><a href="#_connections_conn_send_certreq"> </a>&lt;conn&gt;.send_certreq</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Send certificate request payloads to offer trusted root CA certificates to the
  peer. Certificate requests help the peer to choose an appropriate
@@ -1234,7 +1234,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  packets</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.send_cert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_send_cert"></a><a href="#_connections_conn_send_cert"> </a>&lt;conn&gt;.send_cert</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Send certificate payloads when using certificate authentication. With the default
  of <code><strong>ifasked</strong></code> the daemon sends certificate payloads only if certificate requests
@@ -1243,19 +1243,19 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  certificate-based authentication is used. [<code>ifasked</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.ppk_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_ppk_id"></a><a href="#_connections_conn_ppk_id"> </a>&lt;conn&gt;.ppk_id</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. String identifying the Postquantum Preshared Key (PPK,
  <a href="https://datatracker.ietf.org/doc/html/rfc8784">RFC 8784</a>) to be used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.ppk_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_ppk_required"></a><a href="#_connections_conn_ppk_required"> </a>&lt;conn&gt;.ppk_required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. Whether a Postquantum Preshared Key (PPK, <a href="https://datatracker.ietf.org/doc/html/rfc8784">RFC 8784</a>)
  is required for this connection</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.keyingtries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_keyingtries"></a><a href="#_connections_conn_keyingtries"> </a>&lt;conn&gt;.keyingtries</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of retransmission sequences to perform during initial connect. Instead of
  giving up initiation after the first retransmission sequence with the default
@@ -1264,7 +1264,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  or fails with a permanent error</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.unique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_unique"></a><a href="#_connections_conn_unique"> </a>&lt;conn&gt;.unique</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Connection uniqueness policy to enforce. To avoid multiple connections from the
  same user, a uniqueness policy can be enforced. The value <code><strong>never</strong></code> does never
@@ -1282,7 +1282,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  notify</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.reauth_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_reauth_time"></a><a href="#_connections_conn_reauth_time"> </a>&lt;conn&gt;.reauth_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time to schedule IKE reauthentication. IKE reauthentication recreates the
  IKE/ISAKMP SA from scratch and re-evaluates the credentials. In asymmetric
@@ -1297,7 +1297,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.rekey_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_rekey_time"></a><a href="#_connections_conn_rekey_time"> </a>&lt;conn&gt;.rekey_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>4h</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IKE rekeying refreshes key material using a Diffie-Hellman key exchange, but does
  not re-check associated credentials. It is supported with IKEv2 only. IKEv1
@@ -1308,7 +1308,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  reauthentication</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.over_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_over_time"></a><a href="#_connections_conn_over_time"> </a>&lt;conn&gt;.over_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hard IKE_SA lifetime if rekey/reauth does not complete, as time. To avoid having
  an IKE or ISAKMP connection kept alive if IKE reauthentication or rekeying fails
@@ -1320,7 +1320,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  is larger. [<code>0.1 * max(rekey_time, reauth_time)</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.rand_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_rand_time"></a><a href="#_connections_conn_rand_time"> </a>&lt;conn&gt;.rand_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time range from which to choose a random value to subtract from rekey/reauth
  times. To avoid having both peers initiating the rekey/reauth procedure
@@ -1328,7 +1328,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  The default is equal to the configured <code><strong>over_time</strong></code>. [<code>over_time</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.pools</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_pools"></a><a href="#_connections_conn_pools"> </a>&lt;conn&gt;.pools</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of named IP pools to allocate virtual IP addresses and other
  configuration attributes from. Each name references a pool by name from either
@@ -1337,7 +1337,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  same backend does the order matter</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.if_id_in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_if_id_in"></a><a href="#_connections_conn_if_id_in"> </a>&lt;conn&gt;.if_id_in</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. XFRM interface ID (32-bit unsigned integer) set on inbound
  policies/SA. Can be overridden by child config, see there for details.
@@ -1348,7 +1348,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  each direction (<code><strong>in/out</strong></code>)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.if_id_out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_if_id_out"></a><a href="#_connections_conn_if_id_out"> </a>&lt;conn&gt;.if_id_out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. XFRM interface ID (32-bit unsigned integer) set on outbound
  policies/SA. Can be overridden by child config, see there for details.
@@ -1359,7 +1359,7 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  each direction (<code><strong>in/out</strong></code>)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.ocsp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_ocsp"></a><a href="#_connections_conn_ocsp"> </a>&lt;conn&gt;.ocsp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>reply</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.9.14.	Send OCSP status requests in certificate request payloads
  and/or send OCSP status response in certificate payloads when using certificate-
@@ -1371,21 +1371,21 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
  <code><strong>both</strong></code> combines <code><strong>reply</strong></code> and <code><strong>request</strong></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.mediation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_mediation"></a><a href="#_connections_conn_mediation"> </a>&lt;conn&gt;.mediation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Whether this connection is a mediation connection, i.e.
  whether this connection is used to mediate other connections using the IKEv2
  Mediation Extension.  Mediation connections create no CHILD_SA</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.mediated_by</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_mediated_by"></a><a href="#_connections_conn_mediated_by"> </a>&lt;conn&gt;.mediated_by</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. The name of the connection to mediate this connection
  through. If given, the connection will be mediated through the named mediation
  connection. The mediation connection must have <code><strong>mediation</strong></code> enabled</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;conn&gt;.mediation_peer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_mediation_peer"></a><a href="#_connections_conn_mediation_peer"> </a>&lt;conn&gt;.mediation_peer</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Identity under which the peer is registered at the mediation
  server, i.e. the IKE identity the other end of this connection uses as its local
@@ -1421,14 +1421,14 @@ a single authentication round, only, the`&lt;suffix&gt;` may be omitted.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">round</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_round"></a><a href="#_connections_conn_local_round"> </a>round</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.4.0. Optional numeric identifier by which authentication rounds
  are sorted. If not specified, rounds are ordered by their position in the config
  file or <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> message</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_auth"></a><a href="#_connections_conn_local_auth"> </a>auth</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Authentication to perform locally. <code><strong>pubkey</strong></code> uses public key authentication based
  on a private key associated with a usable certificate. <code><strong>psk</strong></code> uses pre-shared key
@@ -1465,7 +1465,7 @@ a single authentication round, only, the`&lt;suffix&gt;` may be omitted.</p>
  <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. [<code>pubkey</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_id"></a><a href="#_connections_conn_local_id"> </a>id</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IKE identity to use for authentication round. When using certificate authentication.
  The IKE identity must be contained in the certificate, either as the subject DN
@@ -1474,12 +1474,12 @@ a single authentication round, only, the`&lt;suffix&gt;` may be omitted.</p>
  for details on how identities are parsed and may be configured</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">eap_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_eap_id"></a><a href="#_connections_conn_local_eap_id"> </a>eap_id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client EAP-Identity to use in EAP-Identity exchange and the EAP method</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">aaa_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_aaa_id"></a><a href="#_connections_conn_local_aaa_id"> </a>aaa_id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Server side EAP-Identity to expect in the EAP method. Some EAP methods, such as
  EAP-TLS, use an identity for the server to perform mutual authentication. This
@@ -1489,12 +1489,12 @@ a single authentication round, only, the`&lt;suffix&gt;` may be omitted.</p>
  [<code>remote.id</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xauth_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_xauth_id"></a><a href="#_connections_conn_local_xauth_id"> </a>xauth_id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client XAuth username used in the XAuth exchange</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">certs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_certs"></a><a href="#_connections_conn_local_certs"> </a>certs</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of certificate candidates to use for authentication. The
  certificates may use a relative path from the
@@ -1504,38 +1504,38 @@ a single authentication round, only, the`&lt;suffix&gt;` may be omitted.</p>
  certificate is used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_certsuffix"></a><a href="#_connections_conn_local_certsuffix"> </a>cert&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Subsection for a certificate candidate to use for
  authentication. Certificates in <code><strong>certs</strong></code> are transmitted as binary blobs whereas
  the <code><strong>cert</strong></code> subsections offer more flexibility</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_certsuffix_file"></a><a href="#_connections_conn_local_certsuffix_file"> </a>cert&lt;suffix&gt;.file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to the certificate to load. Passed as-is to the daemon, so it must
  be readable by it. Configure either <code><strong>file</strong></code> or <code><strong>handle</strong></code> but not both in one
  section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.handle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_certsuffix_handle"></a><a href="#_connections_conn_local_certsuffix_handle"> </a>cert&lt;suffix&gt;.handle</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hex-encoded <code>CKA_ID</code> or handle of the certificate on a token or
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>, respectively. Configure either <code><strong>handle</strong></code> or <code><strong>file</strong></code>
  but not both in one section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_certsuffix_slot"></a><a href="#_connections_conn_local_certsuffix_slot"> </a>cert&lt;suffix&gt;.slot</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional slot number of the token that stores the certificate</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_certsuffix_module"></a><a href="#_connections_conn_local_certsuffix_module"> </a>cert&lt;suffix&gt;.module</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional PKCS#11 module name</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pubkeys</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_pubkeys"></a><a href="#_connections_conn_local_pubkeys"> </a>pubkeys</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.4.0. Comma-separated list of raw public key candidates to use for
  authentication. The public keys may use a relative path from the
@@ -1571,14 +1571,14 @@ To define a single authentication round, only, the <code>&lt;suffix&gt;</code> m
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">round</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_round"></a><a href="#_connections_conn_remote_round"> </a>round</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.4.0. Optional numeric identifier by which authentication rounds
  are sorted. If not specified, rounds are ordered by their position in the config
  file or <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> message</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_auth"></a><a href="#_connections_conn_remote_auth"> </a>auth</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Authentication to expect from remote. See the description of the <code><strong>auth</strong></code> keyword
  in the <a href="#_connections_conn_local"><code><strong>local</strong></code></a> section about the details of
@@ -1604,7 +1604,7 @@ To define a single authentication round, only, the <code>&lt;suffix&gt;</code> m
  <code><strong>eap-tls:ecdsa-384-sha384</strong></code>). [<code>pubkey</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_id"></a><a href="#_connections_conn_remote_id"> </a>id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>%any</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IKE identity to expect for authentication round. Refer to the <code><strong>id</strong></code> keyword
  of the <a href="#_connections_conn_local"><code><strong>local</strong></code></a> section for details. When using
@@ -1618,13 +1618,13 @@ To define a single authentication round, only, the <code>&lt;suffix&gt;</code> m
  Distinguished Names (RDNs) are matched</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">eap_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_eap_id"></a><a href="#_connections_conn_remote_eap_id"> </a>eap_id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identity to use as peer identity during EAP authentication. If set to <code><strong>%any</strong></code>
  the EAP-Identity method will be used to ask the client for an EAP identity</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_groups"></a><a href="#_connections_conn_remote_groups"> </a>groups</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated authorization group memberships to require. The peer must prove
  membership to at least one of the specified groups. Group membership can be
@@ -1632,90 +1632,90 @@ To define a single authentication round, only, the <code>&lt;suffix&gt;</code> m
  an AAA backend involved in the authentication</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert_policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cert_policy"></a><a href="#_connections_conn_remote_cert_policy"> </a>cert_policy</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Comma-separated list of certificate policy OIDs the peer&#8217;s
  certificate must have. OIDs are specified using the numerical dotted
  representation</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">certs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_certs"></a><a href="#_connections_conn_remote_certs"> </a>certs</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of certificates to accept for authentication. The certificates
  may use a relative path from the <a href="swanctlDir.html" class="xref page"><code><strong>swanctl/x509</strong></code></a>
  directory or an absolute path</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_certsuffix"></a><a href="#_connections_conn_remote_certsuffix"> </a>cert&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Subsection for a certificate candidate to use for
  authentication. Certificates in <code><strong>certs</strong></code> are transmitted as binary blobs whereas
  the <code><strong>cert</strong></code> subsections offer more flexibility</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_certsuffix_file"></a><a href="#_connections_conn_remote_certsuffix_file"> </a>cert&lt;suffix&gt;.file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to the certificate to load. Passed as-is to the daemon, so it must
  be readable by it. Configure either <code><strong>file</strong></code> or <code><strong>handle</strong></code> but not both in one
  section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.handle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_certsuffix_handle"></a><a href="#_connections_conn_remote_certsuffix_handle"> </a>cert&lt;suffix&gt;.handle</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hex-encoded <code>CKA_ID</code> or handle of the certificate on a token or
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>, respectively. Configure either <code><strong>handle</strong></code> or <code><strong>file</strong></code>
  but not both in one section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_certsuffix_slot"></a><a href="#_connections_conn_remote_certsuffix_slot"> </a>cert&lt;suffix&gt;.slot</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional slot number of the token that stores the certificate</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cert&lt;suffix&gt;.module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_certsuffix_module"></a><a href="#_connections_conn_remote_certsuffix_module"> </a>cert&lt;suffix&gt;.module</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional PKCS#11 module name</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacerts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cacerts"></a><a href="#_connections_conn_remote_cacerts"> </a>cacerts</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of CA certificates to accept for authentication. The
  certificates may use a relative path from the
  <a href="swanctlDir.html" class="xref page"><code><strong>swanctl/x509ca</strong></code></a> directory or an absolute path</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacert&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cacertsuffix"></a><a href="#_connections_conn_remote_cacertsuffix"> </a>cacert&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.2. Subsection for a CA certificate to accept for authentication.
  Certificates in <code><strong>cacerts</strong></code> are transmitted as binary blobs whereas the <code><strong>cacert</strong></code>
  subsections offer more flexibility</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacert&lt;suffix&gt;.file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cacertsuffix_file"></a><a href="#_connections_conn_remote_cacertsuffix_file"> </a>cacert&lt;suffix&gt;.file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to the certificate to load. Passed as-is to the daemon, so it must
  be readable by it. Configure either <code><strong>file</strong></code> or <strong>handle</strong> but not both in one
  section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacert&lt;suffix&gt;.handle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cacertsuffix_handle"></a><a href="#_connections_conn_remote_cacertsuffix_handle"> </a>cacert&lt;suffix&gt;.handle</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hex-encoded <code>CKA_ID</code> or handle of the certificate on a token or
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>, respectively. Configure either <code><strong>handle</strong></code> or <code><strong>file</strong></code>
  but not both in one section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacert&lt;suffix&gt;.slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cacertsuffix_slot"></a><a href="#_connections_conn_remote_cacertsuffix_slot"> </a>cacert&lt;suffix&gt;.slot</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional slot number of the token that stores the certificate</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cacert&lt;suffix&gt;.module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_cacertsuffix_module"></a><a href="#_connections_conn_remote_cacertsuffix_module"> </a>cacert&lt;suffix&gt;.module</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional PKCS#11 module name</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ca_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_ca_id"></a><a href="#_connections_conn_remote_ca_id"> </a>ca_id</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.2. Identity in CA certificate to accept for authentication.
  The specified identity must be contained in one (intermediate) CA of the remote
@@ -1725,14 +1725,14 @@ To define a single authentication round, only, the <code>&lt;suffix&gt;</code> m
  can be received from the peer during the IKE exchange</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pubkeys</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_pubkeys"></a><a href="#_connections_conn_remote_pubkeys"> </a>pubkeys</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of raw public keys to accept for authentication. The public
  keys may use a relative path from the
  <a href="swanctlDir.html" class="xref page"><code><strong>swanctl/pubkey</strong></code></a> directory or an absolute path</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">revocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_remote_revocation"></a><a href="#_connections_conn_remote_revocation"> </a>revocation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Certificate revocation policy for CRL or OCSP revocation. A <code><strong>strict</strong></code> revocation
  policy fails if no revocation information is available, i.e. the certificate is
@@ -1768,7 +1768,7 @@ of the CHILD_SA configuration, which must be unique within the connection
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.ah_proposals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_ah_proposals"></a><a href="#_connections_conn_children_child_ah_proposals"> </a>&lt;child&gt;.ah_proposals</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AH proposals to offer for the CHILD_SA. A proposal is a set of
  <a href="../config/proposals.html" class="xref page">algorithms</a>. For AH, this includes an
@@ -1793,7 +1793,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  By default no AH proposals are included, instead ESP is proposed</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.esp_proposals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_esp_proposals"></a><a href="#_connections_conn_children_child_esp_proposals"> </a>&lt;child&gt;.esp_proposals</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ESP proposals to offer for the CHILD_SA. A proposal is a set of
  <a href="../config/proposals.html" class="xref page">algorithms</a>. For non-AEAD ESP proposals,
@@ -1831,7 +1831,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  ESP, the <code><strong>default</strong></code> set of algorithms for ESP is included. [<code>default</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.sha256_96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_sha256_96"></a><a href="#_connections_conn_children_child_sha256_96"> </a>&lt;child&gt;.sha256_96</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.3. HMAC-SHA-256 is used with 128-bit truncation with IPsec.
  For compatibility with implementations that incorrectly use 96-bit truncation
@@ -1840,7 +1840,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  incorrect truncation length (or have this option enabled)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.local_ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_local_ts"></a><a href="#_connections_conn_children_child_local_ts"> </a>&lt;child&gt;.local_ts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of local traffic selectors to include in CHILD_SA. Each
  selector is a CIDR subnet definition, followed by an optional proto/port selector.
@@ -1876,13 +1876,14 @@ of the CHILD_SA configuration, which must be unique within the connection
  scenarios. [<code>dynamic</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.remote_ts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_remote_ts"></a><a href="#_connections_conn_children_child_remote_ts"> </a>&lt;child&gt;.remote_ts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of remote selectors to include in CHILD_SA. See <code><strong>local_ts</strong></code>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of remote selectors to include in CHILD_SA. See
+ <a href="#_connections_conn_children_child_local_ts"><code><strong>local_ts</strong></code></a>
  for a description of the selector syntax. [<code>dynamic</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rekey_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_rekey_time"></a><a href="#_connections_conn_children_child_rekey_time"> </a>&lt;child&gt;.rekey_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time to schedule CHILD_SA rekeying. CHILD_SA rekeying refreshes key material,
  optionally using a Diffie-Hellman exchange if a group is specified in the proposal.
@@ -1893,7 +1894,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  [<code>1h</code> or <code>life_time / 1.1</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.life_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_life_time"></a><a href="#_connections_conn_children_child_life_time"> </a>&lt;child&gt;.life_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum lifetime before CHILD_SA gets closed. Usually this hard lifetime is never
  reached, because the CHILD_SA gets rekeyed before. If that fails for whatever
@@ -1901,14 +1902,14 @@ of the CHILD_SA configuration, which must be unique within the connection
  <code><strong>rekey_time</strong></code>. [<code>1.1 * rekey_time</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rand_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_rand_time"></a><a href="#_connections_conn_children_child_rand_time"> </a>&lt;child&gt;.rand_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time range from which to choose a random value to subtract from <code><strong>rekey_time</strong></code>.
  The default is the difference between <code><strong>life_time</strong></code> and <code><strong>rekey_time</strong></code>.
  [<code>life_time - rekey_time</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rekey_bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_rekey_bytes"></a><a href="#_connections_conn_children_child_rekey_bytes"> </a>&lt;child&gt;.rekey_bytes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes processed before initiating CHILD_SA rekeying. CHILD_SA rekeying
  refreshes key material, optionally using a Diffie-Hellman exchange if a group is
@@ -1919,7 +1920,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  than that. [<code>0</code> or <code>life_bytes / 1.1</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.life_bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_life_bytes"></a><a href="#_connections_conn_children_child_life_bytes"> </a>&lt;child&gt;.life_bytes</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum bytes processed before CHILD_SA gets closed. Usually this hard volume
  limit is never reached, because the CHILD_SA gets rekeyed before. If that fails
@@ -1927,14 +1928,14 @@ of the CHILD_SA configuration, which must be unique within the connection
  <code><strong>rekey_bytes</strong></code>. [<code>1.1 * rekey_bytes</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rand_bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_rand_bytes"></a><a href="#_connections_conn_children_child_rand_bytes"> </a>&lt;child&gt;.rand_bytes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Byte range from which to choose a random value to subtract from <code><strong>rekey_bytes</strong></code>.
  The default is the difference between <code><strong>life_bytes</strong></code> and <code><strong>rekey_bytes</strong></code>.
  [<code>life_bytes - rekey_bytes</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rekey_packets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_rekey_packets"></a><a href="#_connections_conn_children_child_rekey_packets"> </a>&lt;child&gt;.rekey_packets</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of packets processed before initiating CHILD_SA rekeying. CHILD_SA rekeying
  refreshes key material, optionally using a Diffie-Hellman exchange if a group is
@@ -1945,7 +1946,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  to 10% less than that. [<code>0</code> or <code>life_packets / 1.1</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.life_packets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_life_packets"></a><a href="#_connections_conn_children_child_life_packets"> </a>&lt;child&gt;.life_packets</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of packets processed before CHILD_SA gets closed. Usually this
  hard packets limit is never reached, because the CHILD_SA gets rekeyed before.
@@ -1953,24 +1954,24 @@ of the CHILD_SA configuration, which must be unique within the connection
  is 10% more than <code><strong>rekey_packets</strong></code>. [<code>1.1 * rekey_packets</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.rand_packets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_rand_packets"></a><a href="#_connections_conn_children_child_rand_packets"> </a>&lt;child&gt;.rand_packets</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Packet range from which to choose a random value to subtract from <code><strong>rekey_packets</strong></code>.
  The default is the difference between <code><strong>life_packets</strong></code> and <code><strong>rekey_packets</strong></code>.
  [<code>life_packets - rekey_packets</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.updown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_updown"></a><a href="#_connections_conn_children_child_updown"> </a>&lt;child&gt;.updown</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Updown script to invoke on CHILD_SA up and down events</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.hostaccess</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_hostaccess"></a><a href="#_connections_conn_children_child_hostaccess"> </a>&lt;child&gt;.hostaccess</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Host access variable to pass to <code><strong>updown</strong></code> script</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_mode"></a><a href="#_connections_conn_children_child_mode"> </a>&lt;child&gt;.mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IPsec Mode to establish CHILD_SA with. <code><strong>tunnel</strong></code> negotiates the CHILD_SA in
  IPsec Tunnel Mode whereas <code><strong>transport</strong></code> uses IPsec Transport Mode.
@@ -1983,21 +1984,21 @@ of the CHILD_SA configuration, which must be unique within the connection
  or drop it, respectively. [<code>tunnel</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.policies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_policies"></a><a href="#_connections_conn_children_child_policies"> </a>&lt;child&gt;.policies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.3.3. Whether to install IPsec policies or not. Disabling this can
  be useful in some scenarios e.g. MIPv6 where policies are not managed by the IKE
  daemon</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.policies_fwd_out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_policies_fwd_out"></a><a href="#_connections_conn_children_child_policies_fwd_out"> </a>&lt;child&gt;.policies_fwd_out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.1. Whether to install outbound FWD IPsec policies or not.
  Enabling this is required in case there is a drop policy that would match and
  block forwarded traffic for this CHILD_SA.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.dpd_action</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_dpd_action"></a><a href="#_connections_conn_children_child_dpd_action"> </a>&lt;child&gt;.dpd_action</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action to perform for this CHILD_SA on DPD timeout. The default <code><strong>clear</strong></code> closes
  the CHILD_SA and does not take further action. <code><strong>trap</strong></code> installs a trap policy,
@@ -2006,39 +2007,39 @@ of the CHILD_SA configuration, which must be unique within the connection
  <code><strong>restart</strong></code> immediately tries to re-negotiate the CHILD_SA under a fresh IKE_SA.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.ipcomp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_ipcomp"></a><a href="#_connections_conn_children_child_ipcomp"> </a>&lt;child&gt;.ipcomp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable IPComp compression before encryption. If enabled, IKE tries to negotiate
  IPComp compression to compress ESP payload data prior to encryption</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.inactivity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_inactivity"></a><a href="#_connections_conn_children_child_inactivity"> </a>&lt;child&gt;.inactivity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0s</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timeout before closing CHILD_SA after inactivity. If no traffic has been processed
  in either direction for the configured timeout, the CHILD_SA gets closed due to
  inactivity. The default value of <code><strong>0</strong></code> disables inactivity checks</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.reqid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_reqid"></a><a href="#_connections_conn_children_child_reqid"> </a>&lt;child&gt;.reqid</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fixed reqid to use for this CHILD_SA. This might be helpful in some scenarios
  but works only if each CHILD_SA configuration is instantiated not more than once.
  The default of <code><strong>0</strong></code> uses dynamic reqids, allocated incrementally</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.priority</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_priority"></a><a href="#_connections_conn_children_child_priority"> </a>&lt;child&gt;.priority</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.0. Optional fixed priority for IPsec policies. This could be
  useful to install high-priority drop policies. The default of <code><strong>0</strong></code> uses
  dynamically calculated priorities based on the size of the traffic selectors</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.interface</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_interface"></a><a href="#_connections_conn_children_child_interface"> </a>&lt;child&gt;.interface</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.5.0. Optional interface name to restrict outbound IPsec policies</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.mark_in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_mark_in"></a><a href="#_connections_conn_children_child_mark_in"> </a>&lt;child&gt;.mark_in</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Netfilter mark and mask for input traffic. On Linux, Netfilter may require marks
  on each packet to match an SA/policy having that option set. This allows installing
@@ -2051,7 +2052,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  default mask if omitted is <code><strong>0xffffffff</strong></code>. [<code>0/0x00000000</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.mark_in_sa</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_mark_in_sa"></a><a href="#_connections_conn_children_child_mark_in_sa"> </a>&lt;child&gt;.mark_in_sa</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since 5.6.1. Whether to set <code><strong>mark_in</strong></code> on the inbound SA. By default, the inbound
  mark is only set on the inbound policy. The tuple destination address, protocol
@@ -2061,7 +2062,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  possible, even if no mark is set on the SA</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.mark_out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_mark_out"></a><a href="#_connections_conn_children_child_mark_out"> </a>&lt;child&gt;.mark_out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Netfilter mark and mask for output traffic. On Linux, Netfilter may require marks
  on each packet to match a policy/SA having that option set. This allows installing
@@ -2073,7 +2074,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  <code><strong>0xffffffff</strong></code>. [<code>0/0x00000000</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.set_mark_in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_set_mark_in"></a><a href="#_connections_conn_children_child_set_mark_in"> </a>&lt;child&gt;.set_mark_in</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. Netfilter mark applied to packets after the inbound IPsec
  SA processed them. This way it&#8217;s not necessary to mark packets via Netfilter
@@ -2085,7 +2086,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  XFRM input requires Linux 4.19 or higher. [<code>0/0x00000000</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.set_mark_out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_set_mark_out"></a><a href="#_connections_conn_children_child_set_mark_out"> </a>&lt;child&gt;.set_mark_out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. Netfilter mark applied to packets after the outbound IPsec
  SA processed them. This allows processing ESP packets differently than the
@@ -2097,7 +2098,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  Linux 4.19. [<code>0/0x00000000</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.if_id_in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_if_id_in"></a><a href="#_connections_conn_children_child_if_id_in"> </a>&lt;child&gt;.if_id_in</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. XFRM interface ID (32-bit unsigned integer) set on inbound
  policies/SA. This allows installing duplicate policies/SAs and associates them
@@ -2106,7 +2107,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  assigns a different unique interface ID for each CHILD_SA direction (in/out)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.if_id_out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_if_id_out"></a><a href="#_connections_conn_children_child_if_id_out"> </a>&lt;child&gt;.if_id_out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.8.0. XFRM interface ID (32-bit unsigned integer) set on outbound
  policies/SA. This allows installing duplicate policies/SAs and associates them
@@ -2116,13 +2117,13 @@ of the CHILD_SA configuration, which must be unique within the connection
  The daemon will not install routes for CHILD_SAs that have this option set</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_label"></a><a href="#_connections_conn_children_child_label"> </a>&lt;child&gt;.label</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.9.6. Optional security label (e.g. SELinux context), IKEv2 only.
  Refer to <code><strong>label_mode</strong></code> for details on how labels are processed.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.label_mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_label_mode"></a><a href="#_connections_conn_children_child_label_mode"> </a>&lt;child&gt;.label_mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.9.6. Defines the mode in which the configured security label
  is used. The default value of <code><strong>system</strong></code> selects <code><strong>selinux</strong></code> if strongSwan was
@@ -2145,7 +2146,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  <code>association:polmatch</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.tfc_padding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_tfc_padding"></a><a href="#_connections_conn_children_child_tfc_padding"> </a>&lt;child&gt;.tfc_padding</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pads ESP packets with additional data to have a consistent ESP packet size for
  improved Traffic Flow Confidentiality. The padding defines the minimum size of
@@ -2154,14 +2155,14 @@ of the CHILD_SA configuration, which must be unique within the connection
  Transfer Unit</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.replay_window</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_replay_window"></a><a href="#_connections_conn_children_child_replay_window"> </a>&lt;child&gt;.replay_window</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>32</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IPsec replay window to configure for this CHILD_SA. Larger values than the default
  of <code><strong>32</strong></code> are supported using the Netlink backend only, a value of <code><strong>0</strong></code> disables
  IPsec replay protection</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.hw_offload</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_hw_offload"></a><a href="#_connections_conn_children_child_hw_offload"> </a>&lt;child&gt;.hw_offload</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable hardware offload for this CHILD_SA, if supported by the IPsec implementation.
  The values <code><strong>crypto</strong></code> or <code><strong>packet</strong></code> (since 5.9.10) enforce crypto or full packet
@@ -2172,21 +2173,21 @@ of the CHILD_SA configuration, which must be unique within the connection
  otherwise.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.copy_df</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_copy_df"></a><a href="#_connections_conn_children_child_copy_df"> </a>&lt;child&gt;.copy_df</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. Whether to copy the DF bit to the outer IPv4 header in tunnel
  mode. This effectively disables Path MTU discovery (PMTUD). Controlling this
  behavior is not supported by all kernel interfaces</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.copy_ecn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_copy_ecn"></a><a href="#_connections_conn_children_child_copy_ecn"> </a>&lt;child&gt;.copy_ecn</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. Whether to copy the ECN (Explicit Congestion Notification)
  header field to/from the outer IP header in tunnel mode. Controlling this behavior
  is not supported by all kernel interfaces</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.copy_dscp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_copy_dscp"></a><a href="#_connections_conn_children_child_copy_dscp"> </a>&lt;child&gt;.copy_dscp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>out</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since version 5.7.0. Whether to copy the DSCP (Differentiated Services Codepoint)
  header field to/from the outer IP header in tunnel mode. The value <code><strong>out</strong></code> only
@@ -2199,7 +2200,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  kernel interfaces</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.start_action</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_start_action"></a><a href="#_connections_conn_children_child_start_action"> </a>&lt;child&gt;.start_action</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action to perform after loading the configuration. The default of <code><strong>none</strong></code> loads
  the connection only, which then can be manually initiated or used as a responder
@@ -2214,7 +2215,7 @@ of the CHILD_SA configuration, which must be unique within the connection
  for connections with <code><strong>trap|start</strong></code>).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;child&gt;.close_action</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_close_action"></a><a href="#_connections_conn_children_child_close_action"> </a>&lt;child&gt;.close_action</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action to perform after a CHILD_SA gets closed by the peer. The default of <code><strong>none</strong></code>
  does not take any action. <code><strong>trap</strong></code> installs a trap policy for the CHILD_SA (note
@@ -2260,14 +2261,14 @@ authentication as well.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_eapsuffix_secret"></a><a href="#_secrets_eapsuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of the EAP/XAuth secret. It may either be an ASCII string, a hex encoded
  string if it has a <code><strong>0x</strong></code> prefix or a Base64 encoded string if it has a <code><strong>0s</strong></code>
  prefix in its value</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_eapsuffix_idsuffix"></a><a href="#_secrets_eapsuffix_idsuffix"> </a>id&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identity the EAP/XAuth secret belongs to. Multiple unique identities may be
  specified, each having an <code><strong>id</strong></code> prefix if a secret is shared between multiple
@@ -2305,7 +2306,7 @@ be used for EAP-MSCHAPv2 authentication.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ntlmsuffix_secret"></a><a href="#_secrets_ntlmsuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of the NTLM secret which is the NT Hash of the actual secret, i.e.
  <code><strong>MD4(UTF-16LE(secret))</strong></code>. The resulting 16-byte value may either be given as a
@@ -2313,7 +2314,7 @@ be used for EAP-MSCHAPv2 authentication.</p>
   <code><strong>0s</strong></code> prefix</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ntlmsuffix_idsuffix"></a><a href="#_secrets_ntlmsuffix_idsuffix"> </a>id&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identity the NTLM secret belongs to. Multiple unique identities may be specified,
  each having an <code><strong>id</strong></code> prefix if a secret is shared between multiple users</p></td>
@@ -2342,14 +2343,14 @@ unique section having the <code><strong>ike</strong></code> prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ikesuffix_secret"></a><a href="#_secrets_ikesuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of the IKE preshared secret. It may either be an ASCII string, a hex encoded
  string if it has a <code><strong>0x</strong></code> prefix or a Base64 encoded string if it has a <code><strong>0s</strong></code>
  prefix in its value</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ikesuffix_idsuffix"></a><a href="#_secrets_ikesuffix_idsuffix"> </a>id&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IKE identity the IKE preshared secret belongs to. Multiple unique identities may
  be specified, each having an <code><strong>id</strong></code> prefix if a secret is shared between multiple
@@ -2380,14 +2381,14 @@ prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ppksuffix_secret"></a><a href="#_secrets_ppksuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of the PPK. It may either be an ASCII string, a hex encoded string if it
  has a <code><strong>0x</strong></code> prefix or a Base64 encoded string if it has a <code><strong>0s</strong></code> prefix in its
  value. Should have at least 256 bits of entropy for 128 bit security</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id&lt;suffix&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ppksuffix_idsuffix"></a><a href="#_secrets_ppksuffix_idsuffix"> </a>id&lt;suffix&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PPK identity the PPK belongs to. Multiple unique identities may be specified,
  each having an <code><strong>id</strong></code> prefix if a secret is shared between multiple peers</p></td>
@@ -2416,13 +2417,13 @@ prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_privatesuffix_file"></a><a href="#_secrets_privatesuffix_file"> </a>file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File name in the <a href="swanctlDir.html" class="xref page"><code><strong>private</strong></code></a> folder for which this
  passphrase should be used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_privatesuffix_secret"></a><a href="#_secrets_privatesuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of decryption passphrase for private key</p></td>
 </tr>
@@ -2450,13 +2451,13 @@ prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_rsasuffix_file"></a><a href="#_secrets_rsasuffix_file"> </a>file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File name in the <a href="swanctlDir.html" class="xref page"><code><strong>rsa</strong></code></a> folder for which this
  passphrase should be used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_rsasuffix_secret"></a><a href="#_secrets_rsasuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of decryption passphrase for RSA key</p></td>
 </tr>
@@ -2484,13 +2485,13 @@ prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ecdsasuffix_file"></a><a href="#_secrets_ecdsasuffix_file"> </a>file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File name in the <a href="swanctlDir.html" class="xref page"><code><strong>ecdsa</strong></code></a> folder for which this
  passphrase should be used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_ecdsasuffix_secret"></a><a href="#_secrets_ecdsasuffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of decryption passphrase for ECDSA key</p></td>
 </tr>
@@ -2518,13 +2519,13 @@ prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_pkcs8suffix_file"></a><a href="#_secrets_pkcs8suffix_file"> </a>file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File name in the <a href="swanctlDir.html" class="xref page"><code><strong>pkcs8</strong></code></a> folder for which this
  passphrase should be used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_pkcs8suffix_secret"></a><a href="#_secrets_pkcs8suffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of decryption passphrase for PKCS#8 key</p></td>
 </tr>
@@ -2552,13 +2553,13 @@ prefix.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_pkcs12suffix_file"></a><a href="#_secrets_pkcs12suffix_file"> </a>file</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File name in the <a href="swanctlDir.html" class="xref page"><code><strong>pkcs12</strong></code></a> folder for which this
  passphrase should be used</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_pkcs12suffix_secret"></a><a href="#_secrets_pkcs12suffix_secret"> </a>secret</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value of decryption passphrase for PKCS#12 container</p></td>
 </tr>
@@ -2586,23 +2587,23 @@ smartcard or a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">handle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_tokensuffix_handle"></a><a href="#_secrets_tokensuffix_handle"> </a>handle</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hex-encoded <code>CKA_ID</code> or handle of the private key on the token or
  <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>, respectively</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_tokensuffix_slot"></a><a href="#_secrets_tokensuffix_slot"> </a>slot</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional slot number to access the token</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_tokensuffix_module"></a><a href="#_secrets_tokensuffix_module"> </a>module</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional PKCS#11 module name to access the token</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_secrets_tokensuffix_pin"></a><a href="#_secrets_tokensuffix_pin"> </a>pin</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional PIN required to access the key on the token. If none is provided the
  user is prompted during an interactive
@@ -2634,14 +2635,14 @@ Each pool must have a unique name (denoted <code>&lt;name&gt;</code> below).</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.addrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_pools_name_addrs"></a><a href="#_pools_name_addrs"> </a>&lt;name&gt;.addrs</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subnet or range defining addresses allocated in pool. Accepts a single CIDR subnet
  defining the pool to allocate addresses from or an address range (<code>&lt;from&gt;-&lt;to&gt;</code>).
  Pools must be unique and non-overlapping</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;name&gt;.&lt;attr&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_pools_name_attr"></a><a href="#_pools_name_attr"> </a>&lt;name&gt;.&lt;attr&gt;</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of additional attributes of type <code><strong>&lt;attr&gt;</strong></code>. The attribute
  type may be one of <code><strong>dns</strong></code>, <code><strong>nbns</strong></code>, <code><strong>dhcp</strong></code>, <code><strong>netmask</strong></code>, <code><strong>server</strong></code>, <code><strong>subnet</strong></code>,
