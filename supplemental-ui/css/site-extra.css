@@ -67,3 +67,26 @@
 .doc .admonitionblock td.icon i.icon-warning::before {
 	background-image: url("../img/admonitions.svg#view-alert");
 }
+
+/* highlight links to settings, basically the same styles used for sections */
+.doc th a[id^="_"]+a[href^="#"],
+.doc td a[id^="_"]+a[href^="#"] {
+  position: absolute;
+  text-decoration: none;
+  width: 1.75ex;
+  margin-left: -1.5ex;
+  visibility: hidden;
+  font-size: 0.8em;
+  font-weight: normal;
+  padding-top: 0.05em;
+}
+
+.doc th a[id^="_"]+a[href^="#"]::before,
+.doc td a[id^="_"]+a[href^="#"]::before {
+  content: "\00a7";
+}
+
+.doc th:hover a[id^="_"]+a[href^="#"],
+.doc td:hover a[id^="_"]+a[href^="#"] {
+  visibility: visible;
+}

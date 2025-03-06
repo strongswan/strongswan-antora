@@ -39,3 +39,5 @@ antora:
 asciidoc:
   attributes:
     page-pagination: true
+  extensions:
+    - ./extensions/generate-settings-ids.js
