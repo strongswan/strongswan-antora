@@ -868,6 +868,11 @@ or an IKEv1 <code>Quick Mode</code> gets established or deleted.</p>
 <pre>--disable-updown</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>A default <code><strong>_updown</strong></code> script is installed in <code>IPSECDIR</code>, which defaults to
+<code>LIBEXECDIR/ipsec</code> (see <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> for details).
+For instance, on Debian/Ubuntu, the script is located at <code>/usr/lib/ipsec/_updown</code>.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -908,9 +913,9 @@ accessing the VPN server itself. Please refer to the <code><strong>_updown</stro
 details.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, an arbitrary script can be configured via the <code><strong>updown</strong></code> attribute
-in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>  to install custom firewall
-rules or perform other actions.</p>
+<p>Alternatively, an arbitrary script with optional arguments can be configured
+via the <code><strong>updown</strong></code> attribute in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>
+to install custom firewall rules or perform other actions.</p>
 </div>
 </div>
 </div>
@@ -1142,6 +1147,19 @@ values:</p>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+While Child SA rekeying establishes a new Child SA, the hooks do
+not get invoked.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1149,18 +1167,14 @@ values:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-While <code>CHILD SA</code> rekeying establishes a new <code>CHILD SA</code>, the hooks do
-      not get invoked.
+With IKEv2, a Child SA&#8217;s traffic selectors may contain multiple hosts
+or subnets. To keep compatibility with scripts originally designed for IKEv1,
+the script is invoked for each combination of local and remote traffic selectors.
+This means that if there is more than one traffic selector, the <strong>script is
+called multiple times</strong> when a Child SA is established/closed.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>With IKEv2 a negotiated <code>CHILD SA</code> may contain multiple hosts or subnets in the
-negotiated traffic selectors. To keep compatibility with the scripts originally
-designed for IKEv1, the script gets invoked for each traffic selector
-combination once. This means with multiple traffic selectors,
-establishing/closing a <code>CHILD SA</code> invokes the script more than once.</p>
 </div>
 </div>
 </div>
@@ -1187,6 +1201,15 @@ limitations for historical reasons and might not scale with a lot of tunnels.</p
 <p>To accept traffic with default <code>DROP</code> policies, one may alternatively use global,
 non-tunnel specific rules matching IPsec traffic with the Netfilter <code><strong>policy</strong></code>
 match.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="vici.html" class="xref page"><code><strong>vici</strong></code> plugin</a> provides various asynchronous events
+that may be used to trigger external actions or run scripts. Unlike the <code><strong>updown</strong></code>
+script, its <code><strong>child-updown</strong></code> event is only triggered once per Child SA, not
+for each combination of local and remote traffic selectors. And additional events
+are triggered for IKE SAs or for rekeyings of SAs. Handling <code><strong>vici</strong></code> events also
+doesn&#8217;t block the IKE daemon&#8217;s message bus, which running the <code><strong>updown</strong></code> script
+currently does.</p>
 </div>
 </div>
 </div>
