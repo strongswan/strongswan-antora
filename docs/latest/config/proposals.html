@@ -1901,6 +1901,23 @@ directly via their respective <a href="https://datatracker.ietf.org/doc/html/rfc
 <div class="sect1">
 <h2 id="_key_exchange_methods"><a class="anchor" href="#_key_exchange_methods"></a>Key Exchange Methods</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>For IKE SA proposals, the key exchange method transform is mandatory. However,
+for Child SA proposals (ESP/AH) it&#8217;s optional. If it&#8217;s omitted, the Child
+SA&#8217;s keys are derived from the IKE SA&#8217;s key material. On the other hand, if one
+is negotiated, the keys are derived from a separate key exchange. This is often
+called <strong>Perfect Forward Secrecy</strong> (PFS). Please refer to the
+<a href="rekeying.html#_ipsec_sas" class="xref page">rekeying documentation</a> for details,
+including the <a href="rekeying.html#_ikev2" class="xref page">special IKEv2 behavior</a>.</p>
+</div>
+<div class="paragraph">
+<p>To make separate key exchanges optional when creating/rekeying a Child SA, the
+special keywords <code><strong>none</strong></code> or <code><strong>modpnone</strong></code> may be added to a proposal. For instance,
+configuring <code><strong>&#8230;&#8203;-ecp384-modp3072-none</strong></code> would prefer <code><strong>ecp384</strong></code> over <code><strong>modp3072</strong></code>
+before accepting not performing a separate key exchange for the Child SA. This
+can be useful on a host that connects with peers who propose key exchange methods
+as well as some who don&#8217;t.</p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
