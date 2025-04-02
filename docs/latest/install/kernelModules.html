@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Required Kernel Modules :: strongSwan Documentation</title>
+    <title>Linux Kernel Modules :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/latest/install/kernelModules.html">
     <link rel="prev" href="autoconf.html">
     <link rel="next" href="reducedPrivileges.html">
@@ -70,7 +70,7 @@
     <a class="nav-link" href="autoconf.html">Autoconf Options</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="kernelModules.html">Required Kernel Modules</a>
+    <a class="nav-link" href="kernelModules.html">Linux Kernel Modules</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="reducedPrivileges.html">Reduced Privileges</a>
@@ -833,7 +833,7 @@
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
     <li>Installation</li>
-    <li><a href="kernelModules.html">Required Kernel Modules</a></li>
+    <li><a href="kernelModules.html">Linux Kernel Modules</a></li>
   </ul>
 </nav>
 <div class="page-versions">
@@ -850,8 +850,9 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Required Kernel Modules</h1>
-<div id="preamble">
+<h1 class="page">Linux Kernel Modules</h1>
+<div class="sect1">
+<h2 id="_required_kernel_modules"><a class="anchor" href="#_required_kernel_modules"></a>Required Kernel Modules</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Include the following modules:</p>
@@ -926,11 +927,8 @@ For kernel versions 4.2-4.5, you will have to select
    Encrypted Chain IV Generator [CRYPTO_ECHAINIV]</pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_name_list_of_required_modules"><a class="anchor" href="#_name_list_of_required_modules"></a>Name List of Required Modules</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_name_list_of_required_modules"><a class="anchor" href="#_name_list_of_required_modules"></a>Name List of Required Modules</h3>
 <div class="paragraph">
 <p>Make sure you have the following modules loaded when you try to establish a tunnel:</p>
 </div>
@@ -951,10 +949,8 @@ xfrm6_mode_tunnel</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_optional_modules"><a class="anchor" href="#_optional_modules"></a>Optional Modules</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_optional_modules"><a class="anchor" href="#_optional_modules"></a>Optional Modules</h3>
 <div class="listingblock">
 <div class="content">
 <pre>xfrm_ipcomp
@@ -966,10 +962,8 @@ deflate</pre>
 module and the <code><strong>deflate</strong></code> module for the compression algorithm.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_shell_script_checking_required_kernel_modules"><a class="anchor" href="#_shell_script_checking_required_kernel_modules"></a>Shell Script Checking Required Kernel Modules</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_shell_script_checking_required_kernel_modules"><a class="anchor" href="#_shell_script_checking_required_kernel_modules"></a>Shell Script Checking Required Kernel Modules</h3>
 <div class="listingblock">
 <div class="content">
 <pre>#!/bin/sh
@@ -996,6 +990,43 @@ grep '\&lt;CONFIG_NETFILTER\&gt;' /boot/config-`uname -r`
 grep '\&lt;CONFIG_NETFILTER_XTABLES\&gt;' /boot/config-`uname -r`
 grep '\&lt;CONFIG_NETFILTER_XT_MATCH_POLICY\&gt;' /boot/config-`uname -r`</pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_performance_improvements_with_esp_grogso_offload"><a class="anchor" href="#_performance_improvements_with_esp_grogso_offload"></a>Performance Improvements with ESP GRO/GSO Offload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After loading the <code><strong>esp4_offload</strong></code> and/or <code><strong>esp6_offload</strong></code> modules (they are
+available since Linux v4.11, but not loaded automatically), an optimized
+code path is used that leverages the kernel&#8217;s GRO infrastructure to process
+ESP packets immediately on layer 2 once the GRO layer detects one. The decrypted
+packets are then also reinjected on layer 2 into the stack.</p>
+</div>
+<div class="paragraph">
+<p>Handling of ESP-in-UDP packets via GRO offload is supported since Linux v6.7
+(requires setting a flag on the UDP socket, which strongSwan does since 6.0.2).</p>
+</div>
+<div class="paragraph">
+<p>Both modules similarly hook into the GSO layer to improve processing outbound
+packets.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+One side-effect of loading these modules is that <strong>inbound ESP packets
+won&#8217;t be seen on layer 3</strong> by Netfilter or e.g. <code>tcpdump</code>.  Keep that in mind
+when debugging IPsec tunnels as firewall rules and traffic captures will only
+see decrypted packets.  The traffic counters on the inbound SAs will increase
+as normal, though.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
