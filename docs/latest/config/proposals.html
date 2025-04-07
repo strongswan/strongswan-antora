@@ -854,7 +854,10 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The keywords listed below can be used with the <code><strong>proposals</strong></code> and <code><strong>ah|esp_proposals</strong></code>
+<p>The keywords listed below can be used with the
+<a href="../swanctl/swanctlConf.html#_connections_conn_proposals" class="xref page"><code><strong>proposals</strong></code></a>
+and
+<a href="../swanctl/swanctlConf.html#_connections_conn_children_child_esp_proposals" class="xref page"><code><strong>ah|esp_proposals</strong></code></a>
 settings in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> to define IKE and ESP/AH
 proposals/cipher suites. IANA provides a complete list of algorithm identifiers
 registered for <a href="https://www.iana.org/assignments/ikev2-parameters/ikev2-parameters.xhtml">IKEv2</a>.</p>
@@ -2285,6 +2288,30 @@ generic hash with the prescribed output length.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_extended_sequence_numbers_esn"><a class="anchor" href="#_extended_sequence_numbers_esn"></a>Extended Sequence Numbers (ESN)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For ESP and AH, Extended Sequence Numbers (ESN) may be negotiated. This doubles
+the size of the sequence numbers from 32 to 64 bits, which can be necessary on
+highspeed links as the 4294967295 packets supported by 32-bit sequence numbers
+may be sent in a few minutes on a 10 Gb/s link, requiring very frequent
+rekeyings.</p>
+</div>
+<div class="paragraph">
+<p>Note that only the lower 32 bits are actually transmitted with each packet, the
+upper 32 bits are only stored on the endpoints, but are still considered for
+integrity protection. That&#8217;s why this has to be negotiated.</p>
+</div>
+<div class="paragraph">
+<p>To enable ESN, the <code><strong>esn</strong></code> keyword can be included in a proposal. To disable
+ESN, the <code><strong>noesn</strong></code> keyword may be used. If neither is configured, the latter is
+assumed. Both keywords may be included in a proposal if it&#8217;s unknown if the peer
+supports/enables ESN (e.g. <code><strong>esn-noesn</strong></code> to prefer ESN but still allow 32-bit
+sequence numbers).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_signature_algorithms"><a class="anchor" href="#_signature_algorithms"></a>Signature Algorithms</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2430,6 +2457,50 @@ implemented only by certain plugins.</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_default_proposals"><a class="anchor" href="#_default_proposals"></a>Default Proposals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If no explicit proposals are configured with the
+<a href="../swanctl/swanctlConf.html#_connections_conn_proposals" class="xref page"><code><strong>proposals</strong></code></a>
+or
+<a href="../swanctl/swanctlConf.html#_connections_conn_children_child_esp_proposals" class="xref page"><code><strong>ah|esp_proposals</strong></code></a>
+settings in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>, default proposals
+are used. These proposals can also be added after custom proposals via the
+<code><strong>default</strong></code> keyword.</p>
+</div>
+<div class="paragraph">
+<p>For IKEv2, the default proposals, one with classic encryption and integrity
+algorithms, one with AEAD algorithms, include all algorithms supported by the
+loaded plugins that are not marked with <code><strong>s</strong></code> in the tables above. The exceptions
+are <code><strong>3des</strong></code>, <code><strong>sha1</strong></code> and <code><strong>prfsha1</strong></code>, which are included for interoperability
+with legacy systems.</p>
+</div>
+<div class="paragraph">
+<p>For ESP, the default proposals are hard-coded as we can&#8217;t query the Linux kernel
+for its supported algorithms. They are as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aes128-aes192-aes256-sha256-sha284-sha512-sha1-aesxcbc-noesn
+aes128gcm16-aes192gcm16-aes256gcm16-noesn</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since 6.0.2, all supported key exchange methods, the same that are proposed for
+IKEv2, are included in the proposals, as well as <code><strong>none</strong></code> to make PFS optional.</p>
+</div>
+<div class="paragraph">
+<p>For AH, the same applies, but no AEAD proposal is currently sent. The default
+proposal is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aes256-sha256-sha284-sha512-sha1-aesxcbc-noesn</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
