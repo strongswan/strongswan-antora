@@ -1019,11 +1019,17 @@ packets.</p>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-One side-effect of loading these modules is that <strong>inbound ESP packets
-won&#8217;t be seen on layer 3</strong> by Netfilter or e.g. <code>tcpdump</code>.  Keep that in mind
-when debugging IPsec tunnels as firewall rules and traffic captures will only
-see decrypted packets.  The traffic counters on the inbound SAs will increase
-as normal, though.
+<div class="paragraph">
+<p>One side-effect of loading these modules is that <strong>inbound ESP or ESP-in-UDP
+packets won&#8217;t be seen on layer 3</strong> by Netfilter or e.g. <code>tcpdump</code>.  Keep that in
+mind when debugging IPsec tunnels as firewall rules and traffic captures will
+only see decrypted packets.  The traffic counters on the inbound SAs will
+increase as normal, though. To debug issues, the modules may be unloaded again.</p>
+</div>
+<div class="paragraph">
+<p>Note, however, that <strong>fragmented ESP or ESP-in-UDP packets</strong> will take the slow
+non-offload path and will show up in the firewall and traffic captures.</p>
+</div>
 </td>
 </tr>
 </table>

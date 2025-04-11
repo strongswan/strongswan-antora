@@ -919,7 +919,7 @@ specific VPN profiles.</p>
 </div>
 <div class="paragraph">
 <p>Since <a href="#_2_0_0_2018_07_03">2.0.0</a> it&#8217;s possible to use <strong>Intents</strong> and a VPN
-profile&#8217;s UUID to connect/terminate it with automation apps such as Llama or
+profile&#8217;s UUID to connect/terminate it with automation apps such as Automate or
 Tasker e.g. based on location, WiFi hotspots or other events.</p>
 </div>
 <div class="paragraph">
@@ -933,7 +933,11 @@ Tasker e.g. based on location, WiFi hotspots or other events.</p>
 when editing a profile and may be copied from there.</p>
 </div>
 <div class="paragraph">
-<p>To connect a profile use the following information in the Intent:</p>
+<p>The Intents are meant to start an <strong>Activity</strong>, so be sure to select the
+appropriate block in Automate ("App start") or "Target" in Tasker.</p>
+</div>
+<div class="paragraph">
+<p>To connect a profile, use the following information in the Intent:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -941,10 +945,10 @@ when editing a profile and may be copied from there.</p>
 <p><code><strong>Package</strong>: org.strongswan.android</code></p>
 </li>
 <li>
-<p><code><strong>Action</strong> : org.strongswan.android.action.START_PROFILE</code></p>
+<p><code><strong>Action</strong>: org.strongswan.android.action.START_PROFILE</code></p>
 </li>
 <li>
-<p><code><strong>Extras</strong></code> :</p>
+<p><code><strong>Extras</strong></code>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -957,7 +961,7 @@ when editing a profile and may be copied from there.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>To disconnect the profile use the following information in the Intent:</p>
+<p>To disconnect the profile, use the following information in the Intent:</p>
 </div>
 <div class="ulist">
 <ul>
