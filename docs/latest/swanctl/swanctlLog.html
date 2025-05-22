@@ -871,6 +871,20 @@ swanctl --log --help</pre>
 <p>This <a href="swanctl.html" class="xref page"><code><strong>swanctl</strong></code></a> subcommand traces logging output from the
 <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon via the <code><strong>vici</strong></code> interface.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command only receives log messages on <strong>levels 0 and 1</strong> from the
+daemon. The <code><strong>--debug/-v</strong></code> option only affects the logging done by <code><strong>swanctl</strong></code>
+itself.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
