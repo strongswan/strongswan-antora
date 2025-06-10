@@ -157,19 +157,25 @@
     <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/iptfs.html">AGGFRAG / IP-TFS</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/per-cpu-sas.html">Per-CPU SAs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
@@ -1979,12 +1985,14 @@ of the CHILD_SA configuration, which must be unique within the connection
 <td class="tableblock halign-left valign-top"><p class="tableblock">IPsec Mode to establish CHILD_SA with. <code><strong>tunnel</strong></code> negotiates the CHILD_SA in
  IPsec Tunnel Mode whereas <code><strong>transport</strong></code> uses IPsec Transport Mode.
  <code><strong>transport_proxy</strong></code> signifying the special Mobile IPv6 Transport Proxy Mode.
+ <code><strong>iptfs</strong></code> is <a href="../features/iptfs.html" class="xref page">IP-TFS tunnel mode with aggregation and fragmentation</a>
+ (since 6.0.2).
  <code><strong>beet</strong></code> is the Bound End to End Tunnel mixture mode working with fixed inner
- addresses without the need to include them in each packet. Both <code><strong>transport</strong></code>
- and <code><strong>beet</strong></code> modes are subject to mode negotiation. <code><strong>tunnel</strong></code> mode is negotiated
- if the preferred mode is not available. <code><strong>pass</strong></code> and <code><strong>drop</strong></code> are used to install
- shunt policies which explicitly bypass the defined traffic from IPsec processing
- or drop it, respectively. [<code>tunnel</code>]</p></td>
+ addresses without the need to include them in each packet. The <code><strong>transport</strong></code>,
+ <code><strong>iptfs</strong></code>, and <code><strong>beet</strong></code> modes are subject to mode negotiation. <code><strong>tunnel</strong></code> mode
+ is negotiated if the preferred mode is not available. <code><strong>pass</strong></code> and <code><strong>drop</strong></code> are
+ used to install shunt policies which explicitly bypass the defined traffic from
+ IPsec processing or drop it, respectively. [<code>tunnel</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_policies"></a><a href="#_connections_conn_children_child_policies"> </a>&lt;child&gt;.policies</p></td>
@@ -2163,6 +2171,19 @@ of the CHILD_SA configuration, which must be unique within the connection
 <td class="tableblock halign-left valign-top"><p class="tableblock">IPsec replay window to configure for this CHILD_SA. Larger values than the default
  of <code><strong>32</strong></code> are supported using the Netlink backend only, a value of <code><strong>0</strong></code> disables
  IPsec replay protection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_per_cpu_sas"></a><a href="#_connections_conn_children_child_per_cpu_sas"> </a>&lt;child&gt;.per_cpu_sas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since version 6.0.2. Enable <a href="../features/per-cpu-sas.html" class="xref page">per-CPU CHILD_SAs</a>.
+ Requires <code><strong>trap</strong></code> in <code><strong>start_action</strong></code>. The value <code><strong>encap</strong></code> enables a special
+ type of UDP encapsulation (requires enabling <code><strong>encap</strong>`</code> for the connection if
+ there is no NAT), where a random source port is used for each outbound per-CPU
+ SA (the destination port for all of them remains 4500). This allows using the
+ port for RSS if the SPI can&#8217;t be used. Note that this type of behavior is not
+ standardized and not negotiated. So regardless of whether the option is enabled,
+ inbound per-CPU SAs with UDP-encapsulation always have the source port set to
+ 0 as the peer&#8217;s random port is unknown if it has this option enabled.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_children_child_hw_offload"></a><a href="#_connections_conn_children_child_hw_offload"> </a>&lt;child&gt;.hw_offload</p></td>
