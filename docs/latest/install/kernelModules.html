@@ -1007,8 +1007,8 @@ grep '\&lt;CONFIG_NETFILTER_XT_MATCH_POLICY\&gt;' /boot/config-`uname -r`</pre>
 <p>After loading the <code><strong>esp4_offload</strong></code> and/or <code><strong>esp6_offload</strong></code> modules (they are
 available since Linux v4.11, but not loaded automatically), an optimized
 code path is used that leverages the kernel&#8217;s GRO infrastructure to process
-ESP packets immediately on layer 2 once the GRO layer detects one. The decrypted
-packets are then also reinjected on layer 2 into the stack.</p>
+ESP packets immediately on layer 2 once they are picked up by the GRO layer
+The decrypted packets are then also reinjected on layer 2 into the stack.</p>
 </div>
 <div class="paragraph">
 <p>Handling of ESP-in-UDP packets via GRO offload is supported since Linux v6.7
@@ -1026,15 +1026,16 @@ packets.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>One side-effect of loading these modules is that <strong>inbound ESP or ESP-in-UDP
+<p>One side effect of loading these modules is that <strong>inbound ESP or ESP-in-UDP
 packets won&#8217;t be seen on layer 3</strong> by Netfilter or e.g. <code>tcpdump</code>.  Keep that in
-mind when debugging IPsec tunnels as firewall rules and traffic captures will
-only see decrypted packets.  The traffic counters on the inbound SAs will
-increase as normal, though. To debug issues, the modules may be unloaded again.</p>
+mind when debugging IPsec tunnels because firewall rules and traffic captures
+will only see the decrypted packets.  The traffic counters on the inbound SAs
+will increase as normal, though. To debug issues, the modules may be unloaded
+again.</p>
 </div>
 <div class="paragraph">
-<p>Note, however, that <strong>fragmented ESP or ESP-in-UDP packets</strong> will take the slow
-non-offload path and will show up in the firewall and traffic captures.</p>
+<p>Note that <strong>fragmented ESP or ESP-in-UDP packets</strong> will take the slow,
+non-offload path. They will therefore show up in the firewall and traffic captures.</p>
 </div>
 </td>
 </tr>

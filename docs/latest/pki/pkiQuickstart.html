@@ -879,8 +879,11 @@ for use with strongSwan.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>generates an elliptic <strong>Edwards-Curve</strong> key with a cryptographic strength of 128
-bits. Alternative key types are <code><strong>ecdsa</strong></code>, classic <code><strong>rsa</strong></code> and <code><strong>ed448</strong></code>.</p>
+<p>generates an elliptic <strong>Edwards-Curve</strong> key (EdDSA) with a cryptographic strength
+of 128 bits. Alternative key types are <code><strong>ecdsa</strong></code>, classic <code><strong>rsa</strong></code> and <code><strong>ed448</strong></code>.
+Not all implementations support EdDSA, so for best compatibility use RSA or ECDSA
+keys (Windows even has restriction on the latter, see
+<a href="../interop/windowsCertRequirements.html" class="xref page">Windows Certificate Requirements</a>).</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -910,7 +913,7 @@ with a lifetime of 10 years (3652 days) using the
 </div>
 </div>
 <div class="paragraph">
-<p>which can be listed with the <a href="pkiPrint.html" class="xref page"><code><strong>pki --print</strong></code></a> command</p>
+<p>which can be inspected with the <a href="pkiPrint.html" class="xref page"><code><strong>pki --print</strong></code></a> command</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -935,8 +938,8 @@ format then just omit the <code><strong>--outform pem</strong></code> option.</p
 <div class="paragraph">
 <p>The <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>/etc/swanctl/x509ca</strong></code></a> directory stores all
 required <code>CA</code> certificates either in binary <code>DER</code> or in Base64 <code>PEM</code> format.
-Irrespective of the file suffix the correct format will be determined by
-strongSwan automagically.</p>
+Irrespective of the file suffix, the correct format will be determined by
+strongSwan automatically..</p>
 </div>
 </div>
 </div>
@@ -944,7 +947,7 @@ strongSwan automagically.</p>
 <h2 id="_generating_an_end_entity_certificate"><a class="anchor" href="#_generating_an_end_entity_certificate"></a>Generating an End Entity Certificate</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Again we are using the command</p>
+<p>Again, we are using the command</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -973,7 +976,7 @@ securely store an <code>RSA</code> or <code>ECDSA</code> private key. For detail
 the <a href="../tpm/tpm2.html" class="xref page"><code><strong>TPM 2.0</strong></code></a> tutorial.</p>
 </div>
 <div class="paragraph">
-<p>In a next step the <a href="pkiReq.html" class="xref page"><code><strong>pki --req</strong></code></a> command</p>
+<p>In a next step, the <a href="pkiReq.html" class="xref page"><code><strong>pki --req</strong></code></a> command</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -984,7 +987,7 @@ the <a href="../tpm/tpm2.html" class="xref page"><code><strong>TPM 2.0</strong><
 </div>
 <div class="paragraph">
 <p>creates a PKCS#10 certificate request that has to be signed by the <code>CA</code>.
-Through the [multiple] use of the <code><strong>--san</strong></code> parameter any number of desired
+Through the (multiple) use of the <code><strong>--san</strong></code> parameter any number of desired
 <code><strong>subjectAlternativeNames</strong></code> can be added to the request. These can be of the
 form</p>
 </div>
@@ -998,13 +1001,13 @@ form</p>
 </div>
 <div class="paragraph">
 <p>It is strongly recommended to include the hostname of a VPN gateway as a
-<code><strong>subjectAltName</strong></code> in its certificate. Depending on your clients there may be
+<code><strong>subjectAltName</strong></code> in its certificate. Depending on your clients, there may be
 additional requirements imposed on gateway certificates, for instance, the
 <a href="../interop/windowsCertRequirements.html" class="xref page">Windows certificate requirements</a> or those
 for <a href="../interop/ios.html" class="xref page">iOS and macOS</a> clients.</p>
 </div>
 <div class="paragraph">
-<p>Based on the certificate request the <code>CA</code> issues a signed end entity certificate
+<p>Based on the certificate request, the <code>CA</code> issues a signed end entity certificate
 with the <a href="pkiIssue.html" class="xref page"><code><strong>pki --issue</strong></code></a> command</p>
 </div>
 <div class="listingblock">
@@ -1015,7 +1018,7 @@ with the <a href="pkiIssue.html" class="xref page"><code><strong>pki --issue</st
 </div>
 </div>
 <div class="paragraph">
-<p>If the <code><strong>--serial</strong></code> parameter with a hexadecimal argument is omitted then a random
+<p>If the <code><strong>--serial</strong></code> parameter with a hexadecimal argument is omitted, then a random
 serial number is generated. Some third party VPN clients require that a VPN
 gateway certificate contains the <code>TLS Server Authentication</code> Extended Key Usage
 (EKU) flag which can be included with the following option</p>
@@ -1027,7 +1030,7 @@ gateway certificate contains the <code>TLS Server Authentication</code> Extended
 </div>
 <div class="paragraph">
 <p>If you want to use the dynamic <code>CRL</code> fetching feature described in one of the
-following sections then you may include one or several <code>crlDistributionPoints</code>
+following sections, then you may include one or several <code>crlDistributionPoints</code>
 in your end entity certificates using the <code><strong>--crl</strong></code> parameter</p>
 </div>
 <div class="listingblock">
@@ -1037,7 +1040,7 @@ in your end entity certificates using the <code><strong>--crl</strong></code> pa
 </div>
 </div>
 <div class="paragraph">
-<p>The issued host certificate can be listed with</p>
+<p>The issued host certificate can be inspected with</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1065,7 +1068,7 @@ subjkey:   60:9d:de:30:a6:ca:b9:8e:87:bb:33:23:61:19:18:b8:c4:7e:23:8f</pre>
 <div class="paragraph">
 <p>Create a distinct private key and a matching X.509 end entity certificate
 signed by your CA for each peer, i.e. for all VPN clients and VPN gateways in
-your network and store the peer&#8217;s private key and X.509 certificate in the
+your network, and store the peer&#8217;s private key and X.509 certificate in the
 <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>/etc/swanctl</strong></code></a> directory of the corresponding
 host.</p>
 </div>
@@ -1075,7 +1078,7 @@ host.</p>
 <h2 id="_pkcs12_container"><a class="anchor" href="#_pkcs12_container"></a>PKCS#12 Container</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Usually a Windows, Android, macOS or iOS based VPN client needs its private key,
+<p>Usually, a Windows, Android, macOS or iOS VPN client needs its private key,
 its host or user certificate and the <code>CA</code> certificate. The most convenient way
 to load this information is to put everything into a <code>PKCS#12</code> container:</p>
 </div>
@@ -1098,10 +1101,9 @@ to load this information is to put everything into a <code>PKCS#12</code> contai
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-<strong>Apple</strong> and <strong>Android</strong> clients can only process PKCS#12 containers that
-           are protected with 3DES and the legacy KDF. So when using
-           <code><strong>openssl pkcs12</strong></code> with OpenSSL 3.0 and newer, the <code><strong>-legacy</strong></code> option
-           is required.
+<strong>Apple</strong> and <strong>Android</strong> clients can only process PKCS#12 containers
+that are protected with 3DES and the legacy KDF. When using <code><strong>openssl pkcs12</strong></code>
+with OpenSSL 3.0 and newer, the <code><strong>-legacy</strong></code> option is required.
 </td>
 </tr>
 </table>
@@ -1118,7 +1120,7 @@ an unknown third party") if the PKCS#12 file contains a CA certificate. To avoid
 that, create the PKCS#12 container without a CA certificate. Then import the
 PKCS#12 file into the Android trust store as usual and the CA certificate file
 directly into the  <a href="../os/androidVpnClient.html" class="xref page">strongSwan app</a>. Or install
-both files via the <a href="../os/androidVpnClientProfiles.html" class="xref page">configuration profile</a>.</p>
+both files via a <a href="../os/androidVpnClientProfiles.html" class="xref page">configuration profile</a>.</p>
 </li>
 </ul>
 </div>
@@ -1130,7 +1132,7 @@ arguments (e.g. for multi-level X.509 trust chains).</p>
 <p>The <code><strong>openssl pkcs12</strong></code> command requires the certificates and the private key to be
 in PEM format. DER format is not accepted. Either use <code><strong>--outform pem</strong></code> with the
 <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> commands above to generate all files in PEM format
-or convert them later on with the command</p>
+or convert them later with the command</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1172,7 +1174,7 @@ or convert them later on with the command</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you omit the <code><strong>--lifetime</strong></code> option then the default value of 15 days is used.
+<p>If you omit the <code><strong>--lifetime</strong></code> option, then the default value of 15 days is used.
 CRLs can either be uploaded to a <code>HTTP</code> or <code>LDAP</code> server or put in binary <code>DER</code>
 or Base64 <code>PEM</code> format into the
 <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>/etc/swanctl/x509crl</strong></code></a> directory from where they
@@ -1199,7 +1201,7 @@ are loaded into the <a href="../daemons/charon.html" class="xref page"><code><st
 of the certificate to be revoked can be indicated using the <code><strong>--serial</strong></code>
 parameter. The <a href="pkiSignCrl.html" class="xref page"><code><strong>pki --signcrl --help</strong></code></a> command
 documents all possible revocation reasons but the <code><strong>--reason</strong></code> parameter can also
-be omitted. The content of the new CRL file can be listed with the command</p>
+be omitted. The new CRL file can be inspected with the command</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1236,7 +1238,7 @@ authKeyId: 2b:95:14:5b:c3:22:87:de:d1:42:91:88:63:b3:d5:c1:92:7a:0f:5d
 formed from the issuer&#8217;s <code><strong>subjectKeyIdentifier</strong></code> and the <code><strong>.crl</strong></code> suffix.</p>
 </div>
 <div class="paragraph">
-<p>With the cached copy the <code>CRL</code> is immediately available after startup.  When the
+<p>With the cached copy, the <code>CRL</code> is immediately available after startup.  When the
 local copy has become stale, an updated <code>CRL</code> is automatically fetched from one
 of the defined <code>CRL</code> distribution points during the next IKEv2 authentication.</p>
 </div>

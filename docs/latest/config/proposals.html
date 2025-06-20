@@ -2510,14 +2510,42 @@ proposal is as follows:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_commercial_national_security_algorithm_suite"><a class="anchor" href="#_commercial_national_security_algorithm_suite"></a>Commercial National Security Algorithm Suite</h2>
+<h2 id="_commercial_national_security_algorithm_suites"><a class="anchor" href="#_commercial_national_security_algorithm_suites"></a>Commercial National Security Algorithm Suites</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <strong>Suite B</strong> cryptographic suites for IPsec (<a href="https://datatracker.ietf.org/doc/html/rfc6379">RFC 6379</a>) have been
-superseded by the <a href="https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm">Commercial National Security Algorithm Suite</a> (CNSA) suite
-which basically deprecates the 128-bit suite defined by Suite B. Its recommendations
-regarding algorithm parameters are as follows:</p>
+<p>The <strong>Suite B</strong> cryptographic suites for IPsec (<a href="https://datatracker.ietf.org/doc/html/rfc6379">RFC 6379</a>) was
+superseded by the <a href="https://en.wikipedia.org/wiki/Commercial_National_Security_Algorithm_Suite">Commercial National Security Algorithm Suite</a> (CNSA) 1.0
+suite, which basically deprecated the 128-bit suite defined by Suite B. Version
+2.0, published in 2022, is the first to recommend quantum-resistant algorithms.
+The recommendations regarding algorithm parameters are as follows.</p>
 </div>
+<div class="sect2">
+<h3 id="_cnsa_2_0"><a class="anchor" href="#_cnsa_2_0"></a>CNSA 2.0</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encryption </dt>
+<dd>
+<p>AES with 256-bit key length (<strong>aes256gcm16</strong> or <strong>aes256</strong>)</p>
+</dd>
+<dt class="hdlist1">Key Exchange </dt>
+<dd>
+<p>ML-KEM (FIPS 203) with 1024-bit parameter set (<strong>mlkem1024</strong>)<br>
+To use this with IKEv2, an initial classic key exchange is necessary e.g.
+ECDH with NIST P-384 curve (<strong>ecp384</strong>)</p>
+</dd>
+<dt class="hdlist1">Pseudo-Random Function/Integrity Protection </dt>
+<dd>
+<p>SHA-384 or SHA-512 (e.g. <strong>prfsha384</strong> or <strong>sha384</strong> if not using AES in GCM mode)</p>
+</dd>
+<dt class="hdlist1">Digital Signatures </dt>
+<dd>
+<p>ML-DSA-87 (FIPS 204)</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cnsa_1_0"><a class="anchor" href="#_cnsa_1_0"></a>CNSA 1.0</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Encryption </dt>
@@ -2539,6 +2567,7 @@ DH with at least 3072-bit modulus (<strong>modp3072</strong> or higher)</p>
 RSA with at least 3072-bit modulus</p>
 </dd>
 </dl>
+</div>
 </div>
 </div>
 </div>

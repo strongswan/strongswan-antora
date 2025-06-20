@@ -862,13 +862,13 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>In remote access situations clients will usually send all their traffic to the
-gateway. Below we explain how this traffic can be forwarded and properly routed
-back to the roadwarriors.</p>
+gateway. Below we explain how to <strong>forward the traffic</strong> and properly <strong>route it
+back</strong> to the roadwarriors.</p>
 </div>
 <div class="paragraph">
-<p>In some situations it might be more desirable to send only specific traffic via
-the gateway, for instance, to unburden it from forwarding web or even worse, file
-sharing traffic. Therefore, we also explain how to enable so-called <em>split-tunneling</em>
+<p>In some situations, it might be more desirable to send only specific traffic via
+the gateway. For instance, to unburden it from forwarding web, or even worse, file
+sharing traffic. Therefore, we also explain how to enable so-called <strong>split-tunneling</strong>
 for different clients.</p>
 </div>
 </div>
@@ -879,7 +879,7 @@ for different clients.</p>
 <div class="paragraph">
 <p>In order to forward traffic to hosts behind the gateway (or hosts on the Internet
 if split-tunneling is not used), the following option has to be enabled on Linux
-gateways</p>
+gateways:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -888,7 +888,8 @@ sysctl net.ipv6.conf.all.forwarding=1</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This can be added to <code><strong>/etc/sysctl.conf</strong></code> to enable it permanently.</p>
+<p>This can be added to <code><strong>/etc/sysctl.conf</strong></code> (or a file in <code><strong>/etc/sysctl.d/</strong></code>) to
+enable it permanently.</p>
 </div>
 <div class="paragraph">
 <p>If the firewall on the gateway is rather restrictive, then</p>
@@ -899,48 +900,72 @@ sysctl net.ipv6.conf.all.forwarding=1</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>will automatically cause the default <a href="../plugins/updown.html" class="xref page"><code><strong>_updown</strong></code></a> script
+<p>will automatically cause the default <a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> script
 to add rules that allow traffic to be forwarded.</p>
 </div>
 <div class="paragraph">
 <p>In remote access setups, VPN clients will be assigned a
-<a href="../features/vip.html" class="xref page">virtual IP</a> address from a configured address pool. The
-important thing on the gateway side is that all hosts to which the gateway forwards
-traffic to, have to know that they must route packets to be tunneled back to the
-remote access clients via the VPN gateway.</p>
+<a href="../features/vip.html" class="xref page">virtual IP</a> address from a configured address pool. On
+the gateway side, the important thing is that all hosts that the gateway forwards
+traffic to must know to route packets back to the remote access clients via the
+VPN gateway.</p>
 </div>
 <div class="paragraph">
 <p>Please note that there might be additional considerations when hosting on
-<a href="cloudPlatforms.html" class="xref page">cloud platforms</a> (e.g. src/dst address checks).</p>
+<a href="cloudPlatforms.html" class="xref page">cloud platforms</a> (e.g. src/dst address
+checks/filters).</p>
 </div>
 <div class="sect2">
 <h3 id="_hosts_on_the_lan"><a class="anchor" href="#_hosts_on_the_lan"></a>Hosts on the LAN</h3>
 <div class="paragraph">
-<p>For hosts on the LAN behind the gateway the following situations are possible:</p>
+<p>For hosts on the LAN behind the gateway, the following situations are possible:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">The virtual IPs are from the subnet behind the gateway </dt>
 <dd>
-<p>In this situation either the <a href="../plugins/dhcp.html" class="xref page"><code><strong>dhcp</strong></code></a> plugin is used or
+<p>In this situation, either the <a href="../plugins/dhcp.html" class="xref page"><code><strong>dhcp</strong></code></a> plugin is used or
 the gateway assigns <a href="../features/vip.html" class="xref page">virtual IP</a> addresses from a subnet
 of the whole LAN behind the gateway (distinct from the IP addresses assigned via
 DHCP to other LAN hosts). If that is the case, the <a href="../plugins/farp.html" class="xref page"><code><strong>farp</strong></code></a>
 plugin must be used so that the hosts behind the gateway may learn that they have
-to send response packets to the VPN gateway. For IPv6 something similar can be
-done using Neighbour Discovery Protocol (NDP) proxying.</p>
+to send response packets to the VPN gateway. For IPv6, something similar can be
+done using Neighbour Discovery Protocol (NDP) proxying (e.g. via a custom
+<a href="../plugins/updown.html" class="xref page"><code><strong>updown</strong></code></a> script or <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a>
+event listener).</p>
+<details>
+<summary class="title">Simple example updown script for NDP proxying</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/bash
+
+LAN_DEV=$(ip -6 route get ${PLUTO_PEER_SOURCEIP6_1} | sed -ne 's/^.*dev \(\S\+\) .*/\1/p')
+case $PLUTO_VERB in
+  up-client-v6)
+    ip -6 neigh add proxy ${PLUTO_PEER_SOURCEIP6_1} dev ${LAN_DEV}
+    ;;
+  down-client-v6)
+    ip -6 neigh del proxy ${PLUTO_PEER_SOURCEIP6_1} dev ${LAN_DEV}
+    ;;
+esac</code></pre>
+</div>
+</div>
+</div>
+</details>
 </dd>
 <dt class="hdlist1">The virtual IPs are from a distinct subnet / In site-to-site scenarios </dt>
 <dd>
 <p>If the VPN gateway is the <strong>default gateway</strong> of the accessed LAN nothing special
-has to be done.  If this is not the case, either add a route on all hosts behind
-the gateway (manually or e.g. via <a href="https://datatracker.ietf.org/doc/html/rfc3442">DHCP option 121</a>), telling them that
-the subnet from which virtual IP addresses are assigned to roadwarriors or remote
-subnets in <strong>site-to-site</strong> scenarios can be reached through the VPN gateway.</p>
+has to be done.  But if this is not the case, either add a route on all hosts
+behind the gateway (manually or e.g. via <a href="https://datatracker.ietf.org/doc/html/rfc3442">DHCP option 121</a>), telling
+them that the subnet from which virtual IP addresses are assigned to
+roadwarriors or remote subnets in <strong>site-to-site</strong> scenarios can be reached
+through the VPN gateway.</p>
 <div class="paragraph">
-<p>Alternatively configure a static route on the actual default gateway that redirects
-traffic for the virtual subnet to the VPN gateway. It&#8217;s also possible to NAT the
-virtual IPs to the (internal) IP address of the gateway, so that requests from
+<p>Alternatively, configure a <strong>static route</strong> on the actual default gateway that redirects
+traffic for the virtual and remote subnets to the VPN gateway. It&#8217;s also <strong>possible
+to NAT</strong> the virtual IPs to the (internal) IP address of the gateway, so that requests from
 remote clients will look to LAN hosts as if they originated from the gateway (see
 the next section for notes on setting up a NAT).</p>
 </div>
@@ -974,22 +999,39 @@ the option for the individual interface</p>
 <h3 id="_hosts_on_the_internet"><a class="anchor" href="#_hosts_on_the_internet"></a>Hosts on the Internet</h3>
 <div class="paragraph">
 <p>If <strong>split-tunneling</strong> is not used, all client traffic will be sent through the IPsec
-tunnel. In this scenario '<strong>local_ts = 0.0.0.0/0</strong>` is configured on the gateway and
-<code><strong>remote_ts = 0.0.0.0/0</strong></code> on the client.  Now, the gateway could simply ignore
+tunnel. In this scenario <code><strong>local_ts = 0.0.0.0/0</strong></code> is configured on the gateway and
+<code><strong>remote_ts = 0.0.0.0/0</strong></code> on the client.  The gateway could simply ignore
 or drop traffic not destined for subnets it doesn&#8217;t want the clients to access.
 But that is probably not what most users expect.  It is more likely that they
 expect being able to continue to surf the web or read their emails while being
 connected to the VPN.</p>
 </div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">The VPN gateway is (behind) a NAT router</dt>
+<dd>
+<p>If the VPN gateway itself <em>is behind</em> a NAT router, in particular, if the first
+option above for LAN hosts is used, nothing special has to be done to reach
+hosts on the Internet as remote clients will basically act like regular LAN
+hosts.</p>
 <div class="paragraph">
-<p>The situation here is similar to the one for LAN hosts above. If the gateway would
-simply forward traffic from the virtual subnet to hosts on the Internet, these hosts
-wouldn&#8217;t be able respond because they would send their response to the virtual IP
-address. What is therefore required are <strong>NAT rules</strong> so that hosts in the virtual
-subnet are mapped to at least one IP address of the VPN gateway (which itself could
-be behind a NAT device too). For hosts on the Internet, traffic from the virtual
-subnet then would appear to originate from the VPN gateway.</p>
+<p>If the VPN gateway <em>is</em> already a NAT router, traffic from remote clients should
+get handled correctly and appear to originate from the gateway. However,
+traffic <em>to</em> the remote clients has to be exempted from the NAT by inserting
+a rule that matches IPsec policies <strong>before</strong> the NAT rule (see below).</p>
 </div>
+</dd>
+<dt class="hdlist1">There is no existing NAT</dt>
+<dd>
+<p>This situation is similar to the one described for LAN hosts above. If the
+gateway would simply forward traffic from the virtual subnet to hosts on the
+Internet, these hosts wouldn&#8217;t be able to respond because they&#8217;d send their
+response to the virtual IP address (if the traffic even reached them and was not
+dropped by ISPs because the source IPs are from a private address range).
+Therefore, <strong>NAT rules are necessary</strong> to map hosts in the virtual subnet to an
+appropriate IP address of the gateway. For hosts on the Internet (and possibly
+on the LAN), traffic from the virtual subnet will then appear to originate
+from the VPN gateway.</p>
 <div class="paragraph">
 <p>By way of example, let&#8217;s assume the gateway assigns virtual IPs from the
 <code><strong>10.0.3.0/24</strong></code> subnet to its roadwarrior clients. The following <code><strong>iptables</strong></code> rules
@@ -1008,6 +1050,9 @@ Additional subnets behind the gateway may be listed after <code><strong>-s</stro
 <code><strong>-s 10.0.3.0/24,192.168.88.0/24</strong></code>. The <code><strong>-s</strong></code> option may also be omitted altogether
 to match all outbound traffic.</p>
 </div>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 </div>
@@ -1021,12 +1066,15 @@ that is supposed to be tunneled.</p>
 </div>
 <div class="paragraph">
 <p>This often leads to problems, because many hosts have <code>SNAT</code> or <code>MASQUERADE</code> rules
-set up which change the source IP of the packets, making them not match the negotiated
-IPsec policies when IPsec processing of outgoing packets happens in the
-<a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg">Netfilter packet flow</a> <code><strong>xfrm lookup</strong></code> node. To fix this problem, packets
-with a matching IPsec policy should skip NAT rules in the <code>POSTROUTING</code> chain of
-the <code><strong>nat</strong></code> table. This is achieved by inserting a rule that accepts packets with
-a matching IPsec policy before any NAT rule in the <code>POSTROUTING</code> chain</p>
+set up, which change the source IP of the packets, making them not match the
+negotiated IPsec policies when IPsec processing of outgoing packets happens in the
+<a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg">Netfilter packet flow</a>'s <code><strong>xfrm lookup</strong></code> node.</p>
+</div>
+<div class="paragraph">
+<p>To fix this problem, packets with a matching IPsec policy should be exempted from
+NAT rules in the <code>POSTROUTING</code> chain of the <code><strong>nat</strong></code> table. This can be achieved
+by inserting a rule that accepts all packets with a matching IPsec policy <strong>before
+any NAT rule</strong> in the <code>POSTROUTING</code> chain:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1039,9 +1087,9 @@ a matching IPsec policy before any NAT rule in the <code>POSTROUTING</code> chai
 <h2 id="_split_tunneling"><a class="anchor" href="#_split_tunneling"></a>Split-Tunneling</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With split-tunneling the clients will only send traffic for specific destination
-subnets to the gateway. For both protocol versions split-tunneling is easy to deploy
-f traffic selectors (TS) can freely be configured on both peers. In that case you&#8217;d
+<p>With split-tunneling, the clients will only send traffic for specific destination
+subnets to the gateway. For both protocol versions, split-tunneling is easy to deploy
+when traffic selectors (TS) can freely be configured on both peers. Then you&#8217;d
 simply use specific values for the <code><strong>local_ts</strong></code> and <code><strong>remote_ts</strong></code> options.</p>
 </div>
 <div class="sect2">
@@ -1051,30 +1099,31 @@ simply use specific values for the <code><strong>local_ts</strong></code> and <c
 supports the narrowing of the proposed traffic selectors.</p>
 </div>
 <div class="paragraph">
-<p>For instance if the client proposes <code><strong>0.0.0.0/0</strong></code> as a remote traffic selector, i.e.
-(<code><strong>remote_ts = 0.0.0.0/0</strong></code>), this proposal can be narrowed on the gateway by
-configuring <code><strong>local_ts =</strong> &lt;list of subnets&gt;</code>. Likewise the client may already propose
-a selective remote TS by configuring a list of subnets with <code><strong>remote_ts</strong></code> which the
-gateway might simply accept (e.g. if it has configured <code><strong>local_ts = 0.0.0.0/0</strong></code>)
-or could further narrow the subnets to be tunneled.</p>
+<p>For instance, if the client proposes <code><strong>0.0.0.0/0</strong></code> as a remote traffic selector (i.e.
+<code><strong>remote_ts = 0.0.0.0/0</strong></code>), this proposal can be narrowed on the gateway by
+configuring <code><strong>local_ts =</strong> &lt;list of subnets&gt;</code>. Likewise, the client may already
+propose a selective remote TS by configuring a list of subnets with <code><strong>remote_ts</strong></code>,
+which the gateway might simply accept (e.g. if it has configured
+<code><strong>local_ts = 0.0.0.0/0</strong></code>), or it could further narrow the subnets to be tunneled.</p>
 </div>
 <div class="paragraph">
 <p>While the protocol supports split-tunneling, whether it can actually be used
-<strong>depends on the client</strong>. Most remote access clients will propose <code><strong>0.0.0.0/0</strong></code> as
-remote TS, so split-tunneling must be configured explicitly on the gateway. But
-whether this will actually result in split-tunneling will depend on the client.
-All strongSwan based clients (Linux, NetworkManager, Android) support this kind
-of narrowing whereas for Windows clients the situation is as follows:</p>
+<strong>depends on the client implementation</strong>. Most remote access clients will propose
+<code><strong>0.0.0.0/0</strong></code> as remote TS, so split-tunneling must be configured explicitly on
+the gateway. But whether this will actually result in split-tunneling will
+depend on the client behavior.
+All strongSwan-based clients (Linux, NetworkManager, Android) support this kind
+of narrowing, whereas for Windows clients the situation is as follows:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Windows 7 </dt>
 <dd>
-<p>The client will always allow access to the host&#8217;s LAN. So to access e.g. a local
-printer nothing special has to be done. Since the client always proposes <code><strong>0.0.0.0/0</strong></code>
+<p>The client will always allow access to its LAN. So to access e.g. a local
+printer, nothing special has to be done. Since the client always proposes <code><strong>0.0.0.0/0</strong></code>
 as remote TS, the gateway is free to narrow it to a subset. But to make split-tunneling
 actually work on the client, the <em>Use default gateway on remote network</em> option
-in the <em>Advanced TCP/IP</em> settings of the VPN connection has to be disabled. Also
+in the <em>Advanced TCP/IP</em> settings of the VPN connection has to be disabled. Also,
 because a classful route is installed, the virtual IP address has to belong to the
 remote subnet, otherwise the <em>Disable class based route addition</em> option has to
 be enabled and routes have to be installed manually.</p>
@@ -1144,7 +1193,7 @@ of TCP with the <code>TCPMSS</code> target in <code><strong>iptables</strong></c
 <p>Or if you control the router in question, fixing PMTU may be advisable. To do so
 you need to permit the appropriate ICMP traffic (type 3, destination unreachable,
 code 4, fragmentation needed - though all of type 3 is usually allowed).
-In particular one must pay attention to the source address of ICMP messages emitted
+In particular, one must pay attention to the source address of ICMP messages emitted
 by the VPN gateway, which will usually be the primary IP address of the gateway&#8217;s
 internal interface, <strong>not</strong> that of the endpoint experiencing the issue.</p>
 </div>
@@ -1173,12 +1222,12 @@ iptables -t mangle -A FORWARD -m policy --pol ipsec --dir out -p tcp -m tcp --tc
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively you can add the same rules in <code>PREROUTING</code> and <code>POSTROUTING</code>
-(also in the <code><strong>mangle</strong></code> table). Additionally set <code><strong>net.ipv4.ip_no_pmtu_disc=1</strong></code>
+<p>Alternatively, you can add the same rules in <code>PREROUTING</code> and <code>POSTROUTING</code>
+(also in the <code><strong>mangle</strong></code> table). Additionally, set <code><strong>net.ipv4.ip_no_pmtu_disc=1</strong></code>
 on the server.</p>
 </div>
 <div class="paragraph">
-<p>In newer kernels the counter <code><strong>XfrmOutStateModeError</strong></code> in <code><strong>/proc/self/net/xfrm_stat</strong></code>
+<p>In newer kernels, the counter <code><strong>XfrmOutStateModeError</strong></code> in <code><strong>/proc/self/net/xfrm_stat</strong></code>
 is incremented if the kernel detects that a packet would be too large after
 encapsulation.</p>
 </div>

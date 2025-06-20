@@ -860,9 +860,10 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since its beginning the strongSwan project has been using a virtualized integration
-and regression testing environment to ensure the quality of each release. The
-<a href="https://www.strongswan.org/testresults.html">test results</a> of the latest release are always published online.</p>
+<p>Since its beginning, the strongSwan project has been using a virtualized
+integration and regression testing environment to ensure the quality of each
+release. The <a href="https://www.strongswan.org/testresults.html">test results</a> of the latest release are always published
+online.</p>
 </div>
 <div class="paragraph">
 <p>The test environment is based on <a href="https://www.linux-kvm.org/">KVM</a> and reproducible guest images based
@@ -876,9 +877,9 @@ base image.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Hardware virtualization support is required (Intel VT/AMD-V). This means
-      that running the testing environment in a VM itself generally doesn&#8217;t work.
-      It might with newer VMware products, though.
+Hardware virtualization support is required (Intel VT/AMD-V). So running
+      the testing environment in a VM itself generally doesn&#8217;t work. However,
+      it might with newer hypervisors that support nested virtualization.
 </td>
 </tr>
 </table>
@@ -901,8 +902,8 @@ architecture currently is <code><strong>amd64</strong></code>.</p>
 <div class="sect2">
 <h3 id="_required_packages"><a class="anchor" href="#_required_packages"></a>Required Packages</h3>
 <div class="paragraph">
-<p>On Debian/Ubuntu (must be recent, Debian 6.0 <code><strong>squeeze</strong></code> won&#8217;t work), the following
-packages are required to build the testing environment:</p>
+<p>On Debian/Ubuntu, the following packages are required to build the testing
+environment:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -922,40 +923,86 @@ packages are required to build the testing environment:</p>
 <h3 id="_configuration_and_build"><a class="anchor" href="#_configuration_and_build"></a>Configuration and Build</h3>
 <div class="paragraph">
 <p>All the required scripts, config files and test suites are located in the
-<a href="https://github.com/strongswan/strongswan/tree/master/testing"><code>testing</code></a> directory of the Git repository or a release tarball.</p>
+<a href="https://github.com/strongswan/strongswan/tree/master/testing"><code><strong>testing</strong></code></a> directory of the Git repository or a release tarball.</p>
 </div>
 <div class="paragraph">
-<p>Before starting the build you may want to modify some of the variables in the
-<code><strong>testing.conf</strong></code> file or <code><strong>testing.conf.local</strong></code> that is not managed by Git.
+<p>Before starting the build, you may want to modify some of the variables in the
+<code><strong>testing.conf</strong></code> file, or in <code><strong>testing.conf.local</strong></code>, which is not managed by Git.
 For instance, the <code><strong>TESTDIR</strong></code> variable defines the root directory in which the
-whole testing environment will be built and by setting any of the <code><strong>ENABLE_BUILD_</strong>*</code>
-variables to <code><strong>no</strong></code> you can avoid re-building parts of the environment that have
-already been built earlier.</p>
+whole testing environment will be built. And by setting any of the <code><strong>ENABLE_BUILD_</strong>*</code>
+variables to <code><strong>no</strong></code>, you can avoid rebuilding parts of the environment that have
+already been built earlier. Although, the latter can also be achieved by manually
+running the respective build scripts (see below).</p>
 </div>
 <div class="paragraph">
 <p>Building is started by executing the <code><strong>make-testing</strong></code> script:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>./make-testing</pre>
+<pre>testing/make-testing</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Several applications are built from sources
-(<a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/recipes"><code>testing/scripts/recipes</code></a>) in the root image.</p>
+<p>By default, this calls the following scripts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-guestkernel"><code><strong>testing/scripts/build-guestkernel</strong></code></a>:
+Builds a Linux kernel for use by the KVM guest hosts. The version etc. can be
+changed in the config file.
+It&#8217;s also possible to use an already built kernel from an arbitrary source
+tree by creating <code><strong>$BUILDDIR/linux-&lt;name&gt;</strong></code> as a symlink and
+configuring <code><strong>KERNELVERSION=&lt;name&gt;</strong></code> (compatible kernel configs can be found
+in <a href="https://github.com/strongswan/strongswan/tree/master/testing/config/kernel"><code>testing/config/kernel</code></a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-baseimage"><code><strong>testing/scripts/build-baseimage</strong></code></a>:
+Creates a Debian-based "base" image on which all other images are based. This
+changes quite rarely.</p>
+</li>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-rootimage"><code><strong>testing/scripts/build-rootimage</strong></code></a>:
+Creates a "root" image on top of the base image, in which several
+applications/libraries are built and installed from sources
+(<a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/recipes"><code>testing/scripts/recipes</code></a>).
+This includes strongSwan, which is why the script nowadays simply calls the
+<code><strong>build-strongswan</strong></code> script with specific arguments (see below).</p>
+</li>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-certs"><code><strong>testing/scripts/build-certs</strong></code></a>:
+Generates certificates and keys for the test scenarios. This uses the tools
+installed in the root image in a chroot. It automatically calls the next
+script to [re]build the guest images.</p>
+</li>
+<li>
+<p><a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-guestimages"><code><strong>testing/scripts/build-guestimages</strong></code></a>:
+Creates guest images for the KVM hosts based on the root image and the
+generated credentials.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>To rebuild and install strongSwan from the current or an arbitrary source tree
-within the root image the
+<p>As mentioned, for more control, these scripts can all be called manually to
+[re]build specific parts of the testing environment.</p>
+</div>
+<div class="paragraph">
+<p><strong>To rebuild and install strongSwan</strong> from the current or an arbitrary source tree
+within the root image, the
 <a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-strongswan"><code><strong>testing/scripts/build-strongswan</strong></code></a>
-script is provided since version 5.2.1.</p>
+script may be used. It automatically calls the <code><strong>build-certs</strong></code> and
+<code><strong>build-guestimages</strong></code> scripts if necessary. Various optional arguments control
+what&#8217;s actually built (it&#8217;s e.g. possible to completely rebuild the root image,
+or only install strongSwan in the guest image of a particular guest, see
+<code><strong>--help</strong></code> for details).</p>
 </div>
 <div class="paragraph">
-<p>Since version 5.8.0, the
-<a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/build-certs"><code><strong>testing/scripts/build-certs</strong></code></a> script
-creates the keys and certificates used in the test scenarios dynamically. The
-scripts has to be run once after the root image has been created (the guest images
-are [re-]built automatically).</p>
+<p>The
+<a href="https://github.com/strongswan/strongswan/tree/master/testing/scripts/chroot"><code><strong>testing/scripts/chroot</strong> base|root|&lt;guest&gt;</code></a>
+command allows to modify a particular image in a chroot environment. Images
+depending on a modified image have to be rebuilt afterwards. For the
+root and guest images, the sources of the installed software are mounted
+at <code><strong>/root/shared</strong></code> (that&#8217;s also the case when the hosts are running).</p>
 </div>
 </div>
 <div class="sect2">
@@ -965,7 +1012,7 @@ are [re-]built automatically).</p>
 virtual machines. When creating a guest, <code><strong>libvirt</strong></code> automatically creates
 AppArmor profiles. The problem is that <strong>older versions</strong> (&lt; 7.1.0) didn&#8217;t create
 profiles that reflect the multi-layered disk images we use (each guest&#8217;s image
-is linked to a common root image which in turn is linked to a common base image).
+is linked to the common root image which in turn is linked to the common base image).
 One option to fix this is for affected versions of <code><strong>libvirt</strong></code> is to set
 <code><strong>security_driver = "none"</strong></code> in <code><strong>/etc/libvirt/qemu.conf</strong></code> and execute</p>
 </div>
@@ -984,11 +1031,11 @@ One option to fix this is for affected versions of <code><strong>libvirt</strong
 <h3 id="_starting_the_environment"><a class="anchor" href="#_starting_the_environment"></a>Starting the Environment</h3>
 <div class="paragraph">
 <p>When the strongSwan testing environment has been put into place by running the
-<code><strong>make-testing</strong></code> script, you are ready to start up the KVM instances by calling</p>
+build scripts, you are ready to start up the KVM instances by calling</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>./start-testing</pre>
+<pre>testing/start-testing</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1007,12 +1054,12 @@ One option to fix this is for affected versions of <code><strong>libvirt</strong
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>./do-tests &lt;testnames&gt;</pre>
+<pre>testing/do-tests &lt;testnames&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>runs the automated tests. If the <code>&lt;testnames&gt;</code> argument is omitted all tests are
-executed. Otherwise only the tests listed will be run as shown in the following
+<p>runs the automated tests. If the <code>&lt;testnames&gt;</code> argument is omitted, all tests are
+executed. Otherwise, only the tests listed will be run as shown in the following
 example:</p>
 </div>
 <div class="literalblock">
@@ -1021,7 +1068,18 @@ example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Each test is divided into the following phases:</p>
+<p>Wildcards are also supported:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>testing/do-tests ikev2/net2net-*</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See <code><strong>--help</strong></code> for some advanced options.</p>
+</div>
+<div class="paragraph">
+<p>Each test scenario is divided into the following phases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1029,7 +1087,7 @@ example:</p>
 <p>Load the test-specific guest configuration if any is provided.</p>
 </li>
 <li>
-<p>Next the <code><strong>pretest.dat</strong></code> script found in each test directory is executed. Among
+<p>The <code><strong>pretest.dat</strong></code> script found in each test directory is executed. Among
 other commands, strongSwan is started on the IPsec hosts.</p>
 </li>
 <li>
@@ -1048,12 +1106,12 @@ manually in <code><strong>posttest.dat</strong></code>).</p>
 </div>
 <div class="paragraph">
 <p>The test results and configuration files for all tests are stored in a folder
-labeled with the current date and time in directory specified by the
+labeled with the current date and time in the directory specified by the
 <code><strong>TESTRESULTSDIR</strong></code> variable in <code><strong>testing.conf</strong></code>.</p>
 </div>
 <div class="paragraph">
-<p>The same results are also automatically transferred to the Apache server running
-on guest winnetou and can be accessed via the URL</p>
+<p>The same results are also automatically available via the Apache server running
+on guest <strong>winnetou</strong> and can be accessed via the URL</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1069,21 +1127,14 @@ a test scenario with the script:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>scripts/load-testconfig &lt;testname&gt;</pre>
+<pre>testing/scripts/load-testconfig &lt;testname&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Individual configuration files can be changed and any command can be executed by
-logging on to a guest host directly (via SSH or a console window). No password is
-required to login as root.</p>
-</div>
-<div class="paragraph">
-<p>Also, the sources for every software built during <code><strong>make-testing</strong></code> are mounted at
-<code><strong>/root/shared</strong></code> which allows to change and recompile these components. Please
-note that before being able to successfully compile one of the components inside
-a guest you first have to execute <code><strong>make clean</strong></code> in the component&#8217;s source
-directory (the same applies if you later want to rebuild the images with
-<code><strong>make-testing</strong></code>).</p>
+logging on to a guest host directly. Either via SSH using the <code><strong>testing/ssh</strong></code>
+script, or via serial console using e.g. <code><strong>virsh console --devname console1</strong></code> or
+the Virtual Machine Manager (VMM). No password is required to login as root.</p>
 </div>
 <div class="paragraph">
 <p>After you finished testing, the default configuration can be restored with the
@@ -1091,7 +1142,7 @@ following command (newly created files have to be deleted manually):</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>scripts/restore-defaults</pre>
+<pre>testing/scripts/restore-defaults</pre>
 </div>
 </div>
 </div>

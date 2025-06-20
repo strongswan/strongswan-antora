@@ -872,8 +872,8 @@ to access smart cards, e.g. the one provided by the <a href="https://github.com/
 </div>
 </div>
 <div class="paragraph">
-<p>This tutorial gives information on how to use a smartcard reader, initialize cards
-and configure strongSwan with smartcards.</p>
+<p>This tutorial gives information on how to use a smart card reader, initialize cards
+and configure strongSwan with smart cards.</p>
 </div>
 </div>
 </div>
@@ -882,8 +882,8 @@ and configure strongSwan with smartcards.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You need a USB smart card reader and a blank smart card, or a USB token that combines
-the two in a convenient form factor, preferably with support of 2048 bit RSA or
-256 bit ECDSA keys.</p>
+the two in a convenient form factor, preferably with support of at least 2048 bit
+RSA or 256 bit ECDSA keys.</p>
 </div>
 <div class="sect2">
 <h3 id="_compatible_card_readers"><a class="anchor" href="#_compatible_card_readers"></a>Compatible Card Readers</h3>
@@ -923,7 +923,7 @@ often using the <a href="https://pcsclite.apdu.fr/">PCSC-Lite</a> library. Most 
 <div class="sect2">
 <h3 id="_smart_card_reader"><a class="anchor" href="#_smart_card_reader"></a>Smart Card Reader</h3>
 <div class="paragraph">
-<p>To install pcsc-tools with CCID support, under Debian based distributions use:</p>
+<p>To install pcsc-tools with CCID support, under Debian-based distributions use:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -998,29 +998,28 @@ entersafe</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>At this point we know both the card and reader are fully recognized and functional.
-We can now proceed to erase the card (you will be asked for the transport key you
+<p>At this point, we know both the card and reader are fully recognized and functional.
+We can now proceed to erase the card (you will be asked for the <strong>transport key</strong> you
 got in your mail).</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_certification_authority"><a class="anchor" href="#_certification_authority"></a>Certification Authority</h3>
 <div class="paragraph">
-<p>To set up your CA you may use OpenSSL or the strongSwan <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a>
+<p>To set up your CA, you may use OpenSSL or the strongSwan <a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a>
 tool. To simplify things you may also use a
 <a href="../pki/caManagement.html" class="xref page">graphical user interface</a> to set up your CA. One
 important thing to keep in mind is that you shouldn&#8217;t create private keys with a
-key length not supported by your smart card (check the specs to be sure). RSA keys
-with a maximum length of 2048 bits are known to work.</p>
+key length not supported by your smart card (check the specs to be sure).</p>
 </div>
 <div class="paragraph">
-<p>Make a backup of your keys/certificates and store it in a safe place.</p>
+<p>Make a backup of your keys and certificates and store them in a safe place.</p>
 </div>
 <div class="paragraph">
 <p>With most cards/tokens it is also possible to generate the private keys directly
-on the device. This way you can ensure nobody can get their hands on the keys but
-you also can&#8217;t create a backup, so any information encrypted with the corresponding
-public key will be inaccessible if the card is lost or stolen.</p>
+on the device. This way you can ensure nobody can get their hands on the keys.
+However, you also can&#8217;t create a backup, so any information encrypted with the
+corresponding public key will be inaccessible if the card is lost or stolen.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1037,7 +1036,7 @@ cryptographic objects</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This may result in a error if the card is already blank. With the next command a
+<p>This may result in a error if the card is already blank. With the next command, a
 fresh PKCS#15 file structure is created on a smart card or crypto token:</p>
 </div>
 <div class="listingblock">
@@ -1051,11 +1050,11 @@ fresh PKCS#15 file structure is created on a smart card or crypto token:</p>
 <div class="paragraph">
 <p>A secret PIN code is stored in an irretrievable location on the smart card. The PIN
 will protect the signing operation. If the PIN is entered incorrectly more than
-three times then the smart card will be locked and the PUK code can be used to
-unlock the card again.</p>
+three times (the number is configured in the profile), then the smart card will
+be locked and the PUK code can be used to unlock the card again.</p>
 </div>
 <div class="paragraph">
-<p>Next the private key is transferred to the smart card</p>
+<p>Next, the private key is transferred to the smart card</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1063,11 +1062,11 @@ unlock the card again.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>By default the PKCS#15 smart card record will be assigned the ID <code><strong>0x45</strong></code>. Using
+<p>By default, the PKCS#15 smart card record will be assigned the ID <code><strong>0x45</strong></code>. Using
 the <code><strong>--id</strong></code> option, multiple key records can be stored on a smart card.</p>
 </div>
 <div class="paragraph">
-<p>At last we load the matching X.509 certificate onto the smart card</p>
+<p>At last, we load the matching X.509 certificate onto the smart card</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1091,12 +1090,12 @@ the <code><strong>--id</strong></code> option, multiple key records can be store
 <div class="sect2">
 <h3 id="_pkcs11_plugin"><a class="anchor" href="#_pkcs11_plugin"></a>pkcs11 Plugin</h3>
 <div class="paragraph">
-<p>To use smart cards with strongSwan the <a href="../plugins/pkcs11.html" class="xref page"><code><strong>pkcs11</strong></code></a> plugin
+<p>To use smart cards with strongSwan, the <a href="../plugins/pkcs11.html" class="xref page"><code><strong>pkcs11</strong></code></a> plugin
 has to be enabled and configured.</p>
 </div>
 <div class="paragraph">
-<p>Next the PKCS#11 library provided by <a href="https://github.com/OpenSC/OpenSC/wiki">"OpenSC</a> has to be configured in
-<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>.</p>
+<p>The PKCS#11 library provided by <a href="https://github.com/OpenSC/OpenSC/wiki">"OpenSC</a> can then be configured in
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1158,7 +1157,7 @@ subsection in <a href="../swanctl/swanctlConf.html" class="xref page"><code><str
 </tbody>
 </table>
 <div class="paragraph">
-<p>For gateways that must be able to start IPsec tunnels automatically in unattended
+<p>For <strong>gateways</strong> that must be able to start IPsec tunnels automatically in unattended
 mode after a reboot, the secret PIN can be stored statically, as in</p>
 </div>
 <div class="listingblock">
@@ -1172,29 +1171,35 @@ mode after a reboot, the secret PIN can be stored statically, as in</p>
 </div>
 </div>
 <div class="paragraph">
-<p>On a personal notebook computer that could get stolen, you wouldn&#8217;t want to store
- your PIN in in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>. Thus just omit
- the <code><strong>pin</strong></code> attribute as in
-secrets {
+<p>On a <strong>client</strong> device (e.g. a personal notebook) that could get stolen, you
+wouldn&#8217;t want to store your PIN in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.
+Therefore, just omit the <code><strong>pin</strong></code> attribute as in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>secrets {
   token1 {
     handle = 45
   }
-}
-Using the <a href="../swanctl/swanctlLoadCreds.html" class="xref page"><code><strong>swanctl --load-creds</strong></code></a> on the
-command line before starting the IPsec connection will prompt you for the PIN.</p>
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the <a href="../swanctl/swanctlLoadCreds.html" class="xref page"><code><strong>swanctl --load-creds</strong></code></a> command on
+the command line, before starting the IPsec connection, will prompt you for the PIN.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_configuring_certificates_and_connections"><a class="anchor" href="#_configuring_certificates_and_connections"></a>Configuring Certificates and Connections</h3>
 <div class="paragraph">
-<p>The <a href="../plugins/pkcs11.html" class="xref page"><code><strong>pkcs11</strong></code></a> plugin will automatically load all
-certificates from the smart card when the daemon initializes it. CA certificates
+<p>The <a href="../plugins/pkcs11.html" class="xref page"><code><strong>pkcs11</strong></code></a> plugin will <strong>automatically load all
+certificates</strong> from the smart card when the daemon initializes it. CA certificates
 are also automatically available as trust anchors without the need to copy them
 into the <a href="../swanctl/swanctlDir.html" class="xref page"><code><strong>/etc/swanctl/x509ca</strong></code></a> directory first.</p>
 </div>
 <div class="paragraph">
-<p>Therefore it is usually not necessary to configure a <code><strong>local.cert</strong></code> subsection in
-<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>, instead <code><strong>local.id</strong></code> is configured
+<p>Therefore, it is usually not necessary to configure a <code><strong>local.cert</strong></code> subsection in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>. Instead, <code><strong>local.id</strong></code> is configured
 to either the <code><strong>subjectDistinguishedName</strong></code> or one of the <code><strong>subjectAltNames</strong></code>
 contained in the certificate.</p>
 </div>
@@ -1208,7 +1213,7 @@ contained in the certificate.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In situations where multiple certificates match the same identity configuring a
+<p>In situations where multiple certificates match the same identity, configuring a
 <code><strong>local.cert&lt;suffix&gt;</strong></code> subsection might be necessary</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1260,7 +1265,7 @@ contained in the certificate.</p>
 </table>
 <div class="paragraph">
 <p>This can be the case with some eID cards that contain separate signature and
-encryption certificates with the same identities. Thus for instance</p>
+encryption certificates with the same identities. For instance,</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1274,7 +1279,7 @@ encryption certificates with the same identities. Thus for instance</p>
 </div>
 <div class="paragraph">
 <p>will look in all available modules and slots for ID <code><strong>0x50</strong></code> starting with the
-first slot whereas</p>
+first slot, whereas</p>
 </div>
 <div class="listingblock">
 <div class="content">

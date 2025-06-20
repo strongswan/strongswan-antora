@@ -916,15 +916,15 @@ If you do not exactly know what you are doing then stop here and read
 </table>
 </div>
 <div class="paragraph">
-<p>Traffic dumps are generally not useful for debugging of IKE, because charon
-optionally logs the complete structure of the IKE packets. However the graphical
+<p>Traffic dumps are generally not useful for debugging of IKE, because the IKE daemon
+optionally logs the complete structure of the IKE packets. However, the graphical
 interface provided by Wireshark could be helpful. If you&#8217;re debugging problems with
 ESP or AH encoding or other fancy things, it is useful, though.</p>
 </div>
 <div class="paragraph">
 <p>This method can only capture traffic before <code><strong>nat POSTROUTING</strong></code> which is the last
 chain before IPsec processing of outgoing packets happen. To check if packets match
-the SPs, check the traffic counters of the <code>CHILD_SA</code>. You can see them in the
+the policies, check the traffic counters of the <code>CHILD_SA</code>. You can see them in the
 output of <a href="../swanctl/swanctlListSas.html" class="xref page"><code><strong>swanctl --list-sas</strong></code></a>.</p>
 </div>
 </div>
@@ -935,9 +935,9 @@ output of <a href="../swanctl/swanctlListSas.html" class="xref page"><code><stro
 <div class="paragraph">
 <p>Capturing traffic with <code><strong>tcpdump</strong></code> or <code><strong>wireshark</strong></code> by listening on a normal
 network interface shows encapsulated and decapsulated IPsec traffic only for
-inbound traffic. For outbound traffic only the encrypted packets are seen.
+inbound traffic. For outbound traffic, only the encrypted packets are seen.
 This is because of how the capturing socket of the <code><strong>libpcap</strong></code> library used by
-the aforementioned tools work.</p>
+the aforementioned tools works.</p>
 </div>
 <div class="paragraph">
 <p>IPsec processing is usually done in the kernel. strongSwan only handles IKE. If
@@ -966,12 +966,12 @@ framework to get exactly the packets we are interested in. Taking a look at the
 <div class="paragraph">
 <p><code><strong>nflog</strong></code> rules log to a kernel internal multicast group which is identified by
 an integer in the <code><strong>0 .. 2&#94;16-1</strong></code> range. Only the part of the datagram that the
-framework sees will be captured. For <code><strong>iptables</strong></code> this is an IPv4 packet whereas
-for <code><strong>ip6tables</strong></code> it is an IPv6 packet. If you use it in <code><strong>ebtables</strong></code> this is an
+framework sees will be captured. This is an IPv4 packet for <code><strong>iptables</strong></code>, whereas
+it is an IPv6 packet for <code><strong>ip6tables</strong></code>. If you use it in <code><strong>ebtables</strong></code>, this is an
 Ethernet frame.</p>
 </div>
 <div class="paragraph">
-<p>Using <code><strong>nflog</strong></code> to dump packets, forces you to use a special interface syntax
+<p>Using <code><strong>nflog</strong></code> to dump packets forces you to use a special interface syntax
 of the form <code><strong>nflog:</strong>&lt;groupnumber&gt;</code> with <code><strong>tcpdump</strong></code> and <code><strong>wireshark</strong></code>.</p>
 </div>
 <div class="literalblock">
@@ -988,12 +988,12 @@ of the form <code><strong>nflog:</strong>&lt;groupnumber&gt;</code> with <code><
 <p>Because <code><strong>nflog</strong></code> rules are normal <code><strong>iptables</strong></code> rules, the rules need a proper
 match and target part so you get exactly the traffic you want. You also must put
 the rule into the correct place for it to get the packets you&#8217;re interested in.
-The <code><strong>policy</strong></code> match module of @iptables@ enables you to match packets with a
+The <code><strong>policy</strong></code> match module of <code><strong>iptables</strong></code> enables you to match packets with a
 matching IPsec policy.</p>
 </div>
-<div class="paragraph">
-<p>Following are the parameters for the <code><strong>nflog</strong></code> target in <code><strong>iptables</strong></code></p>
-</div>
+<details>
+<summary class="title">Parameters for the <code><strong>nflog</strong></code> target in <code><strong>iptables</strong></code></summary>
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre>NFLOG
@@ -1029,9 +1029,11 @@ matching IPsec policy.</p>
 <div class="paragraph">
 <p><em>Source: man page of <strong>iptables-extensions</strong> for <strong>iptables</strong> version 1.4.21.</em></p>
 </div>
-<div class="paragraph">
-<p>And the man page of the <code><strong>policy</strong></code> match module for <code><strong>iptables</strong></code>.</p>
 </div>
+</details>
+<details>
+<summary class="title">Parameters for the <code><strong>policy</strong></code> match module for <code><strong>iptables</strong></code></summary>
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre>policy
@@ -1083,6 +1085,8 @@ matching IPsec policy.</p>
 <div class="paragraph">
 <p><em>Source: manpage of <strong>iptables-extensions</strong> for <strong>iptables</strong> version 1.4.21.</em></p>
 </div>
+</div>
+</details>
 </div>
 </div>
 <div class="sect1">
@@ -1153,7 +1157,7 @@ iptables -t mangle -I POSTROUTING -m policy --pol ipsec --dir out -j NFLOG --nfl
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively use Wireshark. The <code><strong>nflog</strong></code> group appears in the interface list.</p>
+<p>Alternatively, use Wireshark. The <code><strong>nflog</strong></code> group appears in the interface list.</p>
 </div>
 </div>
 </div>
@@ -1162,7 +1166,7 @@ iptables -t mangle -I POSTROUTING -m policy --pol ipsec --dir out -j NFLOG --nfl
 <h2 id="_special_case_libipsec"><a class="anchor" href="#_special_case_libipsec"></a>Special Case: libipsec</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you&#8217;re using <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>libipsec</strong></code></a> then simply make
+<p>If you&#8217;re using <a href="../plugins/kernel-libipsec.html" class="xref page"><code><strong>libipsec</strong></code></a>, then simply make
 <code><strong>tcpdump</strong></code> listen on the <code><strong>tun</strong></code> interface to get decapsulated traffic.
 If you want IKE and the IPsec traffic, just listen on the interface that is used
 to communicate with the peers.</p>
@@ -1173,18 +1177,15 @@ to communicate with the peers.</p>
 <h2 id="_decrypting_ikeesp_traffic_in_wireshark"><a class="anchor" href="#_decrypting_ikeesp_traffic_in_wireshark"></a>Decrypting IKE/ESP Traffic in Wireshark</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is possible to configure encryption and authenticaton keys in Wireshark in
-order to decrypt and verify IKE and ESP traffic. However, it depends on the
-Wireshark version how well this works. For instance, to decrypt ISAKMP (IKEv1)
-traffic only 3DES was supported until 1.12.0, which added support for AES.
-Similarly, versions before 1.10.9 only supported ISAKMP with PSK authentication.</p>
+<p>It is possible to configure encryption and authentication keys in Wireshark in
+order to decrypt and verify IKE and ESP traffic.</p>
 </div>
 <div class="paragraph">
 <p>The IKE encryption and authentication keys can be extracted from the log if the
 <a href="../config/logging.html" class="xref page">log level</a> is increased to <code><strong>4</strong></code> for the <code><strong>ike</strong></code> subsystem.
-When using IKEv1 look for <code><strong>SKEYID</strong></code> or <code><strong>Ka</strong></code> to get the final encryption key
-whereas with IKEv2 look for <code><strong>Sk</strong></code>. The ESP keys are logged on level <code><strong>4</strong></code> in the
-<code><strong>chd</strong></code> subsystem but can also be extracted via <code><strong>ip xfrm state</strong></code>.</p>
+When using IKEv1, look for <code><strong>SKEYID</strong></code> or <code><strong>Ka</strong></code> to get the final encryption key,
+whereas with IKEv2, look for <code><strong>Sk</strong></code>. The ESP keys are logged on level <code><strong>4</strong></code> in the
+<code><strong>chd</strong></code> subsystem, but can also be extracted via <code><strong>ip xfrm state</strong></code>.</p>
 </div>
 <div class="paragraph">
 <p>Starting with strongSwan version 5.6.2, the <a href="../plugins/save-keys.html" class="xref page"><code><strong>save-keys</strong></code></a>
@@ -1193,7 +1194,7 @@ corresponding default file names in Wireshark format. This key files can then be
 loaded by Wireshark to decrypt the captured IKE and ESP packets.</p>
 </div>
 <div class="paragraph">
-<p>To debug IKEv2 it is also possible to use <code><strong>NULL</strong></code> encryption via the <code><strong>openssl</strong></code>
+<p>To debug IKEv2, it is also possible to use <code><strong>NULL</strong></code> encryption via the <code><strong>openssl</strong></code>
 plugin.</p>
 </div>
 </div>

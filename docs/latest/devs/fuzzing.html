@@ -868,14 +868,27 @@
 <dl>
 <dt class="hdlist1"><strong>fuzz-certs</strong></dt>
 <dd>
-<p>Fuzzes the X.509 certificate parsing framework as provided by the default
-plugins (<code><strong>x509</strong></code>, <code><strong>pem</strong></code>, <code><strong>pkcs1</strong></code>, <code><strong>gmp</strong></code>, etc.) and the ASN.1 parser
-of the <code><strong>libstrongswan</strong></code> library.</p>
+<p>Fuzzes the X.509 certificate parsing framework as provided by the loaded
+plugins and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
 </dd>
 <dt class="hdlist1"><strong>fuzz-crls</strong></dt>
 <dd>
-<p>Fuzzes the CRL parsing framework provided by the default plugins (<code><strong>x509</strong></code>,
-<code><strong>pem</strong></code>, etc.) and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
+<p>Fuzzes the CRL parsing framework provided by the loaded plugins and the ASN.1
+parser of the <code><strong>libstrongswan</strong></code> library.</p>
+</dd>
+<dt class="hdlist1"><strong>fuzz-ids</strong></dt>
+<dd>
+<p>Fuzzes the identity parser of the <code><strong>libstrongswan</strong></code> library.</p>
+</dd>
+<dt class="hdlist1"><strong>fuzz-ocsp-req</strong></dt>
+<dd>
+<p>Fuzzes the OCSP request parsing framework provided by the loaded plugins
+and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
+</dd>
+<dt class="hdlist1"><strong>fuzz-ocsp-rsp</strong></dt>
+<dd>
+<p>Fuzzes the OCSP response parsing framework provided by the loaded plugins
+and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
 </dd>
 <dt class="hdlist1"><strong>fuzz-pa-tnc</strong></dt>
 <dd>

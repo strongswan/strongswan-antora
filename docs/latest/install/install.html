@@ -918,7 +918,7 @@ installed (or at least disable one of the systemd units they install, which are
 </td>
 <td class="content">
 Make sure no strongSwan-related distribution packages are installed
-         before building and installing strongSwan from sources
+         before building and installing strongSwan from sources.
 </td>
 </tr>
 </table>
@@ -938,7 +938,7 @@ growing list of <a href="autoconf.html" class="xref page"><code><strong>./config
 </div>
 <div class="paragraph">
 <p>Refer to the <a href="../plugins/plugins.html" class="xref page">list of plugins</a> to learn more about the
-plugins enabled with these options.</p>
+plugins enabled with some of these options.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -948,7 +948,7 @@ plugins enabled with these options.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Many of the configuration options are enabled by default. Thus please
+<p>Many of the configuration options are enabled by default. So please
 use <strong>./configure --help</strong> to check which options are actually available for
 your strongSwan release.</p>
 </div>
@@ -1006,6 +1006,20 @@ cd strongswan-x.x.x</pre>
 <pre>./configure --prefix=/usr --sysconfdir=/etc --&lt;your-options&gt;</pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The default prefix is <code><strong>/usr/local</strong></code>, so <a href="../config/config.html" class="xref page">configuration files</a>
+are read from <code><strong>/usr/local/etc</strong></code>. Therefore, it&#8217;s recommended to at least use
+<code><strong>--sysconfdir=/etc</strong></code> so the files are in a more common location.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Build the sources and install the binaries as root:</p>
@@ -1057,7 +1071,7 @@ be controlled with the options described <a href="../plugins/pluginLoad.html" cl
 <div class="sect3">
 <h4 id="_static_builds"><a class="anchor" href="#_static_builds"></a>Static Builds</h4>
 <div class="paragraph">
-<p>Since version 5.5.3 a static build that only relies on third-party libraries, i.e.
+<p>Since version 5.5.3, a static build that only relies on third-party libraries, i.e.
 in which our own libraries and plugins are all statically linked into the
 executables can be achieved by configuring with</p>
 </div>

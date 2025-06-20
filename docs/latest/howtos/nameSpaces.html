@@ -864,23 +864,9 @@
 shared by all processes running on an operating system. With Linux network namespaces
 (<code><strong>netns</strong></code>) it&#8217;s possible to have multiple separate instances of the network stack.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-While basic support for network namespaces was added to the Linux kernel a
-      long time ago some features (e.g. CLUSTERIP support) might require a recent
-      kernel.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>The easiest way to work with network namespaces is to use the <code><strong>ip</strong></code> command of the
-<code><strong>iproute2</strong></code> package. These commands will have to be executed as root (i.e. with
+<p>The easiest way to work with network namespaces is to use the <code><strong>ip netns</strong></code> command
+of the <code><strong>iproute2</strong></code> package. These commands will have to be executed as root (i.e. with
 <code><strong>sudo</strong></code> on most distros).</p>
 </div>
 </div>
@@ -907,10 +893,10 @@ Interfaces can be assigned to a <code><strong>netns</strong></code> with the <co
 </div>
 <div class="paragraph">
 <p>If you run <code><strong>ip link list</strong></code> afterwards, such an interface won&#8217;t be seen as it is
-only available in the configured <code><strong>netns</strong></code>. So to actually list the interface in
-a specific <code><strong>netns</strong></code> it is required to be able to run commands in a specific
-<code><strong>netns</strong></code>. This can be done with the <code><strong>ip netns exec</strong></code> command. Thus to get a list
-of interfaces defined in a specific <code><strong>netns</strong></code> use:</p>
+only available in the configured <code><strong>netns</strong></code>. To list the interfaces in a specific
+<code><strong>netns</strong></code>, it&#8217;s necessary to be able to run commands in a specific <code><strong>netns</strong></code>.
+This can be done with the <code><strong>ip netns exec</strong></code> command. So to get a list of
+interfaces defined in a specific <code><strong>netns</strong></code> use:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -918,7 +904,7 @@ of interfaces defined in a specific <code><strong>netns</strong></code> use:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If only one physical interface is available or if you don&#8217;t want to assign physical
+<p>If only one physical interface is available, or if you don&#8217;t want to assign physical
 interfaces to the <code><strong>netns</strong></code> for other reasons, it&#8217;s possible to create virtual
 Ethernet interface pairs (<code><strong>veth</strong></code> provided via <code>CONFIG_VETH</code>). These are like a
 bi-directional pipe (i.e. what&#8217;s written to one end comes out the other end and
@@ -926,7 +912,7 @@ vice-versa) of which one end is placed inside the <code><strong>netns</strong></
 outside in the <strong>default</strong> or <strong>global</strong> namespace.</p>
 </div>
 <div class="paragraph">
-<p>To create such a pair use:</p>
+<p>To create such a pair, use:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -934,7 +920,7 @@ outside in the <strong>default</strong> or <strong>global</strong> namespace.</p
 </div>
 </div>
 <div class="paragraph">
-<p>This creates two connected Enthernet interfaces with the given names. One is
+<p>This creates two connected Ethernet interfaces with the given names. One is
 assigned to a netns (via <code><strong>ip link</strong></code>) the other is not (it doesn&#8217;t matter which
 one and it&#8217;s also possible to assign both interfaces to two different <code><strong>netns</strong></code>
 to connect them).  How the outer interface is used depends on the use case: it may
@@ -942,7 +928,7 @@ be put inside a bridge or used in routing rules to route traffic to and from a
 <code><strong>netns</strong></code>.</p>
 </div>
 <div class="paragraph">
-<p>Since interfaces assigned to a <code><strong>netns</strong></code> are disabled they have to be enabled first
+<p>Since interfaces assigned to a <code><strong>netns</strong></code> are disabled, they have to be enabled first
 and they will probably also require an IP address, which can be done with:</p>
 </div>
 <div class="listingblock">
@@ -957,7 +943,7 @@ and they will probably also require an IP address, which can be done with:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># ip netns exec &lt;command&gt;</pre>
+<pre># ip netns exec &lt;netns name&gt; &lt;command&gt;</pre>
 </div>
 </div>
 </div>
@@ -967,31 +953,32 @@ and they will probably also require an IP address, which can be done with:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Running a single instance of strongSwan inside a <code><strong>netns</strong></code> is straight-forward.
-Simply run <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl</strong></code></a> commands via</p>
+Simply start the daemon in the netns and run <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl</strong></code></a>
+commands via</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># ip netns exec ipsec &lt;command&gt;</pre>
+<pre># ip netns exec &lt;netns name&gt; swanctl &lt;command&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>But more interesting is running multiple instances of strongSwan in separate
-namespaces. Because all <code><strong>netns</strong></code> share the same file system this is a bit tricky.</p>
+<p>More interesting might be running multiple instances of strongSwan in separate
+namespaces. Because all <code><strong>netns</strong></code> share the same file system, this is a bit tricky.</p>
 </div>
 <div class="paragraph">
 <p>Luckily, the <code><strong>ip netns exec</strong></code> command provides a helpful feature: Every file found
 in <code><strong>/etc/netns/&lt;name&gt;/</strong></code> for a given <code><strong>netns</strong></code> is bind-mounted over its corresponding
 counterpart in <code><strong>/etc/</strong></code> (so it has to exist there).  This can be used to provide
-different config files for each instance but may also be used to redirect the so
-called <code><strong>piddir</strong></code> where the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon creates its
-PID file and UNIX sockets. The default is to use <code><strong>/var/run</strong></code> which would conflict
+different config files for each instance but may also be used to redirect the
+so-called <code><strong>piddir</strong></code>, where the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon creates
+its PID file and UNIX sockets. The default is to use <code><strong>/var/run</strong></code> which would conflict
 if multiple instances would use it.</p>
 </div>
 <div class="paragraph">
 <p>In order to fix this, make sure strongSwan is
 <a href="../install/autoconf.html" class="xref page"><code><strong>configured</strong></code></a> with <code><strong>--sysconfdir=/etc</strong></code> and e.g.
-<code><strong>--with-piddir=/etc/ipsec.d/run</strong></code>. Then after
-<a href="../install/install.html#_building_strongswan" class="xref page">building and installing strongSwan</a>
+<code><strong>--with-piddir=/etc/ipsec.d/run</strong></code>. Then, after
+<a href="../install/install.html#_building_strongswan" class="xref page">building and installing strongSwan</a>,
 the <code><strong>piddirs</strong></code> can be created as follows:</p>
 </div>
 <div class="listingblock">

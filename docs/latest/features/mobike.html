@@ -868,13 +868,17 @@ current one and, if necessary, the path is changed using a MOBIKE update
 (<code>UPDATE_SA_ADDRESS</code>).</p>
 </div>
 <div class="paragraph">
-<p>strongSwan is running the MOBIKE protocol per default. MOBIKE can be disabled on
-a per-connection basis, though, by adding the parameter <code><strong>mobike = no</strong></code> to the
-corresponding connection definition in
-<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>. Please be aware that with MOBIKE
-enabled, strongSwan will switch to UDP port 4500 starting with the IKE_AUTH request,
-which includes a <code>MOBIKE_SUPPORTED</code> notification, even if no NAT has been detected.
-Thus make sure to open the NAT-traversal port UDP/4500 on any firewalls en route.</p>
+<p>strongSwan is running the MOBIKE protocol by default. However, it can be disabled on
+a per-connection basis by adding the parameter <code><strong>mobike = no</strong></code> to the corresponding
+connection definition in <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>Please note that when MOBIKE is enabled as initiator, strongSwan will switch to
+UDP port 4500 starting with the IKE_INTERMEDIATE or IKE_AUTH request, even if no
+NAT has been detected. Because <code>MOBIKE_SUPPORTED</code> is only exchanged <strong>during</strong>
+IKE_AUTH, we have to switch, according to <a href="https://datatracker.ietf.org/doc/html/rfc4555#section-3.3">RFC 4555, section 3.3</a>,
+even if we don&#8217;t know yet whether the peer supports the extension or not.
+Thus make sure to open the NAT-traversal port UDP/4500 on any firewalls necessary.</p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="vip.html">Virtual IP Addresses</a></span>

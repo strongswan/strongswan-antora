@@ -852,7 +852,7 @@
 <div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/master/docs/modules/ROOT/pages/plugins/pluginLoad.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
@@ -890,18 +890,18 @@ automatically load the plugins enabled with
 the plugins to use during runtime.</p>
 </div>
 <div class="paragraph">
-<p>Using this compile-time generated plugin has some advantages, including:</p>
+<p>Using this compile time generated plugin list has some advantages, including:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Proper load order of all plugin (since version 5.1.0 this it not so important
-anymore as the order only indicates the preference if two plugins provide the
-same feature)</p>
+<p>Proper load order of all plugin (since version 5.1.0, this has not been as
+important because the order only indicates the preference when two plugins
+provide the same feature).</p>
 </li>
 <li>
-<p>Gets updated automatically with new strongSwan releases: This is very important,
-as we might move core functionality you rely on to plugins.</p>
+<p>Gets updated automatically with new strongSwan releases: This is important
+as we might move core functionality you rely on to new plugins.</p>
 </li>
 </ul>
 </div>
@@ -912,73 +912,79 @@ as we might move core functionality you rely on to plugins.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The plugins to load can be specified in
-<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. There are two options to
-do so:</p>
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. There are two means to
+do so.</p>
 </div>
 <div class="sect2">
-<h3 id="_modular_configuration"><a class="anchor" href="#_modular_configuration"></a>Modular Configuration</h3>
+<h3 id="_plugin_specific_configuration"><a class="anchor" href="#_plugin_specific_configuration"></a>Plugin-Specific Configuration</h3>
 <div class="paragraph">
-<p>Since version 5.1.2 the <code><strong>charon.load_modular</strong></code> option enables the dynamic
-construction of the list of plugins to load.</p>
-</div>
-<div class="paragraph">
-<p>If the option is enabled, the plugin loader uses the individual <code><strong>load</strong></code> setting
-for each plugin</p>
+<p>The plugin loader refers to plugin-specific <code><strong>load</strong></code> settings to decide whether
+a plugin is loaded at runtime:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>charon.plugins.&lt;plugin&gt;.load</pre>
+<pre>charon.plugins.&lt;plugin&gt;.load = yes | no | &lt;priority&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>to decide whether to load it or not. Besides simply enabling/disabling plugins
-the <code><strong>load</strong></code> setting accepts,a numeric priority value, which the plugin loader
-uses to decide in which order,plugins are loaded.  Plugins with the same
-priority are loaded according to the default load order. Unknown plugins with
-the same priority are loaded first and in alphabetical order. The default
-priority is <code><strong>1</strong></code> and can also be negative to simplify move a plugin to the end
-of the list.</p>
+<p>Besides simply enabling/disabling plugins, the setting accepts a <strong>numeric priority
+value</strong>, which the plugin loader uses to decide in which order plugins are loaded.
+Plugins with the <strong>same priority</strong> are loaded according to the compile time
+load order. Priorities can also be <strong>negative</strong> to simplify moving a plugin to the
+end of the list. The <strong>default priority</strong> is <code><strong>1</strong></code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code><strong>load_modular</strong></code> option can also be enabled for other components, but only
-for <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> the default configuration snippets are
-installed in <a href="../config/strongswanDir.html" class="xref page"><code><strong>strongswan.d/charon</strong></code></a> and included
-in the default <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> file.
-Additionally the default snippets are also installed in the
-<code><strong>${prefix}/share/strongswan/templates</strong></code> directory for reference.</p>
-</div>
-<div class="paragraph">
-<p>Since version 5.5.0 <code><strong>charon.plugins.&lt;plugin&gt;.load</strong></code> may also be used to modify
-the default plugin list when <code><strong>charon.load_modular</strong></code> is disabled:</p>
+<p>By default, the setting <strong>modifies the compile time plugin list</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Setting <code><strong>load = no</strong></code> will disable that plugin and configuring a numeric
-priority allows reordering of the plugin loading sequence.</p>
+<p>Plugins <strong>on that list</strong> don&#8217;t require an explicit <code><strong>load</strong></code> setting</p>
 </li>
 <li>
-<p>However plugins with no <code><strong>load</strong></code> statement are still loaded when they are on
-the default compile-time plugin load list.</p>
-</li>
-<li>
-<p>Plugins that are <code><strong>not</strong></code> on the  default compile-time plugin load list will
-not be loaded even with a <code><strong>load = yes</strong></code> setting.</p>
+<p>Plugins <strong>absent from that list</strong> are <strong>not loaded</strong>, even if <code><strong>load = yes</strong></code>
+is explicitly set</p>
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="_modular_configuration"><a class="anchor" href="#_modular_configuration"></a>Modular Configuration</h4>
 <div class="paragraph">
-<p>Thus only with <code><strong>charon.load_modular = yes</strong></code>, the plugin list is constructed
-completely dynamically based on the explicitly enabled plugins.</p>
+<p>The above limitations may be avoided with the <code><strong>charon.load_modular</strong></code> setting.</p>
+</div>
+<div class="paragraph">
+<p>With <code><strong>load_modular</strong></code> <strong>enabled</strong>, the list of plugins is constructed dynamically,
+<strong>solely based on the plugin-specific <code>load</code> settings</strong>. That list then <strong>completely
+replaces the compile time list</strong>.</p>
+</div>
+<div class="paragraph">
+<p>This means that <strong>only plugins with explicit</strong> <code><strong>load</strong></code> setting are considered,
+and <strong>plugins not on the default list</strong> may be loaded.  Note that the compile time
+list is still consulted when ordering plugins with equal priority. Unknown
+plugins with the same priority are loaded in alphabetical order before known plugins.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>load_modular</strong></code> setting can also be enabled for other components, but only
+for <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> are the default configuration snippets
+installed in <a href="../config/strongswanDir.html" class="xref page"><code><strong>strongswan.d/charon</strong></code></a> and included
+in the default <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> file.
+Additionally, the default snippets are also installed in the
+<code><strong>${prefix}/share/strongswan/templates</strong></code> directory for reference.</p>
+</div>
+<div class="paragraph">
+<p>This feature is also <strong>useful for distributions</strong> if plugins are shipped in separate,
+optional packages, to avoid trying to load plugins that are not installed but
+still on the compile time list.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_static_load_list"><a class="anchor" href="#_static_load_list"></a>Static Load List</h3>
 <div class="paragraph">
 <p>Most components can read the plugin list from
-<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. For example the IKE
-<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon reads the <code><strong>charon.load</strong></code> key to load
-plugins but only if the <code><strong>charon.load_modular</strong></code> option is disabled (see above).</p>
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>. For example, the IKE daemon
+<a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> reads the <code><strong>charon.load</strong></code> key to load
+plugins, but only if the <code><strong>charon.load_modular</strong></code> option is disabled (see above).</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1007,11 +1013,11 @@ strongSwan plugins during compile time but use only a small subset of them
 while running an individual test scenario.</p>
 </div>
 <div class="sect3">
-<h4 id="_strict_plugins"><a class="anchor" href="#_strict_plugins"></a>Strict Plugins</h4>
+<h4 id="_critical_plugins"><a class="anchor" href="#_critical_plugins"></a>Critical Plugins</h4>
 <div class="paragraph">
 <p>In the static load directive, you can mark specific plugins as critical. If
 loading a critical plugin fails, the daemon does not start. To mark a plugin as
-critical, append a `<strong>!</strong> character (exclamation mark) to its name.</p>
+critical, append a <code><strong>!</strong></code> character (exclamation mark) to its name.</p>
 </div>
 </div>
 </div>
@@ -1029,7 +1035,7 @@ critical, append a `<strong>!</strong> character (exclamation mark) to its name.
 </div>
 </div>
 <div class="paragraph">
-<p>callback (see <a href="https://github.com/strongswan/strongswan/blob/master/src/libstrongswan/plugins/plugin.h#L41"><code>src/libstrongswan/plugins/plugin.h#L41</code></a>) may also be added statically
+<p>callback (see <a href="https://github.com/strongswan/strongswan/blob/master/src/libstrongswan/plugins/plugin.h#L51"><code>src/libstrongswan/plugins/plugin.h#L51</code></a>) may also be added statically
 from a (modified) library or executable by using the</p>
 </div>
 <div class="literalblock">
@@ -1038,7 +1044,7 @@ from a (modified) library or executable by using the</p>
 </div>
 </div>
 <div class="paragraph">
-<p>method (see <a href="https://github.com/strongswan/strongswan/blob/master/src/libstrongswan/plugins/plugin_loader.h#L38"><code>src/libstrongswan/plugins/plugin_loader.h#L38</code></a>).</p>
+<p>method (see <a href="https://github.com/strongswan/strongswan/blob/master/src/libstrongswan/plugins/plugin_loader.h#L61"><code>src/libstrongswan/plugins/plugin_loader.h#L61</code></a>).</p>
 </div>
 </div>
 </div>

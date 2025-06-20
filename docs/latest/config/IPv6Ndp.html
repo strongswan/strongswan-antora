@@ -861,19 +861,19 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When using IPv6 a potential pitfall is that traffic selectors of established tunnels
-might also cover packets used by the Neighbor Discovery Protocol (NDP), in particular
-if all traffic is tunneled (traffic selector is <code><strong>::/0</strong></code>). Thus looking up link layer
-addresses of peers and routers might fail or locally assigned IP addresses might
+<p>When using IPv6, a potential pitfall is that traffic selectors of established tunnels
+might also cover packets used by the Neighbor Discovery Protocol (NDP). In particular,
+if all traffic is tunneled (traffic selector is <code><strong>::/0</strong></code>). So looking up link layer
+addresses of peers and routers might fail, or locally assigned IP addresses might
 disappear.</p>
 </div>
 <div class="paragraph">
-<p>To allow NDP traffic when tunnels are established bypass policies have to be
+<p>To allow NDP traffic when tunnels are established, bypass policies have to be
 installed.</p>
 </div>
 <div class="paragraph">
 <p>Either for all ICMPv6 traffic or only for certain types (depending on the setup and
-traffic selectors not all will have to be bypassed, refer to <a href="https://datatracker.ietf.org/doc/html/rfc4861">RFC 4861</a>
+traffic selectors, not all will have to be bypassed, refer to <a href="https://datatracker.ietf.org/doc/html/rfc4861">RFC 4861</a>
 for details on the message types):</p>
 </div>
 <div class="dlist">
@@ -881,20 +881,20 @@ for details on the message types):</p>
 <dt class="hdlist1">Router Solicitation (RS): 133 </dt>
 <dd>
 <p>Used to locate routers. Source address is a local address or <code><strong>::</strong></code> (if none is
-known yet), the destination address is typically the all-routers multicast address.</p>
+known yet), the destination address is typically the all-routers multicast address (<code><strong>ff02::2</strong></code>).</p>
 </dd>
 <dt class="hdlist1">Router Advertisement (RA): 134 </dt>
 <dd>
 <p>Sent by routers periodically or in response to RS messages (from a link-local
 address to either the address from which RS messages were received or the
-all-nodes multicast address). If these (or RS messages, if used) are blocked,
+all-nodes multicast address, <code><strong>ff02::1</strong></code>). If these (or RS messages, if used) are blocked,
 locally assigned addresses might disappear after establishing the tunnel.</p>
 </dd>
 <dt class="hdlist1">Neighbor Solicitation (NS): 135 </dt>
 <dd>
-<p>Similar to ARP for IPv4 these are used to determine the link layer address of
+<p>Similar to ARP for IPv4, these are used to determine the link layer address of
 a host. Typically sent from a locally assigned address to the solicited-node
-multicast address corresponding to the target address.</p>
+multicast address corresponding to the target address (<code><strong>ff02::1:ff00:0/104</strong></code> prefix).</p>
 </dd>
 <dt class="hdlist1">Neighbor Advertisement (NA): 136 </dt>
 <dd>
@@ -969,7 +969,7 @@ the redirect).</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Instead of <strong>ipv6-icmp</strong> the numeric protocol identifier <strong>58</strong> might have to
+Instead of <strong>ipv6-icmp</strong>, the numeric protocol identifier <strong>58</strong> might have to
       be used if the protocol name can&#8217;t be resolved.
 </td>
 </tr>

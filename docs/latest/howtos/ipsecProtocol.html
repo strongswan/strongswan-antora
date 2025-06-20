@@ -877,8 +877,8 @@ protection.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We do not treat the authentication-only <strong>Authentication Header</strong> (AH) protocol
-which is rarely used, especially because it is not suited for NAT traversal.</p>
+<p>We do not cover the authentication-only <strong>Authentication Header</strong> (AH) protocol
+here, which is rarely used, especially because it is not suited for NAT traversal.</p>
 </div>
 </div>
 </div>
@@ -888,7 +888,7 @@ which is rarely used, especially because it is not suited for NAT traversal.</p>
 <div class="paragraph">
 <p>The <strong>Encapsulation Security Payload (ESP)</strong> is defined in <a href="https://datatracker.ietf.org/doc/html/rfc4303">RFC 4303</a>,
 has IP protocol number <code><strong>50</strong></code> and doesn&#8217;t have any ports. ESP allows the encryption
-of <strong>IP packets</strong> on the network layer carrying e.g. Layer 4 TCP traffic</p>
+of <strong>IP packets</strong> on the network layer carrying e.g. Layer 4 TCP traffic.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -898,7 +898,7 @@ of <strong>IP packets</strong> on the network layer carrying e.g. Layer 4 TCP tr
 <div class="sect2">
 <h3 id="_ipsec_transport_mode"><a class="anchor" href="#_ipsec_transport_mode"></a>IPsec Transport Mode</h3>
 <div class="paragraph">
-<p>In <strong>IPsec Transport</strong> mode the original IP header is retained and just the Layer 4
+<p>In <strong>IPsec Transport</strong> mode, the original IP header is retained and just the Layer 4
 payload carried by the IP packet is encrypted. The ESP header is inserted between
 the original IP header and the encrypted payload.</p>
 </div>
@@ -909,14 +909,14 @@ the original IP header and the encrypted payload.</p>
 </div>
 <div class="paragraph">
 <p>Originally intended for protecting direct IPv6 host-to-host connections, transport
-mode is currently mainly used to secure the <strong>Layer 2 Tunneling Protocol</strong> (L2TP),
-see <a href="https://datatracker.ietf.org/doc/html/rfc3193">RFC 3193</a>.</p>
+mode is also often used to protect insecure tunneling protocols like the <strong>Generic Routing
+Encapsulation</strong> (GRE) or the <strong>Layer 2 Tunneling Protocol</strong> (L2TP, <a href="https://datatracker.ietf.org/doc/html/rfc3193">RFC 3193</a>).</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_ipsec_tunnel_mode"><a class="anchor" href="#_ipsec_tunnel_mode"></a>IPsec Tunnel Mode</h3>
 <div class="paragraph">
-<p>In <strong>IPsec Tunnel</strong> mode the complete IP packet is encapsulated by ESP and an outer
+<p>In <strong>IPsec Tunnel</strong> mode, the complete IP packet is encapsulated by ESP and an outer
 IP header is prepended:</p>
 </div>
 <div class="imageblock">
@@ -938,11 +938,10 @@ a cryptographic checksum guarantees <strong>data integrity</strong>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The 32 bit <strong>Security Parameters Index</strong> (SPI) is used by the receiving IPsec peer
-as an index into its kernel-based database to look up the session keys needed
-to decrypt and authenticate the ESP packet. The SPI is also needed to determine the
-IPsec security policy that has to be enforced on the inbound plaintext IP packets
-after decryption.</p>
+<p>The 32-bit <strong>Security Parameters Index</strong> (SPI) is used by the receiving IPsec peer
+as an index into its kernel-based <strong>Security Association Database</strong> (SAD) to look up
+the anti-replay protection state and the session keys needed to decrypt and
+authenticate the ESP packet.</p>
 </div>
 </div>
 </div>
@@ -952,13 +951,14 @@ after decryption.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Version 2 of the Internet Key Exchange (IKEv2) protocol defined in <a href="https://datatracker.ietf.org/doc/html/rfc7296">RFC 7296</a>
-manages the setup of IPsec connections. The IKEv2 auxiliary protocol uses UDP
-datagrams with both source and destination ports set to the well-known UDP port <code><strong>500</strong></code>.</p>
+manages the setup of IPsec connections. The IKEv2 protocol uses UDP datagrams with
+both source and destination ports set to the well-known UDP port <code><strong>500</strong></code>(with
+<a href="#_nat_traversal">NAT-Traversal</a>, port <strong>4500</strong> is also used).</p>
 </div>
 <div class="sect2">
 <h3 id="_ike_sa_init_requestresponse"><a class="anchor" href="#_ike_sa_init_requestresponse"></a>IKE_SA_INIT Request/Response</h3>
 <div class="paragraph">
-<p>The <strong>Initiator</strong> starts the negotiation by sending an <code>IKE_SA_INIT</code> request which
+<p>The <strong>Initiator</strong> starts the negotiation by sending an <code>IKE_SA_INIT</code> request, which
 is answered by the <strong>Responder</strong> with an <code>IKE_SA_INIT</code> response.</p>
 </div>
 <div class="imageblock">
@@ -968,9 +968,9 @@ is answered by the <strong>Responder</strong> with an <code>IKE_SA_INIT</code> r
 </div>
 <div class="paragraph">
 <p>If the <strong>Responder</strong> comes to the conclusion that it is under a <strong>Denial of Service</strong>
-(DoS) attack, it can request a <strong>Cookie</strong> from the <strong>Initiator</strong>  before sending the
-computationally expensive <strong>Key Exchange</strong> (KE) payload in the <code>IKE_SA_INIT</code> response.
-This effectively prevents IP spoofing.</p>
+(DoS) attack, it can request a <strong>Cookie</strong> from the <strong>Initiator</strong>  before allocating
+any state or doing any computationally expensive work. This effectively prevents
+IP spoofing.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -978,7 +978,7 @@ This effectively prevents IP spoofing.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Based on the exchange of the <strong>Key Exchange</strong> (KE) and <strong>Nonces</strong> (N) payloads in
+<p>Based on the exchange of the <strong>Key Exchange</strong> (KE) and <strong>Nonce</strong> (N) payloads in
 <code>IKE_SA_INIT</code>, both endpoints can derive a <strong>Shared Secret</strong> which allows them to
 encrypt all following IKE messages based on the <code>IKE_SA</code> established via the <code>SA1i</code>
 and <code>SA1r</code> <strong>Security Association</strong> payloads.</p>
@@ -989,14 +989,14 @@ and <code>SA1r</code> <strong>Security Association</strong> payloads.</p>
 <div class="sect3">
 <h4 id="_certificate_based_authentication"><a class="anchor" href="#_certificate_based_authentication"></a>Certificate-based Authentication</h4>
 <div class="paragraph">
-<p>In the <code>ÌKE_AUTH</code> request the <strong>Initiator</strong> authenticates itself by sending its
+<p>In the <code>ÌKE_AUTH</code> request, the <strong>Initiator</strong> authenticates itself by sending its
 identity <code>IDi</code> and a <strong>Digital Signature</strong> in the <code>AUTHi</code> payload accompanied by an
 optional <strong>Certificate</strong> payload <code>CERTi</code>. The <strong>Responder</strong> verifies the validity and
-trustworthiness of the received end entity certificate by going up the X.509 trust
+trustworthiness of the received end-entity certificate by going up the X.509 trust
 chain until a locally stored Root CA certificate is reached.</p>
 </div>
 <div class="paragraph">
-<p>Additionally the <strong>Initiator</strong> sends a <strong>Security Association</strong> proposal <code>SA2i</code> and a
+<p>Additionally, the <strong>Initiator</strong> sends a <strong>Security Association</strong> proposal <code>SA2i</code> and a
 set of <strong>Traffic Selectors</strong> <code>TSi</code> and <code>TSr</code> to be used for the first <code>CHILD_SA</code>.</p>
 </div>
 <div class="imageblock">
@@ -1016,7 +1016,7 @@ of the IPsec payload packets can be installed and activated.</p>
 <div class="sect3">
 <h4 id="_psk_based_authentication"><a class="anchor" href="#_psk_based_authentication"></a>PSK-based Authentication</h4>
 <div class="paragraph">
-<p>If a <strong>Pre-Shared Key</strong> (PSK) is used for authentication then the <code>AUTHi</code> and <code>AUTHr</code>
+<p>If a <strong>Pre-Shared Key</strong> (PSK) is used for authentication, then the <code>AUTHi</code> and <code>AUTHr</code>
 payloads contain a hash over the exchanged IKEv2 messages and the pre-shared secret.</p>
 </div>
 <div class="imageblock">
@@ -1027,7 +1027,7 @@ payloads contain a hash over the exchanged IKEv2 messages and the pre-shared sec
 <div class="paragraph">
 <p>Since the <strong>Initiator</strong> is the first to send its password hash in the <code>AUTHi</code> payload,
 this poses a serious security risk when the PSK is weak and is intercepted by an
-active man-in-the-middle (MITM) who can then do an offline dictionary or brute force
+<strong>active</strong> man-in-the-middle (MITM) who can then do an offline dictionary or brute force
 attack on the <code>AUTHi</code> payload and potentially crack the password. Therefore we
 strongly discourage the use of PSK-based authentication if a sufficient password
 strength cannot be enforced.</p>
@@ -1050,7 +1050,7 @@ response.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <strong>Initiator</strong> can then use its PSK with EAP-MD5 or EAP-MSCHAPv2 to authenticate
+<p>The <strong>Initiator</strong> can then use its password with EAP-MD5 or EAP-MSCHAPv2 to authenticate
 itself to the trusted <strong>Responder</strong> over the encrypted IKEv2 channel.</p>
 </div>
 </div>
@@ -1067,10 +1067,10 @@ or to do the periodic rekeying of either the <code>IKE_SA</code> or the <code>CH
 </div>
 </div>
 <div class="paragraph">
-<p>Without the <code>N(REKEY_SA)</code> notification the <code>IKE_SA</code> is rekeyed, the fresh
+<p>Without the <code>N(REKEY_SA)</code> notification, the <code>IKE_SA</code> is rekeyed, the fresh
 <strong>Key Exchange</strong> (KE) payloads guaranteeing <strong>Perfect Forward Secrecy</strong> (PFS). With a
-<code>N(REKEY_SA)</code> notification included, a <code>CHILD_SA</code> is rekeyed, the <strong>Key Exchange</strong>
-(KE) payloads being optional.</p>
+<code>N(REKEY_SA)</code> notification included, a specific <code>CHILD_SA</code> is rekeyed, the
+<strong>Key Exchange</strong> (KE) payloads being optional.</p>
 </div>
 </div>
 </div>
@@ -1095,7 +1095,7 @@ figure below</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Unfortunately this
+<p>Unfortunately, this
 won&#8217;t work with multiple IPsec clients behind the same NAT router that all want
 to communicate with the same VPN gateway as shown in the network topology below</p>
 </div>
@@ -1106,7 +1106,7 @@ to communicate with the same VPN gateway as shown in the network topology below<
 </div>
 <div class="paragraph">
 <p>The solution proposed by <a href="https://datatracker.ietf.org/doc/html/rfc3948">RFC 3948</a> is to encapsulate ESP packets in
-UDP datagrams which then allows to apply <strong>Port Address Translation</strong> as shown in
+UDP datagrams, which then allows to apply <strong>Port Address Translation</strong> as shown in
 the figure above. The well-known <strong>NAT Traversal</strong> UDP port <code><strong>4500</strong></code> is shared with
 the IKE protocol when a <a href="https://datatracker.ietf.org/doc/html/rfc7296#section-2.23">NAT situation is detected</a> between
 the two IPsec endpoints. The detection is based on the <code>NAT_DETECTION_SOURCE_IP</code>
@@ -1119,13 +1119,13 @@ that contain source and destination IP address hashes, respectively.</p>
 <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>. If enabled, the
 <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon will send a manipulated
 <code>NAT_DETECTION_SOURCE_IP</code> notify payload so that it will look to the remote peer
-as if there were a NAT situation.</p>
+as if there was a NAT situation.</p>
 </div>
 <div class="sect2">
 <h3 id="_esp_in_udp_encapsulation"><a class="anchor" href="#_esp_in_udp_encapsulation"></a>ESP-in-UDP Encapsulation</h3>
 <div class="paragraph">
-<p>ESP-in-UDP encapsulation means that an eight octet UDP header is inserted between
-the IP Header and the ESP Header of the ESP packet. At the outset the UDP source
+<p>ESP-in-UDP encapsulation means that an eight-byte UDP header is inserted between
+the IP Header and the ESP Header of the ESP packet. At the outset, the UDP source
 and destination ports are both set to the well-known value <code><strong>4500</strong></code> but might get
 changed on the way by one or several NAT routers.</p>
 </div>
@@ -1135,16 +1135,16 @@ changed on the way by one or several NAT routers.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first field in the ESP header right after the UDP header is the 32 bit non-zero
+<p>The first field in the ESP header right after the UDP header is the 32-bit non-zero
 <strong>Security Parameters Index</strong> (SPI).</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_non_esp_marker"><a class="anchor" href="#_non_esp_marker"></a>Non-ESP Marker</h3>
 <div class="paragraph">
-<p>If the first 32 bits right after the UDP header are set to zero then instead of
-an encapsulated ESP payload packet, an IKE management packet is carried. Thus this
-four octet all-zero <strong>Non-ESP Marker</strong> is used to differentiate between ESP and IKE
+<p>If the first 32 bits right after the UDP header are set to zero, then an IKE
+management packet is carried instead of an encapsulated ESP payload packet. This
+four-byte all-zero <strong>Non-ESP Marker</strong> is used to differentiate between ESP and IKE
 traffic. ESP packets are processed in the kernel, whereas the IKE packets are
 forwarded to the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> userland IKE daemon.</p>
 </div>
@@ -1174,9 +1174,9 @@ packets containing a single <code><strong>0xff</strong></code> byte in order to 
 in the NAT router&#8217;s lookup table.</p>
 </div>
 <div class="paragraph">
-<p>Of course the NAT-T keepalives also reach the IPsec peer on the other side of the
-connection but the packets are silently dropped by the kernel. By default the
-keep-alives are sent ever <code><strong>20s</strong></code> but the interval can configured via the
+<p>Of course, the NAT-T keepalives also reach the IPsec peer on the other side of the
+connection but the packets are silently dropped by the kernel. By default, the
+keep-alives are sent every <code><strong>20s</strong></code> but the interval can be configured via the
 <code><strong>charon.keep_alive</strong></code> parameter in
 <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a> (set to <code><strong>0</strong></code> to disable
 sending keepalives, e.g. behind a static DNAT aka port forwarding).</p>

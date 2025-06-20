@@ -875,6 +875,12 @@ IKEv2 or IKEv1 session keys in <a href="https://www.wireshark.org/">Wireshark</a
 <pre>--enable-save-keys</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Unlike other plugins, this plugin has to be
+<a href="pluginLoad.html#_runtime_plugin_configuration" class="xref page"><strong>loaded explicitly</strong></a>
+(doing so via <code><strong>charon.plugins.save-keys.load</strong></code> only works if
+<code><strong>charon.load_modular</strong></code> is enabled).</p>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -884,7 +890,7 @@ IKEv2 or IKEv1 session keys in <a href="https://www.wireshark.org/">Wireshark</a
 <td class="content">
 <strong>Never</strong> load the <code><strong>save-keys</strong></code> plugin and enable IKE and/or ESP secret
          session key storage on <strong>production systems</strong>, since this severely
-         compromises the security of your IPSec-based communication channels.
+         compromises the security of your IPsec-based communication channels.
 </td>
 </tr>
 </table>

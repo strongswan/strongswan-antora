@@ -873,7 +873,7 @@ several other identities defined as strings, are parsed as follows:</p>
 Distinguished Name (<code><strong>DN</strong></code>) with RDNs separated by commas <code><strong>,</strong></code> <strong>or</strong> slashes
 <code><strong>/</strong></code> where the string must start with a slash to use this syntax.  See the table
 below for supported RDNs. An attempt is made to create a binary ASN.1 encoding
-from this string. If that fails the type is set to <code><strong>KEY_ID</strong></code> with the literal
+from this string. If that fails, the type is set to <code><strong>KEY_ID</strong></code> with the literal
 string value adopted as encoding.</p>
 </li>
 <li>
@@ -888,13 +888,13 @@ identity (note that <code><strong>&num;</strong></code> is used for comments in 
 necessary).</p>
 </li>
 <li>
-<p>If the string begins with <code><strong>@@</strong></code>, the type is set to <code><strong>USER_FQDN</strong></code> and the
-encoding is the literal string after that prefix.</p>
+<p>If the string begins with <code><strong>@@</strong></code>, the type is set to <code><strong>USER_FQDN/RFC822</strong></code> and
+the encoding is the literal string after that prefix.</p>
 </li>
 <li>
 <p>If the string begins with <code><strong>@</strong></code>, the type is set to <code><strong>FQDN</strong></code> and the encoding
 is the literal string after that prefix.
-In strongSwan versions before 5.0.0 this prefix prevented that a FQDN was
+In strongSwan versions before 5.0.0, this prefix prevented that a FQDN was
 resolved into an IP address whereas current versions don&#8217;t automatically resolve
 FQDNs when parsing identities.</p>
 </li>
@@ -918,14 +918,14 @@ follows:</p>
 <p>If the value contains a colon <code><strong>:</strong></code>, it is assumed to be an <code><strong>IPv6</strong></code> address.
 But if parsing the address and converting it to its binary encoding fails, the
 type is set to <code><strong>KEY_ID</strong></code> and the encoding is the literal value. Since version
-5.4.0 subnets in CIDR notation and address ranges (i.e. two addresses separated
+5.4.0, subnets in CIDR notation and address ranges (i.e. two addresses separated
 by a hyphen <code><strong>-</strong></code> without spaces) are parsed too (they can&#8217;t be used as IKE
-identities but e.g. to define shared secrets in
+identities but e.g. to match remote identities or define shared secrets in
 <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>).</p>
 </li>
 <li>
-<p>For all other strings, an attempt at parsing them as <code><strong>IPv4</strong></code> addresses is made
-(since version 5.4.0 also as subnets and ranges, see above).</p>
+<p>For all other strings, an attempt is made to parse them as <code><strong>IPv4</strong></code> addresses
+(or subnets and ranges, see above).</p>
 <div class="paragraph">
 <p>If that fails, the type is set to <code><strong>FQDN</strong></code> and the literal value is adopted
 as encoding (this is where domain names and simple names end up).</p>
@@ -947,17 +947,26 @@ specified by surrounding the numerical type value with curly brackets.</p>
 </li>
 <li>
 <p>If the value starts with <code><strong>&num;</strong></code>, the remaining data is interpreted as hex
-encoding. Otherwise, the string is used as is as the identification data (note
+encoding. Otherwise, the string is used directly as the identification data (note
 that <code><strong>&num;</strong></code> is used for comments in config files, so quotes are necessary).</p>
 <div class="paragraph">
 <p><strong>Important:</strong> This implies that no conversion is performed for non-string
 identities. For example, <code><strong>ipv4:10.0.0.1</strong></code> does not create a valid
 <code><strong>ID_IPV4_ADDR</strong></code> IKE identity, as it does not get converted to binary
 <code><strong>0x0a000001</strong></code>. Instead, one could use <code><strong>ipv4:&num;0a000001</strong></code> to get a valid
-identity, but just using the automatic conversion as described above is usually
-simpler. The same applies to the ASN.1 encoded types (for subject DNs the
+identity, but just using the automatic conversion as described further above is
+usually simpler. The same applies to the ASN.1-encoded types (for subject DNs, the
 <a href="../pki/pkiDn.html" class="xref page"><code><strong>pki --dn</strong></code></a> command may be useful).</p>
 </div>
+</li>
+<li>
+<p>Since version 6.0.2, if the value starts with a caret character (<code><strong>&Hat;</strong></code>) and
+ends with a dollar sign (<code><strong>$</strong></code>), it is interpreted as an extended POSIX regular
+expression (e.g. <code><strong>fqdn:^vpn[0-9]+\.strongswan\.org$</strong></code>). If double quotes are
+used, make sure to escape backslash characters.
+Supported types are <code><strong>rfc822</strong></code>, <code><strong>email</strong></code>, <code><strong>userfqdn</strong></code>, <code><strong>fqdn</strong></code>, <code><strong>dns</strong></code>,
+and <code><strong>asn1dn</strong></code>. Like IP subnets/ranges above, regular expressions can only be
+used to match remote identities, not as local IKE identities.</p>
 </li>
 </ul>
 </div>
@@ -968,8 +977,8 @@ simpler. The same applies to the ASN.1 encoded types (for subject DNs the
 <p>The <code>&lt;type&gt;:&lt;value&gt;</code> notation is primarily useful if the auto-detection is
 inadequate or produces the wrong result.  For instance, strongSwan does not nest
 RDNs when generating the binary encoding of an ASN.1 DN, which some PKIs do.
-Another example is the need to encode an <code><strong>FQDN</strong></code> as a <code><strong>KEY_ID</strong></code> which is
-rather inconvenient with the <code><strong>@&num;</strong></code> syntax, as the binary encoding has to be
+Another example is the need to encode an <code><strong>FQDN</strong></code> as a <code><strong>KEY_ID</strong></code>, which is
+rather inconvenient with the <code><strong>@&num;</strong></code> syntax as the binary encoding has to be
 provided.</p>
 </div>
 </div>
@@ -979,7 +988,7 @@ provided.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>These types/identifiers are supported when parsing DNs from strings. Any other
-types are supported for other applications.</p>
+types are supported for other uses.</p>
 </div>
 <div class="paragraph">
 <p>Defined by <a href="https://www.itu.int//rec/T-REC-X.520">X.520</a> and also described in <a href="https://datatracker.ietf.org/doc/html/rfc4519">RFC 4519</a>:</p>
