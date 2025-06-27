@@ -1291,6 +1291,60 @@ then just dropped). Thus this is basically equivalent to including <code><strong
 </tbody>
 </table>
 </div>
+<div class="sect2">
+<h3 id="_proxy"><a class="anchor" href="#_proxy"></a>proxy</h3>
+<div class="paragraph">
+<p>Optional object containing HTTP proxy settings. This is only a recommendation
+and may be ignored by apps. Note that apps using the proxy will access all HTTP
+resources through it regardless of the destination, so split-tunneling settings
+might not have any effect. To avoid using the proxy server for specific hosts,
+use the exclusion list.</p>
+</div>
+<div class="paragraph">
+<p>The following attributes are defined:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 23.0769%;">
+<col style="width: 69.2308%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Key</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>host</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IP address or hostname of the HTTP proxy server to use when connected to the
+ VPN. Since <a href="androidVpnClient.html#_2_5_6_2025_06_27" class="xref page">2.5.6</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Port to access the HTTP proxy server, defaults to 8080. Since
+ <a href="androidVpnClient.html#_2_5_6_2025_06_27" class="xref page">2.5.6</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exclusions</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional array of hosts for which the HTTP proxy server is not used (wildcards
+ are possible, e.g. <code><strong>&ast;.example.com</strong></code>). Since
+ <a href="androidVpnClient.html#_2_5_6_2025_06_27" class="xref page">2.5.6</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
