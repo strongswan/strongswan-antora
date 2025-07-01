@@ -860,7 +860,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>strongSwan can be built for the Windows platform using the <a href="http://mingw-w64.sourceforge.net/">MinGW</a> toolchain.
+<p>strongSwan can be built for the Windows platform using the <a href="https://www.mingw-w64.org/">MinGW</a> toolchain.
 Supported are Windows 7 / Server 2008 R2 and newer releases.</p>
 </div>
 </div>
@@ -1052,10 +1052,10 @@ backend.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Using <a href="http://mingw-w64.sourceforge.net/">MinGW</a> on Unix to cross-compile strongSwan for Windows</p>
+<p>Using <a href="https://www.mingw-w64.org/">MinGW</a> on Unix to cross-compile strongSwan for Windows</p>
 </li>
 <li>
-<p>Using <a href="http://mingw-w64.sourceforge.net/">MinGW</a> on Windows to build a native strongSwan</p>
+<p>Using <a href="https://www.mingw-w64.org/">MinGW</a> on Windows to build a native strongSwan</p>
 </li>
 </ul>
 </div>
@@ -1063,7 +1063,7 @@ backend.</p>
 <p>The first option is usually simpler and recommended when building from Git sources.</p>
 </div>
 <div class="paragraph">
-<p>The port has been done using the <a href="http://mingw-w64.sourceforge.net/">MinGW-W64</a> toolchain. Other compilers are
+<p>The port has been done using the <a href="https://www.mingw-w64.org/">MinGW-W64</a> toolchain. Other compilers are
 currently not supported. Using Visual C compilers is not an option in the near
 future as we heavily use some C99 features which MSVC does not support.</p>
 </div>
@@ -1114,57 +1114,30 @@ files freely along with your binaries.</p>
 </div>
 <div class="sect2">
 <h3 id="_windows_native_build"><a class="anchor" href="#_windows_native_build"></a>Windows Native Build</h3>
-<div class="imageblock left text-left">
+<div class="imageblock text-left">
 <div class="content">
 <a class="image" href="https://ci.appveyor.com/project/tobiasbrunner/strongswan-52lo9"><img src="https://ci.appveyor.com/api/projects/status/186bfuup38t9pu4k?svg=true" alt="build"></a>
 </div>
 </div>
 <div class="paragraph">
-<p>First install <a href="http://mingw-w64.sourceforge.net/">MinGW-W64</a>, preferably using the <a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download">installer</a>.
-The 4.8.1 version is known to work fine using the <code><strong>x64</strong></code> Architecture and native
-<code><strong>win32</strong></code> threading.</p>
-</div>
-<div class="paragraph">
-<p>To run <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> you&#8217;ll need <code><strong>MSYS</strong></code>, e.g. by
-using the <a href="https://sourceforge.net/projects/mingw-w64/files/External%20binary%20packages%20(Win64%20hosted)/MSYS%20(32-bit)/">MinGW-W64 MSYS builds</a>. After extracting the <code><strong>.zip</strong></code> file
-invoke <code><strong>msys.bat</strong></code> and run:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>sh /postinstall/pi.sh</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>to complete the installation. Use this shell to
-<a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> and build strongSwan.</p>
+<p>Install <a href="https://www.mingw-w64.org/">MinGW-W64</a>, preferably via <a href="https://www.msys2.org/">MSYS2</a> as that builds native
+binaries and provides you with a complete environment including a terminal,
+which allows you to run <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> and build
+strongSwan.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_unix_cross_compile_build"><a class="anchor" href="#_unix_cross_compile_build"></a>Unix Cross-Compile Build</h3>
-<div class="imageblock left text-left">
+<div class="imageblock text-left">
 <div class="content">
 <a class="image" href="https://github.com/strongswan/strongswan/actions?query=workflow%3AWindows"><img src="https://github.com/strongswan/strongswan/workflows/Windows/badge.svg" alt="build"></a>
 </div>
 </div>
 <div class="paragraph">
-<p>After installing the <a href="http://mingw-w64.sourceforge.net/">MinGW-W64</a> toolchain and the Windows system headers
-for your distribution, add</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>--host=x86_64-w64-mingw32</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or for 32-bit builds</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>--host=i686-w64-mingw32</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>to <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> to enable cross-compilation.</p>
+<p>After installing the <a href="https://www.mingw-w64.org/">MinGW-W64</a> toolchain and Windows headers for your
+distribution, add <code><strong>--host=x86_64-w64-mingw32</strong></code> (or <code><strong>--host=i686-w64-mingw32</strong></code>
+for 32-bit builds) when running <a href="../install/autoconf.html" class="xref page"><code><strong>./configure</strong></code></a> to
+enable cross-compilation.</p>
 </div>
 </div>
 </div>
