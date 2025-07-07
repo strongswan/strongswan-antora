@@ -881,20 +881,25 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>When an IKEv2 client requests a <a href="../features/vip.html" class="xref page"><code><strong>virtual IP</strong></code></a> address
-via a <code>CP</code> configuration payload, the plugin allows the daemon to forward this
-request to a <code>DHCP</code> server. By default the plugin uses broadcasts, but a
-designated <code>DHCP</code> server can be configured in
+via a configuration payload, the plugin allows the daemon to forward this
+request to a DHCP server. By default, the plugin uses broadcasts, but a
+designated DHCP server can be configured in
 <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>MAC</code> address used in the <code>DHCP</code> request is either randomly generated or can
-optionally be based on the IKEv2 identity of the client. <code>DNS</code>/<code>WINS</code> server
-information is additionally served to clients if the <code>DHCP</code> server provides
-such information.</p>
+<p>The MAC address used in the DHCP request is either randomly generated or can
+optionally be based on the IKEv2 identity of the client. If the latter is
+enabled, the client&#8217;s identity is also sent in the <code>client identifier</code> DHCP
+option (<code>61</code>). If the client&#8217;s identity is a FQDN, it is also sent in the
+<code>host name</code> DHCP option (<code>12</code>) even if random MAC addresses are used.</p>
 </div>
 <div class="paragraph">
-<p>In combination with the <a href="farp.html" class="xref page"><code><strong>farp</strong></code></a> plugin this plugin lets a
-road-warrior fully act as a client on the local <code>LAN</code> of the responder.</p>
+<p>DNS/WINS server information is additionally served to clients if the
+DHCP server provides such information.</p>
+</div>
+<div class="paragraph">
+<p>In combination with the <a href="farp.html" class="xref page"><code><strong>farp</strong></code></a> plugin, this plugin lets a
+roadwarrior fully act as a client on the local LAN of the responder.</p>
 </div>
 </div>
 </div>
@@ -937,8 +942,8 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">identity_lease</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Derive user-defined MAC address from hash of IKE identity. The client identity
- <code>DHCP</code> option containing the IKE identity is only sent if this option is enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Derive user-defined MAC address from hash of IKE identity. The <code>client identifier</code>
+ DHCP option (<code>61</code>) containing the IKE identity is also sent if this setting is enabled</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">interface</p></td>
@@ -960,13 +965,12 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">server</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[&#8594;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DHCP</code> server unicast or broadcast IP address.
- <code><strong>[255.255.255.255]</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DHCP server unicast or broadcast IP address. <code><strong>[255.255.255.255]</strong></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use_server_port</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use the <code>DHCP</code> server port <code>67</code> as source port instead of the <code>DHCP</code> client port
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use the DHCP server port <code>67</code> as source port instead of the DHCP client port
  <code>68</code> when a unicast server address is configured and the plugin acts as relay
  agent<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p></td>
 </tr>
@@ -980,7 +984,7 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <a href="#_footnoteref_1">1</a>. If the DHCP server runs on the same host as the daemon with DHCP plugin, you  may need to enable <code><strong>dhcp.force_server_address</strong></code> and then set <code><strong>dhcp.server</strong></code>  to the local broadcast address, e.g. <code>192.168.0.255</code>. That&#8217;s because some <code>DHCP</code>  daemons do not listen on the loopback interface and thus can&#8217;t be reached via  unicast (or even broadcast <code>255.255.255.255</code>) from the same host.
 </div>
 <div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. When replying in this mode the <code>DHCP</code> server will always send packets to the  <code>DHCP</code> server port and if no process binds that port an <code>ICMP port unreachable</code>  message will be sent back that might be problematic for some <code>DHCP</code> servers. To  avoid that, enabling this option will cause the plugin to bind the <code>DHCP</code> server  port to send its requests when acting as relay agent. This is not necessary if  a DHCP server is already running on the same host and might even cause conflicts  and since the server port is already bound, <code>ICMP</code> messages should not be an  issue.
+<a href="#_footnoteref_2">2</a>. When replying in this mode, the DHCP server will always send packets to the  DHCP server port and if no process binds that port an <code>ICMP port unreachable</code>  message will be sent back that might be problematic for some DHCP servers. To  avoid that, enabling this option will cause the plugin to bind the DHCP server  port to send its requests when acting as relay agent. This is not necessary if  a DHCP server is already running on the same host and might even cause conflicts;  and since the server port is already bound, ICMP messages should not be an  issue.
 </div>
 </div>
 <nav class="pagination">
