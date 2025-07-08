@@ -1720,11 +1720,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable TPM 2.0 TSS2 library. Requires <code>libtss2</code> library</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-uci</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable OpenWRT UCI configuration plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-unbound</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DNSSEC-enabled resolver plugin based on <a href="https://www.nlnetlabs.nl/documentation/unbound/libunbound/">libunbound</a></p></td>
@@ -1992,7 +1987,7 @@ specific plugins.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--with-capabilities=LIBCAP</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set capability dropping library. Currently supported values are <code>libcap</code> and
- <code>native</code> [no]</p></td>
+ <code>native</code>. [<code>no</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--with-charon-udp-port=PORT</p></td>
@@ -2053,9 +2048,9 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">linux header files to be used. [<code>../include</code>]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--with-mpz_powm_sec= YES|NO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-mpz_powm_sec=YES|NO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use the more side-channel resistant <code>mpz_powm_sec</code> in <code>libgmp</code> if available.
- [yes]</p></td>
+ [<code>yes</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--with-nm-ca-dir=NMCADIR</p></td>
@@ -2110,6 +2105,11 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../swanctl/swanctlDir.html" class="xref page"><code>swanctl</code> directory</a> for
  <a href="../swanctl/swanctlConf.html" class="xref page"><code>swanctl.conf</code></a> configuration files and
  credentials. [<code>SYSCONFDIR/swanctl</code>]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--with-testable-ke=YES|NO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make key exchange implementations testable by providing a <code>set_seed()</code> method.
+ [<code>yes</code>]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--with-urandom-device=DEV</p></td>

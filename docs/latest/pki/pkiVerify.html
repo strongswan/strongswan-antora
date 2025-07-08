@@ -863,7 +863,7 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">pki --verify [--in file] [--cacert file] [--crl file] [--online]
+<pre class="nowrap">pki --verify [--in file] [--cacert file]+ [--crl file] [--online]
 
 pki --verify --help</pre>
 </div>
@@ -874,7 +874,7 @@ pki --verify --help</pre>
 <h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand verifies and status the signature of an
+<p>This <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> subcommand verifies the signature and status of an
 X.509 certificate.</p>
 </div>
 </div>
@@ -885,7 +885,7 @@ X.509 certificate.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">--in       (-i)  X.509 certificate to verify, default: stdin
---cacert   (-c)  CA certificate for trustchain verification
+--cacert   (-c)  CA certificate(s) for trustchain verification
 --crl      (-l)  CRL for trustchain verification
 --online   (-o)  enable online CRL/OCSP revocation checking
 --debug    (-v)  set debug level, default: 1
