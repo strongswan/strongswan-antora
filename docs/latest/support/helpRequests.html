@@ -1118,12 +1118,15 @@ On Windows, use a different path from <strong>/var/log/&#8230;&#8203;</strong> o
 </div>
 <div class="paragraph">
 <p>Use the following snippet in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>
-for version &lt; 5.7.0</p>
+for version &gt;= 5.7.0</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>  filelog {
-    /var/log/charon_debug.log {
+    # any arbitrary name without dots for the section instead of the one given here
+    charon-debug-log {
+      # this setting is required with 5.7.0 and newer if the path contains dots
+      path = /var/log/charon_debug.log
       time_format = %a, %Y-%m-%d, %H:%M:%S
       default = 2
       net = 1
@@ -1140,15 +1143,12 @@ for version &lt; 5.7.0</p>
 </div>
 <div class="paragraph">
 <p>Use the following snippet in <a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>
-for version &gt;= 5.7.0</p>
+for version &lt; 5.7.0</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>  filelog {
-    # any arbitrary name without dots for the section instead of the one given here
-    charon-debug-log {
-      # this setting is required with 5.7.0 and newer if the path contains dots
-      path = /var/log/charon_debug.log
+    /var/log/charon_debug.log {
       time_format = %a, %Y-%m-%d, %H:%M:%S
       default = 2
       net = 1
