@@ -1132,10 +1132,15 @@ the gateways <code><strong>ike</strong></code> proposal of the VPN gateway.</p>
 <div class="sect2">
 <h3 id="_child_sa_rekeying"><a class="anchor" href="#_child_sa_rekeying"></a>CHILD SA Rekeying</h3>
 <div class="paragraph">
-<p>Rekeying CHILD_SAs is also supported by the Windows client. For some reason, a
-client behind NAT does not accept a rekeying attempt and rejects it with a
+<p>Rekeying Child SAs is also supported by the Windows client. It actually
+automatically rekeys Child SAs after a certain amount of data has been
+transferred (about 200 MiB).</p>
+</div>
+<div class="paragraph">
+<p>Initiating rekeyings from the server can be a bit tricky. For some reason, a
+client behind NAT does not accept such an attempt and rejects it with a
 Microsoft specific notify <code><strong>12345</strong></code> containing an error code
-<code>ERROR_IPSEC_IKE_INVALID_SITUATION</code>.</p>
+<code>ERROR_IPSEC_IKE_INVALID_SITUATION</code> (13863).</p>
 </div>
 <div class="paragraph">
 <p>To work around the issue, let the client initiate the rekeying by setting</p>
@@ -1147,6 +1152,15 @@ Microsoft specific notify <code><strong>12345</strong></code> containing an erro
 </div>
 <div class="paragraph">
 <p>on the strongSwan VPN gateway.</p>
+</div>
+<div class="paragraph">
+<p>Another problem occurs if the server proposes a KE method and the client is
+not expecting one (i.e. it wasn&#8217;t configured via <a href="#strong_ke">PowerShell</a>
+and <code>-PfsGroup</code> option).
+In that case, it returns error code <code>ERROR_IPSEC_IKE_ERROR</code> (13816).  This even
+happens if <code>none</code> is included in the proposals (the default since 6.0.2). If the
+client config can&#8217;t be changed, either change the ESP proposals, so they
+don&#8217;t include any KE methods, or disable server-initiated rekeying as shown above.</p>
 </div>
 </div>
 </div>
