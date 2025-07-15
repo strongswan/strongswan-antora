@@ -915,33 +915,6 @@ configure plugins, a <code><strong>conftest</strong></code> section in
 <p>The <a href="https://github.com/strongswan/strongswan/blob/master/src/conftest/README"><code><strong>README</strong></code></a> file in the <code><strong>conftest</strong></code> source has
 details on the possible configuration sections and options.</p>
 </div>
-<div class="sect2">
-<h3 id="_specifying_host_ids"><a class="anchor" href="#_specifying_host_ids"></a>Specifying Host IDs</h3>
-<div class="paragraph">
-<p>When using certificate DN as <code><strong>leftid|rightid</strong></code> in <code><strong>ipsec.conf</strong></code>, the DN is
-enclosed in quotation marks, like in the following example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>conn sample-with-ca-cert
-  rightid="C=CH, O=Linux strongSwan, CN=peer name"</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>However the equivalent options <code><strong>lid|rid</strong></code> in a conftest suite or test
-configuration <strong>must</strong> be written without quotation marks, otherwise there will be
-authentication errors.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>configs {
-  ike-sample-a {
-    rid = C=CH, O=Linux strongSwan, CN=peer name
-  }
-}</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 <nav class="pagination">
