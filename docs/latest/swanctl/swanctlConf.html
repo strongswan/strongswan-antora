@@ -2318,6 +2318,25 @@ authentication as well.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example EAP secrets</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    eap-carol {
+        id = carol@strongswan.org
+        secret = Ar3etTnp
+    }
+    eap-dave {
+        id = dave@strongswan.org
+        secret = W7R0g3do
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_xauthsuffix"><a class="anchor" href="#_secrets_xauthsuffix"></a>secrets.xauth&lt;suffix&gt;</h4>
@@ -2363,6 +2382,25 @@ be used for EAP-MSCHAPv2 authentication.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example NTLM secrets</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    ntlm-carol {
+        id = carol
+        secret = 0xF7A28E343924D9A06C8183971A7C8373
+    }
+    ntlm-dave {
+        id = dave@strongswan.org
+        secret = 0x6E9A3A46012EF27D9DB6F2FF682B1B80
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_ikesuffix"><a class="anchor" href="#_secrets_ikesuffix"></a>secrets.ike&lt;suffix&gt;</h4>
@@ -2400,6 +2438,38 @@ unique section having the <code><strong>ike</strong></code> prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example PSK secrets</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # multiple identities can be assigned, as long as one of them matches the
+    # local or remote identity the secret may be used
+    ike-sun-moon {
+        id-sun = sun.strongswan.org
+        id-moon = moon.strongswan.org
+        secret = 0sv+NkxY9LLZvwj4qCC2o/gGrWDF2d21jL
+    }
+    # this will only be used if sun.strongswan.org is not one of the two
+    # identities, otherwise, the PSK above is used
+    ike-moon {
+        id = moon.strongswan.org
+        secret = "This shoud be a strong password"
+    }
+    ike-carol {
+        id = carol@strongswan.org
+        secret = 0sFpZAZqEN6Ti9sqt4ZP5EWcqx
+    }
+    # this PSK will be used for any identity if there is no better match
+    ike {
+        secret = 0sv+NkxY9LLZvwj4qCC2o/gGrWDF2d21jL
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_ppksuffix"><a class="anchor" href="#_secrets_ppksuffix"></a>secrets.ppk&lt;suffix&gt;</h4>
@@ -2437,6 +2507,25 @@ prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example PPK secrets</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    ppk-carol {
+        id = ppk-carol@strongswan.org
+        secret = 0x98c61dd0f8c7daf07759617546f7b3ae156f19a7bc935c61523c7ca998e5eedb
+    }
+    ppk-dave {
+        id = ppk-dave@strongswan.org
+        secret = 0x06918e49398db61094438a5be8b743894f155f4e8521e6bcd1d47690557e4b13
+   }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_privatesuffix"><a class="anchor" href="#_secrets_privatesuffix"></a>secrets.private&lt;suffix&gt;</h4>
@@ -2471,6 +2560,22 @@ prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example private key passphrase</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # only necessary if the key is encrypted and the passphrase is not passed interactively
+    private-carol {
+        file = carolKey.pem
+        secret = "nH5ZQEWtku0RJEZ6"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_rsasuffix"><a class="anchor" href="#_secrets_rsasuffix"></a>secrets.rsa&lt;suffix&gt;</h4>
@@ -2505,6 +2610,22 @@ prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example RSA private key passphrase</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # only necessary if the key is encrypted and the passphrase is not passed interactively
+    rsa-dave {
+        file = daveKey.pem
+        secret = "MeFnDN7VUbj+qU/bkgRIFvbCketIk2wrrs5Ii8297N2v"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_ecdsasuffix"><a class="anchor" href="#_secrets_ecdsasuffix"></a>secrets.ecdsa&lt;suffix&gt;</h4>
@@ -2539,6 +2660,22 @@ prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example ECDSA private key passphrase</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # only necessary if the key is encrypted and the passphrase is not passed interactively
+    ecdsa-carol {
+        file = carolKey.pem
+        secret = "nH5ZQEWtku0RJEZ6"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_pkcs8suffix"><a class="anchor" href="#_secrets_pkcs8suffix"></a>secrets.pkcs8&lt;suffix&gt;</h4>
@@ -2573,6 +2710,22 @@ prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example PKCS#8 private key passphrase</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # only necessary if the key is encrypted and the passphrase is not passed interactively
+    pkcs8-dave {
+        file = daveKey.pem
+        secret = "OJlNZBx+80dLh4wC6fw5LmBd"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_pkcs12suffix"><a class="anchor" href="#_secrets_pkcs12suffix"></a>secrets.pkcs12&lt;suffix&gt;</h4>
@@ -2607,6 +2760,22 @@ prefix.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example PKCS#12 container passphrase</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # only necessary if passphrase is not passed interactively
+    pkcs12-moon {
+        file = moonCert.p12
+        secret = "kUqd8O7mzbjXNJKQ"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_secrets_tokensuffix"><a class="anchor" href="#_secrets_tokensuffix"></a>secrets.token&lt;suffix&gt;</h4>
@@ -2653,6 +2822,31 @@ smartcard or a <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a>.</p>
 </tr>
 </tbody>
 </table>
+<details>
+<summary class="title">Example token entries</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">secrets {
+    # PINs may be stored (e.g. for a gateway to access it without interaction)
+    token-gw {
+        handle = 45
+        pin = "12345678"
+    }
+    # on a client you might want to load the key but enter the pin interactively
+    token1 {
+        slot = 2
+        handle = 45
+    }
+    # TPM keys may also be loaded
+    token_ak_rsa {
+        handle = 0x81010003
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</details>
 </div>
 </div>
 <div class="sect2">
