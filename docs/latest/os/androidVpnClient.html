@@ -883,7 +883,11 @@ options to configure global app settings and disable certain features of the app
 (e.g. the ability for users to add or import their own VPN profiles). Note that
 distributing certificates with managed profiles requires the MDM to assign the
 <code>CERT_INSTALL</code> delegated scope to the strongSwan app so it can install the
-certificate and private key.</p>
+certificate and private key. For user certificates, if an alias is configured
+instead of distributing a PKCS#12 file, the MDM has to grant permission to the
+app to access the certificate/key with that alias. If neither alias nor user
+certificate is distributed with the managed profile, the user may select a
+certificate manually.</p>
 </div>
 <div class="paragraph">
 <p>Client certificates and keys, and CA certificates may be added by bundling them
@@ -1200,6 +1204,32 @@ or directly from the app&#8217;s page in the Play store.</p>
 <div class="sect1">
 <h2 id="_changelog"><a class="anchor" href="#_changelog"></a>Changelog</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_6_0_2025_10_01"><a class="anchor" href="#_2_6_0_2025_10_01"></a>2.6.0 (2025-10-01)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow pre-selecting a user certificate via alias in managed profiles. This
+requires that the MDM grants permission for the alias to the app. If not
+configured, users may select a local certificate manually</p>
+</li>
+<li>
+<p>Allow selecting a user certificate for managed profiles that don&#8217;t install
+their own certificate</p>
+</li>
+<li>
+<p>Fix reading split-tunneling settings in managed profiles (<code>split_tunnelling</code>
+instead of <code>split_tunneling</code> was incorrectly used in the description file)</p>
+</li>
+<li>
+<p>Adapt to edge-to-edge display, which becomes mandatory when targeting Android 16</p>
+</li>
+<li>
+<p>Increase target SDK to Android 16</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_2_5_6_2025_06_27"><a class="anchor" href="#_2_5_6_2025_06_27"></a>2.5.6 (2025-06-27)</h3>
 <div class="ulist">
