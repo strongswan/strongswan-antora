@@ -1021,6 +1021,14 @@ test runner:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.9.7</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TESTS_ACTIVE_TRANSFORMS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to a file to which all algorithm transforms are written (in the form
+ <code>&lt;transform identifier&gt;[&lt;plugin_name&gt;]</code>) if they were successfully tested by
+ the <code>transforms</code> test case of the <code>vectors</code> test suite. Mainly intended for
+ our CI to compare runs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.0.3</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>LEAK_DETECTIVE_DISABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If our custom memory allocator is enabled with <code><strong>--enable-leak-detective</strong></code>, it
  can be disabled temporarily by setting this variable in order to speed up
