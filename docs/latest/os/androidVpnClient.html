@@ -1205,11 +1205,29 @@ or directly from the app&#8217;s page in the Play store.</p>
 <h2 id="_changelog"><a class="anchor" href="#_changelog"></a>Changelog</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="_2_6_1_2025_10_27"><a class="anchor" href="#_2_6_1_2025_10_27"></a>2.6.1 (2025-10-27)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Update OpenSSL to support the post-quantum key exchange method ML-KEM. This
+currently requires explicit configuration in proposals (e.g. for IKE something
+like <code>aes256-sha256-curve25519-ke1_mlkem768</code>)</p>
+</li>
+<li>
+<p>Fix a vulnerability in the eap-mschapv2 plugin</p>
+</li>
+<li>
+<p>Fix the filename when exporting the log</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_2_6_0_2025_10_01"><a class="anchor" href="#_2_6_0_2025_10_01"></a>2.6.0 (2025-10-01)</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Allow pre-selecting a user certificate via alias in managed profiles. This
+<p>Allow preselecting a user certificate via alias in managed profiles. This
 requires that the MDM grants permission for the alias to the app. If not
 configured, users may select a local certificate manually</p>
 </li>
