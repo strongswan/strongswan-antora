@@ -921,9 +921,10 @@ the redirect).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>connections {
+<pre class="highlightjs highlight"><code class="language-none hljs">connections {
   ...
   ndp {
+    remote_addrs = ::1 # so this connection is not considered when peers connect
     children {
       icmpv6 {
         local_ts = ::/0[ipv6-icmp/%any]
@@ -933,7 +934,7 @@ the redirect).</p>
       }
     }
   }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -941,9 +942,10 @@ the redirect).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>connections {
+<pre class="highlightjs highlight"><code class="language-none hljs">connections {
   ...
   ndp {
+    remote_addrs = ::1 # so this connection is not considered when peers connect
     children {
       ns {
         local_ts = ::/0[ipv6-icmp/135]
@@ -959,7 +961,7 @@ the redirect).</p>
       }
     }
   }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
