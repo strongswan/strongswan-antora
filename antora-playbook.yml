@@ -40,4 +40,5 @@ asciidoc:
   attributes:
     page-pagination: true
   extensions:
+    - ./extensions/version-macro.js
     - ./extensions/generate-settings-ids.js
