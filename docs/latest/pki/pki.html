@@ -862,7 +862,10 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>pki --gen     (-g)  generate a new private key
+<pre>pki command [options]
+
+commands:
+    --gen     (-g)  generate a new private key
     --self    (-s)  create a self signed certificate
     --issue   (-i)  issue a certificate using a CA certificate and key
     --signcrl (-c)  issue a CRL using a CA certificate and key
@@ -874,13 +877,17 @@
     --print   (-a)  print a credential in a human readable form
     --dn      (-d)  extract the subject DN of an X.509 certificate
     --pub     (-p)  extract the public key from a private key/certificate
-    --verify  (-v)  verify a certificate using the CA certificate
+    --verify  (-V)  verify a certificate using the CA certificate
     --scep    (-S)  Enroll an X.509 certificate with a SCEP server
     --scepca  (-C)  Get CA [and RA] certificate[s] from a SCEP server
     --est     (-E)  Enroll an X.509 certificate with an EST server
     --estca   (-e)  Get CA certificate[s] from an EST server
     --ocsp    (-o)  OCSP request parser and OCSP responder
-    --help    (-h)  show usage information</pre>
+    --help    (-h)  show usage, version and plugin information
+
+global options:
+    --debug   (-v)  set debug level, default: 1
+    --options (-+)  read command line options from file</pre>
 </div>
 </div>
 </div>
@@ -898,24 +905,29 @@ URIs of OCSP servers. You can also extract raw public keys from private keys,
 certificate requests and certificates and compute two kinds of SHA1-based key IDs.</p>
 </div>
 <div class="paragraph">
-<p>Starting with version 5.9.8, the <code><strong>pki</strong></code> command supports certificate enrollment
+<p>Starting with <a href="https://github.com/strongswan/strongswan/releases/tag/5.9.8">version 5.9.8</a>, the <code><strong>pki</strong></code> command supports certificate enrollment
 via the <strong>Simple Certificate Enrollment Protocol</strong> (SCEP) as defined by
 <a href="https://datatracker.ietf.org/doc/html/rfc8894">RFC 8894</a>, replacing the obsoleted
 <a href="../tools/scepclient.html" class="xref page"><code><strong>ipsec scepclient</strong></code></a> tool.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, since version 5.9.8, the newer <code><strong>HTTPS/TLS</strong></code> based <strong>Enrollment over
+<p>Additionally, since <a href="https://github.com/strongswan/strongswan/releases/tag/5.9.8">version 5.9.8</a>, the newer <code><strong>HTTPS/TLS</strong></code> based <strong>Enrollment over
 Secure Transport</strong> (EST) protocol (<a href="https://datatracker.ietf.org/doc/html/rfc7030">RFC 7030</a>) is being offered, too.</p>
 </div>
 <div class="paragraph">
-<p>Version 5.9.12 introduced an <strong>Online Certificate Status Protocol</strong> (OCSP) responder
+<p><a href="https://github.com/strongswan/strongswan/releases/tag/5.9.12">Version 5.9.12</a> introduced an <strong>Online Certificate Status Protocol</strong> (OCSP) responder
 as defined by <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, interoperating with an <a href="https://github.com/openxpki/openxpki">OpenXPKI</a>
 server by directly accessing its internal <code><strong>certificate</strong></code> database.</p>
+</div>
+<div class="paragraph">
+<p>With <a href="https://github.com/strongswan/strongswan/releases/tag/6.0.5">version 6.0.5</a>, the short option for <code><strong>--verify</strong></code> was changed to <code><strong>-V</strong></code>
+to avoid a conflict with the short option for <code><strong>--debug</strong></code> (<code><strong>-v</strong></code>), which can be
+used globally since then.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_subcommands"><a class="anchor" href="#_subcommands"></a>Subcommands</h2>
+<h2 id="_commands"><a class="anchor" href="#_commands"></a>Commands</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -958,7 +970,7 @@ server by directly accessing its internal <code><strong>certificate</strong></co
 </tbody>
 </table>
 <div class="paragraph">
-<p>Each subcommand has additional options. Pass <code><strong>--help</strong></code> to a subcommand to get
+<p>Each command has additional options. Pass <code><strong>--help</strong></code> to a command to get
 additional information.</p>
 </div>
 </div>
@@ -988,7 +1000,8 @@ additional information.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">load</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Plugins to load in <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> tool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plugins to load in <a href="pki.html" class="xref page"><code><strong>pki</strong></code></a> tool. May also be passed via
+ <code><strong>PKI_PLUGINS</strong></code> environment variable</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scep.http_bind</p></td>

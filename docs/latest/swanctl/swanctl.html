@@ -862,11 +862,14 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">swanctl --initiate         (-i)  initiate a connection
+<pre class="nowrap">swanctl command [options]
+
+commands:
+        --initiate         (-i)  initiate a connection
         --terminate        (-t)  terminate a connection
         --rekey            (-R)  rekey an IKE or CHILD_SA
         --install          (-p)  install a trap or shunt policy
-        --uninstall        (-u)  uninstall a trap or shunt policy
+        --uninstall        (-U)  uninstall a trap or shunt policy
         --redirect         (-d)  redirect an IKE_SA
         --list-sas         (-l)  list currently active IKE_SAs
         --list-pols        (-P)  list currently installed policies
@@ -885,8 +888,13 @@
         --reload-settings  (-r)  reload strongswan.conf(5) configuration
         --stats            (-S)  show daemon infos and statistics
         --counters         (-C)  list or reset IKE event counters
-        --version          (-v)  show version information
-        --help             (-h)  show usage information</pre>
+        --version          (-V)  show version information
+        --help             (-h)  show usage, version and plugin information
+
+global options:
+        --debug            (-v)  set debug level, default: 1
+        --options          (-+)  read command line options from file
+        --uri              (-u)  service URI to connect to</pre>
 </div>
 </div>
 </div>
@@ -899,10 +907,16 @@
 <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon via the
 <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a> interface plugin.</p>
 </div>
+<div class="paragraph">
+<p>With <a href="https://github.com/strongswan/strongswan/releases/tag/6.0.5">version 6.0.5</a>, the short option for <code><strong>--version</strong></code> was changed to <code><strong>-V</strong></code>
+and the one for <code><strong>--uninstall</strong></code> to <code><strong>-U</strong></code> to avoid conflicts with the short
+options for <code><strong>--debug</strong></code> (<code><strong>-v</strong></code>) and <code><strong>--uri</strong></code> (<code><strong>-u</strong></code>), which can be used
+globally since then.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_subcommands"><a class="anchor" href="#_subcommands"></a>Subcommands</h2>
+<h2 id="_commands"><a class="anchor" href="#_commands"></a>Commands</h2>
 <div class="sectionbody">
 <table class="tableblock frame-none grid-all stretch">
 <colgroup>
@@ -954,7 +968,7 @@
 </tbody>
 </table>
 <div class="paragraph">
-<p>Each subcommand has additional options. Pass <code><strong>--help</strong></code> to a subcommand to get
+<p>Each command has additional options. Pass <code><strong>--help</strong></code> to a command to get
 additional information.</p>
 </div>
 </div>
