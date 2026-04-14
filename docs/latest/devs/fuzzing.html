@@ -866,12 +866,12 @@
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fuzz-certs</strong></dt>
+<dt class="hdlist1"><strong>fuzz-certs</strong><sup class="footnote" id="_footnote_plugins">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></dt>
 <dd>
 <p>Fuzzes the X.509 certificate parsing framework as provided by the loaded
 plugins and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
 </dd>
-<dt class="hdlist1"><strong>fuzz-crls</strong></dt>
+<dt class="hdlist1"><strong>fuzz-crls</strong><sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></dt>
 <dd>
 <p>Fuzzes the CRL parsing framework provided by the loaded plugins and the ASN.1
 parser of the <code><strong>libstrongswan</strong></code> library.</p>
@@ -880,12 +880,16 @@ parser of the <code><strong>libstrongswan</strong></code> library.</p>
 <dd>
 <p>Fuzzes the identity parser of the <code><strong>libstrongswan</strong></code> library.</p>
 </dd>
-<dt class="hdlist1"><strong>fuzz-ocsp-req</strong></dt>
+<dt class="hdlist1"><strong>fuzz-ike</strong></dt>
+<dd>
+<p>Fuzzes the IKE message parser of the <code><strong>libcharon</strong></code> library (plaintext only).</p>
+</dd>
+<dt class="hdlist1"><strong>fuzz-ocsp-req</strong><sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></dt>
 <dd>
 <p>Fuzzes the OCSP request parsing framework provided by the loaded plugins
 and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
 </dd>
-<dt class="hdlist1"><strong>fuzz-ocsp-rsp</strong></dt>
+<dt class="hdlist1"><strong>fuzz-ocsp-rsp</strong><sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></dt>
 <dd>
 <p>Fuzzes the OCSP response parsing framework provided by the loaded plugins
 and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.</p>
@@ -903,6 +907,12 @@ and the ASN.1 parser of the <code><strong>libstrongswan</strong></code> library.
 <div class="paragraph">
 <p>The seed corpora used by the fuzz targets is provided in a
 <a href="https://github.com/strongswan/fuzzing-corpora">separate repository</a>.</p>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. This fuzzer is built twice, once with default crypto plugins, once with the old custom crypto plugins.
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="testingEnvironment.html">Testing Environment</a></span>
