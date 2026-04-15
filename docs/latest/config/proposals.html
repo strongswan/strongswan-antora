@@ -1942,7 +1942,7 @@ the algorithm keyword with <code><strong>keX_</strong></code> (where <code><stro
 So a total of eight key exchanges may be used for each SA.</p>
 </div>
 <div class="paragraph">
-<p>For example, <code><strong>x25519-ke1_mlkem786</strong></code> adds ML-KEM-786 as additional key
+<p>For example, <code><strong>x25519-ke1_mlkem768</strong></code> adds ML-KEM-768 as additional key
 exchange method after the initial key exchange with X25519. This works with any
 key exchange method, whether post-quantum or classic Diffie-Hellman.</p>
 </div>
@@ -1950,7 +1950,7 @@ key exchange method, whether post-quantum or classic Diffie-Hellman.</p>
 <p>As with any algorithm in proposals, peers have to agree on a KE method for each
 round unless no algorithms are defined by both or <code><strong>keX_none</strong></code> is configured to
 make a particular round explicitly <strong>optional</strong> (there can be gaps, so it&#8217;s
-technically fine to negotiate e.g. <code><strong>x25519-ke7_mlkem786</strong></code>).</p>
+technically fine to negotiate e.g. <code><strong>x25519-ke7_mlkem768</strong></code>).</p>
 </div>
 </td>
 </tr>
