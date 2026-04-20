@@ -1043,7 +1043,7 @@ test runner:</p>
 is not recommended for production builds as it disables all optimizations.</p>
 </div>
 <div class="paragraph">
-<p>The unit tests also run automatically for every commit:</p>
+<p>The unit tests run automatically for every commit on different platforms:</p>
 </div>
 <table class="tableblock frame-none grid-none stretch">
 <colgroup>
@@ -1059,17 +1059,14 @@ is not recommended for production builds as it disables all optimizations.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/linux.yml"><img src="https://github.com/strongswan/strongswan/workflows/Linux/badge.svg" alt="Linux" title="Linux"></a></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/android.yml"><img src="https://github.com/strongswan/strongswan/workflows/Android/badge.svg" alt="Android" title="Android"></a></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/macos.yml"><img src="https://github.com/strongswan/strongswan/workflows/macOS/badge.svg" alt="macOS" title="macOS"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/freebsd.yml"><img src="https://github.com/strongswan/strongswan/workflows/FreeBSD/badge.svg" alt="FreeBSD" title="FreeBSD"></a></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/windows.yml"><img src="https://github.com/strongswan/strongswan/workflows/Windows/badge.svg" alt="Windows" title="Cross-compiled Windows"></a></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://ci.appveyor.com/project/tobiasbrunner/strongswan-52lo9"><img src="https://ci.appveyor.com/api/projects/status/186bfuup38t9pu4k?svg=true" alt="Windows" title="Native Windows on AppVeyor"></a></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://cirrus-ci.com/github/strongswan/strongswan"><img src="https://api.cirrus-ci.com/github/strongswan/strongswan.svg?branch=master" alt="FreeBSD" title="FreeBSD on Cirrus CI"></a></span></p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Information on the code coverage:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://codecov.io/gh/strongswan/strongswan"><img src="https://codecov.io/gh/strongswan/strongswan/branch/master/graph/badge.svg" alt="Codecov" title="Code Coverage"></a></span></p>
+<p>Information on the code coverage: <span class="image"><a class="image" href="https://codecov.io/gh/strongswan/strongswan"><img src="https://codecov.io/gh/strongswan/strongswan/branch/master/graph/badge.svg" alt="Codecov" title="Code Coverage"></a></span></p>
 </div>
 <div class="paragraph">
 <p>And the code base is automatically analyzed:</p>
@@ -1089,11 +1086,22 @@ is not recommended for production builds as it disables all optimizations.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Part of the source code is periodicylly fuzzed by Google OSS-Fuzz:</p>
+<p>Parts of the source code are periodically <a href="fuzzing.html" class="xref page">fuzzed</a> by OSS-Fuzz as well as via CIFuzz:</p>
 </div>
-<div class="paragraph">
-<p><span class="image"><a class="image" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&amp;can=1&amp;q=proj:strongswan"><img src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/strongswan.svg" alt="Fuzzing" title="Fuzzing Status"></a></span></p>
-</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&amp;can=1&amp;q=proj:strongswan"><img src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/strongswan.svg" alt="Fuzzing" title="Fuzzing Status"></a></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><a class="image" href="https://github.com/strongswan/strongswan/actions/workflows/cifuzz.yml"><img src="https://github.com/strongswan/strongswan/workflows/CIFuzz/badge.svg" alt="CIFuzz" title="CIFuzz"></a></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_testing_environment"><a class="anchor" href="#_testing_environment"></a>Testing Environment</h3>
