@@ -925,16 +925,7 @@ which should print a list of ipsec specific kernel state.</p>
 <h2 id="_install_freebsd_port_package"><a class="anchor" href="#_install_freebsd_port_package"></a>Install FreeBSD Port / Package</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The easiest way to install strongSwan on FreeBSD is to use the
-<a href="https://www.freshports.org/security/strongswan">security/strongswan</a> port</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>cd /usr/ports/security/strongswan/ &amp;&amp; make install clean</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or to install the binary package with</p>
+<p>The easiest way to install strongSwan on FreeBSD is to use the binary package:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -942,11 +933,11 @@ which should print a list of ipsec specific kernel state.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>or in earlier FreeBSD releases with</p>
+<p>or to build the <a href="https://www.freshports.org/security/strongswan">security/strongswan</a> port:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>pkg_add -r strongswan</pre>
+<pre>cd /usr/ports/security/strongswan/ &amp;&amp; make install clean</pre>
 </div>
 </div>
 </div>
