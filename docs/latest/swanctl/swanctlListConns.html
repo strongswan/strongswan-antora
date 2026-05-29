@@ -863,7 +863,7 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">swanctl --list-conns
+<pre class="nowrap">swanctl --list-conns [--ike &lt;name&gt;]
 
 swanctl --list-conns --help</pre>
 </div>
@@ -884,7 +884,9 @@ configurations.</p>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">--raw      (-r)  dump raw response message
+<pre class="nowrap">--ike      (-i)  filter connections by name
+
+--raw      (-r)  dump raw response message
 --pretty   (-P)  dump raw response message in pretty print
 --debug    (-v)  set debug level, default: 1
 --options  (-+)  read command line options from file
