@@ -1054,7 +1054,8 @@ The hostname/IP of the VPN server as configured in the VPN profile has to
 </li>
 <li>
 <p>Client authentication is limited to:</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>EAP authentication based on username/password (EAP-MSCHAPv2, EAP-MD5, EAP-GTC)</p>
 </li>
@@ -1065,12 +1066,15 @@ The hostname/IP of the VPN server as configured in the VPN profile has to
 <p>EAP-TLS with private key/certificate, see <a href="#_1_4_5_2014_11_06">1.4.5</a>
 for limitations</p>
 </li>
+</ul>
+</div>
+</li>
 <li>
 <p>The server always has to be authenticated with RSA/ECDSA (even when using
 EAP-TLS, see <a href="#_1_4_5_2014_11_06">1.4.5</a></p>
 </li>
 <li>
-<p>PSK authentication is <strong>not</strong> supported, as it is potentially very dangerous
+<p>PSK authentication is <strong>not supported</strong>, as it is potentially very dangerous
 because the client might send the hash of a weak password to a rogue VPN server.
 Thus we prefer EAP authentication where the server is first authenticated by
 an X.509 certificate and only afterwards the client uses its password.</p>
