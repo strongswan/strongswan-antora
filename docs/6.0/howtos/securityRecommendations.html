@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Security Recommendations :: strongSwan Documentation</title>
+    <link rel="canonical" href="https://docs.strongswan.org/docs/latest/howtos/securityRecommendations.html">
+    <link rel="prev" href="forwarding.html">
+    <link rel="next" href="smartcards.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site-extra.css">
+    <meta name="google-site-verification" content="pFYsGHXifqmasGBdCNNgzV4OxVDn2d3Zm0DK9WUYCl0" />
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.strongswan.org">strongSwan Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://strongswan.org">strongswan.org</a>
+        <a class="navbar-item" href="https://download.strongswan.org">Downloads</a>
+        <a class="navbar-item" href="https://github.com/strongswan">GitHub</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="6.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">strongSwan Docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction to strongSwan</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ipsecProtocol.html">Introduction to IPsec</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/install.html">Installation Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/autoconf.html">Autoconf Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/kernelModules.html">Linux Kernel Modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../install/reducedPrivileges.html">Reduced Privileges</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/quickstart.html">Configuration Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pkiQuickstart.html">Certificates Quickstart</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/caManagement.html">GUI-based CA Management</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../config/config.html">Configuration Files</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanConf.html">strongswan.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../config/strongswanDir.html">strongswan.d Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlConf.html">swanctl.conf</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlDir.html">swanctl Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/proposals.html">Algorithm Proposals (Cipher Suites)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/identityParsing.html">Identity Parsing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/jobPriority.html">Job Priority Management</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/lookupTuning.html">Tuning IKE SA Lookup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/rekeying.html">IKE and IPsec SA Renewal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/retransmission.html">Retransmission</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/tlsOptions.html">TLS Options</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/sqliteDbSchema.html">SQLite Database Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../config/IPv6Ndp.html">IPv6 and the Neighbor Discovery Protocol</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Features</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/vip.html">Virtual IP Addresses</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/mobike.html">MOBIKE</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/natTraversal.html">NAT Traversal</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/routeBasedVpn.html">Route-based VPN</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/networkManager.html">NetworkManager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/highAvailability.html">High Availability</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/hashAndUrl.html">Hash and URL</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ipcomp.html">IPComp</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/iptfs.html">AGGFRAG / IP-TFS</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/per-cpu-sas.html">Per-CPU SAs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/integrityTests.html">Integrity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../features/ietf.html">IPsec and Related Standards</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How-tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="forwarding.html">Forwarding and Split-Tunneling</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="securityRecommendations.html">Security Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="smartcards.html">Smart Card Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cloudPlatforms.html">Cloud Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="nameSpaces.html">strongSwan in Linux Network Namespaces</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="trafficDumps.html">Taking Traffic Dumps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Daemons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon.html">charon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-systemd.html">charon-systemd</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-svc.html">charon-svc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../daemons/charon-cmd.html">charon-cmd</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Portability / OS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../os/android.html">Android</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClient.html">Android VPN Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientProfiles.html">Android VPN Client Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientPrivacyPolicy.html">Android VPN Privacy Policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../os/androidVpnClientBuild.html">Android VPN Client Build</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/windows.html">Windows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/freebsd.html">FreeBSD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../os/macos.html">macOS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Interoperability</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html">Windows Clients</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/windowsCertRequirements.html">Windows Certificate Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_machine_certificates">Using Machine Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineCert.html">Storing a Windows Machine Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConf.html">Windows Client Configuration with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineConnect.html">Windows Client Connection with Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerConf.html">strongSwan Configuration for Windows Machine Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsMachineServerStatus.html">strongSwan Connection Status with Windows Machine Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_x_509_user_certificates">Using User Certificates</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserCert.html">Storing a Windows User Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsCaCert.html">Storing a Windows CA Certificate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConf.html">Windows Client Configuration with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserConnect.html">Windows Client Connection with User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerConf.html">strongSwan Configuration for Windows User Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsUserServerStatus.html">strongSwan Connection Status with Windows User Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/windowsClients.html#_using_passwords_with_eap_mschapv2">Using EAP</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConf.html">Windows Client EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapConnect.html">Windows Client EAP Connection with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerConf.html">strongSwan EAP Configuration with Passwords</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../interop/windowsEapServerStatus.html">strongSwan EAP Connection Status with Passwords</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/microsoftStatusNotify.html">Microsoft Status Notify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../interop/ios.html">iOS and macOS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../interop/appleIkev2Profile.html">Apple IKEv2 Configuration Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../interop/fortinet.html">Fortinet Devices</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../swanctl/swanctl.html">swanctl Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlCounters.html">swanctl --counters</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlFlushCerts.html">swanctl --flush-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInitiate.html">swanctl --initiate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlInstall.html">swanctl --install</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAlgs.html">swanctl --list-algs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListAuths.html">swanctl --list-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListCerts.html">swanctl --list-certs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListConns.html">swanctl --list-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPols.html">swanctl --list-pols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListPools.html">swanctl --list-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlListSas.html">swanctl --list-sas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAll.html">swanctl --load-all</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadAuths.html">swanctl --load-authorities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadConns.html">swanctl --load-conns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadCreds.html">swanctl --load-creds</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLoadPools.html">swanctl --load-pools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlLog.html">swanctl --log</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRedirect.html">swanctl --redirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlRekey.html">swanctl --rekey</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlReloadSettings.html">swanctl --reload-settings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlStats.html">swanctl --stats</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlTerminate.html">swanctl --terminate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlUninstall.html">swanctl --uninstall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../swanctl/swanctlVersion.html">swanctl --version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pki/pki.html">pki Tool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiAcert.html">pki --acert</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiDn.html">pki --dn</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEst.html">pki --est</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiEstCa.html">pki --estca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiGen.html">pki --gen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiIssue.html">pki --issue</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiKeyid.html">pki --keyid</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiOcsp.html">pki --ocsp</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs12.html">pki --pkcs12</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPkcs7.html">pki --pkcs7</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPrint.html">pki --print</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiPub.html">pki --pub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiReq.html">pki --req</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScep.html">pki --scep</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiScepCa.html">pki --scepca</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSelf.html">pki --self</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiSignCrl.html">pki --signcrl</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../pki/pkiVerify.html">pki --verify</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/cert-enroll.html">cert-enroll Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/pt-tls-client.html">pt-tls-client Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sw-collector.html">sw-collector Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/sec-updater.html">sec-updater Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/pool.html">ipsec pool Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tnc/attest.html">ipsec attest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/conftest.html">ipsec conftest Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tools/scepclient.html">ipsec scepclient Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Plugins</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../plugins/plugins.html">Plugin List</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/addrblock.html">addrblock Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr.html">attr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/attr-sql.html">attr-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/bypass-lan.html">bypass-lan Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/certexpire.html">certexpire Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/connmark.html">connmark Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/constraints.html">constraints Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/counters.html">counters Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/coupling.html">coupling Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/curl.html">curl Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-gtc.html">eap-gtc Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-radius.html">eap-radius Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-simaka-sql.html">eap-simaka-sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/eap-tls.html">eap-tls Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/error-notify.html">error-notify Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ext-auth.html">ext-auth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/farp.html">farp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/forecast.html">forecast Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/ha.html">ha Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-iph.html">kernel-iph Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-libipsec.html">kernel-libipsec Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/kernel-wfp.html">kernel-wfp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/load-tester.html">load-tester Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/lookip.html">lookip Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/openxpki.html">openxpki Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/pkcs11.html">pkcs11 Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/radattr.html">radattr Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/resolve.html">resolve Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/save-keys.html">save-keys Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/selinux.html">selinux Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/socket-win.html">socket-win Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/sql.html">sql Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/systime-fix.html">systime-fix Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/unity.html">unity Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/updown.html">updown Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/vici.html">vici Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/whitelist.html">whitelist Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/winhttp.html">winhttp Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-eap.html">xauth-eap Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-noauth.html">xauth-noauth Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../plugins/xauth-pam.html">xauth-pam Plugin</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../plugins/pluginLoad.html">Plugin Load Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/devs.html">Developer Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/contributions.html">Contributions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/programmingStyle.html">Programming Style</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/objectOrientedC.html">Object Oriented C</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/testingEnvironment.html">Testing Environment</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devs/fuzzing.html">Fuzzing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Platform Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tpm/tpm2.html">TPM 2.0</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tpm/tpm2Ike.html">TPM 2.0 Use with strongSwan IKE Daemon</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/tnc.html">Trusted Network Connect</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncClient.html">TNC Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/tncServer.html">TNC Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/optimumTncSizes.html">Optimum PB-TNC Batch and PA-TNC Message Sizes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tnc/strongTnc.html">strongTNC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/swima.html">Software Inventory</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaClient.html">Software Inventory Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/swimaServer.html">Software Inventory Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/measuredBoot.html">Measured Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationClient.html">Attestation Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/attestationServer.html">Attestation Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/pcrBootEvents.html">PCR Boot Events</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tnc/ima.html">Integrity Measurement Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaClient.html">IMA Client</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tnc/imaServer.html">IMA Server</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Support</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/helpRequests.html">Help Requests</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/flawReporting.html">Flaw Reporting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/free.html">Free Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/commercial.html">Commercial Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Publications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../publications/publications.html">Publications and Presentations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://strongswan.org/blog">strongSwan Blog</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">strongSwan Docs</span>
+    <span class="version">6.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../../latest/index.html">strongSwan Docs</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../latest/index.html">6.1</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../5.9/index.html">5.9</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../latest/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">strongSwan Docs</a></li>
+    <li>How-tos</li>
+    <li><a href="securityRecommendations.html">Security Recommendations</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <div class="version-menu">
+    <a class="version" href="../../latest/howtos/securityRecommendations.html">6.1</a>
+    <a class="version is-current" href="securityRecommendations.html">6.0</a>
+    <a class="version" href="../../5.9/howtos/securityRecommendations.html">5.9</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/strongswan/strongswan-docs/edit/docs-6.0/docs/modules/ROOT/pages/howtos/securityRecommendations.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Security Recommendations</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are a couple of security-relevant topics that have to be considered when
+using strongSwan to set up IKE connections and policy-based IPsec tunnels.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_weak_cryptographic_algorithms"><a class="anchor" href="#_weak_cryptographic_algorithms"></a>Weak Cryptographic Algorithms</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following cryptographic algorithms are <strong>weak</strong> and prone to attacks and
+therefore <strong>must not</strong> be used.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encryption </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>des,3des,cast,blowfish</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Integrity Protection / Pseudo Random Functions </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>md5,sha1</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Diffie-Hellman Groups </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>modp512,modp768,modp1024,modp1024s160,modp1536,modp2048s224,modp2048s256,ecp192</pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If no explicit <strong>proposals</strong> are defined in
+<a href="../swanctl/swanctlConf.html" class="xref page"><strong>swanctl.conf</strong></a>, then strongSwan uses its
+<a href="../config/proposals.html#_default_proposals" class="xref page"><strong>default proposals</strong></a> that neither
+propose nor accept any of the <strong>weak algorithms</strong> listed above, with the exception
+of <strong>3des</strong> and <strong>sha1</strong> which are still heavily used e.g. by Microsoft Windows.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When <a href="../config/proposals.html" class="xref page">configuring algorithm proposals</a> (<code><strong>proposals</strong></code> or <code><strong>esp|ah_proposals</strong></code>)
+in the connection definitions of <a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>,
+make sure to <strong>exclude these algorithms</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_algorithm_selection"><a class="anchor" href="#_algorithm_selection"></a>Algorithm Selection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The available algorithms for IKE depend on the crypto plugins loaded in the IKE
+daemon <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a>. Refer to the
+<a href="../config/proposals.html" class="xref page">algorithm proposal keywords</a> to see which plugins
+implement them.</p>
+</div>
+<div class="paragraph">
+<p>For processing of ESP and AH packets, the available algorithms depend on
+the operating system kernel&#8217;s support for them and if they are supported by
+the <code>XFRM</code> (Linux) or <code>PF_KEY</code> (FreeBSD, macOS) kernel interface. If you&#8217;re
+using userland ESP encryption based on the
+<a href="#plugins/kernel-libipsec"><code><strong>kernel-libipsec</strong></code></a> plugin, then all IKE
+algorithms are also available for ESP.</p>
+</div>
+<div class="paragraph">
+<p>It is advised to adhere to the recommendation of the appropriate security
+authority when choosing algorithms to secure the tunnel cryptographically.
+<a href="https://www.keylength.com/">keylength.com</a> lists some of the standards for western Europe and
+the US. It is strongly advised to use at least a <code><strong>2048</strong></code> bit key length for
+MODP Diffie-Hellman groups.</p>
+</div>
+<div class="paragraph">
+<p>The National Institute of Standards and Technology (NIST) has mandated that a
+minimum cryptographic strength of 128 bit is sufficient for security beyond
+the year 2030. This results in the following cipher suite:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aes128-sha256-modp3072</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For systems without support for SHA-256, SHA-1 might be used instead. SHA-1 must
+not be used for anything else than HMACs in IKE or ESP.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, the <a href="https://en.wikipedia.org/wiki/Commercial_National_Security_Algorithm_Suite">Commercial National Security Algorithm</a> (CNSA) Suite
+may also be used where supported</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aes256-sha384-ecp384,aes256gcm16-prfsha384-ecp384</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>CNSA 2.0 includes quantum-resistant key exchange algorithms:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aes256-sha384-sha512-ecp384-ke1_mlkem1024,aes256gcm16-prfsha384-prfsha512-ecp384-ke1_mlkem1024</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="../config/proposals.html" class="xref page">Algorithm Proposals (Cipher Suites)</a> provides more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_certificate_based_authentication"><a class="anchor" href="#_certificate_based_authentication"></a>Certificate-based Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Certificate-based authentication is inherently stronger than PSK-based authentication.
+A properly built PKI architecture has usually one root CA and one or several
+intermediate CAs, where the private key of the intermediate CA is used to sign
+the end entity certificates and the private key of the root CA can be kept on a
+smartcard stored in a safe or at least on a system disconnected from the Internet.
+The private root CA key is never stored on an insecure or online system.
+Securing the root CA enables the PKI administrator to revoke any certificates
+and recreate the PKI from scratch, if any intermediate CAs are compromised.</p>
+</div>
+<div class="paragraph">
+<p>Using the default <code><strong>revocation</strong></code> plugin, Certificate Revocation Lists (CRLs) and
+the Online Certificate Status Protocol (OCSP) can be used to check if a given
+certificate has been revoked for some reason. strongSwan supports locally-stored
+CRLs, as well as fetching fresh CRLs and OCSP information via the fetcher plugins
+<a href="../plugins/curl.html" class="xref page"><code><strong>curl</strong></code></a>, <code><strong>soup</strong></code> or <a href="../plugins/winhttp.html" class="xref page"><code><strong>winhttp</strong></code></a>.</p>
+</div>
+<div class="paragraph">
+<p>CRL Distribution Points (CDPs) are either retrieved from the certificate or can
+be added manually using an
+<a href="../swanctl/swanctlConf.html#_authorities" class="xref page"><code><strong>authorities</strong></code></a> section in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Recommended key types and strengths for X.509 certificates</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+EdDSA
+</td>
+<td class="hdlist2">
+<p>Ed25519 and Ed488 are both acceptable. EdDSA is recommended if supported by
+all peers.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+RSA
+</td>
+<td class="hdlist2">
+<p>A modulus of at least <code><strong>2048</strong></code> bits should be used (preferably <code><strong>3072</strong></code> bits
+for end entity certificates and <code><strong>4096</strong></code> bits for CA certificates).</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+ECDSA
+</td>
+<td class="hdlist2">
+<p>Curves should provide a strength of at least <code><strong>256</strong></code> bits (preferably <code><strong>384</strong></code>
+bits).</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For either RSA or ECDSA, only signatures with at least SHA-256 must be used
+since both SHA-1 and MD5 are hopelessly broken.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>All X.509 certificates must conform to the PKIX Internet standard
+(<a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a>).</p>
+</div>
+<div class="sect2">
+<h3 id="_signature_scheme_constraints"><a class="anchor" href="#_signature_scheme_constraints"></a>Signature Scheme Constraints</h3>
+<div class="paragraph">
+<p>If you want to enforce specific (strong) signature algorithms in the <strong>certificate
+trust chain</strong> of the peer, you can do this using the
+<a href="../swanctl/swanctlConf.html#_connections_conn_remote" class="xref page"><code><strong>remote.auth</strong></code></a> settings in
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connection.&lt;conn&gt;.remote.auth = pubkey-sha256-sha384-sha512 <i class="conum" data-value="1"></i><b>(1)</b>
+connection.&lt;conn&gt;.remote.auth = ecdsa-sha384 <i class="conum" data-value="2"></i><b>(2)</b>
+connection.&lt;conn&gt;.remote.auth = rsa-3072-sha256-sha384-sha512 <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This enforces the use of <code><strong>sha256</strong></code>, <code><strong>sha384</strong></code> or <code><strong>sha512</strong></code> in the
+certificate trust chain, using any key type</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The key type can optionally be restricted (only ECDSA)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The minimum key strength can be limited as well (only RSA with at least 3072 bits)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>By default, such restrictions automatically apply to <strong>signatures for IKEv2
+authentication</strong> as well, which can be disabled via
+<code><strong>charon.signature_authentication_constraints</strong></code> in
+<a href="../config/strongswanConf.html" class="xref page"><code><strong>strongswan.conf</strong></code></a>, or by defining separate
+restrictions for IKEv2 with the <code><strong>ike:</strong></code> prefix.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connection.&lt;conn&gt;.remote.auth = ike:pubkey-sha384-sha256 <i class="conum" data-value="1"></i><b>(1)</b>
+connection.&lt;conn&gt;.remote.auth = rsa-sha256-sha384-sha512-ike:rsa/pss-sha384 <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This enforces the use of <code><strong>sha384</strong></code> or <code><strong>sha256</strong></code> for IKEv2 but does not
+restrict signatures in the trust chain</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This enforces signatures in the trust chain to RSA with either <code><strong>sha256</strong></code>,
+<code><strong>sha384</strong></code> or <code><strong>sha512</strong></code>, while only IKEv2 signatures with RSASSA-PSS and
+<code><strong>sha384</strong></code> are accepted</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pre_shared_keys"><a class="anchor" href="#_pre_shared_keys"></a>Pre-shared Keys</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is nothing to be said against Pre-Shared Keys (PSKs) as long as they are
+chosen randomly with sufficient entropy. The <code><strong>openssl rand</strong></code> command can be used
+to generate a PSK with <code><strong>&gt;256</strong></code> bit entropy converted to Base64 format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ openssl rand -base64 33
+bjsqbPZB3Isk/RHMCH6Pe9G+TDc4tJVmbvRlWLXMSjS+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, the <code><strong>dd</strong></code> command can be used to directly retrieve the entropy
+either from <code><strong>/dev/random</strong></code> or the non-blocking <code><strong>/dev/urandom</strong></code> device</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ dd if=/dev/random count=1 bs=33 2&gt;/dev/random | base64
+s1Jy/Li0Bkqmd3C7eYG71EoPxmcataF/LL4ATA3gE+au</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PSK can then be used in the
+<a href="../swanctl/swanctlConf.html#_secrets_ikesuffix" class="xref page"><code><strong>secrets</strong></code></a> section of
+<a href="../swanctl/swanctlConf.html" class="xref page"><code><strong>swanctl.conf</strong></code></a> to configure the IKE user
+credentials:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>secrets {
+  ike-alice {
+    id = alice@strongswan.org
+    secret = 0sbjsqbPZB3Isk/RHMCH6Pe9G+TDc4tJVmbvRlWLXMSjS+
+  }
+  ike-bob {
+    id = bob@strongswan.org
+    secret = 0ss1Jy/Li0Bkqmd3C7eYG71EoPxmcataF/LL4ATA3gE+au
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For Base64-encoded secrets, the <code><strong>0s</strong></code> prefix is used whereas <code><strong>0x</strong></code> designates
+a hex-encoded value (without prefix, the value is used as is).</p>
+</div>
+<div class="sect2">
+<h3 id="_ikev1_aggressive_mode_with_psk_authentication"><a class="anchor" href="#_ikev1_aggressive_mode_with_psk_authentication"></a>IKEv1 Aggressive Mode with PSK Authentication</h3>
+<div class="paragraph">
+<p>IKEv1 Aggressive Mode with PSK is inherently flawed, as a hash of the PSK is
+transmitted in the clear, which a passive attacker can directly use to try to
+crack the password using an offline dictionary or brute force attack. Thus, it
+is strongly advised to avoid IKEv1 Aggressive Mode. Also see
+<a href="../support/faq.html#_aggressive_mode" class="xref page">this FAQ entry</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mitm_attacks_on_ikev2_psk_authentication"><a class="anchor" href="#_mitm_attacks_on_ikev2_psk_authentication"></a>MITM Attacks on IKEv2 PSK Authentication</h3>
+<div class="paragraph">
+<p>If user credentials don&#8217;t have enough entropy, which is usually the case if you
+let the users freely choose their passwords, then PSK-based IKEv2 authentication
+is vulnerable to active Man-In-The-Middle (MITM) attacks.</p>
+</div>
+<div class="paragraph">
+<p>Since a VPN client is usually the IKEv2 initiator, it sends its IKE_AUTH request
+containing the password hash in the AUTH payload to an unauthenticated, and
+therefore untrusted, VPN server. If an attacker inserts themselves into the IKE
+connection between client and server, they can intercept the AUTH payload and
+start an offline dictionary or brute force attack on the PSK.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, it is of utmost importance that cryptographically strong PSKs are
+used with PSK-based authentication. Since this often cannot be enforced,
+we highly recommend to use
+<a href="../config/quickstart.html#_roadwarrior_case_with_eap" class="xref page">EAP-based authentication</a>
+instead, where the VPN server is first authenticated based on an X.509 server
+certificate, so that the VPN client can then send its (potentially weak) password
+hash to a trusted peer.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_perfect_forward_secrecy"><a class="anchor" href="#_perfect_forward_secrecy"></a>Perfect Forward Secrecy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Perfect Forward Secrecy (PFS) is recommended to make IPsec peers negotiate
+independent session keys for each Child/IPsec SA. This protects the
+confidentiality of the IPsec traffic should the key material of the IKE SA get
+leaked.</p>
+</div>
+<div class="paragraph">
+<p>Note that the session keys of the first Child SA of a new IKEv2 connection are
+derived from the IKE key material. However, subsequent Child SAs will use
+independent keys if PFS is used. This can also be enforced for the first Child SA
+by using childless IKE SAs (<a href="../swanctl/swanctlConf.html#_connections_conn_childless" class="xref page"><code><strong>childless</strong></code></a>
+setting in swanctl.conf).</p>
+</div>
+<div class="paragraph">
+<p>A form of PFS is also achieved by rekeying Child SAs after rekeying the IKE SA.
+Because rekeying an IKE SA always creates fresh key material, any Child SA
+created/rekeyed afterwards will be based on the new key material and a leak of
+the previous IKE SA key material doesn&#8217;t affect them.</p>
+</div>
+<div class="paragraph">
+<p>PFS is enabled by adding one or more key exchange methods to the
+<a href="../config/proposals.html" class="xref page">ESP or AH proposal(s)</a>. It can be made optional by
+adding <code><strong>none</strong></code> to a proposal. Since version 6.0.2, the
+<a href="../config/proposals.html#_default_proposals" class="xref page"><strong>default ESP/AH proposal</strong></a>
+include the latter and all supported key exchange methods, so whether PFS is
+used depends on the proposal of the peer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tunnel_shunting"><a class="anchor" href="#_tunnel_shunting"></a>Tunnel Shunting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As IPsec connections on Linux are usually policy-based, there is no tunnel interface
+over which packets are routed. Instead, XFRM policies and states transform the
+packet transparently.</p>
+</div>
+<div class="paragraph">
+<p>Note that any traffic for which there is no matching IPsec policy will not be
+subject to IPsec processing. This can cause traffic leakage into your LAN and into
+the attached WAN. Such a scenario can occur when your site-to-site tunnel is
+configured with <code><strong>start_action = none</strong></code> and your firewall rules do not drop packets
+that should be protected with IPsec but actually aren&#8217;t.</p>
+</div>
+<div class="paragraph">
+<p>Usually, it is highly undesirable to let such traffic just pass. Take care to shunt
+the connections correctly using the <code><strong>policy</strong></code> match module in <code><strong>iptables</strong></code> or
+by defining IPsec drop policies.</p>
+</div>
+<div class="paragraph">
+<p>It is strongly advised to use <code><strong>start_action = trap</strong></code> in site-to-site setups to
+make sure that the kernel tells the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon
+to establish a Child SA when there is no SA for a security policy. Traffic is
+held until an SA has been established and won&#8217;t leak out.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://datatracker.ietf.org/doc/html/rfc1918">RFC1918</a> private networks and others that are not allowed to be used on
+the public Internet must not occur in the source or destination fields of an IP
+packet. A suitable method to prevent that is to use an <code><strong>iptables</strong></code> rule that
+rejects or drops packets with such a destination without a matching IPsec policy
+using the <code><strong>policy</strong></code> match module.</p>
+</div>
+<div class="paragraph">
+<p>An alternative is to use a <strong>IPsec <code>drop</code> policy</strong> in the configuration with a
+lower priority than the <strong>normal</strong> IPsec policies (which is the default). If you
+NAT traffic into the tunnel by using DNAT, SNAT or MASQUERADE, the traffic
+selector of the <code><strong>drop</strong></code> policy must be adjusted accordingly. The IPsec SPD in
+the kernel or the <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon are not aware of
+your firewall&#8217;s NAT rules.</p>
+</div>
+<div class="paragraph">
+<p>Installing a drop policy with <code><strong>local|remote_ts = 0.0.0.0/0,::/0</strong></code> will block
+all traffic to and from the host if it isn&#8217;t protected by IPsec (except IKE as
+the daemon installs socket-specific bypass policies). However, this requires
+installing <strong>bypass/passthrough policies</strong> for traffic that should explicitly be
+allowed without IPsec (e.g. SSH or ICMP, in particular, ICMPv6 for
+<a href="../config/IPv6Ndp.html" class="xref page">NDP</a>).
+The <a href="https://www.strongswan.org/testing/testresults/ikev2/shunt-manual-prio/">ikev2/shunt-manual-prio</a> scenario
+provides an example for this (note that setting priorities manually is not
+necessary, that&#8217;s just something the test scenario does).</p>
+</div>
+<div class="paragraph">
+<p>With newer versions of the Linux kernel and iproute2, it&#8217;s also possible to
+configure a <strong>default drop policy</strong> per direction without having to install
+such policies manually or via strongSwan (<code><strong>ip xfrm policy setdefault in|out|fwd block</strong></code>).
+But similar to the above, bypass policies will be necessary to allow e.g. SSH or
+ICMP traffic without IPsec.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. IPsec Drop Policies</div>
+<div class="content">
+<div class="paragraph">
+<p>This config snippet installs drop policies for traffic destined to addresses
+from the IP address pool from which virtual IP addresses are assigned to
+roadwarriors.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>connections {
+  shunts {
+    rekey_time = 0
+    local_addrs = 127.0.0.1
+    remote_addrs = 127.0.0.1
+
+    children {
+      # prevent unprotected traffic from any network to the roadwarriors
+      drop-rwv4 {
+        # internet
+        local_ts  = 0.0.0.0/0
+        # roadwarrior subnet
+        remote_ts = 172.16.20.0/24
+        mode = drop
+        start_action = trap
+      }
+      # enabling policies_fwd_out is necessary for other children to avoid forwarded traffic from getting dropped
+    }
+  }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. iptables REJECT</div>
+<div class="content">
+<div class="paragraph">
+<p>This alternative example uses the <code>REJECT</code> target in <code><strong>iptables</strong></code> to give the
+users on the gateway&#8217;s side a clear error message when they send traffic
+to an address in <code><strong>10.0.0.0/8</strong></code> and there is no IPsec policy that allows it:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>iptables -A FORWARD -d 10.0.0.0/8 -m policy --pol none --dir out -j REJECT --reject-with icmp-admin-prohibited</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Generally, it is important to understand how <code><strong>iptables</strong></code>/Netfilter works together
+with XFRM to design suitable firewall rules that protect your network in case tunnels
+go down or can not be brought up. In some cases (e.g. certain NAT setups), it
+might be impossible to design a generic rule in <code><strong>iptables</strong></code> that just drops the
+unprotected packets and specific rules may need to be inserted.</p>
+</div>
+<div class="paragraph">
+<p>Of course, there are more networks than <code><strong>10.0.0.0/8</strong></code> that fulfill the aforementioned
+criteria, including IPv6 subnets. More information on these address ranges can be found
+<a href="https://datatracker.ietf.org/doc/html/rfc1918">RFC 1918</a>, <a href="https://datatracker.ietf.org/doc/html/rfc3927">RFC 3927</a> and <a href="https://datatracker.ietf.org/doc/html/rfc6890">RFC 6890</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="forwarding.html">Forwarding and Split-Tunneling</a></span>
+  <span class="next"><a href="smartcards.html">Smart Card Configuration</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a href="https://www.strongswan.org/">
+     <img src="../../../_/img/strongswan.png" alt="strongSwan Logo" height="100"
+        width="153" style="vertical-align:middle;float:left;margin:0px 20px"></a>
+  <p>Copyright &copy; 2021-2025
+     <a href="mailto:info@.strongswan.org">The strongSwan Team</a> and individual contributors.
+     The <a href="https://github.com/strongswan/strongswan-docs">content</a>
+     is provided under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license<p>
+  <p>The <a href="https://github.com/strongswan/strongswan-antora">UI</a>
+     for this site is derived from the Antora default UI and is licensed under
+     the <a href="https://www.mozilla.org/en-US/MPL/2.0/">MPL-2.0</a> license.</p>
+ </footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
