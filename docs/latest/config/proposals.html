@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,7 +828,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -843,9 +836,9 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="proposals.html">6.0</a>
+    <a class="version is-current" href="proposals.html">6.1</a>
     <a class="version" href="../../5.9/config/IKEv2CipherSuites.html">5.9</a>
   </div>
 </div>
@@ -1044,7 +1037,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>x</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default crypto plugin[s]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom crypto plugin[s]</p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">see <code><strong>Plugins</strong></code> columns below</p></td>
 </tr>
 <tr>
@@ -1064,18 +1057,6 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OpenSSL or AWS-LC crypto library</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openssl</strong></code></p></td>
 <td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>g</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Gcrypt crypto library</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>gcrypt</strong></code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>a</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AF_ALG userland Linux crypto API</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>af-alg</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Linux kernel 2.6.38</p></td>
 </tr>
 </tbody>
 </table>
@@ -1168,7 +1149,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3des</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">168 bit 3DES-EDE-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">des</p></td>
 </tr>
@@ -1176,7 +1157,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cast128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit CAST-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1184,25 +1165,25 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>blowfish128</strong> or <strong>blowfish</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit Blowfish-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blowfish</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>blowfish192</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit Blowfish-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blowfish</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>blowfish256</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit Blowfish-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blowfish</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>null</strong></p></td>
@@ -1216,7 +1197,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aes128</strong> or <strong>aes</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes</p></td>
 </tr>
@@ -1224,7 +1205,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aes192</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes</p></td>
 </tr>
@@ -1232,7 +1213,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aes256</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes</p></td>
 </tr>
@@ -1240,7 +1221,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aes128ctr</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-COUNTER</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ctr</p></td>
 </tr>
@@ -1248,7 +1229,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aes192ctr</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-COUNTER</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ctr</p></td>
 </tr>
@@ -1256,7 +1237,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aes256ctr</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-COUNTER</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ctr</p></td>
 </tr>
@@ -1264,7 +1245,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>camellia128</strong> or <strong>camellia</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit Camellia-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1272,7 +1253,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>camellia192</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit Camellia-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1280,7 +1261,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>camellia256</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit Camellia-CBC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1288,7 +1269,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>camellia128ctr</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit Camellia-COUNTER</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1296,7 +1277,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>camellia192ctr</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit Camellia-COUNTER</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1304,7 +1285,7 @@ cryptographically <strong>weak</strong> and thus prone to attacks.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>camellia256ctr</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit Camellia-COUNTER</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1346,7 +1327,7 @@ explicitly in such proposals.</p>
  <strong>aes128ccm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-CCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1355,7 +1336,7 @@ explicitly in such proposals.</p>
  <strong>aes192ccm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-CCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1364,7 +1345,7 @@ explicitly in such proposals.</p>
  <strong>aes256ccm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-CCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1373,7 +1354,7 @@ explicitly in such proposals.</p>
  <strong>aes128ccm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-CCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1382,7 +1363,7 @@ explicitly in such proposals.</p>
  <strong>aes192ccm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-CCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1391,7 +1372,7 @@ explicitly in such proposals.</p>
  <strong>aes256ccm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-CCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1400,7 +1381,7 @@ explicitly in such proposals.</p>
  <strong>aes128ccm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-CCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1409,7 +1390,7 @@ explicitly in such proposals.</p>
  <strong>aes192ccm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-CCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1418,7 +1399,7 @@ explicitly in such proposals.</p>
  <strong>aes256ccm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-CCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, ccm</p></td>
 </tr>
@@ -1427,7 +1408,7 @@ explicitly in such proposals.</p>
  <strong>aes128gcm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-GCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1436,7 +1417,7 @@ explicitly in such proposals.</p>
  <strong>aes192gcm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-GCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1445,7 +1426,7 @@ explicitly in such proposals.</p>
  <strong>aes256gcm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-GCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1454,7 +1435,7 @@ explicitly in such proposals.</p>
  <strong>aes128gcm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-GCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1463,7 +1444,7 @@ explicitly in such proposals.</p>
  <strong>aes192gcm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-GCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1472,7 +1453,7 @@ explicitly in such proposals.</p>
  <strong>aes256gcm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-GCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1481,7 +1462,7 @@ explicitly in such proposals.</p>
  <strong>aes128gcm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit AES-GCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1490,7 +1471,7 @@ explicitly in such proposals.</p>
  <strong>aes192gcm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit AES-GCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1499,7 +1480,7 @@ explicitly in such proposals.</p>
  <strong>aes256gcm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit AES-GCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, gcm</p></td>
 </tr>
@@ -1532,7 +1513,7 @@ explicitly in such proposals.</p>
  <strong>camellia128ccm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit Camellia-CCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1541,7 +1522,7 @@ explicitly in such proposals.</p>
  <strong>camellia192ccm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit Camellia-CCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1550,7 +1531,7 @@ explicitly in such proposals.</p>
  <strong>camellia256ccm64</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit Camellia-CCM with  64 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1559,7 +1540,7 @@ explicitly in such proposals.</p>
  <strong>camellia128ccm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit Camellia-CCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1568,7 +1549,7 @@ explicitly in such proposals.</p>
  <strong>camellia192ccm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit Camellia-CCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1577,7 +1558,7 @@ explicitly in such proposals.</p>
  <strong>camellia256ccm96</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit Camellia-CCM with  96 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1586,7 +1567,7 @@ explicitly in such proposals.</p>
  <strong>camellia128ccm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128 bit Camellia-CCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1595,7 +1576,7 @@ explicitly in such proposals.</p>
  <strong>camellia192ccm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">192 bit Camellia-CCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1604,7 +1585,7 @@ explicitly in such proposals.</p>
  <strong>camellia256ccm128</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bit Camellia-CCM with 128 bit ICV</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o g a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">o</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1647,7 +1628,7 @@ explicitly in such proposals.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>md5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MD5 HMAC (96 bit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">md5, hmac</p></td>
 </tr>
@@ -1663,7 +1644,7 @@ explicitly in such proposals.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sha1</strong> or <strong>sha</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA1 HMAC (96 bit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha1, hmac</p></td>
 </tr>
@@ -1679,7 +1660,7 @@ explicitly in such proposals.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aesxcbc</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AES XCBC (96 bit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x  a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, xcbc</p></td>
 </tr>
@@ -1719,7 +1700,7 @@ explicitly in such proposals.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sha256</strong> or <strong>sha2_256</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA2_256_128 HMAC (128 bit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha2, hmac</p></td>
 </tr>
@@ -1727,7 +1708,7 @@ explicitly in such proposals.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sha384</strong> or <strong>sha2_384</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA2_384_192 HMAC (192 bit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha2, hmac</p></td>
 </tr>
@@ -1735,7 +1716,7 @@ explicitly in such proposals.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sha512</strong> or <strong>sha2_512</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA2_512_256 HMAC (256 bit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha2, hmac</p></td>
 </tr>
@@ -1750,7 +1731,7 @@ explicitly in such proposals.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>It&#8217;s also possible to use the hash implementations provided by the <code><strong>gcrypt</strong></code> plugin
+<p>It&#8217;s also possible to use the hash implementations provided by plugins
 together with the <code><strong>hmac</strong></code> plugin.</p>
 </div>
 </div>
@@ -1789,21 +1770,21 @@ to derive PRFs. Thus PRF algorithms have to be configured explicitly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prfmd5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MD5 PRF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">md5, hmac</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prfsha1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA1 PRF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha1, hmac</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prfaesxcbc</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AES XCBC PRF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aes, xcbc</p></td>
 </tr>
 <tr>
@@ -1817,27 +1798,27 @@ to derive PRFs. Thus PRF algorithms have to be configured explicitly.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prfsha256</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA2_256 PRF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha2, hmac</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prfsha384</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA2_384 PRF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha2, hmac</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prfsha512</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA2_512 PRF</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sha2, hmac</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>It&#8217;s also possible to use the hashers provided by the <code><strong>gcrypt</strong></code> plugin together
+<p>It&#8217;s also possible to use the hash implementations provided by plugins together
 with the <code><strong>hmac</strong></code> plugin.</p>
 </div>
 <div class="sect2">
@@ -1982,56 +1963,56 @@ technically fine to negotiate e.g. <code><strong>x25519-ke7_mlkem768</strong></c
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp768</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">768 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp1024</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1024 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp1536</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1536 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp2048</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2048 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp3072</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3072 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp4096</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4096 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp6144</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6144 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modp8192</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8192 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 </tbody>
@@ -2064,7 +2045,7 @@ technically fine to negotiate e.g. <code><strong>x25519-ke7_mlkem768</strong></c
 <td class="tableblock halign-left valign-top"><p class="tableblock">1024 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">160 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
@@ -2072,7 +2053,7 @@ technically fine to negotiate e.g. <code><strong>x25519-ke7_mlkem768</strong></c
 <td class="tableblock halign-left valign-top"><p class="tableblock">2048 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">224 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 <tr>
@@ -2080,7 +2061,7 @@ technically fine to negotiate e.g. <code><strong>x25519-ke7_mlkem768</strong></c
 <td class="tableblock halign-left valign-top"><p class="tableblock">2048 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">256 bits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 </tr>
 </tbody>
@@ -2343,42 +2324,42 @@ implemented only by certain plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RSA PKCS#1 v1.5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MD5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.840.113549.1.1.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp, md5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RSA PKCS#1 v1.5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA-1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.840.113549.1.1.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong> x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp, sha1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RSA PKCS#1 v1.5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 224</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.840.113549.1.1.14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp, sha2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RSA PKCS#1 v1.5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 256</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.840.113549.1.1.11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp, sha2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RSA PKCS#1 v1.5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 384</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.840.113549.1.1.12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp, sha2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RSA PKCS#1 v1.5</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 512</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.840.113549.1.1.13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x b w o</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp, sha2</p></td>
 </tr>
 <tr>

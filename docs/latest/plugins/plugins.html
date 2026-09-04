@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,7 +828,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -843,9 +836,9 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="plugins.html">6.0</a>
+    <a class="version is-current" href="plugins.html">6.1</a>
     <a class="version" href="../../5.9/plugins/plugins.html">5.9</a>
   </div>
 </div>
@@ -911,22 +904,10 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Intel AES-NI crypto plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">af-alg</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AF_ALG Linux kernel crypto API</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">agent</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RSA/ECDSA private key backend connecting to ssh-agent</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blowfish</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Blowfish cipher software implementation</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">botan</p></td>
@@ -1013,12 +994,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GCM cipher mode wrapper</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">gcrypt</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on <a href="https://gnupg.org/software/libgcrypt/">libgcrypt</a></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
@@ -1035,12 +1010,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IKEv2 key derivation wrapper using various PRFs</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keychain</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">macOS Keychain Services credential set</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ldap</p></td>
@@ -1095,12 +1064,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OCSP responder accessing <a href="https://github.com/openxpki/openxpki">OpenXPKI</a> MySQL/MariaDB certificate database</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">padlock</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">e</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VIA padlock crypto backend, provides AES128/SHA1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pem</p></td>
@@ -1193,12 +1156,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SHA-3 hasher and SHAKE128/SHAKE256 XOF software implementation</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">soup</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">libsoup based HTTP fetcher</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sqlite</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
@@ -1276,12 +1233,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Narrow traffic selectors to <a href="https://datatracker.ietf.org/doc/html/rfc3779">RFC 3779</a> address blocks in X.509 certificates</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">android-dns</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/android.html" class="xref page">Android</a>-specific DNS handler plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">android-log</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
@@ -1342,12 +1293,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provides authentication via CERT RRs protected by DNSSEC</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="duplicheck.html" class="xref page">duplicheck</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Advanced duplicate checking with liveness test and notifications</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">eap-aka</p></td>
@@ -1537,12 +1482,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IPsec backend for the Windows platform, using the Windows Filtering Platform</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">led</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Let Linux LED subsystem LEDs blink on IKE activity</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="load-tester.html" class="xref page">load-tester</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
@@ -1553,18 +1492,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Virtual IP lookup facility using a UNIX socket</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">medcli</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Web interface based mediation client interface</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">medsrv</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Web interface based mediation server interface</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">osx-attr</p></td>
@@ -1603,12 +1530,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SELinux support plugin for labeled IPsec</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">smp</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XML based strongSwan Management Protocol</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">socket-default</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
@@ -1637,12 +1558,6 @@ specific needs.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated stroke configuration/control backend, to use with ipsec script and starter</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="tnc-ifmap.html" class="xref page">tnc-ifmap</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> IF-MAP 2.0 client</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tnc-pdp</p></td>
@@ -1758,22 +1673,10 @@ specific needs.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-11</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) protocol version 1.1</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-20</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) protocol version 2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-dynamic</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page">TNC</a> Client-Server (TNCCS) dynamic protocol discovery</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tnc-tnccs</p></td>

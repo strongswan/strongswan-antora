@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,7 +828,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -844,9 +837,9 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="swanctlConf.html">6.0</a>
+    <a class="version is-current" href="swanctlConf.html">6.1</a>
     <a class="version" href="../../5.9/swanctl/swanctlConf.html">5.9</a>
   </div>
 </div>
@@ -1064,10 +1057,11 @@ an arbitrary yet unique name (denoted <code>&lt;conn&gt;</code> below).</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_version"></a><a href="#_connections_conn_version"> </a>&lt;conn&gt;.version</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IKE major version to use for connection. <code><strong>1</strong></code> uses IKEv1 aka ISAKMP, <code><strong>2</strong></code> uses
- IKEv2. A connection using the default of <code><strong>0</strong></code> accepts both IKEv1 and IKEv2 as
- a responder and initiates the connection actively with IKEv2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IKE major version to use for connection. <code><strong>1</strong></code> uses the deprecated IKEv1
+ protocol aka ISAKMP, <code><strong>2</strong></code> uses IKEv2 (the default). A connection using <code><strong>0</strong></code>
+ accepts both IKEv1 and IKEv2 as a responder and initiates the connection
+ actively with IKEv2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="_connections_conn_local_addrs"></a><a href="#_connections_conn_local_addrs"> </a>&lt;conn&gt;.local_addrs</p></td>

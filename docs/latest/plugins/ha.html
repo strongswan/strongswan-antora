@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,7 +828,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -844,9 +837,9 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="ha.html">6.0</a>
+    <a class="version is-current" href="ha.html">6.1</a>
     <a class="version" href="../../5.9/plugins/ha.html">5.9</a>
   </div>
 </div>
@@ -932,6 +925,17 @@ section of <a href="../config/strongswanConf.html" class="xref page"><code><stro
 <td class="tableblock halign-left valign-top"><p class="tableblock">pools</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional HA-enabled virtual IP address pool subsection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receive_buffer_size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8388608</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum receive buffer size for the HA socket in bytes. This value controls
+ how many bytes of HA messages can be queued to the socket. If set to <code>0</code>, the
+ default from <code>/proc/sys/net/core/rmem_default</code> will apply. Note that the
+ kernel doubles the configured value to account for overhead. To exceed the
+ system-wide maximum from <code>/proc/sys/net/core/rmem_max</code>, special privileges
+ (CAP_NET_ADMIN) are necessary, otherwise, the kernel silently caps the
+ value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">remote</p></td>

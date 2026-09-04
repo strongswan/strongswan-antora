@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>What&#8217;s New in strongSwan 6.0 :: strongSwan Documentation</title>
+    <title>What&#8217;s New in strongSwan 6.1 :: strongSwan Documentation</title>
     <link rel="canonical" href="https://docs.strongswan.org/docs/latest/news/whatsNew.html">
     <link rel="prev" href="../index.html">
     <link rel="next" href="../howtos/introduction.html">
@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,17 +828,16 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
-    <li><a href="whatsNew.html">What&#8217;s New in strongSwan 6.0</a></li>
+    <li><a href="whatsNew.html">What&#8217;s New in strongSwan 6.1</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="whatsNew.html">6.0</a>
+    <a class="version is-current" href="whatsNew.html">6.1</a>
     <a class="version is-missing" href="../../5.9/index.html">5.9</a>
   </div>
 </div>
@@ -855,7 +848,7 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">What&#8217;s New in strongSwan 6.0</h1>
+<h1 class="page">What&#8217;s New in strongSwan 6.1</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="admonitionblock tip">
@@ -874,254 +867,146 @@ changes.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_plugins"><a class="anchor" href="#_plugins"></a>Plugins</h2>
+<h2 id="_ikev1_disabled_by_default"><a class="anchor" href="#_ikev1_disabled_by_default"></a>IKEv1 Disabled by Default</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_new_plugin"><a class="anchor" href="#_new_plugin"></a>New Plugin</h3>
 <div class="paragraph">
-<p>The following new <code><strong>libstrongswan</strong></code> plugin has been <strong>added</strong>:</p>
+<p>The <strong>IKEv1</strong> protocol is <strong>disabled by default</strong>. Support for the protocol will
+be <strong>removed completely</strong> in a future release, likely within the next year (there
+is no definitive timeline yet).</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 18.5185%;">
-<col style="width: 81.4815%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Plugin Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ml</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Module-Lattice-based crypto (ML-KEM)</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-ML-KEM is also supported via <a href="https://botan.randombit.net/">Botan</a> (<code><strong>botan</strong></code> plugin),
-<a href="https://www.wolfssl.com/">wolfSSL</a> (<code><strong>wolfssl</strong></code> plugin), <a href="https://openssl.org/">OpenSSL</a> (since 6.0.2) and
-<a href="https://aws.amazon.com/security/opensource/cryptography/">AWS-LC</a> (both via <code><strong>openssl</strong></code> plugin).
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following IKEv2 configuration examples show the use of the ML-KEM algorithm:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">with the <a href="https://www.strongswan.org/testing/testresults/botan/rw-mlkem"><code><strong>botan</strong></code></a> plugin</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">with the <a href="https://www.strongswan.org/testing/testresults/wolfssl/rw-mlkem"><code><strong>wolfssl</strong></code></a> plugin</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">with the <a href="https://www.strongswan.org/testing/testresults/ikev2/rw-mlkem"><code><strong>ml</strong></code> and <code><strong>openssl</strong></code></a> plugins</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_removed_plugins"><a class="anchor" href="#_removed_plugins"></a>Removed Plugins</h3>
-<div class="paragraph">
-<p>The following deprecated <code><strong>libstrongswan</strong></code> plugins have been <strong>removed</strong>:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 18.5185%;">
-<col style="width: 81.4815%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Plugin Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bliss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bimodal Lattice Signature Scheme (BLISS) post-quantum computer signature scheme</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">newhope</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Key exchange based on post-quantum computer New Hope algorithm</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ntru</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Key exchange based on post-quantum computer NTRU encryption</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_default_plugins"><a class="anchor" href="#_default_plugins"></a>Default Plugins</h3>
-<div class="paragraph">
-<p>The powerful <code><strong>openssl</strong></code> crypto plugin is now <strong>enabled</strong> by default:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 18.5185%;">
-<col style="width: 81.4815%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Plugin Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">openssl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Crypto backend based on the <a href="https://openssl.org/">OpenSSL</a> library</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Due to the nearly all-encompassing capabilities of the <code><strong>openssl</strong></code> default
-crypto plugin, the following <code><strong>libstrongswan</strong></code> plugins are <strong>not enabled</strong> by
-default anymore:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 18.5185%;">
-<col style="width: 81.4815%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Plugin Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">aes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AES-128/192/256 cipher software implementation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">curve25519</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X25519 DH group and Ed25519 public key authentication</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">des</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DES/3DES cipher software implementation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">fips-prf</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PRF specified by FIPS, used by EAP-SIM/AKA algorithms</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">gmp</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RSA/DH crypto backend based on <a href="https://gmplib.org/">libgmp</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hmac</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HMAC wrapper using various hashers</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">md5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MD5 hasher software implementation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pkcs12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PKCS#12 decoding routines</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rc2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RC2 cipher software implementation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sha1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SHA1 hasher software implementation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sha2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SHA-2 hasher software implementation</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-The legacy <code><strong>stroke</strong></code> management interface has been deprecated for many
-           years and has been replaced by the versatile <a href="../plugins/vici.html" class="xref page"><code><strong>vici</strong></code></a>
-           management interface. Thus with strongSwan 6.0, the <code><strong>stroke</strong></code> plugin
-           is <strong>not enabled</strong> by default anymore and has to be built separately.
-</td>
-</tr>
-</table>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 18.5185%;">
-<col style="width: 81.4815%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Plugin Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">stroke</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated stroke configuration/control backend used with ipsec script and starter</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Thus the <a href="../plugins/plugins.html#_default_plugins" class="xref page">following 25 plugins</a> are now
-enabled by <a href="../plugins/plugins.html#_default_plugins" class="xref page">default</a>.</p>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When building, IKEv1 has to be enabled explicitly via <code><strong>--enable-ikev1</strong></code>.
+A warning about its impending removal is logged.</p>
+</li>
+<li>
+<p>In the configuration, <code><strong>version</strong></code> now defaults to <code><strong>2</strong></code>. If it is set to <code><strong>0</strong></code>
+or <code><strong>1</strong></code>, a warning is logged when the configuration is loaded.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration_options"><a class="anchor" href="#_configuration_options"></a>Configuration Options</h2>
+<h2 id="_plugins"><a class="anchor" href="#_plugins"></a>Plugins</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_removed_plugins"><a class="anchor" href="#_removed_plugins"></a>Removed Plugins</h3>
 <div class="paragraph">
-<p>The following <a href="../config/strongswanConf.html#_charon" class="xref page"><code><strong>strongswan.conf</strong></code></a>
-configuration option is now enabled by default:</p>
+<p>The following plugins have been <strong>removed</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 30.7692%;">
-<col style="width: 7.6923%;">
-<col style="width: 61.5385%;">
+<col style="width: 18.5185%;">
+<col style="width: 81.4815%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Key</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Default</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description [Default]</strong></th>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make_before_break</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initiate IKEv2 reauthentication with a <strong>make-before-break</strong> instead of a
- <strong>break-before-make</strong> scheme. Make-before-break uses overlapping <code>IKE</code> and <code>CHILD SA</code>
- during reauthentication by first recreating all new SAs before deleting the old
- ones. This behavior can be beneficial to avoid connectivity gaps during
- reauthentication, but requires support for overlapping SAs by the peer.
- strongSwan can handle such overlapping SAs since version 5.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">af-alg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AF_ALG crypto interface to Linux crypto API</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">android-dns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Android-specific DNS handler</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blowfish</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blowfish software implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">duplicheck</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Duplicate checking plugin using liveness checks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gcrypt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GNU libgcrypt crypto backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keychain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">macOS Keychain Services credential set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">led</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IKE activity to Linux LED subsystem interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">medcli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mediation client configuration database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">medsrv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mediation server daemon integration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">padlock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VIA Padlock crypto backend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">soup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libsoup-based HTTP fetcher</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnc-ifmap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TNC IF-MAP 2.0 client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TNCCS 1.1 protocol implementation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tnccs-dynamic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dynamic TNCCS protocol discovery</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMP configuration and control interface</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_removed_components"><a class="anchor" href="#_removed_components"></a>Removed Components</h3>
+<div class="paragraph">
+<p>The following components have been <strong>removed</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.5185%;">
+<col style="width: 81.4815%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Component Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">charon-xpc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">macOS client application and helper daemon (PoC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libfast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Library to implement FastCGI-based application servers with templates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web-based management interface (PoC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">medsrv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mediation server web interface (PoC)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <nav class="pagination">

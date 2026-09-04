@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,7 +828,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -843,9 +836,9 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="devs.html">6.0</a>
+    <a class="version is-current" href="devs.html">6.1</a>
     <a class="version" href="../../5.9/devs/devs.html">5.9</a>
   </div>
 </div>
@@ -1184,10 +1177,6 @@ published <a href="https://strongswan.org/testresults.html">online</a>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../features/networkManager.html" class="xref page">NetworkManager</a> plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../os/macos.html" class="xref page"><code><strong>frontends/osx</strong></code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>charon-xpc</strong></code> helper daemon for the native <a href="../os/macos.html" class="xref page">macOS application</a></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ipsec</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The legacy ipsec command line tool wrapping commands and other tools</p></td>
 </tr>
@@ -1195,11 +1184,6 @@ published <a href="https://strongswan.org/testresults.html">online</a>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libcharon</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains most of the code and the plugins of the
  <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> daemon</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libfast</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A lightweight framework to build native web applications using ClearSilver and
- FastCGI</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tnc/tnc.html" class="xref page"><code><strong>libimcv</strong></code></a></p></td>
@@ -1250,15 +1234,6 @@ published <a href="https://strongswan.org/testresults.html">online</a>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>libtpmtss</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provides access to TPM 1.2 and <a href="../tpm/tpm2.html" class="xref page">TPM 2.0</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>manager</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A deprecated graphical management application for
- <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a> based on <code><strong>libfast</strong></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>medsrv</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An experimental management front end for mediation servers based on <code><strong>libfast</strong></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../pki/pki.html" class="xref page"><code><strong>pki</strong></code></a></p></td>

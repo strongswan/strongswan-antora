@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="docs" data-version="6.0">
+<div class="nav-container" data-component="docs" data-version="6.1">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -49,7 +49,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.0</a>
+    <a class="nav-link" href="../news/whatsNew.html">What&#8217;s New in strongSwan 6.1</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../howtos/introduction.html">Introduction to strongSwan</a>
@@ -563,9 +563,6 @@
     <a class="nav-link" href="../plugins/dhcp.html">dhcp Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/duplicheck.html">duplicheck Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/eap-dynamic.html">eap-dynamic Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -639,9 +636,6 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/test-vectors.html">test-vectors Plugin</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../plugins/tnc-ifmap.html">tnc-ifmap Plugin</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../plugins/tpm.html">tpm Plugin</a>
@@ -812,14 +806,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">strongSwan Docs</span>
-    <span class="version">6.0</span>
+    <span class="version">6.1</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <div class="title"><a href="../index.html">strongSwan Docs</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="../index.html">6.0</a>
+          <a href="../index.html">6.1</a>
         </li>
         <li class="version">
           <a href="../../5.9/index.html">5.9</a>
@@ -834,7 +828,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">strongSwan Docs</a></li>
@@ -843,9 +836,9 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">6.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">6.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="autoconf.html">6.0</a>
+    <a class="version is-current" href="autoconf.html">6.1</a>
     <a class="version" href="../../5.9/install/autoconf.html">5.9</a>
   </div>
 </div>
@@ -959,11 +952,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable Intel AES-NI crypto plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-af-alg</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable AF_ALG crypto interface to Linux Crypto API</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-agent</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable ssh-agent signing plugin</p></td>
@@ -979,11 +967,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable all optional plugins and features
  (they can be disabled with their respective --disable options).
  Mainly intended for testing</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-android</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable Android specific plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-android-log</p></td>
@@ -1005,11 +988,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-bfd-backtraces</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.0.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use binutil&#8217;s libbfd to resolve backtraces for memory leaks and segfaults</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-blowfish</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable Blowfish software implementation plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-botan</p></td>
@@ -1113,11 +1091,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.1.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin authenticating peers based on DNS CERT resource records protected
  by DNSSEC</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/duplicheck.html" class="xref page">--enable-duplicheck</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable advanced duplicate checking plugin using liveness checks</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-eap-aka</p></td>
@@ -1233,11 +1206,6 @@ plugins.</p>
  assigned to peers</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-fast</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">build <code>libfast</code> (FastCGI Application Server w/ templates)</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-files</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable simple <code>file://</code> URI fetcher</p></td>
@@ -1265,11 +1233,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable GCM AEAD wrapper crypto plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-gcrypt</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable gcrypt plugin. Requires the GNU <strong>libgcrypt</strong> library</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-git-version</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use output of <code>git describe</code> as version information in executables</p></td>
@@ -1289,6 +1252,11 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/ha.html" class="xref page">--enable-ha</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../features/highAvailability.html" class="xref page">high availability</a> cluster plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-ikev1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enable <strong>deprecated</strong> IKEv1 protocol support in <code>charon</code> daemon</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-imc-attestation</p></td>
@@ -1389,11 +1357,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable Windows Filtering Platform IPsec backend</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-keychain</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable macOS Keychain Services credential set</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-libipsec</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable user space IPsec implementation</p></td>
@@ -1408,12 +1371,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-leak-detective</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable malloc hooks to find memory leaks</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-led</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to control LEDs on IKEv2 activity using the Linux kernel LED
- subsystem</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/load-tester.html" class="xref page">--enable-load-tester</a></p></td>
@@ -1437,11 +1394,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable fast <a href="../features/vip.html" class="xref page">virtual IP</a> lookup and notification plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-manager</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">build the deprecated strongSwan manager web application</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-md4</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable MD4 software implementation plugin. Required for <code><strong>eap-mschapv2</strong></code> plugin</p></td>
@@ -1452,19 +1404,9 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable MD5 software implementation plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-medcli</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated mediation client web front end and daemon plugin</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-mediation</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable IKEv2 Mediation Extension</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-medsrv</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated mediation server web front end and daemon plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-mgf1</p></td>
@@ -1508,11 +1450,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.4.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable plugin to request P-CSCF server addresses from an ePDG
  (<a href="https://datatracker.ietf.org/doc/html/rfc7651">RFC 7651</a>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-padlock</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable padlock crypto plugin. Requires a VIA Padlock crypto engine</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-perl-cpan</p></td>
@@ -1600,12 +1537,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable SHA3 and SHAKE software implementation plugin</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-smp</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable deprecated XML configuration and control interface. Requires
- <code>libxml</code> library.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-socket-dynamic</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable dynamic socket implementation for charon</p></td>
@@ -1615,11 +1546,6 @@ plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable Winsock2 based socket implementation for
  <a href="../daemons/charon.html" class="xref page"><code><strong>charon</strong></code></a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-soup</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable fetcher plugin to fetch from HTTP URIs. Requires <code>libsoup</code> library</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../plugins/sql.html" class="xref page">--enable-sql</a></p></td>
@@ -1664,26 +1590,9 @@ plugins.</p>
  <a href="https://www.codelabs.ch/tkm/">Trusted Key Manager</a> (TKM).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnccs-11</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Client Server (TNCCS) 1.1 protocol plugin.
- Requires <code>libxml2</code> library</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnccs-20</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Client Server (TNCCS) 2.0 protocol plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnccs-dynamic</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> Client Server (TNCCS) dynamic protocol discovery
- plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnc-ifmap</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enable <a href="../tnc/tnc.html" class="xref page">TNC</a> IF-MAP 2.0 client plugin</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--enable-tnc-imc</p></td>
@@ -1832,11 +1741,6 @@ specific plugins.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-drgb</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5.8.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">disable the NIST Deterministic Random Bit Generator plugin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">--disable-ikev1</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">disable IKEv1 protocol support in <code>charon</code> daemon</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">--disable-ikev2</p></td>
