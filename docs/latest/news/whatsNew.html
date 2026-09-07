@@ -894,10 +894,8 @@ or <code><strong>1</strong></code>, a warning is logged when the configuration i
 </div>
 </div>
 <div class="sect1">
-<h2 id="_plugins"><a class="anchor" href="#_plugins"></a>Plugins</h2>
+<h2 id="_removed_plugins"><a class="anchor" href="#_removed_plugins"></a>Removed Plugins</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_removed_plugins"><a class="anchor" href="#_removed_plugins"></a>Removed Plugins</h3>
 <div class="paragraph">
 <p>The following plugins have been <strong>removed</strong>:</p>
 </div>
@@ -947,7 +945,7 @@ or <code><strong>1</strong></code>, a warning is logged when the configuration i
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">medsrv</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mediation server daemon integration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mediation server configuration database and daemon integration</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">padlock</p></td>
@@ -971,13 +969,20 @@ or <code><strong>1</strong></code>, a warning is logged when the configuration i
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">smp</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SMP configuration and control interface</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XML-based configuration and control interface</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Note that <code><strong>medcli</strong></code> and <code><strong>medsrv</strong></code> were part of a Web-based PoC and their
+removal is unrelated to the basic IKEv2 mediation extension functionality that
+may be enabled via <code><strong>--enable-mediation</strong></code>.</p>
 </div>
-<div class="sect2">
-<h3 id="_removed_components"><a class="anchor" href="#_removed_components"></a>Removed Components</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_removed_components"><a class="anchor" href="#_removed_components"></a>Removed Components</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The following components have been <strong>removed</strong>:</p>
 </div>
@@ -1011,7 +1016,6 @@ or <code><strong>1</strong></code>, a warning is logged when the configuration i
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <nav class="pagination">
