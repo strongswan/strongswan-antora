@@ -863,86 +863,20 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Please <a href="mailto:security@strongswan.org">email</a> any security-relevant flaw to the special mail account
-<a href="mailto:security@strongswan.org">security@strongswan.org</a>. Whenever possible encrypt your posting
-using the <a href="https://download.strongswan.org/STRONGSWAN-SECURITY-PGP-KEY">strongSwan security PGP key</a> for the
-<a href="mailto:security@strongswan.org">security@strongswan.org</a> account.</p>
+<p>Please follow <a href="https://github.com/strongswan/strongswan/security/policy">our security policy</a> if you find or
+suspect a security-relevant flaw in strongSwan.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_severity_classification"><a class="anchor" href="#_severity_classification"></a>Severity Classification</h3>
-<div class="sect3">
-<h4 id="_high_severity_flaw"><a class="anchor" href="#_high_severity_flaw"></a>High Severity Flaw</h4>
+<h3 id="_list_of_published_and_fixed_security_flaws"><a class="anchor" href="#_list_of_published_and_fixed_security_flaws"></a>List of Published and Fixed Security Flaws</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Allows remote access to the VPN with improper, missing, or invalid credentials</p>
-</li>
-<li>
-<p>Allows local escalation of privileges on the server</p>
-</li>
-<li>
-<p>Plain text traffic on the secure interface</p>
-</li>
-<li>
-<p>Key generation and crypto flaws that reduce the difficulty in decrypting secure
-traffic</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_medium_severity_flaw"><a class="anchor" href="#_medium_severity_flaw"></a>Medium Severity Flaw</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Remotely crashing the strongSwan daemon which would allow DoS attacks on the
-VPN service</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_low_severity_flaw"><a class="anchor" href="#_low_severity_flaw"></a>Low Severity Flaw</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>All other minor issues not directly compromising security or availability of
-the strongSwan daemon or the host the daemon is running on</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_action_taken"><a class="anchor" href="#_action_taken"></a>Action Taken</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>For <strong>high</strong> and <strong>medium</strong> severity vulnerabilities we are going to apply for a
-<a href="https://www.cve.org/ResourcesSupport/ReportRequest#RequestCVEID">CVE Identifier</a> first. Next we notify all known strongSwan customers and
-the major Linux distributions, giving them a time of about three weeks to patch
-their software release. On a predetermined date we officially issue an advisory
-and a patch for the vulnerability and usually a new stable strongSwan release
-containing the security fix. Also the <a href="https://nvd.nist.gov/vuln/search/results?isCpeNameSearch=false&amp;query=strongswan&amp;results_type=overview&amp;form_type=Basic&amp;search_type=all&amp;startIndex=0">CVE entry</a> will be published.</p>
-</li>
-<li>
-<p>Minor vulnerabilities  of <strong>low</strong> severity usually will be fixed immediately and
-the corresponding patch will be pushed to the repository on GitHub.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_list_of_reported_and_fixed_security_flaws"><a class="anchor" href="#_list_of_reported_and_fixed_security_flaws"></a>List of Reported and Fixed Security Flaws</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Here is the list of all reported strongSwan high and medium security flaws
-registered in the <a href="https://nvd.nist.gov/vuln/search/results?isCpeNameSearch=false&amp;query=strongswan&amp;results_type=overview&amp;form_type=Basic&amp;search_type=all&amp;startIndex=0">CVE database</a> which were fixed by the following
-<a href="https://download.strongswan.org/security/">security patches</a>. Each security patch is signed by the
+<p>A list of all published strongSwan high and medium security flaws
+can be found <a href="https://strongswan.org/security/">on our website</a>, as can the corresponding
+<a href="https://download.strongswan.org/security/">security patches and OSV files</a>. Each security patch is signed by the
 <a href="https://download.strongswan.org/STRONGSWAN-RELEASE-PGP-KEY">strongSwan release PGP key</a>.</p>
 </li>
 </ul>
